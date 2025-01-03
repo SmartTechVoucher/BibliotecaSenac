@@ -387,7 +387,7 @@ h2{
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
-@media(max-width: 1366px){
+@media(min-width: 1166px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
     
@@ -395,16 +395,28 @@ h2{
         height: 125px;
     }
 
-
-
     .logo{
         position: var(--posicao);
-        right: 15%;
+        right: 13%;
         height: 90px;
+    }
+
+    .titulo{
+       position: var(--posicao);
+       left: -8%;
+    }
+
+    .icone{
+        position: var(--posicao);
+        right: 1%;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
+    .conteiner2{
+        width: 1090px;
+    }
+
     .conteiner3 .quadrado, .conteiner4 .quadrado{
         width: 32px;
         height: 25px;
@@ -434,13 +446,12 @@ h2{
 
     .conteiner6{
         position: var(--posicaoAbsoluta);
-        left: 94.8%; top: 20%;
+        left: 93.98%; top: 20%;
         width: 70px;
         grid-template-columns: repeat(2,36px);
         grid-template-rows: repeat(3, 25px);
 
     }
-
 
     .conteiner6 .qua,.conteiner6 .qua2,.conteiner6 .qua3,.conteiner6 .qua4{
         width: 31px;
@@ -450,13 +461,12 @@ h2{
 
     .adm{
         font-size: 12px;
+        width: 1000px;
     }
     
     .caixa{
         width: 120px;
-        height: 138px;
-     
-        
+        height: 138px; 
     }
 
     .caixa p{
@@ -535,7 +545,7 @@ h2{
     
     .inferiorDireito{
         position: var(--posicaoAbsoluta);
-        top: 70.3%; left: 92%;
+        top: 70.3%; left: 91%;
         grid-template-columns: repeat(3,33px);
         grid-template-rows: repeat(3, 23px);
 
@@ -568,20 +578,13 @@ h2{
        
     }    
 
-   /* .rodape .siga-nos{
-        height: 180px;
-        display: flex;
-        align-items: center;
-       
-    } */
-
     .Logo{
-        width: 195px;
+        width: 100px;
         height: 50px;
     }
 
     .Libro{
-        width: 347px;
+        width: 300px;
         position: var(--posicao);
         left: 12%;
     }
@@ -589,11 +592,41 @@ h2{
     .qua, .qua2, .qua3, .qua4{
         width: 62px;
     }
-
+   
+    .imagem{
+        width: 20px;
+    }
 
 }
 
 
+@media(min-width: 1358px)
+{
+
+    .icone{
+        position: var(--posicao);
+        left: 0%;
+        width: 50px;
+    }
+
+    .conteiner6{
+        position: var(--posicaoAbsoluta);
+        left: 94.8%; bottom: 20%;
+    }
+
+    .inferiorDireito{
+        position: var(--posicaoAbsoluta);
+        left: 92%;
+
+    }
+
+
+
+
+
+
+
+}
 
 
 
