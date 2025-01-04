@@ -12,7 +12,7 @@ botao[0].addEventListener("click", function(){
     //absolute para aparecer abaixo do menu. Linhas 15 e 16
 
     menu.style.position="absolute" 
-    menu.style.bottom="350px" 
+    menu.style.bottom="48px" 
 
     if(menuAberto==false){
         menuAberto=true

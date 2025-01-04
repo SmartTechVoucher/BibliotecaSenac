@@ -7,6 +7,7 @@
     --posicao: relative;
     --posicaoAbsoluta: absolute;
     --azulQuadrado: hwb(210 0% 62% / 0.5);
+    --tamanhoFonte: 10px;
 
    
 }
@@ -387,6 +388,109 @@ h2{
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
+@media(min-width:1066px){
+
+    .logo{
+        position: var(--posicao);
+        right: 11%;
+    }
+
+    .titulo{
+       position: var(--posicao);
+       left: -8%;
+    }
+
+    .icone{
+        position: var(--posicao);
+        right: 7%;
+    }
+
+    .conteiner6{
+        position: var(--posicaoAbsoluta);
+        left: 87.3%; top: 22%;
+    }
+
+    .adm{
+        width: 500px;
+    }
+
+    .conteiner2 .caixa{
+        width: 100px;
+        height: 105px;
+    }
+
+    .conteiner2 .Livro{
+        width: 40px;
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+    }
+
+    .conteiner2 .adicao{
+        width: 30px;
+        height: 30px;
+        position: var(--posicaoAbsoluta);
+        left: 7%; bottom: 30%;
+    }
+
+    .conteiner2 .cadastro{
+        font-size: var(--tamanhoFonte);
+        position: var(--posicao);
+        top: 60%;
+    }
+
+    .conteiner2 .user{
+        width: 50px;
+        height: 50px;
+        position: var(--posicao);
+        left: 25%;
+    }
+
+    .conteiner2 .cadastroDeUsuario{
+        font-size: var(--tamanhoFonte);
+        position: var(--posicao);
+        top: 5%;
+    }
+
+    .conteiner2 .vectorRelatorio, .emprestimo, .conteiner2 .usuario, .estoque, .vectorRenova{
+        width: 50px;
+        height: 50px;
+    }
+
+    .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Estoque, .conteiner2 .renovacoes, .conteiner2 .Usuario{
+        font-size: var(--tamanhoFonte);
+    }
+
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        left: 25%; bottom: 15%;
+    }
+
+    .conteiner2 .Usuario{
+        position: var(--posicao);
+        bottom: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 20%;
+    }
+
+    .conteiner2 .Estoque{
+        text-align: center;
+    }
+
+    .inferiorDireito{
+        position: var(--posicaoAbsoluta);
+        left: 81%; top: 96.8%;
+    }
+
+    .Libro, .copyright, .todos{
+       display: none;
+    }
+
+}
+
+
 @media(min-width: 1166px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
@@ -596,6 +700,10 @@ h2{
     .imagem{
         width: 20px;
     }
+    
+    .Libro, .copyright, .todos{
+        display: block;
+    }
 
 }
 
@@ -619,12 +727,6 @@ h2{
         left: 92%;
 
     }
-
-
-
-
-
-
 
 }
 
