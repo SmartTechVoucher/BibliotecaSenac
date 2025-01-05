@@ -388,6 +388,131 @@ h2{
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
+@media(min-width:966px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .titulo{
+        position: var(--posicao);
+        right: 5%;
+        font-size: 13px;
+    }
+
+    .logo{
+        position: var(--posicao);
+        right: 10%;
+    }
+
+    .conteiner6{
+        position: var(--posicaoAbsoluta);
+        left: 85.6%; top: 22%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+
+    .caixa{
+        width: 100px;
+        height: 100px;
+    }
+
+    .adm{
+        font-size: 12px;
+        width: 900px;
+    }
+
+    .inferiorDireito{
+        position: var(--posicaoAbsoluta);
+        left: 79%; bottom: 100%;
+    }
+
+    /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 40px;
+        height: 40px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        width: 25px;
+        height: 25px;
+        position: var(--posicao);
+        left: 50%; top: 40%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+    .conteiner2 .cadastroDeUsuario,
+    .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+    .conteiner2 .Estoque, .conteiner2 .renovacoes{
+
+        font-size: var(--tamanhoFonte);
+        position: var(--posicao);
+        top: 15%;
+    }
+
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        bottom: 15%; left: 30%;
+    }
+
+    .conteiner2 .Usuario{
+        position: var(--posicao);
+        top: -16%;
+    }
+
+    .conteiner2 .cadastro{
+        font-size: var(--tamanhoFonte);
+        position: var(--posicao);
+        top: 28%;
+    }
+
+    .conteiner2 .relatorios{
+       position: var(--posicao);
+       left: 25%;
+    }
+
+    .conteiner2 .Estoque{
+        text-align: center;
+    }
+
+    .Libro, .copyright, .todos{
+        display: none;
+    }
+
+}
+
+
 @media(min-width:1066px){
 
     .logo{
@@ -484,12 +609,7 @@ h2{
         left: 81%; top: 96.8%;
     }
 
-    .Libro, .copyright, .todos{
-       display: none;
-    }
-
 }
-
 
 @media(min-width: 1166px){
 
@@ -677,9 +797,7 @@ h2{
         top: 81%;
         font-size: 10px;
         justify-content: space-around;
-        align-items: center;
-        
-       
+        align-items: center;   
     }    
 
     .Logo{
