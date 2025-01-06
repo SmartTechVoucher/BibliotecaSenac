@@ -388,6 +388,631 @@ h2{
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
+@media(min-width:365px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .titulo{
+        font-size: 12px;
+        position: var(--posicao);
+        left: 6%; 
+        padding-top: 5%;
+    }
+
+    .logo{
+        position: var(--posicao);
+        left: -5%;
+    }
+
+    .icone{
+        position: var(--posicao);
+        right: 3%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner2{
+        flex-wrap: wrap;
+        width: 340px;
+        gap: 5px;
+    }
+
+    .conteiner3 .quadrado{
+        width: 40px;
+    }
+
+    .conteiner4 .quadrado{
+       width: 40px;
+    }
+    
+    .conteiner5 .quadrado1, .conteiner5 .quadrado2{
+       width: 40px;
+    }
+
+    .conteiner6{
+        position: var(--posicaoAbsoluta);
+        left: 63%;
+        width: 130px;
+    }
+
+    .conteiner6 .qua, .conteiner6 .qua2, .conteiner6 .qua3, .conteiner6 .qua4{
+        width: 60px;
+    }
+
+    .caixa{
+        width: 80px;
+        height: 105px;
+    }
+  
+    .inferiorDireito{
+        position: var(--posicaoAbsoluta);
+        left: 45%; bottom: 100%;
+    }
+    
+    .adm{
+        width: 300px;
+    }
+
+
+    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 40px;
+        height: 40px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        width: 25px;
+        height: 25px;
+        position: var(--posicao);
+        left: 47%; top: 38%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+     .conteiner2 .cadastroDeUsuario,
+     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+ 
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 15%;
+     }
+ 
+     .conteiner2 .usuario{
+         position: var(--posicao);
+         bottom: 15%; left: 30%;
+     }
+ 
+     .conteiner2 .Usuario{
+         position: var(--posicao);
+         top: -16%;
+     }
+ 
+     .conteiner2 .cadastro{
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 28%;
+     }
+ 
+     .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 25%;
+     }
+ 
+     .conteiner2 .Estoque{
+         text-align: center;
+     }
+ 
+     .Libro, .copyright, .todos, .logo,.faleConosco, .titulo, .siga-nos {
+         display: none;
+     }
+
+     .Logo{
+        width: 100px;
+     }
+
+}
+
+@media(min-width:465px){
+
+    .conteiner6{
+        position: var(--posicaoAbsoluta);
+        left: 71%;
+    }
+
+    .inferiorDireito{
+        position: var(--posicaoAbsoluta);
+        left: 56.5%;
+    }
+
+}
+
+@media(min-width:565px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .titulo{
+        font-size: 12px;
+        position: var(--posicao);
+        left: 6%; 
+        padding-top: 5%;
+    }
+
+    .logo{
+        position: var(--posicao);
+        left: -5%;
+    }
+
+    .icone{
+        position: var(--posicao);
+        right: 3%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner3 .quadrado{
+        width: 40px;
+    }
+
+    .conteiner4 .quadrado{
+       width: 40px;
+    }
+    
+    .conteiner5 .quadrado1, .conteiner5 .quadrado2{
+       width: 40px;
+    }
+
+    .conteiner6{
+        position: var(--posicaoAbsoluta);
+        left: 76.5%;
+        width: 130px;
+    }
+
+    .conteiner6 .qua, .conteiner6 .qua2, .conteiner6 .qua3, .conteiner6 .qua4{
+        width: 60px;
+    }
+
+    .caixa{
+        width: 70px;
+        height: 105px;
+    }
+  
+    .inferiorDireito{
+        position: var(--posicaoAbsoluta);
+        left: 64%; bottom: 100%;
+    }
+    
+    .adm{
+        width: 500px;
+    }
+
+
+    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 40px;
+        height: 40px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        width: 25px;
+        height: 25px;
+        position: var(--posicao);
+        left: 62%; top: 38%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+     .conteiner2 .cadastroDeUsuario,
+     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+ 
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 15%;
+     }
+ 
+     .conteiner2 .usuario{
+         position: var(--posicao);
+         bottom: 15%; left: 30%;
+     }
+ 
+     .conteiner2 .Usuario{
+         position: var(--posicao);
+         top: -16%;
+     }
+ 
+     .conteiner2 .cadastro{
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 28%;
+     }
+ 
+     .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 25%;
+     }
+ 
+     .conteiner2 .Estoque{
+         text-align: center;
+     }
+ 
+     .Libro, .copyright, .todos, .logo,.faleConosco {
+         display: none;
+     }
+
+     .Logo{
+        width: 100px;
+     }
+
+}
+
+
+@media(min-width:665px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .titulo{
+        font-size: 12px;
+        position: var(--posicao);
+        left: 6%; 
+        padding-top: 5%;
+    }
+
+    .logo{
+        position: var(--posicao);
+        left: -5%;
+    }
+
+    .icone{
+        position: var(--posicao);
+        right: 3%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner3 .quadrado{
+        width: 40px;
+    }
+
+    .conteiner4 .quadrado{
+       width: 40px;
+    }
+    
+    .conteiner5 .quadrado1, .conteiner5 .quadrado2{
+       width: 40px;
+    }
+
+    .conteiner6{
+        position: var(--posicaoAbsoluta);
+        left: 80%;
+        width: 130px;
+    }
+
+    .conteiner6 .qua, .conteiner6 .qua2, .conteiner6 .qua3, .conteiner6 .qua4{
+        width: 60px;
+    }
+
+    .caixa{
+        width: 89px;
+        height: 105px;
+    }
+  
+    .inferiorDireito{
+        position: var(--posicaoAbsoluta);
+        left: 69.7%; bottom: 100%;
+    }
+    
+    .adm{
+        width: 600px;
+    }
+
+
+    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 40px;
+        height: 40px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        width: 25px;
+        height: 25px;
+        position: var(--posicao);
+        left: 58%; top: 38%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+     .conteiner2 .cadastroDeUsuario,
+     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+ 
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 15%;
+     }
+ 
+     .conteiner2 .usuario{
+         position: var(--posicao);
+         bottom: 15%; left: 30%;
+     }
+ 
+     .conteiner2 .Usuario{
+         position: var(--posicao);
+         top: -16%;
+     }
+ 
+     .conteiner2 .cadastro{
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 28%;
+     }
+ 
+     .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 25%;
+     }
+ 
+     .conteiner2 .Estoque{
+         text-align: center;
+     }
+ 
+     .Libro, .copyright, .todos, .logo{
+         display: none;
+     }
+
+     .Logo{
+        width: 100px;
+     }
+
+}
+
+
+@media(min-width:766px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .titulo{
+        font-size: 12px;
+        position: var(--posicao);
+        left: -2%; 
+        padding-top: 5%;
+    }
+
+    .logo{
+        position: var(--posicao);
+        left: -5%;
+    }
+
+    .icone{
+        position: var(--posicao);
+        right: 3%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner3 .quadrado{
+        width: 40px;
+    }
+
+    .conteiner4 .quadrado{
+       width: 40px;
+    }
+    
+    .conteiner5 .quadrado1, .conteiner5 .quadrado2{
+       width: 40px;
+    }
+
+    .conteiner6{
+        position: var(--posicaoAbsoluta);
+        left: 82.5%;
+    }
+
+    .conteiner6 .qua, .conteiner6 .qua2, .conteiner6 .qua3, .conteiner6 .qua4{
+        width: 60px;
+    }
+
+    .caixa{
+        width: 100px;
+        height: 100px;
+    }
+  
+    .inferiorDireito{
+        position: var(--posicaoAbsoluta);
+        left: 73.7%; bottom: 100%;
+    }
+    
+    .adm{
+        width: 700px;
+    }
+
+
+    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 40px;
+        height: 40px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        width: 25px;
+        height: 25px;
+        position: var(--posicao);
+        left: 52%; top: 40%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+     .conteiner2 .cadastroDeUsuario,
+     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+ 
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 15%;
+     }
+ 
+     .conteiner2 .usuario{
+         position: var(--posicao);
+         bottom: 15%; left: 30%;
+     }
+ 
+     .conteiner2 .Usuario{
+         position: var(--posicao);
+         top: -16%;
+     }
+ 
+     .conteiner2 .cadastro{
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 28%;
+     }
+ 
+     .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 25%;
+     }
+ 
+     .conteiner2 .Estoque{
+         text-align: center;
+     }
+ 
+     .Libro, .copyright, .todos{
+         display: none;
+     }
+
+     .Logo{
+        width: 200px;
+     }
+
+}
+
 @media(min-width:866px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
