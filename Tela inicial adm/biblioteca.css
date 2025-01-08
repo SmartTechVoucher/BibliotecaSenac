@@ -872,6 +872,16 @@ h2{
         font-size: 12px;
     }
 
+    .conteiner2 .relatorios{
+       position: var(--posicao);
+       left: 12%;
+    }
+    
+    .conteiner2 .adicao{
+       position: var(--posicao);
+       left: 50%; top: 35%;
+    }
+
     .conteiner6{
         position: var(--posicaoAbsoluta);
         left: 82.5%;
