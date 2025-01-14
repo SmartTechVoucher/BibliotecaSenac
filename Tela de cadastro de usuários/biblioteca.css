@@ -1,0 +1,802 @@
+:root{
+
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --azulQuadrado: hwb(210 0% 62% / 0.5);
+    --corFormulario: #E5E4E4;
+    --corBotao: #004A90;
+    --vermelho: red;
+    --apontador: pointer;
+   
+}
+
+/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+
+.conteiner{
+    background-color: var(--azulCabecalho);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    font-family: var(--fontes);
+   
+}
+
+body{
+    margin: 0;
+    background-color: var(--fundoPadrao);
+}
+
+.hamburguer{
+    cursor: var(--apontador);
+    background: none;
+    border: none;
+/* .hamburguer define as características do botão. cursor: pointer indica que um objeto é clicável ao mudar o cursor, 
+background: none retira a cor do botão que contêm as quatro linhas horizontais e border: none retira a borda do botão.
+Esses dois últimos fazem o botão desaparecer completamente.*/ 
+}
+
+.barra{
+    width: 35px;
+    height: 3px;
+    margin-left: 10px;
+    background-color: var(--branco);
+   
+}
+
+.titulo{
+  color: var(--branco);
+  font-size: 10px;
+   
+}
+
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
+
+.conteiner3{
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.conteiner4{   
+    display: grid;
+    grid-template-columns: repeat(2,20px);
+    grid-template-rows: repeat(3,21px);
+    gap: 3px;
+    position: var(--posicaoAbsoluta);
+    left: 88%; bottom: 76.7%;
+}
+
+.conteiner4 .quadrado{
+    width: 20px;
+    height: 20px;
+    background-color: var(--azulQuadrado);
+}
+
+.conteiner4 .quadrado3{
+    grid-row: 2;
+    grid-column: 2;
+    background-color: var(--azulQuadrado);
+    width: 20px;
+    height: 20px;
+}
+
+.conteiner4 .quadrado4{
+    grid-row: 3;
+    grid-column: 1;
+    background-color: var(--azulQuadrado);
+    width: 20px;
+    height: 20px;
+}
+
+.conteiner5{
+    display: grid;
+    grid-template-columns: repeat(3, 21px);
+    grid-template-rows: repeat(3,21px);
+    gap: 3px;
+    position: var(--posicaoAbsoluta);
+    left: 81.55%; 
+    transform: rotate(180deg);
+}
+
+.conteiner5 .quadrado{
+    background-color: var(--azulQuadrado);
+}
+
+.conteiner5 .quadrado7, .conteiner5 .quadrado6{
+    background-color: var(--azulQuadrado);
+}
+
+.conteiner5 .quadrado6{
+    grid-row: 3;
+    grid-column: 3;
+}
+
+.conteiner5 .quadrado7{
+    grid-row: 3;
+    grid-column: -4;
+}
+
+.formulario{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--corFormulario);
+    padding: 15px;
+    margin-top: 25px;
+    gap: 15px;
+}
+
+.formulario .area{
+    cursor: var(--apontador);
+}
+
+.formulario .unidade{
+    cursor: var(--apontador);
+}
+
+.formulario .tipoDocumento{
+    cursor: var(--apontador);
+}
+
+.formulario .categoria{
+    cursor: var(--apontador);
+}
+
+.botao{
+    background-color: var(--corBotao);
+    border-radius: 20px;
+    color: var(--branco);
+    width: 154px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--fontes);
+    font-size: 15px;
+    cursor: var(--apontador);
+}
+
+.obrigatorio{
+    color: var(--vermelho);
+    font-family: var(--fontes);
+    font-size: 15px;   
+}
+
+#obrigatorio1{
+    position: var(--posicaoAbsoluta);
+    bottom: 440px; left: 280px;
+}
+
+#obrigatorio2{
+    position: var(--posicaoAbsoluta);
+    bottom: 368px; left: 280px;
+}
+
+#obrigatorio3{
+    position: var(--posicaoAbsoluta);
+    bottom: 290px; left: 280px;
+}
+
+textarea::placeholder{
+    color: #00000033;
+    text-align: center;
+    line-height: 350%;
+    font-size: 40px;
+
+}
+
+label{
+    font-family: var(--fontes);
+}
+
+.formulario .Area{
+    width: 10px;
+    height: 10px;
+    position: var(--posicaoAbsoluta);
+    left: 92%;  bottom: 18%;
+}
+
+.formulario .Unidade{
+    width: 10px;
+    height: 10px;
+    position: var(--posicaoAbsoluta);
+    left: 92%; bottom: 6.7%;
+}
+
+.formulario .Tipo{
+    width: 10px;
+    height: 10px;
+    position: var(--posicaoAbsoluta);
+    left: 92%; top: 221%;
+}
+
+.formulario .Categoria{
+    width: 10px;
+    height: 10px;
+    position: var(--posicaoAbsoluta);
+    left: 92%; top: 243.8%;
+}
+
+#formulario2{
+   
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--corFormulario);
+    padding: 15px;
+    margin-top: 25px;
+    gap: 25px;
+}
+
+/* #formulario2 #titulo{
+    height: 21px;
+   
+} */
+
+#formulario2 .Area{
+    width: 12px;
+    height: 12px;
+    cursor: var(--apontador);
+}
+
+#formulario2 .Unidade{
+    width: 12px;
+    height: 12px;
+    cursor: var(--apontador);
+}
+
+#formulario2 .area{
+    cursor: var(--apontador);
+}
+
+#formulario2 .unidade{
+    cursor: var(--apontador);
+}
+
+#formulario2_segundaMetade .tipoDocumento{
+    cursor: var(--apontador);
+}
+
+#formulario2_segundaMetade .Tipo{
+    cursor: var(--apontador);
+}
+
+#formulario2_segundaMetade .categoria{
+    cursor: var(--apontador);
+}
+
+#formulario2_segundaMetade .Categoria{
+    cursor: var(--apontador);
+}
+
+
+/* .linha{
+    /* background-color: var(--branco); 
+    transform:rotate(90deg);
+    width:111%;
+    
+
+} */
+
+
+/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
+
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 159px;
+    width: 100%;
+    position: var(--posicao);
+    top: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 10px;
+    text-align: center;
+   
+}
+
+.rodape .Logo{
+    height: 50px;
+    width: 100px;
+}
+
+.rodape .Libro{
+    height: 100px;
+    width: 200px;
+}
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+.menu{
+    width: 366px;
+    height: 500px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 36px;
+    display: none;
+    cursor: pointer;
+    
+}
+
+/*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
+
+@media(min-width: 375px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .logo{
+        display: none;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
+
+    .conteiner3 .esquerdo, .direito{
+        width: 100px;
+        height: 100px;
+    }
+
+   .formulario .Area{
+    height: 18px;
+    width: 13px;
+    position: var(--posicaoAbsoluta);
+    bottom: 17%;
+   }
+   
+   .formulario .Unidade{
+    height: 18px;
+    width: 13px;
+    position: var(--posicaoAbsoluta);
+    bottom: 5.5%;
+   }
+   
+   .formulario .Tipo{
+    height: 18px;
+    width: 13px;
+   }
+   
+   .formulario .Categoria{
+    height: 18px;
+    width: 13px;
+   }
+   
+    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
+
+    .rodape .faleConosco, .email,.siga-nos{
+        display: none;     
+    }     
+
+    #formulario2{
+        display: none;
+    }
+
+    .formulario2_segundaMetade{
+        display: none;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 12%;
+    }
+
+} 
+
+
+@media(min-width:414px){
+    
+    .conteiner4{
+        position: var(--posicaoAbsoluta);
+        top: 9.6%; left: 89.5%;
+    }
+
+   #obrigatorio1{
+        position: var(--posicaoAbsoluta);
+        top: 19.5%; left: 75%;
+   }
+   
+   #obrigatorio2{
+        position: var(--posicaoAbsoluta);
+        top: 27.5%; left: 75%;
+   }
+   
+   #obrigatorio3{
+        position: var(--posicaoAbsoluta);
+        top: 36.5%; left: 75%;
+   }
+
+   .formulario .Area{
+        position: var(--posicaoAbsoluta);
+        bottom: 38.3%;
+        width: 16px;
+   }
+
+   .formulario .Unidade{
+    position: var(--posicaoAbsoluta);
+    bottom:29.6%;
+    width: 16px;
+   }
+
+   .formulario .Tipo{
+    position: var(--posicaoAbsoluta);
+    top: 164.5%;
+    width: 16px;
+   }
+  
+   .formulario .Categoria{
+    position: var(--posicaoAbsoluta);
+    top: 181.5%;
+    width: 16px;
+   }
+
+   .conteiner5{
+    position: var(--posicao);
+    left: 0.1%; top: 10px;
+   }
+
+   .rodape{
+    position: var(--posicao);
+    top: 10px;
+   }
+
+   #formulario2{
+    display: none;
+ }
+
+ .formulario2_segundaMetade{
+    display: none;
+ }
+
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 9%;
+ }
+
+
+}
+
+
+@media(min-width:768px){
+
+    .titulo{
+        font-size: 12px;
+    }
+
+    .conteiner .logo{
+        display: block;
+    }
+
+    .conteiner{
+        justify-content: space-between;
+    }
+
+    .conteiner4{
+        position: var(--posicaoAbsoluta);
+        top: 8.5%; left: 94%;
+    }
+
+    .formulario #obrigatorio1{
+        position: var(--posicaoAbsoluta);
+        top: 175px; left: 670px;
+    }
+
+    .formulario #obrigatorio2{
+        position: var(--posicaoAbsoluta);
+        top: 250px; left: 670px;
+    }
+    
+    .formulario #obrigatorio3{
+        position: var(--posicaoAbsoluta);
+        top: 325px; left: 670px;
+    }
+
+    .formulario .Area{
+        position: var(--posicaoAbsoluta);
+        bottom: 46%; left: 95%;
+        width: 20px;
+        height: 18px;
+    }
+   
+    .formulario .Unidade{
+        position: var(--posicaoAbsoluta);
+        bottom: 38.5%; left: 95%;
+        width: 20px;
+        height: 18px;
+    }
+    
+    .formulario .Tipo{
+        position: var(--posicaoAbsoluta);
+        top: 143.8%; left: 95%;
+        width: 20px;
+        height: 18px;
+    }
+   
+    .formulario .Categoria{
+        position: var(--posicaoAbsoluta);
+        top: 158.8%; left: 95%;
+        width: 20px;
+        height: 18px;
+    }
+
+    .rodape{
+        font-size: 14px;
+    }
+
+    .rodape .faleConosco{
+        display: block;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 8%;
+    }
+
+    .conteiner5{
+        position: var(--posicao);
+        left: 0%;
+    }
+
+}
+
+@media(min-width: 1280px){
+
+    .conteiner4{
+        position: var(--posicaoAbsoluta);
+        top: 10.7%; left: 96.5%;
+    }
+
+    .formulario{
+        display: none;
+    }
+
+    #formulario2{
+        display: block;
+        display: flex;
+        width: 410.5px;
+        position: var(--posicao);
+        left: 20%; top: 8px; 
+        border-right: 1px solid white;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+     #formulario2 #obrigatorio1{
+        position: var(--posicaoAbsoluta);
+        left: 78%; top: 0%;
+    }
+
+    #formulario2 #obrigatorio2{
+        position: var(--posicaoAbsoluta);
+        left: 78%; top: 9.5%;
+    }
+    
+    #formulario2 #obrigatorio3{
+        position: var(--posicaoAbsoluta);
+        left: 78%; top: 19%;
+    }
+
+    #formulario2 .Area{
+        position: var(--posicaoAbsoluta);
+        top:45%; left: 92.5%;
+        width: 18px;
+        height: 17px;
+    }
+
+    #formulario2 .Unidade{
+        position: var(--posicaoAbsoluta);
+        top:54.5%; left: 92.5%;
+        width: 18px;
+        height: 17px;
+    }
+
+    .formulario2_segundaMetade{
+        display: block;
+        display: flex;
+        flex-direction: column;
+        width: 410.5px;
+        height: 983px;
+        position: var(--posicaoAbsoluta);
+        top: 23%; left: 54.5%;
+        background-color: var(--corFormulario);
+        gap: 15px;
+        padding: 10px;
+        font-size: 18px;
+        border-left: 4px solid white;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .formulario2_segundaMetade .Tipo{
+        height: 17px;
+        width: 15px;
+        position: var(--posicaoAbsoluta);
+        left: 94%; top: 44.6%;
+    }
+    
+    .formulario2_segundaMetade .Categoria{
+        height: 17px;
+        width: 15px;
+        position: var(--posicaoAbsoluta);
+        left: 94%; top: 60.2%;
+    }
+
+    .rodape .email{
+        display: block;
+    }
+    
+    .rodape .siga-nos{
+        display: block;
+    }
+
+    .rodape .Logo{
+        width: 114px;
+        height: 80px;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+    #formulario2_segundaMetade .Botao{
+        justify-content: center;
+        display: flex;
+        align-items: center; 
+        height: 400px;
+       
+    }
+
+    .logoSenacHub{
+        position: var(--posicao);
+        right: 115%;
+    }
+
+    .titulo{
+        position: var(--posicao);
+        right: 10%;
+    }
+
+    .conteiner5{
+        position: var(--posicao);
+        left: 0%;
+    }
+
+}
+
+@media(min-width:1358px){
+
+   .conteiner .barra{
+
+    width: 50px;
+
+ }
+
+ .conteiner4{
+    position: var(--posicaoAbsoluta);
+    top: 13%; left: 96.7%;
+ }
+
+ .formulario2_segundaMetade{
+    position: var(--posicaoAbsoluta);
+    top: 28.3%; left: 53%;
+ }
+
+ .formulario2_segundaMetade .Tipo{
+    width: 16px;
+    height: 19px;
+ }
+
+ .formulario2_segundaMetade .Categoria{
+    width: 16px;
+    height: 19px;
+ }
+
+ #formulario2 #obrigatorio1{
+    position: var(--posicaoAbsoluta);
+    top: 0%;
+ }
+ 
+ #formulario2 #obrigatorio2{
+    position: var(--posicaoAbsoluta);
+    top: 10%;
+ }
+
+ #formulario2 #obrigatorio3{
+    position: var(--posicaoAbsoluta);
+    top: 19%;
+ }
+
+
+ #formulario2 .Area{
+    position: var(--posicaoAbsoluta);
+    top: 44.7%;
+    height: 20px;
+    width: 17px;
+ }
+ 
+ #formulario2 .Unidade{
+    position: var(--posicaoAbsoluta);
+    top: 54.3%;
+    height: 20px;
+    width: 17px;
+ }
+
+ #formulario2{
+    border-right: 4px solid white;
+ }
+
+}
+
+@media(min-width: 1912px){
+
+    #formulario2{
+        position: var(--posicao);
+        top: 40%; left: 29.5%;
+        border-right: 6px solid white;
+    }
+
+    #formulario2 #obrigatorio1{
+        position: var(--posicaoAbsoluta);
+        top: 0%;
+    }
+   
+    #formulario2 #obrigatorio2{
+        position: var(--posicaoAbsoluta);
+        top: 9%;
+    }
+   
+    #formulario2 #obrigatorio3{
+        position: var(--posicaoAbsoluta);
+        top: 19%;
+    }
+
+    #formulario2_segundaMetade{
+        position: var(--posicaoAbsoluta);
+        top: 18.5%; left: 52.8%;
+        border-left: 3px solid white;
+    }
+
+    #formulario2 .Area{
+        position: var(--posicaoAbsoluta);
+        top: 45%;
+        height: 18px;
+        width: 18px;
+    }
+    
+    #formulario2 .Unidade{
+        position: var(--posicaoAbsoluta);
+        top: 54.5%;
+        height: 18px;
+        width: 18px;
+    }
+
+    .conteiner4{
+        position: var(--posicaoAbsoluta);
+        top: 9%; left: 97.7%;
+    }
+
+    #formulario2_segundaMetade .Tipo{
+        width: 16px;
+    }
+    
+    #formulario2_segundaMetade .Categoria{
+        width: 16px;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 9%;
+    }
+
+}
+
+
+
+
+
