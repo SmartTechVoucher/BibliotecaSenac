@@ -11,6 +11,7 @@
     --corBotao: #004A90;
     --vermelho: red;
     --apontador: pointer;
+    --cinza: #D9D9D9;
    
 }
 
@@ -63,7 +64,40 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
    
 }
 
-.conteiner4{   
+.quadradoCinza{
+    /* width: 50%; */
+    height: 500px;
+    background-color: var(--cinza);
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    padding-top: 5%;
+    padding-left: 15%;
+    margin-top: 5%;
+}
+
+.quadradoCinza .nome, .nomeSocial, .matricula, .cpf, .senha, .email{
+    width: 260px;
+}
+
+.quadradoCinza .input{
+    padding: 3%;
+}
+
+.quadradoCinza .botao{
+    background-color: var(--corBotao);
+    color: var(--branco);
+    border-radius: 5px;
+    height: 30px;
+}
+
+.quadradoCinza .div{
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+/* .conteiner4{   
     display: grid;
     grid-template-columns: repeat(2,20px);
     grid-template-rows: repeat(3,21px);
@@ -92,7 +126,7 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     background-color: var(--azulQuadrado);
     width: 20px;
     height: 20px;
-}
+} */
 
 .conteiner5{
     display: grid;
@@ -371,9 +405,9 @@ label{
    
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
 
-    .rodape .faleConosco, .email,.siga-nos{
+    /* .rodape .faleConosco, .email,.siga-nos{
         display: none;     
-    }     
+    }      */
 
     #formulario2{
         display: none;
