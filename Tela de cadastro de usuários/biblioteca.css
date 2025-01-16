@@ -65,12 +65,8 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
 }
 
 .quadradoCinza{
-    /* width: 50%; */
     height: 500px;
     background-color: var(--cinza);
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
     padding-top: 5%;
     padding-left: 15%;
     margin-top: 5%;
@@ -97,38 +93,36 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     justify-content: center;
 }
 
-/* .conteiner4{   
-    display: grid;
-    grid-template-columns: repeat(2,20px);
-    grid-template-rows: repeat(3,21px);
-    gap: 3px;
-    position: var(--posicaoAbsoluta);
-    left: 88%; bottom: 76.7%;
+.input{
+    display: flex;
 }
 
-.conteiner4 .quadrado{
-    width: 20px;
-    height: 20px;
-    background-color: var(--azulQuadrado);
+.input img{
+    height: 21px;
 }
 
-.conteiner4 .quadrado3{
-    grid-row: 2;
-    grid-column: 2;
-    background-color: var(--azulQuadrado);
-    width: 20px;
-    height: 20px;
+.opcional{
+    display: flex;
+    justify-content: end;
+    padding-right: 7%;
+    height: 11px;    
 }
 
-.conteiner4 .quadrado4{
-    grid-row: 3;
-    grid-column: 1;
-    background-color: var(--azulQuadrado);
-    width: 20px;
-    height: 20px;
+.opcional p{
+    font-size: 13px;
+    position: var(--posicao);
+    bottom: 190%;
+}
+
+.quadradoCinza #nomeSocial1{
+    padding-left: 10%;
+}
+
+/* .input .nomeSocial{
+    height: 30px;
 } */
 
-.conteiner5{
+/* .conteiner5{
     display: grid;
     grid-template-columns: repeat(3, 21px);
     grid-template-rows: repeat(3,21px);
@@ -154,7 +148,7 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
 .conteiner5 .quadrado7{
     grid-row: 3;
     grid-column: -4;
-}
+} */
 
 .formulario{
     height: 100%;
@@ -378,44 +372,12 @@ label{
         width: 100px;
         height: 100px;
     }
-
-   .formulario .Area{
-    height: 18px;
-    width: 13px;
-    position: var(--posicaoAbsoluta);
-    bottom: 17%;
-   }
-   
-   .formulario .Unidade{
-    height: 18px;
-    width: 13px;
-    position: var(--posicaoAbsoluta);
-    bottom: 5.5%;
-   }
-   
-   .formulario .Tipo{
-    height: 18px;
-    width: 13px;
-   }
-   
-   .formulario .Categoria{
-    height: 18px;
-    width: 13px;
-   }
    
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
 
     /* .rodape .faleConosco, .email,.siga-nos{
         display: none;     
     }      */
-
-    #formulario2{
-        display: none;
-    }
-
-    .formulario2_segundaMetade{
-        display: none;
-    }
 
     .menu{
         position: var(--posicaoAbsoluta);
