@@ -6,7 +6,6 @@
     --fundoPadrao: #EDEDED;
     --posicao: relative;
     --posicaoAbsoluta: absolute;
-    --azulQuadrado: hwb(210 0% 62% / 0.5);
     --corFormulario: #E5E4E4;
     --corBotao: #004A90;
     --vermelho: red;
@@ -85,6 +84,7 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     color: var(--branco);
     border-radius: 5px;
     height: 30px;
+    cursor: var(--apontador);
 }
 
 .quadradoCinza .div{
@@ -220,67 +220,9 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
 
 
 @media(min-width:414px){
-    
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 9.6%; left: 89.5%;
-    }
 
-   #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 19.5%; left: 75%;
-   }
-   
-   #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        top: 27.5%; left: 75%;
-   }
-   
-   #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 36.5%; left: 75%;
-   }
-
-   .formulario .Area{
-        position: var(--posicaoAbsoluta);
-        bottom: 38.3%;
-        width: 16px;
-   }
-
-   .formulario .Unidade{
-    position: var(--posicaoAbsoluta);
-    bottom:29.6%;
-    width: 16px;
-   }
-
-   .formulario .Tipo{
-    position: var(--posicaoAbsoluta);
-    top: 164.5%;
-    width: 16px;
-   }
-  
-   .formulario .Categoria{
-    position: var(--posicaoAbsoluta);
-    top: 181.5%;
-    width: 16px;
-   }
-
-   .conteiner5{
-    position: var(--posicao);
-    left: 0.1%; top: 10px;
-   }
-
-   .rodape{
-    position: var(--posicao);
-    top: 10px;
-   }
-
-   #formulario2{
-    display: none;
- }
-
- .formulario2_segundaMetade{
-    display: none;
+ .opcional{
+    padding-right: 15%;
  }
 
  .menu{
@@ -288,12 +230,11 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     top: 9%;
  }
 
-
 }
-
 
 @media(min-width:768px){
 
+ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/           
     .titulo{
         font-size: 12px;
     }
@@ -301,60 +242,39 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     .conteiner .logo{
         display: block;
     }
+ 
+ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
-    .conteiner{
-        justify-content: space-between;
-    }
+ .quadradoCinza{
+    width: 60%;
+    margin-left: 13%;
+    border: solid 1px;
+    /* background-color: blue; */
+ }
 
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 8.5%; left: 94%;
-    }
+ .quadradoCinza input{
+    height: 30px;
+ }
 
-    .formulario #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 175px; left: 670px;
-    }
+ /* .quadradoCinza #nomeSocial1{
+    position: var(--posicao);
+    right: 0%;
+ } */
 
-    .formulario #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        top: 250px; left: 670px;
-    }
-    
-    .formulario #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 325px; left: 670px;
-    }
+ .quadradoCinza img{
+    height:30px;
+ }
 
-    .formulario .Area{
-        position: var(--posicaoAbsoluta);
-        bottom: 46%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-   
-    .formulario .Unidade{
-        position: var(--posicaoAbsoluta);
-        bottom: 38.5%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-    
-    .formulario .Tipo{
-        position: var(--posicaoAbsoluta);
-        top: 143.8%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-   
-    .formulario .Categoria{
-        position: var(--posicaoAbsoluta);
-        top: 158.8%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
+ .opcional p{
+    padding-right: 22%;
+ }
 
-    .rodape{
+ .quadradoCinza .div{
+    padding-right: 20%;
+ }
+
+ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
+ .rodape{
         font-size: 14px;
     }
 
@@ -366,12 +286,6 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
         position: var(--posicaoAbsoluta);
         top: 8%;
     }
-
-    .conteiner5{
-        position: var(--posicao);
-        left: 0%;
-    }
-
 }
 
 @media(min-width: 1280px){
