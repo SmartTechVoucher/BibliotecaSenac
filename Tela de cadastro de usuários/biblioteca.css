@@ -118,64 +118,6 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     padding-left: 10%;
 }
 
-/* .input .nomeSocial{
-    height: 30px;
-} */
-
-/* .conteiner5{
-    display: grid;
-    grid-template-columns: repeat(3, 21px);
-    grid-template-rows: repeat(3,21px);
-    gap: 3px;
-    position: var(--posicaoAbsoluta);
-    left: 81.55%; 
-    transform: rotate(180deg);
-}
-
-.conteiner5 .quadrado{
-    background-color: var(--azulQuadrado);
-}
-
-.conteiner5 .quadrado7, .conteiner5 .quadrado6{
-    background-color: var(--azulQuadrado);
-}
-
-.conteiner5 .quadrado6{
-    grid-row: 3;
-    grid-column: 3;
-}
-
-.conteiner5 .quadrado7{
-    grid-row: 3;
-    grid-column: -4;
-} */
-
-.formulario{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--corFormulario);
-    padding: 15px;
-    margin-top: 25px;
-    gap: 15px;
-}
-
-.formulario .area{
-    cursor: var(--apontador);
-}
-
-.formulario .unidade{
-    cursor: var(--apontador);
-}
-
-.formulario .tipoDocumento{
-    cursor: var(--apontador);
-}
-
-.formulario .categoria{
-    cursor: var(--apontador);
-}
-
 .botao{
     background-color: var(--corBotao);
     border-radius: 20px;
@@ -191,128 +133,18 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     cursor: var(--apontador);
 }
 
-.obrigatorio{
-    color: var(--vermelho);
-    font-family: var(--fontes);
-    font-size: 15px;   
-}
+/*Parte inferior do corpo*/
 
-#obrigatorio1{
-    position: var(--posicaoAbsoluta);
-    bottom: 440px; left: 280px;
-}
-
-#obrigatorio2{
-    position: var(--posicaoAbsoluta);
-    bottom: 368px; left: 280px;
-}
-
-#obrigatorio3{
-    position: var(--posicaoAbsoluta);
-    bottom: 290px; left: 280px;
-}
-
-textarea::placeholder{
-    color: #00000033;
-    text-align: center;
-    line-height: 350%;
-    font-size: 40px;
-
-}
-
-label{
-    font-family: var(--fontes);
-}
-
-.formulario .Area{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%;  bottom: 18%;
-}
-
-.formulario .Unidade{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; bottom: 6.7%;
-}
-
-.formulario .Tipo{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; top: 221%;
-}
-
-.formulario .Categoria{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; top: 243.8%;
-}
-
-#formulario2{
-   
-    width: 50%;
+.inferior{
     display: flex;
-    flex-direction: column;
-    background-color: var(--corFormulario);
-    padding: 15px;
-    margin-top: 25px;
-    gap: 25px;
+    justify-content: end;
+    margin-top: 5%;
 }
 
-/* #formulario2 #titulo{
-    height: 21px;
-   
-} */
-
-#formulario2 .Area{
-    width: 12px;
-    height: 12px;
-    cursor: var(--apontador);
+.inferior img{
+    width: 100px;
+    height: 100px;
 }
-
-#formulario2 .Unidade{
-    width: 12px;
-    height: 12px;
-    cursor: var(--apontador);
-}
-
-#formulario2 .area{
-    cursor: var(--apontador);
-}
-
-#formulario2 .unidade{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .tipoDocumento{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .Tipo{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .categoria{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .Categoria{
-    cursor: var(--apontador);
-}
-
-
-/* .linha{
-    /* background-color: var(--branco); 
-    transform:rotate(90deg);
-    width:111%;
-    
-
-} */
-
 
 /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
 
@@ -320,8 +152,6 @@ label{
     background-color: var(--azulCabecalho);
     height: 159px;
     width: 100%;
-    position: var(--posicao);
-    top: 70px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -368,6 +198,8 @@ label{
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
 
+    /*Essa parte controla os comprimentos
+    e alturas dos ícones azuis superiores*/
     .conteiner3 .esquerdo, .direito{
         width: 100px;
         height: 100px;
@@ -375,9 +207,9 @@ label{
    
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
 
-    /* .rodape .faleConosco, .email,.siga-nos{
+    .rodape .faleConosco, .siga-nos, .emailAtendimento{
         display: none;     
-    }      */
+    }     
 
     .menu{
         position: var(--posicaoAbsoluta);
