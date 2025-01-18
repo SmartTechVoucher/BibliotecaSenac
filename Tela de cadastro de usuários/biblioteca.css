@@ -249,17 +249,11 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     width: 60%;
     margin-left: 13%;
     border: solid 1px;
-    /* background-color: blue; */
  }
 
  .quadradoCinza input{
     height: 30px;
  }
-
- /* .quadradoCinza #nomeSocial1{
-    position: var(--posicao);
-    right: 0%;
- } */
 
  .quadradoCinza img{
     height:30px;
@@ -274,7 +268,7 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
  }
 
  /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
- .rodape{
+    .rodape{
         font-size: 14px;
     }
 
@@ -289,84 +283,6 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
 }
 
 @media(min-width: 1280px){
-
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 10.7%; left: 96.5%;
-    }
-
-    .formulario{
-        display: none;
-    }
-
-    #formulario2{
-        display: block;
-        display: flex;
-        width: 410.5px;
-        position: var(--posicao);
-        left: 20%; top: 8px; 
-        border-right: 1px solid white;
-        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-    }
-
-     #formulario2 #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 0%;
-    }
-
-    #formulario2 #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 9.5%;
-    }
-    
-    #formulario2 #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 19%;
-    }
-
-    #formulario2 .Area{
-        position: var(--posicaoAbsoluta);
-        top:45%; left: 92.5%;
-        width: 18px;
-        height: 17px;
-    }
-
-    #formulario2 .Unidade{
-        position: var(--posicaoAbsoluta);
-        top:54.5%; left: 92.5%;
-        width: 18px;
-        height: 17px;
-    }
-
-    .formulario2_segundaMetade{
-        display: block;
-        display: flex;
-        flex-direction: column;
-        width: 410.5px;
-        height: 983px;
-        position: var(--posicaoAbsoluta);
-        top: 23%; left: 54.5%;
-        background-color: var(--corFormulario);
-        gap: 15px;
-        padding: 10px;
-        font-size: 18px;
-        border-left: 4px solid white;
-        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .formulario2_segundaMetade .Tipo{
-        height: 17px;
-        width: 15px;
-        position: var(--posicaoAbsoluta);
-        left: 94%; top: 44.6%;
-    }
-    
-    .formulario2_segundaMetade .Categoria{
-        height: 17px;
-        width: 15px;
-        position: var(--posicaoAbsoluta);
-        left: 94%; top: 60.2%;
-    }
 
     .rodape .email{
         display: block;
@@ -386,14 +302,6 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
         top: 10%;
     }
 
-    #formulario2_segundaMetade .Botao{
-        justify-content: center;
-        display: flex;
-        align-items: center; 
-        height: 400px;
-       
-    }
-
     .logoSenacHub{
         position: var(--posicao);
         right: 115%;
@@ -404,74 +312,47 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
         right: 10%;
     }
 
-    .conteiner5{
-        position: var(--posicao);
-        left: 0%;
-    }
-
 }
 
 @media(min-width:1358px){
 
-   .conteiner .barra{
-
+.conteiner .barra{
     width: 50px;
+}
 
- }
+.conteiner3 .esquerdo, .direito{
+    width: 150px;
+    height: 150px;
+}
 
- .conteiner4{
+.quadradoCinza .input{
+    padding: 2%;
+    padding-left: 25%;
+} 
+
+.quadradoCinza #nomeSocial1{
+    padding-left: 29%;
+}
+
+.quadradoCinza .opcional{
+    padding-right: 20%;
+}
+
+.quadradoCinza .div{
+    padding-left: 10%;
+    position: var(--posicao);
+    bottom: 5%;
+}
+
+.inferior img{
+    width: 150px;
+    height: 150px;
+}
+
+.menu{
     position: var(--posicaoAbsoluta);
-    top: 13%; left: 96.7%;
- }
-
- .formulario2_segundaMetade{
-    position: var(--posicaoAbsoluta);
-    top: 28.3%; left: 53%;
- }
-
- .formulario2_segundaMetade .Tipo{
-    width: 16px;
-    height: 19px;
- }
-
- .formulario2_segundaMetade .Categoria{
-    width: 16px;
-    height: 19px;
- }
-
- #formulario2 #obrigatorio1{
-    position: var(--posicaoAbsoluta);
-    top: 0%;
- }
- 
- #formulario2 #obrigatorio2{
-    position: var(--posicaoAbsoluta);
-    top: 10%;
- }
-
- #formulario2 #obrigatorio3{
-    position: var(--posicaoAbsoluta);
-    top: 19%;
- }
-
-
- #formulario2 .Area{
-    position: var(--posicaoAbsoluta);
-    top: 44.7%;
-    height: 20px;
-    width: 17px;
- }
- 
- #formulario2 .Unidade{
-    position: var(--posicaoAbsoluta);
-    top: 54.3%;
-    height: 20px;
-    width: 17px;
- }
-
- #formulario2{
-    border-right: 4px solid white;
- }
+    top: 13%;
+}
 
 }
 
