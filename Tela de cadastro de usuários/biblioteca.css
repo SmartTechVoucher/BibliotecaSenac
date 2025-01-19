@@ -176,7 +176,7 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
 
 .menu{
     width: 366px;
-    height: 500px;
+    height: 540px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);
@@ -184,6 +184,12 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     display: none;
     cursor: pointer;
     
+}
+
+.menu a{
+    text-decoration: none;
+    color: var(--branco);
+    display: flex;
 }
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
