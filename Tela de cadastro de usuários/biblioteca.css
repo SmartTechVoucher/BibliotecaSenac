@@ -401,64 +401,63 @@ oportuno. */
 
 @media(min-width: 1912px){
 
-    #formulario2{
-        position: var(--posicao);
-        top: 40%; left: 29.5%;
-        border-right: 6px solid white;
+
+    .conteiner{
+        height: 140px;
+        align-items: center;
     }
 
-    #formulario2 #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 0%;
+    .quadradoCinza{
+        width: 992px;
+        height: 700px;
+        margin-top: 2%;
+        padding: 0%;
+        margin-left: 25%;
     }
+
+   .quadradoCinza .input{
+        padding: 3%;
+        padding-left: calc(30%);
+        width: 300px;
+   }
+
+   .quadradoCinza #nomeSocial1{
+        padding-left: calc(33%);
+        width: 500px;
+   }
+
+   .quadradoCinza .opcional{
+        padding-right: 24%;
+   }
+
+   .quadradoCinza .div{
+        padding-left: 24%;
+        padding-top: 4%;
+        width: 500px;
+   }   
+
+   .quadradoCinza .input{
+        width: 370px;
+   }
+
+   .quadradoCinza .nome, .nomeSocial, .email, .matricula, .cpf, .senha{
+        width: 310px;
+   }
+
+   .rodape{
+        height: 176px;
+   }
+
+   .rodape .Libro{
+        width: 447px;
+        height: 127px;
+   }
    
-    #formulario2 #obrigatorio2{
+   .menu{
         position: var(--posicaoAbsoluta);
-        top: 9%;
-    }
-   
-    #formulario2 #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 19%;
+        top: 8%;
     }
 
-    #formulario2_segundaMetade{
-        position: var(--posicaoAbsoluta);
-        top: 18.5%; left: 52.8%;
-        border-left: 3px solid white;
-    }
-
-    #formulario2 .Area{
-        position: var(--posicaoAbsoluta);
-        top: 45%;
-        height: 18px;
-        width: 18px;
-    }
-    
-    #formulario2 .Unidade{
-        position: var(--posicaoAbsoluta);
-        top: 54.5%;
-        height: 18px;
-        width: 18px;
-    }
-
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 9%; left: 97.7%;
-    }
-
-    #formulario2_segundaMetade .Tipo{
-        width: 16px;
-    }
-    
-    #formulario2_segundaMetade .Categoria{
-        width: 16px;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 9%;
-    }
 
 }
 
