@@ -24,23 +24,6 @@ botao[0].addEventListener("click", function(){
 
 })
 
-// let titulo= document.getElementsByClassName("titulo")[0]
-// let valorTitulo= titulo.value
-
-
-// titulo.addEventListener("submit", function(){
-
-//     if(valorTitulo=="")
-//     {
-//         titulo.style.border.color="red"
-//     }
-
-
-
-
-// })
-
-
 
 
 

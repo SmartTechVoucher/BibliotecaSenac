@@ -311,6 +311,11 @@ oportuno. */
         height: 70px;
     }
 
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
 }
 
 @media(min-width: 1280px){
