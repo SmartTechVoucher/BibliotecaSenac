@@ -6,6 +6,8 @@ Unidade, Tipo de documento, Categoria/tags, botão "enviar" e colocar as verific
 
 **Para conectar uma tela em outra é necessário que ambas estejam prontas.**
 
+**Falta só uma validação em javascript na parte de cpf na Tela de Cadastro de Usuários.**
+
 *Telas feitas: Tela inicial do adm(semipronta), Tela de cadastro de livros(semipronta)*
 
 Telas em produção:
