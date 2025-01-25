@@ -1,11 +1,14 @@
 # Projeto integrador
 A Tela Inicial do Adm está semipronta. Ainda faltam adicionar as ligações com outras futuras páginas. 
 
-A Tela de cadastro de livros precisa de javascript nos seguintes inputs: Área,
-Unidade, Tipo de documento, Categoria/tags, botão "enviar" e colocar as verificações obrigatórias. Além disso é preciso também eliminar as possibilidades de escrita/digitação dos inputs de seleção. Nesses é preciso colocar um "overlay". 
+**A Tela de cadastro de livros precisa de javascript nos seguintes inputs: Área,
+Unidade, Tipo de documento, Categoria/tags, botão "enviar" e colocar as verificações obrigatórias. Além disso é preciso também eliminar as possibilidades de escrita/digitação dos inputs de seleção. Nesses é preciso colocar um "overlay".** 
 
+**Para conectar uma tela em outra é necessário que ambas estejam prontas.**
 
-Telas feitas: Tela inicial do adm(semipronta), Tela de cadastro de livros(semipronta)
+**Falta só uma validação em javascript na parte de cpf na Tela de Cadastro de Usuários.**
+
+*Telas feitas: Tela inicial do adm(semipronta), Tela de cadastro de livros(semipronta)*
 
 Telas em produção:
 

@@ -1,5 +1,3 @@
-
-
 let botao = document.getElementsByClassName("hamburguer")
 let menu = document.getElementById("menu")
 let corpo = document.getElementsByTagName("body")
@@ -12,7 +10,7 @@ botao[0].addEventListener("click", function(){
     //absolute para aparecer abaixo do menu. Linhas 15 e 16
 
     menu.style.position="absolute" 
-    menu.style.bottom="60px" 
+    menu.style.bottom="50px" 
 
     if(menuAberto==false){
         menuAberto=true
@@ -25,4 +23,8 @@ botao[0].addEventListener("click", function(){
     }
 
 })
+
+
+
+
 

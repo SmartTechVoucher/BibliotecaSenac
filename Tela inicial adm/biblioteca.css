@@ -8,6 +8,7 @@
     --posicaoAbsoluta: absolute;
     --azulQuadrado: hwb(210 0% 62% / 0.5);
     --tamanhoFonte: 10px;
+    --apontador:pointer;
 
    
 }
@@ -16,7 +17,7 @@
 
 .conteiner{
     background-color: var(--azulCabecalho);
-    width: 100%;
+    /* width: 100%; */
     height: 140px;
     display: flex;
     justify-content: space-between;
@@ -25,12 +26,21 @@
    
 }
 
+.menuAdm{
+    display: flex;
+    align-items: center;
+}
+
+.menuAdm .hamburguer{
+    width: 90px;
+    height: 50px;
+    cursor: var(--apontador);
+}
+
 .icone{
 
     display: flex;
     align-items: center;
-    padding-right: 30px;
-   
 }
 
 
@@ -63,25 +73,6 @@ body{
     background-color: var(--fundoPadrao);
 }
 
-.hamburguer{
-    display: inline-block;
-    cursor: pointer;
-    background: none;
-    border: none;
-/* .hamburguer define as características do botão. cursor: pointer indica que um objeto é clicável ao mudar o cursor, 
-background: none retira a cor do botão que contêm as quatro linhas horizontais e border: none retira a borda do botão.
-Esses dois últimos fazem o botão desaparecer completamente. */
-}
-
-.barra{
-    display: block;
-    width: 60px;
-    height: 3px;
-    margin-left: 25px;
-    background-color: var(--branco);
-   
-}
-
 h2{
     color: var(--branco);
     margin: 2px;
@@ -95,18 +86,9 @@ h2{
 }
 
 .titulo{
-  padding-top: 25px;
-  position: var(--posicao);
-  right: 200px; 
-   
+  padding-top: 5%;
+  padding-left: 10%;   
 }
-
-.logo{
-            
-    position: var(--posicao);
-    right: 20%; top: 30px; 
-   
-}  
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
@@ -382,8 +364,7 @@ h2{
     font-family: var(--fontes);
     font-size: 36px;
     display: none;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
@@ -392,21 +373,8 @@ h2{
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
-    .titulo{
-        font-size: 12px;
-        position: var(--posicao);
-        left: 6%; 
-        padding-top: 5%;
-    }
-
-    .logo{
-        position: var(--posicao);
-        left: -5%;
-    }
-
-    .icone{
-        position: var(--posicao);
-        right: 3%;
+    .logoSenacHub{
+        display: none;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
@@ -543,6 +511,11 @@ h2{
         width: 100px;
      }
 
+     .menu{
+        position: var(--posicao);
+        top: 110px;
+     }
+
 }
 
 @media(min-width:465px){
@@ -557,22 +530,19 @@ h2{
         left: 56.5%;
     }
 
+    .menu{
+        position: var(--posicao);
+        top: 100px;
+    }
+
 }
 
 @media(min-width:565px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
-    .titulo{
-        font-size: 12px;
-        position: var(--posicao);
-        left: 6%; 
-        padding-top: 7%;
-    }
-
-    .logo{
-        position: var(--posicao);
-        left: -16%;
+    .logoSenacHub{
+        display: block;
     }
 
     .icone{
@@ -704,13 +674,14 @@ h2{
         position: var(--posicao);
         left: 12%;
     }
- 
-     .logo{
-        display: block;
-     }
 
      .Logo{
         width: 200px;
+     }
+
+     .menu{
+        position: var(--posicao);
+        top: 120px;
      }
 
 }
@@ -718,18 +689,6 @@ h2{
 @media(min-width:665px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-
-    .titulo{
-        font-size: 12px;
-        position: var(--posicao);
-        left: 6%; 
-        padding-top: 5%;
-    }
-
-    .logo{
-        position: var(--posicao);
-        left: -20%;
-    }
 
     .icone{
         position: var(--posicao);
@@ -900,15 +859,8 @@ h2{
 
     .titulo{
         display: block;
-        font-size: 12px;
-        position: var(--posicao);
-        left: -8%; 
-        padding-top: 5%;
-    }
-
-    .logo{
-        position: var(--posicao);
-        left: -9%;
+        font-size: 14px;
+        padding-right: 10%;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
@@ -1020,19 +972,6 @@ h2{
 
 @media(min-width:966px){
 
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-
-    .titulo{
-        position: var(--posicao);
-        right: 5%;
-        font-size: 13px;
-    }
-
-    .logo{
-        position: var(--posicao);
-        right: 10%;
-    }
-
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
     .conteiner2{
@@ -1122,24 +1061,12 @@ h2{
 
 }
 
-
 @media(min-width:1066px){
 
     /*Cabeçalho*/  /*Cabeçalho*/
-    
-    .logo{
-        position: var(--posicao);
-        right: 11%;
-    }
 
     .titulo{
-       position: var(--posicao);
-       bottom: 5%;
-    }
-
-    .icone{
-        position: var(--posicao);
-        right: 7%;
+       font-size: 16px;
     }
 
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
@@ -1224,12 +1151,6 @@ h2{
     
     .conteiner{
         height: 125px;
-    }
-
-    .logo{
-        position: var(--posicao);
-        left: -15%;
-       
     }
 
     .titulo{
@@ -1341,8 +1262,7 @@ h2{
     }
 
     .icone{
-        position: var(--posicao);
-        left: 0%;
+        padding-right: 1%;
         width: 50px;
     }
  
@@ -1387,5 +1307,11 @@ h2{
 
 }
 
-
+@media(min-width:1912px){
+    
+    .titulo{
+       position: var(--posicao);
+       bottom: 55%;
+    }
+}
 
