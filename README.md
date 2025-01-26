@@ -1,5 +1,5 @@
 # Projeto integrador
-A Tela Inicial do Adm está semipronta. Ainda faltam adicionar as ligações com outras futuras páginas. 
+A Tela Inicial do Adm está semipronta. Ainda faltam adicionar as ligações com outras futuras páginas e talvez aumentar os ícones do rodapé em 1912 pixels. 
 
 **A Tela de cadastro de livros precisa de javascript nos seguintes inputs: Área,
 Unidade, Tipo de documento, Categoria/tags, botão "enviar" e colocar as verificações obrigatórias. Além disso é preciso também eliminar as possibilidades de escrita/digitação dos inputs de seleção. Nesses é preciso colocar um "overlay".** 
