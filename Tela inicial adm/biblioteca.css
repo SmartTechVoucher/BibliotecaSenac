@@ -17,7 +17,6 @@
 
 .conteiner{
     background-color: var(--azulCabecalho);
-    /* width: 100%; */
     height: 140px;
     display: flex;
     justify-content: space-between;
@@ -43,29 +42,16 @@
     align-items: center;
 }
 
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
-.conteiner3, .conteiner4, .conteiner5{
-    width: 206px;
-    height: 50px;
+.conteiner3{    
     display: flex;
-    gap: 5px;
+    justify-content: space-between;
 }
 
-.quadrado{
-    background-color: var(--azulQuadrado);
-    width: 64px;
-    height: 44px;
-}
-
-.quadrado1, .quadrado2{
-    background-color: var(--azulQuadrado);
-    width: 64px;
-    height: 44px;
-}
-
-.quadrado2{
-    position: var(--posicao);
-    left: 70px;
+.conteiner3 .esquerdo, .direito{
+    width: 100px;
+    height: 100px;
 }
 
 body{
@@ -78,7 +64,6 @@ h2{
     margin: 2px;
     
 }
-
 
 .senac{
    position: var(--posicao);
@@ -216,84 +201,16 @@ h2{
     
 } 
 
-.conteiner6{
-    display: grid;
-    grid-template-columns: repeat(2,71px);
-    grid-template-rows: repeat(3, 50px);
-    position: var(--posicaoAbsoluta);
-    left: 92.9%; top: 143px;
-    width: 135px;
-}
-
-.qua,.qua2,.qua3,.qua4{
-
-    background-color: var(--azulQuadrado);
-    width: 64px;
-    height: 44px;
-}
-
-.qua3{
-
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.qua4{
-    grid-column: 2;
-    grid-row: 2;
-}
-
-
 .inferiorDireito{
-    display: grid;
-    grid-template-columns: repeat(3,65px);
-    grid-template-rows: repeat(3, 45px);
-    gap: 3px;
-    position: var(--posicaoAbsoluta);
-    top: 640px; left: 89.48%;
-    
+    display: flex;
+    justify-content: end;
+    margin-top: 37%;   
 }
 
-.Quadrado,.Quadrado2,.Quadrado3,.Quadrado4,.Quadrado5,.Quadrado6,.Quadrado7{
-
-    background-color: var(--azulQuadrado);
-    width: 63px;
-    height: 44px;
+.inferiorDireito .inferior{
+    width: 100px;
+    height: 100px;
 }
-
-.Quadrado{
-    grid-column: 1;
-    grid-row: 3;
-}
-
-.Quadrado2{
-
-    grid-column: 2;
-    grid-row: 3;
-}
-
-.Quadrado3{
-    grid-row: 3;
-    grid-column: 3;
-}
-
-.Quadrado4{
-
-    grid-column: 2;
-    grid-row: 2;
-}
-
-.Quadrado5{
-    grid-column:3 ;
-    grid-row: 2;
-}
-
-
-.Quadrado7{
-    grid-column:3;
-    grid-row: 1;
-}
-
 
 /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
 
@@ -385,42 +302,14 @@ h2{
         gap: 5px;
     }
 
-    .conteiner3 .quadrado{
-        width: 40px;
-    }
-
-    .conteiner4 .quadrado{
-       width: 40px;
-    }
-    
-    .conteiner5 .quadrado1, .conteiner5 .quadrado2{
-       width: 40px;
-    }
-
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 63%;
-        width: 130px;
-    }
-
-    .conteiner6 .qua, .conteiner6 .qua2, .conteiner6 .qua3, .conteiner6 .qua4{
-        width: 60px;
-    }
-
     .caixa{
         width: 80px;
         height: 105px;
-    }
-  
-    .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 45%; bottom: 100%;
     }
     
     .adm{
         width: 300px;
     }
-
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
@@ -435,10 +324,10 @@ h2{
     }
 
     .conteiner2 .adicao{
-        width: 25px;
-        height: 25px;
+        width: 27px;
+        height: 27px;
         position: var(--posicao);
-        left: 47%; top: 38%;
+        left: 45%; top: 36%;
     }
 
     .conteiner2 .Livro{
@@ -520,19 +409,13 @@ h2{
 
 @media(min-width:465px){
 
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 71%;
-    }
-
-    .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 56.5%;
-    }
-
     .menu{
         position: var(--posicao);
         top: 100px;
+    }
+
+    .inferiorDireito{
+        margin-top: 28.5%;
     }
 
 }
@@ -557,31 +440,8 @@ h2{
         width: 500px;
     }
 
-    .conteiner3 .quadrado{
-        width: 40px;
-    }
-
-    .conteiner4 .quadrado{
-       width: 40px;
-    }
-    
-    .conteiner5 .quadrado1, .conteiner5 .quadrado2{
-       width: 40px;
-    }
-
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 76.5%;
-        width: 130px;
-    }
-
-    .conteiner6 .qua, .conteiner6 .qua2, .conteiner6 .qua3, .conteiner6 .qua4{
-        width: 60px;
-    }
-  
     .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 64%; bottom: 100%;
+        margin-top: 43%;
     }
     
     .adm{
@@ -602,10 +462,8 @@ h2{
     }
 
     .conteiner2 .adicao{
-        width: 25px;
-        height: 25px;
         position: var(--posicao);
-        left: 52%; top: 38%;
+        left: 50%; top: 35%;
     }
 
     .conteiner2 .Livro{
@@ -701,27 +559,8 @@ h2{
         width: 600px;
     }
 
-    .conteiner3 .quadrado, .conteiner4 .quadrado{
-        width: 60px;
-    }
-    
-    .conteiner5 .quadrado1, .conteiner5 .quadrado2{
-       width: 60px;
-    }
-
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 80%;
-        width: 130px;
-    }
-
-    .conteiner6 .qua, .conteiner6 .qua2, .conteiner6 .qua3, .conteiner6 .qua4{
-        width: 60px;
-    }
-  
     .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 69.7%; bottom: 100%;
+        margin-top: 36.5%;
     }
     
     .adm{
@@ -741,10 +580,8 @@ h2{
     }
 
     .conteiner2 .adicao{
-        width: 25px;
-        height: 25px;
         position: var(--posicao);
-        left: 54%; top: 38%;
+        left: 54%; top: 36%;
     }
 
     .conteiner2 .Livro{
@@ -841,14 +678,8 @@ h2{
        left: 50%; top: 35%;
     }
 
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 82.5%;
-    }
-
     .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 73.6%;
+       margin-top: 31%;
     }
 
 }
@@ -873,15 +704,9 @@ h2{
         width: 100px;
         height: 125px;
     }
-
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 84.8%;
-    }
   
     .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 76.8%; bottom: 100%;
+        margin-top: 26%;
     }
     
     .adm{
@@ -902,10 +727,10 @@ h2{
     }
 
     .conteiner2 .adicao{
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
         position: var(--posicao);
-        left: 60%; top: 35%;
+        left: 59%; top: 34%;
     }
 
     .conteiner2 .Livro{
@@ -978,25 +803,19 @@ h2{
         width: 900px;
     }
 
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 86.3%; top: 22%;
-    }
-
    .adm{
         width: 900px;
     }
 
     .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 79%; bottom: 100%;
+       margin-top: 23%;
     }
 
     /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/
 
     .conteiner2 .adicao{
         position: var(--posicao);
-        left: 58%; top: 35%;
+        left: 57%; top: 33%;
     }
 
     .conteiner2 .Livro{
@@ -1075,11 +894,6 @@ h2{
         width: 1000px;
     }
 
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 87.3%; top: 22%;
-    }
-
     .conteiner2 .Livro{
         width: 40px;
         position: var(--posicaoAbsoluta);
@@ -1087,10 +901,8 @@ h2{
     }
 
     .conteiner2 .adicao{
-        width: 30px;
-        height: 30px;
         position: var(--posicaoAbsoluta);
-        left: 7%; bottom: 30%;
+        left: 6.58%; top: 32%;
     }
 
     .conteiner2 .cadastro{
@@ -1135,8 +947,7 @@ h2{
     }
 
     .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 81%; top: 96.8%;
+       margin-top: 21%;
     }
 
     .Libro, .copyright, .todos{
@@ -1174,12 +985,6 @@ h2{
         top: 10%;
     }
 
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 88.5%; top: 20%;
-        width: 70px;   
-    }
-
     .adm{
         width: 1000px;
     }
@@ -1208,11 +1013,6 @@ h2{
         left: 30px;
     }
 
-    .caixa .adicao{
-        position: var(--posicao);
-        left: 5%; top: 24px;
-    }
-
     .caixa .vectorRelatorio{
         position: var(--posicao);
         left: 30px;
@@ -1237,8 +1037,7 @@ h2{
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
     
     .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        top: 96%; left: 82.7%;
+       margin-top: 20.5%;
     }
 
     .rodape{
@@ -1272,6 +1071,17 @@ h2{
         width: 1300px;
     }
 
+    .conteiner2 .Livro{
+        width: 50px;
+    }
+
+    .conteiner2 .adicao{
+        width: 40px;
+        height: 40px;
+        position: var(--posicao);
+        left: -2%; top: 22%;
+    }
+
     .conteiner2 .cadastro, 
     .conteiner2 .cadastroDeUsuario, 
     .conteiner2 .relatorios, .conteiner2 
@@ -1290,14 +1100,8 @@ h2{
         left: 26%;
     }
 
-    .conteiner6{
-        position: var(--posicaoAbsoluta);
-        left: 90%; bottom: 20%;
-    }
-
     .inferiorDireito{
-        position: var(--posicaoAbsoluta);
-        left: 85%; top: 97.5%;
+        margin-top: 17%;
 
     }
 
@@ -1313,5 +1117,89 @@ h2{
        position: var(--posicao);
        bottom: 55%;
     }
+
+    .adm{
+        margin-left: 6%;
+    }
+
+    .conteiner2{
+        margin-left: 5%;
+        width: 1800px;
+        height: 300px;
+    }
+
+    .conteiner2 .caixa{
+        width: 200px;
+        height: 200px;
+    }
+
+    .conteiner2 .Livro, .conteiner2 .vectorRelatorio, .conteiner2 .emprestimo, .conteiner2 .usuario,
+    .conteiner2 .estoque, .conteiner2 .vectorRenova{
+        width: 70px;
+        height: 70px;
+    }
+
+    .conteiner2 .adicao{
+        width: 60px;
+        height: 60px;
+    }
+
+    .conteiner2 .cadastro, .conteiner2 .cadastroDeUsuario, .conteiner2 .relatorios, .conteiner2 .Emprestimo, 
+    .conteiner2 .Usuario, .conteiner2 .Estoque, .conteiner2 .renovacoes{
+        font-size: 20px;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .adicao{
+        position: var(--posicao);
+        left: 8%; top: 19%;
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+        width: 90px;
+        height: 90px;
+    }
+
+    .conteiner2 .cadastroDeUsuario{
+        position: var(--posicao);
+
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        left: 30%; top: 18%;
+    }
+    
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        left: 30%; top: 5%;
+    }
+    
+    .conteiner2 .Usuario{
+        position: var(--posicao);
+        left: 0%; top: 0%;
+    }
+    
+    .conteiner2 .vectorRenova{
+        position: var(--posicao);
+        left: 30%; 
+    }
+
+
+    .inferiorDireito{
+        margin-top:12%;
+    }
+
 }
 
