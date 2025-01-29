@@ -32,21 +32,16 @@ body{
     background-color: var(--fundoPadrao);
 }
 
-.hamburguer{
-    cursor: var(--apontador);
-    background: none;
-    border: none;
-/* .hamburguer define as características do botão. cursor: pointer indica que um objeto é clicável ao mudar o cursor, 
-background: none retira a cor do botão que contêm as quatro linhas horizontais e border: none retira a borda do botão.
-Esses dois últimos fazem o botão desaparecer completamente.*/ 
+.conteiner .menuAdm{
+    display: flex;
+    align-items: center;
+    /* width:200px; */
 }
 
-.barra{
-    width: 35px;
-    height: 3px;
-    margin-left: 10px;
-    background-color: var(--branco);
-   
+.menuAdm .hamburguer{
+    width: 100px;
+    height: 50px;
+    cursor: var(--apontador);
 }
 
 .titulo{
@@ -352,7 +347,7 @@ label{
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
-    .logo{
+    .logoSenacHub{
         display: none;
     }
 
@@ -402,7 +397,6 @@ label{
     }
 
 } 
-
 
 @media(min-width:414px){
     
@@ -483,13 +477,13 @@ label{
         font-size: 12px;
     }
 
-    .conteiner .logo{
+    .conteiner .logoSenacHub{
         display: block;
     }
-
+/* 
     .conteiner{
         justify-content: space-between;
-    }
+    } */
 
     .conteiner4{
         position: var(--posicaoAbsoluta);
@@ -665,10 +659,10 @@ label{
        
     }
 
-    .logoSenacHub{
+    /* .logoSenacHub{
         position: var(--posicao);
         right: 115%;
-    }
+    } */
 
     .titulo{
         position: var(--posicao);
@@ -683,12 +677,6 @@ label{
 }
 
 @media(min-width:1358px){
-
-   .conteiner .barra{
-
-    width: 50px;
-
- }
 
  .conteiner4{
     position: var(--posicaoAbsoluta);
