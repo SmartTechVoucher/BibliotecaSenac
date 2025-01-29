@@ -6,7 +6,6 @@
     --fundoPadrao: #EDEDED;
     --posicao: relative;
     --posicaoAbsoluta: absolute;
-    --azulQuadrado: hwb(210 0% 62% / 0.5);
     --corFormulario: #E5E4E4;
     --corBotao: #004A90;
     --vermelho: red;
@@ -53,87 +52,25 @@ body{
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
 .conteiner3{
-    display: grid;
-    grid-template-columns: repeat(3,20px);
-    grid-template-rows: repeat(3,20px);
-    gap: 3px;
+   display: flex;
+   justify-content: space-between;
 }
 
-.conteiner3 .quadrado{
-    background-color: var(--azulQuadrado);
-    
+.conteiner3 .esquerdo, .direito{
+    width: 100px;
+    height: 100px;
 }
 
-.conteiner3 .quadrado6 {
-    background-color: var(--azulQuadrado);
-    grid-row: 3;
-    grid-column: 1;
+.inferiorDireito{
+    display: flex;
+    justify-content: end;
 }
 
-.conteiner3 .quadrado7{
-    background-color: var(--azulQuadrado);
-    grid-row: 3;
-    grid-column: 3;
+.inferiorDireito .inferior{
+    width: 100px;
+    height: 100px;
 }
 
-.conteiner4{   
-    display: grid;
-    grid-template-columns: repeat(2,20px);
-    grid-template-rows: repeat(3,21px);
-    gap: 3px;
-    position: var(--posicaoAbsoluta);
-    left: 88%; bottom: 76.7%;
-}
-
-.conteiner4 .quadrado{
-    width: 20px;
-    height: 20px;
-    background-color: var(--azulQuadrado);
-}
-
-.conteiner4 .quadrado3{
-    grid-row: 2;
-    grid-column: 2;
-    background-color: var(--azulQuadrado);
-    width: 20px;
-    height: 20px;
-}
-
-.conteiner4 .quadrado4{
-    grid-row: 3;
-    grid-column: 1;
-    background-color: var(--azulQuadrado);
-    width: 20px;
-    height: 20px;
-}
-
-.conteiner5{
-    display: grid;
-    grid-template-columns: repeat(3, 21px);
-    grid-template-rows: repeat(3,21px);
-    gap: 3px;
-    position: var(--posicaoAbsoluta);
-    left: 81.55%; 
-    transform: rotate(180deg);
-}
-
-.conteiner5 .quadrado{
-    background-color: var(--azulQuadrado);
-}
-
-.conteiner5 .quadrado7, .conteiner5 .quadrado6{
-    background-color: var(--azulQuadrado);
-}
-
-.conteiner5 .quadrado6{
-    grid-row: 3;
-    grid-column: 3;
-}
-
-.conteiner5 .quadrado7{
-    grid-row: 3;
-    grid-column: -4;
-}
 
 .formulario{
     height: 100%;
