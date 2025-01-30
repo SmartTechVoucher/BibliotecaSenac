@@ -51,26 +51,19 @@ body{
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
+/*Conteiner3 contém os ícones superiores e os define com
+espaços um colado no início e outro no fim. Conteiner3 .esquerdo, .direito
+definem o comprimento e a altura dos ícones em 100 pixels.*/
+
 .conteiner3{
-   display: flex;
-   justify-content: space-between;
-}
-
-.conteiner3 .esquerdo, .direito{
-    width: 100px;
-    height: 100px;
-}
-
-.inferiorDireito{
     display: flex;
-    justify-content: end;
-}
-
-.inferiorDireito .inferior{
-    width: 100px;
-    height: 100px;
-}
-
+    justify-content: space-between;
+ }
+ 
+ .conteiner3 .esquerdo, .direito{
+     width: 100px;
+     height: 100px;
+ }
 
 .formulario{
     height: 100%;
@@ -80,6 +73,32 @@ body{
     padding: 15px;
     margin-top: 25px;
     gap: 15px;
+}
+
+.formulario .tituloObrigatorio, .autorObrigatorio, .codigoObrigatorio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.obrigatorio{
+    color: var(--vermelho);
+    font-family: var(--fontes);
+    font-size: 15px;   
+}
+
+
+/*Ícone inferior*/ /*Ícone inferior*/ /*Ícone inferior*/
+.inferiorDireito{
+    display: flex;
+    justify-content: end;
+    margin-top:5%;
+}
+
+.inferiorDireito .inferior{
+    width: 100px;
+    height: 100px;
 }
 
 .formulario .area{
@@ -113,27 +132,6 @@ body{
     cursor: var(--apontador);
 }
 
-.obrigatorio{
-    color: var(--vermelho);
-    font-family: var(--fontes);
-    font-size: 15px;   
-}
-
-#obrigatorio1{
-    position: var(--posicaoAbsoluta);
-    bottom: 440px; left: 280px;
-}
-
-#obrigatorio2{
-    position: var(--posicaoAbsoluta);
-    bottom: 368px; left: 280px;
-}
-
-#obrigatorio3{
-    position: var(--posicaoAbsoluta);
-    bottom: 290px; left: 280px;
-}
-
 textarea::placeholder{
     color: #00000033;
     text-align: center;
@@ -146,33 +144,7 @@ label{
     font-family: var(--fontes);
 }
 
-.formulario .Area{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%;  bottom: 18%;
-}
-
-.formulario .Unidade{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; bottom: 6.7%;
-}
-
-.formulario .Tipo{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; top: 221%;
-}
-
-.formulario .Categoria{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; top: 243.8%;
-}
+/* */
 
 #formulario2{
    
@@ -242,8 +214,6 @@ label{
     background-color: var(--azulCabecalho);
     height: 159px;
     width: 100%;
-    position: var(--posicao);
-    top: 70px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -290,30 +260,6 @@ label{
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
 
-   .formulario .Area{
-    height: 18px;
-    width: 13px;
-    position: var(--posicaoAbsoluta);
-    bottom: 17%;
-   }
-   
-   .formulario .Unidade{
-    height: 18px;
-    width: 13px;
-    position: var(--posicaoAbsoluta);
-    bottom: 5.5%;
-   }
-   
-   .formulario .Tipo{
-    height: 18px;
-    width: 13px;
-   }
-   
-   .formulario .Categoria{
-    height: 18px;
-    width: 13px;
-   }
-   
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
 
     .rodape .faleConosco, .email,.siga-nos{

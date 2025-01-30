@@ -50,29 +50,57 @@
 
     </div>
 
-    <div class="formulario">
+    <form class="formulario">
 
-        <!-- <label for="Titulo">Título <p class="obrigatorio" id="obrigatorio1">obrigatório*</p></label>
-        <input type="text" class="titulo"> -->
-
-        <label for="Titulo2">Título <p class="obrigatorio" id="obrigatorio1">obrigatório*</p></label>
-        <input type="text" class="titulo2">
+        <div class="tituloObrigatorio"> 
+            <label for="Titulo2">Título</label>
+            <p class="obrigatorio" id="obrigatorio1">obrigatório*</p>          
+        </div>
         
-        <label for="Autor">Autor <p class="obrigatorio" id="obrigatorio2">obrigatório*</p></label>
-        <input type="text" class="autor">
+        <input type="text" class="titulo2" required>
+        
+        <!--O input acima se refere a TítuloObrigatório-->
+
+        <div class="autorObrigatorio">
+            <label for="Autor">Autor </label>
+            <p class="obrigatorio" id="obrigatorio2">obrigatório*</p>
+        </div>
        
-        <label for="Código do livro">Código do livro <p class="obrigatorio" id="obrigatorio3">obrigatório*</p></label>
-        <input type="text" class="codigo">
+        <input type="text" class="autor" required>
+        
+        <!--O input acima se refere a autorObrigatório-->
+
+        <div class="codigoObrigatorio">
+            <label for="Código do livro">Código do livro</label>
+            <p class="obrigatorio" id="obrigatorio3">obrigatório*</p>
+        </div>
+        
+        <input type="text" class="codigo" required>
        
+        <!--O input acima se refere a codigoObrigatório-->
+
         <label for="Idioma">Idioma</label>
         <input type="text" class="idioma">
 
         <label for="Área">Área</label>
-        <input type="text" class="area" placeholder="Selecione"><img src="./image 22.png" alt="" class="Area">
+        <!-- <input type="text" class="area" placeholder="Selecione"><img src="./Ícones/image 22.png" alt="" class="Area"> -->
+        <select name="" id="" class="area">
+            <option>Selecione</option>
+            <option>teste</option>
+            <option>teste</option>
+            <option>teste</option>
+        </select>
 
         <label for="Unidade">Unidade</label>
-        <input type="text" class="unidade" placeholder="Selecione"><img src="./image 22.png" alt="" class="Unidade">
+        <!-- <input type="text" class="unidade" placeholder="Selecione"><img src="./Ícones/image 22.png" alt="" class="Unidade"> -->
+        <select name="" id="" class="unidade">
+            <option>Selecione</option>
+            <option>teste</option>
+            <option>teste</option>
+            <option>teste</option>
+        </select>
         
+
         <label for="Editora">Editora</label>
         <input type="text" class="editora">
         
@@ -89,17 +117,29 @@
         <textarea cols="30" rows="10" class="notas"></textarea>
 
         <label for="Tipo de documento">Tipo de documento</label>
-        <input type="text" class="tipoDocumento" placeholder="Selecione"><img src="./image 22.png" alt="" class="Tipo">
+        <!-- <input type="text" class="tipoDocumento" placeholder="Selecione"><img src="./Ícones/image 22.png" alt="" class="Tipo"> -->
+        <select name="" id="" class="tipoDocumento">
+            <option>Selecione</option>
+            <option>teste</option>
+            <option>teste</option>
+            <option>teste</option>
+        </select>
 
         <label for="Local publicado">Local publicado</label>
         <input type="text" class="localPublicado">
 
         <label for="Categoria/tags">Categoria/tags</label>
-        <input type="text" class="categoria" placeholder="Selecione"><img src="./image 22.png" alt="" class="Categoria">      
+        <!-- <input type="text" class="categoria" placeholder="Selecione"><img src="./Ícones/image 22.png" alt="" class="Categoria">       -->
+        <select name="" id="" class="categoria">
+            <option>Selecione</option>
+            <option>teste</option>
+            <option>teste</option>
+            <option>teste</option>
+        </select>
 
-        <button class="botao">Enviar <img src="./Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button>       
+        <button type="submit" class="botao">Enviar <img src="./Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button>       
 
-    </div>
+    </form>
 
     <div class="formulario2" id="formulario2">
 
@@ -189,18 +229,18 @@
         
         <div class="siga-nos"><h4>Siga-nos</h4>
         
-        <img src="./Facebook.png" alt="">
-        <img src="./Instagram Circle.png" alt="">
-        <img src="./LinkedIn.png" alt="">
-        <img src="./Twitter Squared.png" alt="">
-        <br>
-        <img src="./WhatsApp.png" alt="">
-        <img src="./YouTube.png" alt="">             
+            <img src="./Facebook.png" alt="">
+            <img src="./Instagram Circle.png" alt="">
+            <img src="./LinkedIn.png" alt="">
+            <img src="./Twitter Squared.png" alt="">
+            <br>
+            <img src="./WhatsApp.png" alt="">
+            <img src="./YouTube.png" alt="">             
         
         
         </div>
 
-    </div>
+    </div> 
 
 
      <div id="menu" class="menu">
