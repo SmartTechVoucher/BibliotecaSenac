@@ -144,69 +144,34 @@ label{
     font-family: var(--fontes);
 }
 
-/* */
+/*Segundo formulário. Esse só aparece a partir de 1280 pixels. */
 
-#formulario2{
-   
+#formulario2{ 
     width: 50%;
     display: flex;
     flex-direction: column;
     background-color: var(--corFormulario);
     padding: 15px;
-    margin-top: 25px;
+    margin-top: -8px;
     gap: 25px;
 }
 
-/* #formulario2 #titulo{
-    height: 21px;
-   
-} */
-
-#formulario2 .Area{
-    width: 12px;
-    height: 12px;
-    cursor: var(--apontador);
+.tituloObrigatorio2, .autorObrigatorio2, .codigoObrigatorio2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
 }
 
-#formulario2 .Unidade{
-    width: 12px;
-    height: 12px;
-    cursor: var(--apontador);
+/*Segunda metade do formulário*/ /*Segunda metade do formulário*/
+
+#formulario2_segundaMetade{
+    height: 1026px;
 }
 
-#formulario2 .area{
+#formulario2_segundaMetade .tipoDocumento, .Tipo, .categoria, .Categoria{
     cursor: var(--apontador);
 }
-
-#formulario2 .unidade{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .tipoDocumento{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .Tipo{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .categoria{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .Categoria{
-    cursor: var(--apontador);
-}
-
-
-/* .linha{
-    /* background-color: var(--branco); 
-    transform:rotate(90deg);
-    width:111%;
-    
-
-} */
-
 
 /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
 
@@ -282,60 +247,6 @@ label{
 } 
 
 @media(min-width:414px){
-    
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 9.6%; left: 89.5%;
-    }
-
-   #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 19.5%; left: 75%;
-   }
-   
-   #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        top: 27.5%; left: 75%;
-   }
-   
-   #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 36.5%; left: 75%;
-   }
-
-   .formulario .Area{
-        position: var(--posicaoAbsoluta);
-        bottom: 38.3%;
-        width: 16px;
-   }
-
-   .formulario .Unidade{
-    position: var(--posicaoAbsoluta);
-    bottom:29.6%;
-    width: 16px;
-   }
-
-   .formulario .Tipo{
-    position: var(--posicaoAbsoluta);
-    top: 164.5%;
-    width: 16px;
-   }
-  
-   .formulario .Categoria{
-    position: var(--posicaoAbsoluta);
-    top: 181.5%;
-    width: 16px;
-   }
-
-   .conteiner5{
-    position: var(--posicao);
-    left: 0.1%; top: 10px;
-   }
-
-   .rodape{
-    position: var(--posicao);
-    top: 10px;
-   }
 
    #formulario2{
     display: none;
@@ -350,9 +261,7 @@ label{
     top: 9%;
  }
 
-
 }
-
 
 @media(min-width:768px){
 
@@ -362,58 +271,6 @@ label{
 
     .conteiner .logoSenacHub{
         display: block;
-    }
-/* 
-    .conteiner{
-        justify-content: space-between;
-    } */
-
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 8.5%; left: 94%;
-    }
-
-    .formulario #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 175px; left: 670px;
-    }
-
-    .formulario #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        top: 250px; left: 670px;
-    }
-    
-    .formulario #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 325px; left: 670px;
-    }
-
-    .formulario .Area{
-        position: var(--posicaoAbsoluta);
-        bottom: 46%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-   
-    .formulario .Unidade{
-        position: var(--posicaoAbsoluta);
-        bottom: 38.5%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-    
-    .formulario .Tipo{
-        position: var(--posicaoAbsoluta);
-        top: 143.8%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-   
-    .formulario .Categoria{
-        position: var(--posicaoAbsoluta);
-        top: 158.8%; left: 95%;
-        width: 20px;
-        height: 18px;
     }
 
     .rodape{
@@ -429,19 +286,9 @@ label{
         top: 8%;
     }
 
-    .conteiner5{
-        position: var(--posicao);
-        left: 0%;
-    }
-
 }
 
 @media(min-width: 1280px){
-
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 10.7%; left: 96.5%;
-    }
 
     .formulario{
         display: none;
@@ -455,35 +302,6 @@ label{
         left: 20%; top: 8px; 
         border-right: 1px solid white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-    }
-
-     #formulario2 #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 0%;
-    }
-
-    #formulario2 #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 9.5%;
-    }
-    
-    #formulario2 #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 19%;
-    }
-
-    #formulario2 .Area{
-        position: var(--posicaoAbsoluta);
-        top:45%; left: 92.5%;
-        width: 18px;
-        height: 17px;
-    }
-
-    #formulario2 .Unidade{
-        position: var(--posicaoAbsoluta);
-        top:54.5%; left: 92.5%;
-        width: 18px;
-        height: 17px;
     }
 
     .formulario2_segundaMetade{
@@ -500,20 +318,6 @@ label{
         font-size: 18px;
         border-left: 4px solid white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .formulario2_segundaMetade .Tipo{
-        height: 17px;
-        width: 15px;
-        position: var(--posicaoAbsoluta);
-        left: 94%; top: 44.6%;
-    }
-    
-    .formulario2_segundaMetade .Categoria{
-        height: 17px;
-        width: 15px;
-        position: var(--posicaoAbsoluta);
-        left: 94%; top: 60.2%;
     }
 
     .rodape .email{
@@ -542,73 +346,18 @@ label{
        
     }
 
-    /* .logoSenacHub{
-        position: var(--posicao);
-        right: 115%;
-    } */
-
     .titulo{
         position: var(--posicao);
         right: 10%;
-    }
-
-    .conteiner5{
-        position: var(--posicao);
-        left: 0%;
     }
 
 }
 
 @media(min-width:1358px){
 
- .conteiner4{
-    position: var(--posicaoAbsoluta);
-    top: 13%; left: 96.7%;
- }
-
  .formulario2_segundaMetade{
     position: var(--posicaoAbsoluta);
     top: 28.3%; left: 53%;
- }
-
- .formulario2_segundaMetade .Tipo{
-    width: 16px;
-    height: 19px;
- }
-
- .formulario2_segundaMetade .Categoria{
-    width: 16px;
-    height: 19px;
- }
-
- #formulario2 #obrigatorio1{
-    position: var(--posicaoAbsoluta);
-    top: 0%;
- }
- 
- #formulario2 #obrigatorio2{
-    position: var(--posicaoAbsoluta);
-    top: 10%;
- }
-
- #formulario2 #obrigatorio3{
-    position: var(--posicaoAbsoluta);
-    top: 19%;
- }
-
-
- #formulario2 .Area{
-    position: var(--posicaoAbsoluta);
-    top: 44.7%;
-    height: 20px;
-    width: 17px;
- }
- 
- #formulario2 .Unidade{
-    position: var(--posicaoAbsoluta);
-    top: 54.3%;
-    height: 20px;
-    width: 17px;
  }
 
  #formulario2{
@@ -619,58 +368,26 @@ label{
 
 @media(min-width: 1912px){
 
+    .conteiner3 .esquerdo, .direito{
+        width: 150px;
+        height: 150px;
+    }
+
+    .inferiorDireito .inferior{
+        width: 150px;
+        height: 150px;
+    }
+
     #formulario2{
         position: var(--posicao);
         top: 40%; left: 29.5%;
         border-right: 6px solid white;
     }
 
-    #formulario2 #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 0%;
-    }
-   
-    #formulario2 #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        top: 9%;
-    }
-   
-    #formulario2 #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 19%;
-    }
-
     #formulario2_segundaMetade{
         position: var(--posicaoAbsoluta);
-        top: 18.5%; left: 52.8%;
+        top: 23.5%; left: 52.8%;
         border-left: 3px solid white;
-    }
-
-    #formulario2 .Area{
-        position: var(--posicaoAbsoluta);
-        top: 45%;
-        height: 18px;
-        width: 18px;
-    }
-    
-    #formulario2 .Unidade{
-        position: var(--posicaoAbsoluta);
-        top: 54.5%;
-        height: 18px;
-        width: 18px;
-    }
-
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 9%; left: 97.7%;
-    }
-
-    #formulario2_segundaMetade .Tipo{
-        width: 16px;
-    }
-    
-    #formulario2_segundaMetade .Categoria{
-        width: 16px;
     }
 
     .menu{
@@ -678,9 +395,20 @@ label{
         top: 9%;
     }
 
+    .rodape .Logo{
+        width:200px;
+    }
+
+    .rodape .Libro{
+        width: 300px;
+        /* height: 200px; */
+    }
+
+    .rodape .faleConosco, .copyright, .todos, .email, .siga-nos {
+        font-size:18px;
+    }
+
+    .rodape{
+        height:170px;
+    }
 }
-
-
-
-
-
