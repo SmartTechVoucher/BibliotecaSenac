@@ -57,7 +57,7 @@
             <p class="obrigatorio" id="obrigatorio1">obrigatório*</p>          
         </div>
         
-        <input type="text" class="titulo2" required>
+        <input type="text" class="titulo2" required oninput="mostrarFalta()">
         
         <!--O input acima se refere a TítuloObrigatório-->
 
@@ -66,7 +66,7 @@
             <p class="obrigatorio" id="obrigatorio2">obrigatório*</p>
         </div>
        
-        <input type="text" class="autor" required>
+        <input type="text" class="autor" required oninput="mostrarFalta2()">
         
         <!--O input acima se refere a autorObrigatório-->
 
@@ -75,7 +75,7 @@
             <p class="obrigatorio" id="obrigatorio3">obrigatório*</p>
         </div>
         
-        <input type="text" class="codigo" required>
+        <input type="text" class="codigo" required oninput="mostrarFalta3()">
        
         <!--O input acima se refere a codigoObrigatório-->
 
@@ -83,7 +83,6 @@
         <input type="text" class="idioma">
 
         <label for="Área">Área</label>
-        <!-- <input type="text" class="area" placeholder="Selecione"><img src="./Ícones/image 22.png" alt="" class="Area"> -->
         <select name="" id="" class="area">
             <option>Selecione</option>
             <option>teste</option>
@@ -92,7 +91,6 @@
         </select>
 
         <label for="Unidade">Unidade</label>
-        <!-- <input type="text" class="unidade" placeholder="Selecione"><img src="./Ícones/image 22.png" alt="" class="Unidade"> -->
         <select name="" id="" class="unidade">
             <option>Selecione</option>
             <option>teste</option>
@@ -116,7 +114,6 @@
         <textarea cols="30" rows="10" class="notas"></textarea>
 
         <label for="Tipo de documento">Tipo de documento</label>
-        <!-- <input type="text" class="tipoDocumento" placeholder="Selecione"><img src="./Ícones/image 22.png" alt="" class="Tipo"> -->
         <select name="" id="" class="tipoDocumento">
             <option>Selecione</option>
             <option>teste</option>
@@ -128,7 +125,6 @@
         <input type="text" class="localPublicado">
 
         <label for="Categoria/tags">Categoria/tags</label>
-        <!-- <input type="text" class="categoria" placeholder="Selecione"><img src="./Ícones/image 22.png" alt="" class="Categoria">       -->
         <select name="" id="" class="categoria">
             <option>Selecione</option>
             <option>teste</option>
@@ -136,7 +132,7 @@
             <option>teste</option>
         </select>
 
-        <button type="submit" class="botao">Enviar <img src="./Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button>       
+        <button type="submit" class="botao">Enviar <img src="./Ícones/Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button>       
 
     </form>
 
@@ -147,21 +143,21 @@
             <p class="obrigatorio" id="obrigatorio1">obrigatório*</p>
         </div>
        
-        <input type="text" class="titulo2" id="titulo2">
+        <input type="text" class="titulo2" id="titulo2" required oninput="mostrarFaltaSegundoForm()">
         
         <div class="autorObrigatorio2">
             <label for="Autor">Autor </label>
             <p class="obrigatorio" id="obrigatorio2">obrigatório*</p>
         </div>
        
-        <input type="text" class="autor">
+        <input type="text" class="autor" required oninput="mostrarFalta2SegundoForm()">
        
         <div class="codigoObrigatorio2">
             <label for="Código do livro">Código do livro</label>
             <p class="obrigatorio" id="obrigatorio3">obrigatório*</p>
         </div>
         
-        <input type="text" class="codigo">
+        <input type="text" class="codigo" required oninput="mostrarFalta3SegundoForm()">
        
         <label for="Idioma">Idioma</label>
         <input type="text" class="idioma">
@@ -191,6 +187,7 @@
         <label for="Foto de capa">Foto de capa</label>
         <textarea placeholder="Upload" cols="30" rows="10" class="foto"></textarea>
 
+        <div class="Botao"><button class="botao" type="submit">Enviar <img src="./Ícones/Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button></div>
     </form>
 
     <form class="formulario2_segundaMetade" id="formulario2_segundaMetade">
@@ -220,7 +217,7 @@
             <option>teste</option>
         </select>
 
-        <div class="Botao"><button class="botao" type="submit">Enviar <img src="./Ícones/Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button></div>
+      
 
     </form>
 

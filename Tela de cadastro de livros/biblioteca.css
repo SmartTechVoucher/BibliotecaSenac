@@ -101,19 +101,7 @@ definem o comprimento e a altura dos ícones em 100 pixels.*/
     height: 100px;
 }
 
-.formulario .area{
-    cursor: var(--apontador);
-}
-
-.formulario .unidade{
-    cursor: var(--apontador);
-}
-
-.formulario .tipoDocumento{
-    cursor: var(--apontador);
-}
-
-.formulario .categoria{
+.formulario .area, .unidade, .tipoDocumento, .categoria, .area{
     cursor: var(--apontador);
 }
 
@@ -130,14 +118,6 @@ definem o comprimento e a altura dos ícones em 100 pixels.*/
     font-family: var(--fontes);
     font-size: 15px;
     cursor: var(--apontador);
-}
-
-textarea::placeholder{
-    color: #00000033;
-    text-align: center;
-    line-height: 350%;
-    font-size: 40px;
-
 }
 
 label{
@@ -171,6 +151,13 @@ label{
 
 #formulario2_segundaMetade .tipoDocumento, .Tipo, .categoria, .Categoria{
     cursor: var(--apontador);
+}
+
+/*Define o posicionamento do botão e o faz aparecer a frente do segundo formulário.*/
+.formulario2 .Botao{
+    position: var(--posicaoAbsoluta);
+    left: 130%; top: 80%;
+    z-index: 1;
 }
 
 /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
@@ -364,6 +351,11 @@ label{
     border-right: 4px solid white;
  }
 
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 13%;
+ }
+
 }
 
 @media(min-width: 1912px){
@@ -386,7 +378,7 @@ label{
 
     #formulario2_segundaMetade{
         position: var(--posicaoAbsoluta);
-        top: 23.5%; left: 52.8%;
+        top: 26.5%; left: 52.8%;
         border-left: 3px solid white;
     }
 
