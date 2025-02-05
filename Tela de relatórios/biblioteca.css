@@ -78,21 +78,59 @@ body{
 
 .quadradoBranco .input{
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
-    /* width: 100%; */
-
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
-/* .quadradoCinza .nome, .nomeSocial, .matricula, .cpf, .senha, .email{
-    width: 260px;
+.quadradoCinza #calendario{
+    margin-top: 10%;
+    width: 400px;
 }
 
-.quadradoCinza .input{
-    padding: 3%;
+.quadradoCinza .Calendario{
+    display: flex;
 }
 
-.quadradoCinza .botao{
+.quadradoCinza .imagemCalendario{
+    padding-top: 10%;
+}
+
+.quadradoCinza .unidade{
+    display: grid;
+    grid-template-columns: 100px;
+    grid-template-rows: 42px;
+    position: var(--posicaoAbsoluta);
+    left: 61%;
+}
+
+/* .unidade .tituloUnidade{
+    grid-row: 1;
+} */
+
+/* .unidade .nome{
+    grid-row: 2;
+} */
+
+/* .unidade .ordenagem{
+    grid-row: 3;
+}
+
+.unidade .ordem{
+    grid-row: 4;
+} */
+
+/* .unidade .nome, .ordem{
+    height: 19px;
+} */
+
+/* #calendario .calendar{
+    display: flex;
+    flex-direction: column;
+} */
+
+
+/* .quadradoCinza .botao{
     background-color: var(--corBotao);
     color: var(--branco);
     border-radius: 5px;
@@ -144,7 +182,7 @@ body{
     font-family: var(--fontes);
     font-size: 15px;
     cursor: var(--apontador);
-} */
+} */ 
 
 /*Parte inferior do corpo*/
 
@@ -310,10 +348,10 @@ oportuno. */
         width: 304px;
     }
 
-    .quadradoCinza .input{
+    /* .quadradoCinza .input{
         padding: 2%;
         padding-left: 5%;
-    }
+    } */
 
     .quadradoCinza .opcional{
         padding-right: 32%;
@@ -434,10 +472,10 @@ oportuno. */
         width: 300px;
    }
 
-   .quadradoCinza #nomeSocial1{
+   /* .quadradoCinza #nomeSocial1{
         padding-left: calc(33%);
         width: 500px;
-   }
+   } */
 
    .quadradoCinza .opcional{
         padding-right: 24%;
