@@ -104,85 +104,26 @@ body{
     left: 61%;
 }
 
-/* .unidade .tituloUnidade{
-    grid-row: 1;
-} */
+/*A classe .quadradoCinza .botoes define as configurações
+da div que contêm os botões "cancelar" e "emitir" */
 
-/* .unidade .nome{
-    grid-row: 2;
-} */
-
-/* .unidade .ordenagem{
-    grid-row: 3;
+.quadradoCinza .botoes{
+    display:flex;
+    justify-content: space-between;
+    padding-right: 15%;
+    padding-left: 9%;
+    margin-top:19%;
 }
 
-.unidade .ordem{
-    grid-row: 4;
-} */
+/*A classe .quadradoCinza .cancelar, .emitir define as 
+configurações dos botões "cancelar" e "emitir" */
 
-/* .unidade .nome, .ordem{
-    height: 19px;
-} */
-
-/* #calendario .calendar{
-    display: flex;
-    flex-direction: column;
-} */
-
-
-/* .quadradoCinza .botao{
+.quadradoCinza .cancelar, .emitir{
+    width: 116px;
     background-color: var(--corBotao);
     color: var(--branco);
-    border-radius: 5px;
-    height: 30px;
     cursor: var(--apontador);
 }
-
-.quadradoCinza .div{
-    padding-top: 5%;
-    display: flex;
-    justify-content: center;
-}
-
-.input{
-    display: flex;
-}
-
-.input img{
-    height: 21px;
-}
-
-.opcional{
-    display: flex;
-    justify-content: end;
-    padding-right: 7%;
-    height: 11px;    
-}
-
-.opcional p{
-    font-size: 13px;
-    position: var(--posicao);
-    bottom: 190%;
-}
-
-.quadradoCinza #nomeSocial1{
-    padding-left: 10%;
-}
-
-.botao{
-    background-color: var(--corBotao);
-    border-radius: 20px;
-    color: var(--branco);
-    width: 154px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-family: var(--fontes);
-    font-size: 15px;
-    cursor: var(--apontador);
-} */ 
 
 /*Parte inferior do corpo*/
 
@@ -452,62 +393,91 @@ oportuno. */
 
 @media(min-width: 1912px){
 
-
     .conteiner{
         height: 140px;
         align-items: center;
     }
 
-    .quadradoCinza{
-        width: 992px;
-        height: 700px;
-        margin-top: 2%;
-        padding: 0%;
-        margin-left: 25%;
+    .conteiner .titulo{
+        font-size: 20px;
     }
 
-   .quadradoCinza .input{
-        padding: 3%;
-        padding-left: calc(30%);
-        width: 300px;
-   }
+    .quadradoCinza{
+        width: 992px;
+        height: 900px;
+        margin-left: 25%;
+    }
+    
+    .quadradoBranco{
+       margin-left: 0%;
+    }
 
-   /* .quadradoCinza #nomeSocial1{
-        padding-left: calc(33%);
-        width: 500px;
-   } */
+    .sobre, .salvar, h4{
+        font-size:30px;
+    }
 
-   .quadradoCinza .opcional{
-        padding-right: 24%;
-   }
+    .nome, .opcoes{
+        height: 30px;
+        font-size: 20px;
+    }
 
-   .quadradoCinza .div{
-        padding-left: 24%;
-        padding-top: 4%;
-        width: 500px;
-   }   
+    .imagemCalendario{
+        width: 40px;
+        height: 50px;
+    }
 
-   .quadradoCinza .input{
-        width: 370px;
-   }
+    .Calendario .imagemCalendario{
+        padding-top:18%;
+    }
+    
+    .Calendario .calendar, .Calendario .calendar2{
+        width: 200px;
+        height:50px;
+        font-size:22px;
+    }
 
-   .quadradoCinza .nome, .nomeSocial, .email, .matricula, .cpf, .senha{
-        width: 310px;
-   }
+    .Calendario{
+        height: 400px;
+    }
+
+    .quadradoCinza .unidade{
+        grid-template-rows: 100px;
+        grid-template-columns: 170px;
+        position: var(--posicaoAbsoluta);
+        left: 59%;
+    }
+
+    .quadradoCinza .ordem{
+        height: 30px;
+        font-size: 20px;
+    }
+
+    .botoes .emitir, .botoes .cancelar{
+        width: 205px;
+        height: 40px;
+        font-size:20px;
+    }
 
    .rodape{
-        height: 176px;
+        height: 300px;
    }
 
    .rodape .Libro{
-        width: 447px;
-        height: 127px;
+        width: 400px;
+        height: 200px;
+   }
+
+   .rodape .Logo{
+        width: 247px;
    }
    
+   .rodape .faleConosco, .copyright, .todos{
+        font-size: 20px;
+   }
+
    .menu{
         position: var(--posicaoAbsoluta);
-        top: 8%;
+        top: 13%;
     }
-
 
 }
