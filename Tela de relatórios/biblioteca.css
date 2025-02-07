@@ -94,6 +94,7 @@ body{
 
 .quadradoCinza .imagemCalendario{
     padding-top: 10%;
+    height: 66px;
 }
 
 .quadradoCinza .unidade{
@@ -123,6 +124,7 @@ configurações dos botões "cancelar" e "emitir" */
     background-color: var(--corBotao);
     color: var(--branco);
     cursor: var(--apontador);
+    border-radius: 5px;
 }
 
 /*Parte inferior do corpo*/
@@ -193,6 +195,15 @@ oportuno. */
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
+    .quadradoBranco .input{
+        flex-direction: column;
+    }
+
+    .quadradoBranco .unidade{
+        position: var(--posicaoAbsoluta);
+        left: 70%; bottom: 20%;
+    }
+
     .logoSenacHub{
         display: none;
     }
@@ -206,6 +217,10 @@ oportuno. */
         height: 100px;
     }
    
+    .quadradoCinza #calendario{
+        width: 280px;
+    }
+
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
 
     .rodape .faleConosco, .siga-nos, .emailAtendimento{
@@ -221,9 +236,10 @@ oportuno. */
 
 @media(min-width:414px){
 
- .opcional{
-    padding-right: 15%;
- }
+ .quadradoBranco .unidade{
+    position: var(--posicaoAbsoluta);
+    left: 70%; bottom: 40%;
+ }  
 
  .menu{
     position: var(--posicaoAbsoluta);
@@ -251,20 +267,13 @@ oportuno. */
     border: solid 1px;
  }
 
- .quadradoCinza input{
-    height: 30px;
+ .quadradoCinza .input{
+    flex-direction: row;
  }
 
- .quadradoCinza img{
-    height:30px;
- }
-
- .opcional p{
-    padding-right: 22%;
- }
-
- .quadradoCinza .div{
-    padding-right: 20%;
+ .quadradoCinza .unidade{
+    position: var(--posicaoAbsoluta);
+    left: 60%; bottom: 45%;
  }
 
  /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
@@ -284,22 +293,13 @@ oportuno. */
 
 @media(min-width: 1024px){
 
-
     .conteiner .menuAdm{
         width: 304px;
     }
 
-    /* .quadradoCinza .input{
-        padding: 2%;
-        padding-left: 5%;
-    } */
-
-    .quadradoCinza .opcional{
-        padding-right: 32%;
-    }
-
-    .quadradoCinza .div{
-        padding-right: 40% ;
+    .quadradoCinza .unidade{
+        position: var(--posicaoAbsoluta);
+        left: 57%; bottom: 13%;
     }
 
     .rodape .Logo{
@@ -315,23 +315,12 @@ oportuno. */
 }
 
 @media(min-width: 1280px){
+
+    .quadradoCinza .unidade{
+        position: var(--posicaoAbsoluta);
+        left: 61%; bottom: 33%;
+    }
     
-    /* .quadradoCinza .input{
-        padding-left: 20%;
-    }
-
-    .quadradoCinza #nomeSocial1{
-        padding-left: 24%;
-    }
-
-    .quadradoCinza .opcional{
-        padding-left: 26%;
-    }
-
-    .quadradoCinza .div{
-        padding-left: 22%;
-    } */
-
     .rodape .siga-nos{
         display: block;
     }
@@ -355,25 +344,10 @@ oportuno. */
     height: 150px;
 }
 
-/* .quadradoCinza .input{
-    padding: 2%;
-    padding-left: 25%; 
-   
-} 
-
-.quadradoCinza #nomeSocial1{
-    padding-left: 29%;
-}
-
-.quadradoCinza .opcional{
-    padding-right: 28%;
-}
-
-.quadradoCinza .div{
-    padding-left: 30%;
-    position: var(--posicao);
-    bottom: 5%;
-} */
+.quadradoCinza .unidade{
+        position: var(--posicaoAbsoluta);
+        left: 61%; bottom: 10%;
+    }
 
 .inferior img{
     width: 150px;
@@ -444,7 +418,7 @@ oportuno. */
         grid-template-rows: 100px;
         grid-template-columns: 170px;
         position: var(--posicaoAbsoluta);
-        left: 59%;
+        left: 59%; bottom: 22%;
     }
 
     .quadradoCinza .ordem{
