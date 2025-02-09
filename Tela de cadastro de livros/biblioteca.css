@@ -6,7 +6,6 @@
     --fundoPadrao: #EDEDED;
     --posicao: relative;
     --posicaoAbsoluta: absolute;
-    --azulQuadrado: hwb(210 0% 62% / 0.5);
     --corFormulario: #E5E4E4;
     --corBotao: #004A90;
     --vermelho: red;
@@ -32,21 +31,16 @@ body{
     background-color: var(--fundoPadrao);
 }
 
-.hamburguer{
-    cursor: var(--apontador);
-    background: none;
-    border: none;
-/* .hamburguer define as características do botão. cursor: pointer indica que um objeto é clicável ao mudar o cursor, 
-background: none retira a cor do botão que contêm as quatro linhas horizontais e border: none retira a borda do botão.
-Esses dois últimos fazem o botão desaparecer completamente.*/ 
+.conteiner .menuAdm{
+    display: flex;
+    align-items: center;
+    /* width:200px; */
 }
 
-.barra{
-    width: 35px;
-    height: 3px;
-    margin-left: 10px;
-    background-color: var(--branco);
-   
+.menuAdm .hamburguer{
+    width: 100px;
+    height: 50px;
+    cursor: var(--apontador);
 }
 
 .titulo{
@@ -57,88 +51,19 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
+/*Conteiner3 contém os ícones superiores e os define com
+espaços um colado no início e outro no fim. Conteiner3 .esquerdo, .direito
+definem o comprimento e a altura dos ícones em 100 pixels.*/
+
 .conteiner3{
-    display: grid;
-    grid-template-columns: repeat(3,20px);
-    grid-template-rows: repeat(3,20px);
-    gap: 3px;
-}
-
-.conteiner3 .quadrado{
-    background-color: var(--azulQuadrado);
-    
-}
-
-.conteiner3 .quadrado6 {
-    background-color: var(--azulQuadrado);
-    grid-row: 3;
-    grid-column: 1;
-}
-
-.conteiner3 .quadrado7{
-    background-color: var(--azulQuadrado);
-    grid-row: 3;
-    grid-column: 3;
-}
-
-.conteiner4{   
-    display: grid;
-    grid-template-columns: repeat(2,20px);
-    grid-template-rows: repeat(3,21px);
-    gap: 3px;
-    position: var(--posicaoAbsoluta);
-    left: 88%; bottom: 76.7%;
-}
-
-.conteiner4 .quadrado{
-    width: 20px;
-    height: 20px;
-    background-color: var(--azulQuadrado);
-}
-
-.conteiner4 .quadrado3{
-    grid-row: 2;
-    grid-column: 2;
-    background-color: var(--azulQuadrado);
-    width: 20px;
-    height: 20px;
-}
-
-.conteiner4 .quadrado4{
-    grid-row: 3;
-    grid-column: 1;
-    background-color: var(--azulQuadrado);
-    width: 20px;
-    height: 20px;
-}
-
-.conteiner5{
-    display: grid;
-    grid-template-columns: repeat(3, 21px);
-    grid-template-rows: repeat(3,21px);
-    gap: 3px;
-    position: var(--posicaoAbsoluta);
-    left: 81.55%; 
-    transform: rotate(180deg);
-}
-
-.conteiner5 .quadrado{
-    background-color: var(--azulQuadrado);
-}
-
-.conteiner5 .quadrado7, .conteiner5 .quadrado6{
-    background-color: var(--azulQuadrado);
-}
-
-.conteiner5 .quadrado6{
-    grid-row: 3;
-    grid-column: 3;
-}
-
-.conteiner5 .quadrado7{
-    grid-row: 3;
-    grid-column: -4;
-}
+    display: flex;
+    justify-content: space-between;
+ }
+ 
+ .conteiner3 .esquerdo, .direito{
+     width: 100px;
+     height: 100px;
+ }
 
 .formulario{
     height: 100%;
@@ -150,19 +75,33 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     gap: 15px;
 }
 
-.formulario .area{
-    cursor: var(--apontador);
+.formulario .tituloObrigatorio, .autorObrigatorio, .codigoObrigatorio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
 }
 
-.formulario .unidade{
-    cursor: var(--apontador);
+.obrigatorio{
+    color: var(--vermelho);
+    font-family: var(--fontes);
+    font-size: 15px;   
 }
 
-.formulario .tipoDocumento{
-    cursor: var(--apontador);
+
+/*Ícone inferior*/ /*Ícone inferior*/ /*Ícone inferior*/
+.inferiorDireito{
+    display: flex;
+    justify-content: end;
+    margin-top:5%;
 }
 
-.formulario .categoria{
+.inferiorDireito .inferior{
+    width: 100px;
+    height: 100px;
+}
+
+.formulario .area, .unidade, .tipoDocumento, .categoria, .area{
     cursor: var(--apontador);
 }
 
@@ -181,128 +120,45 @@ Esses dois últimos fazem o botão desaparecer completamente.*/
     cursor: var(--apontador);
 }
 
-.obrigatorio{
-    color: var(--vermelho);
-    font-family: var(--fontes);
-    font-size: 15px;   
-}
-
-#obrigatorio1{
-    position: var(--posicaoAbsoluta);
-    bottom: 440px; left: 280px;
-}
-
-#obrigatorio2{
-    position: var(--posicaoAbsoluta);
-    bottom: 368px; left: 280px;
-}
-
-#obrigatorio3{
-    position: var(--posicaoAbsoluta);
-    bottom: 290px; left: 280px;
-}
-
-textarea::placeholder{
-    color: #00000033;
-    text-align: center;
-    line-height: 350%;
-    font-size: 40px;
-
-}
-
 label{
     font-family: var(--fontes);
 }
 
-.formulario .Area{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%;  bottom: 18%;
-}
+/*Segundo formulário. Esse só aparece a partir de 1280 pixels. */
 
-.formulario .Unidade{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; bottom: 6.7%;
-}
-
-.formulario .Tipo{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; top: 221%;
-}
-
-.formulario .Categoria{
-    width: 10px;
-    height: 10px;
-    position: var(--posicaoAbsoluta);
-    left: 92%; top: 243.8%;
-}
-
-#formulario2{
-   
+#formulario2{ 
     width: 50%;
     display: flex;
     flex-direction: column;
     background-color: var(--corFormulario);
     padding: 15px;
-    margin-top: 25px;
+    margin-top: -8px;
     gap: 25px;
 }
 
-/* #formulario2 #titulo{
-    height: 21px;
-   
-} */
+.tituloObrigatorio2, .autorObrigatorio2, .codigoObrigatorio2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
 
-#formulario2 .Area{
-    width: 12px;
-    height: 12px;
+/*Segunda metade do formulário*/ /*Segunda metade do formulário*/
+
+#formulario2_segundaMetade{
+    height: 1026px;
+}
+
+#formulario2_segundaMetade .tipoDocumento, .Tipo, .categoria, .Categoria{
     cursor: var(--apontador);
 }
 
-#formulario2 .Unidade{
-    width: 12px;
-    height: 12px;
-    cursor: var(--apontador);
+/*Define o posicionamento do botão e o faz aparecer a frente do segundo formulário.*/
+.formulario2 .Botao{
+    position: var(--posicaoAbsoluta);
+    left: 130%; top: 80%;
+    z-index: 1;
 }
-
-#formulario2 .area{
-    cursor: var(--apontador);
-}
-
-#formulario2 .unidade{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .tipoDocumento{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .Tipo{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .categoria{
-    cursor: var(--apontador);
-}
-
-#formulario2_segundaMetade .Categoria{
-    cursor: var(--apontador);
-}
-
-
-/* .linha{
-    /* background-color: var(--branco); 
-    transform:rotate(90deg);
-    width:111%;
-    
-
-} */
-
 
 /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
 
@@ -310,8 +166,6 @@ label{
     background-color: var(--azulCabecalho);
     height: 159px;
     width: 100%;
-    position: var(--posicao);
-    top: 70px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -352,36 +206,12 @@ label{
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
-    .logo{
+    .logoSenacHub{
         display: none;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
 
-   .formulario .Area{
-    height: 18px;
-    width: 13px;
-    position: var(--posicaoAbsoluta);
-    bottom: 17%;
-   }
-   
-   .formulario .Unidade{
-    height: 18px;
-    width: 13px;
-    position: var(--posicaoAbsoluta);
-    bottom: 5.5%;
-   }
-   
-   .formulario .Tipo{
-    height: 18px;
-    width: 13px;
-   }
-   
-   .formulario .Categoria{
-    height: 18px;
-    width: 13px;
-   }
-   
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
 
     .rodape .faleConosco, .email,.siga-nos{
@@ -403,62 +233,7 @@ label{
 
 } 
 
-
 @media(min-width:414px){
-    
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 9.6%; left: 89.5%;
-    }
-
-   #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 19.5%; left: 75%;
-   }
-   
-   #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        top: 27.5%; left: 75%;
-   }
-   
-   #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 36.5%; left: 75%;
-   }
-
-   .formulario .Area{
-        position: var(--posicaoAbsoluta);
-        bottom: 38.3%;
-        width: 16px;
-   }
-
-   .formulario .Unidade{
-    position: var(--posicaoAbsoluta);
-    bottom:29.6%;
-    width: 16px;
-   }
-
-   .formulario .Tipo{
-    position: var(--posicaoAbsoluta);
-    top: 164.5%;
-    width: 16px;
-   }
-  
-   .formulario .Categoria{
-    position: var(--posicaoAbsoluta);
-    top: 181.5%;
-    width: 16px;
-   }
-
-   .conteiner5{
-    position: var(--posicao);
-    left: 0.1%; top: 10px;
-   }
-
-   .rodape{
-    position: var(--posicao);
-    top: 10px;
-   }
 
    #formulario2{
     display: none;
@@ -473,9 +248,7 @@ label{
     top: 9%;
  }
 
-
 }
-
 
 @media(min-width:768px){
 
@@ -483,60 +256,8 @@ label{
         font-size: 12px;
     }
 
-    .conteiner .logo{
+    .conteiner .logoSenacHub{
         display: block;
-    }
-
-    .conteiner{
-        justify-content: space-between;
-    }
-
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 8.5%; left: 94%;
-    }
-
-    .formulario #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 175px; left: 670px;
-    }
-
-    .formulario #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        top: 250px; left: 670px;
-    }
-    
-    .formulario #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 325px; left: 670px;
-    }
-
-    .formulario .Area{
-        position: var(--posicaoAbsoluta);
-        bottom: 46%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-   
-    .formulario .Unidade{
-        position: var(--posicaoAbsoluta);
-        bottom: 38.5%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-    
-    .formulario .Tipo{
-        position: var(--posicaoAbsoluta);
-        top: 143.8%; left: 95%;
-        width: 20px;
-        height: 18px;
-    }
-   
-    .formulario .Categoria{
-        position: var(--posicaoAbsoluta);
-        top: 158.8%; left: 95%;
-        width: 20px;
-        height: 18px;
     }
 
     .rodape{
@@ -552,19 +273,9 @@ label{
         top: 8%;
     }
 
-    .conteiner5{
-        position: var(--posicao);
-        left: 0%;
-    }
-
 }
 
 @media(min-width: 1280px){
-
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 10.7%; left: 96.5%;
-    }
 
     .formulario{
         display: none;
@@ -578,35 +289,6 @@ label{
         left: 20%; top: 8px; 
         border-right: 1px solid white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-    }
-
-     #formulario2 #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 0%;
-    }
-
-    #formulario2 #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 9.5%;
-    }
-    
-    #formulario2 #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        left: 78%; top: 19%;
-    }
-
-    #formulario2 .Area{
-        position: var(--posicaoAbsoluta);
-        top:45%; left: 92.5%;
-        width: 18px;
-        height: 17px;
-    }
-
-    #formulario2 .Unidade{
-        position: var(--posicaoAbsoluta);
-        top:54.5%; left: 92.5%;
-        width: 18px;
-        height: 17px;
     }
 
     .formulario2_segundaMetade{
@@ -623,20 +305,6 @@ label{
         font-size: 18px;
         border-left: 4px solid white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .formulario2_segundaMetade .Tipo{
-        height: 17px;
-        width: 15px;
-        position: var(--posicaoAbsoluta);
-        left: 94%; top: 44.6%;
-    }
-    
-    .formulario2_segundaMetade .Categoria{
-        height: 17px;
-        width: 15px;
-        position: var(--posicaoAbsoluta);
-        left: 94%; top: 60.2%;
     }
 
     .rodape .email{
@@ -665,88 +333,42 @@ label{
        
     }
 
-    .logoSenacHub{
-        position: var(--posicao);
-        right: 115%;
-    }
-
     .titulo{
         position: var(--posicao);
         right: 10%;
-    }
-
-    .conteiner5{
-        position: var(--posicao);
-        left: 0%;
     }
 
 }
 
 @media(min-width:1358px){
 
-   .conteiner .barra{
-
-    width: 50px;
-
- }
-
- .conteiner4{
-    position: var(--posicaoAbsoluta);
-    top: 13%; left: 96.7%;
- }
-
  .formulario2_segundaMetade{
     position: var(--posicaoAbsoluta);
     top: 28.3%; left: 53%;
- }
-
- .formulario2_segundaMetade .Tipo{
-    width: 16px;
-    height: 19px;
- }
-
- .formulario2_segundaMetade .Categoria{
-    width: 16px;
-    height: 19px;
- }
-
- #formulario2 #obrigatorio1{
-    position: var(--posicaoAbsoluta);
-    top: 0%;
- }
- 
- #formulario2 #obrigatorio2{
-    position: var(--posicaoAbsoluta);
-    top: 10%;
- }
-
- #formulario2 #obrigatorio3{
-    position: var(--posicaoAbsoluta);
-    top: 19%;
- }
-
-
- #formulario2 .Area{
-    position: var(--posicaoAbsoluta);
-    top: 44.7%;
-    height: 20px;
-    width: 17px;
- }
- 
- #formulario2 .Unidade{
-    position: var(--posicaoAbsoluta);
-    top: 54.3%;
-    height: 20px;
-    width: 17px;
  }
 
  #formulario2{
     border-right: 4px solid white;
  }
 
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 13%;
+ }
+
 }
 
 @media(min-width: 1912px){
+
+    .conteiner3 .esquerdo, .direito{
+        width: 150px;
+        height: 150px;
+    }
+
+    .inferiorDireito .inferior{
+        width: 150px;
+        height: 150px;
+    }
 
     #formulario2{
         position: var(--posicao);
@@ -754,52 +376,10 @@ label{
         border-right: 6px solid white;
     }
 
-    #formulario2 #obrigatorio1{
-        position: var(--posicaoAbsoluta);
-        top: 0%;
-    }
-   
-    #formulario2 #obrigatorio2{
-        position: var(--posicaoAbsoluta);
-        top: 9%;
-    }
-   
-    #formulario2 #obrigatorio3{
-        position: var(--posicaoAbsoluta);
-        top: 19%;
-    }
-
     #formulario2_segundaMetade{
         position: var(--posicaoAbsoluta);
-        top: 18.5%; left: 52.8%;
+        top: 26.5%; left: 52.8%;
         border-left: 3px solid white;
-    }
-
-    #formulario2 .Area{
-        position: var(--posicaoAbsoluta);
-        top: 45%;
-        height: 18px;
-        width: 18px;
-    }
-    
-    #formulario2 .Unidade{
-        position: var(--posicaoAbsoluta);
-        top: 54.5%;
-        height: 18px;
-        width: 18px;
-    }
-
-    .conteiner4{
-        position: var(--posicaoAbsoluta);
-        top: 9%; left: 97.7%;
-    }
-
-    #formulario2_segundaMetade .Tipo{
-        width: 16px;
-    }
-    
-    #formulario2_segundaMetade .Categoria{
-        width: 16px;
     }
 
     .menu{
@@ -807,9 +387,20 @@ label{
         top: 9%;
     }
 
+    .rodape .Logo{
+        width:200px;
+    }
+
+    .rodape .Libro{
+        width: 300px;
+        /* height: 200px; */
+    }
+
+    .rodape .faleConosco, .copyright, .todos, .email, .siga-nos {
+        font-size:18px;
+    }
+
+    .rodape{
+        height:170px;
+    }
 }
-
-
-
-
-
