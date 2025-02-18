@@ -53,3 +53,79 @@ header{
     
 }
 
+.cards_livros{
+    display: grid ;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 20px; /*diferença*/
+    width: 70%;
+    margin-top: 3rem;
+
+}
+
+
+.card{
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    width: 100%;
+    
+    /*padding: 1rem;*/
+    position: relative;
+}
+
+
+.card p{
+    font-size: 15px;
+}
+
+.card img{
+    width: 100%;
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.bottom_card{
+    position: absolute;
+    bottom: 0;
+    z-index: 2;/*posição*/
+    right: 0;
+}
+
+.form_info{
+    z-index: 3;
+}
+.botao_reservar{
+    width: 46%;
+    padding: 6px;
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 3px; /*espaço entre as letras*/
+    color: rgb(255, 255, 255); /*cor da letra*/
+    background: rgb(246, 139, 31);   /*cor do botao*/
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #8b8787;  /*sombra ao redor do botao*/
+
+
+    /*width: 58%;
+    padding: 9px;
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight:800 ;
+    letter-spacing: 3px; /*espaço entre as letras*/
+    /*color:rgb(255, 255, 255) ;  /*cor da letra*/
+   /* background: rgb(246, 139, 31); /*cor do botao*/
+    /*cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #8b8787; /*sombra ao redor do botao*/
+}
+
+
+
+
