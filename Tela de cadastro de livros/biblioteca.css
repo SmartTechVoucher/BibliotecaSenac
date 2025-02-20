@@ -34,7 +34,10 @@ body{
 .conteiner .menuAdm{
     display: flex;
     align-items: center;
-    /* width:200px; */
+}
+
+.menuAdm{
+    gap: 20px;
 }
 
 .menuAdm .hamburguer{
@@ -202,6 +205,18 @@ label{
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
+@media(max-width: 1024px){
+   
+    #formulario2,  .formulario2_segundaMetade{
+        display: none;
+    }
+
+    .rodape .faleConosco, .email,.siga-nos{
+        display: none;     
+    } 
+
+}
+
 @media(min-width: 375px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
@@ -210,21 +225,7 @@ label{
         display: none;
     }
 
-    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
-
-    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
-
-    .rodape .faleConosco, .email,.siga-nos{
-        display: none;     
-    }     
-
-    #formulario2{
-        display: none;
-    }
-
-    .formulario2_segundaMetade{
-        display: none;
-    }
+    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/  
 
     .menu{
         position: var(--posicaoAbsoluta);
@@ -234,14 +235,6 @@ label{
 } 
 
 @media(min-width:414px){
-
-   #formulario2{
-    display: none;
- }
-
- .formulario2_segundaMetade{
-    display: none;
- }
 
  .menu{
     position: var(--posicaoAbsoluta);
@@ -275,6 +268,13 @@ label{
 
 }
 
+@media(min-width:1024px){
+    .menu{
+    position: var(--posicaoAbsoluta);
+    top: 13%;
+ }
+}
+
 @media(min-width: 1280px){
 
     .formulario{
@@ -282,7 +282,6 @@ label{
     }
 
     #formulario2{
-        display: block;
         display: flex;
         width: 410.5px;
         position: var(--posicao);
@@ -292,7 +291,6 @@ label{
     }
 
     .formulario2_segundaMetade{
-        display: block;
         display: flex;
         flex-direction: column;
         width: 410.5px;
@@ -305,14 +303,6 @@ label{
         font-size: 18px;
         border-left: 4px solid white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .rodape .email{
-        display: block;
-    }
-    
-    .rodape .siga-nos{
-        display: block;
     }
 
     .rodape .Logo{
@@ -393,7 +383,6 @@ label{
 
     .rodape .Libro{
         width: 300px;
-        /* height: 200px; */
     }
 
     .rodape .faleConosco, .copyright, .todos, .email, .siga-nos {
