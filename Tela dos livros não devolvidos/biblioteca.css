@@ -1,0 +1,225 @@
+:root{
+
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --apontador: pointer;   
+}
+
+/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+
+.conteiner{
+    background-color: var(--azulCabecalho);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    font-family: var(--fontes);
+   
+}
+
+.conteiner .menuAdm{
+    display: flex;
+    align-items: center;
+    gap: 15%;
+}
+
+.menuAdm .hamburguer{
+    width: 100px;
+    height: 50px;
+    cursor: var(--apontador);
+}
+
+.titulo{
+    color: var(--branco);
+    font-size: 10px;
+     
+}
+
+/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
+
+body{
+    margin: 0;
+    background-color: var(--fundoPadrao);
+}
+
+.conteiner2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.conteiner2 .esquerdo, .conteiner2 .direito{
+    width: 100px;
+    height: 100px;
+}
+
+/*Div .situacao*/ /*Div .situacao*/ /*Div .situacao*/ /*Div .situacao*/
+
+.situacao{
+    display: flex;
+    gap: 2px;
+    margin-left: 5px;
+}
+
+.situacao .vermelho{
+    color: red;
+}
+
+/*Acima, Div .situacao*/ /*Acima, Div .situacao*/ /*Acima, Div .situacao*/
+
+.naoDevolvidos{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.dadosUsuario{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.nomeEnomePorAparecer{
+    display: flex;
+    gap: 2px;
+}
+
+.Livro{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.Livro .seta{
+    width: 28px;
+    height: 28px;
+    cursor: var(--apontador);   
+}
+
+/*Parte inferior do corpo*/
+
+.inferior{
+    display: flex;
+    justify-content: end;
+    /* margin-top: 25%;   */
+    margin-top: 6.5%;
+}
+
+.inferior img{
+    width: 100px;
+    height: 100px;
+}
+
+/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
+
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 222px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 10px;
+    text-align: center;
+}
+
+/* .rodape .Logo{
+    height: 50px;
+    width: 100px;
+} */
+
+/* .rodape .Libro{
+    height: 100px;
+    width: 200px;
+} */
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+.menu{
+    width: 366px;
+    height: 500px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 36px;
+    display: none;
+    cursor: pointer;
+    position: var(--posicaoAbsoluta);
+    top: 8%;
+}
+
+/*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
+oportuno. "menu a" se refere a parte das ligações com a 
+tag "a". Esse seletor vai retirar a linha típica de link
+"a", vai definir a cor da fonte do link como branca e vai 
+definir a exibição como ao lado*/
+
+/* .menu a{
+    text-decoration: none;
+    color: var(--branco);
+    display: flex;
+} */
+
+@media(max-width:1024px) {
+    .titulo, .Libro, .copyright, .todos{
+        display: none;
+    }
+}
+
+@media(min-width:375px){
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 12%;
+    }
+}
+
+@media (min-width:414px){
+    .inferior{
+        margin-top: 9%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 9%;
+    }
+}
+
+@media (min-width:768px){
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 8%;
+    }
+
+    .inferior{
+        margin-top: 25%;
+    }
+}
+
+@media(min-width:1024px){
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+}
+
+@media(min-width:1280px){
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+}
+
+@media(min-width: 1912px){
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 8%;
+    }
+}
