@@ -6,6 +6,8 @@
 
 body{
     width: 100vw;
+    display: block;
+    overflow: hidden;
 }
 
 .container{
@@ -34,6 +36,8 @@ form{
     border-radius: 10px;
 
     background-color: white;
+
+    position: relative;
 }
 
 .login{
@@ -43,6 +47,7 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+   
 }
 
 label{
@@ -100,25 +105,28 @@ button:hover{
 }
 
 a{
+    font-weight: 800;
     width: auto;
     color: #003162;
+    position: relative;
+    bottom: 0;
 }
 
 .logo{
     width: 15%;
     height: 15%;
     position: absolute;
-    top: 0;
-    right: 40%;
+    top: -117px;
+    right: 42%;
+    transform: rotateZ(270deg);
 }
 .logo2{
     width: 15%;
     height: 15%;
     position: absolute;
-    bottom: 0;
-    left: -10%;
-
-    transform: scale(-1);
+    bottom: -7%;
+    right: -9%;
+    transform: rotateX(180deg);
 }
 
 @media screen and (max-width: 900px) {
@@ -141,7 +149,7 @@ a{
 
     .logo2{
         width: 30%;
-        left: -18%;
+        right: 0;
     }
 
 
