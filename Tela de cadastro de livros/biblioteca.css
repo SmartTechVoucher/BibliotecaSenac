@@ -378,13 +378,13 @@ label{
 
     #formulario2_segundaMetade{
         position: var(--posicaoAbsoluta);
-        top: 26.5%; left: 52.8%;
+        top: 23.5%; left: 52.8%;
         border-left: 3px solid white;
     }
 
     .menu{
         position: var(--posicaoAbsoluta);
-        top: 9%;
+        top: 8.5%;
     }
 
     .rodape .Logo{
