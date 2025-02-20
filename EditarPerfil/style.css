@@ -2,6 +2,7 @@
     --azulCabecalho: #001E3E;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
+    --fonte_rodape: 12px;
     --fundoPadrao: #EDEDED;
     --posicao: relative;
     --posicaoAbsoluta: absolute;
@@ -21,7 +22,7 @@ body {
 .conteiner {
     background-color: var(--azulCabecalho);
     width: 100%;
-    height: 80px;
+    height: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,16 +72,6 @@ body {
     height: 50px;
 }
 
-/* Quadrado Cinza */
-.quadradoCinza {
-    width: 80%;
-    height: 400px;  /* Aumenta a altura do quadrado cinza */
-    background-color: var(--branco);
-    margin: 0 auto;
-    position: relative;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 /* Quadrado Branco */
 .quadradoBranco {
@@ -93,12 +84,18 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.linhaCima{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /* Inferior */
 .inferior {
     display: flex;
     justify-content: flex-end;
-    margin-top: 5%;
+    margin-top: 1%;
     padding-right: 20px;
+
 }
 
 .inferior img {
@@ -118,11 +115,11 @@ body {
     align-items: flex-end; /* Ajusta os itens na parte inferior do rodapé */
     color: var(--branco);
     font-family: var(--fontes);
-    font-size: 10px;
+    font-size: var(--fonte_rodape);
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    height: 159px; /* Altura fixa */
+    height: 120px; /* Altura fixa */
 }
 
 /* Alinha o ícone do Fecomércio à esquerda */
