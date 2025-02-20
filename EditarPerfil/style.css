@@ -1,5 +1,4 @@
-:root{
-
+:root {
     --azulCabecalho: #001E3E;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
@@ -11,447 +10,166 @@
     --vermelho: red;
     --apontador: pointer;
     --cinza: #D9D9D9;
-   
 }
 
-/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+body {
+    margin: 0;
+    background-color: var(--fundoPadrao);
+    font-family: var(--fontes);
+}
 
-.conteiner{
+.conteiner {
     background-color: var(--azulCabecalho);
     width: 100%;
     height: 80px;
     display: flex;
-    justify-content: space-between;
-    padding-top: 5px;
-    font-family: var(--fontes);
-   
-}
-
-.conteiner .menuAdm{
-    display: flex;
-    align-items: center;
-}
-
-.menuAdm .hamburguer{
-    width: 100px;
-    height: 50px;
-    cursor: var(--apontador);
-}
-
-
-body{
-    margin: 0;
-    background-color: var(--fundoPadrao);
-}
-
-.titulo{
-  color: var(--branco);
-  font-size: 10px;
-   
-}
-
-/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
-
-.conteiner3{
-    display: flex;
-    justify-content: space-between;
-   
-}
-
-/*Corpo central*/ /*Corpo central*/ /*Corpo central*/
-
-.relatorio{
-    display: flex;
     justify-content: center;
-    margin-top: 5%;
-    height: 70px;
+    align-items: center;
+    position: relative;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-.quadradoCinza{
-    height: 500px;
-    background-color: var(--branco);
-}
-
-.quadradoBranco{
-    margin-left: 15%;
-}
-
-.quadradoBranco .input{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 5%;
-    padding-right: 5%;
-}
-
-.quadradoCinza #calendario{
-    margin-top: 10%;
-    width: 400px;
-}
-
-.quadradoCinza .Calendario{
-    display: flex;
-}
-
-.quadradoCinza .imagemCalendario{
-    padding-top: 10%;
-    height: 66px;
-}
-
-.quadradoCinza .unidade{
-    display: grid;
-    grid-template-columns: 100px;
-    grid-template-rows: 42px;
-    position: var(--posicaoAbsoluta);
-    left: 61%;
-}
-
-/*A classe .quadradoCinza .botoes define as configurações
-da div que contêm os botões "cancelar" e "emitir" */
-
-.quadradoCinza .botoes{
-    display:flex;
-    justify-content: space-between;
-    padding-right: 15%;
-    padding-left: 9%;
-    margin-top:19%;
-}
-
-/*A classe .quadradoCinza .cancelar, .emitir define as 
-configurações dos botões "cancelar" e "emitir" */
-
-.quadradoCinza .cancelar, .emitir{
-    width: 116px;
-    background-color: var(--corBotao);
+/* Título centralizado */
+.titulo {
     color: var(--branco);
-    cursor: var(--apontador);
-    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    max-width: calc(100% - 100px);
 }
 
-/*Parte inferior do corpo*/
-
-.inferior{
+/* Conteiner 3 */
+.conteiner3 {
     display: flex;
-    justify-content: end;
-    margin-top: 5%;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
 }
 
-.inferior img{
+/* Imagem superior esquerda */
+.imagemSuperiorEsquerda {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+}
+
+/* Imagem superior direita */
+.imagemSuperiorDireita {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+}
+
+/* Quadrado Cinza */
+.quadradoCinza {
+    width: 80%;
+    height: 400px;  /* Aumenta a altura do quadrado cinza */
+    background-color: var(--branco);
+    margin: 0 auto;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Quadrado Branco */
+.quadradoBranco {
+    width: 70%;
+    height: 400px;  /* Aumenta a altura do quadrado branco */
+    margin: 120px auto 0 auto;
+    background-color: var(--branco);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Inferior */
+.inferior {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5%;
+    padding-right: 20px;
+}
+
+.inferior img {
     width: 100px;
     height: 100px;
 }
 
-/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
-
-.rodape{
+/* Rodapé */
+.rodape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     background-color: var(--azulCabecalho);
-    height: 159px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end; /* Ajusta os itens na parte inferior do rodapé */
     color: var(--branco);
     font-family: var(--fontes);
     font-size: 10px;
     text-align: center;
-   
+    padding: 20px;
+    box-sizing: border-box;
+    height: 159px; /* Altura fixa */
 }
 
-.rodape .Logo{
+/* Alinha o ícone do Fecomércio à esquerda */
+.rodape .Logo {
     height: 50px;
     width: 100px;
+    margin-right: 20px; /* Espaçamento à direita do ícone */
 }
 
-.rodape .Libro{
-    height: 100px;
-    width: 200px;
+/* Centraliza o texto "Senac MS Cpyrit" na parte inferior do rodapé */
+.rodape .centro {
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
 }
 
-/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
-
-.menu{
-    width: 366px;
-    height: 500px;
-    background-color: var(--azulCabecalho);
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: 36px;
-    display: none;
-    cursor: pointer;
-    
-}
-
-/*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
-oportuno. */
-
-/* .menu a{
-    text-decoration: none;
-    color: var(--branco);
+/* Alinha o "Fale conosco", "email" e "Siga-nos" à direita */
+.rodape .direita {
     display: flex;
-} */
-
-/*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
-
-@media(min-width: 375px){
-
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-
-    .quadradoBranco .input{
-        flex-direction: column;
-    }
-
-    .quadradoBranco .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 70%; bottom: 20%;
-    }
-
-    .logoSenacHub{
-        display: none;
-    }
-
-    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
-
-    /*Essa parte controla os comprimentos
-    e alturas dos ícones azuis superiores*/
-    .conteiner3 .esquerdo, .direito{
-        width: 100px;
-        height: 100px;
-    }
-   
-    .quadradoCinza #calendario{
-        width: 280px;
-    }
-
-    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
-
-    .rodape .faleConosco, .siga-nos, .emailAtendimento{
-        display: none;     
-    }     
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 12%;
-    }
-
-} 
-
-@media(min-width:414px){
-
- .quadradoBranco .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 70%; bottom: 40%;
- }  
-
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 9%;
- }
-
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    justify-content: flex-end;
 }
 
-@media(min-width:768px){
-
- /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/           
-    .titulo{
-        font-size: 12px;
+/* Responsividade para o rodapé */
+@media (max-width: 768px) {
+    .rodape {
+        flex-direction: column; /* Organiza o conteúdo de cima para baixo */
+        align-items: center; /* Centraliza tudo */
+        padding: 10px;
+        height: auto; /* Permite que a altura seja dinâmica */
     }
 
-    .conteiner .logoSenacHub{
-        display: block;
-    }
- 
- /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
-
- .quadradoCinza{
-    width: 60%;
-    margin-left: 13%;
-    border: solid 1px;
- }
-
- .quadradoCinza .input{
-    flex-direction: row;
- }
-
- .quadradoCinza .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 60%; bottom: 45%;
- }
-
- /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
-    .rodape{
-        font-size: 14px;
+    .rodape .Logo, .rodape .Libro {
+        width: 60%; /* Ajusta a largura das imagens no rodapé */
+        margin-bottom: 10px;
     }
 
-    .rodape .faleConosco{
-        display: block;
+    .rodape .centro {
+        margin-bottom: 10px; /* Espaçamento inferior */
+        font-size: 12px; /* Ajusta o tamanho da fonte para dispositivos menores */
     }
 
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 8%;
-    }
-}
-
-@media(min-width: 1024px){
-
-    .conteiner .menuAdm{
-        width: 304px;
-    }
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 57%; bottom: 13%;
-    }
-
-    .rodape .Logo{
-        width: 180px;
-        height: 70px;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
-    }
-
-}
-
-@media(min-width: 1280px){
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 61%; bottom: 33%;
-    }
-    
-    .rodape .siga-nos{
-        display: block;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
-    .titulo{
-        position: var(--posicao);
-        right: 10%;
-    }
-
-}
-
-@media(min-width:1358px){
-
-.conteiner3 .esquerdo, .direito{
-    width: 150px;
-    height: 150px;
-}
-
-.quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 61%; bottom: 10%;
-    }
-
-.inferior img{
-    width: 150px;
-    height: 150px;
-}
-
-.rodape .emailAtendimento{
-    display: block;
-}
-
-.menu{
-    position: var(--posicaoAbsoluta);
-    top: 13%;
-}
-
-}
-
-@media(min-width: 1912px){
-
-    .conteiner{
-        height: 140px;
+    .rodape .direita {
+        width: 100%;
         align-items: center;
+        margin-top: 10px;
     }
-
-    .conteiner .titulo{
-        font-size: 20px;
-    }
-
-    .quadradoCinza{
-        width: 992px;
-        height: 900px;
-        margin-left: 25%;
-    }
-    
-    .quadradoBranco{
-       margin-left: 0%;
-    }
-
-    .sobre, .salvar, h4{
-        font-size:30px;
-    }
-
-    .nome, .opcoes{
-        height: 30px;
-        font-size: 20px;
-    }
-
-    .imagemCalendario{
-        width: 40px;
-        height: 50px;
-    }
-
-    .Calendario .imagemCalendario{
-        padding-top:18%;
-    }
-    
-    .Calendario .calendar, .Calendario .calendar2{
-        width: 200px;
-        height:50px;
-        font-size:22px;
-    }
-
-    .Calendario{
-        height: 400px;
-    }
-
-    .quadradoCinza .unidade{
-        grid-template-rows: 100px;
-        grid-template-columns: 170px;
-        position: var(--posicaoAbsoluta);
-        left: 59%; bottom: 22%;
-    }
-
-    .quadradoCinza .ordem{
-        height: 30px;
-        font-size: 20px;
-    }
-
-    .botoes .emitir, .botoes .cancelar{
-        width: 205px;
-        height: 40px;
-        font-size:20px;
-    }
-
-   .rodape{
-        height: 300px;
-   }
-
-   .rodape .Libro{
-        width: 400px;
-        height: 200px;
-   }
-
-   .rodape .Logo{
-        width: 247px;
-   }
-   
-   .rodape .faleConosco, .copyright, .todos{
-        font-size: 20px;
-   }
-
-   .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
-    }
-
 }
