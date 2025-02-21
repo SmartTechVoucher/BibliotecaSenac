@@ -6,7 +6,8 @@
     --fundoPadrao: #EDEDED;
     --posicao: relative;
     --posicaoAbsoluta: absolute;
-    --apontador: pointer;   
+    --apontador: pointer;  
+    --bordaBaixaCabeçalho: #769FCD; 
 }
 
 /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
@@ -14,11 +15,13 @@
 .conteiner{
     background-color: var(--azulCabecalho);
     width: 100%;
-    height: 80px;
+    height: 140px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 5px;
     font-family: var(--fontes);
+    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
    
 }
 
@@ -41,8 +44,13 @@ body{
 
 .titulo{
   color: var(--branco);
-  font-size: 10px;
+  font-size: 12px;
    
+}
+
+.titulo .senac{
+    position: var(--posicao);
+    right: 20%;
 }
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
@@ -75,7 +83,7 @@ body{
 
 .rodape{
     background-color: var(--azulCabecalho);
-    height: 159px;
+    height: 230px;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -84,16 +92,6 @@ body{
     font-family: var(--fontes);
     font-size: 10px;
     text-align: center;
-}
-
-.rodape .Logo{
-    height: 50px;
-    width: 100px;
-}
-
-.rodape .Libro{
-    height: 100px;
-    width: 200px;
 }
 
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
