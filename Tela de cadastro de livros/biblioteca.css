@@ -135,8 +135,18 @@ label{
     flex-direction: column;
     background-color: var(--corFormulario);
     padding: 15px;
-    margin-top: -8px;
+    /* margin-top: -8px; */
     gap: 25px;
+    grid-column: 3;
+    /* display: none; */
+}
+
+.paraTestar{
+    display: grid;
+    grid-template-columns: repeat(10,110px);
+    margin-top: 5%;
+    /* grid-template-rows: repeat(10,110px); */
+    /* background-color: none; */
 }
 
 .tituloObrigatorio2, .autorObrigatorio2, .codigoObrigatorio2{
@@ -149,7 +159,9 @@ label{
 /*Segunda metade do formulário*/ /*Segunda metade do formulário*/
 
 #formulario2_segundaMetade{
+    /* display: none; */
     height: 1026px;
+    grid-column: 7;
 }
 
 #formulario2_segundaMetade .tipoDocumento, .Tipo, .categoria, .Categoria{
@@ -159,7 +171,7 @@ label{
 /*Define o posicionamento do botão e o faz aparecer a frente do segundo formulário.*/
 .formulario2 .Botao{
     position: var(--posicaoAbsoluta);
-    left: 130%; top: 80%;
+    left: 60%; top: 180%;
     z-index: 1;
 }
 
@@ -167,7 +179,7 @@ label{
 
 .rodape{
     background-color: var(--azulCabecalho);
-    height: 159px;
+    height: 240px;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -179,7 +191,7 @@ label{
    
 }
 
-.rodape .Logo{
+/* .rodape .Logo{
     height: 50px;
     width: 100px;
 }
@@ -187,7 +199,7 @@ label{
 .rodape .Libro{
     height: 100px;
     width: 200px;
-}
+} */
 
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
@@ -284,8 +296,8 @@ label{
     #formulario2{
         display: flex;
         width: 410.5px;
-        position: var(--posicao);
-        left: 20%; top: 8px; 
+        /* position: var(--posicao);
+        left: 20%; top: 8px;  */
         border-right: 1px solid white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
@@ -295,8 +307,8 @@ label{
         flex-direction: column;
         width: 410.5px;
         height: 983px;
-        position: var(--posicaoAbsoluta);
-        top: 23%; left: 54.5%;
+        /* position: var(--posicaoAbsoluta);
+        top: 23%; left: 54.5%; */
         background-color: var(--corFormulario);
         gap: 15px;
         padding: 10px;
@@ -305,10 +317,10 @@ label{
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
 
-    .rodape .Logo{
+    /* .rodape .Logo{
         width: 114px;
         height: 80px;
-    }
+    } */
 
     .menu{
         position: var(--posicaoAbsoluta);
@@ -332,10 +344,10 @@ label{
 
 @media(min-width:1358px){
 
- .formulario2_segundaMetade{
+ /* .formulario2_segundaMetade{
     position: var(--posicaoAbsoluta);
     top: 28.3%; left: 53%;
- }
+ } */
 
  #formulario2{
     border-right: 4px solid white;
@@ -355,41 +367,35 @@ label{
         height: 150px;
     }
 
+    .paraTestar{
+        margin-left: 15%;
+    }
+
+    .formulario2 .Botao{
+        position: var(--posicaoAbsoluta);
+        left: 56%; top: 105%;
+    }
+
     .inferiorDireito .inferior{
         width: 150px;
         height: 150px;
     }
 
     #formulario2{
-        position: var(--posicao);
-        top: 40%; left: 29.5%;
         border-right: 6px solid white;
     }
 
-    #formulario2_segundaMetade{
-        position: var(--posicaoAbsoluta);
-        top: 23.5%; left: 52.8%;
+    /* #formulario2_segundaMetade{
         border-left: 3px solid white;
-    }
+    } */
 
     .menu{
         position: var(--posicaoAbsoluta);
-        top: 8.5%;
-    }
-
-    .rodape .Logo{
-        width:200px;
-    }
-
-    .rodape .Libro{
-        width: 300px;
+        top: 6.5%;
     }
 
     .rodape .faleConosco, .copyright, .todos, .email, .siga-nos {
         font-size:18px;
     }
 
-    .rodape{
-        height:170px;
-    }
 }
