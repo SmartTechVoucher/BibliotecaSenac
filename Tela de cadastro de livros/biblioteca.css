@@ -236,32 +236,26 @@ label{
 
 @media(max-width: 1024px){
    
+    .logoSenacHub{
+        display: none;   
+    }
+
     #formulario2,  .formulario2_segundaMetade{
         display: none;
     }
 
     .rodape .faleConosco, .email,.siga-nos, .Libro, .titulo, .copyright, .todos{
         display: none;     
-    } 
+    }  
 
 }
 
-@media(min-width: 375px){
-
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-
-    .logoSenacHub{
-        display: none;
-    }
-
-    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/  
-
-    .menu{
+@media(min-width:414px){
+    .menu{   
         position: var(--posicaoAbsoluta);
-        top: 16%;
+        top: 11%;
     }
-
-} 
+}
 
 @media(min-width:768px){
 
@@ -280,12 +274,6 @@ label{
     .rodape .faleConosco{
         display: block;
     }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 14%;
-    }
-
 }
 
 @media(min-width:1024px){
@@ -293,6 +281,7 @@ label{
     position: var(--posicaoAbsoluta);
     top: 18%;
  }
+
 }
 
 @media(min-width: 1280px){
@@ -304,8 +293,6 @@ label{
     #formulario2{
         display: flex;
         width: 410.5px;
-        /* position: var(--posicao);
-        left: 20%; top: 8px;  */
         border-right: 1px solid white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
@@ -315,8 +302,6 @@ label{
         flex-direction: column;
         width: 410.5px;
         height: 983px;
-        /* position: var(--posicaoAbsoluta);
-        top: 23%; left: 54.5%; */
         background-color: var(--corFormulario);
         gap: 15px;
         padding: 10px;
@@ -325,35 +310,13 @@ label{
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
 
-    /* .rodape .Logo{
-        width: 114px;
-        height: 80px;
-    } */
-
-    .menu{
+    .formulario2 .Botao{
         position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
-    #formulario2_segundaMetade .Botao{
-        justify-content: center;
-        display: flex;
-        align-items: center; 
-        height: 400px;
-       
+        top: 135%;
     }
 }
 
 @media(min-width:1358px){
-
- /* .formulario2_segundaMetade{
-    position: var(--posicaoAbsoluta);
-    top: 28.3%; left: 53%;
- } */
-
- #formulario2{
-    border-right: 4px solid white;
- }
 
  .menu{
     position: var(--posicaoAbsoluta);
@@ -363,13 +326,6 @@ label{
 }
 
 @media(min-width: 1912px){
-
-    /* .paraAjustar{
-        margin-top: 5%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    } */
 
     .conteiner3 .esquerdo, .direito{
         width: 150px;
@@ -382,7 +338,7 @@ label{
 
     .formulario2 .Botao{
         position: var(--posicaoAbsoluta);
-        left: 56%; top: 105%;
+        left: 56%; top: 125%;
     }
 
     .inferiorDireito .inferior{
@@ -390,17 +346,8 @@ label{
         height: 150px;
     }
 
-    #formulario2{
-        border-right: 6px solid white;
-    }
-
-    /* #formulario2_segundaMetade{
-        border-left: 3px solid white;
-    } */
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 6.5%;
+    .rodape{
+        height: 245px;
     }
 
     .rodape .faleConosco, .copyright, .todos, .email, .siga-nos {

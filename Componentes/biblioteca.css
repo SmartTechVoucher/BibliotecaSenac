@@ -83,7 +83,7 @@ body{
 
 .rodape{
     background-color: var(--azulCabecalho);
-    height: 230px;
+    height: 245px;
     width: 100%;
     display: flex;
     justify-content: space-around;
