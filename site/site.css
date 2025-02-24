@@ -55,10 +55,14 @@ header{
 
 .cards_livros{
     display: grid ;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px 20px; /*diferença*/
-    width: 70%;
+    width: 50%;
     margin-top: 3rem;
+    /*height: 50px;*/
+    background-color:aqua;
+    border: 1px solid;
+    
 
 }
 
@@ -66,17 +70,21 @@ header{
 .card{
     border: 1px solid;
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     border-radius: 20px;
     width: 100%;
     
     /*padding: 1rem;*/
     position: relative;
+    /*right: 50%;
+    /*left: 20vw;*/
+    
 }
 
 
 .card p{
     font-size: 15px;
+    align-items: center;
 }
 
 .card img{
@@ -87,28 +95,33 @@ header{
 
 .bottom_card{
     position: absolute;
-    bottom: 0;
+    bottom: 0; /*define a posição vertical de um elemento em relação à sua borda inferio*/
     z-index: 2;/*posição*/
-    right: 0;
+    right: 0; /*define a posição horizontal de um elemento em relação à sua borda direita*/
 }
 
 .form_info{
     z-index: 3;
+    padding: 1px;
 }
+
+
 .botao_reservar{
     width: 46%;
-    padding: 6px;
-    margin: auto;
+    padding: 6px; /*define o espaço entre o conteúdo de um elemento e suas bordas*/
+    margin: 2%; /*define a margem de um elemento HTML, ou seja, a distância entre ele e outros elementos*/
     border: none;
     border-radius: 10px;
-    outline: none;
+    outline: none; /* é uma propriedade do CSS que define uma linha ao redor de um elemento, fora das bordas*/
     text-transform: uppercase;
-    font-weight: 800;
+    font-weight: 800; /*define a espessura ou o peso da fonte, ou seja, o grau de negrito ou leveza do texto. */
     letter-spacing: 3px; /*espaço entre as letras*/
     color: rgb(255, 255, 255); /*cor da letra*/
     background: rgb(246, 139, 31);   /*cor do botao*/
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #8b8787;  /*sombra ao redor do botao*/
+    
+   
 
 
     /*width: 58%;
@@ -126,6 +139,25 @@ header{
     box-shadow: 0px 10px 40px -12px #8b8787; /*sombra ao redor do botao*/
 }
 
+.saiba_mais{
+    width: 50%;
+    height: 35px;
+    border: none;
+    color: rgb(246, 139, 31);
+    position: relative;
+    top: 3px; 
+    left: 70vw;
+    
+}
 
+.tecnologia {
+    display: flex;
+    color: aqua;
+    left: 13vw;
 
+    position: absolute;
+    top: 12%;/*posiciona um elemento na vertical, ou seja, no topo da página*/
+    transform: translate(0,-50%); /* move um elemento para cima, metade da sua altura. */
+
+}
 
