@@ -3,9 +3,7 @@ A Tela Inicial do Adm está semipronta. Ainda faltam adicionar as ligações com
 
 **Para conectar uma tela em outra é necessário que ambas estejam prontas.**
 
-**Falta só uma validação em javascript na parte de cpf na Tela de Cadastro de Usuários.**
-
-*Telas feitas: Tela inicial do adm(semipronta), Tela de cadastro de livros(semipronta)*, Tela de cadastro de Usuários
+*Telas feitas: Tela inicial do adm(semipronta), Tela de cadastro de livros(semipronta)*, Tela de cadastro de Usuários, Tela de relatórios, Tela dos livros não devolvidos
 
 Telas em produção:
 
