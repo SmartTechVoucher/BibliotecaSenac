@@ -104,3 +104,17 @@ function mostrarFalta3SegundoForm(){
     }
 }
 
+//Aparição do texto imagem carregada.
+
+function texto(){
+    const imagemCarregada= document.createElement("p")
+    imagemCarregada.textContent="Imagem carregada."
+    imagemCarregada.style.color="green"
+    
+    let mensagem=document.getElementById("mensagem")
+    mensagem.style.display="block"
+    
+   
+    mensagem.appendChild(imagemCarregada)
+}
+

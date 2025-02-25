@@ -137,23 +137,18 @@ label{
 
 #formulario2{ 
     width: 50%;
-    /* height: 1038px; */
     display: flex;
     flex-direction: column;
     background-color: var(--corFormulario);
     padding: 15px;
-    /* margin-top: -8px; */
     gap: 25px;
     grid-column: 3;
-    /* display: none; */
 }
 
 .paraTestar{
     display: grid;
     grid-template-columns: repeat(10,110px);
     margin-top: 5%;
-    /* grid-template-rows: repeat(10,110px); */
-    /* background-color: none; */
 }
 
 .tituloObrigatorio2, .autorObrigatorio2, .codigoObrigatorio2{
@@ -163,10 +158,35 @@ label{
     height: 40px;
 }
 
+/*.fundoBranco e .upload controlam o retângulo branco e a imagem
+"upload".*/
+
+.fundoBranco{
+    height: 157px;
+   
+}
+
+.upload{
+    position: var(--posicaoAbsoluta);
+    top: 137.3%; left: 29%;
+    
+}
+
+#mensagem{
+    position: var(--posicaoAbsoluta);
+    top: 126.5%; right: 60%;
+}
+
+/* .foto{
+
+} */
+
+/*.fundoBranco e .upload acima controlam o retângulo branco e a imagem
+"upload".*/
+
 /*Segunda metade do formulário*/ /*Segunda metade do formulário*/
 
 #formulario2_segundaMetade{
-    /* display: none; */
     height: 1026px;
     grid-column: 7;
 }
@@ -181,14 +201,6 @@ label{
     left: 60%; top: 180%;
     z-index: 1;
 }
-
-/* .paraAjustar{
-    height: 2000px;
-    width: 80%;
-    margin-top: 2%;
-    display: flex;
-    align-items: center;
-} */
 
 /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
 
@@ -206,16 +218,6 @@ label{
    
 }
 
-/* .rodape .Logo{
-    height: 50px;
-    width: 100px;
-}
-
-.rodape .Libro{
-    height: 100px;
-    width: 200px;
-} */
-
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
 .menu{
@@ -226,10 +228,7 @@ label{
     font-family: var(--fontes);
     font-size: 36px;
     display: none;
-    cursor: pointer;
-    /* position: var(--posicaoAbsoluta);
-    top: 12%; */
-    
+    cursor: pointer;    
 }
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
