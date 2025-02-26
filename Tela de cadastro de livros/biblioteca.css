@@ -158,6 +158,10 @@ label{
     height: 40px;
 }
 
+input:focus {
+    outline: none;
+}
+
 /*.fundoBranco e .upload controlam o retângulo branco e a imagem
 "upload".*/
 
