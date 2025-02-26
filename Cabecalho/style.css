@@ -2,16 +2,26 @@
 header {
     display: flex;
     align-items: center;
-    padding: 10px;
+    justify-content: space-between;
+    padding: 20px;
     background: #333;
     color: white;
-    justify-content: space-between;
+    position: fixed;  /* Fixa o cabeçalho no topo */
+    top: 0;           /* Fixa no topo da página */
+    left: 0;          /* Garante que vai colar à esquerda */
+    width: 100%;      /* O cabeçalho vai ter a largura total da tela */
+    z-index: 1000;    /* Garante que o cabeçalho fique sobre outros elementos */
 }
 
 /* Ícone do menu */
 .menu-icon {
-    font-size: 30px;
     cursor: pointer;
+    margin-right: 20px; /* Ajuste o valor para aumentar o espaço entre o ícone e o logo Senac */
+}
+
+/* Logo Senac */
+.iconeSenac {
+    margin-left: 20px; /* Ajuste o valor para o espaçamento desejado */
 }
 
 /* Navbar oculta por padrão */
@@ -44,4 +54,22 @@ nav ul li a {
 /* Exibir menu quando ativado */
 nav.show {
     display: block;
+}
+
+/* Centraliza o título no cabeçalho */
+.titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;  /* Faz com que a div "titulo" ocupe o máximo de espaço disponível */
+    margin: 0 auto;  /* Garante a centralização do título */
+}
+
+.titulo h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.titulo h2:first-child {
+    margin-bottom: 20px;  /* Ajuste o valor conforme necessário para aumentar a distância */
 }
