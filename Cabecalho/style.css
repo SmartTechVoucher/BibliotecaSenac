@@ -1,16 +1,6 @@
 :root {
-    --azulCabecalho: #001E3E;
-    --fontes: 'Poppins', 'Roboto', 'Montaga';
-    --branco: white;
-    --fonte_rodape: 14px;
-    --fundoPadrao: #EDEDED;
-    --posicao: relative;
-    --posicaoAbsoluta: absolute;
-    --corFormulario: #E5E4E4;
-    --corBotao: #004A90;
-    --vermelho: red;
-    --apontador: pointer;
-    --cinza: #D9D9D9;
+
+    --fontes: 'Poppins', 'Roboto', 'Montaga';   
 }
 
 
@@ -113,3 +103,15 @@ nav.show {
 
 /* RESPONSIVIDADE */
 
+@media (max-width: 1024px) {
+    
+    .header{
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+    .titulo{
+        display: none;
+    }
+   
+}
