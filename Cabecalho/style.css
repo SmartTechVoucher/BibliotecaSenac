@@ -1,5 +1,22 @@
+:root {
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fonte_rodape: 14px;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --corFormulario: #E5E4E4;
+    --corBotao: #004A90;
+    --vermelho: red;
+    --apontador: pointer;
+    --cinza: #D9D9D9;
+}
+
+
 body{
     padding-top: 100px;
+    font-family: var(--fontes);
 }
 
 /* Estilo do cabeçalho */
