@@ -1,0 +1,19 @@
+# ❌ Não enviar configurações sensíveis
+src/config/database.php
+.env
+
+# ❌ Não enviar backups do banco de dados
+database/*.sql
+
+# ❌ Não enviar bibliotecas externas do Composer
+vendor/
+
+# ❌ Não enviar cache e arquivos temporários
+*.log
+*.cache
+
+# ❌ Não enviar arquivos do sistema e editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
