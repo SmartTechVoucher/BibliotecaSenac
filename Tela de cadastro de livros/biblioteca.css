@@ -167,17 +167,9 @@ input:focus {
 
 .fundoBranco{
     height: 157px;
+    width: 405px;
    
 }
-
-#mensagem{
-    position: var(--posicaoAbsoluta);
-    top: 126.5%; right: 60%;
-}
-
-/* .foto{
-
-} */
 
 /*.fundoBranco e .upload acima controlam o retângulo branco e a imagem
 "upload".*/
@@ -247,6 +239,19 @@ input:focus {
 
 }
 
+@media(min-width:375px){
+    .formulario .fundoBranco{
+        width: 350px;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 147.4%;
+
+        width:340px;
+    }
+}
+
 @media(min-width:414px){
     .menu{   
         position: var(--posicaoAbsoluta);
@@ -314,11 +319,17 @@ input:focus {
 
     .upload{
         position: var(--posicaoAbsoluta);
-        top: 153.4%; left: 20%;
-        
+        top: 153.4%; left: 20%;   
     }
     
+    .foto2{
+        height:150px;
+    }
 
+    #mensagem{
+        position: var(--posicaoAbsoluta);
+        top: 140.6%; right: 60%;
+    }
 }
 
 @media(min-width:1358px){
@@ -330,10 +341,13 @@ input:focus {
 
  .upload{
     position: var(--posicaoAbsoluta);
-    top: 142.2%; left: 20%;
-    
+    top: 142.2%; left: 20%;    
 }
 
+  #mensagem{
+      position: var(--posicaoAbsoluta);
+      top: 130.6%; right: 65%;
+    }
 }
 
 @media(min-width: 1912px){
@@ -367,8 +381,12 @@ input:focus {
 
     .upload{
         position: var(--posicaoAbsoluta);
-        top: 137.3%; left: 29%;
-        
+        top: 137.2%; left: 28%;
     }
+
+    #mensagem{
+        position: var(--posicaoAbsoluta);
+        top: 126.6%; right: 57%;
+      }
 
 }

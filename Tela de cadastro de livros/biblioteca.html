@@ -83,17 +83,25 @@
         <label for="Área">Área</label>
         <select name="" id="" class="area">
             <option>Selecione</option>
-            <option>teste</option>
-            <option>teste</option>
-            <option>teste</option>
+            <option>Beleza</option>
+            <option>Comércio</option>
+            <option>Comunicação</option>
+            <option>Design</option>
+            <option>Gestão</option>
+            <option>Moda</option> 
+            <option>Saúde</option>
+            <option>Segurança</option>              
+            <option>Tecnologia da informação - TI</option>   
         </select>
 
         <label for="Unidade">Unidade</label>
         <select name="" id="" class="unidade">
             <option>Selecione</option>
-            <option>teste</option>
-            <option>teste</option>
-            <option>teste</option>
+            <option>Dourados</option>
+            <option>Três Lagoas</option>
+            <option>Ponta Porã</option>
+            <option>Corumbá</option>
+            <option>Campo Grande - Gastronomia</option>
         </select>       
 
         <label for="Editora">Editora</label>
@@ -101,9 +109,12 @@
         
         <label for="Ano">Ano</label>
         <input type="text" class="ano"> 
-        
-        <label for="Foto de capa">Foto de capa</label>
-        <textarea placeholder="Upload" cols="30" rows="10" class="foto"></textarea>
+
+        <label for="foto" class="foto2">
+            <img src="./Ícones/Group 36.png" alt="" class="fundoBranco">
+            <img src="./Ícones/Group 34.png" alt="" class="upload">   
+        </label>
+        <input style="display: none;" type="file" id="foto" onchange="texto()">
 
         <label for="Resumo do livro">Resumo do livro</label>
         <textarea cols="30" rows="10" class="resumo"></textarea>
@@ -114,9 +125,10 @@
         <label for="Tipo de documento">Tipo de documento</label>
         <select name="" id="" class="tipoDocumento">
             <option>Selecione</option>
-            <option>teste</option>
-            <option>teste</option>
-            <option>teste</option>
+            <option>Artigo</option>
+            <option>Folheto</option>
+            <option>Livro</option>
+            <option>Periódico</option>
         </select>
 
         <label for="Local publicado">Local publicado</label>
@@ -125,9 +137,15 @@
         <label for="Categoria/tags">Categoria/tags</label>
         <select name="" id="" class="categoria">
             <option>Selecione</option>
-            <option>teste</option>
-            <option>teste</option>
-            <option>teste</option>
+                <option>Beleza</option>
+                <option>Comércio</option>
+                <option>Comunicação</option>
+                <option>Design</option>
+                <option>Gestão</option>
+                <option>Moda</option>  
+                <option>Saúde</option>
+                <option>Segurança</option>   
+                <option>Tecnologia da informação - TI</option>
         </select>
 
         <button type="submit" class="botao">Enviar <img src="./Ícones/Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button>       
@@ -193,10 +211,15 @@
             <label for="Ano">Ano</label>
             <input type="text" class="ano"> 
             
-            <label for="foto">Foto de capa</label>
+            <label>Foto de capa</label>
+           
+            <label for="foto" class="foto2">
+                <img src="./Ícones/Group 36.png" alt="" class="fundoBranco">
+                <img src="./Ícones/Group 34.png" alt="" class="upload">   
+            </label>
             <input style="display: none;" type="file" id="foto" onchange="texto()">
-            <img src="./Ícones/Group 36.png" alt="" class="fundoBranco">
-            <img src="./Ícones/Group 34.png" alt="" class="upload">
+            <!-- <img src="./Ícones/Group 36.png" alt="" class="fundoBranco">
+            <img src="./Ícones/Group 34.png" alt="" class="upload"> -->
             
             <div id="mensagem"></div>
 
