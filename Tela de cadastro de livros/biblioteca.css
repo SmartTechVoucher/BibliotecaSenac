@@ -170,12 +170,6 @@ input:focus {
    
 }
 
-.upload{
-    position: var(--posicaoAbsoluta);
-    top: 137.3%; left: 29%;
-    
-}
-
 #mensagem{
     position: var(--posicaoAbsoluta);
     top: 126.5%; right: 60%;
@@ -317,6 +311,14 @@ input:focus {
         position: var(--posicaoAbsoluta);
         top: 135%;
     }
+
+    .upload{
+        position: var(--posicaoAbsoluta);
+        top: 153.4%; left: 20%;
+        
+    }
+    
+
 }
 
 @media(min-width:1358px){
@@ -325,6 +327,12 @@ input:focus {
     position: var(--posicaoAbsoluta);
     top: 13%;
  }
+
+ .upload{
+    position: var(--posicaoAbsoluta);
+    top: 142.2%; left: 20%;
+    
+}
 
 }
 
@@ -355,6 +363,12 @@ input:focus {
 
     .rodape .faleConosco, .copyright, .todos, .email, .siga-nos {
         font-size:18px;
+    }
+
+    .upload{
+        position: var(--posicaoAbsoluta);
+        top: 137.3%; left: 29%;
+        
     }
 
 }
