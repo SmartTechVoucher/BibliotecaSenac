@@ -56,7 +56,7 @@ header{
 .cards_livros{
     display: grid ;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px 20px; /*diferença*/
+    gap: 60px 20px; /*diferença*/
     width: 75%;
     margin-top: 3rem;
     /*height: 50px;*/
@@ -145,16 +145,16 @@ header{
     color: rgb(246, 139, 31);
     position: relative;
     top: 3px; 
-    left: 70vw;
+    left: 65vw;
     
 }
 
 .tecnologia {
     display: flex;
     color: aqua;
-    left: 13vw;
+    left: 13vw; /*é um elemento que define o espaço de preenchimento obrigatório no lado esquerdo de um elemento*/
 
-    position: absolute;
+    position: relative;
     top: 12%;/*posiciona um elemento na vertical, ou seja, no topo da página*/
     transform: translate(0,-50%); /* move um elemento para cima, metade da sua altura. */
 
