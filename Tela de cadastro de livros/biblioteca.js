@@ -118,3 +118,16 @@ function texto(){
    
     mensagem.appendChild(imagemCarregada)
 }
+
+function texto2(){
+    
+    const imagemCarregada= document.createElement("p")
+    imagemCarregada.textContent="Imagem carregada."
+    imagemCarregada.style.color="green"
+    
+    let mensagem=document.getElementById("mensagemPrimeiroForm")
+    mensagem.style.display="block"
+    
+   
+    mensagem.appendChild(imagemCarregada)
+}

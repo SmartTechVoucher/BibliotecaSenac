@@ -246,9 +246,13 @@ input:focus {
 
     .formulario .upload{
         position: var(--posicaoAbsoluta);
-        top: 147.4%;
-
+        top: 153.4%;
         width:340px;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 139%; left: 40%;
     }
 }
 
@@ -257,9 +261,38 @@ input:focus {
         position: var(--posicaoAbsoluta);
         top: 11%;
     }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 114.4%; right: 10%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 103.5%; left: 40%;
+    }
+
+    .formulario .fundoBranco{
+        width: 400px;
+    }
+
 }
 
 @media(min-width:768px){
+
+    .formulario .fundoBranco{
+        width: 750px;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 99.6%; right: 25%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 91%; left: 40%;
+    }
 
     .titulo{
         font-size: 12px;
@@ -283,6 +316,20 @@ input:focus {
     position: var(--posicaoAbsoluta);
     top: 18%;
  }
+
+ .formulario .fundoBranco{
+    width: 1010px;
+}
+
+.formulario .upload{
+    position: var(--posicaoAbsoluta);
+    top: 170.6%; right: 35%;
+}
+
+#mensagemPrimeiroForm{
+    position: var(--posicaoAbsoluta);
+    top: 155%; left: 40%;
+}
 
 }
 
@@ -336,17 +383,22 @@ input:focus {
 
  .menu{
     position: var(--posicaoAbsoluta);
-    top: 13%;
+    top: 18%;
  }
 
  .upload{
     position: var(--posicaoAbsoluta);
-    top: 142.2%; left: 20%;    
+    top: 189.2%; left: 20%;    
 }
 
   #mensagem{
       position: var(--posicaoAbsoluta);
-      top: 130.6%; right: 65%;
+      top: 173.6%; right: 65%;
+    }
+
+    .formulario2 .Botao{
+        position: var(--posicaoAbsoluta);
+        top: 175%;
     }
 }
 
@@ -363,7 +415,7 @@ input:focus {
 
     .formulario2 .Botao{
         position: var(--posicaoAbsoluta);
-        left: 56%; top: 125%;
+        left: 56%; top: 110%;
     }
 
     .inferiorDireito .inferior{
@@ -381,12 +433,17 @@ input:focus {
 
     .upload{
         position: var(--posicaoAbsoluta);
-        top: 137.2%; left: 28%;
+        top: 121.2%; left: 28%;
     }
 
     #mensagem{
         position: var(--posicaoAbsoluta);
-        top: 126.6%; right: 57%;
+        top: 111.6%; right: 57%;
       }
+
+      .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+     }
 
 }
