@@ -1,0 +1,160 @@
+:root{
+
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --apontador: pointer;  
+    --bordaBaixaCabeçalho: #769FCD; 
+}
+
+/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+
+.conteiner{
+    background-color: var(--azulCabecalho);
+    width: 100%;
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    font-family: var(--fontes);
+    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
+   
+}
+
+.conteiner .menuAdm{
+    display: flex;
+    align-items: center;
+    gap: 15%;
+}
+
+.menuAdm .hamburguer{
+    width: 100px;
+    height: 50px;
+    cursor: var(--apontador);
+}
+
+body{
+    margin: 0;
+    background-color: var(--fundoPadrao);
+}
+
+.titulo{
+  color: var(--branco);
+  font-size: 12px;
+   
+}
+
+.titulo .senac{
+    position: var(--posicao);
+    right: 20%;
+}
+
+/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Define o ícone com o cursor apontador*/
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 91.6%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*//*Controla a div que aparece ao se clicar em ícone*/
+
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
+
+.conteiner2{
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.conteiner2 .esquerdo, .conteiner2 .direito{
+    width: 100px;
+    height: 100px;
+}
+
+/*Parte inferior do corpo*/
+
+.inferior{
+    display: flex;
+    justify-content: end;
+    /* margin-top: 25%;   */
+}
+
+.inferior img{
+    width: 100px;
+    height: 100px;
+}
+
+/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
+
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 245px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 10px;
+    text-align: center;
+}
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+.menu{
+    width: 366px;
+    height: 500px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 36px;
+    display: none;
+    cursor: pointer;
+    position: var(--posicaoAbsoluta);
+    top: 17%;
+}
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+/*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
+oportuno. "menu a" se refere a parte das ligações com a 
+tag "a". Esse seletor vai retirar a linha típica de link
+"a", vai definir a cor da fonte do link como branca e vai 
+definir a exibição como ao lado*/
+
+/* .menu a{
+    text-decoration: none;
+    color: var(--branco);
+    display: flex;
+} */
+
+@media(min-width:1912px){
+   
+   .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 94.2%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
+}

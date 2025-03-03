@@ -24,6 +24,30 @@ botao[0].addEventListener("click", function(){
 
 })
 
+//Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone.
+
+let icone = document.getElementById("iconeComandante")
+let minhaConta = document.getElementsByClassName("minhaConta")[0]
+
+let menuAberto2 = false
+
+icone.addEventListener("click", function(){
+
+    if(menuAberto2==false){
+        menuAberto2=true
+        minhaConta.style.display="block"
+    }
+
+    else{
+        menuAberto2=false
+        minhaConta.style.display="none"
+    }
+
+})
+
+//Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone.
+
+
 const titulo=document.getElementsByClassName("titulo2")[0]
 const autor=document.getElementsByClassName("autor")[0]
 const codigo=document.getElementsByClassName("codigo")[0]
@@ -104,3 +128,30 @@ function mostrarFalta3SegundoForm(){
     }
 }
 
+//Aparição do texto "imagem carregada".
+
+function texto(){
+    
+    const imagemCarregada= document.createElement("p")
+    imagemCarregada.textContent="Imagem carregada."
+    imagemCarregada.style.color="green"
+    
+    let mensagem=document.getElementById("mensagem")
+    mensagem.style.display="block"
+    
+   
+    mensagem.appendChild(imagemCarregada)
+}
+
+function texto2(){
+    
+    const imagemCarregada= document.createElement("p")
+    imagemCarregada.textContent="Imagem carregada."
+    imagemCarregada.style.color="green"
+    
+    let mensagem=document.getElementById("mensagemPrimeiroForm")
+    mensagem.style.display="block"
+    
+   
+    mensagem.appendChild(imagemCarregada)
+}

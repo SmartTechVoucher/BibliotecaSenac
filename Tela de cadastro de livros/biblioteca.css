@@ -10,6 +10,7 @@
     --corBotao: #004A90;
     --vermelho: red;
     --apontador: pointer;
+    --bordaBaixaCabeçalho: #769FCD;
    
 }
 
@@ -18,12 +19,13 @@
 .conteiner{
     background-color: var(--azulCabecalho);
     width: 100%;
-    height: 80px;
+    height: 140px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 5px;
     font-family: var(--fontes);
-   
+    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
 }
 
 body{
@@ -34,7 +36,10 @@ body{
 .conteiner .menuAdm{
     display: flex;
     align-items: center;
-    /* width:200px; */
+}
+
+.menuAdm{
+    gap: 20px;
 }
 
 .menuAdm .hamburguer{
@@ -45,9 +50,30 @@ body{
 
 .titulo{
   color: var(--branco);
-  font-size: 10px;
-   
+  font-size: 10px;  
 }
+
+.titulo .senac{
+    position: var(--posicao);
+    right: 20%;
+}
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 15%; left: 94%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+}
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
@@ -132,8 +158,14 @@ label{
     flex-direction: column;
     background-color: var(--corFormulario);
     padding: 15px;
-    margin-top: -8px;
     gap: 25px;
+    grid-column: 3;
+}
+
+.paraTestar{
+    display: grid;
+    grid-template-columns: repeat(10,110px);
+    margin-top: 5%;
 }
 
 .tituloObrigatorio2, .autorObrigatorio2, .codigoObrigatorio2{
@@ -143,10 +175,27 @@ label{
     height: 40px;
 }
 
+input:focus {
+    outline: none;
+}
+
+/*.fundoBranco e .upload controlam o retângulo branco e a imagem
+"upload".*/
+
+.fundoBranco{
+    height: 157px;
+    width: 405px;
+   
+}
+
+/*.fundoBranco e .upload acima controlam o retângulo branco e a imagem
+"upload".*/
+
 /*Segunda metade do formulário*/ /*Segunda metade do formulário*/
 
 #formulario2_segundaMetade{
     height: 1026px;
+    grid-column: 7;
 }
 
 #formulario2_segundaMetade .tipoDocumento, .Tipo, .categoria, .Categoria{
@@ -156,7 +205,7 @@ label{
 /*Define o posicionamento do botão e o faz aparecer a frente do segundo formulário.*/
 .formulario2 .Botao{
     position: var(--posicaoAbsoluta);
-    left: 130%; top: 80%;
+    left: 60%; top: 180%;
     z-index: 1;
 }
 
@@ -164,7 +213,7 @@ label{
 
 .rodape{
     background-color: var(--azulCabecalho);
-    height: 159px;
+    height: 240px;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -176,15 +225,7 @@ label{
    
 }
 
-.rodape .Logo{
-    height: 50px;
-    width: 100px;
-}
-
-.rodape .Libro{
-    height: 100px;
-    width: 200px;
-}
+/*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ 
 
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
@@ -196,61 +237,94 @@ label{
     font-family: var(--fontes);
     font-size: 36px;
     display: none;
-    cursor: pointer;
-    
+    cursor: pointer;    
 }
+
+/*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
-@media(min-width: 375px){
-
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-
+@media(max-width: 1024px){
+   
     .logoSenacHub{
+        display: none;   
+    }
+
+    #formulario2,  .formulario2_segundaMetade{
         display: none;
     }
 
-    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
-
-    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
-
-    .rodape .faleConosco, .email,.siga-nos{
+    .rodape .faleConosco, .email,.siga-nos, .Libro, .titulo, .copyright, .todos{
         display: none;     
-    }     
+    }  
 
-    #formulario2{
-        display: none;
+}
+
+@media(min-width:375px){
+    .formulario .fundoBranco{
+        width: 350px;
     }
 
-    .formulario2_segundaMetade{
-        display: none;
-    }
-
-    .menu{
+    .formulario .upload{
         position: var(--posicaoAbsoluta);
-        top: 12%;
+        top: 153.4%;
+        width:340px;
     }
 
-} 
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 139%; left: 40%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 69.5%;
+    }
+    
+}
 
 @media(min-width:414px){
+    .menu{   
+        position: var(--posicaoAbsoluta);
+        top: 11%;
+    }
 
-   #formulario2{
-    display: none;
- }
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 114.4%; right: 10%;
+    }
 
- .formulario2_segundaMetade{
-    display: none;
- }
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 103.5%; left: 40%;
+    }
 
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 9%;
- }
+    .formulario .fundoBranco{
+        width: 400px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 72.5%;
+    }
 
 }
 
 @media(min-width:768px){
+
+    .formulario .fundoBranco{
+        width: 750px;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 99.6%; right: 25%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 91%; left: 40%;
+    }
 
     .titulo{
         font-size: 12px;
@@ -268,10 +342,37 @@ label{
         display: block;
     }
 
-    .menu{
+    .minhaConta{
         position: var(--posicaoAbsoluta);
-        top: 8%;
+        top: 13%; left: 84.9%;
     }
+
+}
+
+@media(min-width:1024px){
+    .menu{
+    position: var(--posicaoAbsoluta);
+    top: 18%;
+ }
+
+ .formulario .fundoBranco{
+    width: 1010px;
+}
+
+.formulario .upload{
+    position: var(--posicaoAbsoluta);
+    top: 170.6%; right: 35%;
+}
+
+#mensagemPrimeiroForm{
+    position: var(--posicaoAbsoluta);
+    top: 155%; left: 40%;
+}
+
+.minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 20%; left: 88.9%;
+}
 
 }
 
@@ -282,23 +383,17 @@ label{
     }
 
     #formulario2{
-        display: block;
         display: flex;
         width: 410.5px;
-        position: var(--posicao);
-        left: 20%; top: 8px; 
         border-right: 1px solid white;
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
 
     .formulario2_segundaMetade{
-        display: block;
         display: flex;
         flex-direction: column;
         width: 410.5px;
         height: 983px;
-        position: var(--posicaoAbsoluta);
-        top: 23%; left: 54.5%;
         background-color: var(--corFormulario);
         gap: 15px;
         padding: 10px;
@@ -307,55 +402,47 @@ label{
         box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
     }
 
-    .rodape .email{
-        display: block;
+    .formulario2 .Botao{
+        position: var(--posicaoAbsoluta);
+        top: 135%;
     }
     
-    .rodape .siga-nos{
-        display: block;
+    .foto2{
+        height:150px;
     }
 
-    .rodape .Logo{
-        width: 114px;
-        height: 80px;
-    }
-
-    .menu{
+    #mensagem{
         position: var(--posicaoAbsoluta);
-        top: 10%;
+        top: 140.6%; right: 60%;
     }
 
-    #formulario2_segundaMetade .Botao{
-        justify-content: center;
-        display: flex;
-        align-items: center; 
-        height: 400px;
-       
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 15%; left: 91%;
     }
-
-    .titulo{
-        position: var(--posicao);
-        right: 10%;
-    }
-
 }
 
 @media(min-width:1358px){
 
- .formulario2_segundaMetade{
-    position: var(--posicaoAbsoluta);
-    top: 28.3%; left: 53%;
- }
-
- #formulario2{
-    border-right: 4px solid white;
- }
-
  .menu{
     position: var(--posicaoAbsoluta);
-    top: 13%;
+    top: 18%;
  }
 
+  #mensagem{
+      position: var(--posicaoAbsoluta);
+      top: 173.6%; right: 65%;
+    }
+
+    .formulario2 .Botao{
+        position: var(--posicaoAbsoluta);
+        top: 175%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 17%; left: 91.6%;
+    }
 }
 
 @media(min-width: 1912px){
@@ -365,42 +452,41 @@ label{
         height: 150px;
     }
 
+    .paraTestar{
+        margin-left: 15%;
+    }
+
+    .formulario2 .Botao{
+        position: var(--posicaoAbsoluta);
+        left: 56%; top: 122%;
+    }
+
     .inferiorDireito .inferior{
         width: 150px;
         height: 150px;
     }
 
-    #formulario2{
-        position: var(--posicao);
-        top: 40%; left: 29.5%;
-        border-right: 6px solid white;
-    }
-
-    #formulario2_segundaMetade{
-        position: var(--posicaoAbsoluta);
-        top: 26.5%; left: 52.8%;
-        border-left: 3px solid white;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 9%;
-    }
-
-    .rodape .Logo{
-        width:200px;
-    }
-
-    .rodape .Libro{
-        width: 300px;
-        /* height: 200px; */
+    .rodape{
+        height: 245px;
     }
 
     .rodape .faleConosco, .copyright, .todos, .email, .siga-nos {
         font-size:18px;
     }
 
-    .rodape{
-        height:170px;
+    #mensagem{
+        position: var(--posicaoAbsoluta);
+        top: 126.5%; right: 57%;
+      }
+
+      .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+     }
+
+     .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 94%;
     }
+
 }
