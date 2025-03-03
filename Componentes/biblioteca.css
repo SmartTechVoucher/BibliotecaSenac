@@ -53,6 +53,28 @@ body{
     right: 20%;
 }
 
+/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Define o ícone com o cursor apontador*/
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 91.6%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*//*Controla a div que aparece ao se clicar em ícone*/
+
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
 .conteiner2{
@@ -106,8 +128,10 @@ body{
     display: none;
     cursor: pointer;
     position: var(--posicaoAbsoluta);
-    top: 13%;
+    top: 17%;
 }
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
 /*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
 oportuno. "menu a" se refere a parte das ligações com a 
@@ -120,3 +144,17 @@ definir a exibição como ao lado*/
     color: var(--branco);
     display: flex;
 } */
+
+@media(min-width:1912px){
+   
+   .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 94.2%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
+}
