@@ -406,11 +406,6 @@ input:focus {
         position: var(--posicaoAbsoluta);
         top: 135%;
     }
-
-    .upload{
-        position: var(--posicaoAbsoluta);
-        top: 153.4%; left: 20%;   
-    }
     
     .foto2{
         height:150px;
@@ -433,11 +428,6 @@ input:focus {
     position: var(--posicaoAbsoluta);
     top: 18%;
  }
-
- .upload{
-    position: var(--posicaoAbsoluta);
-    top: 189.2%; left: 20%;    
-}
 
   #mensagem{
       position: var(--posicaoAbsoluta);
