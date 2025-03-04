@@ -11,6 +11,7 @@
     --vermelho: red;
     --apontador: pointer;
     --cinza: #D9D9D9;
+    --bordaBaixaCabeçalho: #769FCD;
    
 }
 
@@ -19,17 +20,20 @@
 .conteiner{
     background-color: var(--azulCabecalho);
     width: 100%;
-    height: 80px;
+    height: 150px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding-top: 5px;
     font-family: var(--fontes);
+    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
    
 }
 
 .conteiner .menuAdm{
     display: flex;
     align-items: center;
+    gap: 15%;
 }
 
 .menuAdm .hamburguer{
@@ -49,6 +53,33 @@ body{
   font-size: 10px;
    
 }
+
+.titulo .senac{
+    position: var(--posicao);
+    right: 20%;
+}
+
+/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Define o ícone com o cursor apontador*/
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 91.5%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*//*Controla a div que aparece ao se clicar em ícone*/
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
@@ -178,7 +209,8 @@ body{
     font-size: 36px;
     display: none;
     cursor: pointer;
-    
+    position: var(--posicaoAbsoluta);
+    top: 20%;    
 }
 
 /*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
@@ -192,12 +224,25 @@ oportuno. */
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
+@media(max-width:1024px){
+    
+    .titulo{
+        display: none;
+    }
+    
+}
+
 @media(min-width: 375px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
     .logoSenacHub{
         display: none;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 17%; left: 69.5%;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
@@ -215,10 +260,10 @@ oportuno. */
         display: none;     
     }     
 
-    .menu{
+    /* .menu{
         position: var(--posicaoAbsoluta);
         top: 12%;
-    }
+    } */
 
 } 
 
@@ -230,7 +275,12 @@ oportuno. */
 
  .menu{
     position: var(--posicaoAbsoluta);
-    top: 9%;
+    top: 13%;
+ }
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 72.5%;
  }
 
 }
@@ -279,10 +329,15 @@ oportuno. */
         display: block;
     }
 
-    .menu{
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 85.2%;
+    }
+
+    /* .menu{
         position: var(--posicaoAbsoluta);
         top: 8%;
-    }
+    } */
 }
 
 @media(min-width: 1024px){
@@ -312,7 +367,12 @@ oportuno. */
 
     .menu{
         position: var(--posicaoAbsoluta);
-        top: 13%;
+        top: 20%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 19%; left: 88.9%;
     }
 
 }
@@ -341,7 +401,12 @@ oportuno. */
 
     .menu{
         position: var(--posicaoAbsoluta);
-        top: 10%;
+        top: 16%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 19%; left: 91.1%;
     }
 
     .titulo{
@@ -389,7 +454,12 @@ oportuno. */
 
 .menu{
     position: var(--posicaoAbsoluta);
-    top: 13%;
+    top: 18%;
+}
+
+.minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 19%; left: 91.5%;
 }
 
 }
@@ -450,7 +520,12 @@ oportuno. */
    
    .menu{
         position: var(--posicaoAbsoluta);
-        top: 8%;
+        top: 13%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 94%;
     }
 
 
