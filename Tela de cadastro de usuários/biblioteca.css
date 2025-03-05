@@ -176,7 +176,7 @@ body{
 
 .rodape{
     background-color: var(--azulCabecalho);
-    height: 159px;
+    height: 240px;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -188,7 +188,7 @@ body{
    
 }
 
-.rodape .Logo{
+/* .rodape .Logo{
     height: 50px;
     width: 100px;
 }
@@ -196,7 +196,7 @@ body{
 .rodape .Libro{
     height: 100px;
     width: 200px;
-}
+} */
 
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
@@ -226,7 +226,7 @@ oportuno. */
 
 @media(max-width:1024px){
     
-    .titulo{
+    .titulo,.Libro, .copyright,.todos{
         display: none;
     }
     
@@ -253,17 +253,6 @@ oportuno. */
         width: 100px;
         height: 100px;
     }
-   
-    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
-
-    .rodape .faleConosco, .siga-nos, .emailAtendimento{
-        display: none;     
-    }     
-
-    /* .menu{
-        position: var(--posicaoAbsoluta);
-        top: 12%;
-    } */
 
 } 
 
@@ -286,15 +275,6 @@ oportuno. */
 }
 
 @media(min-width:768px){
-
- /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/           
-    .titulo{
-        font-size: 12px;
-    }
-
-    .conteiner .logoSenacHub{
-        display: block;
-    }
  
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
@@ -325,19 +305,11 @@ oportuno. */
         font-size: 14px;
     }
 
-    .rodape .faleConosco{
-        display: block;
-    }
-
     .minhaConta{
         position: var(--posicaoAbsoluta);
         top: 13%; left: 85.2%;
     }
 
-    /* .menu{
-        position: var(--posicaoAbsoluta);
-        top: 8%;
-    } */
 }
 
 @media(min-width: 1024px){
@@ -358,11 +330,6 @@ oportuno. */
 
     .quadradoCinza .div{
         padding-right: 40% ;
-    }
-
-    .rodape .Logo{
-        width: 180px;
-        height: 70px;
     }
 
     .menu{
@@ -448,10 +415,6 @@ oportuno. */
     height: 150px;
 }
 
-.rodape .emailAtendimento{
-    display: block;
-}
-
 .menu{
     position: var(--posicaoAbsoluta);
     top: 18%;
@@ -465,7 +428,6 @@ oportuno. */
 }
 
 @media(min-width: 1912px){
-
 
     .conteiner{
         height: 140px;
@@ -508,15 +470,6 @@ oportuno. */
    .quadradoCinza .nome, .nomeSocial, .email, .matricula, .cpf, .senha{
         width: 310px;
    }
-
-   .rodape{
-        height: 176px;
-   }
-
-   .rodape .Libro{
-        width: 447px;
-        height: 127px;
-   }
    
    .menu{
         position: var(--posicaoAbsoluta);
@@ -527,6 +480,5 @@ oportuno. */
         position: var(--posicaoAbsoluta);
         top: 13%; left: 94%;
     }
-
 
 }
