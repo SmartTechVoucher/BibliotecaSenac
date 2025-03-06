@@ -52,6 +52,16 @@
 
     <div class="linhaazul"></div>
 
+
+    <!-- ÍCONES DOS QUADRADOS SUPERIORES DIREITO E ESQUERDO -->
+
+    <div class="iconesSuperiores">
+
+        <img src="../iconesUsados/Superior esquerdo.png" alt="Superior esquerdo" class="esquerdo">
+        <img src="../iconesUsados/Superior direito.png" alt="Superior direito" class="direito">
+    
+    </div>
+   
     <!-- ARQUIVO JS PARA EXPORTAR -->
 
     <script src="./script.js"></script>

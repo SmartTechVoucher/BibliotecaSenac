@@ -38,7 +38,7 @@ header {
 nav {
     display: none;
     position: absolute;
-    top: 50px;
+    top: 80px;
     left: 10px;
     background: #001E3E;
     padding: 10px;
@@ -100,6 +100,21 @@ nav.show {
     margin: 5px 0 0; /* Espaço entre a imagem e o texto */
     font-weight: bold;
 }
+
+.iconesSuperiores{
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+   
+}
+
+.iconesSuperiores .esquerdo{
+
+    left: 0;
+
+}
+
+
 
 /* RESPONSIVIDADE */
 
