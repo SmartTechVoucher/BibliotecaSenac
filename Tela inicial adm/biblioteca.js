@@ -26,3 +26,21 @@ botao[0].addEventListener("click", function(){
 
 })
 
+let icone = document.getElementById("iconeComandante")
+let minhaConta = document.getElementsByClassName("minhaConta")[0]
+
+let menuAberto2 = false
+
+icone.addEventListener("click", function(){
+
+    if(menuAberto2==false){
+        menuAberto2=true
+        minhaConta.style.display="block"
+    }
+
+    else{
+        menuAberto2=false
+        minhaConta.style.display="none"
+    }
+
+})

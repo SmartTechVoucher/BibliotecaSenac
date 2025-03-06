@@ -9,8 +9,7 @@
     --azulQuadrado: hwb(210 0% 62% / 0.5);
     --tamanhoFonte: 10px;
     --apontador:pointer;
-
-   
+    --bordaBaixaCabeçalho: #769FCD;   
 }
 
 /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
@@ -22,12 +21,14 @@
     justify-content: space-between;
     padding-top: 5px;
     font-family: var(--fontes);
+    border-bottom: var(--bordaBaixaCabeçalho) solid 5px;
    
 }
 
 .menuAdm{
     display: flex;
     align-items: center;
+    gap: 15%;
 }
 
 .menuAdm .hamburguer{
@@ -74,6 +75,23 @@ h2{
   padding-top: 5%;
   padding-left: 10%;   
 }
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 15%; left: 94%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+}
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
@@ -286,13 +304,22 @@ h2{
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
-@media(min-width:365px){
+@media(min-width:375px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
     .logoSenacHub{
         display: none;
     }
+
+    /*evento do cabeçalho*/ /*evento do cabeçalho*/ /*evento do cabeçalho*/
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 69.5%; top: 17%;
+    }
+
+    /*evento do cabeçalho*//*evento do cabeçalho*//*evento do cabeçalho*//*evento do cabeçalho*/
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
@@ -407,11 +434,16 @@ h2{
 
 }
 
-@media(min-width:465px){
+@media(min-width:414px){
 
     .menu{
         position: var(--posicao);
         top: 100px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 72.5%; top: 14%;
     }
 
     .inferiorDireito{
@@ -426,6 +458,11 @@ h2{
 
     .logoSenacHub{
         display: block;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 79.8%; top: 17%;
     }
 
     .icone{
@@ -553,6 +590,11 @@ h2{
         right: 3%;
     }
 
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 82.8%; top: 17%;
+    }
+
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
     .conteiner2{
@@ -653,6 +695,11 @@ h2{
 
    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
+   .minhaConta{
+    position: var(--posicaoAbsoluta);
+    left: 85.1%; top: 17%;
+ }
+
     .conteiner2{
         width: 700px;
     }
@@ -692,6 +739,11 @@ h2{
         display: block;
         font-size: 14px;
         padding-right: 10%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 86.8%; top: 17%;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
@@ -799,6 +851,11 @@ h2{
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 88.2%; top: 17%;
+    }
+
     .conteiner2{
         width: 900px;
     }
@@ -888,6 +945,11 @@ h2{
        font-size: 16px;
     }
 
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 89.3%; top: 17%;
+    }
+
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
     .conteiner2{
@@ -967,6 +1029,11 @@ h2{
     .titulo{
        position: var(--posicao);
        bottom: 15%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 90.2%; top: 17%;
     }
 
     .icone{
@@ -1060,6 +1127,11 @@ h2{
         bottom: 24%;
     }
 
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.6%; top: 17%;
+    }
+
     .icone{
         padding-right: 1%;
         width: 50px;
@@ -1116,6 +1188,11 @@ h2{
     .titulo{
        position: var(--posicao);
        bottom: 55%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 94%; top: 12%;
     }
 
     .adm{
