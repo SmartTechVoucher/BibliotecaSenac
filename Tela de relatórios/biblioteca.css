@@ -11,7 +11,7 @@
     --vermelho: red;
     --apontador: pointer;
     --cinza: #D9D9D9;
-   
+    --bordaBaixaCabeçalho: #769FCD;
 }
 
 /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
@@ -25,6 +25,7 @@
     align-items: center;
     padding-top: 5px;
     font-family: var(--fontes);
+    border-bottom: solid 5px var(--bordaBaixaCabeçalho) ;
    
 }
 
@@ -323,10 +324,6 @@ oportuno. */
         font-size: 14px;
     }
 
-    .rodape .faleConosco{
-        display: block;
-    }
-
     .menu{
         position: var(--posicaoAbsoluta);
         top: 11%;
@@ -407,10 +404,6 @@ oportuno. */
 .inferior img{
     width: 150px;
     height: 150px;
-}
-
-.rodape .emailAtendimento{
-    display: block;
 }
 
 .menu{
