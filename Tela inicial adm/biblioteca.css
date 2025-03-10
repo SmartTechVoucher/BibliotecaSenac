@@ -302,6 +302,27 @@ h2{
     cursor: pointer;   
 }
 
+/*Overlay de cadastro*/ /*Overlay de cadastro*/ /*Overlay de cadastro*/
+
+.overlayCadastro{
+    background-color: var(--branco);
+    cursor: var(--apontador);
+    display: none;
+}
+
+/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+#overlayRelatorio{
+    position: var(--posicaoAbsoluta);
+    top: 55%; left: 35%;
+    background-color: var(--branco);
+    cursor: var(--apontador);
+    display: none;
+}
+
+
+
+
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
 @media(min-width:375px){
@@ -432,6 +453,18 @@ h2{
         top: 110px;
      }
 
+     /*Overlay de cadastro*/ /*Overlay de cadastro*/
+
+     .overlayCadastro{
+        height: 105px;
+     }
+
+     .overlayCadastro .item{
+        font-size: 9px;
+     }
+
+     /*Overlay de cadastro*//*Overlay de cadastro*/
+
 }
 
 @media(min-width:414px){
@@ -476,6 +509,20 @@ h2{
         flex-wrap: nowrap;
         width: 500px;
     }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -111%; right: 73%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
     .inferiorDireito{
         margin-top: 43%;
@@ -609,6 +656,21 @@ h2{
         width: 600px;
     }
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -111%; right: 75%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
     .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
@@ -690,7 +752,6 @@ h2{
 
 }
 
-
 @media(min-width:766px){
 
    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
@@ -729,6 +790,21 @@ h2{
        margin-top: 31%;
     }
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -107%; right: 77%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
 }
 
 @media(min-width:866px){
@@ -765,6 +841,19 @@ h2{
         width: 800px;
     }
 
+     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -94%; right: 80%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
@@ -867,6 +956,20 @@ h2{
     .inferiorDireito{
        margin-top: 23%;
     }
+
+     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -94%; right: 80%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 11px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
     /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/
 
@@ -1015,6 +1118,16 @@ h2{
     .Libro, .copyright, .todos{
         display: block;
     }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -92%; right: 81.4%;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
 }
 
@@ -1181,6 +1294,16 @@ h2{
         display: block;
     }
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -87%; right: 84.5%;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
 }
 
 @media(min-width:1912px){
@@ -1273,10 +1396,24 @@ h2{
         left: 30%; 
     }
 
-
     .inferiorDireito{
         margin-top:12%;
     }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        height: 160px;
+        position: var(--posicaoAbsoluta);
+        bottom: 29%; right: 83.1%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 16px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
 
 }
 

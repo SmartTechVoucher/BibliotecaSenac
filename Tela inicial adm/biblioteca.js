@@ -44,3 +44,41 @@ icone.addEventListener("click", function(){
     }
 
 })
+
+let cadastrar = document.getElementsByClassName("caixa")[0]
+let overlay = document.getElementsByClassName("overlayCadastro")[0]
+
+let menuAberto3 = false
+
+cadastrar.addEventListener("click", function(){
+
+    if(menuAberto3==false){
+        menuAberto3=true
+        overlay.style.display="block"
+    }
+
+    else{
+        menuAberto3=false
+        overlay.style.display="none" 
+    }
+
+})
+
+let relatorio = document.getElementsByClassName("caixa")[2]
+let overlayRelatorio = document.getElementsById("overlayRelatorio")[0]
+
+let menuAberto4 = false
+
+overlayRelatorio.addEventListener("click", function(){
+
+    if(menuAberto4==false){
+        menuAberto4=true
+        overlayRelatorio.style.display="block"
+    }
+
+    else{
+        menuAberto4=false
+        overlayRelatorio.style.display="none" 
+    }
+
+})
