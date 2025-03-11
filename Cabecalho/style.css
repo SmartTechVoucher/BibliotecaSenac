@@ -101,20 +101,21 @@ nav.show {
     font-weight: bold;
 }
 
-.iconesSuperiores{
+.iconesSuperiores {
     display: flex;
-    height: 100px;
     justify-content: space-between;
-   
+    align-items: center;
+    width: 100vw; /* Ocupa 100% da tela */
+    height: 100px;
+    box-sizing: border-box;
+    padding: 0; /* Sem padding, totalmente colado nas bordas */
 }
 
-.iconesSuperiores .esquerdo{
-
-    left: 0;
-
+.iconesSuperiores img {
+    height: 100%; /* Preenche altura da div */
+    max-width: 100px; /* Limita o tamanho para não estourar */
+    object-fit: contain; /* Mantém a proporção */
 }
-
-
 
 /* RESPONSIVIDADE */
 
