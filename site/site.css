@@ -19,6 +19,17 @@ header{
     width: 100%;
 
     border-radius: 10px;
+    .superior{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        border: #4658ff 1px solid;
+
+        .grid_superior{
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }
 
 *{
@@ -289,3 +300,4 @@ header{
     left: 70vw;
     top: 7px; 
 }
+
