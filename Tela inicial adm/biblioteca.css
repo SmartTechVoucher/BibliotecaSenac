@@ -442,26 +442,44 @@ h2{
          display: none;
      }
 
-     .Logo{
+     /* .Logo{
         width: 100px;
-     }
+     } */
 
      .menu{
         position: var(--posicao);
         top: 110px;
      }
 
-     /*Overlay de cadastro*/ /*Overlay de cadastro*/
+   /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
-     .overlayCadastro{
-        height: 105px;
-     }
+   .overlayCadastro{
+    height: 160px;
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 8%; right: 73%;
+   }
 
-     .overlayCadastro .item{
-        font-size: 9px;
-     }
+.overlayCadastro .item{
+    font-size: 10px;
+}
 
-     /*Overlay de cadastro*//*Overlay de cadastro*/
+/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+#overlayRelatorio{
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 20%; right: 27%;
+}
+
+#overlayRelatorio .relatorio{
+    font-size: 10px;
+}
+
+/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
 }
 
@@ -481,6 +499,37 @@ h2{
         margin-top: 28.5%;
     }
 
+ /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+   .overlayCadastro{
+        height: 160px;
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 31%; right: 75.5%;
+   }
+
+   .overlayCadastro .item{
+       font-size: 10px;
+    }
+
+ /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+ /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+ #overlayRelatorio{
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 40%; right: 34%;
+ }
+
+ #overlayRelatorio .relatorio{
+    font-size: 10px;
+ }
+
+ /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+
 }
 
 @media(min-width:565px){
@@ -493,7 +542,7 @@ h2{
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 79.8%; top: 17%;
+        left: 79.8%; top: 15%;
     }
 
     .icone{
@@ -511,9 +560,10 @@ h2{
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
     .overlayCadastro{
-        height: 118px;
+        height: 160px;
+        width: 67px;
         position: var(--posicaoAbsoluta);
-        bottom: -111%; right: 73%;
+        bottom: 31.5%; right: 84%;
     }
 
     .overlayCadastro .item{
@@ -521,6 +571,22 @@ h2{
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+   
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 67px;
+        position: var(--posicaoAbsoluta);
+        bottom: 41%; right: 58.8%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
 
     .inferiorDireito{
         margin-top: 43%;
@@ -748,15 +814,44 @@ h2{
          text-align: center;
      }
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+      .overlayCadastro{
+        height: 160px;
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 35.5%; right: 84.7%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+   
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 43%; right: 58.8%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 }
 
-@media(min-width:766px){
+@media(min-width:768px){
 
    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
    .minhaConta{
     position: var(--posicaoAbsoluta);
-    left: 85.1%; top: 17%;
+    left: 85.1%; top: 13%;
  }
 
     .conteiner2{
@@ -788,19 +883,35 @@ h2{
        margin-top: 31%;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+   /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
-    .overlayCadastro{
-        height: 118px;
-        position: var(--posicaoAbsoluta);
-        bottom: -107%; right: 77%;
-    }
+   .overlayCadastro{
+    height: 160px;
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 39.5%; right: 86%;
+ }
 
     .overlayCadastro .item{
-        font-size: 10px;
-    }
+    font-size: 10px;
+ }
 
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+#overlayRelatorio{
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 46.5%; right: 60%;
+}
+
+#overlayRelatorio .relatorio{
+    font-size: 10px;
+}
+
+/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
 
 }
