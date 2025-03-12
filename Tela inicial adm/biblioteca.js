@@ -65,11 +65,11 @@ cadastrar.addEventListener("click", function(){
 })
 
 let relatorio = document.getElementsByClassName("caixa")[2]
-let overlayRelatorio = document.getElementsById("overlayRelatorio")[0]
+let overlayRelatorio = document.getElementById("overlayRelatorio")
 
 let menuAberto4 = false
 
-overlayRelatorio.addEventListener("click", function(){
+relatorio.addEventListener("click", function(){
 
     if(menuAberto4==false){
         menuAberto4=true

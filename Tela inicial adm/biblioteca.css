@@ -1,6 +1,7 @@
 :root{
 
     --azulCabecalho: #001E3E;
+    --corParaOverlays: #d9d9d9;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
     --fundoPadrao: #EDEDED;
@@ -305,23 +306,20 @@ h2{
 /*Overlay de cadastro*/ /*Overlay de cadastro*/ /*Overlay de cadastro*/
 
 .overlayCadastro{
-    background-color: var(--branco);
+    background-color: var(--corParaOverlays);
     cursor: var(--apontador);
     display: none;
+    text-align: center;
 }
 
 /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
 #overlayRelatorio{
-    position: var(--posicaoAbsoluta);
-    top: 55%; left: 35%;
-    background-color: var(--branco);
+    background-color: var(--corParaOverlays);
     cursor: var(--apontador);
     display: none;
+    text-align: center;
 }
-
-
-
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
@@ -1403,9 +1401,9 @@ h2{
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
      .overlayCadastro{
-        height: 160px;
+        height: 205px;
         position: var(--posicaoAbsoluta);
-        bottom: 29%; right: 83.1%;
+        bottom: 25%; right: 83.1%;
     }
 
     .overlayCadastro .item{
@@ -1413,7 +1411,15 @@ h2{
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+    
+    /*Overlay de relatórios*/ /*Overlay de relatórios*/ /*Overlay de relatórios*/
+    
+    #overlayRelatorio{
+    position: var(--posicaoAbsoluta);
+    top: 55%; left: 33.6%;
+    width: 200px;
+    }
 
-
+    /*Overlay de relatórios*/ /*Overlay de relatórios*/ /*Overlay de relatórios*/
 }
 
