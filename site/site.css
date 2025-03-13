@@ -75,7 +75,7 @@ header{
     width: 75%;
     margin-top: 3rem;
     /*height: 50px;*/
-    background-color:aqua;
+    /*background-color:aqua;*/
     border: 1px solid;
     margin: 0 auto;
 
@@ -182,7 +182,7 @@ header{
     width: 75%;
     margin-top: 3rem;
     /*height: 50px;*/
-    background-color:rgb(78, 255, 172);
+    /*background-color:rgb(78, 255, 172);*/
     border: 1px solid;
     margin: 0 auto;
 }
@@ -250,7 +250,7 @@ header{
     width: 75%;
     margin-top: 3rem;
     /*height: 50px;*/
-    background-color:rgb(227, 156, 255);
+    /*background-color:rgb(227, 156, 255);*/
     border: 1px solid;
     margin: 0 auto;
 }
@@ -321,12 +321,17 @@ header{
             width: 250px;
             height: 250px;
             flex-shrink: 0;
-            opacity: 0.6;
+            opacity: 0.5;
             transition: all 500ms ease-in-out;
+            width: 25%;
+            
         }
 
         .current-item{
             opacity: 1;
+            box-shadow: 0 0 10px black;
+            width: 25%;
+            height: 50%;
         }
 
         
