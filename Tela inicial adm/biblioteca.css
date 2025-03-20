@@ -321,6 +321,21 @@ h2{
     text-align: center;
 }
 
+/*Limpeza e estilização do atalho "a"*//*Limpeza e estilização do atalho "a"*/
+
+a{
+    text-decoration: none;
+    color: var(--branco) ;
+}
+
+/*Limpeza e estilização do atalho "a"*//*Limpeza e estilização do atalho "a"*/
+
+.overlayCadastro .item{
+    color: black;
+}
+
+
+
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
 @media(min-width:375px){
@@ -462,6 +477,7 @@ h2{
 
 .overlayCadastro .item{
     font-size: 10px;
+    /* color: black; */
 }
 
 /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
