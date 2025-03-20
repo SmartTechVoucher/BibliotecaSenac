@@ -1,6 +1,7 @@
 :root{
 
     --azulCabecalho: #001E3E;
+    --corParaOverlays: #d9d9d9;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
     --fundoPadrao: #EDEDED;
@@ -9,8 +10,7 @@
     --azulQuadrado: hwb(210 0% 62% / 0.5);
     --tamanhoFonte: 10px;
     --apontador:pointer;
-
-   
+    --bordaBaixaCabeçalho: #769FCD;   
 }
 
 /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
@@ -22,12 +22,14 @@
     justify-content: space-between;
     padding-top: 5px;
     font-family: var(--fontes);
+    border-bottom: var(--bordaBaixaCabeçalho) solid 5px;
    
 }
 
 .menuAdm{
     display: flex;
     align-items: center;
+    gap: 15%;
 }
 
 .menuAdm .hamburguer{
@@ -74,6 +76,23 @@ h2{
   padding-top: 5%;
   padding-left: 10%;   
 }
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 15%; left: 94%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+}
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
@@ -284,15 +303,57 @@ h2{
     cursor: pointer;   
 }
 
+/*Overlay de cadastro*/ /*Overlay de cadastro*/ /*Overlay de cadastro*/
+
+.overlayCadastro{
+    background-color: var(--corParaOverlays);
+    cursor: var(--apontador);
+    display: none;
+    text-align: center;
+}
+
+/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+#overlayRelatorio{
+    background-color: var(--corParaOverlays);
+    cursor: var(--apontador);
+    display: none;
+    text-align: center;
+}
+
+/*Limpeza e estilização do atalho "a"*//*Limpeza e estilização do atalho "a"*/
+
+a{
+    text-decoration: none;
+    color: var(--branco) ;
+}
+
+/*Limpeza e estilização do atalho "a"*//*Limpeza e estilização do atalho "a"*/
+
+.overlayCadastro .item{
+    color: black;
+}
+
+
+
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
-@media(min-width:365px){
+@media(min-width:375px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
     .logoSenacHub{
         display: none;
     }
+
+    /*evento do cabeçalho*/ /*evento do cabeçalho*/ /*evento do cabeçalho*/
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 69.5%; top: 17%;
+    }
+
+    /*evento do cabeçalho*//*evento do cabeçalho*//*evento do cabeçalho*//*evento do cabeçalho*/
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
@@ -396,27 +457,94 @@ h2{
          display: none;
      }
 
-     .Logo{
+     /* .Logo{
         width: 100px;
-     }
+     } */
 
      .menu{
         position: var(--posicao);
         top: 110px;
      }
 
+   /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+   .overlayCadastro{
+    height: 160px;
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 8%; right: 73%;
+   }
+
+.overlayCadastro .item{
+    font-size: 10px;
+    /* color: black; */
 }
 
-@media(min-width:465px){
+/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+#overlayRelatorio{
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 20%; right: 27%;
+}
+
+#overlayRelatorio .relatorio{
+    font-size: 10px;
+}
+
+/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+}
+
+@media(min-width:414px){
 
     .menu{
         position: var(--posicao);
         top: 100px;
     }
 
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 72.5%; top: 14%;
+    }
+
     .inferiorDireito{
         margin-top: 28.5%;
     }
+
+ /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+   .overlayCadastro{
+        height: 160px;
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 31%; right: 75.5%;
+   }
+
+   .overlayCadastro .item{
+       font-size: 10px;
+    }
+
+ /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+ /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+ #overlayRelatorio{
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 40%; right: 34%;
+ }
+
+ #overlayRelatorio .relatorio{
+    font-size: 10px;
+ }
+
+ /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
 
 }
 
@@ -426,6 +554,11 @@ h2{
 
     .logoSenacHub{
         display: block;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 79.8%; top: 15%;
     }
 
     .icone{
@@ -439,6 +572,37 @@ h2{
         flex-wrap: nowrap;
         width: 500px;
     }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 160px;
+        width: 67px;
+        position: var(--posicaoAbsoluta);
+        bottom: 31.5%; right: 84%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+   
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 67px;
+        position: var(--posicaoAbsoluta);
+        bottom: 41%; right: 58.8%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
 
     .inferiorDireito{
         margin-top: 43%;
@@ -553,6 +717,11 @@ h2{
         right: 3%;
     }
 
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 82.8%; top: 17%;
+    }
+
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
     .conteiner2{
@@ -566,6 +735,21 @@ h2{
     .adm{
         width: 600px;
     }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -111%; right: 75%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
@@ -646,13 +830,46 @@ h2{
          text-align: center;
      }
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+      .overlayCadastro{
+        height: 160px;
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 35.5%; right: 84.7%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+   
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 43%; right: 58.8%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 }
 
-
-@media(min-width:766px){
+@media(min-width:768px){
 
    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
+   .minhaConta{
+    position: var(--posicaoAbsoluta);
+    left: 85.1%; top: 13%;
+ }
+
     .conteiner2{
         width: 700px;
     }
@@ -679,12 +896,45 @@ h2{
     }
 
     .inferiorDireito{
-       margin-top: 31%;
+       margin-top: 38.2%;
     }
 
+ /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+   .overlayCadastro{
+    height: 160px;
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 39.5%; right: 86%;
+ }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+ }
+
+ /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+ /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 46.5%; right: 60%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    .rodape{
+        margin-top: 8%;
+    }
 }
 
-@media(min-width:866px){
+@media(min-width:820px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
@@ -692,6 +942,11 @@ h2{
         display: block;
         font-size: 14px;
         padding-right: 10%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 86.1%; top: 11%;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
@@ -706,12 +961,42 @@ h2{
     }
   
     .inferiorDireito{
-        margin-top: 26%;
+        margin-top: 46%;
     }
     
     .adm{
-        width: 800px;
+        width: 700px;
+        margin-top: 10%;
     }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 145px;
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: 42.5%; right: 84.7%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: 48.5%; right: 56.5%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
@@ -793,23 +1078,56 @@ h2{
      .conteiner2 .Estoque{
          text-align: center;
      }
+
+    .rodape{
+        margin-top: 26.3%;
+    } 
 }
 
-@media(min-width:966px){
+@media(min-width:912px){
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
-    .conteiner2{
-        width: 900px;
-    }
-
-   .adm{
-        width: 900px;
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 87.5%; top: 10%;
     }
 
     .inferiorDireito{
-       margin-top: 23%;
+       margin-top: 62.5%;
     }
+
+    .rodape{
+        margin-top: 46%;
+    }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        position: var(--posicaoAbsoluta);
+        bottom: 49.5%; right: 86%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 11px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: 55%; right: 61%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
 
     /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/
 
@@ -880,12 +1198,17 @@ h2{
 
 }
 
-@media(min-width:1066px){
+@media(min-width:1024px){
 
     /*Cabeçalho*/  /*Cabeçalho*/
 
     .titulo{
        font-size: 16px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 88.9%; top: 22%;
     }
 
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
@@ -947,26 +1270,50 @@ h2{
     }
 
     .inferiorDireito{
-       margin-top: 21%;
+       margin-top: 59.5%;
     }
 
     .Libro, .copyright, .todos{
         display: block;
     }
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        position: var(--posicaoAbsoluta);
+        bottom: -17%; right: 86.4%;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+      #overlayRelatorio{
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: -5%; right: 58.5%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
 }
 
-@media(min-width: 1166px){
+@media(min-width: 1280px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
     
-    .conteiner{
-        height: 125px;
-    }
-
     .titulo{
        position: var(--posicao);
        bottom: 15%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.1%; top: 17%;
     }
 
     .icone{
@@ -977,16 +1324,12 @@ h2{
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
     .conteiner2{
-        width: 1000px;
+        width: 1150px;
     }
 
     .conteiner2 .cadastro{
         position: var(--posicao);
         top: 10%;
-    }
-
-    .adm{
-        width: 1000px;
     }
 
     .caixa .user{   
@@ -1037,7 +1380,7 @@ h2{
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
     
     .inferiorDireito{
-       margin-top: 20.5%;
+       margin-top: 55%;
     }
 
     .rodape{
@@ -1048,16 +1391,43 @@ h2{
         height: 140px;
     } 
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        position: var(--posicaoAbsoluta);
+        bottom: 9%; right: 88.2%;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+      #overlayRelatorio{
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: 18%; right: 62.4%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
 }
 
-@media(min-width: 1358px)
-{
+@media(min-width: 1358px){
 
     /*Cabeçalho*/   /*Cabeçalho*/
 
     .titulo{
         position: var(--posicao);
         bottom: 24%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.6%; top: 22%;
     }
 
     .icone{
@@ -1109,6 +1479,31 @@ h2{
         display: block;
     }
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        width: 110px;
+        position: var(--posicaoAbsoluta);
+        bottom: -24%; right: 87.8%;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 110px;
+        position: var(--posicaoAbsoluta);
+        bottom: -10%; right: 60.3%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+
 }
 
 @media(min-width:1912px){
@@ -1116,6 +1511,11 @@ h2{
     .titulo{
        position: var(--posicao);
        bottom: 55%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 94%; top: 12%;
     }
 
     .adm{
@@ -1196,10 +1596,37 @@ h2{
         left: 30%; 
     }
 
-
     .inferiorDireito{
-        margin-top:12%;
+        margin-top: 39.5%;
     }
 
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        height: 215px;
+        width: 200px;
+        position: var(--posicaoAbsoluta);
+        bottom: 3%; right: 83.1%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 16px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+    
+    /*Overlay de relatórios*/ /*Overlay de relatórios*/ /*Overlay de relatórios*/
+    
+    #overlayRelatorio{
+        position: var(--posicaoAbsoluta);
+        bottom: 15%; left: 33.6%;
+        width: 200px;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 16px;
+    }
+
+    /*Overlay de relatórios*/ /*Overlay de relatórios*/ /*Overlay de relatórios*/
 }
 
