@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="header-container"></div>  <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('header-container').innerHTML = html;
+            });
+    </script>  
+<div class="container">
+    <img src="harrypotter.PNG" alt="Capa do Livro">
+    <div class="form-container">
+        <h2>Harry Potter - O Almanaque Mágico</h2>
+        <form>
+            <label>Biografia:</label>
+            <input type="text">
+            <label>Páginas:</label>
+            <input type="number">   
+            <label>Código:</label>
+            <input type="text">
+            <label>Título:</label>
+            <input type="text">
+            <label>Autor (a):</label>
+            <input type="text">
+            <label>Cadastrar Mais Informações:</label>
+            <select>
+                <option value="">Selecione</option>
+                <option value="">Livro</option> 
+            </select>
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+</div>
+</main>
+
+    <div id="footer-container"></div>  <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer-container').innerHTML = html;
+            });
+    </script>
+</body>
+</html>
