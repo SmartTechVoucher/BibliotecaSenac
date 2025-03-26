@@ -1,3 +1,10 @@
+<?php
+require "../../../config/constantes.php"
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,8 +58,8 @@
 
     <div class="iconesSuperiores">
 
-        <img src="../iconesUsados/Superior esquerdo.png" alt="Superior esquerdo" class="esquerdo">
-        <img src="../iconesUsados/Superior direito.png" alt="Superior direito" class="direito">
+        <img src="<?php echo $URLBASE?>/public/assets/img/Superior esquerdo.svg" alt="Superior esquerdo" class="esquerdo">
+        <img src="<?php echo $URLBASE?>/public/assets/img/Superior direitor.svg" alt="Superior direito" class="direito">
     
     </div>
    
