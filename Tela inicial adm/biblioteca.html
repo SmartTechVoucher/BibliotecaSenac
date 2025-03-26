@@ -28,7 +28,7 @@
         
     <div class="menuAdm">
         <img src="./Ícones/Menu adm.png" alt="" class="hamburguer">
-        <img src="./Ícones/Logo senac hub.png" alt="Imagem do logo" class="logoSenacHub">
+        <img src="./Ícones/Logo senac hub copy.png" alt="Imagem do logo" class="logoSenacHub">
     </div>
         
     <div class="titulo"> 
@@ -36,7 +36,12 @@
         <h2 class="senac">Senac Mato Grosso do Sul</h2> 
     </div>
 
-    <div class="icone"><img src="./Ícones/Icon perfil.png" alt="Ícone de pessoa"></div>    
+    <div class="icone"><img src="./Ícones/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
+
+    <div class="minhaConta">
+        <p>Minha conta</p>
+        <p>Sair</p>
+    </div>   
 
 </div>
 
@@ -58,7 +63,7 @@
             <img src="./Ícones/icons8-plus-30.png" alt="Sinal de adição" class="adicao">
             <p class="cadastro">Cadastrar <br> livros</p>
         </div>
-        
+
         <div class="caixa">
             <img src="./Ícones/Vector (3).png" alt="Usuário" class="user">
             <p class="cadastroDeUsuario">Cadastrar usuários</p>
@@ -109,34 +114,11 @@
             <div class="todos"> 2024. Todos os Direitos Reservados</div>   
         </div>
         
-        <div class="faleConosco">
-
-            <div><h4>Fale Conosco</h4>
-                <div>Central de atendimento (67) 3312-6260</div>  
-            </div>
-           
-        </div>
-        
-        <div class="email"><h4>Email: <br> atendimento@ms.senac.br <br> Sugestões,
-        dúvidas <br> elogios ou críticas</h4></div>
-        
-        <div class="siga-nos"><h4>Siga-nos</h4>
-        
-            <img src="./Ícones/Facebook.png" alt="" class="imagem">
-            <img src="./Ícones/Instagram Circle.png" alt="" class="imagem">
-            <img src="./Ícones/LinkedIn.png" alt="" class="imagem">
-            <img src="./Ícones/Twitter Squared.png" alt="" class="imagem">
-            <br>
-            <img src="./Ícones/WhatsApp.png" alt="" class="imagem">
-            <img src="./Ícones/YouTube.png" alt="" class="imagem">             
-            
-        </div>
-
     </div>
 
     <div id="menu" class="menu">
 
-        <div>Cadastrar livros</div>
+        <div><a href="./Tela de cadastro de livros/biblioteca.html">Cadastrar livros</a></div>
         <div>Cadastrar usuários</div>
         <div>Relatórios</div>
         <div>Empréstimos</div>
@@ -145,8 +127,28 @@
         <div>Renovações</div>
         <hr>
         <div>Logout</div>
-
     </div>
+
+    <div class="overlayCadastro">
+        <p><a href="./Tela de cadastro de livros/biblioteca.html" class="item">Cadastrar livro</a></p>
+        <hr>
+        
+        <p><a href="./Tela dos livros cadastrados/biblioteca.html" class="item">Ver livros cadastrados</a></p>
+        <hr>
+        
+        <p><a href="./Tela dos livros cadastrados/biblioteca.html" class="item">Excluir livro</a></p>
+        <hr>
+        
+        <p class="item">Editar informações de um livro</p>
+    </div>
+
+    <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
+    <div id="overlayRelatorio">
+        <p class="relatorio">Ver livros emprestados</p>
+        <hr>
+        <p class="relatorio">Ver livros não devolvidos</p>
+    </div>
+    <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
 
     <script src="./biblioteca.js"></script>
 

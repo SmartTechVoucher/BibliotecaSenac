@@ -1,5 +1,5 @@
 # Projeto integrador
-A Tela Inicial do Adm está semipronta. Ainda faltam adicionar as ligações com outras futuras páginas e talvez aumentar os ícones do rodapé em 1912 pixels. 
+**Algumas telas vão precisar de banco de dados. Telas que precisam: *1- Tela de relatórios*, *2-Tela dos livros cadastrados*, *3- Tela dos livros não devolvidos*. Total até agora: 3.**
 
 **Para conectar uma tela em outra é necessário que ambas estejam prontas.**
 
@@ -8,7 +8,5 @@ A Tela Inicial do Adm está semipronta. Ainda faltam adicionar as ligações com
 Telas em produção:
 
 Telas restantes:
-
-Tarefas feitas: Responsividade ajustada em Tela inicial do adm, javascript adicionado em Tela de cadastro de livros e inputs de seleção corrigidos.
 
 Podemos escrever instruções aqui para coisas diversas e a medida que forem resolvidas é só retirar da lista.
