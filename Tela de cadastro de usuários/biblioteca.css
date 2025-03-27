@@ -77,8 +77,14 @@ body{
     background-color: var(--azulCabecalho);
     width: 114px;
     cursor: var(--apontador);
+
 }
 
+.minhaConta a{
+
+    text-decoration: none;
+    color: var(--branco);
+}
 /*Controla a div que aparece ao se clicar em ícone*//*Controla a div que aparece ao se clicar em ícone*/
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
