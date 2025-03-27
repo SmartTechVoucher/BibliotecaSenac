@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de cadastro de usuários</title>
+    <title>Tela de relatórios</title>
     <link rel="stylesheet" href="./biblioteca.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,6 @@
             <p>Minha conta</p>
             <p>Sair</p>
         </div>     
-  
     </div>
 
  <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
@@ -58,45 +57,80 @@
 
     </div>
 
-    <form class="quadradoCinza">       
+    <div class="relatorio"><h1>Relatórios</h1></div>
 
-        <div class="input">
-            <img src="./Ícones/Identidade.png" alt="">
-            <input type="text" class="nome" placeholder="Nome completo">    
+    <div class="quadradoBranco">
+        
+        <form class="quadradoCinza">       
+
+        <div class="input">        
+            <div>
+                <h3 class="sobre">Sobre:</h3>
+                <select class="nome"> 
+                    <option value="">Acervo</option>   
+                    <option value="">Aquisição</option>   
+                    <option value="">Empréstimos</option>   
+                    <option value="">Usuários</option> 
+                </select>  
+            </div>    
+                 
+            <div>
+                <h3 class="salvar">Exportar/salvar como:</h3>
+                <select class="opcoes"> 
+                    <option value="">PDF</option>   
+                    <option value="">Png/Jpeg</option>   
+                </select>  
+            </div> 
+        
         </div>
+         
+        <div class="unidade">
+            <h4>Unidade:</h4>
+            <select class="nome"> 
+                <option value="">Todos</option>   
+                <option value="">Dourados</option>   
+                <option value="">Três Lagoas</option>   
+                <option value="">Ponta Porã</option> 
+                <option value="">Corumbá</option> 
+                <option value="">Campo Grande-gastronomia</option> 
+            </select>  
+
+            <h4 class="ordenagem">Ordenagem:</h4>
+            <select class="ordem"> 
+                <option value="">Data crescente</option>   
+                <option value="">Data decrescente</option>   
+                <option value="">Crescente</option>   
+                <option value="">Decrescente</option> 
+            </select>  
+             
+        </div>    
        
-        <div class="input" id="nomeSocial1">
-            <input type="text" class="nomeSocial" placeholder="Nome social">
+        <div class="input" id="calendario">
+           
+            <div class="Calendario">
+                <img src="./Ícones/Calendar.png " alt="Calendário" class="imagemCalendario"> 
+                
+                <div>
+                    <h4>Começando de:</h4>
+                    <input type="date" class="calendar">
+
+                    <h4>Até:</h4>
+                    <input type="date" class="calendar2">
+                </div>
+           
+            </div>
+                        
         </div>
 
-        <div class="opcional"><p>Opcional</p></div>
+       <div class="botoes">
+            <button type="reset" class="cancelar">Cancelar</button>
+            <button type="submit" class="emitir">Emitir</button>
+       </div>
         
-        <div class="input">
-            <img src="./Ícones/Arroba.png" alt="arroba">
-            <input type="email" class="email" placeholder="Email">
-        </div>
-        
-        <div class="input">
-            <img src="./Ícones/Ícone_Matrícula.png" alt="matrícula">
-            <input type="text" class="matricula" placeholder="Matrícula">
-        </div>
-        
-        <div class="input">
-            <img src="./Ícones/cpf.png" alt="">
-            <input type="number" class="cpf" placeholder="CPF*" required min="11" max="11">
-        </div>
-        
-        <div class="input">
-            <img src="./Ícones/Cadeado.png" alt="">
-            <input type="password" class="senha" placeholder="Senha">
-        </div>
-
-        <div class="div">
-            <button class="botao" type="submit">Cadastrar</button>
-        </div>
-        
-    </form>
-
+     </form>
+   
+    </div>
+    
     <div class="inferior">
 
         <div class="direito">
@@ -120,16 +154,20 @@
 
      <div id="menu" class="menu">
 
-        <div><a href="./Tela de cadastro de livros/biblioteca.html">Cadastrar livros</a></div>
-        <div><a href="./Tela de relatórios/biblioteca.html">Relatórios</a></div>
+        <div>Cadastrar livros</div>
+        <div>Cadastrar usuários</div>
+        <div>Relatórios</div>
         <div>Empréstimos</div>
         <div>Usuários</div>
-        <div><a href="./Tela dos livros cadastrados/biblioteca.html">Estoque de livros</a></div>
+        <div>Estoque de livros</div>
         <div>Renovações</div>
         <hr>
         <div>Logout</div>
 
     </div>
+
+    <!-- <div><a href="./Conexões entre telas/biblioteca.html">Cadastrar livros</a>Cadastrar livros</div>--> 
+    <!--Refazer o menu com ligações entre telas, criar uma pasta com os ícones para a tela de cadastro de livros-->
 
     <script src="./biblioteca.js"></script>
 
