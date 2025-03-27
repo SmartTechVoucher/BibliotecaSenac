@@ -75,12 +75,6 @@ body{
 }
 /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
 
-.minhaConta a{
-    text-decoration: none;
-    color: var(--branco);
-}
-
-
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
 /*Conteiner3 contém os ícones superiores e os define com
@@ -237,18 +231,13 @@ input:focus {
 
 .menu{
     width: 366px;
-    height: 450px;
+    height: 500px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);
     font-size: 36px;
     display: none;
     cursor: pointer;    
-}
-
-.menu a {
-    text-decoration: none;
-    color: var(--branco);
 }
 
 /*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/
