@@ -11,7 +11,7 @@ require "../../../config/constantes.php"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cabecalho</title>
-    <link rel="stylesheet" href="/BibliotecaSenac/projeto/public/css/header.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/header.css">
 </head>
 <body>
 
@@ -25,7 +25,7 @@ require "../../../config/constantes.php"
 
         <!-- ICONE DO SENAC, ESSE DO LADO DE ONDE FICA A NAV BAR -->
         <div class="iconeSenac">
-            <img src="../iconesUsados/Logo senac hub.png" alt="Imagem do logo">
+            <img src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo">
         </div>
 
         <!-- NAVBAR QUE APARECE "OS CAMINHOS" QUE O USUARIO PODE IR -->

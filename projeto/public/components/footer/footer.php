@@ -60,12 +60,12 @@ require "../../../config/constantes.php"
                         Siga-nos
                     </p>
                     <div class="social-icons">
-                        <a href="#"><img src="../../assets/icons/Facebook.svg" alt="Facebook"></a>
-                        <a href="#"><img src="../../assets/icons/Instagram.svg" alt="Instagram"></a>
-                        <a href="#"><img src="../../assets/icons/LinkedIn.svg" alt="LinkedIn"></a>
-                        <a href="#"><img src="../../assets/icons/Twitter.svg" alt="Twitter"></a>
-                        <a href="#"><img src="../../assets/icons/WhatsApp.svg" alt="WhatsApp"></a>
-                        <a href="#"><img src="../../assets/icons/YouTube.svg" alt="YouTube"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Facebook.svg" alt="Facebook"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Instagram.svg" alt="Instagram"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/LinkedIn.svg" alt="LinkedIn"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Twitter.svg" alt="Twitter"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/WhatsApp.svg" alt="WhatsApp"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/YouTube.svg" alt="YouTube"></a>
                       </div>
                 </div>
             </div>

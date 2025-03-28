@@ -150,15 +150,5 @@ $livro = [
     <?php   
         include "../../../public/components/footer/footer.php";
     ?>
-
-
-    <!-- footer -->
-    <!-- <div id="footer-container"></div>  <script>
-        fetch('..../../../public/components')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('footer-container').innerHTML = html;
-            });
-    </script>    -->
 </body>
 </html>

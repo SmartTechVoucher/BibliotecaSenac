@@ -279,8 +279,7 @@
                         alt="Beach_Images" class="item">
                     <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
                         alt="Beach_Images" class="item">
-
-                </div>
+                        
             </div>
         </div>
     </div>
@@ -288,7 +287,7 @@
     
     
     <script src="../../public/js/telaFiltroLivros.js">
-        <div>
+        
     </script>
 </body>
 
