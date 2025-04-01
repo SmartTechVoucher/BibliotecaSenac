@@ -122,6 +122,10 @@ nav.show {
     object-fit: contain; /* Mantém a proporção */
 }
 
+#icone_top{
+    width: 20%;
+    height: 20%;
+}
 /* RESPONSIVIDADE */
 
 @media (max-width: 1024px) {
