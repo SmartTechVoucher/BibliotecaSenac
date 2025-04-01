@@ -1,0 +1,499 @@
+:root{
+
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --corFormulario: #E5E4E4;
+    --corBotao: #004A90;
+    --vermelho: red;
+    --apontador: pointer;
+    --cinza: #D9D9D9;
+    --bordaBaixaCabeçalho: #769FCD;
+   
+}
+
+/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+
+.conteiner{
+    background-color: var(--azulCabecalho);
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    font-family: var(--fontes);
+    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
+   
+}
+
+.conteiner .menuAdm{
+    display: flex;
+    align-items: center;
+    gap: 15%;
+}
+
+.menuAdm .hamburguer{
+    width: 100px;
+    height: 50px;
+    cursor: var(--apontador);
+}
+
+
+body{
+    margin: 0;
+    background-color: var(--fundoPadrao);
+}
+
+.titulo{
+  color: var(--branco);
+  font-size: 10px;
+   
+}
+
+.titulo .senac{
+    position: var(--posicao);
+    right: 20%;
+}
+
+/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Define o ícone com o cursor apontador*/
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 91.5%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+
+}
+
+.minhaConta a{
+
+    text-decoration: none;
+    color: var(--branco);
+}
+/*Controla a div que aparece ao se clicar em ícone*//*Controla a div que aparece ao se clicar em ícone*/
+
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
+
+.conteiner3{
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.quadradoCinza{
+    height: 500px;
+    background-color: var(--cinza);
+    padding-top: 5%;
+    padding-left: 15%;
+    margin-top: 5%;
+}
+
+.quadradoCinza .nome, .nomeSocial, .matricula, .cpf, .senha, .email{
+    width: 260px;
+}
+
+.quadradoCinza .input{
+    padding: 3%;
+}
+
+.quadradoCinza .botao{
+    background-color: var(--corBotao);
+    color: var(--branco);
+    border-radius: 5px;
+    height: 30px;
+    cursor: var(--apontador);
+}
+
+.quadradoCinza .div{
+    padding-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.input{
+    display: flex;
+}
+
+.input img{
+    height: 21px;
+}
+
+.opcional{
+    display: flex;
+    justify-content: end;
+    padding-right: 7%;
+    height: 11px;    
+}
+
+.opcional p{
+    font-size: 13px;
+    position: var(--posicao);
+    bottom: 190%;
+}
+
+.quadradoCinza #nomeSocial1{
+    padding-left: 10%;
+}
+
+.botao{
+    background-color: var(--corBotao);
+    border-radius: 20px;
+    color: var(--branco);
+    width: 154px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--fontes);
+    font-size: 15px;
+    cursor: var(--apontador);
+}
+
+/*Parte inferior do corpo*/
+
+.inferior{
+    display: flex;
+    justify-content: end;
+    margin-top: 5%;
+}
+
+.inferior img{
+    width: 100px;
+    height: 100px;
+}
+
+/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
+
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 240px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 10px;
+    text-align: center;
+   
+}
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+.menu{
+    width: 366px;
+    height: 450px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 36px;
+    display: none;
+    cursor: pointer;
+    position: var(--posicaoAbsoluta);
+    top: 20%;    
+}
+
+/*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
+oportuno. */
+
+.menu a{
+    text-decoration: none;
+    color: var(--branco);
+    display: flex;
+}
+
+/*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
+
+@media(max-width:1024px){
+    
+    .titulo,.Libro, .copyright,.todos{
+        display: none;
+    }
+    
+}
+
+@media(min-width: 375px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .logoSenacHub{
+        display: none;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 17%; left: 69.5%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
+
+    /*Essa parte controla os comprimentos
+    e alturas dos ícones azuis superiores*/
+    .conteiner3 .esquerdo, .direito{
+        width: 100px;
+        height: 100px;
+    }
+
+} 
+
+@media(min-width:414px){
+
+ .opcional{
+    padding-right: 15%;
+ }
+
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 13%;
+ }
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 72.5%;
+ }
+
+}
+
+@media(min-width:768px){
+ 
+ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
+
+ .quadradoCinza{
+    width: 60%;
+    margin-left: 13%;
+    border: solid 1px;
+ }
+
+ .quadradoCinza input{
+    height: 30px;
+ }
+
+ .quadradoCinza img{
+    height:30px;
+ }
+
+ .opcional p{
+    padding-right: 22%;
+ }
+
+ .quadradoCinza .div{
+    padding-right: 20%;
+ }
+
+ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
+    .rodape{
+        font-size: 14px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 85.2%;
+    }
+
+}
+
+@media(min-width:912px){
+
+ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
+   
+ .inferior{
+       margin-top: 18.7%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 11%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 11%; left: 87.5%;
+    }
+
+}
+
+@media(min-width: 1024px){
+
+    .conteiner .menuAdm{
+        width: 304px;
+    }
+
+    .quadradoCinza .input{
+        padding: 2%;
+        padding-left: 5%;
+    }
+
+    .quadradoCinza .opcional{
+        padding-right: 32%;
+    }
+
+    .quadradoCinza .div{
+        padding-right: 40% ;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 20%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 19%; left: 88.9%;
+    }
+
+}
+
+@media(min-width: 1280px){
+    
+    .quadradoCinza .input{
+        padding-left: 20%;
+    }
+
+    .quadradoCinza #nomeSocial1{
+        padding-left: 24%;
+    }
+
+    .quadradoCinza .opcional{
+        padding-left: 26%;
+    }
+
+    .quadradoCinza .div{
+        padding-left: 22%;
+    }
+
+    .rodape .siga-nos{
+        display: block;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 16%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 19%; left: 91.1%;
+    }
+
+    .titulo{
+        position: var(--posicao);
+        right: 10%;
+    }
+
+}
+
+@media(min-width:1358px){
+
+.conteiner3 .esquerdo, .direito{
+    width: 150px;
+    height: 150px;
+}
+
+.quadradoCinza .input{
+    padding: 2%;
+    padding-left: 25%; 
+   
+} 
+
+.quadradoCinza #nomeSocial1{
+    padding-left: 29%;
+}
+
+.quadradoCinza .opcional{
+    padding-right: 28%;
+}
+
+.quadradoCinza .div{
+    padding-left: 30%;
+    position: var(--posicao);
+    bottom: 5%;
+}
+
+.inferior img{
+    width: 150px;
+    height: 150px;
+}
+
+.menu{
+    position: var(--posicaoAbsoluta);
+    top: 18%;
+}
+
+.minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 19%; left: 91.5%;
+}
+
+}
+
+@media(min-width: 1912px){
+
+    .conteiner{
+        height: 140px;
+        align-items: center;
+    }
+
+    .quadradoCinza{
+        width: 992px;
+        height: 700px;
+        margin-top: 2%;
+        padding: 0%;
+        margin-left: 25%;
+    }
+
+   .quadradoCinza .input{
+        padding: 3%;
+        padding-left: calc(30%);
+        width: 300px;
+   }
+
+   .quadradoCinza #nomeSocial1{
+        padding-left: calc(33%);
+        width: 500px;
+   }
+
+   .quadradoCinza .opcional{
+        padding-right: 24%;
+   }
+
+   .quadradoCinza .div{
+        padding-left: 24%;
+        padding-top: 4%;
+        width: 500px;
+   }   
+
+   .quadradoCinza .input{
+        width: 370px;
+   }
+
+   .quadradoCinza .nome, .nomeSocial, .email, .matricula, .cpf, .senha{
+        width: 310px;
+   }
+   
+   .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 94%;
+    }
+
+}

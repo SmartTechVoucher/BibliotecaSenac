@@ -1,0 +1,492 @@
+:root{
+
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --corFormulario: #E5E4E4;
+    --corBotao: #004A90;
+    --vermelho: red;
+    --apontador: pointer;
+    --bordaBaixaCabeçalho: #769FCD;
+   
+}
+
+/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+
+.conteiner{
+    background-color: var(--azulCabecalho);
+    width: 100%;
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    font-family: var(--fontes);
+    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
+}
+
+body{
+    margin: 0;
+    background-color: var(--fundoPadrao);
+}
+
+.conteiner .menuAdm{
+    display: flex;
+    align-items: center;
+}
+
+.menuAdm{
+    gap: 20px;
+}
+
+.menuAdm .hamburguer{
+    width: 100px;
+    height: 50px;
+    cursor: var(--apontador);
+}
+
+.titulo{
+  color: var(--branco);
+  font-size: 10px;  
+}
+
+.titulo .senac{
+    position: var(--posicao);
+    right: 20%;
+}
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 15%; left: 94%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+}
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
+
+/*Conteiner3 contém os ícones superiores e os define com
+espaços um colado no início e outro no fim. Conteiner3 .esquerdo, .direito
+definem o comprimento e a altura dos ícones em 100 pixels.*/
+
+.conteiner3{
+    display: flex;
+    justify-content: space-between;
+ }
+ 
+ .conteiner3 .esquerdo, .direito{
+     width: 100px;
+     height: 100px;
+ }
+
+.formulario{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--corFormulario);
+    padding: 15px;
+    margin-top: 25px;
+    gap: 15px;
+}
+
+.formulario .tituloObrigatorio, .autorObrigatorio, .codigoObrigatorio{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+.obrigatorio{
+    color: var(--vermelho);
+    font-family: var(--fontes);
+    font-size: 15px;   
+}
+
+
+/*Ícone inferior*/ /*Ícone inferior*/ /*Ícone inferior*/
+.inferiorDireito{
+    display: flex;
+    justify-content: end;
+    margin-top:5%;
+}
+
+.inferiorDireito .inferior{
+    width: 100px;
+    height: 100px;
+}
+
+.formulario .area, .unidade, .tipoDocumento, .categoria, .area{
+    cursor: var(--apontador);
+}
+
+.botao{
+    background-color: var(--corBotao);
+    border-radius: 20px;
+    color: var(--branco);
+    width: 154px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--fontes);
+    font-size: 15px;
+    cursor: var(--apontador);
+}
+
+label{
+    font-family: var(--fontes);
+}
+
+/*Segundo formulário. Esse só aparece a partir de 1280 pixels. */
+
+#formulario2{ 
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--corFormulario);
+    padding: 15px;
+    gap: 25px;
+    grid-column: 3;
+}
+
+.paraTestar{
+    display: grid;
+    grid-template-columns: repeat(10,110px);
+    margin-top: 5%;
+}
+
+.tituloObrigatorio2, .autorObrigatorio2, .codigoObrigatorio2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+input:focus {
+    outline: none;
+}
+
+/*.fundoBranco e .upload controlam o retângulo branco e a imagem
+"upload".*/
+
+.fundoBranco{
+    height: 157px;
+    width: 405px;
+   
+}
+
+/*.fundoBranco e .upload acima controlam o retângulo branco e a imagem
+"upload".*/
+
+/*Segunda metade do formulário*/ /*Segunda metade do formulário*/
+
+#formulario2_segundaMetade{
+    height: 1026px;
+    grid-column: 7;
+}
+
+#formulario2_segundaMetade .tipoDocumento, .Tipo, .categoria, .Categoria{
+    cursor: var(--apontador);
+}
+
+/*Define o posicionamento do botão e o faz aparecer a frente do segundo formulário.*/
+.formulario2 .Botao{
+    position: var(--posicaoAbsoluta);
+    left: 60%; top: 180%;
+    z-index: 1;
+}
+
+/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
+
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 240px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 10px;
+    text-align: center;
+   
+}
+
+/*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ 
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+.menu{
+    width: 366px;
+    height: 500px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 36px;
+    display: none;
+    cursor: pointer;    
+}
+
+/*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/
+
+/*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
+
+@media(max-width: 1024px){
+   
+    .logoSenacHub{
+        display: none;   
+    }
+
+    #formulario2,  .formulario2_segundaMetade{
+        display: none;
+    }
+
+    .rodape .faleConosco, .email,.siga-nos, .Libro, .titulo, .copyright, .todos{
+        display: none;     
+    }  
+
+}
+
+@media(min-width:375px){
+    .formulario .fundoBranco{
+        width: 350px;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 153.4%;
+        width:340px;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 139%; left: 40%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 69.5%;
+    }
+    
+}
+
+@media(min-width:414px){
+    .menu{   
+        position: var(--posicaoAbsoluta);
+        top: 11%;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 114.4%; right: 10%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 103.5%; left: 40%;
+    }
+
+    .formulario .fundoBranco{
+        width: 400px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 72.5%;
+    }
+
+}
+
+@media(min-width:768px){
+
+    .formulario .fundoBranco{
+        width: 750px;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 99.6%; right: 25%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 91%; left: 40%;
+    }
+
+    .titulo{
+        font-size: 12px;
+    }
+
+    .conteiner .logoSenacHub{
+        display: block;
+    }
+
+    .rodape{
+        font-size: 14px;
+    }
+
+    .rodape .faleConosco{
+        display: block;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 84.9%;
+    }
+
+}
+
+@media(min-width:1024px){
+    .menu{
+    position: var(--posicaoAbsoluta);
+    top: 18%;
+ }
+
+ .formulario .fundoBranco{
+    width: 1010px;
+}
+
+.formulario .upload{
+    position: var(--posicaoAbsoluta);
+    top: 170.6%; right: 35%;
+}
+
+#mensagemPrimeiroForm{
+    position: var(--posicaoAbsoluta);
+    top: 155%; left: 40%;
+}
+
+.minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 20%; left: 88.9%;
+}
+
+}
+
+@media(min-width: 1280px){
+
+    .formulario{
+        display: none;
+    }
+
+    #formulario2{
+        display: flex;
+        width: 410.5px;
+        border-right: 1px solid white;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .formulario2_segundaMetade{
+        display: flex;
+        flex-direction: column;
+        width: 410.5px;
+        height: 983px;
+        background-color: var(--corFormulario);
+        gap: 15px;
+        padding: 10px;
+        font-size: 18px;
+        border-left: 4px solid white;
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .formulario2 .Botao{
+        position: var(--posicaoAbsoluta);
+        top: 135%;
+    }
+    
+    .foto2{
+        height:150px;
+    }
+
+    #mensagem{
+        position: var(--posicaoAbsoluta);
+        top: 140.6%; right: 60%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 15%; left: 91%;
+    }
+}
+
+@media(min-width:1358px){
+
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 18%;
+ }
+
+  #mensagem{
+      position: var(--posicaoAbsoluta);
+      top: 173.6%; right: 65%;
+    }
+
+    .formulario2 .Botao{
+        position: var(--posicaoAbsoluta);
+        top: 175%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 17%; left: 91.6%;
+    }
+}
+
+@media(min-width: 1912px){
+
+    .conteiner3 .esquerdo, .direito{
+        width: 150px;
+        height: 150px;
+    }
+
+    .paraTestar{
+        margin-left: 15%;
+    }
+
+    .formulario2 .Botao{
+        position: var(--posicaoAbsoluta);
+        left: 56%; top: 122%;
+    }
+
+    .inferiorDireito .inferior{
+        width: 150px;
+        height: 150px;
+    }
+
+    .rodape{
+        height: 245px;
+    }
+
+    .rodape .faleConosco, .copyright, .todos, .email, .siga-nos {
+        font-size:18px;
+    }
+
+    #mensagem{
+        position: var(--posicaoAbsoluta);
+        top: 126.5%; right: 57%;
+      }
+
+      .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+     }
+
+     .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 94%;
+    }
+
+}

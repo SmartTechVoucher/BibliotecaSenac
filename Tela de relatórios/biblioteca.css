@@ -77,6 +77,10 @@ body{
     cursor: var(--apontador);
 }
 
+.minhaConta a{
+    text-decoration: none;
+    color: var(--branco);
+}
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
@@ -198,24 +202,19 @@ configurações dos botões "cancelar" e "emitir" */
 
 .menu{
     width: 366px;
-    height: 500px;
+    height: 430px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);
     font-size: 36px;
     display: none;
     cursor: pointer;
-    
 }
 
-/*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
-oportuno. */
-
-/* .menu a{
+.menu a{
     text-decoration: none;
     color: var(--branco);
-    display: flex;
-} */
+}
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
@@ -470,7 +469,7 @@ oportuno. */
         grid-template-rows: 100px;
         grid-template-columns: 170px;
         position: var(--posicaoAbsoluta);
-        left: 59.5%; bottom: 12%;
+        left: 59.5%; bottom: 7%;
     }
 
     .quadradoCinza .ordem{

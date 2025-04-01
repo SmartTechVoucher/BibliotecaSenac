@@ -1,0 +1,315 @@
+:root{
+
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --corInput: #f1eeee;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --apontador: pointer;  
+    --bordaBaixaCabeçalho: #769FCD; 
+    
+}
+
+/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+
+.conteiner{
+    background-color: var(--azulCabecalho);
+    width: 100%;
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+    font-family: var(--fontes);
+    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
+   
+}
+
+.conteiner .menuAdm{
+    display: flex;
+    align-items: center;
+    gap: 15%;
+}
+
+.menuAdm .hamburguer{
+    width: 100px;
+    height: 50px;
+    cursor: var(--apontador);
+}
+
+body{
+    margin: 0;
+    background-color: var(--fundoPadrao);
+}
+
+.titulo{
+  color: var(--branco);
+  font-size: 12px;
+   
+}
+
+.titulo .senac{
+    position: var(--posicao);
+    right: 20%;
+}
+
+/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Define o ícone com o cursor apontador*/
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 91.6%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 138px;
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*//*Controla a div que aparece ao se clicar em ícone*/
+
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
+
+.conteiner2{
+    display: flex;
+    justify-content: space-between;
+   
+}
+
+.conteiner2 .esquerdo, .conteiner2 .direito{
+    width: 100px;
+    height: 100px;
+}
+
+/*Parte do input*//*Parte do input*//*Parte do input*//*Parte do input*/
+.controle{
+    display: flex;
+    margin-top: 2%;
+    margin-left: 1%;
+}
+
+.busca{
+    background-color: var(--corInput);
+    width: 100%;
+}
+
+/*Parte do input*//*Parte do input*//*Parte do input*//*Parte do input*/
+
+.botao{
+    border: none;
+    cursor: var(--apontador);
+}
+
+p{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 5%;
+}
+
+/*Parte inferior do corpo*/
+
+.inferior{
+    display: flex;
+    justify-content: end;
+    margin-top: 15%;  
+}
+
+.inferior img{
+    width: 100px;
+    height: 100px;
+}
+
+/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
+
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 245px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 10px;
+    text-align: center;
+}
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+.menu{
+    width: 366px;
+    height: 500px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 36px;
+    display: none;
+    cursor: pointer;
+    position: var(--posicaoAbsoluta);
+    top: 17%;
+}
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+/*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
+oportuno. "menu a" se refere a parte das ligações com a 
+tag "a". Esse seletor vai retirar a linha típica de link
+"a", vai definir a cor da fonte do link como branca e vai 
+definir a exibição como ao lado*/
+
+/* .menu a{
+    text-decoration: none;
+    color: var(--branco);
+    display: flex;
+} */
+
+@media(max-width:1024px){
+    
+    .titulo, .Libro, .todos, .copyright{
+        display: none;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 63.3%;
+    }
+}
+
+@media(min-width:414px){
+
+    .controle{
+        margin-top: 5%;
+    }
+
+    .inferior{
+        margin-top: 43.8%;
+    }
+
+ /*Menus invisíveis que aparecem somente através de interação*/
+   
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 66.6%; top: 12%;
+    }
+
+ /*Menus invisíveis que aparecem somente através de interação*/   
+}
+
+@media(min-width: 768px){
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 82%; top: 12%;
+    }
+}
+
+@media(min-width: 820px){
+    
+ /*Menus invisíveis que aparecem somente através de interação*/
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 83.2%; top: 12%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 12%;
+    }
+
+ /*Menus invisíveis que aparecem somente através de interação*/   
+   
+    .inferior{
+        margin-top: 51.8%;
+    }
+}
+
+@media (min-width:912px){
+   
+ /*Menus invisíveis que aparecem somente através de interação*/ 
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 84.9%; top: 10%;
+    }
+
+ /*Menus invisíveis que aparecem somente através de interação*/ 
+
+ .inferior{
+    margin-top: 71%;
+ }
+}
+
+@media (min-width: 1024px) {
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 19%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 18%; left: 86.5%;
+    }
+
+    .inferior{
+        margin-top: 57.7%;
+    }
+}
+
+@media(min-width:1280px){
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 15%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 89.2%;
+    }
+}
+
+@media(min-width:1358px){
+    
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 19%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 18%; left: 89.82%;
+    }
+}
+
+
+
+@media(min-width:1912px){
+   
+   .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 92.7%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
+}
