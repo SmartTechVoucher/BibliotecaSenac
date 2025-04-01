@@ -25,7 +25,7 @@ require "../../../config/constantes.php"
 
         <!-- ICONE DO SENAC, ESSE DO LADO DE ONDE FICA A NAV BAR -->
         <div class="iconeSenac">
-            <img src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo">
+            <img id="icone_top" src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo">
         </div>
 
         <!-- NAVBAR QUE APARECE "OS CAMINHOS" QUE O USUARIO PODE IR -->
