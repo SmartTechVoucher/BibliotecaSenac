@@ -119,6 +119,9 @@
             </div>
 
         </div>
+        <?php
+            include "../../../public/components/footer/footer.php"        
+        ?>
     </main>
 
     
