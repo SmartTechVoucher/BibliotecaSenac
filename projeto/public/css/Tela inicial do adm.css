@@ -1,0 +1,1639 @@
+:root{
+
+    --azulCabecalho: #001E3E;
+    --corParaOverlays: #d9d9d9;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --azulQuadrado: hwb(210 0% 62% / 0.5);
+    --tamanhoFonte: 10px;
+    --apontador:pointer;
+    --bordaBaixaCabeçalho: #769FCD;   
+}
+
+/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
+
+.conteiner{
+    background-color: var(--azulCabecalho);
+    height: 140px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    font-family: var(--fontes);
+    border-bottom: var(--bordaBaixaCabeçalho) solid 5px;
+   
+}
+
+.menuAdm{
+    display: flex;
+    align-items: center;
+   
+}
+
+.menuAdm .hamburguer{
+    width: 90px;
+    height: 50px;
+    cursor: var(--apontador);
+}
+
+.icone{
+
+    display: flex;
+    align-items: center;
+}
+
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
+
+.conteiner3{    
+    display: flex;
+    justify-content: space-between;
+}
+
+.conteiner3 .esquerdo, .direito{
+    width: 100px;
+    height: 100px;
+}
+
+body{
+    margin: 0;
+    background-color: var(--fundoPadrao);
+}
+
+h2{
+    color: var(--branco);
+    margin: 2px;
+    
+}
+
+.senac{
+   position: var(--posicao);
+   right: 60px;
+}
+
+.titulo{
+  padding-top: 5%;
+  padding-left: 10%;   
+}
+
+.conteiner #iconeComandante{
+    cursor: var(--apontador);
+}
+
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+.minhaConta{
+    display: none;
+    position: var(--posicaoAbsoluta);
+    top: 15%; left: 94%;
+    color: var(--branco);
+    background-color: var(--azulCabecalho);
+    width: 114px;
+    cursor: var(--apontador);
+}
+/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
+
+/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
+
+.conteiner2{
+    width: 95%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    position: var(--posicao);
+    top: 20px;
+    font-family: var(--fontes);
+    margin-left: 20px;
+    cursor: pointer;
+    
+}
+
+.caixa{
+    height: 210.1px;
+    width: 206.96px;
+    background-color: var(--branco);
+    color: black;
+    border-radius: 5%;
+   
+}
+
+.caixa p{
+    font-size: 24px;
+   
+}
+
+.caixa .usuario{
+
+    width: 109.75px;
+    height: 109.75px;
+    position: var(--posicao);
+    left: 50px;
+    margin-top: 30px;
+}
+
+.caixa .Usuario{
+    
+    text-align: center;
+    position: var(--posicao);
+    bottom: 15%;
+}
+
+.caixa .Livro{
+    width: 80.43px;
+    height: 107.24;
+    position: var(--posicao);
+    left: 54px; top: 20px;
+}
+
+.caixa .adicao{
+    width: 60.32px;
+    height: 60.32px;
+    position: var(--posicao);
+    left: 10px; bottom: -25px;
+}
+
+.caixa .cadastro{
+    text-align: center;
+    
+}
+
+.caixa .user{
+   
+    position: var(--posicao);
+    left: 45px; top: 20px;
+
+}
+
+.sinalDeAdicao{
+    position: var(--posicao);
+    top: 27px; left: 10px;
+}
+
+.cadastroDeUsuario{
+    text-align: center;
+    position: var(--posicao);
+    bottom: 15px;
+}
+
+.caixa .estoque{
+   
+    position: var(--posicao);
+    top: 15%; left: 13%;
+}
+
+.caixa .vectorRelatorio{
+    position: var(--posicao);
+    top: 15%; left: 20%;
+}
+
+.caixa .relatorios{
+    position: var(--posicao);
+    left: 18%; top: 5%;
+}
+
+.caixa .vectorRenova{
+    position: var(--posicao);
+    left: 20%; top: 15%;
+}
+
+.caixa .renovacoes{
+    text-align: center;
+}
+
+.caixa .emprestimo{
+    position: var(--posicao);
+    left: 23%; top: 13%;
+}
+
+.caixa .Emprestimo{
+    text-align: center;
+}
+
+.adm{
+    font-size: 24px;
+    font-weight: bold;
+    position: var(--posicao);
+    top: 20px; left: 50px;
+    font-family: var(--fontes);
+    width: 95%;
+    
+} 
+
+.inferiorDireito{
+    display: flex;
+    justify-content: end;
+    margin-top: 37%;   
+}
+
+.inferiorDireito .inferior{
+    width: 100px;
+    height: 100px;
+}
+
+/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
+
+.logoFecomercio{
+    align-items: center;
+    display: flex;
+}
+
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 189px;
+    width: 100%;
+    position: var(--posicaoAbsoluta);
+    top: 775px;
+    display: flex;
+    justify-content: space-evenly;
+   
+}
+
+.copyright{
+    position: var(--posicao);
+    left: 35%; bottom: 32%;
+    color: var(--branco);
+    font-size: 15px;
+    font-family: var(--fontes);
+}
+
+.todos{
+    position: var(--posicao);
+    left: 28%; bottom: 32%;
+    color: var(--branco);
+    font-size: 15px;
+    font-family: var(--fontes);
+}
+
+.faleConosco{
+    width: 126px;
+    height: 102px;
+    color: var(--branco);
+    font-family: var(--fontes);
+    align-items: center;
+    margin-top: 15px;
+   
+}
+
+.email{
+    color: var(--branco);
+    font-family: var(--fontes);
+    align-items: center;
+    margin-top: 15px;
+}
+
+.siga-nos{
+    color: var(--branco);
+    font-family: var(--fontes);
+    align-items: center;
+    margin-top: 12px;
+}
+
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+.menu{
+    width: 366px;
+    height: 500px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 36px;
+    display: none;
+    cursor: pointer;   
+}
+
+/*Overlay de cadastro*/ /*Overlay de cadastro*/ /*Overlay de cadastro*/
+
+.overlayCadastro{
+    background-color: var(--corParaOverlays);
+    cursor: var(--apontador);
+    display: none;
+    text-align: center;
+}
+
+/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+#overlayRelatorio{
+    background-color: var(--corParaOverlays);
+    cursor: var(--apontador);
+    display: none;
+    text-align: center;
+}
+
+/*Limpeza e estilização do atalho "a"*//*Limpeza e estilização do atalho "a"*/
+
+a{
+    text-decoration: none;
+    color: var(--branco) ;
+}
+
+/*Limpeza e estilização do atalho "a"*//*Limpeza e estilização do atalho "a"*/
+
+.overlayCadastro .item{
+    color: black;
+}
+
+
+
+/*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
+
+@media(min-width:375px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .logoSenacHub{
+        display: none;
+    }
+
+    /*evento do cabeçalho*/ /*evento do cabeçalho*/ /*evento do cabeçalho*/
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 69.5%; top: 17%;
+    }
+
+    /*evento do cabeçalho*//*evento do cabeçalho*//*evento do cabeçalho*//*evento do cabeçalho*/
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner2{
+        flex-wrap: wrap;
+        width: 340px;
+        gap: 5px;
+    }
+
+    .caixa{
+        width: 80px;
+        height: 105px;
+    }
+    
+    .adm{
+        width: 300px;
+    }
+
+    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 40px;
+        height: 40px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        width: 27px;
+        height: 27px;
+        position: var(--posicao);
+        left: 45%; top: 36%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+     .conteiner2 .cadastroDeUsuario,
+     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+ 
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 15%;
+     }
+ 
+     .conteiner2 .usuario{
+         position: var(--posicao);
+         bottom: 15%; left: 30%;
+     }
+ 
+     .conteiner2 .Usuario{
+         position: var(--posicao);
+         top: -16%;
+     }
+ 
+     .conteiner2 .cadastro{
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 28%;
+     }
+ 
+     .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 25%;
+     }
+ 
+     .conteiner2 .Estoque{
+         text-align: center;
+     }
+ 
+     .Libro, .copyright, .todos, .logo,.faleConosco, .titulo, .siga-nos {
+         display: none;
+     }
+
+     /* .Logo{
+        width: 100px;
+     } */
+
+     .menu{
+        position: var(--posicao);
+        top: 110px;
+     }
+
+   /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+   .overlayCadastro{
+    height: 160px;
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 8%; right: 73%;
+   }
+
+.overlayCadastro .item{
+    font-size: 10px;
+    /* color: black; */
+}
+
+/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+#overlayRelatorio{
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 20%; right: 27%;
+}
+
+#overlayRelatorio .relatorio{
+    font-size: 10px;
+}
+
+/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+}
+
+@media(min-width:414px){
+
+    .menu{
+        position: var(--posicao);
+        top: 100px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 72.5%; top: 14%;
+    }
+
+    .inferiorDireito{
+        margin-top: 28.5%;
+    }
+
+ /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+   .overlayCadastro{
+        height: 160px;
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 31%; right: 75.5%;
+   }
+
+   .overlayCadastro .item{
+       font-size: 10px;
+    }
+
+ /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+ /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+ #overlayRelatorio{
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 40%; right: 34%;
+ }
+
+ #overlayRelatorio .relatorio{
+    font-size: 10px;
+ }
+
+ /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+
+}
+
+@media(min-width:565px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .logoSenacHub{
+        display: block;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 79.8%; top: 15%;
+    }
+
+    .icone{
+        position: var(--posicao);
+        right: 3%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner2{
+        flex-wrap: nowrap;
+        width: 500px;
+    }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 160px;
+        width: 67px;
+        position: var(--posicaoAbsoluta);
+        bottom: 31.5%; right: 84%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+   
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 67px;
+        position: var(--posicaoAbsoluta);
+        bottom: 41%; right: 58.8%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+
+    .inferiorDireito{
+        margin-top: 43%;
+    }
+    
+    .adm{
+        width: 500px;
+    }
+
+
+    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 40px;
+        height: 40px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        position: var(--posicao);
+        left: 50%; top: 35%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 3%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 20%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 20%; top: 20%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 20%;
+    }
+
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        bottom: 15%; left: 20%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 20%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+     .conteiner2 .cadastroDeUsuario,
+     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+ 
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 15%;
+     }
+ 
+     .conteiner2 .Usuario{
+         position: var(--posicao);
+         top: -16%;
+     }
+ 
+     .conteiner2 .cadastro{
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 28%;
+     }
+ 
+     .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 25%;
+     }
+ 
+     .conteiner2 .Estoque{
+         text-align: center;
+     }
+
+    .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 12%;
+    }
+
+     .Logo{
+        width: 200px;
+     }
+
+     .menu{
+        position: var(--posicao);
+        top: 120px;
+     }
+
+}
+
+@media(min-width:665px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .icone{
+        position: var(--posicao);
+        right: 3%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 82.8%; top: 17%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner2{
+        width: 600px;
+    }
+
+    .inferiorDireito{
+        margin-top: 36.5%;
+    }
+    
+    .adm{
+        width: 600px;
+    }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 118px;
+        position: var(--posicaoAbsoluta);
+        bottom: -111%; right: 75%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 40px;
+        height: 40px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        position: var(--posicao);
+        left: 54%; top: 36%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 4%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 25%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 18%; left: 20%;
+    }
+
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        bottom: 10%; left: 24%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 20%; top: 17%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+     .conteiner2 .cadastroDeUsuario,
+     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+ 
+         font-size: 11px;
+         position: var(--posicao);
+         top: 15%;
+     }
+ 
+     .conteiner2 .Usuario{
+         position: var(--posicao);
+         top: -16%;
+     }
+ 
+     .conteiner2 .cadastro{
+         font-size: var(--tamanhoFonte);
+         position: var(--posicao);
+         top: 28%;
+     }
+ 
+     .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 25%;
+     }
+ 
+     .conteiner2 .Estoque{
+         text-align: center;
+     }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+      .overlayCadastro{
+        height: 160px;
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 35.5%; right: 84.7%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+   
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 43%; right: 58.8%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+}
+
+@media(min-width:768px){
+
+   /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+   .minhaConta{
+    position: var(--posicaoAbsoluta);
+    left: 85.1%; top: 13%;
+ }
+
+    .conteiner2{
+        width: 700px;
+    }
+
+    .caixa{
+        height: 110px;
+    }
+
+    .conteiner2 .cadastroDeUsuario,
+    .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+    .conteiner2 .Estoque, .conteiner2 .renovacoes{
+        
+        font-size: 12px;
+    }
+
+    .conteiner2 .relatorios{
+       position: var(--posicao);
+       left: 12%;
+    }
+    
+    .conteiner2 .adicao{
+       position: var(--posicao);
+       left: 50%; top: 35%;
+    }
+
+    .inferiorDireito{
+       margin-top: 38.2%;
+    }
+
+ /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+   .overlayCadastro{
+    height: 160px;
+    width: 80px;
+    position: var(--posicaoAbsoluta);
+    bottom: 39.5%; right: 86%;
+ }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+ }
+
+ /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+
+ /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        bottom: 46.5%; right: 60%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    .rodape{
+        margin-top: 8%;
+    }
+}
+
+@media(min-width:820px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+
+    .titulo{
+        display: block;
+        font-size: 14px;
+        padding-right: 10%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 86.1%; top: 11%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner2{
+        width: 800px;
+    }
+
+    .caixa{
+        width: 100px;
+        height: 125px;
+    }
+  
+    .inferiorDireito{
+        margin-top: 46%;
+    }
+    
+    .adm{
+        width: 700px;
+        margin-top: 10%;
+    }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        height: 145px;
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: 42.5%; right: 84.7%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 10px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: 48.5%; right: 56.5%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+
+    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
+
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
+    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
+    .conteiner2 .vectorRenova{
+        
+        width: 50px;
+        height: 50px;
+        /*Esse código define todos os ícones que ele pega com alturas e 
+        comprimentos em 40px*/
+    }
+
+    .conteiner2 .adicao{
+        width: 36px;
+        height: 36px;
+        position: var(--posicao);
+        left: 59%; top: 34%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+     .conteiner2 .cadastroDeUsuario,
+     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+ 
+         position: var(--posicao);
+         top: 15%;
+     }
+ 
+     .conteiner2 .usuario{
+         position: var(--posicao);
+         bottom: 15%; left: 30%;
+     }
+ 
+     .conteiner2 .Usuario{
+         position: var(--posicao);
+         top: -16%;
+     }
+ 
+     .conteiner2 .cadastro{
+         font-size: 12px;
+         position: var(--posicao);
+         top: 28%;
+     }
+ 
+     .conteiner2 .relatorios{
+        position: var(--posicao);
+        left: 25%;
+     }
+ 
+     .conteiner2 .Estoque{
+         text-align: center;
+     }
+
+    .rodape{
+        margin-top: 26.3%;
+    } 
+}
+
+@media(min-width:912px){
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 87.5%; top: 10%;
+    }
+
+    .inferiorDireito{
+       margin-top: 62.5%;
+    }
+
+    .rodape{
+        margin-top: 46%;
+    }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        position: var(--posicaoAbsoluta);
+        bottom: 49.5%; right: 86%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 11px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: 55%; right: 61%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+
+    /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/
+
+    .conteiner2 .adicao{
+        position: var(--posicao);
+        left: 57%; top: 33%;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+        /*Posição do ícone "Livro" ajustada*/
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        top: 15%; left: 30%;
+    }
+
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        bottom: 10%; left: 25%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 25%;
+    }
+
+    /*Fontes dentro das caixas que contêm os Ícones*/
+   
+    .conteiner2 .cadastroDeUsuario,
+    .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
+    .conteiner2 .Estoque, .conteiner2 .renovacoes{
+
+        position: var(--posicao);
+        top: 15%;
+    }
+
+    .conteiner2 .Usuario{
+        position: var(--posicao);
+        top: -16%;
+    }
+
+    .conteiner2 .cadastro{
+        position: var(--posicao);
+        top: 28%;
+    }
+
+    .conteiner2 .relatorios{
+       position: var(--posicao);
+       left: 25%;
+    }
+
+    .conteiner2 .Estoque{
+        text-align: center;
+    }
+
+}
+
+@media(min-width:1024px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/
+
+    .titulo{
+       font-size: 16px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 88.9%; top: 22%;
+    }
+
+ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
+
+    .conteiner2{
+        width: 1000px;
+    }
+
+    .conteiner2 .Livro{
+        width: 40px;
+        position: var(--posicaoAbsoluta);
+        left: 5%;
+    }
+
+    .conteiner2 .adicao{
+        position: var(--posicaoAbsoluta);
+        left: 6.58%; top: 32%;
+    }
+
+    .conteiner2 .cadastro{
+        position: var(--posicao);
+        top: 60%;
+    }
+
+    .conteiner2 .user{
+        width: 50px;
+        height: 50px;
+        position: var(--posicao);
+        left: 25%;
+    }
+
+    .conteiner2 .cadastroDeUsuario{
+        position: var(--posicao);
+        top: 5%;
+    }
+
+    .conteiner2 .vectorRelatorio, .emprestimo, .conteiner2 .usuario, .estoque, .vectorRenova{
+        width: 50px;
+        height: 50px;
+    }
+
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        left: 25%; bottom: 15%;
+    }
+
+    .conteiner2 .Usuario{
+        position: var(--posicao);
+        bottom: 30%;
+    }
+
+    .conteiner2 .estoque{
+        position: var(--posicao);
+        left: 20%;
+    }
+
+    .conteiner2 .Estoque{
+        text-align: center;
+    }
+
+    .inferiorDireito{
+       margin-top: 59.5%;
+    }
+
+    .Libro, .copyright, .todos{
+        display: block;
+    }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        position: var(--posicaoAbsoluta);
+        bottom: -17%; right: 86.4%;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+      #overlayRelatorio{
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: -5%; right: 58.5%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+}
+
+@media(min-width: 1280px){
+
+    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+    
+    .titulo{
+       position: var(--posicao);
+       bottom: 15%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.1%; top: 17%;
+    }
+
+    .icone{
+        position: var(--posicao);
+        right: 1%;
+    }
+
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner2{
+        width: 1150px;
+    }
+
+    .conteiner2 .cadastro{
+        position: var(--posicao);
+        top: 10%;
+    }
+
+    .caixa .user{   
+        position: var(--posicao);
+        left: 24%; top: 10%;
+    }
+
+    .caixa .usuario{
+        position: var(--posicao);
+        left: 20%;
+    }
+
+    .caixa .estoque{
+        position: var(--posicao);
+        left: 24%; 
+    }
+
+    .caixa .Estoque{
+        text-align: center;
+    }
+
+    .caixa .Livro{
+        position: var(--posicao);
+        left: 30px;
+    }
+
+    .caixa .vectorRelatorio{
+        position: var(--posicao);
+        left: 30px;
+       
+    }
+
+    .caixa .emprestimo{
+        position: var(--posicao);
+        left: 30px;
+    }
+
+    .caixa .usuario{
+        position: var(--posicao);
+        left: 22px; top: -8px;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 115px;
+    }
+
+    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
+    
+    .inferiorDireito{
+       margin-top: 55%;
+    }
+
+    .rodape{
+        align-items: center;  
+    }    
+
+     .Libro{
+        height: 140px;
+    } 
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        position: var(--posicaoAbsoluta);
+        bottom: 9%; right: 88.2%;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+      #overlayRelatorio{
+        width: 100px;
+        position: var(--posicaoAbsoluta);
+        bottom: 18%; right: 62.4%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+}
+
+@media(min-width: 1358px){
+
+    /*Cabeçalho*/   /*Cabeçalho*/
+
+    .titulo{
+        position: var(--posicao);
+        bottom: 24%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.6%; top: 22%;
+    }
+
+    .icone{
+        padding-right: 1%;
+        width: 50px;
+    }
+ 
+    /*Corpo*/  /*Corpo*/  /*Corpo*/
+    
+    .conteiner2{
+        width: 1300px;
+    }
+
+    .conteiner2 .Livro{
+        width: 50px;
+    }
+
+    .conteiner2 .adicao{
+        width: 40px;
+        height: 40px;
+        position: var(--posicao);
+        left: -2%; top: 22%;
+    }
+
+    .conteiner2 .cadastro, 
+    .conteiner2 .cadastroDeUsuario, 
+    .conteiner2 .relatorios, .conteiner2 
+    .Emprestimo, .conteiner2 .Usuario,
+    .conteiner2 .Estoque, .conteiner2 .renovacoes{
+        font-size: 14px;
+    }
+
+    .caixa{
+        width: 110px;
+        height: 135px;
+    }
+
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        left: 26%;
+    }
+
+    .inferiorDireito{
+        margin-top: 17%;
+
+    }
+
+    .siga-nos{
+        display: block;
+    }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+    .overlayCadastro{
+        width: 110px;
+        position: var(--posicaoAbsoluta);
+        bottom: -24%; right: 87.8%;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 110px;
+        position: var(--posicaoAbsoluta);
+        bottom: -10%; right: 60.3%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+
+}
+
+@media(min-width:1912px){
+    
+    .titulo{
+       position: var(--posicao);
+       bottom: 55%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 94%; top: 12%;
+    }
+
+    .adm{
+        margin-left: 6%;
+    }
+
+    .conteiner2{
+        margin-left: 5%;
+        width: 1800px;
+        height: 300px;
+    }
+
+    .conteiner2 .caixa{
+        width: 200px;
+        height: 200px;
+    }
+
+    .conteiner2 .Livro, .conteiner2 .vectorRelatorio, .conteiner2 .emprestimo, .conteiner2 .usuario,
+    .conteiner2 .estoque, .conteiner2 .vectorRenova{
+        width: 70px;
+        height: 70px;
+    }
+
+    .conteiner2 .adicao{
+        width: 60px;
+        height: 60px;
+    }
+
+    .conteiner2 .cadastro, .conteiner2 .cadastroDeUsuario, .conteiner2 .relatorios, .conteiner2 .Emprestimo, 
+    .conteiner2 .Usuario, .conteiner2 .Estoque, .conteiner2 .renovacoes{
+        font-size: 20px;
+    }
+
+    .conteiner2 .Livro{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .adicao{
+        position: var(--posicao);
+        left: 10%; top: 13%;
+        width: 45px;
+        height: 43px;
+    }
+
+    .conteiner2 .user{
+        position: var(--posicao);
+        left: 30%;
+        width: 90px;
+        height: 90px;
+    }
+
+    .conteiner2 .cadastroDeUsuario{
+        position: var(--posicao);
+
+    }
+
+    .conteiner2 .vectorRelatorio{
+        position: var(--posicao);
+        left: 30%;
+    }
+
+    .conteiner2 .emprestimo{
+        position: var(--posicao);
+        left: 30%; top: 18%;
+    }
+    
+    .conteiner2 .usuario{
+        position: var(--posicao);
+        left: 30%; top: 5%;
+    }
+    
+    .conteiner2 .Usuario{
+        position: var(--posicao);
+        left: 0%; top: 0%;
+    }
+    
+    .conteiner2 .vectorRenova{
+        position: var(--posicao);
+        left: 30%; 
+    }
+
+    .inferiorDireito{
+        margin-top: 39.5%;
+    }
+
+    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
+
+     .overlayCadastro{
+        height: 215px;
+        width: 200px;
+        position: var(--posicaoAbsoluta);
+        bottom: 3%; right: 83.1%;
+    }
+
+    .overlayCadastro .item{
+        font-size: 16px;
+    }
+
+    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
+    
+    /*Overlay de relatórios*/ /*Overlay de relatórios*/ /*Overlay de relatórios*/
+    
+    #overlayRelatorio{
+        position: var(--posicaoAbsoluta);
+        bottom: 15%; left: 33.6%;
+        width: 200px;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 16px;
+    }
+
+    /*Overlay de relatórios*/ /*Overlay de relatórios*/ /*Overlay de relatórios*/
+
+    .menuAdm .logoSenacHub{
+        height: 120px;
+        width: 200px;
+    }
+}
+
