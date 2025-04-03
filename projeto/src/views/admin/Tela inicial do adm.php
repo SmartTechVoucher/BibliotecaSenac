@@ -118,7 +118,7 @@
 
     <div id="menu" class="menu">
 
-        <div><a href="./Tela de cadastro de livros/biblioteca.html">Cadastrar livros</a></div>
+        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
         <div><a href="./Tela de cadastro de usuários/biblioteca.html">Cadastrar usuários</a></div>
         <div><a href="./Tela de relatórios/biblioteca.html">Relatórios</a></div>
         <div>Empréstimos</div>
