@@ -334,17 +334,16 @@ a{
     color: black;
 }
 
-
-
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
-@media(min-width:375px){
-
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+@media(max-width:1024px){
 
     .logoSenacHub{
         display: none;
     }
+}
+
+@media(min-width:375px){
 
     /*evento do cabeçalho*/ /*evento do cabeçalho*/ /*evento do cabeçalho*/
 
@@ -469,10 +468,10 @@ a{
    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
    .overlayCadastro{
-    height: 160px;
+    height: 210px;
     width: 80px;
     position: var(--posicaoAbsoluta);
-    bottom: 8%; right: 73%;
+    bottom: 0%; right: 73%;
    }
 
 .overlayCadastro .item{
@@ -518,10 +517,9 @@ a{
  /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
    .overlayCadastro{
-        height: 160px;
         width: 80px;
         position: var(--posicaoAbsoluta);
-        bottom: 31%; right: 75.5%;
+        bottom: 25.5%; right: 75.5%;
    }
 
    .overlayCadastro .item{
@@ -552,13 +550,9 @@ a{
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
-    .logoSenacHub{
-        display: block;
-    }
-
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 79.8%; top: 15%;
+        left: 79.8%; top: 20%;
     }
 
     .icone{
@@ -576,10 +570,11 @@ a{
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
     .overlayCadastro{
-        height: 160px;
+       
         width: 67px;
+        height: 220px;
         position: var(--posicaoAbsoluta);
-        bottom: 31.5%; right: 84%;
+        bottom: -13%; right: 84%;
     }
 
     .overlayCadastro .item{
@@ -594,7 +589,7 @@ a{
     #overlayRelatorio{
         width: 67px;
         position: var(--posicaoAbsoluta);
-        bottom: 41%; right: 58.8%;
+        bottom: 10%; right: 58.8%;
     }
 
     #overlayRelatorio .relatorio{
@@ -739,9 +734,10 @@ a{
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
     .overlayCadastro{
-        height: 118px;
+       
         position: var(--posicaoAbsoluta);
-        bottom: -111%; right: 75%;
+        top: 76%; right: 85%;
+        width: 80px;
     }
 
     .overlayCadastro .item{
@@ -750,6 +746,19 @@ a{
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+
+    #overlayRelatorio{
+        width: 80px;
+        position: var(--posicaoAbsoluta);
+        top: 76%; right: 58.8%;
+    }
+
+    #overlayRelatorio .relatorio{
+        font-size: 10px;
+    }
+
+    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
@@ -829,36 +838,7 @@ a{
      .conteiner2 .Estoque{
          text-align: center;
      }
-
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-      .overlayCadastro{
-        height: 160px;
-        width: 80px;
-        position: var(--posicaoAbsoluta);
-        bottom: 35.5%; right: 84.7%;
-    }
-
-    .overlayCadastro .item{
-        font-size: 10px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
    
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 80px;
-        position: var(--posicaoAbsoluta);
-        bottom: 43%; right: 58.8%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 }
 
 @media(min-width:768px){
@@ -867,7 +847,7 @@ a{
     
    .minhaConta{
     position: var(--posicaoAbsoluta);
-    left: 85.1%; top: 13%;
+    left: 85.1%; top: 19%;
  }
 
     .conteiner2{
@@ -902,7 +882,7 @@ a{
  /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
    .overlayCadastro{
-    height: 160px;
+ 
     width: 80px;
     position: var(--posicaoAbsoluta);
     bottom: 39.5%; right: 86%;
@@ -972,10 +952,10 @@ a{
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
     .overlayCadastro{
-        height: 145px;
+    
         width: 100px;
         position: var(--posicaoAbsoluta);
-        bottom: 42.5%; right: 84.7%;
+        top: 45.5%; right: 84.7%;
     }
 
     .overlayCadastro .item{
@@ -989,7 +969,7 @@ a{
     #overlayRelatorio{
         width: 100px;
         position: var(--posicaoAbsoluta);
-        bottom: 48.5%; right: 56.5%;
+        top: 45.5%; right: 56.5%;
     }
 
     #overlayRelatorio .relatorio{
@@ -997,7 +977,6 @@ a{
     }
 
     /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
@@ -1105,7 +1084,7 @@ a{
 
      .overlayCadastro{
         position: var(--posicaoAbsoluta);
-        bottom: 49.5%; right: 86%;
+        top: 40%; right: 86%;
     }
 
     .overlayCadastro .item{
@@ -1119,11 +1098,11 @@ a{
     #overlayRelatorio{
         width: 100px;
         position: var(--posicaoAbsoluta);
-        bottom: 55%; right: 61%;
+        top: 40%; right: 61%;
     }
 
     #overlayRelatorio .relatorio{
-        font-size: 10px;
+        font-size: 11px;
     }
 
     /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
@@ -1281,17 +1260,17 @@ a{
 
      .overlayCadastro{
         position: var(--posicaoAbsoluta);
-        bottom: -17%; right: 86.4%;
+        top: 92%; right: 86.4%;
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
     /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
-      #overlayRelatorio{
+    #overlayRelatorio{
         width: 100px;
         position: var(--posicaoAbsoluta);
-        bottom: -5%; right: 58.5%;
+        top: 92%; right: 58.5%;
     }
 
     #overlayRelatorio .relatorio{
@@ -1319,6 +1298,11 @@ a{
     .icone{
         position: var(--posicao);
         right: 1%;
+    }
+
+    .logoSenacHub{
+        width: 250px;
+        height: 120px;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
@@ -1395,7 +1379,7 @@ a{
 
      .overlayCadastro{
         position: var(--posicaoAbsoluta);
-        bottom: 9%; right: 88.2%;
+        top: 72%; right: 88.2%;
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
@@ -1405,7 +1389,7 @@ a{
       #overlayRelatorio{
         width: 100px;
         position: var(--posicaoAbsoluta);
-        bottom: 18%; right: 62.4%;
+        top: 72%; right: 62.4%;
     }
 
     #overlayRelatorio .relatorio{
@@ -1484,7 +1468,7 @@ a{
     .overlayCadastro{
         width: 110px;
         position: var(--posicaoAbsoluta);
-        bottom: -24%; right: 87.8%;
+        top: 100%; right: 87.8%;
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
@@ -1494,7 +1478,7 @@ a{
     #overlayRelatorio{
         width: 110px;
         position: var(--posicaoAbsoluta);
-        bottom: -10%; right: 60.3%;
+        top: 100%; right: 60.3%;
     }
 
     #overlayRelatorio .relatorio{
@@ -1608,7 +1592,7 @@ a{
         height: 215px;
         width: 200px;
         position: var(--posicaoAbsoluta);
-        bottom: 3%; right: 83.1%;
+        top: 73%; right: 83.1%;
     }
 
     .overlayCadastro .item{
@@ -1621,7 +1605,7 @@ a{
     
     #overlayRelatorio{
         position: var(--posicaoAbsoluta);
-        bottom: 15%; left: 33.6%;
+        top: 73%; left: 33.6%;
         width: 200px;
     }
 
