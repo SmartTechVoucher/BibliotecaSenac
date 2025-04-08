@@ -120,7 +120,7 @@
 
         <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
         <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
-        <div><a href="./Tela de relatórios/biblioteca.html">Relatórios</a></div>
+        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
         <div>Empréstimos</div>
         <div>Usuários</div>
         <div>Estoque de livros</div>
