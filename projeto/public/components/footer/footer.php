@@ -1,3 +1,9 @@
+<?php
+require "../../../config/constantes.php"
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,7 +23,7 @@
     <div>
         <footer>
             <div class="logo-senac">
-                <img src="../../assets/img/logo-senac.svg" alt="Logo Senac" id="logo-senac">
+                <img src="<?php echo $URLBASE?>/public/assets/img/logo-senac.svg" alt="Logo Senac" id="logo-senac">
             </div>
             
             <div class="livro">
@@ -54,12 +60,12 @@
                         Siga-nos
                     </p>
                     <div class="social-icons">
-                        <a href="#"><img src="../../assets/icons/Facebook.svg" alt="Facebook"></a>
-                        <a href="#"><img src="../../assets/icons/Instagram.svg" alt="Instagram"></a>
-                        <a href="#"><img src="../../assets/icons/LinkedIn.svg" alt="LinkedIn"></a>
-                        <a href="#"><img src="../../assets/icons/Twitter.svg" alt="Twitter"></a>
-                        <a href="#"><img src="../../assets/icons/WhatsApp.svg" alt="WhatsApp"></a>
-                        <a href="#"><img src="../../assets/icons/YouTube.svg" alt="YouTube"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Facebook.svg" alt="Facebook"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Instagram.svg" alt="Instagram"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/LinkedIn.svg" alt="LinkedIn"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Twitter.svg" alt="Twitter"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/WhatsApp.svg" alt="WhatsApp"></a>
+                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/YouTube.svg" alt="YouTube"></a>
                       </div>
                 </div>
             </div>

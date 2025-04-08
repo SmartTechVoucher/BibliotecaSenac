@@ -1,10 +1,17 @@
+<?php
+require "../../../config/constantes.php"
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cabecalho</title>
-    <link rel="stylesheet" href="/BibliotecaSenac/projeto/public/css/header.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/header.css">
 </head>
 <body>
 
@@ -18,7 +25,7 @@
 
         <!-- ICONE DO SENAC, ESSE DO LADO DE ONDE FICA A NAV BAR -->
         <div class="iconeSenac">
-            <img src="../iconesUsados/Logo senac hub.png" alt="Imagem do logo">
+            <img id="icone_top" src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo">
         </div>
 
         <!-- NAVBAR QUE APARECE "OS CAMINHOS" QUE O USUARIO PODE IR -->
@@ -51,8 +58,8 @@
 
     <div class="iconesSuperiores">
 
-        <img src="../iconesUsados/Superior esquerdo.png" alt="Superior esquerdo" class="esquerdo">
-        <img src="../iconesUsados/Superior direito.png" alt="Superior direito" class="direito">
+        <img src="<?php echo $URLBASE?>/public/assets/img/Superior esquerdo.svg" alt="Superior esquerdo" class="esquerdo">
+        <img src="<?php echo $URLBASE?>/public/assets/img/Superior direitor.svg" alt="Superior direito" class="direito">
     
     </div>
    

@@ -26,11 +26,16 @@ header {
     border-bottom: #769FCD 5px solid;    /* Garante que o cabeçalho fique sobre outros elementos */
 }
 
+/* .esquerdo {
+    margin: 0;
+} */
+
 /* Ícone do menu */
 .menu-icon {
     cursor: pointer;
     margin-right: 20px; /* Ajuste o valor para aumentar o espaço entre o ícone e o logo Senac */
 }
+
 
 /* Logo Senac */
 
@@ -117,6 +122,10 @@ nav.show {
     object-fit: contain; /* Mantém a proporção */
 }
 
+#icone_top{
+    width: 20%;
+    height: 20%;
+}
 /* RESPONSIVIDADE */
 
 @media (max-width: 1024px) {
