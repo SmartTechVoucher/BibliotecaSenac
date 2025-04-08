@@ -56,18 +56,20 @@ body {
     text-overflow: ellipsis;
     margin: 0 auto;
     max-width: calc(100% - 100px);
-   
+
 }
 
-/* Conteiner 3 */
 .conteiner3 {
     display: flex;
     justify-content: space-between;
     position: relative;
     width: 100%;
+        align-items: center; 
+        gap: 10px; 
+    
+    
 }
 
-/* Imagem superior esquerda */
 .imagemSuperiorEsquerda {
     position: absolute;
     left: 20px;
@@ -77,7 +79,6 @@ body {
     height: 50px;
 }
 
-/* Imagem superior direita */
 .imagemSuperiorDireita {
     position: absolute;
     right: 20px;
@@ -88,10 +89,9 @@ body {
 }
 
 
-/* Quadrado Branco */
 .quadradoBranco {
     width: 70%;
-    height: 400px;  /* Aumenta a altura do quadrado branco */
+    height: 500px;  
     margin: 120px auto 0 auto;
     background-color: var(--branco);
     padding: 20px;
@@ -109,12 +109,48 @@ body {
     display: flex;
     flex-direction: column;
 }
+.campo button {
+    height: 35px; 
+    padding: 5px 10px;
+    background-color: var(--corBotao);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
 
-.botao{
+.botao {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end; 
 }
+
+.botao button {
+    height: 35px; 
+    padding: 5px 10px;
+    background-color: var(--corBotao);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.campoSenha{
+    display: flex;
+    flex-direction: column; 
+    gap: 5px; 
+}
+
+.campo1 button {
+    height: 35px;
+    padding: 5px 10px;
+    background-color: var(--corBotao);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 .linhaBaixo{
 
@@ -129,7 +165,7 @@ body {
 }
 
 
-/* Inferior */
+
 .inferior {
     display: flex;
     justify-content: flex-end;
@@ -152,31 +188,28 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* Ajusta os itens na parte inferior do rodapé */
+    align-items: flex-end; 
     color: var(--branco);
     font-family: var(--fontes);
     font-size: var(--fonte_rodape);
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    height: 120px; /* Altura fixa */
+    height: 120px; 
 }
 
-/* Alinha o ícone do Fecomércio à esquerda */
 .rodape .Logo {
     height: 50px;
     width: 200px;
     padding-left: 30%;
 }
 
-/* Centraliza o texto "Senac MS Cpyrit" na parte inferior do rodapé */
 .rodape .centro {
     text-align: center;
     font-size: 14px;
     width: 100%;
 }
 
-/* Alinha o "Fale conosco", "email" e "Siga-nos" à direita */
 .rodape .direita {
     display: flex;
     flex-direction: column;
@@ -185,23 +218,23 @@ body {
     justify-content: flex-end;
 }
 
-/* Responsividade para o rodapé */
+
 @media (max-width: 768px) {
     .rodape {
-        flex-direction: column; /* Organiza o conteúdo de cima para baixo */
-        align-items: center; /* Centraliza tudo */
+        flex-direction: column; 
+        align-items: center; 
         padding: 10px;
-        height: auto; /* Permite que a altura seja dinâmica */
+        height: auto; 
     }
 
     .rodape .Logo, .rodape .Libro {
-        width: 60%; /* Ajusta a largura das imagens no rodapé */
+        width: 60%; 
         margin-bottom: 10px;
     }
 
     .rodape .centro {
-        margin-bottom: 10px; /* Espaçamento inferior */
-        font-size: 12px; /* Ajusta o tamanho da fonte para dispositivos menores */
+        margin-bottom: 10px; 
+        font-size: 12px; 
     }
 
     .rodape .direita {
@@ -209,4 +242,44 @@ body {
         align-items: center;
         margin-top: 10px;
     }
+}
+.linhaBaixo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.campoSenha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+}
+
+.campoSenha input {
+    width: 100%;
+}
+
+.esqueciSenha {
+    margin-top: 5px;
+    height: 35px;
+    padding: 5px 10px;
+    background-color: var(--corBotao);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+
+.campoSenha {
+    align-self: center;
+}
+button:hover{
+    color: #001E3E;
 }
