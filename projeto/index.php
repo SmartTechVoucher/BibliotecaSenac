@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo á Biblioteca SENAC HUB ACADEMY!</title>
-    <link rel="stylesheet" href="./projeto/public/css/tela_inicial.css">
+    <link rel="stylesheet" href="../projeto/public/css/tela_inicial.css">
    
 </head>
 <body>
     <div class="conteiner">
         <div class="cabecalho">
             <div class="cbleft">
-                <img class="icsenac" src="imagens/SenacIcon 1.png" alt="Icone Senac">
+                <img class="icsenac" src="../projeto/public/assets/icons/SenacIcon 1.png" alt="Icone Senac">
             </div>
             <div class="cbright">
-                <img src="/iconPerfil 1.png" alt="Foto perfil" class="icperfil">
+                <img src="../projeto/public/assets/icons/Icon perfil.png" alt="Foto perfil" class="icperfil">
             </div>
         </div>
         <div class="topPage">
             <div class="geralinfo">
-                <img src="imagens/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
+                <img src="../projeto/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
                 <div class="letreiro">
                     <h1 class="letras">Bem-vindo a Biblioteca</h1>
                     <h1 class="letras2">SENAC HUB ACADEMY.</h1>
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="partebaixo">
-                <img src="imagens/bolha 1.png" alt="bolha" class="bolha1">
+                <img src="../projeto/public/assets/icons/bolha 1.png" alt="bolha" class="bolha1">
             </div>
             <div class="barrapesquisa">
                 <input type="text" class="pesquisa"> <button class="botaops">Buscar</button>
@@ -40,23 +40,23 @@
         <h1 class="gentitle">Gêneros de Livros</h1>
         <div class="gen">
             <div class="gencard">
-                <img src="imagens/tecnologiaicon 1.png" alt="" class="genicon">
+                <img src="../projeto/public/assets/icons/tecnologiaicon 1.png" alt="" class="genicon">
                 <h2 class="gentitle">Tecnologia</h2>
             </div>
             <div class="gencard">
-                <img src="imagens/saudeicon 1.png" alt="" class="genicon">
+                <img src="../projeto/public/assets/icons/saudeicon 1.png" alt="" class="genicon">
                 <h2 class="gentitle">Saúde</h2>
             </div>
             <div class="gencard">
-                <img src="imagens/gestao 1.png" alt="" class="genicon">
+                <img src="../projeto/public/assets/icons/gestao 1.png" alt="" class="genicon">
                 <h2 class="gentitle">Gestão</h2>
             </div>
             <div class="gencard">
-                <img src="imagens/designicon 1.png" alt="" class="genicon">
+                <img src="../projeto/public/assets/icons/gestao 1.png" alt="" class="genicon">
                 <h2 class="gentitle">Design</h2>
             </div>
             <div class="gencard">
-                <img src="imagens/educacaoicon 1.png" alt="" class="genicon">
+                <img src="../projeto/public/assets/icons/educacaoicon 1.png" alt="" class="genicon">
                 <h2 class="gentitle">Educação</h2>
             </div>
         </div>
@@ -67,7 +67,7 @@
  
         <div class="estante">
          
-            <img class="estanteimg" src="./imagens/estante 1.png" alt="">
+            <img class="estanteimg" src="../projeto/public/assets/icons/estante 1.png" alt="">
  
             <div class="livros">  
  
@@ -75,15 +75,15 @@
 
                     <div class="tresPrimeiros">
                         <div class="livroEstante">
-                            <img src="imagens/card prat.png" alt="Livro 1">
+                            <img src="../projeto/public/assets/img/card prat.png" alt="Livro 1">
                         </div>
        
                         <div class="livroEstante">
-                            <img src="imagens/card prat.png" alt="Livro 2">
+                            <img src="../projeto/public/assets/img/card prat.png" alt="Livro 2">
                         </div>
        
                         <div class="livroEstante">
-                            <img src="imagens/card prat.png" alt="Livro 3">
+                            <img src="../projeto/public/assets/img/card prat.png" alt="Livro 3">
                         </div>
                        
                     </div>
@@ -91,21 +91,21 @@
                     <div class="quatroUltimos">
 
                         <div class="livroEstante">
-                            <img src="imagens/card prat.png" alt="Livro 4">
+                            <img src="../projeto/public/assets/img/card prat.png" alt="Livro 4">
                         </div>
        
                         <div class="livroEstante">
-                            <img src="imagens/card prat.png" alt="Livro 5">
+                            <img src="../projeto/public/assets/img/card prat.png" alt="Livro 5">
                         </div>
 
                         
                         <div class="livroEstante">
-                            <img src="imagens/card prat.png" alt="Livro 6">
+                            <img src="../projeto/public/assets/img/card prat.png" alt="Livro 6">
                         </div>
 
                             
                         <div class="livroEstante">
-                            <img src="imagens/card prat.png" alt="Livro 7">
+                            <img src="../projeto/public/assets/img/card prat.png" alt="Livro 7">
                         </div>
 
                     </div>
@@ -116,6 +116,8 @@
  
             </div>
         </div>
+
+        <?php include '../BibliotecaSenac/projeto/public/components/footer/footer.php' ?>
  
         <!-- <div class="rodape">
             <footer>
