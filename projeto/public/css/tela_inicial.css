@@ -234,9 +234,35 @@ body {
     width: auto;
     height: 100%;
 }
- 
-.genicon{
-    width: 120px;
+
+
+.genicon2 {
+    padding: 20px 10px 10px 18px;
+    width: 130px;
+    height: 120px;
+}
+
+.genicon3 {
+    padding: 37px 12px 10px 37px;
+    width: 90px;
+    height: 90px;
+}
+
+.genicon4 {
+    padding: 37px 12px 10px 37px;
+    width: 90px;
+    height: 90px;
+}
+
+
+.icon_livros{
+    background-color: #003162;
+    width: 162px;
+    height: 162px;
+    border-radius: 50%;
+}
+.icon_livros:hover {
+    background-color: #F68B1F;
 }
  
  
