@@ -243,9 +243,63 @@ body {
 
 /*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*/
 
-/* Conteiner 3 */
+/* Conteiner 3 *//* Conteiner 3 *//* Conteiner 3 *//* Conteiner 3 */
 .conteiner3 {
     display: flex;
     justify-content: space-between;
 }
 
+/* Conteiner 3 *//* Conteiner 3 *//* Conteiner 3 *//* Conteiner 3 */
+
+/*Ícone inferior*/ /*Ícone inferior*/ /*Ícone inferior*/
+
+.inferiorDireito{
+    display: flex;
+    justify-content: end;
+    margin-top:5%;
+}
+
+.inferiorDireito .inferior{
+    width: 100px;
+    height: 100px;
+}
+
+/*Ícone inferior*/ /*Ícone inferior*/ /*Ícone inferior*/
+
+/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
+
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 240px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 10px;
+    text-align: center;
+   
+}
+
+/*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ 
+
+/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
+
+.menu{
+    width: 366px;
+    height: 330px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 36px;
+    display: none;
+    cursor: pointer;    
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--branco);
+}
+
+/*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/

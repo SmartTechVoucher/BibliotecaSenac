@@ -130,6 +130,41 @@
            </table>    
         </tbody>
 
+        <div class="inferiorDireito">
+
+            <img src="../../../public/assets/icons/Inferior direito.png" alt="" class="inferior">
+
+        </div>
+
+        <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
+
+     <div class="rodape">
+
+        <div class="logoFecomercio"><img src="../../../public/assets/icons/Fecomercio.png" alt="" class="Logo" ></div>
+
+        <div>
+            <img src="../../../public/assets/icons/Livro.png" alt="" class="Libro">
+            <div class="copyright">Senac MS Copyright © <br></div>
+            <div class="todos"> 2024. Todos os Direitos Reservados</div>   
+        </div>
+
+     </div> 
+
+    
+    <div id="menu" class="menu">
+
+        <div><a href="./Tela de cadastro de usuários/biblioteca.html">Cadastrar usuários</a></div>
+        <div><a href="./Tela de relatórios/biblioteca.html">Relatórios</a></div>
+        <div>Empréstimos</div>
+        <div><a href="./Tela dos livros cadastrados/biblioteca.html">Estoque de livros</a></div>
+        <div>Renovações</div>
+        <hr>
+        <div><a href="./Tela de login/view/login/index.html">Logout</a></div>
+
+    </div>
+
+    <script src="../../../public/js/Tela de usuários cadastrados.js"></script>
+
  </body>
 </html>
 
