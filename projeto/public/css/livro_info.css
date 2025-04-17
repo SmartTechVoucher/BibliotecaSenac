@@ -252,6 +252,12 @@ a{
     width: 170px;
 }
 
-.data {
-    justify-content:center ;
+/*.data {
+    /*align-items: ;
+}*/
+
+.botao button{
+    background-color: rgba(0, 74, 144, 1);
+    color: white;
+    transform: translate(2500%, 10px); /* move 50px à direita e 20px pra baixo */
 }
