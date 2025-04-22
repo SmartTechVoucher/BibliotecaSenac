@@ -185,7 +185,7 @@ body {
     background-color: var(--azulCabecalho);
     height: 140px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-bottom: #769FCD 5px solid;
 }
@@ -294,7 +294,8 @@ body {
     font-family: var(--fontes);
     font-size: 36px;
     display: none;
-    cursor: pointer;    
+    cursor: pointer;  
+      
 }
 
 .menu a {
@@ -303,3 +304,147 @@ body {
 }
 
 /*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/
+
+@media(max-width:1024px){
+
+    .Libro, .copyright, .todos, .titulo{
+        display: none;
+    }
+}
+
+
+@media(min-width:375px){
+
+    .tabela{
+        overflow-x: auto;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 15%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 69.5%;
+    }
+
+}
+
+@media(min-width:414px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 72.5%;
+    }
+}
+
+@media(min-width:500px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 77.2%;
+    }
+}
+
+@media(min-width:600px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 81%;
+    }
+}
+
+@media(min-width:768px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 85.2%; top: 11%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
+}
+
+@media(min-width:820px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 85.8%; top: 11%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+}
+
+@media(min-width:912px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 87.5%; top: 10%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+    .inferior{
+        margin-top: 17%;
+    }
+
+}
+
+@media(min-width:1000px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 88.6%; top: 14%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 14%;
+    }
+
+    .inferior{
+        margin-top: 17%;
+    }
+
+}
+
+@media(min-width:1280px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.1%; top: 14%
+    }
+
+}
+
+@media(min-width:1358px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.6%; top: 14%
+    }
+
+}
+
+@media(min-width:1912px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 94%; top: 14%
+    }
+
+}
+
+
+

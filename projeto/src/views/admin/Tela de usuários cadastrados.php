@@ -40,6 +40,8 @@
 
     <h1>histórico de empréstimos</h1>   
         
+
+     <div class="tabela">     
         <table>
             <thead>
                 <tr>
@@ -129,7 +131,8 @@
 
            </table>    
         </tbody>
-
+     </div> 
+        
         <div class="inferiorDireito">
 
             <img src="../../../public/assets/icons/Inferior direito.png" alt="" class="inferior">
@@ -153,10 +156,10 @@
     
     <div id="menu" class="menu">
 
-        <div><a href="./Tela de cadastro de usuários/biblioteca.html">Cadastrar usuários</a></div>
-        <div><a href="./Tela de relatórios/biblioteca.html">Relatórios</a></div>
+        <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
+        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
         <div>Empréstimos</div>
-        <div><a href="./Tela dos livros cadastrados/biblioteca.html">Estoque de livros</a></div>
+        <div><a href="para resolver">Estoque de livros</a></div>
         <div>Renovações</div>
         <hr>
         <div><a href="./Tela de login/view/login/index.html">Logout</a></div>
