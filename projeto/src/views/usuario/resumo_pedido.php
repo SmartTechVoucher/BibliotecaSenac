@@ -15,9 +15,9 @@
 
     <main>
         <a href="caminho_home">Home / Reserva de Pedido</a>
-        <h1>Resumo de pedido de reserva</h1>
+        <h1 class="titulo">Resumo de pedido de reserva</h1>
         <div class="conteudo">
-            <h2>Informações do livro</h2>
+            <h2 class="aa">Informações do livro</h2>
             <div class="livro"> 
                 <img class="simposio_livro" src="../../../public/assets/img/Simposio.png" alt="" >
                 <div class="conteudo_livro">
@@ -34,17 +34,41 @@
                 </div>
             </div>
 
-            <div class="data">
+            <div class="informacoes">
                 <h2>Data de reserva</h2>
-                <label for="">Data de reserva: </label> <input type="date" name="" id="reserva">
-                <label for="">Data de retirada: </label> <input type="date" name="" id="retirada">
-                <label for="">Data de devolução: </label> <input type="date" name="" id="devolucao">
+
+                <div class="form-group">
+                    <label for="">Data de reserva: </label> 
+                    <input type="date" name="" id="reserva">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Data de retirada: </label> 
+                    <input type="date" name="" id="retirada">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Data de devolução: </label> 
+                    <input type="date" name="" id="devolucao">
+                </div>
+
 
                 <h2>Informações do Usuário</h2>
-                <label for="">Nome: </label> <input type="text" name="" id="nome_usuario">
-                <label for="">Telefone: </label> <input type="text" name="" id="telefone">
-                <label for="">Email: </label> <input type="text" name="" id="email">
+                <div class="form-group-dois">
+                    <label for="usuario" type="text">Nome: </label> 
+                    <input type="text" name="" id="nome_usuario">
+                </div>
 
+                <div class="form-group-dois">
+                    <label for="usuario" type="tel">Telefone: </label> 
+                    <input type="tel" name="" id="telefone">
+                </div>
+
+                <div class="form-group-dois">
+                    <label for="usuario" type="email">Email: </label> 
+                    <input type="email" name="" id="email">
+                </div>
+                
             </div>
 
             <div class="botao">
