@@ -40,7 +40,7 @@
 
     <div class="minhaConta">
         <p>Minha conta</p>
-        <p><a href="./Tela de login/view/login/index.html">Sair</a></p>
+        <p><a href="../usuario/login.php">Sair</a></p>
     </div>   
 
 </div>
@@ -58,20 +58,20 @@
 
     <div class="conteiner2">
 
-        <div class="caixa">     
+        <div class="caixa">    
             <img src="../../../public/assets/icons/Vector (4).png" alt="Livro" class="Livro">
             <img src="../../../public/assets/icons/Vector (5).png" alt="Sinal de adição" class="adicao">
             <p class="cadastro">Cadastrar <br> livros</p>
         </div>
 
         <div class="caixa">
-            <img src="../../../public/assets/icons/Vector (3).png" alt="Usuário" class="user">
-            <p class="cadastroDeUsuario">Cadastrar usuários</p>
+            <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Vector (3).png" alt="Usuário" class="user"></a>
+            <p><a href="./Tela de cadastro de usuários.php" class="cadastroDeUsuario">Cadastrar usuários</a></p>
         </div>
         
         <div class="caixa">
-            <img src="../../../public/assets/icons/Vector (1).png" alt="Livro" class="vectorRelatorio">
-            <p class="relatorios">Relatórios</p>
+            <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Vector (1).png" alt="Livro" class="vectorRelatorio"></a>
+            <p><a href="./Tela de relatórios.php" class="relatorios">Relatórios</a></p>
         </div>
         
         <div class="caixa">
@@ -121,32 +121,32 @@
         <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
         <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
         <div><a href="./Tela de relatórios.php">Relatórios</a></div>
-        <div><a href="./emprestimo.php">Empréstimos</a></div>
-        <div>Usuários</div>
+        <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
+        <div><a href="">Usuários cadastrados</a></div>
         <div>Estoque de livros</div>
-        <div>Renovações</div>
+        <div><a href="../usuario/telaRenovarPosseDeLivro.php">Renovações</a></div>
         <hr>
-        <div><a href="./Tela de login/view/login/index.html">Logout</a></div>
+        <div><a href="../usuario/login.php">Logout</a></div>
     </div>
 
     <div class="overlayCadastro">
-        <p><a href="./Tela de cadastro de livros/biblioteca.html" class="item">Cadastrar livro</a></p>
+        <p><a href="./Tela de cadastro de livros.php" class="item">Cadastrar livro</a></p>
         <hr>
         
-        <p><a href="./Tela dos livros cadastrados/biblioteca.html" class="item">Ver livros cadastrados</a></p>
+        <p><a href="Por fazer" class="item">Ver livros cadastrados</a></p>
         <hr>
         
-        <p><a href="./Tela dos livros cadastrados/biblioteca.html" class="item">Excluir livro</a></p>
+        <p><a href="Por fazer" class="item">Excluir livro</a></p>
         <hr>
         
-        <p class="item">Editar informações de um livro</p>
+        <p><a href="Por fazer" class="item">Editar informações de um livro</a></p>
     </div>
 
     <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
     <div id="overlayRelatorio">
-        <p class="relatorio">Ver livros emprestados</p>
+        <p><a href="./Histórico de empréstimos.php" class="relatorio">Ver livros emprestados</a></p>
         <hr>
-        <p class="relatorio">Ver livros não devolvidos</p>
+        <p><a href="por fazer" class="relatorio">Ver livros não devolvidos</a></p>
     </div>
     <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
 
