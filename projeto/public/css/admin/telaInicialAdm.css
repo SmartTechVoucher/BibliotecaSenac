@@ -112,7 +112,7 @@ h2{
 .caixa{
     height: 210.1px;
     width: 206.96px;
-    background-color: var(--branco);
+    /* background-color: var(--branco); */
     color: black;
     border-radius: 5%;
    
@@ -123,14 +123,14 @@ h2{
    
 }
 
-.caixa .usuario{
+/* .caixa .usuario{
 
     width: 109.75px;
     height: 109.75px;
     position: var(--posicao);
     left: 50px;
     margin-top: 30px;
-}
+} */
 
 .caixa .Usuario{
     
@@ -177,11 +177,11 @@ h2{
     color: black;
 }
 
-.caixa .estoque{
+/* .caixa .estoque{
    
     position: var(--posicao);
     top: 15%; left: 13%;
-}
+} */
 
 .caixa .vectorRelatorio{
     position: var(--posicao);
@@ -194,19 +194,19 @@ h2{
     color: black;
 }
 
-.caixa .vectorRenova{
+/* .caixa .vectorRenova{
     position: var(--posicao);
     left: 20%; top: 15%;
 }
 
 .caixa .renovacoes{
     text-align: center;
-}
+} */
 
-.caixa .emprestimo{
+/* .caixa .emprestimo{
     position: var(--posicao);
     left: 23%; top: 13%;
-}
+} */
 
 .caixa .Emprestimo{
     text-align: center;
@@ -380,9 +380,7 @@ a{
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
-    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
-    .conteiner2 .vectorRenova{
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio{
         
         width: 40px;
         height: 40px;
@@ -413,31 +411,31 @@ a{
         left: 30%;
     }
 
-    .conteiner2 .emprestimo{
+    /* .conteiner2 .emprestimo{
         position: var(--posicao);
         top: 15%; left: 30%;
-    }
+    } */
 
-    .conteiner2 .estoque{
+    /* .conteiner2 .estoque{
         position: var(--posicao);
         left: 30%;
-    }
+    } */
 
     /*Fontes dentro das caixas que contêm os Ícones*/
    
      .conteiner2 .cadastroDeUsuario,
      .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+     .conteiner2 .Estoque{
  
          font-size: var(--tamanhoFonte);
          position: var(--posicao);
          top: 15%;
      }
  
-     .conteiner2 .usuario{
+     /* .conteiner2 .usuario{
          position: var(--posicao);
          bottom: 15%; left: 30%;
-     }
+     } */
  
      .conteiner2 .Usuario{
          position: var(--posicao);
@@ -613,9 +611,7 @@ a{
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
-    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
-    .conteiner2 .vectorRenova{
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio{
         
         width: 40px;
         height: 40px;
@@ -644,26 +640,26 @@ a{
         left: 20%; top: 20%;
     }
 
-    .conteiner2 .emprestimo{
+    /* .conteiner2 .emprestimo{
         position: var(--posicao);
         top: 15%; left: 20%;
-    }
+    } */
 
-    .conteiner2 .usuario{
+    /* .conteiner2 .usuario{
         position: var(--posicao);
         bottom: 15%; left: 20%;
-    }
+    } */
 
-    .conteiner2 .estoque{
+    /* .conteiner2 .estoque{
         position: var(--posicao);
         left: 20%;
-    }
+    } */
 
     /*Fontes dentro das caixas que contêm os Ícones*/
    
      .conteiner2 .cadastroDeUsuario,
      .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+     .conteiner2 .Estoque{
  
          font-size: var(--tamanhoFonte);
          position: var(--posicao);
@@ -765,9 +761,7 @@ a{
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
-    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
-    .conteiner2 .vectorRenova{
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio{
         
         width: 40px;
         height: 40px;
@@ -796,26 +790,26 @@ a{
         left: 30%;
     }
 
-    .conteiner2 .emprestimo{
+    /* .conteiner2 .emprestimo{
         position: var(--posicao);
         top: 18%; left: 20%;
-    }
+    } */
 
-    .conteiner2 .usuario{
+    /* .conteiner2 .usuario{
         position: var(--posicao);
         bottom: 10%; left: 24%;
-    }
+    } */
 
-    .conteiner2 .estoque{
+    /* .conteiner2 .estoque{
         position: var(--posicao);
         left: 20%; top: 17%;
-    }
+    } */
 
     /*Fontes dentro das caixas que contêm os Ícones*/
    
      .conteiner2 .cadastroDeUsuario,
      .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+     .conteiner2 .Estoque{
  
          font-size: 11px;
          position: var(--posicao);
@@ -863,7 +857,7 @@ a{
 
     .conteiner2 .cadastroDeUsuario,
     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-    .conteiner2 .Estoque, .conteiner2 .renovacoes{
+    .conteiner2 .Estoque{
         
         font-size: 12px;
     }
@@ -983,9 +977,7 @@ a{
 
     /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
 
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
-    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
-    .conteiner2 .vectorRenova{
+    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio{
         
         width: 50px;
         height: 50px;
@@ -1016,30 +1008,30 @@ a{
         left: 30%;
     }
 
-    .conteiner2 .emprestimo{
+    /* .conteiner2 .emprestimo{
         position: var(--posicao);
         top: 15%; left: 30%;
-    }
+    } */
 
-    .conteiner2 .estoque{
+    /* .conteiner2 .estoque{
         position: var(--posicao);
         left: 30%;
-    }
+    } */
 
     /*Fontes dentro das caixas que contêm os Ícones*/
    
      .conteiner2 .cadastroDeUsuario,
      .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque, .conteiner2 .renovacoes{
+     .conteiner2 .Estoque{
  
          position: var(--posicao);
          top: 15%;
      }
  
-     .conteiner2 .usuario{
+     /* .conteiner2 .usuario{
          position: var(--posicao);
          bottom: 15%; left: 30%;
-     }
+     } */
  
      .conteiner2 .Usuario{
          position: var(--posicao);
@@ -1134,26 +1126,26 @@ a{
         left: 30%;
     }
 
-    .conteiner2 .emprestimo{
+    /* .conteiner2 .emprestimo{
         position: var(--posicao);
         top: 15%; left: 30%;
-    }
+    } */
 
-    .conteiner2 .usuario{
+    /* .conteiner2 .usuario{
         position: var(--posicao);
         bottom: 10%; left: 25%;
-    }
+    } */
 
-    .conteiner2 .estoque{
+    /* .conteiner2 .estoque{
         position: var(--posicao);
         left: 25%;
-    }
+    } */
 
     /*Fontes dentro das caixas que contêm os Ícones*/
    
     .conteiner2 .cadastroDeUsuario,
     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-    .conteiner2 .Estoque, .conteiner2 .renovacoes{
+    .conteiner2 .Estoque{
 
         position: var(--posicao);
         top: 15%;
@@ -1227,25 +1219,25 @@ a{
         top: 5%;
     }
 
-    .conteiner2 .vectorRelatorio, .emprestimo, .conteiner2 .usuario, .estoque, .vectorRenova{
+    .conteiner2 .vectorRelatorio{
         width: 50px;
         height: 50px;
     }
 
-    .conteiner2 .usuario{
+    /* .conteiner2 .usuario{
         position: var(--posicao);
         left: 25%; bottom: 15%;
-    }
+    } */
 
     .conteiner2 .Usuario{
         position: var(--posicao);
         bottom: 30%;
     }
 
-    .conteiner2 .estoque{
+    /* .conteiner2 .estoque{
         position: var(--posicao);
         left: 20%;
-    }
+    } */
 
     .conteiner2 .Estoque{
         text-align: center;
@@ -1324,15 +1316,15 @@ a{
         left: 24%; top: 10%;
     }
 
-    .caixa .usuario{
+    /* .caixa .usuario{
         position: var(--posicao);
         left: 20%;
-    }
+    } */
 
-    .caixa .estoque{
+    /* .caixa .estoque{
         position: var(--posicao);
         left: 24%; 
-    }
+    } */
 
     .caixa .Estoque{
         text-align: center;
@@ -1349,15 +1341,15 @@ a{
        
     }
 
-    .caixa .emprestimo{
+    /* .caixa .emprestimo{
         position: var(--posicao);
         left: 30px;
-    }
+    } */
 
-    .caixa .usuario{
+    /* .caixa .usuario{
         position: var(--posicao);
         left: 22px; top: -8px;
-    }
+    } */
 
     .menu{
         position: var(--posicaoAbsoluta);
@@ -1443,7 +1435,7 @@ a{
     .conteiner2 .cadastroDeUsuario, 
     .conteiner2 .relatorios, .conteiner2 
     .Emprestimo, .conteiner2 .Usuario,
-    .conteiner2 .Estoque, .conteiner2 .renovacoes{
+    .conteiner2 .Estoque{
         font-size: 14px;
     }
 
@@ -1452,10 +1444,10 @@ a{
         height: 135px;
     }
 
-    .conteiner2 .usuario{
+    /* .conteiner2 .usuario{
         position: var(--posicao);
         left: 26%;
-    }
+    } */
 
     .inferiorDireito{
         margin-top: 17%;
@@ -1519,8 +1511,8 @@ a{
         height: 200px;
     }
 
-    .conteiner2 .Livro, .conteiner2 .vectorRelatorio, .conteiner2 .emprestimo, .conteiner2 .usuario,
-    .conteiner2 .estoque, .conteiner2 .vectorRenova{
+    .conteiner2 .Livro, .conteiner2 .vectorRelatorio
+    {
         width: 70px;
         height: 70px;
     }
@@ -1531,7 +1523,7 @@ a{
     }
 
     .conteiner2 .cadastro, .conteiner2 .cadastroDeUsuario, .conteiner2 .relatorios, .conteiner2 .Emprestimo, 
-    .conteiner2 .Usuario, .conteiner2 .Estoque, .conteiner2 .renovacoes{
+    .conteiner2 .Usuario, .conteiner2 .Estoque{
         font-size: 20px;
     }
 
@@ -1564,25 +1556,25 @@ a{
         left: 30%;
     }
 
-    .conteiner2 .emprestimo{
+    /* .conteiner2 .emprestimo{
         position: var(--posicao);
         left: 30%; top: 18%;
-    }
+    } */
     
-    .conteiner2 .usuario{
+    /* .conteiner2 .usuario{
         position: var(--posicao);
         left: 30%; top: 5%;
-    }
+    } */
     
     .conteiner2 .Usuario{
         position: var(--posicao);
         left: 0%; top: 0%;
     }
     
-    .conteiner2 .vectorRenova{
+    /* .conteiner2 .vectorRenova{
         position: var(--posicao);
         left: 30%; 
-    }
+    } */
 
     .inferiorDireito{
         margin-top: 39.5%;

@@ -206,6 +206,10 @@ body {
     height: 100px;
 }   
 
+.tabela, h1{
+    margin-left: 1%;
+}
+
 /* Título centralizado */
 .titulo {
     color: var(--branco);
