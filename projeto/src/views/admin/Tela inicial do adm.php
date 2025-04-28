@@ -59,39 +59,42 @@
     <div class="conteiner2">
 
         <div class="caixa">    
-            <img src="../../../public/assets/icons/Vector (4).png" alt="Livro" class="Livro">
+            <!-- <img src="../../../public/assets/icons/Vector (4).png" alt="Livro" class="Livro">
             <img src="../../../public/assets/icons/Vector (5).png" alt="Sinal de adição" class="adicao">
-            <p class="cadastro">Cadastrar <br> livros</p>
+            <p class="cadastro">Cadastrar <br> livros</p> -->
+            <img src="../../../public/assets/icons/Cadastrar livros.png" alt="">
         </div>
 
         <div class="caixa">
-            <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Vector (3).png" alt="Usuário" class="user"></a>
-            <p><a href="./Tela de cadastro de usuários.php" class="cadastroDeUsuario">Cadastrar usuários</a></p>
+            <!-- <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Vector (3).png" alt="Usuário" class="user"></a> -->
+            <!-- <p><a href="./Tela de cadastro de usuários.php" class="cadastroDeUsuario">Cadastrar usuários</a></p> -->
+            <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt=""></a>
         </div>
         
         <div class="caixa">
-            <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Vector (1).png" alt="Livro" class="vectorRelatorio"></a>
-            <p><a href="./Tela de relatórios.php" class="relatorios">Relatórios</a></p>
+            <!-- <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Vector (1).png" alt="Livro" class="vectorRelatorio"></a>
+            <p><a href="./Tela de relatórios.php" class="relatorios">Relatórios</a></p> -->
+            <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Relatorio.png" alt=""></a>
         </div>
         
         <div class="caixa">
-            <img src="../../../public/assets/icons/Vector (2).png" alt="Livro" class="emprestimo">
-            <p class="Emprestimo">Empréstimos</p>
+            <img src="../../../public/assets/icons/Empréstimo (1).png" alt="Livro" class="emprestimo">
+            <!-- <p class="Emprestimo">Empréstimos</p> -->
         </div>
         
         <div class="caixa">
-            <img src="../../../public/assets/icons/Vector.png" alt="Livro" class="usuario">
-            <p class="Usuario">Usuários</p>
+            <img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario">
+            <!-- <p class="Usuario">Usuários</p> -->
         </div>
         
         <div class="caixa">
-            <img src="../../../public/assets/icons/Icon Book.png" alt="Livro" class="estoque">
-            <p class="Estoque">Estoque de livros</p>
+            <img src="../../../public/assets/icons/List Books.png" alt="Livro" class="estoque">
+            <!-- <p class="Estoque">Estoque de livros</p> -->
         </div>
         
         <div class="caixa">
-            <img src="../../../public/assets/icons/Vector (1).png" alt="Livro" class="vectorRenova">
-            <p class="renovacoes">Renovações</p>
+            <img src="../../../public/assets/icons/Reservas.png" alt="Livro" class="vectorRenova">
+            <!-- <p class="renovacoes">Renovações</p> -->
         </div>
 
     </div>
@@ -123,7 +126,7 @@
         <div><a href="./Tela de relatórios.php">Relatórios</a></div>
         <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
         <div><a href="">Usuários cadastrados</a></div>
-        <div>Estoque de livros</div>
+        <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
         <div><a href="../usuario/telaRenovarPosseDeLivro.php">Renovações</a></div>
         <hr>
         <div><a href="../usuario/login.php">Logout</a></div>
@@ -133,7 +136,7 @@
         <p><a href="./Tela de cadastro de livros.php" class="item">Cadastrar livro</a></p>
         <hr>
         
-        <p><a href="Por fazer" class="item">Ver livros cadastrados</a></p>
+        <p><a href="./Tela dos livros cadastrados.php" class="item">Ver livros cadastrados</a></p>
         <hr>
         
         <p><a href="Por fazer" class="item">Excluir livro</a></p>
