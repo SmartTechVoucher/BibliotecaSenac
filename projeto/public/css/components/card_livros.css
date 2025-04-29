@@ -154,6 +154,12 @@ header{
     box-shadow: 0px 10px 40px -12px #8b8787; /*sombra ao redor do botao*/
 }
 
+.botao_reservar:hover{
+    background-color: darkblue;
+    color: rgb(255, 255, 255);
+    transition: .3s linear;
+}
+
 .saiba_mais{
     color: rgb(246, 139, 31);
     position: relative;
