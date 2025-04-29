@@ -1,0 +1,26 @@
+<svg width="80" height="90" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1_2783_8149" fill="white">
+<rect y="12.6562" width="19.6858" height="75.2279" rx="3"/>
+</mask>
+<rect y="12.6562" width="19.6858" height="75.2279" rx="3" stroke="white" stroke-width="8" mask="url(#path-1-inside-1_2783_8149)"/>
+<rect x="5.71875" y="31.0293" width="8.24903" height="6.13984" rx="1.5" stroke="white" stroke-width="3"/>
+<line x1="16.875" y1="25.4043" x2="1.40759" y2="25.4043" stroke="white" stroke-width="3"/>
+<line x1="16.875" y1="72.5098" x2="1.40759" y2="72.5098" stroke="white" stroke-width="3"/>
+<line x1="16.875" y1="77.4316" x2="1.40759" y2="77.4316" stroke="white" stroke-width="3"/>
+<mask id="path-6-inside-2_2783_8149" fill="white">
+<rect x="16.875" y="0.703125" width="19.6858" height="87.18" rx="3"/>
+</mask>
+<rect x="16.875" y="0.703125" width="19.6858" height="87.18" rx="3" stroke="white" stroke-width="8" mask="url(#path-6-inside-2_2783_8149)"/>
+<rect x="22.5938" y="21.8887" width="8.24903" height="25.8256" rx="1.5" stroke="white" stroke-width="3"/>
+<line x1="33.75" y1="14.8574" x2="18.2826" y2="14.8574" stroke="white" stroke-width="3"/>
+<line x1="33.75" y1="69.6973" x2="18.2826" y2="69.6973" stroke="white" stroke-width="3"/>
+<line x1="33.75" y1="76.0254" x2="18.2826" y2="76.0254" stroke="white" stroke-width="3"/>
+<mask id="path-11-inside-3_2783_8149" fill="white">
+<rect width="22.3623" height="87.8427" rx="3" transform="matrix(0.981713 -0.190365 0.250918 0.968008 35.4531 4.25781)"/>
+</mask>
+<rect width="22.3623" height="87.8427" rx="3" transform="matrix(0.981713 -0.190365 0.250918 0.968008 35.4531 4.25781)" stroke="white" stroke-width="8" mask="url(#path-11-inside-3_2783_8149)"/>
+<line y1="-1.5" x2="17.5009" y2="-1.5" transform="matrix(-0.981713 0.190365 -0.250918 -0.968008 57.7578 12.9414)" stroke="white" stroke-width="3"/>
+<line y1="-1.5" x2="17.5009" y2="-1.5" transform="matrix(-0.981713 0.190365 -0.250918 -0.968008 71.6562 66.5996)" stroke="white" stroke-width="3"/>
+<line y1="-1.5" x2="17.5009" y2="-1.5" transform="matrix(-0.981713 0.190365 -0.250918 -0.968008 59.3984 20.3066)" stroke="white" stroke-width="3"/>
+<line y1="-1.5" x2="17.5009" y2="-1.5" transform="matrix(-0.981713 0.190365 -0.250918 -0.968008 73.1641 72.377)" stroke="white" stroke-width="3"/>
+</svg>
