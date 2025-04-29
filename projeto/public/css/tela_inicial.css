@@ -56,7 +56,6 @@ body {
 button {
     width: 25%;
     height: 120%;
-    border-radius: 1rem;
     border: solid white;
     background-color: #002043;
     display: flex;
@@ -103,14 +102,13 @@ span {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
-    color: white;
 }
 
 .icone-perfil {
     width: 40px;
     height: 30px;
     
-  }
+}
  
 .icsenac{
     margin-left: 50px;
