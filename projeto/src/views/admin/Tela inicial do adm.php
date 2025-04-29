@@ -62,19 +62,19 @@
             <!-- <img src="../../../public/assets/icons/Vector (4).png" alt="Livro" class="Livro">
             <img src="../../../public/assets/icons/Vector (5).png" alt="Sinal de adição" class="adicao">
             <p class="cadastro">Cadastrar <br> livros</p> -->
-            <img src="../../../public/assets/icons/Cadastrar livros.png" alt="">
+            <img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro">
         </div>
 
         <div class="caixa">
             <!-- <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Vector (3).png" alt="Usuário" class="user"></a> -->
             <!-- <p><a href="./Tela de cadastro de usuários.php" class="cadastroDeUsuario">Cadastrar usuários</a></p> -->
-            <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt=""></a>
+            <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
         </div>
         
         <div class="caixa">
             <!-- <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Vector (1).png" alt="Livro" class="vectorRelatorio"></a>
             <p><a href="./Tela de relatórios.php" class="relatorios">Relatórios</a></p> -->
-            <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Relatorio.png" alt=""></a>
+            <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
         </div>
         
         <div class="caixa">

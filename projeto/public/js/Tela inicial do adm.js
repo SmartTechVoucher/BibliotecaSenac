@@ -1,5 +1,3 @@
-
-
 let botao = document.getElementsByClassName("hamburguer")
 let menu = document.getElementById("menu")
 let corpo = document.getElementsByTagName("body")
