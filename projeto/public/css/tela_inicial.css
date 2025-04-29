@@ -11,7 +11,6 @@
     --cor-texto: #FFFFFF;
 }
  
- 
 .conteiner{
     height: 100%;
     width: 100%;
@@ -45,14 +44,76 @@ body {
  
 .cbright{
     width: 50%;
-    height: 100%;
+    height: 50%;
+    padding: 23px 40px;
+    padding: 20px 40px;
     display: flex;
     justify-content: end;
- 
+    
+
 }
+
+button {
+    width: 25%;
+    height: 120%;
+    border-radius: 1rem;
+    border: solid white;
+    background-color: #002043;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+
+.button-entrar {
+    width: 18%;
+    height: 110%;
+    border-radius: 1rem;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    background-color:#F68B1F;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    gap: 10px;
+
+}
+
+.button-entrar:hover{
+    background-color: white;
+    color: #002043;
+    border: solid white;
+    
+}
+
+
+.button-entrar:hover svg path {
+    fill: #002043;
+}
+    
+
+.button-entrar svg path {
+    transition: fill 0.3s;
+}
+
+span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: white;
+}
+
+.icone-perfil {
+    width: 40px;
+    height: 30px;
+    
+  }
  
 .icsenac{
-    margin-left: 100px;
+    margin-left: 50px;
     width: 70px;
 }
  
@@ -162,7 +223,7 @@ body {
     position: absolute;
 }
  
-.bolha1{
+.bolha{
     z-index: 0;
     height: 40vw;
    
@@ -181,6 +242,7 @@ body {
 .pesquisa{
     border-style: hidden;
     box-shadow: 2px 2px 6px rgb(138, 137, 137);
+    background-color: white;
     outline: 0;
     font-size: 40px;
     margin: 0;
@@ -188,7 +250,12 @@ body {
     width: 1068px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-   
+    padding: 5px 0px 5px 10px;  
+    border: solid white;
+}
+
+.pesquisa:focus {
+    border: solid #003162 ;
 }
  
 .botaops{
@@ -205,7 +272,8 @@ body {
     font-weight: bold;
     letter-spacing: 1px;
     box-shadow: 0px 3px 3px rgb(138, 137, 137);
-    height: 62px;
+    height: 76px;
+    padding: 12px;
    
 }
  
@@ -234,9 +302,33 @@ body {
     width: auto;
     height: 100%;
 }
- 
-.genicon{
-    width: 120px;
+
+.genicon2 {
+    padding: 20px 10px 10px 18px;
+    width: 130px;
+    height: 120px;
+}
+
+.genicon3 {
+    padding: 37px 12px 10px 37px;
+    width: 90px;
+    height: 90px;
+}
+
+.genicon4 {
+    padding: 37px 12px 10px 37px;
+    width: 90px;
+    height: 90px;
+}
+
+.icon_livros{
+    background-color: #003162;
+    width: 162px;
+    height: 162px;
+    border-radius: 50%;
+}
+.icon_livros:hover {
+    background-color: #F68B1F;
 }
  
  
@@ -289,7 +381,6 @@ body {
     align-items: flex-start;
 }
  
-
 .tresPrimeiros{
     
     position: relative;
@@ -311,91 +402,17 @@ body {
   
 }
  
- 
 .estanteimg{
    
     width: 80vw;
     height: 50vw;
 }
  
- 
-/* footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    bottom: 0;
-    background-color: var(--azul-padrao);
-    width: 100%;
-    height: 120px;
-    font-family: 'Poppins', serif;
-    color: var(--cor-texto);
-} */
- 
-.livroEstante {
-    width: 250px;
-    pointer-events: auto; 
-}
- 
-.livroEstante img{
- 
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-   
-}
-/* .livro p {
-    font-family: 'inter';
-    position: fixed;
-    bottom: 5px;
-} */
-/*  
-.logo-senac img {
-    width: 200px;
-    height: 60px;
-    padding-left: 118px;
-    margin-right: 100px;
-}
-  */
-/* .textos {
-    padding: 15px;
-    font-size: 12px;
-    gap: 50px;
-    display: flex;
-}
- 
-.redes {
-    display: flex;
-    flex-direction: column;
-}
- 
-.social-icons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-    max-width: 200px;
-    margin: auto;
-}
- 
-.social-icons img {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-}
- 
-.social-icons img:hover {
-    transform: scale(1.1);
-}
- 
-.logo-senac2 img {
-    width: 50px;
-    height: 50px;
-} */
- 
- 
 /*IMPORTAÇÕES*/
+
+
+
+
  
 @font-face {
     font-family: "Roboto";
