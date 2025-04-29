@@ -46,10 +46,26 @@ body {
     width: 50%;
     height: 50%;
     padding: 23px 40px;
+    padding: 20px 40px;
     display: flex;
     justify-content: end;
- 
+    
+
 }
+
+button {
+    width: 25%;
+    height: 120%;
+    border-radius: 1rem;
+    border: solid white;
+    background-color: #002043;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+}
+
 
 .button-entrar {
     width: 18%;
@@ -87,6 +103,7 @@ span {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.25rem;
     font-weight: 400;
+    color: white;
 }
 
 .icone-perfil {
@@ -392,6 +409,10 @@ span {
 }
  
 /*IMPORTAÇÕES*/
+
+
+
+
  
 @font-face {
     font-family: "Roboto";
