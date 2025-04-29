@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit;
             } else {
                 echo "deu ruim";
-                header("Location: ./src/views/usuario/login.php");
+                header("Location: ./src/views/usuario/login.php?error=1");
                 exit;
             }
             break;

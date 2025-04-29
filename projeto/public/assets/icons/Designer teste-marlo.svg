@@ -1,0 +1,14 @@
+<svg width="127" height="137" viewBox="0 0 127 137" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1_2320_4924" fill="white">
+<rect x="76.9922" width="65" height="39.6695" rx="3" transform="rotate(40.9315 76.9922 0)"/>
+</mask>
+<rect x="76.9922" width="65" height="39.6695" rx="3" transform="rotate(40.9315 76.9922 0)" stroke="white" stroke-width="12" mask="url(#path-1-inside-1_2320_4924)"/>
+<path d="M111 54.3057L97 42.3057" stroke="white" stroke-width="6" stroke-linecap="round"/>
+<path d="M75 24.3057H76" stroke="white" stroke-width="6" stroke-linecap="round"/>
+<line x1="69.208" y1="42.7912" x2="19.208" y2="49.7912" stroke="white" stroke-width="3"/>
+<line x1="85.9883" y1="58.5218" x2="80.9883" y2="104.522" stroke="white" stroke-width="4"/>
+<line x1="20.4682" y1="48.613" x2="2.46818" y2="134.613" stroke="white" stroke-width="3"/>
+<line x1="1.46385" y1="133.905" x2="82.4639" y2="102.905" stroke="white" stroke-width="3"/>
+<path d="M0 136.567L16.3024 130.717L3.08433 119.524L0 136.567ZM47.0928 83.2752C47.6282 82.643 47.5497 81.6965 46.9174 81.1611C46.2852 80.6258 45.3387 80.7043 44.8034 81.3365L47.0928 83.2752ZM9.86876 127.234L47.0928 83.2752L44.8034 81.3365L7.57932 125.296L9.86876 127.234Z" fill="white"/>
+<circle cx="50" cy="77.3057" r="4.5" stroke="white" stroke-width="3"/>
+</svg>
