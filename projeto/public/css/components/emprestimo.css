@@ -1,0 +1,153 @@
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #ff0000;
+}
+
+
+a{
+    text-decoration: none 
+}
+
+*{
+    font-family: var(--fontes);
+}
+
+
+
+/* main */
+
+.quadradoBranco{
+    background-color: white;
+    width: 80%;
+    margin: auto;
+    padding: 40px;
+    position: relative; 
+}
+.quadradoBranco::before { /*pseudo elemento que faz aquele pequeno retangulo no topo do .quadradoBranco*/
+    content: "Cadastro De Empréstimo";
+    position: absolute;
+    top: -35px;
+    left: 0px;
+    width: 300px;
+    height: 45px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+
+/* pesquisar usuario e livro */
+.searchInput img{
+    height: 30px;
+}
+.searchInput{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1523px;
+    height: 50px;
+    border: 0px;
+    background: #F1EEEE;
+    margin: auto;
+    border-radius: 2px;
+}
+
+.searchInput input{
+    background-color: #F1EEEE;
+    border: 0px;
+    padding-left: 20px;
+    width: 1490px;
+    height: 40px;
+}
+
+
+/* dados do usuario */
+.usuarioCadastrado{
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+}
+.usuarioCadastrado img{
+    width: 150px;
+}
+.userInfo{
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+#nameUser{
+    margin-bottom: 30px;
+}
+
+.userInfo3, .userInfo2{
+    gap: 20px;
+    display: flex;
+}
+.userInfo2 img{
+    width: 18px;
+    height: 18px;
+}
+
+
+/* livro emprestados do usuario */
+.livrosEmprestados{
+    margin-top: 30px;
+    background-color: #FCFCFC;
+    padding: 8px;
+    height: 500px;
+}
+
+.tabela-header {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+    border-bottom: 3px #A5A5A5 solid;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 8px;
+    align-items: center;
+    justify-items: center;
+    height: 85px;
+}
+.book-grid img{
+    width: 50px;
+}
+
+.grid6{
+    display: flex;
+    gap: 10px;
+}
+
+/* botão de devolução e renovação */
+#grid-button{
+    background-color: #0585FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+#grid-button img{
+    width: 20px;
+}
+#grid-button:hover{
+    background-color: #0677e0;
+}
+
+
+
+        
