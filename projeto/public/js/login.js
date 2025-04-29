@@ -10,3 +10,10 @@ togglePassword.addEventListener('click', function () {
     // Alterna o ícone
     this.classList.toggle('fa-eye-slash');
 });
+
+
+window.addEventListener('load', function() {
+    if (window.location.search.includes('error')) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+});
