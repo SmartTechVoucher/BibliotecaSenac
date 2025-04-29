@@ -1,27 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../../public/css/telaFiltroLivros.css">
-</head>
+<?php   
+        include "../../../public/components/header/header.php";
+?>
 
 <body>
-    <header>
 
-        <div class="esquerda">
-            <h1>menu</h1>
-            <img id="Icone" src="../../public/assets/img/Icone Senac.png" alt="Icone">
-        </div>
-
-        <div class="direita">
-            <h1>perfil</h1>
-        </div>
-        
-
-    </header>
 
     <div class="container">
 
@@ -73,58 +58,11 @@
                 </div>
 
                 <div class="cards_livros">
+                    
+                    <?php for ($i = 0; $i < 4; $i++): ?>
+                        <?php include "../../../public/components/card/card_componente.php"; ?>
+                    <?php endfor; ?>
 
-                    <div class="card">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
                 </div>
 
                 <div class="saude">
@@ -136,58 +74,9 @@
 
 
                 <div class="card_livro_saude">
-
-                    <div class="card_tec">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card_tec">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info2">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card_tec">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card_tec">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
+                    <?php for ($i = 0; $i < 4; $i++): ?>
+                        <?php include "../../../public/components/card/card_componente.php"; ?>
+                    <?php endfor; ?>
                 </div>
 
                 <div class="saude">
@@ -198,57 +87,9 @@
 
                 <div class="card_livro_gestao">
 
-                    <div class="card_gestao">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card_gestao">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info3">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card_gestao">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
-
-                    <div class="card_gestao">
-                        <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                            alt="">
-                        <form action="" class="form_info">
-                            <h2>A revolução do algoritmo mestre</h2>
-                            <p>Autor: Pedro Domingos</p>
-                            <input type="submit" value="RESERVAR" class="botao_reservar">
-                        </form>
-
-
-                        <img src="../../public/assets/img/Group 4610.png" class="bottom_card" alt="">
-                    </div>
+                    <?php for ($i = 0; $i < 4; $i++): ?>
+                        <?php include "../../../public/components/card/card_componente.php"; ?>
+                    <?php endfor; ?>
                 </div>
             </div>
         </div>
@@ -284,11 +125,8 @@
         </div>
     </div>
 
+    <script src="./../../../public/js/telaFiltroLivros.js"></script>
     
-    
-    <script src="../../public/js/telaFiltroLivros.js">
-        
-    </script>
 </body>
 
 </html>

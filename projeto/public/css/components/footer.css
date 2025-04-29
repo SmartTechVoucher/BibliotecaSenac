@@ -21,19 +21,6 @@ footer {
     color: var(--cor-texto);
 }
 
-.livro {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    font-size: 10px;
-}
-
-.livro p {
-    font-family: 'inter';
-    position: fixed;
-    bottom: 5px;
-}
 
 .logo-senac img {
     width: 200px;
