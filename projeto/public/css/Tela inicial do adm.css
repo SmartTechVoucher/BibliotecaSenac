@@ -314,20 +314,6 @@ h2{
     text-align: center;
 }
 
-/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-#overlayRelatorio{
-    background-color: var(--corParaOverlays);
-    cursor: var(--apontador);
-    display: none;
-    text-align: center;
-}
-
-#overlayRelatorio .relatorio{
-    color: black;
-
-}
-
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
 
 a{
