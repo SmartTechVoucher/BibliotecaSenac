@@ -166,7 +166,7 @@
 
     </div>
 
-    <script src="../../../public/js/Tela de usuários cadastrados.js"></script>
+    <script src="../../../public/js/admin/Tela de usuários cadastrados.js"></script>
 
  </body>
 </html>

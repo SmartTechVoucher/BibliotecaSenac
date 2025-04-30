@@ -300,7 +300,7 @@
 
     </div>
 
-    <script src="../../../public/js/Tela de cadastro de livros.js"></script>
+    <script src="../../../public/js/admin/Tela de cadastro de livros.js"></script>
 
 </body>
 </html>
