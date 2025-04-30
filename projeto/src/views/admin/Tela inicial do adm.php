@@ -150,7 +150,7 @@
     </div>
     <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
 
-    <script src="../../../public/js/Tela inicial do adm.js"></script>
+    <script src="../../../public/js/admin/Tela inicial do adm.js"></script>
 
 </body>
 </html>

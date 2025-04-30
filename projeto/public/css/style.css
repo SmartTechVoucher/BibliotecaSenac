@@ -1,4 +1,25 @@
-@import url(./components/header.css);
-@import url(./components/footer.css);
-@import url(./components/card_livros.css);
-@import url(./components/livro_info.css);
+/*IMPORTAÇÕES DOS CSS DO ADMIN*/
+@import url(../css/admin/telaCadastroLivros.css);
+@import url(../css/admin/telaCadastroUsuarios.css);
+@import url(../css/admin/telaInicialAdm.css);
+@import url(../css/admin/telaRelatorios.css);
+@import url(../css/admin/telaUsuariosCadastrados.css);
+
+/*IMPORTAÇÕES DOS CSS DE COMPONENTS*/
+
+@import url(../css/components/card_livros.css);
+@import url(../css/components/footer.css);
+@import url(../css/components/header.css);
+
+/*IMPORTAÇÕES DOS CSS DE USUARIOS*/
+
+@import url(../css/usuario/confirma_reserva.css);
+@import url(../css/usuario/emprestimo.css);
+@import url(../css/usuario/livro_info.css);
+@import url(../css/usuario/login.css);
+@import url(../css/usuario/Perfil_usuario.css);
+@import url(../css/usuario/recuperarSenha.css);
+@import url(../css/usuario/tela_inicial.css);
+
+
+

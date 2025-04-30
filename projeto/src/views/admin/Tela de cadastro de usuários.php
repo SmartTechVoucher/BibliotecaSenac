@@ -131,7 +131,7 @@
 
     </div>
 
-    <script src="../../../public/js/Tela de cadastro de usuários.js"></script>
+    <script src="../../../public/js/admin/Tela de cadastro de usuários.js"></script>
 
 </body>
 </html>

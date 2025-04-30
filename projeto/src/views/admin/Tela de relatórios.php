@@ -167,7 +167,7 @@
 
     </div>
 
-    <script src="../../../public/js/Tela de relatórios.js"></script>
+    <script src="../../../public/js/admin/Tela de relatórios.js"></script>
 
 </body>
 </html>
