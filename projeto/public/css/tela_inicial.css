@@ -1,0 +1,423 @@
+/* GERAL */
+ 
+* {
+    margin: 0;
+    padding: 0;
+ 
+}
+ 
+:root {
+    --azul-padrao: #002043;
+    --cor-texto: #FFFFFF;
+}
+ 
+ 
+.conteiner{
+    height: 100%;
+    width: 100%;
+}
+ 
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+ 
+/*PARTE DE CIMA */
+/* CABEÇALHO */
+ 
+.cabecalho{
+    display: flex;
+    background-color: var(--azul-padrao);
+    border-bottom: 1px solid white;
+    height: 100px;
+}
+ 
+.cbleft{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+ 
+.cbright{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+ 
+}
+ 
+.icsenac{
+    margin-left: 100px;
+    width: 70px;
+}
+ 
+.icperfil{
+    cursor: pointer;
+    height: 100px;
+    margin-right: 50px;
+    filter: brightness(80%);
+}
+ 
+ 
+/* PARTE "PRINCIPAL" */
+ 
+.topPage{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: start;
+    align-items: center;
+    height: 800px;
+    width: 100%;
+    background-color: white;
+}
+ 
+.geralinfo{
+    display: flex;
+    width: 100%;
+    height:600px;
+    background-color: var(--azul-padrao);
+}
+ 
+.senacFoto{
+    z-index: 2;
+    margin-left: 150px;
+    margin-top: 30px;
+    width: 544px;
+    height: 544px;
+}
+ 
+.letreiro{
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    z-index: 3;
+    height: 350px;
+    width: 100%;
+}
+ 
+.letras{
+    margin: 0;
+    margin-left: 30px;
+    font-size: 90px;
+    font-family: "roboto";
+    color: white;
+    border-right: 10px solid white;
+    white-space: nowrap;
+    width: 20.2ch;
+    overflow: hidden;   
+    animation: marca 2.2s step-end forwards , write 1s steps(18, end);
+}
+ 
+.letras2{
+    margin: 0;
+    margin-left: 30px;
+    font-size: 100px;
+    font-family: "roboto";
+    color: white;
+    border-right: 10px solid white;
+    white-space: nowrap;
+    width: 24.2ch;
+    overflow: hidden;
+    opacity: 0;
+    animation: aparecer 0s 3.2s forwards, marca 2.2s step-end forwards, write 1s steps(18, end);
+    animation-delay: 1s;
+   
+}
+ 
+.frase{
+    font-size: 32px;
+    text-align: center;
+    align-self: center;
+    color: white;
+    font-family: "Robotol";
+    opacity: 0;
+    animation: aparecer 3s ease-in-out 1s forwards ;
+}
+ 
+.partecima{
+    z-index: 1;
+    position: absolute;
+    background-color: var(--azul-padrao);
+    height: 30vw;
+    width: 100vw;
+}
+ 
+.partebaixo{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 800px;
+    background-color: transparent;
+    position: absolute;
+}
+ 
+.bolha1{
+    z-index: 0;
+    height: 40vw;
+   
+}
+ 
+ 
+.barrapesquisa{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    width: 100%;
+    height: 200px;
+}
+ 
+.pesquisa{
+    border-style: hidden;
+    box-shadow: 2px 2px 6px rgb(138, 137, 137);
+    outline: 0;
+    font-size: 40px;
+    margin: 0;
+    height: 60px;
+    width: 1068px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+   
+}
+ 
+.botaops{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor:pointer;
+    border: transparent;
+    background-color: #F68B1F;
+    color: white;
+    margin: 0;
+    width: 96px;
+    box-shadow: 0px 3px 3px rgb(138, 137, 137);
+    height: 62px;
+   
+}
+ 
+/* GENEROS */
+ 
+.gen{
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    height: 300px;
+    width: 100%;
+}
+ 
+.gentitle{
+    font-size: 50px;
+    color: grey;
+    text-align: center;
+   
+}
+ 
+.gencard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 100%;
+}
+ 
+.genicon{
+    width: 120px;
+}
+ 
+ 
+.sup{
+    z-index: 2;
+    position: absolute;
+    border:10px solid white;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 457px;
+    height: 125px;
+    justify-self: center;
+    margin-left: 40%;
+    top: 1380px;
+    background-color: var(--azul-padrao);
+}
+ 
+.title{
+    font-family: "Roboto";
+    font-size: 40px;
+    color: white;
+}
+ 
+.estante{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(imagens/bubblebk\ 1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 200px;
+    position: relative;
+    background-color: var(--azul-padrao);
+    width: 100%;
+    height: 1600px;
+}
+ 
+.livros {
+    position: absolute;
+    flex-wrap: nowrap;
+    left: 4%;
+    right: 5%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: flex-start;
+}
+ 
+
+.tresPrimeiros{
+    
+    position: relative;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 1000px;
+    gap: 30px;
+}
+
+.quatroUltimos{
+    
+    position: relative;
+    top: 60px;
+    display: flex;
+    width: 1000px;
+    gap: 30px;
+    justify-content: center;
+  
+}
+ 
+ 
+.estanteimg{
+   
+    width: 80vw;
+    height: 50vw;
+}
+ 
+ 
+/* footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    background-color: var(--azul-padrao);
+    width: 100%;
+    height: 120px;
+    font-family: 'Poppins', serif;
+    color: var(--cor-texto);
+} */
+ 
+.livroEstante {
+    width: 250px;
+    pointer-events: auto; 
+}
+ 
+.livroEstante img{
+ 
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+   
+}
+/* .livro p {
+    font-family: 'inter';
+    position: fixed;
+    bottom: 5px;
+} */
+/*  
+.logo-senac img {
+    width: 200px;
+    height: 60px;
+    padding-left: 118px;
+    margin-right: 100px;
+}
+  */
+/* .textos {
+    padding: 15px;
+    font-size: 12px;
+    gap: 50px;
+    display: flex;
+}
+ 
+.redes {
+    display: flex;
+    flex-direction: column;
+}
+ 
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    max-width: 200px;
+    margin: auto;
+}
+ 
+.social-icons img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+ 
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+ 
+.logo-senac2 img {
+    width: 50px;
+    height: 50px;
+} */
+ 
+ 
+/*IMPORTAÇÕES*/
+ 
+@font-face {
+    font-family: "Roboto";
+    src: url(font/roboto/Roboto-Bold.ttf);
+}
+ 
+@font-face {
+    font-family: "Robotol";
+    src: url(font/roboto/Roboto-ThinItalic.ttf);
+}
+ 
+@keyframes marca{
+    50%{
+        border-right-color:transparent;
+    }
+    100%{
+        border-right-color: transparent;
+    }
+}
+ 
+ 
+@keyframes write{
+    0%{
+        width:0;
+    }
+}
+ 
+@keyframes aparecer{
+    to{
+        opacity: 1;
+    }
+}
+ 
