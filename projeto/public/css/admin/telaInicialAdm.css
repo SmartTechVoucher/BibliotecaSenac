@@ -500,10 +500,6 @@ a{
         width: 500px;
     }
 
-     .Logo{
-        width: 200px;
-     }
-
      .menu{
         position: var(--posicao);
         top: 120px;
@@ -575,23 +571,6 @@ a{
 
     .caixa{
         height: 110px;
-    }
-
-    .conteiner2 .cadastroDeUsuario,
-    .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-    .conteiner2 .Estoque{
-        
-        font-size: 12px;
-    }
-
-    /* .conteiner2 .relatorios{
-       position: var(--posicao);
-       left: 12%;
-    } */
-    
-    .conteiner2 .adicao{
-       position: var(--posicao);
-       left: 50%; top: 35%;
     }
 
     .inferiorDireito{
@@ -696,84 +675,6 @@ a{
 
     /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
-    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
-
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio{
-        
-        width: 50px;
-        height: 50px;
-        /*Esse código define todos os ícones que ele pega com alturas e 
-        comprimentos em 40px*/
-    }
-
-    .conteiner2 .adicao{
-        width: 36px;
-        height: 36px;
-        position: var(--posicao);
-        left: 59%; top: 34%;
-    }
-
-    .conteiner2 .Livro{
-        position: var(--posicaoAbsoluta);
-        left: 5%;
-        /*Posição do ícone "Livro" ajustada*/
-    }
-
-    .conteiner2 .user{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .vectorRelatorio{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    /* .conteiner2 .emprestimo{
-        position: var(--posicao);
-        top: 15%; left: 30%;
-    } */
-
-    /* .conteiner2 .estoque{
-        position: var(--posicao);
-        left: 30%;
-    } */
-
-    /*Fontes dentro das caixas que contêm os Ícones*/
-   
-     .conteiner2 .cadastroDeUsuario,
-     .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque{
- 
-         position: var(--posicao);
-         top: 15%;
-     }
- 
-     /* .conteiner2 .usuario{
-         position: var(--posicao);
-         bottom: 15%; left: 30%;
-     } */
- 
-     .conteiner2 .Usuario{
-         position: var(--posicao);
-         top: -16%;
-     }
- 
-     .conteiner2 .cadastro{
-         font-size: 12px;
-         position: var(--posicao);
-         top: 28%;
-     }
- 
-     /* .conteiner2 .relatorios{
-        position: var(--posicao);
-        left: 25%;
-     } */
- 
-     .conteiner2 .Estoque{
-         text-align: center;
-     }
-
     .rodape{
         margin-top: 26.3%;
     } 
@@ -822,74 +723,6 @@ a{
     }
 
     /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-
-    /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/
-
-    .conteiner2 .adicao{
-        position: var(--posicao);
-        left: 57%; top: 33%;
-    }
-
-    .conteiner2 .Livro{
-        position: var(--posicaoAbsoluta);
-        left: 5%;
-        /*Posição do ícone "Livro" ajustada*/
-    }
-
-    .conteiner2 .user{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .vectorRelatorio{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    /* .conteiner2 .emprestimo{
-        position: var(--posicao);
-        top: 15%; left: 30%;
-    } */
-
-    /* .conteiner2 .usuario{
-        position: var(--posicao);
-        bottom: 10%; left: 25%;
-    } */
-
-    /* .conteiner2 .estoque{
-        position: var(--posicao);
-        left: 25%;
-    } */
-
-    /*Fontes dentro das caixas que contêm os Ícones*/
-   
-    .conteiner2 .cadastroDeUsuario,
-    .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-    .conteiner2 .Estoque{
-
-        position: var(--posicao);
-        top: 15%;
-    }
-
-    .conteiner2 .Usuario{
-        position: var(--posicao);
-        top: -16%;
-    }
-
-    .conteiner2 .cadastro{
-        position: var(--posicao);
-        top: 28%;
-    }
-
-    /* .conteiner2 .relatorios{
-       position: var(--posicao);
-       left: 25%;
-    } */
-
-    .conteiner2 .Estoque{
-        text-align: center;
-    }
 
 }
 
@@ -1050,7 +883,7 @@ a{
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 91.6%; top: 22%;
+        left: 91.6%; top: 15%;
     }
 
     .icone{
@@ -1170,4 +1003,3 @@ a{
         width: 200px;
     }
 }
-
