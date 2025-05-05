@@ -10,7 +10,7 @@ botao[0].addEventListener("click", function(){
     //absolute para aparecer abaixo do menu. Linhas 15 e 16
 
     menu.style.position="absolute" 
-    menu.style.bottom="60px" 
+    menu.style.bottom="50px" 
 
     if(menuAberto==false){
         menuAberto=true
@@ -43,21 +43,7 @@ icone.addEventListener("click", function(){
 
 })
 
-let cadastrar = document.getElementsByClassName("caixa")[0]
-let overlay = document.getElementsByClassName("overlayCadastro")[0]
 
-let menuAberto3 = false
 
-cadastrar.addEventListener("click", function(){
 
-    if(menuAberto3==false){
-        menuAberto3=true
-        overlay.style.display="block"
-    }
 
-    else{
-        menuAberto3=false
-        overlay.style.display="none" 
-    }
-
-})

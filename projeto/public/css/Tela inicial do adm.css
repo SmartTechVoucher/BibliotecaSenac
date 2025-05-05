@@ -112,25 +112,25 @@ h2{
 .caixa{
     height: 210.1px;
     width: 206.96px;
-    background-color: var(--branco);
+    /* background-color: var(--branco); */
     color: black;
     border-radius: 5%;
    
 }
 
-.caixa p{
+/* .caixa p{
     font-size: 24px;
    
-}
+} */
 
-.caixa .usuario{
+/* .caixa .usuario{
 
     width: 109.75px;
     height: 109.75px;
     position: var(--posicao);
     left: 50px;
     margin-top: 30px;
-}
+} */
 
 .caixa .Usuario{
     
@@ -174,37 +174,39 @@ h2{
     text-align: center;
     position: var(--posicao);
     bottom: 15px;
+    color: black;
 }
 
-.caixa .estoque{
+/* .caixa .estoque{
    
     position: var(--posicao);
     top: 15%; left: 13%;
-}
+} */
 
 .caixa .vectorRelatorio{
     position: var(--posicao);
     top: 15%; left: 20%;
 }
 
-.caixa .relatorios{
+/* .caixa .relatorios{
     position: var(--posicao);
     left: 18%; top: 5%;
-}
+    color: black;
+} */
 
-.caixa .vectorRenova{
+/* .caixa .vectorRenova{
     position: var(--posicao);
     left: 20%; top: 15%;
 }
 
 .caixa .renovacoes{
     text-align: center;
-}
+} */
 
-.caixa .emprestimo{
+/* .caixa .emprestimo{
     position: var(--posicao);
     left: 23%; top: 13%;
-}
+} */
 
 .caixa .Emprestimo{
     text-align: center;
@@ -293,7 +295,7 @@ h2{
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
 .menu{
-    width: 366px;
+    width: 400px;
     height: 500px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
@@ -312,23 +314,14 @@ h2{
     text-align: center;
 }
 
-/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-#overlayRelatorio{
-    background-color: var(--corParaOverlays);
-    cursor: var(--apontador);
-    display: none;
-    text-align: center;
-}
-
-/*Limpeza e estilização do atalho "a"*//*Limpeza e estilização do atalho "a"*/
+/*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
 
 a{
     text-decoration: none;
     color: var(--branco) ;
 }
 
-/*Limpeza e estilização do atalho "a"*//*Limpeza e estilização do atalho "a"*/
+/*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
 
 .overlayCadastro .item{
     color: black;
@@ -362,8 +355,13 @@ a{
         gap: 5px;
     }
 
-    .caixa{
+    .conteiner2 .emprestimo, .usuario, .estoque, .vectorRenova, .cadastrarLivro, .cadastrarUsuarios, .relatorios{
         width: 80px;
+        height: 105px;
+    }
+
+    .caixa{
+        width: 103px;
         height: 105px;
     }
     
@@ -371,94 +369,9 @@ a{
         width: 300px;
     }
 
-    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
-
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
-    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
-    .conteiner2 .vectorRenova{
-        
-        width: 40px;
-        height: 40px;
-        /*Esse código define todos os ícones que ele pega com alturas e 
-        comprimentos em 40px*/
-    }
-
-    .conteiner2 .adicao{
-        width: 27px;
-        height: 27px;
-        position: var(--posicao);
-        left: 45%; top: 36%;
-    }
-
-    .conteiner2 .Livro{
-        position: var(--posicaoAbsoluta);
-        left: 5%;
-        /*Posição do ícone "Livro" ajustada*/
-    }
-
-    .conteiner2 .user{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .vectorRelatorio{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .emprestimo{
-        position: var(--posicao);
-        top: 15%; left: 30%;
-    }
-
-    .conteiner2 .estoque{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    /*Fontes dentro das caixas que contêm os Ícones*/
-   
-     .conteiner2 .cadastroDeUsuario,
-     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque, .conteiner2 .renovacoes{
- 
-         font-size: var(--tamanhoFonte);
-         position: var(--posicao);
-         top: 15%;
-     }
- 
-     .conteiner2 .usuario{
-         position: var(--posicao);
-         bottom: 15%; left: 30%;
-     }
- 
-     .conteiner2 .Usuario{
-         position: var(--posicao);
-         top: -16%;
-     }
- 
-     .conteiner2 .cadastro{
-         font-size: var(--tamanhoFonte);
-         position: var(--posicao);
-         top: 28%;
-     }
- 
-     .conteiner2 .relatorios{
-        position: var(--posicao);
-        left: 25%;
-     }
- 
-     .conteiner2 .Estoque{
-         text-align: center;
-     }
- 
-     .Libro, .copyright, .todos, .logo,.faleConosco, .titulo, .siga-nos {
+     .Libro, .copyright, .todos, .logo, .titulo {
          display: none;
      }
-
-     /* .Logo{
-        width: 100px;
-     } */
 
      .menu{
         position: var(--posicao);
@@ -467,24 +380,26 @@ a{
 
    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
-   .overlayCadastro{
-    height: 210px;
+   /* .overlayCadastro{
+    height: 230px;
     width: 80px;
     position: var(--posicaoAbsoluta);
-    bottom: 0%; right: 73%;
+    bottom: -2%; right: 73%;
    }
 
 .overlayCadastro .item{
     font-size: 10px;
-    /* color: black; */
-}
+    /* color: black; 
+} */
+
+/*O código acima ficará disponível para ser usado caso o overlay continue necessário*/
 
 /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
 
 /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
-#overlayRelatorio{
+/* #overlayRelatorio{
     width: 80px;
     position: var(--posicaoAbsoluta);
     bottom: 20%; right: 27%;
@@ -492,7 +407,9 @@ a{
 
 #overlayRelatorio .relatorio{
     font-size: 10px;
-}
+} */
+
+/*O código acima ficará disponível para ser usado caso o overlay continue necessário*/
 
 /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
@@ -511,7 +428,7 @@ a{
     }
 
     .inferiorDireito{
-        margin-top: 28.5%;
+        margin-top: 4.5%;
     }
 
  /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
@@ -519,30 +436,8 @@ a{
    .overlayCadastro{
         width: 80px;
         position: var(--posicaoAbsoluta);
-        bottom: 25.5%; right: 75.5%;
+        bottom: 17%; right: 75.5%;
    }
-
-   .overlayCadastro .item{
-       font-size: 10px;
-    }
-
- /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-
- /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
- #overlayRelatorio{
-    width: 80px;
-    position: var(--posicaoAbsoluta);
-    bottom: 40%; right: 34%;
- }
-
- #overlayRelatorio .relatorio{
-    font-size: 10px;
- }
-
- /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 
 }
 
@@ -583,22 +478,6 @@ a{
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
-   
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 67px;
-        position: var(--posicaoAbsoluta);
-        bottom: 10%; right: 58.8%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-
     .inferiorDireito{
         margin-top: 43%;
     }
@@ -607,95 +486,6 @@ a{
         width: 500px;
     }
 
-
-    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
-
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
-    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
-    .conteiner2 .vectorRenova{
-        
-        width: 40px;
-        height: 40px;
-        /*Esse código define todos os ícones que ele pega com alturas e 
-        comprimentos em 40px*/
-    }
-
-    .conteiner2 .adicao{
-        position: var(--posicao);
-        left: 50%; top: 35%;
-    }
-
-    .conteiner2 .Livro{
-        position: var(--posicaoAbsoluta);
-        left: 3%;
-        /*Posição do ícone "Livro" ajustada*/
-    }
-
-    .conteiner2 .user{
-        position: var(--posicao);
-        left: 20%;
-    }
-
-    .conteiner2 .vectorRelatorio{
-        position: var(--posicao);
-        left: 20%; top: 20%;
-    }
-
-    .conteiner2 .emprestimo{
-        position: var(--posicao);
-        top: 15%; left: 20%;
-    }
-
-    .conteiner2 .usuario{
-        position: var(--posicao);
-        bottom: 15%; left: 20%;
-    }
-
-    .conteiner2 .estoque{
-        position: var(--posicao);
-        left: 20%;
-    }
-
-    /*Fontes dentro das caixas que contêm os Ícones*/
-   
-     .conteiner2 .cadastroDeUsuario,
-     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque, .conteiner2 .renovacoes{
- 
-         font-size: var(--tamanhoFonte);
-         position: var(--posicao);
-         top: 15%;
-     }
- 
-     .conteiner2 .Usuario{
-         position: var(--posicao);
-         top: -16%;
-     }
- 
-     .conteiner2 .cadastro{
-         font-size: var(--tamanhoFonte);
-         position: var(--posicao);
-         top: 28%;
-     }
- 
-     .conteiner2 .relatorios{
-        position: var(--posicao);
-        left: 25%;
-     }
- 
-     .conteiner2 .Estoque{
-         text-align: center;
-     }
-
-    .conteiner2 .relatorios{
-        position: var(--posicao);
-        left: 12%;
-    }
-
-     .Logo{
-        width: 200px;
-     }
-
      .menu{
         position: var(--posicao);
         top: 120px;
@@ -703,7 +493,7 @@ a{
 
 }
 
-@media(min-width:665px){
+@media(min-width:600px){
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
@@ -714,7 +504,7 @@ a{
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 82.8%; top: 17%;
+        left: 81%; top: 12%;
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
@@ -724,20 +514,24 @@ a{
     }
 
     .inferiorDireito{
-        margin-top: 36.5%;
+        margin-top: 44.5%;
+    }
+
+    .rodape{
+        margin-top: 5%;
     }
     
     .adm{
-        width: 600px;
+        width: 500px;
     }
 
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
-    .overlayCadastro{
-       
+    .overlayCadastro{  
         position: var(--posicaoAbsoluta);
-        top: 76%; right: 85%;
+        top: 50%; right: 83%;
         width: 80px;
+        height: 240px;
     }
 
     .overlayCadastro .item{
@@ -745,99 +539,6 @@ a{
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 80px;
-        position: var(--posicaoAbsoluta);
-        top: 76%; right: 58.8%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
-
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
-    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
-    .conteiner2 .vectorRenova{
-        
-        width: 40px;
-        height: 40px;
-        /*Esse código define todos os ícones que ele pega com alturas e 
-        comprimentos em 40px*/
-    }
-
-    .conteiner2 .adicao{
-        position: var(--posicao);
-        left: 54%; top: 36%;
-    }
-
-    .conteiner2 .Livro{
-        position: var(--posicaoAbsoluta);
-        left: 4%;
-        /*Posição do ícone "Livro" ajustada*/
-    }
-
-    .conteiner2 .user{
-        position: var(--posicao);
-        left: 25%;
-    }
-
-    .conteiner2 .vectorRelatorio{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .emprestimo{
-        position: var(--posicao);
-        top: 18%; left: 20%;
-    }
-
-    .conteiner2 .usuario{
-        position: var(--posicao);
-        bottom: 10%; left: 24%;
-    }
-
-    .conteiner2 .estoque{
-        position: var(--posicao);
-        left: 20%; top: 17%;
-    }
-
-    /*Fontes dentro das caixas que contêm os Ícones*/
-   
-     .conteiner2 .cadastroDeUsuario,
-     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque, .conteiner2 .renovacoes{
- 
-         font-size: 11px;
-         position: var(--posicao);
-         top: 15%;
-     }
- 
-     .conteiner2 .Usuario{
-         position: var(--posicao);
-         top: -16%;
-     }
- 
-     .conteiner2 .cadastro{
-         font-size: var(--tamanhoFonte);
-         position: var(--posicao);
-         top: 28%;
-     }
- 
-     .conteiner2 .relatorios{
-        position: var(--posicao);
-        left: 25%;
-     }
- 
-     .conteiner2 .Estoque{
-         text-align: center;
-     }
    
 }
 
@@ -847,7 +548,7 @@ a{
     
    .minhaConta{
     position: var(--posicaoAbsoluta);
-    left: 85.1%; top: 19%;
+    left: 85.1%; top: 14%;
  }
 
     .conteiner2{
@@ -858,23 +559,6 @@ a{
         height: 110px;
     }
 
-    .conteiner2 .cadastroDeUsuario,
-    .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-    .conteiner2 .Estoque, .conteiner2 .renovacoes{
-        
-        font-size: 12px;
-    }
-
-    .conteiner2 .relatorios{
-       position: var(--posicao);
-       left: 12%;
-    }
-    
-    .conteiner2 .adicao{
-       position: var(--posicao);
-       left: 50%; top: 35%;
-    }
-
     .inferiorDireito{
        margin-top: 38.2%;
     }
@@ -882,10 +566,9 @@ a{
  /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
    .overlayCadastro{
- 
     width: 80px;
     position: var(--posicaoAbsoluta);
-    bottom: 39.5%; right: 86%;
+    top: 44%; right: 87%;
  }
 
     .overlayCadastro .item{
@@ -955,7 +638,7 @@ a{
     
         width: 100px;
         position: var(--posicaoAbsoluta);
-        top: 45.5%; right: 84.7%;
+        top: 43%; right: 84.7%;
     }
 
     .overlayCadastro .item{
@@ -977,86 +660,6 @@ a{
     }
 
     /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/  /*Ícones*/
-
-    .conteiner2 .Livro, .conteiner2 .user, .conteiner2 .vectorRelatorio,
-    .conteiner2 .emprestimo, .conteiner2 .usuario, .conteiner2 .estoque, 
-    .conteiner2 .vectorRenova{
-        
-        width: 50px;
-        height: 50px;
-        /*Esse código define todos os ícones que ele pega com alturas e 
-        comprimentos em 40px*/
-    }
-
-    .conteiner2 .adicao{
-        width: 36px;
-        height: 36px;
-        position: var(--posicao);
-        left: 59%; top: 34%;
-    }
-
-    .conteiner2 .Livro{
-        position: var(--posicaoAbsoluta);
-        left: 5%;
-        /*Posição do ícone "Livro" ajustada*/
-    }
-
-    .conteiner2 .user{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .vectorRelatorio{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .emprestimo{
-        position: var(--posicao);
-        top: 15%; left: 30%;
-    }
-
-    .conteiner2 .estoque{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    /*Fontes dentro das caixas que contêm os Ícones*/
-   
-     .conteiner2 .cadastroDeUsuario,
-     .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-     .conteiner2 .Estoque, .conteiner2 .renovacoes{
- 
-         position: var(--posicao);
-         top: 15%;
-     }
- 
-     .conteiner2 .usuario{
-         position: var(--posicao);
-         bottom: 15%; left: 30%;
-     }
- 
-     .conteiner2 .Usuario{
-         position: var(--posicao);
-         top: -16%;
-     }
- 
-     .conteiner2 .cadastro{
-         font-size: 12px;
-         position: var(--posicao);
-         top: 28%;
-     }
- 
-     .conteiner2 .relatorios{
-        position: var(--posicao);
-        left: 25%;
-     }
- 
-     .conteiner2 .Estoque{
-         text-align: center;
-     }
 
     .rodape{
         margin-top: 26.3%;
@@ -1084,7 +687,7 @@ a{
 
      .overlayCadastro{
         position: var(--posicaoAbsoluta);
-        top: 40%; right: 86%;
+        top: 38%; right: 86%;
     }
 
     .overlayCadastro .item{
@@ -1107,74 +710,6 @@ a{
 
     /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
-
-    /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/ /*Ícones*/
-
-    .conteiner2 .adicao{
-        position: var(--posicao);
-        left: 57%; top: 33%;
-    }
-
-    .conteiner2 .Livro{
-        position: var(--posicaoAbsoluta);
-        left: 5%;
-        /*Posição do ícone "Livro" ajustada*/
-    }
-
-    .conteiner2 .user{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .vectorRelatorio{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .emprestimo{
-        position: var(--posicao);
-        top: 15%; left: 30%;
-    }
-
-    .conteiner2 .usuario{
-        position: var(--posicao);
-        bottom: 10%; left: 25%;
-    }
-
-    .conteiner2 .estoque{
-        position: var(--posicao);
-        left: 25%;
-    }
-
-    /*Fontes dentro das caixas que contêm os Ícones*/
-   
-    .conteiner2 .cadastroDeUsuario,
-    .conteiner2 .relatorios, .conteiner2 .Emprestimo, .conteiner2 .Usuario,
-    .conteiner2 .Estoque, .conteiner2 .renovacoes{
-
-        position: var(--posicao);
-        top: 15%;
-    }
-
-    .conteiner2 .Usuario{
-        position: var(--posicao);
-        top: -16%;
-    }
-
-    .conteiner2 .cadastro{
-        position: var(--posicao);
-        top: 28%;
-    }
-
-    .conteiner2 .relatorios{
-       position: var(--posicao);
-       left: 25%;
-    }
-
-    .conteiner2 .Estoque{
-        text-align: center;
-    }
-
 }
 
 @media(min-width:1024px){
@@ -1187,65 +722,13 @@ a{
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 88.9%; top: 22%;
+        left: 88.7%; top: 10%;
     }
 
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
     .conteiner2{
-        width: 1000px;
-    }
-
-    .conteiner2 .Livro{
-        width: 40px;
-        position: var(--posicaoAbsoluta);
-        left: 5%;
-    }
-
-    .conteiner2 .adicao{
-        position: var(--posicaoAbsoluta);
-        left: 6.58%; top: 32%;
-    }
-
-    .conteiner2 .cadastro{
-        position: var(--posicao);
-        top: 60%;
-    }
-
-    .conteiner2 .user{
-        width: 50px;
-        height: 50px;
-        position: var(--posicao);
-        left: 25%;
-    }
-
-    .conteiner2 .cadastroDeUsuario{
-        position: var(--posicao);
-        top: 5%;
-    }
-
-    .conteiner2 .vectorRelatorio, .emprestimo, .conteiner2 .usuario, .estoque, .vectorRenova{
-        width: 50px;
-        height: 50px;
-    }
-
-    .conteiner2 .usuario{
-        position: var(--posicao);
-        left: 25%; bottom: 15%;
-    }
-
-    .conteiner2 .Usuario{
-        position: var(--posicao);
-        bottom: 30%;
-    }
-
-    .conteiner2 .estoque{
-        position: var(--posicao);
-        left: 20%;
-    }
-
-    .conteiner2 .Estoque{
-        text-align: center;
+        width: 900px;
     }
 
     .inferiorDireito{
@@ -1256,11 +739,19 @@ a{
         display: block;
     }
 
+    .copyright, .todos{
+        width: 300px;
+    }
+
+    .rodape{
+        height: 255px;
+    }
+
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
      .overlayCadastro{
         position: var(--posicaoAbsoluta);
-        top: 92%; right: 86.4%;
+        top: 39%; right: 86.4%;
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
@@ -1311,49 +802,15 @@ a{
         width: 1150px;
     }
 
-    .conteiner2 .cadastro{
-        position: var(--posicao);
-        top: 10%;
+    .conteiner2 .cadastrarLivro, .cadastrarUsuarios, .relatorios, .conteiner2 .emprestimo,
+    .usuario, .estoque, .vectorRenova{
+        width: 150px;
+        height: 140px;
     }
 
-    .caixa .user{   
-        position: var(--posicao);
-        left: 24%; top: 10%;
-    }
-
-    .caixa .usuario{
-        position: var(--posicao);
-        left: 20%;
-    }
-
-    .caixa .estoque{
-        position: var(--posicao);
-        left: 24%; 
-    }
-
-    .caixa .Estoque{
-        text-align: center;
-    }
-
-    .caixa .Livro{
-        position: var(--posicao);
-        left: 30px;
-    }
-
-    .caixa .vectorRelatorio{
-        position: var(--posicao);
-        left: 30px;
-       
-    }
-
-    .caixa .emprestimo{
-        position: var(--posicao);
-        left: 30px;
-    }
-
-    .caixa .usuario{
-        position: var(--posicao);
-        left: 22px; top: -8px;
+    .conteiner2 .caixa{
+        width: auto;
+        height: auto;
     }
 
     .menu{
@@ -1364,7 +821,7 @@ a{
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
     
     .inferiorDireito{
-       margin-top: 55%;
+       margin-top: 53%;
     }
 
     .rodape{
@@ -1379,7 +836,8 @@ a{
 
      .overlayCadastro{
         position: var(--posicaoAbsoluta);
-        top: 72%; right: 88.2%;
+        top: 74%; right: 86.5%;
+        width: 150px;
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
@@ -1411,7 +869,7 @@ a{
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 91.6%; top: 22%;
+        left: 91.6%; top: 15%;
     }
 
     .icone{
@@ -1425,50 +883,21 @@ a{
         width: 1300px;
     }
 
-    .conteiner2 .Livro{
-        width: 50px;
-    }
-
-    .conteiner2 .adicao{
-        width: 40px;
-        height: 40px;
-        position: var(--posicao);
-        left: -2%; top: 22%;
-    }
-
-    .conteiner2 .cadastro, 
-    .conteiner2 .cadastroDeUsuario, 
-    .conteiner2 .relatorios, .conteiner2 
-    .Emprestimo, .conteiner2 .Usuario,
-    .conteiner2 .Estoque, .conteiner2 .renovacoes{
-        font-size: 14px;
-    }
-
-    .caixa{
-        width: 110px;
-        height: 135px;
-    }
-
-    .conteiner2 .usuario{
-        position: var(--posicao);
-        left: 26%;
-    }
-
     .inferiorDireito{
-        margin-top: 17%;
+        margin-top: 6%;
 
     }
 
-    .siga-nos{
-        display: block;
+    .rodape{
+        margin-top: 0%;
     }
 
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
     .overlayCadastro{
-        width: 110px;
         position: var(--posicaoAbsoluta);
-        top: 100%; right: 87.8%;
+        top: 78%; right: 86.5%;
+        height: 210px;
     }
 
     /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
@@ -1487,7 +916,6 @@ a{
 
     /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
-
 }
 
 @media(min-width:1912px){
@@ -1503,7 +931,8 @@ a{
     }
 
     .adm{
-        margin-left: 6%;
+        margin-left: 4%;
+        margin-top: 4%;
     }
 
     .conteiner2{
@@ -1512,87 +941,27 @@ a{
         height: 300px;
     }
 
-    .conteiner2 .caixa{
-        width: 200px;
-        height: 200px;
-    }
-
-    .conteiner2 .Livro, .conteiner2 .vectorRelatorio, .conteiner2 .emprestimo, .conteiner2 .usuario,
-    .conteiner2 .estoque, .conteiner2 .vectorRenova{
-        width: 70px;
-        height: 70px;
-    }
-
-    .conteiner2 .adicao{
-        width: 60px;
-        height: 60px;
-    }
-
-    .conteiner2 .cadastro, .conteiner2 .cadastroDeUsuario, .conteiner2 .relatorios, .conteiner2 .Emprestimo, 
-    .conteiner2 .Usuario, .conteiner2 .Estoque, .conteiner2 .renovacoes{
-        font-size: 20px;
-    }
-
-    .conteiner2 .Livro{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .adicao{
-        position: var(--posicao);
-        left: 10%; top: 13%;
-        width: 45px;
-        height: 43px;
-    }
-
-    .conteiner2 .user{
-        position: var(--posicao);
-        left: 30%;
-        width: 90px;
-        height: 90px;
-    }
-
-    .conteiner2 .cadastroDeUsuario{
-        position: var(--posicao);
-
-    }
-
-    .conteiner2 .vectorRelatorio{
-        position: var(--posicao);
-        left: 30%;
-    }
-
-    .conteiner2 .emprestimo{
-        position: var(--posicao);
-        left: 30%; top: 18%;
-    }
-    
-    .conteiner2 .usuario{
-        position: var(--posicao);
-        left: 30%; top: 5%;
-    }
-    
-    .conteiner2 .Usuario{
-        position: var(--posicao);
-        left: 0%; top: 0%;
-    }
-    
-    .conteiner2 .vectorRenova{
-        position: var(--posicao);
-        left: 30%; 
+    .conteiner2 .cadastrarLivro, .cadastrarUsuarios, .relatorios, 
+    .conteiner2 .emprestimo, .usuario, .estoque, .vectorRenova{
+        width: 207px;
+        height: 210px;
     }
 
     .inferiorDireito{
-        margin-top: 39.5%;
+        margin-top: 0%;
+    }
+
+    .rodape{
+        margin-top: 0.5%;
     }
 
     /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
 
      .overlayCadastro{
         height: 215px;
-        width: 200px;
+        width: 207px;
         position: var(--posicaoAbsoluta);
-        top: 73%; right: 83.1%;
+        top: 62.5%; right: 83.1%;
     }
 
     .overlayCadastro .item{
@@ -1620,4 +989,3 @@ a{
         width: 200px;
     }
 }
-
