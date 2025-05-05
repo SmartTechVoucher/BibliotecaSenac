@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <?php include '../BibliotecaSenac/projeto/public/components/footer' ?>
+        <?php include '../BibliotecaSenac/projeto/public/components/footer/footer.php' ?>
 
     </div>
 
