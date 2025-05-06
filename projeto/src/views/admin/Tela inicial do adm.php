@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela inicial do adm</title>
-    <link rel="stylesheet" href="../../../public/css/Tela inicial do adm.css">
+    <link rel="stylesheet" href="../../../public/css/admin/telaInicialAdm.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,7 +134,19 @@
         <p><a href="./Tela dos livros cadastrados.php" class="item">Editar informações de um livro</a></p>
     </div>
 
+
+    <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
+    <div id="overlayRelatorio">
+        <p class="relatorio">Ver livros emprestados</p>
+        <hr>
+        <p class="relatorio">Ver livros não devolvidos</p>
+    </div>
+    <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
+
+    <script src="../../../public/js/admin/Tela inicial do adm.js"></script>
+
     <script src="../../../public/js/Tela inicial do adm.js"></script>
+
 
 </body>
 </html>

@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tela de usuários cadastrados</title>
-        <link rel="stylesheet" href="../../../public/css/Tela de usuários cadastrados.css">
+        <link rel="stylesheet" href="../../../public/css/admin/Tela de usuários cadastrados.css">
     </head>
 
  <body>
@@ -166,7 +166,7 @@
 
     </div>
 
-    <script src="../../../public/js/Tela de usuários cadastrados.js"></script>
+    <script src="../../../public/js/admin/Tela de usuários cadastrados.js"></script>
 
  </body>
 </html>

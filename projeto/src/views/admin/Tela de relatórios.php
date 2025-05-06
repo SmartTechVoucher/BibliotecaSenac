@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de relatórios</title>
-    <link rel="stylesheet" href="../../../public/css/Tela de relatórios.css">
+    <link rel="stylesheet" href="../../../public/css/admin/telaRelatorios.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -167,7 +167,7 @@
 
     </div>
 
-    <script src="../../../public/js/Tela de relatórios.js"></script>
+    <script src="../../../public/js/admin/Tela de relatórios.js"></script>
 
 </body>
 </html>

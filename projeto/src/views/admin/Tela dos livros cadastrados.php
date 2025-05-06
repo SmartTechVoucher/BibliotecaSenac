@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livros cadastrados</title>
     
-    <link rel="stylesheet" href="../../../public/css/Tela dos livros cadastrados.css">
+    <link rel="stylesheet" href="../../../public/css/admin/Tela dos livros cadastrados.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
