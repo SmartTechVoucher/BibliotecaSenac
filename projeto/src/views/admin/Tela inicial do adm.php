@@ -134,15 +134,6 @@
         <p><a href="./Tela dos livros cadastrados.php" class="item">Editar informações de um livro</a></p>
     </div>
 
-
-    <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
-    <div id="overlayRelatorio">
-        <p class="relatorio">Ver livros emprestados</p>
-        <hr>
-        <p class="relatorio">Ver livros não devolvidos</p>
-    </div>
-    <!--Relatórios-->  <!--Relatórios-->  <!--Relatórios-->
-
     <script src="../../../public/js/admin/Tela inicial do adm.js"></script>
 
     <script src="../../../public/js/Tela inicial do adm.js"></script>
