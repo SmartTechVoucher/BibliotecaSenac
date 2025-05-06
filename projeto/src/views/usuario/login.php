@@ -38,8 +38,8 @@
             </form>
             
 
-            <img src="../../../public/assets/img/Logo Senac Hub.png" alt="" class="logo">
-            <img src="../../../public/assets/img/Logo Senac Hub.png" alt="" class="logo2">
+            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo">
+            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2">
             
         </section>
         <section class="tela_animacao">
