@@ -44,6 +44,8 @@ body{
     }
     .review{
         display: flex;
+        align-items: center;
+        margin-bottom: 20px;
     }
     .review p{
         margin-left: 18px;
@@ -67,15 +69,13 @@ body{
     #livroIsbn{
         font-size: small;
         color: rgb(100, 100, 100);
-        margin-bottom: -30px;
     }
     #livroDescricao{
         margin-bottom: 0px;
     }
 
     .livroReservar{
-        
-        gap: 10px;
+        margin: 15px 0 0 0;
     }
 
     /* botao de reserva */
@@ -112,7 +112,7 @@ body{
         display: flex;
         justify-content: space-around;
         flex-direction: row;
-        margin: 0 70px 0 30px;
+        margin: 70px 0 30px;
     }
     .info_2 img{
         width: 56px;
@@ -165,6 +165,7 @@ body{
         display: flex;
         justify-content: space-between;
         padding: 10px;
+        align-items: center ;
         margin: auto;
         margin-top: 40px;
 
