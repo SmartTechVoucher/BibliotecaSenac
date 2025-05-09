@@ -137,7 +137,7 @@
     </div>
 
  
-    <script src="../projeto/public/js/telaInicial.js"></script>
+    <script src="./public/js/usuario/telaInicial.js"></script>
 </body>
 
 </html>
