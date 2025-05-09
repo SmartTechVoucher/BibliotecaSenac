@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="../../../public/css/components/card_livros.css">
 </head>
 
 <?php   
@@ -128,6 +128,8 @@
             </div>
         </div>
     </div>
+
+    <?php include "../../../public/components/footer/footer.php" ?>
 
     <script src="./../../../public/js/telaFiltroLivros.js"></script>
     
