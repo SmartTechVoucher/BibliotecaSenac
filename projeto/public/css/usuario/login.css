@@ -15,11 +15,11 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
-    background-color: #EEEEEE;
+    
+    background-color: #003162;
 }
 
-form{
+form {
     width: 50%;
     height: 60%;
 
@@ -32,9 +32,16 @@ form{
 
 
     border-radius: 10px;
-
-    background-color: white;
+    border: solid 3px white;
+    background-color: #003162;
 }
+
+form img {
+    width: 200px;
+    height: auto;
+}
+
+
 
 .login{
     width: 50%;
@@ -43,11 +50,12 @@ form{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-right: solid 3px white;
 }
 
 label{
     font-size: 20px;
-
+    color: white;
     width: 80%;
     position: relative;
 }
@@ -75,22 +83,32 @@ input{
     outline: none;
     background-color: #EEEEEE;
     margin: -19px;
+
+}
+
+input:focus {
+    border: 3px solid #F68B1F;
+}
+
+#campo_login {
+    margin-bottom: 10px;
+}
+
+
+#campo_senha     {
+    margin-bottom: 10px;
 }
 
 button{
-    width: 40%;
-    height: 7%;
+    width: 80%;
+    height: 8%;
     border: none;
-
     border-radius: 5px;
     background-color: #F68B1F;
     color: white;
-
     font-weight: 800;
     cursor: pointer;
     transition: all .2s ease-in-out;
-
-    margin-top: 10%;
 }
 
 button:hover{
@@ -100,8 +118,11 @@ button:hover{
 }
 
 a{
+    display: flex;
+    justify-content: end    ;
     width: auto;
-    color: #003162;
+    color: white;
+    text-decoration: none;
 }
 
 .logo{
@@ -117,9 +138,68 @@ a{
     position: absolute;
     bottom: 0;
     left: -10%;
-
     transform: scale(-1);
 }
+
+.decor-top-right, .decor-bottom-left {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60px;
+    gap: 5px;
+    position: absolute;
+}
+  
+.decor-top-right {
+    top: 20px;
+    right: 20px;
+}
+  
+  .decor-bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+  
+.square {
+    width: 18px;
+    height: 18px;
+    /* background-color: rgba(0, 51, 102, 0.3); azul com transparência */
+    background-color: white;
+}
+
+.check-entrar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 1%;
+}
+
+.checkbox-container  {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.login-campos {
+    display:flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+
+}
+
+.checkbox-container input {
+    accent-color: #F68B1F;
+}
+
+.checkbox-container label {
+    cursor: pointer;
+  }
+  
 
 @media screen and (max-width: 900px) {
     .container{
