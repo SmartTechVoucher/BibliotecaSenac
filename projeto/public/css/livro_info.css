@@ -160,18 +160,46 @@ body{
 
 /* EXEMPLARES */
     .containerExemplar{
-        width: 100%;
+        width: 102%;
         background-color: white;
         display: flex;
-        justify-content: space-between;
-        padding: 10px;
         align-items: center ;
         margin: auto;
         margin-top: 40px;
-
+        height: 53px;
+    }
+    .containerExemplar img{
+        width: 33px;
+        padding: 6px;
     }
     .containerExemplar p{
         font-size: large;
+        margin-right: 88%;
+        margin-left: 1%;
+    }
+
+    #containerExemplarOpen{
+        width: 102%;
+        gap: 8px;
+        align-items: center;
+        justify-items: center;
+        background-color: rgb(241, 241, 241) ;
+        display: none;
+        margin: auto;
+    }
+    .containerGrid{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+        justify-items: center;
+        border: solid 1px #eee;
+    }
+    .gridA{
+        margin-left: 80%;
+        margin-right: 80%;
+        margin-top: 5%;
     }
 
 /* COMENTARIOS */

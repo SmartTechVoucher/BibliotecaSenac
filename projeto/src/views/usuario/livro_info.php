@@ -4,11 +4,29 @@ $livro = [
     "titulo" => "Simpósio do Barreado",
     "img" => "../../../public/assets/img/Simposio.png",
     "desc" => "O livro, o autor aborda a pergunta chave: \"Afinal, o barreado nasceu em Paranaguá, Antonina ou Morretes?\". Esta pergunta é a razão do \"Simpósio do Barreado\". O livro mostra as origens e a receita do mais tradicional prato culinário do Paraná. Realizado ficticiamente em Porto de Cima, o simpósio reuniu especialistas de ontem e de hoje, daqui e de muitos lugares, em acaloradas discussões que naturalmente, terminaram em confraternização em volta da mesa. O barreado tem indicação geográfica (IG) na categoria \"indicação de procedência\" desde 2022 e é",
-    "exemplarQntd" => "5",
-    "exemplarDisponiveis" => "0",
-    "exemplarEmprestados" => "5"
 ];
 
+$senacCG = [
+    "unidade" => "SenacHub-CG",
+    "exemplarQntd" => "5",
+    "exemplarDisponiveis" => "0",
+    "exemplarEmprestados" => "5",
+    "exemplarReservas" => "1"
+];
+$senacDOU = [
+    "unidade" => "SenacHub-DOU",
+    "exemplarQntd" => "3",
+    "exemplarDisponiveis" => "1",
+    "exemplarEmprestados" => "2",
+    "exemplarReservas" => "0"
+];
+$senacTLG = [
+    "unidade" => "SenacHub-TLG",
+    "exemplarQntd" => "1",
+    "exemplarDisponiveis" => "0",
+    "exemplarEmprestados" => "1",
+    "exemplarReservas" => "2"
+];
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +49,7 @@ $livro = [
     <div class="containerConteudo">
             <div class="containerInfo">
             <!-- info_1 -->
-                <img id="livroFoto" src="../../../public/assets/img/Simposio.png" alt="livro.jpg">
+                <img id="livroFoto" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="livro.jpg">
                 <div class="info_1">
                     
                     <div class="livroInfo">
@@ -104,10 +122,58 @@ $livro = [
         <!-- exemplares -->
         <div class="containerExemplar">
             <p>Exemplares</p>
-            <img src="../../../public/assets/icons/Plus Math.png" alt="">
+            <img src="<?php echo $URLBASE?>/public/assets/icons/Plus Math.png" alt="" id="abrirExemplares" onclick="exemplarToggle()">
         </div>
+
         <div id="containerExemplarOpen">
-            <span>Exemplares</span>
+            <!-- Senac Hub Academy -->
+            <div class="containerGrid">
+                <div class="gridA"><u><b>Unidade</b></u></div>
+                <div class="gridA"><b>Exemplares</b></div>
+                <div class="gridA"><b>Disponível</b></div>
+                <div class="gridA"><b>Emprestados</b></div>
+                <div class="gridA"><b>Reservados</b></div>
+
+                <div class="gridB"><?php echo $senacCG["unidade"]?></div>
+                <div class="gridB"><?php echo $senacCG["exemplarQntd"]?></div>
+                <div class="gridB"><?php echo $senacCG["exemplarDisponiveis"]?></div>
+                <div class="gridB"><?php echo $senacCG["exemplarEmprestados"]?></div>
+                <div class="gridB"><?php echo $senacCG["exemplarReservas"]?></div>
+            </div>
+            <!-- Senac De Dourados -->
+            <div class="containerGrid">
+                <div class="gridA"><u><b>Unidade</b></u></div>
+                <div class="gridA"><b>Exemplares</b></div>
+                <div class="gridA"><b>Disponível</b></div>
+                <div class="gridA"><b>Emprestados</b></div>
+                <div class="gridA"><b>Reservados</b></div>
+                
+                <div class="gridB"><?php echo $senacDOU["unidade"]?></div>
+                <div class="gridB"><?php echo $senacDOU["exemplarQntd"]?></div>
+                <div class="gridB"><?php echo $senacDOU["exemplarDisponiveis"]?></div>
+                <div class="gridB"><?php echo $senacDOU["exemplarEmprestados"]?></div>
+                <div class="gridB"><?php echo $senacDOU["exemplarReservas"]?></div>
+            </div>
+            
+           
+            <!-- Senac de Três LAgoas -->
+            <div class="containerGrid">
+                <div class="gridA"><u><b>Unidade</b></u></div>
+                <div class="gridA"><b>Exemplares</b></div>
+                <div class="gridA"><b>Disponível</b></div>
+                <div class="gridA"><b>Emprestados</b></div>
+                <div class="gridA"><b>Reservados</b></div>
+
+                <div class="gridB"><?php echo $senacTLG["unidade"]?></div>
+                <div class="gridB"><?php echo $senacTLG["exemplarQntd"]?></div>
+                <div class="gridB"><?php echo $senacTLG["exemplarDisponiveis"]?></div>
+                <div class="gridB"><?php echo $senacTLG["exemplarEmprestados"]?></div>
+                <div class="gridB"><?php echo $senacTLG["exemplarReservas"]?></div>
+            </div>
+            
+
+
+
             
         </div>
 
@@ -158,14 +224,9 @@ $livro = [
         include "../../../public/components/footer/footer.php";
     ?>
 
+    <script src="<?php echo $URLBASE?>/public/js/livro_info.js">
+    exemplarToggle()
 
-    <!-- footer -->
-    <!-- <div id="footer-container"></div>  <script>
-        fetch('..../../../public/components')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('footer-container').innerHTML = html;
-            });
-    </script>    -->
+    </script>
 </body>
 </html>
