@@ -21,8 +21,6 @@ require "../../../config/constantes.php"
         <!-- JUNTO COM O JS, AQUI É PARA APARECER A NAV BAR QUANDO PASSAR O MOUSE EM CIMA E SOME QUANDO TIRA O MOUSE -->
         <div class="menu-icon" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
 
-            <img src="../../../public/assets/icons/LogoHub_academy.png" alt="Menu"> <!--Ajustar o caminho correto! -->
-
             <img src="../../../public/assets/icons/Menu adm.png" alt="Menu">
 
         </div>
@@ -52,11 +50,11 @@ require "../../../config/constantes.php"
 
             <!-- <img src="../iconesUsados/Icon perfil.png" alt="Ícone de pessoa"> -->
             <span class="material-symbols-outlined">
-face
+
 </span>
 
             <img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa">
-            p>Bem-vindo, Gabriel!</p>
+            <p>Bem-vindo, Gabriel!</p>
         </div>  
 
     </header>
@@ -72,14 +70,14 @@ face
 
         <img src="<?php echo $URLBASE?>/public/assets/img/Superior direito.svg" alt="Superior direito" class="direito">
 
-        <img src="<?php echo $URLBASE?>/public/assets/icons/Superior esquerdo.png" alt="Superior direito" class="direito">
+
 
     
     </div>
    
     <!-- ARQUIVO JS PARA EXPORTAR -->
 
-    <script src="<?php echo $URLBASE?>/public/js/header.js"></script>
+    <script src="<?php echo $URLBASE?>/public/js/usuario/header.js"></script>
 
 </body>
 </html>

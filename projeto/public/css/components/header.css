@@ -83,7 +83,7 @@ nav.show {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform: translateX(-30%);
+    transform: translateX(-200%);
     margin: 0 auto;  /* Garante a centralização do título */
 }
 
@@ -130,14 +130,11 @@ nav.show {
 }
 
 #icone_top{
-
     height: 0%;   
 }
 
 .iconeSenac img{
-
     width: 17%;
-    
 }
 
 /* RESPONSIVIDADE */
