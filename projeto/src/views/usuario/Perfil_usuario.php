@@ -54,14 +54,7 @@
           </div>
         </div>
 
-        <div class="card" data-card="renovar">
-          <span class="icon">🔄</span>
-          <span class="title">Renovar posse de livro</span>
-          <div class="hover-content">
-            <img src="../../../public/assets/img/Rectangle 4167.png" alt="Vovô virou semente" />
-            <img src="../../../public/assets/img/Rectangle 4167.png" alt="Solo" />
-          </div>
-        </div>
+        
       </div>
     </div>
   </main>
