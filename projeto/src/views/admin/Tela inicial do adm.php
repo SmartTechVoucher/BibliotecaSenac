@@ -116,7 +116,6 @@
         <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
         <div><a href="Por fazer">Usuários cadastrados</a></div>
         <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
-        <div><a href="../usuario/telaRenovarPosseDeLivro.php">Renovações</a></div>
         <hr>
         <div><a href="../usuario/login.php">Logout</a></div>
     </div>

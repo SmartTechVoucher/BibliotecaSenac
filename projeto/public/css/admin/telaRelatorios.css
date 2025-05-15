@@ -198,7 +198,7 @@ configurações dos botões "cancelar" e "emitir" */
 
 .menu{
     width: 366px;
-    height: 430px;
+    height: 440px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);
