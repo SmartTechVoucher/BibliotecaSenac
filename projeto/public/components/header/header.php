@@ -29,21 +29,21 @@ require "../../../config/constantes.php"
 
         <!-- ICONE DO SENAC, ESSE DO LADO DE ONDE FICA A NAV BAR -->
         <div class="iconeSenac">
-            <img id="icone_top" src="../../../public/assets/img/Icone Senac.png" alt="Imagem do logo">
+            <img id="icone_top" src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo">
         </div>
 
         <!-- NAVBAR QUE APARECE "OS CAMINHOS" QUE O USUARIO PODE IR -->
         <nav id="nav-menu" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
             <ul>
-                <li><a href="index.php">🏠 Início</a></li>
-                <li><a href="livros.php">📚 Livros</a></li>
+                <li><a href="../../../index.php">🏠 Início</a></li>
+                <li><a href="livros.php">🔍 Pesquisa</a></li>
                 <li><a href="contato.php">📞 Contato</a></li>
             </ul>
         </nav>
 
         <!-- NOME QUE FICA NO MEIO DO CABEÇALHO -->
         <div class="titulo"> 
-            <h2>Biblioteca Senac</h2> 
+            <h2>Biblioteca</h2> 
             <h2 class="senac">Senac Mato Grosso do Sul</h2> 
         </div>
 
@@ -79,7 +79,7 @@ face
    
     <!-- ARQUIVO JS PARA EXPORTAR -->
 
-    <script src="BibliotecaSenac/projeto/public/js/header.js"></script>
+    <script src="<?php echo $URLBASE?>/public/js/header.js"></script>
 
 </body>
 </html>
