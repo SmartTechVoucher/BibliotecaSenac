@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de relatórios</title>
-    <link rel="stylesheet" href="../../../public/css/admin/telaRelatorios.css">
+    <title>Livros cadastrados</title>
+    
+    <link rel="stylesheet" href="../../../public/css/admin/Tela dos livros cadastrados.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +24,7 @@
 <body>
     
  <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
-    <div class="conteiner">     
+ <div class="conteiner">     
         
         <div class="menuAdm">
             <img src="../../../public/assets/icons/Menu adm.png" alt="" class="hamburguer">
@@ -34,18 +35,19 @@
             <h2>Biblioteca Senac</h2> 
             <h2 class="senac">Senac Mato Grosso do Sul</h2> 
         </div>
-
+    
         <div class="icone"><img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
-
+    
         <div class="minhaConta">
             <p>Minha conta</p>
-            <p><a href="./Tela de login/view/login/index.html">Sair</a></p>
-        </div>     
+            <p><a href="../usuario/login.php">Sair</a></p>
+        </div>   
+    
     </div>
 
  <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
 
-     <div class="conteiner3">
+     <div class="conteiner2">
 
         <div class="superior">
             <img src="../../../public/assets/icons/Superior esquerdo.png" alt="Superior esquerdo" class="esquerdo">
@@ -57,81 +59,32 @@
 
     </div>
 
-    <div class="relatorio"><h1>Relatórios</h1></div>
+    <form>
 
-    <div class="quadradoBranco">
-        
-        <form class="quadradoCinza">       
+        <div class="controle">
+            <input type="text" name="" class="busca" placeholder="Pesquise por título ou ibsm do livro">
 
-        <div class="input">        
-            <div>
-                <h3 class="sobre">Sobre:</h3>
-                <select class="nome"> 
-                    <option value="">Acervo</option>   
-                    <option value="">Aquisição</option>   
-                    <option value="">Empréstimos</option>   
-                    <option value="">Usuários</option> 
-                </select>  
+            <button type="submit" class="botao">
+                <img src="../../../public/assets/icons/Buscar.png" alt="Imagem de lupa">
+            </button>
+
+            <div class="controle2">
+                <label class="unidade">Unidade:</label>
+                <select name="" id="">
+                    <option value="">Selecione</option>
+                    <option value="">Dourados</option>
+                    <option value="">Três Lagoas</option>
+                    <option value="">Ponta Porã</option>
+                    <option value="">Corumbá</option>
+                    <option value="">Campo Grande</option>
+                </select>
             </div>    
-                 
-            <div>
-                <h3 class="salvar">Exportar/salvar como:</h3>
-                <select class="opcoes"> 
-                    <option value="">PDF</option>   
-                    <option value="">Png/Jpeg</option>   
-                    <option value="">Texto</option>   
-                    <option value="">Excel</option>   
-                </select>  
-            </div> 
-        
-        </div>
-         
-        <div class="unidade">
-            <h4>Unidade:</h4>
-            <select class="nome"> 
-                <option value="">Todos</option>   
-                <option value="">Dourados</option>   
-                <option value="">Três Lagoas</option>   
-                <option value="">Ponta Porã</option> 
-                <option value="">Corumbá</option> 
-                <option value="">Campo Grande-gastronomia</option> 
-            </select>  
 
-            <h4 class="ordenagem">Ordenagem:</h4>
-            <select class="ordem"> 
-                <option value="">Data crescente</option>   
-                <option value="">Data decrescente</option>   
-                <option value="">Crescente</option>   
-                <option value="">Decrescente</option> 
-            </select>  
-             
-        </div>    
-       
-        <div class="input" id="calendario">
-           
-            <div class="Calendario">
-                <img src="../../../public/assets/icons/Calendar.png " alt="Calendário" class="imagemCalendario"> 
-                
-                <div>
-                    <h4>Começando de:</h4>
-                    <input type="date" class="calendar">
-
-                    <h4>Até:</h4>
-                    <input type="date" class="calendar2">
-                </div>
-           
-            </div>
-                        
         </div>
 
-       <div class="botoes">
-            <button type="reset" class="cancelar">Cancelar</button>
-            <button type="submit" class="emitir">Emitir</button>
-       </div>
-        
-     </form>
-   
-    </div>
+    </form>
+
+    <p>Livros por aparecer:</p>
     
     <div class="inferior">
 
@@ -156,18 +109,19 @@
 
      <div id="menu" class="menu">
 
-        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
-        <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
+        <div>Cadastrar livros</div>
+        <div>Cadastrar usuários</div>
+        <div>Relatórios</div>
         <div>Empréstimos</div>
         <div>Usuários</div>
         <div>Estoque de livros</div>
         <div>Renovações</div>
         <hr>
-        <div><a href="./Tela de login/view/login/index.html">Logout</a></div>
+        <div>Logout</div>
 
     </div>
 
-    <script src="../../../public/js/admin/Tela de relatórios.js"></script>
+    <script src="../../../public/js/Tela dos livros cadastrados.js"></script>
 
 </body>
 </html>

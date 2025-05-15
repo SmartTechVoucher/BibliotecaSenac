@@ -1,4 +1,4 @@
-body{
+/* body{
     width: 100%;
 
 }
@@ -25,19 +25,19 @@ header{
         width: 100%;
         /*border: #4658ff 1px solid;*/
 
-        .grid_superior{
+        /* .grid_superior{
             display: flex;
             flex-direction: column;
         }
     }
-}
+} */ */
 
 *{
     margin: 0%;
     padding: 0;
     box-sizing: border-box; /* Ela altera o comportamento do box-model, fazendo com que o navegador calcule a largura/altura do elemento contando não apenas o seu conteúdo (como visto no content-box )*/
 }
-
+/* 
 #Icone{
     width: 25%;
 }
@@ -66,7 +66,7 @@ header{
     border: solid 1px;
     border-radius: 10px;
     
-}
+} */
 
 .cards_livros{
     display: grid ;
@@ -82,7 +82,7 @@ header{
 }
 
 
-.card{
+.card-livro{
     border: 1px solid;
     display: flex;
     flex-direction:column;
@@ -108,20 +108,20 @@ header{
     z-index: 1;
 }
 
-.bottom_card{
+.card-livro__decoracao{
     position: absolute;
     bottom: 0; /*define a posição vertical de um elemento em relação à sua borda inferio*/
     z-index: 2;/*posição*/
     right: 0; /*define a posição horizontal de um elemento em relação à sua borda direita*/
 }
 
-.form_info{
+.card-livro__form{
     z-index: 3;
     padding: 1px;
 }
 
 
-.botao_reservar{
+.card-livro__botao{
     width: 46%;
     padding: 6px; /*define o espaço entre o conteúdo de um elemento e suas bordas*/
     margin: 2%; /*define a margem de um elemento HTML, ou seja, a distância entre ele e outros elementos*/

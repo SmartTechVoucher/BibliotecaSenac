@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../../../public/css/login.css"> 
+    <link rel="stylesheet" href="../../../public/css/bundles/style-login.css"> 
 </head>
 <body>
     <div class="container">
@@ -38,8 +38,8 @@
             </form>
             
 
-            <img src="../../../public/assets/img/Logo Senac Hub.png" alt="" class="logo">
-            <img src="../../../public/assets/img/Logo Senac Hub.png" alt="" class="logo2">
+            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo">
+            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2">
             
         </section>
         <section class="tela_animacao">

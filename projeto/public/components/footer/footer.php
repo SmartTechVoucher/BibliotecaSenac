@@ -11,9 +11,10 @@ require "../../../config/constantes.php"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/components/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
@@ -23,11 +24,11 @@ require "../../../config/constantes.php"
     <div>
         <footer>
             <div class="logo-senac">
-                <img src="<?php echo $URLBASE?>/public/assets/img/logo-senac.svg" alt="Logo Senac" id="logo-senac">
+                <img src="<?php echo $URLBASE?>/public/assets/img/logosenac.svg" fill="white" alt="Logo Senac" id="logo-senac">
             </div>
             
-            <div class="livro">
-                <img src="/public/livro.svg" alt="Livro icon">
+            <div class="livro-brilhante">
+                <img src="../../../public/assets/img/livro-brilhante.svg " alt="Livro icon">
                 <p>Senac MS Copyright © <br>
                     2024. Todos os Direitos Reservados</p>
             </div>

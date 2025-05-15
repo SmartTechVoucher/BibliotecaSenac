@@ -1,5 +1,3 @@
-
-
 let botao = document.getElementsByClassName("hamburguer")
 let menu = document.getElementById("menu")
 let corpo = document.getElementsByTagName("body")
@@ -60,25 +58,6 @@ cadastrar.addEventListener("click", function(){
     else{
         menuAberto3=false
         overlay.style.display="none" 
-    }
-
-})
-
-let relatorio = document.getElementsByClassName("caixa")[2]
-let overlayRelatorio = document.getElementById("overlayRelatorio")
-
-let menuAberto4 = false
-
-relatorio.addEventListener("click", function(){
-
-    if(menuAberto4==false){
-        menuAberto4=true
-        overlayRelatorio.style.display="block"
-    }
-
-    else{
-        menuAberto4=false
-        overlayRelatorio.style.display="none" 
     }
 
 })

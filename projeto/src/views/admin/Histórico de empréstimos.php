@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tela de usuários cadastrados</title>
-        <link rel="stylesheet" href="../../../public/css/Tela de usuários cadastrados.css">
+        <link rel="stylesheet" href="../../../public/css/admin/telaUsuariosCadastrados.css">
     </head>
 
  <body>
@@ -81,7 +81,7 @@
                     <td>785930</td>
                     <td>lulu oliveira</td>
                     <td>20/02/2025</td>
-                    <td>03/03</td>
+                    <td>03/03/2025</td>
                     <td>30/02/2025</td>
                     
                     <td>
@@ -120,7 +120,7 @@
                     <td>944512</td>
                     <td>João</td>
                     <td>20/02/2025</td>
-                    <td>04/</td>
+                    <td>04 dias</td>
                     <td>30/02/2025</td>
                     
                     <td>
@@ -166,7 +166,7 @@
 
     </div>
 
-    <script src="../../../public/js/Tela de usuários cadastrados.js"></script>
+    <script src="../../../public/js/admin/Tela de usuários cadastrados.js"></script>
 
  </body>
 </html>

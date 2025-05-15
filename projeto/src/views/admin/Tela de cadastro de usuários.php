@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de cadastro de usuários</title>
-    <link rel="stylesheet" href="../../../public/css/Tela de cadastro de usuários.css">
+    <link rel="stylesheet" href="../../../public/css/admin/telaCadastroUsuarios.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,7 +131,7 @@
 
     </div>
 
-    <script src="../../../public/js/Tela de cadastro de usuários.js"></script>
+    <script src="../../../public/js/admin/Tela de cadastro de usuários.js"></script>
 
 </body>
 </html>

@@ -11,7 +11,7 @@ require "../../../config/constantes.php"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cabecalho</title>
-    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/style.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/components/header.css">
 </head>
 <body>
 
@@ -20,7 +20,11 @@ require "../../../config/constantes.php"
 
         <!-- JUNTO COM O JS, AQUI É PARA APARECER A NAV BAR QUANDO PASSAR O MOUSE EM CIMA E SOME QUANDO TIRA O MOUSE -->
         <div class="menu-icon" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
+
+            <img src="../../../public/assets/icons/LogoHub_academy.png" alt="Menu"> <!--Ajustar o caminho correto! -->
+
             <img src="../../../public/assets/icons/Menu adm.png" alt="Menu">
+
         </div>
 
         <!-- ICONE DO SENAC, ESSE DO LADO DE ONDE FICA A NAV BAR -->
@@ -45,8 +49,14 @@ require "../../../config/constantes.php"
 
         <!-- ÍCONE DO PERFIL DE USUÁRIO -->
         <div class="iconepessoa">
+
+            <!-- <img src="../iconesUsados/Icon perfil.png" alt="Ícone de pessoa"> -->
+            <span class="material-symbols-outlined">
+face
+</span>
+
             <img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa">
-            <p>Bem-vindo, Gabriel!</p>
+            p>Bem-vindo, Gabriel!</p>
         </div>  
 
     </header>
@@ -59,7 +69,11 @@ require "../../../config/constantes.php"
     <div class="iconesSuperiores">
 
         <img src="<?php echo $URLBASE?>/public/assets/img/Superior esquerdo.svg" alt="Superior esquerdo" class="esquerdo">
+
+        <img src="<?php echo $URLBASE?>/public/assets/img/Superior direito.svg" alt="Superior direito" class="direito">
+
         <img src="<?php echo $URLBASE?>/public/assets/icons/Superior esquerdo.png" alt="Superior direito" class="direito">
+
     
     </div>
    

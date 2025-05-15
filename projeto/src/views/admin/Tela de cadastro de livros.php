@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de cadastro de livros</title>
-    <link rel="stylesheet" href="../../../public/css/Tela de cadastro de livros.css">
+    <link rel="stylesheet" href="../../../public/css/admin/telaCadastroLivros.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +39,7 @@
 
         <div class="minhaConta">
             <p>Minha conta</p>
-            <a href="./Tela de login/view/login/index.html">Sair</a>
+            <a href="../usuario/login.php">Sair</a>
         </div>
 
     </div>
@@ -289,18 +289,19 @@
 
     <div id="menu" class="menu">
 
-        <div><a href="./Tela de cadastro de usuários/biblioteca.html">Cadastrar usuários</a></div>
-        <div><a href="./Tela de relatórios/biblioteca.html">Relatórios</a></div>
-        <div>Empréstimos</div>
-        <div>Usuários</div>
-        <div><a href="./Tela dos livros cadastrados/biblioteca.html">Estoque de livros</a></div>
-        <div>Renovações</div>
+        <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
+        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
+        <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
+        <div><a href="Por fazer">Usuários</a></div>
+        <div><a href="Tela dos livros cadastrados.php">Estoque de livros</a></div>
+        <div><a href="Por fazer">Renovações</a></div>
+        <div><a href="./Tela inicial do adm.php">Tela inicial do adm</a></div>
         <hr>
-        <div><a href="./Tela de login/view/login/index.html">Logout</a></div>
+        <div><a href="../usuario/login.php">Logout</a></div>
 
     </div>
 
-    <script src="../../../public/js/Tela de cadastro de livros.js"></script>
+    <script src="../../../public/js/admin/Tela de cadastro de livros.js"></script>
 
 </body>
 </html>
