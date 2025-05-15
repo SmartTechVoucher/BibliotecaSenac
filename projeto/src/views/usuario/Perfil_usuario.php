@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../../public/css/style.css" />
-    <link rel="stylesheet" href="../../../public/css/Perfil_usuario.css >
+    <link rel="stylesheet" href="../../../public/css/usuario/Perfil_usuario.css">
 </head>
 <body>
 
@@ -55,14 +54,7 @@
           </div>
         </div>
 
-        <div class="card" data-card="renovar">
-          <span class="icon">🔄</span>
-          <span class="title">Renovar posse de livro</span>
-          <div class="hover-content">
-            <img src="../../../public/assets/img/Rectangle 4167.png" alt="Vovô virou semente" />
-            <img src="../../../public/assets/img/Rectangle 4167.png" alt="Solo" />
-          </div>
-        </div>
+        
       </div>
     </div>
   </main>

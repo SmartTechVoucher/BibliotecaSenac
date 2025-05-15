@@ -33,7 +33,14 @@ header {
 /* Ícone do menu */
 .menu-icon {
     cursor: pointer;
-    width: 3%;
+    width: 5%;
+    height: 70%;
+}
+
+.menu-icon img {
+   
+    width: 90%;
+    height: 100%
 }
 
 
@@ -76,7 +83,7 @@ nav.show {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform: translateX(-30%);
+    transform: translateX(-200%);
     margin: 0 auto;  /* Garante a centralização do título */
 }
 
@@ -86,9 +93,8 @@ nav.show {
 }
 
 .titulo h2:first-child {
-    margin-bottom: 20px;  /* Ajuste o valor conforme necessário para aumentar a distância */
+    margin-bottom: 5px;  /* Ajuste o valor conforme necessário para aumentar a distância */
 }
-
 
 
 .iconepessoa{
@@ -124,12 +130,16 @@ nav.show {
 }
 
 #icone_top{
-    width: 250px;
     height: 0%;   
 }
+
+.iconeSenac img{
+    width: 17%;
+}
+
 /* RESPONSIVIDADE */
 
-@media (max-width: 1024px) {
+@media (max-width: 480px) {
     
     .header{
         flex-direction: column;
