@@ -39,7 +39,7 @@
 
         <div class="minhaConta">
             <p>Minha conta</p>
-            <p><a href="./Tela de login/view/login/index.html">Sair</a></p>
+            <p><a href="../usuario/login.php">Sair</a></p>
         </div>     
     </div>
 
@@ -158,12 +158,13 @@
 
         <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
         <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
-        <div>Empréstimos</div>
-        <div>Usuários</div>
-        <div>Estoque de livros</div>
-        <div>Renovações</div>
+        <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
+        <div><a href="Por fazer">Usuários</a></div>
+        <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
+        <div><a href="Por fazer">Renovações</a></div>
+        <div><a href="./Tela inicial do adm.php">Tela inicial</a></div>
         <hr>
-        <div><a href="./Tela de login/view/login/index.html">Logout</a></div>
+        <div><a href="../usuario/login.php">Logout</a></div>
 
     </div>
 
