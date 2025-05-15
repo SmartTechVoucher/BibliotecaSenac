@@ -46,31 +46,31 @@
         <div class="gen">
             <div class="gencard">
                 <div class="icon_livros">
-                    <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon2"> 
+                    <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon1"> 
                 </div>
                 <h2 class="gentitle">Saúde</h2>
             </div>
             <div class="gencard">
                     <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon3">
+                        <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon2">
                     </div>
                 <h2 class="gentitle">Saúde</h2>
             </div>
             <div class="gencard">
                 <div class="icon_livros">
-                    <img src="../projeto/public/assets/icons/gestao.svg" alt="" class="genicon4">
+                    <img src="../projeto/public/assets/icons/gestao.svg" alt="" class="genicon3">
                 </div>
                 <h2 class="gentitle">Gestão</h2>
             </div>
             <div class="gencard">
             <div class="icon_livros">
-                <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon2">
+                <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon">
             </div>
                 <h2 class="gentitle">Design</h2>
             </div>
             <div class="gencard">
             <div class="icon_livros">
-                <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon2">
+                <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
             </div>
                 <h2 class="gentitle">Educação</h2>
             </div>
