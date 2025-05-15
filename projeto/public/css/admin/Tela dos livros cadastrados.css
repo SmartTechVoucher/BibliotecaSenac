@@ -151,7 +151,7 @@ p{
 
 .menu{
     width: 366px;
-    height: 500px;
+    height: 400px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);

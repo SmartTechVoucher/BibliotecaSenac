@@ -114,7 +114,6 @@
         <div><a href="./Tela de relatórios.php">Relatórios</a></div>
         <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
         <div><a href="Por fazer">Usuários</a></div>
-        <div><a href="Por fazer">Renovações</a></div>
         <hr>
         <div><a href="../usuario/login.php">Logout</a></div>
 

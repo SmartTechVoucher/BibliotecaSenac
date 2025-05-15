@@ -162,7 +162,6 @@
         <div><a href="./Tela de relatórios.php">Relatórios</a></div>
         <div><a href="./Tela inicial do adm.php">Tela inicial</a></div>
         <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
-        <div><a href="Por fazer">Renovações</a></div>
         <hr>
         <div><a href="../usuario/login.php">Logout</a></div>
 

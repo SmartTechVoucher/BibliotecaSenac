@@ -203,7 +203,7 @@ body{
 
 .menu{
     width: 366px;
-    height: 505px;
+    height: 440px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);
