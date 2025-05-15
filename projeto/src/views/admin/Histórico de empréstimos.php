@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tela de usuários cadastrados</title>
-        <link rel="stylesheet" href="../../../public/css/admin/telaUsuariosCadastrados.css">
+        <title>Histórico de empréstimos</title>
+        <link rel="stylesheet" href="../../../public/css/admin/Histórico de empréstimos.css">
     </head>
 
  <body>
@@ -26,7 +26,7 @@
 
         <div class="minhaConta">
             <p>Minha conta</p>
-            <a href="./Tela de login/view/login/index.html">Sair</a>
+            <a href="../usuario/login.php">Sair</a>
         </div>
 
     </div>
@@ -157,16 +157,18 @@
     <div id="menu" class="menu">
 
         <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
+        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
+        <div><a href="Por fazer">Usuários cadastrados</a></div>
         <div><a href="./Tela de relatórios.php">Relatórios</a></div>
-        <div>Empréstimos</div>
-        <div><a href="para resolver">Estoque de livros</a></div>
-        <div>Renovações</div>
+        <div><a href="./Tela inicial do adm.php">Tela inicial</a></div>
+        <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
+        <div><a href="Por fazer">Renovações</a></div>
         <hr>
-        <div><a href="./Tela de login/view/login/index.html">Logout</a></div>
+        <div><a href="../usuario/login.php">Logout</a></div>
 
     </div>
 
-    <script src="../../../public/js/admin/Tela de usuários cadastrados.js"></script>
+    <script src="../../../public/js/admin/Histórico de empréstimos.js"></script>
 
  </body>
 </html>
