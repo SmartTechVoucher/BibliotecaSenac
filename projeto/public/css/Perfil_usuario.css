@@ -39,7 +39,7 @@
   .box {
     gap: 40px 60px;
     background-color: #ffffffee;
-    padding: 30px;
+    padding: 1%;
     border: 2px solid #dbe8f4;
     border-radius: 8px;
     width: 90%; /*POSSIVEL BUG */
@@ -59,8 +59,8 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Três colunas fixas */
-    column-gap: 20px;
-    row-gap: 200px;
+    column-gap: 40px;
+    row-gap: 190px;
     
   }
   
@@ -68,7 +68,7 @@
     border-bottom: 6px solid #003366;
     box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
     background-color: #f5f5f5;
-    padding: 16px;
+    padding: 7px;
     position: relative;
     transition: 0.3s;
     cursor: pointer;
