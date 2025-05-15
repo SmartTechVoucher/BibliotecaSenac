@@ -30,7 +30,6 @@
 .conteiner .menuAdm{
     display: flex;
     align-items: center;
-    /* gap: 15%; */
 }
 
 .menuAdm .hamburguer{
@@ -171,11 +170,11 @@ tag "a". Esse seletor vai retirar a linha típica de link
 "a", vai definir a cor da fonte do link como branca e vai 
 definir a exibição como ao lado*/
 
-/* .menu a{
+.menu a{
     text-decoration: none;
     color: var(--branco);
     display: flex;
-} */
+}
 
 @media(max-width:1024px){
     

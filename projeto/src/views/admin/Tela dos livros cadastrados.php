@@ -109,19 +109,18 @@
 
      <div id="menu" class="menu">
 
-        <div>Cadastrar livros</div>
-        <div>Cadastrar usuários</div>
-        <div>Relatórios</div>
-        <div>Empréstimos</div>
-        <div>Usuários</div>
-        <div>Estoque de livros</div>
-        <div>Renovações</div>
+        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
+        <div><a href="Por fazer">Cadastrar usuários</a></div>
+        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
+        <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
+        <div><a href="Por fazer">Usuários</a></div>
+        <div><a href="Por fazer">Renovações</a></div>
         <hr>
-        <div>Logout</div>
+        <div><a href="../usuario/login.php">Logout</a></div>
 
     </div>
 
-    <script src="../../../public/js/Tela dos livros cadastrados.js"></script>
+    <script src="../../../public/js/admin/Tela dos livros cadastrados.js"></script>
 
 </body>
 </html>
