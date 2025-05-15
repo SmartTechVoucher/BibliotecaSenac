@@ -301,25 +301,35 @@ span {
     height: 100%;
 }
 
-.genicon2 {
-    padding: 20px 10px 10px 18px;
+.genicon1 img {
     width: 130px;
-    height: 120px;
+    height: auto;
 }
 
-.genicon3 {
-    padding: 37px 12px 10px 37px;
+.genicon2 img {
+    width: 100px;
+    height: auto;
+}
+
+.genicon3 img {
     width: 90px;
-    height: 90px;
+    height: auto;
 }
 
 .genicon4 {
-    padding: 37px 12px 10px 37px;
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: auto;
+}
+
+.genicon5 img {
+    width: 100px;
+    height: auto;
 }
 
 .icon_livros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #003162;
     width: 162px;
     height: 162px;
