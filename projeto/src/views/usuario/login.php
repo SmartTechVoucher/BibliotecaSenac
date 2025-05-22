@@ -55,11 +55,11 @@
 
             <!-- <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo">
             <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2"> -->
-            <div class="decor-top-right">
+            <!-- <div class="decor-top-right">
                 <div class="square"></div>
                 <div class="square"></div>
                 <div class="square"></div>
-            </div>
+            </div> -->
 
             <div class="decor-bottom-left">
             <div class="square"></div>
