@@ -64,7 +64,7 @@
             </div>
             <div class="gencard">
             <div class="icon_livros">
-                <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon">
+                <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
             </div>
                 <h2 class="gentitle">Design</h2>
             </div>
@@ -89,7 +89,7 @@
                 <div class="primeiraFileira">
 
                     <div class="tresPrimeiros">
-                        <div class="livroEstante">
+                        <!-- <div class="livroEstante">
                             <img src="../projeto/public/assets/img/card prat.png" alt="Livro 1">
                         </div>
 
@@ -99,13 +99,13 @@
 
                         <div class="livroEstante">
                             <img src="../projeto/public/assets/img/card prat.png" alt="Livro 3">
-                        </div>
+                        </div> -->
 
                     </div>
 
                     <div class="quatroUltimos">
 
-                        <div class="livroEstante">
+                        <!-- <div class="livroEstante">
                             <img src="../projeto/public/assets/img/card prat.png" alt="Livro 4">
                         </div>
 
@@ -121,7 +121,7 @@
 
                         <div class="livroEstante">
                             <img src="../projeto/public/assets/img/card prat.png" alt="Livro 7">
-                        </div>
+                        </div> -->
 
                     </div>
 
@@ -132,7 +132,7 @@
             </div>
         </div>
 
-        <?php include '../BibliotecaSenac/projeto/public/components/footer/footer.php' ?>
+        <?php include '../projeto/public/components/footer/footer.php' ?>
 
     </div>
 

@@ -301,17 +301,17 @@ span {
     height: 100%;
 }
 
-.genicon1 img {
+.genicon1 {
     width: 130px;
     height: auto;
 }
 
-.genicon2 img {
+.genicon2 {
     width: 100px;
     height: auto;
 }
 
-.genicon3 img {
+.genicon3 {
     width: 90px;
     height: auto;
 }
@@ -321,8 +321,8 @@ span {
     height: auto;
 }
 
-.genicon5 img {
-    width: 100px;
+.genicon5 {
+    width: 90px;
     height: auto;
 }
 
