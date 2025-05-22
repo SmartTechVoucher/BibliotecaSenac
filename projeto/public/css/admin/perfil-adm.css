@@ -1,0 +1,313 @@
+:root {
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fonte_rodape: 14px;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --corFormulario: #E5E4E4;
+    --corBotao: #004A90;
+    --vermelho: red;
+    --apontador: pointer;
+    --cinza: #D9D9D9;
+}
+
+body {
+    margin: 0;
+    background-color: var(--fundoPadrao);
+    font-family: var(--fontes);
+}
+
+.conteiner {
+    background-color: var(--azulCabecalho);
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-bottom: #769FCD 5px solid;
+}
+
+.menuAdm .hamburguer{
+    width: 90px;
+    height: 40px;
+    cursor: var(--apontador)
+}
+
+.logoSenacHub{
+    width: 80px;
+    height: 60px;
+    padding-left: 30px;
+}   
+
+
+/* Título centralizado */
+.titulo {
+    color: var(--branco);
+    font-size: 18px;
+    font-weight: 600px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    max-width: calc(100% - 100px);
+
+}
+.quadradoBranco {
+    width: 90%;
+    height: 500px;  
+    margin: 120px auto 0 auto;
+    background-color: var(--branco);
+    padding: 4%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.conteiner3 {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+        align-items: center; 
+        gap: 10px; 
+    
+    
+}
+
+.imagemSuperiorEsquerda {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+}
+
+.imagemSuperiorDireita {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+}
+
+
+
+
+.linhaCima{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 400px;
+}
+
+.campo{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.campoSenha{
+    display: flex;
+    flex-direction: column; 
+    gap: 5px; 
+}
+
+
+
+
+.linhaBaixo {
+    display: flex;
+    gap: 250px;
+    flex-wrap: wrap;
+    
+    align-items: center; 
+}
+.campo1{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.inferior {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1%;
+    padding-right: 20px;
+
+}
+
+.inferior img {
+    width: 100px;
+    height: 100px;
+}
+
+/* Rodapé */
+.rodape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: var(--azulCabecalho);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; 
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: var(--fonte_rodape);
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 120px; 
+}
+
+.rodape .Logo {
+    height: 50px;
+    width: 200px;
+    padding-left: 30%;
+}
+
+.rodape .centro {
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+}
+
+.rodape .direita {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+
+@media (max-width: 768px) {
+    .rodape {
+        flex-direction: column; 
+        align-items: center; 
+        padding: 10px;
+        height: auto; 
+    }
+
+    .rodape .Logo, .rodape .Libro {
+        width: 60%; 
+        margin-bottom: 10px;
+    }
+
+    .rodape .centro {
+        margin-bottom: 10px; 
+        font-size: 12px; 
+    }
+
+    .rodape .direita {
+        width: 100%;
+        align-items: center;
+        margin-top: 10px;
+    }
+}
+
+
+.campoSenha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+}
+
+.campoSenha input {
+    width: 100%;
+}
+
+
+
+
+.campoSenha {
+    align-self: center;
+}
+button:hover{
+    color: #001E3E;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+header {
+    background-color: #0a2d4d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+  }
+  header .bem-vindo {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
+  nav {
+    background-color: #e9ecef;
+    padding: 10px 30px;
+    font-size: 14px;
+  }
+  .container {
+    background-color: white;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  label {
+    display: block;
+    margin: 15px 0 5px;
+  }
+  input[type="text"], input[type="email"], input[type="password"] ,input[type="number"],input[type="tel"]{
+    width:300px;
+    padding: 10px;
+    border: 1px solid #928d8d;
+    border-radius: 7px;
+    background-color:#D3D3D3;
+  }
+
+
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* alinha à esquerda */
+    margin-top: 20px;
+}
+
+
+button.edit-btn{
+    height: 35px;
+    padding: 5px 30px;
+    background-color: var(--corBotao);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button.esqueciSenha{
+    height: 35px;
+    padding: 5px 30px;
+    background-color: var(--corBotao);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+p{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
