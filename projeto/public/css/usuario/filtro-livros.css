@@ -175,17 +175,6 @@ header{
 }
 
 
-.card_livro_saude{
-    display: grid ;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 60px 20px; /*diferença*/
-    width: 75%;
-    margin-top: 3rem;
-    /*height: 50px;*/
-    /*background-color:rgb(78, 255, 172);*/
-    /*border: 1px solid;*/
-    margin: 0 auto;
-}
 
 
 .card_tec{
@@ -219,23 +208,6 @@ header{
     padding: 1px;
 }
 
-
-
-
-.saude{
-    display: flex;
-    width: 100%;
-
-    padding: 0 12%;
-
-    justify-content: space-between;
-
-    a{
-        color: rgb(246, 139, 31);
-        align-content: center;
-    }
-}
-
 /* .saiba_mais2{
     color: rgb(246, 139, 31);
     position: relative;
@@ -243,17 +215,46 @@ header{
     top: 7px; 
 } */
 
-.card_livro_gestao{
-    display: grid ;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 60px 20px; /*diferença*/
-    width: 75%;
-    margin-top: 3rem;
-    /*height: 50px;*/
-    /*background-color:rgb(227, 156, 255);*/
-    /*border: 1px solid;*/
-    margin: 0 auto;
+.grid_card{
+    .saude{ /* titilo*/
+        display: flex;
+        width: 100%;
+    
+        padding: 0 12%;
+    
+        justify-content: space-between;
+    
+        a{
+            color: rgb(246, 139, 31);
+            align-content: center;
+        }
+    }
+
+    .card_livro_saude{
+        display: grid ;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px 20px; /*diferença*/
+        width: 75%;
+        margin-top: 3rem;
+        /*height: 50px;*/
+        /*background-color:rgb(78, 255, 172);*/
+        /*border: 1px solid;*/
+        margin: 0 auto;
+    }   
+    
+    .card_livro_gestao{
+        display: grid ;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 60px 20px; /*diferença*/
+        width: 75%;
+        margin-top: 3rem;
+        /*height: 50px;*/
+        /*background-color:rgb(227, 156, 255);*/
+        /*border: 1px solid;*/
+        margin: 0 auto;
+    }
 }
+
 
 
 .card_gestao{

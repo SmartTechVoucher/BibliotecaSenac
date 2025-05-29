@@ -26,31 +26,13 @@
                     <option value="Ciências_Agrârias">Ciências Agrârias</option>
                 </select>
 
-                <label for="Unidade">Unidade</label>
-                <select name="Unidade" id="Unidade" class="selecionar">
-                    <option value="">SELECIONE</option>
-                    <option value="BSCOR">BSCOR</option>
-                    <option value="BSDOU">BSDOU</option>
-                    <option value="BSHUB">BSHUB</option>
-                    <option value="BSPOP">BSPOP</option>
-                </select>
-
                 <label for="Categoria/Tags">Categoria/Tags</label>
                 <select name="Categoria/Tags" id="Categoria/Tags" class="selecionar">
                     <option value="">SELECIONE</option>
                     <option value="Literatura">Literatura</option>
-                    <option value="Folheto">Folheto</option>
-                    <option value="Artigo_Periódico">Artigo Periódico</option>
+                    <option value="Folheto">Romance</option>
+                    <option value="Artigo_Periódico">Técnico</option>
                     <option value="Livro">Livro</option>
-                </select>
-
-                <label for="Tipos de Documento">Tipos de Documento</label>
-                <select name="Tipos de Documento" id="Tipos de Documento" class="selecionar">
-                    <option value="">SELECIONE</option>
-                    <option value="Medicina">Medicina</option>
-                    <option value="Gestão">Gestão</option>
-                    <option value="Alimentação">Alimentação</option>
-                    <option value=">Guia">Guia</option>
                 </select>
 
             </div>
@@ -129,6 +111,7 @@
             </div>
         </div>
     </div>
+    v
 
     <?php include "../../../public/components/footer/footer.php" ?>
 
