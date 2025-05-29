@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --azul-padrao: #001E3E;
+    --cor-texto: #FFFFFF;
+}
+
+/* footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    background-color: var(--azul-padrao);
+    width: 100%;
+    height: 120px;
+    font-family: 'Poppins', serif;
+    color: var(--cor-texto);
+} */
+
+footer {
+    position: relative;         /* necessário para limitar elementos filhos */
+    overflow: hidden;           /* impede a imagem de ultrapassar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0;
+    background-color: var(--azul-padrao);
+    width: 100%;
+    height: 120px;
+    font-family: 'Poppins', serif;
+    color: var(--cor-texto);
+}
+
+
+footer img {
+    max-height: 100%;         /* limita a altura à do footer */
+    object-fit: contain;
+    margin: 0;                /* remove qualquer margem que empurre a imagem */
+    padding: 0;
+}
+
+.livro-brilhante {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 50%;
+}
+
+.livro-brilhante img {
+    width: 60%;
+    
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 30%),
+                        linear-gradient(to right, transparent 0%, black 20%),
+                        linear-gradient(to left, transparent 0%, black 20%);
+    -webkit-mask-composite: destination-in;
+    mask-image: linear-gradient(to top, transparent 0%, black 30%),
+                linear-gradient(to right, transparent 0%, black 20%),
+                linear-gradient(to left, transparent 0%, black 20%);
+    mask-composite: intersect;
+}
+
+.livro-brilhante p {
+    padding-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.logo-senac img {
+    width: 300px;
+    height: 60px;
+    padding-left: 118px;
+    margin-right: 100px;
+}
+
+.textos {
+    padding: 15px;
+    font-size: 12px;
+    gap: 50px;
+    display: flex;
+}
+
+.redes {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    max-width: 200px;
+    margin: auto;
+}
+
+.social-icons img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+.logo-senac2 img {
+    width: 50px;
+    height: 50px;
+}

@@ -21,16 +21,28 @@ header {
     top: 0;           /* Fixa no topo da página */
     left: 0;          /* Garante que vai colar à esquerda */
     width: 100%;   
-    height: 80px;   /* O cabeçalho vai ter a largura total da tela */
+    height: 115px;   /* O cabeçalho vai ter a largura total da tela */
     z-index: 1000;
     border-bottom: #769FCD 5px solid;    /* Garante que o cabeçalho fique sobre outros elementos */
 }
 
+/* .esquerdo {
+    margin: 0;
+} */
+
 /* Ícone do menu */
 .menu-icon {
     cursor: pointer;
-    margin-right: 20px; /* Ajuste o valor para aumentar o espaço entre o ícone e o logo Senac */
+    width: 5%;
+    height: 70%;
 }
+
+.menu-icon img {
+   
+    width: 90%;
+    height: 100%
+}
+
 
 /* Logo Senac */
 
@@ -71,7 +83,7 @@ nav.show {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1;  /* Faz com que a div "titulo" ocupe o máximo de espaço disponível */
+    transform: translateX(-200%);
     margin: 0 auto;  /* Garante a centralização do título */
 }
 
@@ -81,8 +93,9 @@ nav.show {
 }
 
 .titulo h2:first-child {
-    margin-bottom: 20px;  /* Ajuste o valor conforme necessário para aumentar a distância */
+    margin-bottom: 5px;  /* Ajuste o valor conforme necessário para aumentar a distância */
 }
+
 
 .iconepessoa{
 
@@ -93,7 +106,6 @@ nav.show {
     font-size: 14px;
     color: #fdfdfd; /* Cor do texto, ajuste conforme necessário */
     margin-top: 5px; /* Espaçamento entre a imagem e o texto */
-    margin-right: 40px;
 }
 
 .iconepessoa p {
@@ -117,9 +129,17 @@ nav.show {
     object-fit: contain; /* Mantém a proporção */
 }
 
+#icone_top{
+    height: 0%;   
+}
+
+.iconeSenac img{
+    width: 17%;
+}
+
 /* RESPONSIVIDADE */
 
-@media (max-width: 1024px) {
+@media (max-width: 480px) {
     
     .header{
         flex-direction: column;

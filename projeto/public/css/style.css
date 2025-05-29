@@ -1,0 +1,22 @@
+/*IMPORTAÇÕES DOS CSS DO ADMIN*/
+@import url(/admin/telaCadastroLivros.css);
+@import url(/admin/telaCadastroUsuarios.css);
+@import url(/admin/telaInicialAdm.css);
+@import url(/admin/telaRelatorios.css);
+@import url(/admin/telaUsuariosCadastrados.css);
+
+/*IMPORTAÇÕES DOS CSS DE COMPONENTS*/
+
+@import url(/components/card_livros.css);
+@import url(/components/footer.css);
+@import url(/components/header.css);
+
+/*IMPORTAÇÕES DOS CSS DE USUARIOS*/
+
+@import url(/usuario/confirma_reserva.css);
+@import url(/usuario/emprestimo.css);
+@import url(/usuario/livro_info.css);
+@import url(./usuario/login.css);
+@import url(/usuario/Perfil_usuario.css);
+@import url(./usuario/recuperarSenha.css);
+@import url(./usuario/tela_inicial.css);
