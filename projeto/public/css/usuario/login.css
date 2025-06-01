@@ -78,12 +78,18 @@ img{
 input{
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 3%;
     width: 80%;
     outline: none;
     background-color: #EEEEEE;
     margin: -19px;
 
+}
+
+input::placeholder {
+    color: #383838;
+    font-size: 14px;
+    opacity: 0.7;
 }
 
 input:focus {
@@ -101,7 +107,7 @@ input:focus {
 
 button{
     width: 80%;
-    height: 8%;
+    padding: 3%;
     border: none;
     border-radius: 5px;
     background-color: #F68B1F;
@@ -198,7 +204,15 @@ a{
 
 .checkbox-container label {
     cursor: pointer;
-  }
+}
+
+.checkbox-container label:hover {
+    color: #F68B1F;
+}
+
+.link-recuperar-senha:hover {
+    color: #F68B1F;
+}
   
 
 @media screen and (max-width: 900px) {

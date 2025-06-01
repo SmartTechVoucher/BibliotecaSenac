@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../../../public/css/components/card_livros.css">
+    <link rel="stylesheet" href="../../../public/css/components/card-livros.css">
 </head>
 
 <?php   
