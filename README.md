@@ -85,8 +85,8 @@ Classe: `UsuarioController`
 - Marlon Oliveira
 - Gabriel Costa 
 - Vitótia Caetano 
-- Bianca
-- Vitor 
-- Gustavo
-- Mateus
+- Bianca Pacheco
+- Vitor Araujo
+- Gustavo Silva
+- Mateus Serpa
 - Gabriel Minervini
