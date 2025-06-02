@@ -1,72 +1,11 @@
-/* body{
-    width: 100%;
 
-}
-
-header{
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    background-color: rgb(0,49,98);
-    width: 100%;
-
-}
-
-.container{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    width: 100%;
-
-    border-radius: 10px;
-    .superior{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        /*border: #4658ff 1px solid;*/
-
-        /* .grid_superior{
-            display: flex;
-            flex-direction: column;
-        }
-    }
-} */ */
 
 *{
     margin: 0%;
     padding: 0;
     box-sizing: border-box; /* Ela altera o comportamento do box-model, fazendo com que o navegador calcule a largura/altura do elemento contando não apenas o seu conteúdo (como visto no content-box )*/
 }
-/* 
-#Icone{
-    width: 25%;
-}
 
-.esquerda{
-    display: flex;
-    flex-direction: row;
-    width: 25%;
-   
-
-}
-
-.esquerda h1 {
-    align-content: center;
-    color: aliceblue;
-}
-
-.direita h1{
-    color: aliceblue;
-}
-
-.menu_direita{
-    width: 10%;
-    display: flex;
-    flex-direction: column;
-    border: solid 1px;
-    border-radius: 10px;
-    
-} */
 
 .cards_livros{
     display: grid ;
@@ -139,19 +78,7 @@ header{
    
 
 
-    /*width: 58%;
-    padding: 9px;
-    margin: auto;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    text-transform: uppercase;
-    font-weight:800 ;
-    letter-spacing: 3px; /*espaço entre as letras*/
-    /*color:rgb(255, 255, 255) ;  /*cor da letra*/
-   /* background: rgb(246, 139, 31); /*cor do botao*/
-    /*cursor: pointer;
-    box-shadow: 0px 10px 40px -12px #8b8787; /*sombra ao redor do botao*/
+    
 }
 
 .botao_reservar:hover{

@@ -67,17 +67,20 @@ button {
 
 
 .button-entrar {
-    width: 18%;
-    height: 110%;
     border-radius: 1rem;
     border: none;
     color: #FFFFFF;
     cursor: pointer;
     background-color:#F68B1F;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     display: flex;
     justify-content: center;
     align-items:center;
     gap: 10px;
+    font-size: 1.125rem;
+    
+
 
 }
 
@@ -100,8 +103,8 @@ button {
 
 span {
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .icone-perfil {
