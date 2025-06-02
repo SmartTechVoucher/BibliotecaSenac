@@ -75,20 +75,21 @@ img{
     width: 100%;
 }
 
-input{
+.login-campos input{
     border: none;
     border-radius: 5px;
     padding: 10px;
     width: 80%;
+    height: 40px;
     outline: none;
     background-color: #EEEEEE;
     margin: -19px;
 
 }
-
+/* 
 input:focus {
     border: 3px solid #F68B1F;
-}
+} */
 
 #campo_login {
     margin-bottom: 10px;
@@ -101,7 +102,7 @@ input:focus {
 
 button{
     width: 80%;
-    height: 8%;
+    height: 7%;
     border: none;
     border-radius: 5px;
     background-color: #F68B1F;
@@ -190,6 +191,10 @@ a{
     gap: 20px;
     width: 100%;
 
+}
+
+.checkbox-container label {
+    font-size: 100%;
 }
 
 .checkbox-container input {
