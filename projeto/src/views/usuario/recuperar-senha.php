@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../../../public/css/usuario/recuperarSenha.css"> 
+    <link rel="stylesheet" href="../../../public/css/usuario/recuperar-senha.css"> 
 </head>
 <body>
     <div class="container">
@@ -21,8 +21,8 @@
                 <a href="../views/loginView.php">Voltar</a>
             </form>
 
-            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2">
-            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo">
+            <!-- <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2">
+            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo"> -->
         </section>
        
     </div>
