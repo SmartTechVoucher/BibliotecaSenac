@@ -1,5 +1,7 @@
 <?php
 
+require_once "../../../config/constantes.php";
+
 $livro = [
     "titulo" => "Simpósio do Barreado",
     "img" => "../../../public/assets/img/Simposio.png",

@@ -44,8 +44,6 @@ body{
     }
     .review{
         display: flex;
-        align-items: center;
-        margin-bottom: 20px;
     }
     .review p{
         margin-left: 18px;
@@ -69,13 +67,15 @@ body{
     #livroIsbn{
         font-size: small;
         color: rgb(100, 100, 100);
+        margin-bottom: -30px;
     }
     #livroDescricao{
         margin-bottom: 0px;
     }
 
     .livroReservar{
-        margin: 15px 0 0 0;
+        
+        gap: 10px;
     }
 
     /* botao de reserva */
@@ -112,7 +112,7 @@ body{
         display: flex;
         justify-content: space-around;
         flex-direction: row;
-        margin: 70px 0 30px;
+        margin: 0 70px 0 30px;
     }
     .info_2 img{
         width: 56px;
@@ -160,46 +160,17 @@ body{
 
 /* EXEMPLARES */
     .containerExemplar{
-        width: 102%;
+        width: 100%;
         background-color: white;
         display: flex;
-        align-items: center ;
+        justify-content: space-between;
+        padding: 10px;
         margin: auto;
         margin-top: 40px;
-        height: 53px;
-    }
-    .containerExemplar img{
-        width: 33px;
-        padding: 6px;
+
     }
     .containerExemplar p{
         font-size: large;
-        margin-right: 88%;
-        margin-left: 1%;
-    }
-
-    #containerExemplarOpen{
-        width: 102%;
-        gap: 8px;
-        align-items: center;
-        justify-items: center;
-        background-color: rgb(241, 241, 241) ;
-        display: none;
-        margin: auto;
-    }
-    .containerGrid{
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        align-items: center;
-        justify-items: center;
-        border: solid 1px #eee;
-    }
-    .gridA{
-        margin-left: 80%;
-        margin-right: 80%;
-        margin-top: 5%;
     }
 
 /* COMENTARIOS */
