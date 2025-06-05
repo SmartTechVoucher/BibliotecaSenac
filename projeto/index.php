@@ -39,7 +39,7 @@
                 <img src="../projeto/public/assets/icons/bolha.png" alt="bolha" class="bolha">
             </div>
             <div class="barrapesquisa">
-                <input type="text" class="pesquisa"> <button class="botaops" id="lupaId" onclick="focusInput()"><img src="../projeto/public/assets/icons/lupa.svg" alt=""></button>
+                <input type="text" class="pesquisa" auto> <button class="botaops" id="lupaId" onclick="focusInput()"><img src="../projeto/public/assets/icons/lupa.svg" alt=""></button>
             </div>
         </div>
         <h1 class="gentitle">Gêneros de Livros</h1>
