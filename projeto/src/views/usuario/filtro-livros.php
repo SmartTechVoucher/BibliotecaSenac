@@ -4,10 +4,11 @@
 <head>
     <link rel="stylesheet" href="../../../public/css/components/card_livros.css">
     <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
+
 </head>
 
-<?php   
-        include "../../../public/components/header/header.php";
+<?php
+include "../../../public/components/header/header.php";
 ?>
 
 <body>
@@ -63,7 +64,7 @@
                 </div>
 
                 <div class="cards_livros">
-                    
+
                     <?php for ($i = 0; $i < 4; $i++): ?>
                         <?php include "../../../public/components/card/card_componente.php"; ?>
                     <?php endfor; ?>
@@ -101,11 +102,15 @@
 
         <div class="inferior">
             <button class="arrow_left control" aria-label="Previous_image">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000"><path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000">
+                    <path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z" />
+                </svg>
             </button>
 
             <button class="arrow_right control" aria-label="Next_image">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000"><path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000">
+                    <path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z" />
+                </svg>
             </button>
 
             <div class="gallery-wrapper">
@@ -113,7 +118,7 @@
                     <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
                         alt="Beach_Images" class="Item current-item">
 
-                        
+
 
                     <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
                         alt="Beach_Images" class="item">
@@ -125,15 +130,15 @@
                         alt="Beach_Images" class="item">
                     <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
                         alt="Beach_Images" class="item">
-                        
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <?php include "../../../public/components/footer/footer.php" ?>
+        <?php include "../../../public/components/footer/footer.php" ?>
 
-    <script src="./../../../public/js/telaFiltroLivros.js"></script>
-    
+        <script src="./../../../public/js/telaFiltroLivros.js"></script>
+
 </body>
 
 </html>
