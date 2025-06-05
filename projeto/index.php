@@ -48,7 +48,7 @@
                 <img src="../projeto/public/assets/icons/bolha.png" alt="bolha" class="bolha">
             </div>
             <form class="barrapesquisa">
-                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> <button type="button" class="botaops" id="lupaId" onclick="focusInput()"  tabindex="0"><img src="../projeto/public/assets/icons/lupa.svg" alt="Buscar"></button>
+                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> <button type="button" class="botaops" id="lupaId" onclick="focusInput()" tabindex="0"><img src="../projeto/public/assets/icons/lupa.svg" alt="Buscar"></button>
                 <div class="listagem">
                     <ul></ul>
                 </div>
