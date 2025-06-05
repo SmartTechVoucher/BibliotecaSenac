@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo á Biblioteca SENAC HUB ACADEMY!</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./public/css/usuario/tela_inicial.css">
 </head>
 
@@ -46,35 +48,11 @@
                 <img src="../projeto/public/assets/icons/bolha.png" alt="bolha" class="bolha">
             </div>
             <form class="barrapesquisa">
-                <input type="text" class="pesquisa" placeholder="Pesquise por um livro"> <button type="button" class="botaops" id="lupaId" onclick="focusInput()"><img src="../projeto/public/assets/icons/lupa.svg" alt="Buscar"></button>
+                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> <button type="button" class="botaops" id="lupaId" onclick="focusInput()"  tabindex="0"><img src="../projeto/public/assets/icons/lupa.svg" alt="Buscar"></button>
                 <div class="listagem">
-                    <ul>
-                        <li class="listagem-item">1 item</li>
-                        <li class="listagem-item">2 item</li>
-                        <li class="listagem-item">3 item</li>
-                        <li class="listagem-item">4 item</li>
-                        <li class="listagem-item">5 item</li>
-                        <li class="listagem-item">6 item</li>
-                        <li class="listagem-item">7 item</li>
-                        <li class="listagem-item">8 item</li>
-                        <li class="listagem-item">9 item</li>
-                        <li class="listagem-item">10 item</li>
-                    </ul>
+                    <ul></ul>
                 </div>
             </form>
-            <!-- <form class="barrapesquisa" onsubmit="event.preventDefault();">
-                <div class="input-expandido" id="inputExpandido" tabindex="0">
-                    <input type="text" placeholder="Pesquisar..." class="pesquisa" onfocus="expandir()" onblur="recolher()">
-                    <div class="listagem">
-                        <p>Item 1</p>
-                        <p>Item 2</p>
-                        <p>Item 3</p>
-                    </div>
-                </div>
-                <button class="botaops" id="lupaId" onclick="focusInput()">
-                    <img src="../projeto/public/assets/icons/lupa.svg" alt="">
-                </button>
-            </form> -->
         </div>
         <h1 class="gentitle">Gêneros de Livros</h1>
         <div class="gen">
