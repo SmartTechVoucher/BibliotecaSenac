@@ -119,6 +119,53 @@ p{
     margin-top: 5%;
 }
 
+
+
+/* cardizinho dos livros */
+
+.livro-container{
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    height: 200px;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    margin: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+
+}
+#livro-img{
+    width:10%;
+    height: 170px;
+}
+#livro-titulo{
+    height: fit-content;
+    margin: 0;
+    font-size: large;
+    margin-bottom: 10px;
+}
+.livro-informacoes{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-right: 9%;
+}
+#livro-exemplares{
+    margin-top: 40px;
+    background-color: #EDEDEE;
+    padding: 5px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    border-radius: 5px;
+    align-items: center ;
+}
+
 /*Parte inferior do corpo*/
 
 .inferior{
