@@ -31,7 +31,7 @@
   ?>
 
  <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
-
+    <h2 id="livro-titulomaster">Listagem de livros cadastrados</h1>
     <form>
 
         <div class="controle">
@@ -119,6 +119,97 @@
         <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
         
     </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+
     
     
             

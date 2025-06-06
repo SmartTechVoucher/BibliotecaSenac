@@ -122,6 +122,9 @@ p{
 
 
 /* cardizinho dos livros */
+#livro-titulomaster{
+
+}
 
 .livro-container{
     background-color: rgb(255, 255, 255);
@@ -133,6 +136,8 @@ p{
     margin: auto;
     border-radius: 5px;
     margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
 
 
 }
