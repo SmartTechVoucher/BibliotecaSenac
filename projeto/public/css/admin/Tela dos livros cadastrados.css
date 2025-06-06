@@ -123,7 +123,7 @@ p{
 
 /* cardizinho dos livros */
 #livro-titulomaster{
-
+    text-align: center;
 }
 
 .livro-container{
