@@ -49,8 +49,14 @@
 
 
 body{
+    font-family: var(--fontes);
     margin: 0;
     background-color: var(--fundoPadrao);
+
+}
+
+h3{
+    color: var(--bordaBaixaCabeçalho);
 }
 
 .titulo{
@@ -108,12 +114,13 @@ body{
     margin-top: 5%;
 }
 
-.quadradoCinza .nome, .nomeSocial, .matricula, .cpf, .senha, .email{
+.quadradoCinza .nome, .nomeSocial{
     width: 260px;
 }
 
 .quadradoCinza .input{
     padding: 3%;
+    display: flex;
 }
 
 .quadradoCinza .botao{
@@ -128,10 +135,6 @@ body{
     padding-top: 5%;
     display: flex;
     justify-content: center;
-}
-
-.input{
-    display: flex;
 }
 
 .input img{
@@ -449,10 +452,116 @@ oportuno. */
         height: 140px;
         align-items: center;
     }
+ 
+ /*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*/
+    
+    #foto-container{
+        padding-left: 2%;
+    }
 
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 16.5%; left: 27%;
+    }
+
+    .fotoPorAparecer{
+        height: 420px;
+        width: 250px;
+        /* display: block; */
+    }
+    
+ /*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*/   
+    .dadosDeRg{
+        padding-left: 0.3%;
+        font-family: var(--fontes);
+    }
+    
+    .rg, .filiacao, .contato, .profissao{
+        border: 0.5px solid;
+        width: 90%;
+        padding-left: 2%;
+        margin-left: 2%;
+        margin-top: 2%;
+        height: 200px;
+    }
+/*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*/
+
+ /*Filiação*//*Filiação*//*Filiação*//*Filiação*//*Filiação*//*Filiação*/
+
+    .filiacao{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        height: 302px;
+
+    }
+
+    .inputFiliacao{
+        width: 95%;
+    }
+
+ /*Filiação*//*Filiação*//*Filiação*//*Filiação*//*Filiação*//*Filiação*/
+
+ /*Contato*//*Contato*//*Contato*//*Contato*//*Contato*//*Contato*//*Contato*/
+
+    .contato{
+        height: 310px;
+    }
+
+    .telefone{
+        padding-left: 5%;
+    }
+ /*Contato*//*Contato*//*Contato*//*Contato*//*Contato*//*Contato*//*Contato*/
+
+ /*Profissão*//*Profissão*//*Profissão*//*Profissão*//*Profissão*//*Profissão*/
+ .profissao{
+    height: 150px;
+ }
+
+ .inputProfissao{
+    width: 38%;
+ }
+ /*Profissão*//*Profissão*//*Profissão*//*Profissão*//*Profissão*//*Profissão*/
+    
+ /*Endereço*//*Endereço*//*Endereço*//*Endereço*//*Endereço*//*Endereço*/
+
+ .endereco{
+    display: grid;
+    grid-template-columns: repeat(2, 450px);
+    grid-template-rows: repeat(2, 60px);
+    margin-top: 2%;
+    margin-left: 2%;
+    gap: 2%;
+ }
+
+ .enderecoComercial{
+    grid-column: 2;
+   
+ }
+
+ .textArea{
+    grid-row: 2;
+    grid-column: 1/2;
+ }
+ 
+ .textArea2{
+    grid-row: 2;
+    grid-column: 2;
+ }
+ /*Endereço*//*Endereço*//*Endereço*//*Endereço*//*Endereço*//*Endereço*/
+    
+ /*Botões salvar e cancelar*//*Botões salvar e cancelar*//*Botões salvar e cancelar*/
+ .botoes{
+    display: flex;
+    gap: 1%;
+    margin-left: 40%;
+    margin-top: 5%;
+ }
+ /*Botões salvar e cancelar*//*Botões salvar e cancelar*//*Botões salvar e cancelar*/
+    
     .quadradoCinza{
         width: 992px;
-        height: 700px;
+        height: 1820px;
         margin-top: 2%;
         padding: 0%;
         margin-left: 25%;
@@ -461,7 +570,7 @@ oportuno. */
    .quadradoCinza .input{
         padding: 3%;
         padding-left: calc(30%);
-        width: 300px;
+        width: 370px;
    }
 
    .quadradoCinza #nomeSocial1{
@@ -479,15 +588,24 @@ oportuno. */
         width: 500px;
    }   
 
-   .quadradoCinza .input{
-        width: 370px;
-   }
-
-   .quadradoCinza .nome, .nomeSocial, .email, .matricula, .cpf, .senha{
+   .quadradoCinza .nome, .nomeSocial, .cpf, .nascimento{
         width: 310px;
    }
+
+   .quadradoCinza #nascimento{
+        padding-left: 32.7%;
+   }
+
+   .quadradoCinza #sexo{
+        align-items: center;
+        padding-left: 33%;
+        width: 790px;
+        gap: 0.5%;
+   }
    
-   .menu{
+ /*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*/  
+   
+ .menu{
         position: var(--posicaoAbsoluta);
         top: 13%;
     }
