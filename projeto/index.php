@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo á Biblioteca SENAC HUB ACADEMY!</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./public/css/bundles/style-tela-inicial.css">
+    <link rel="stylesheet" href="./public/css/usuario/tela-inicial.css">
 </head>
 
 <body>
@@ -17,9 +17,16 @@
             </div>
             <div class="cbright">
                 <button onclick="redirectToPage()" class="button-entrar">
-                    <svg class="icone-perfil" xmlns="http://www.w3.org/2000/svg" ><defs><style></style></defs><g ><path fill="white" d="M10.15,18.29c1.26,1.42,2.95,2.3,4.82,2.3s3.7-.95,4.97-2.47c3.28,.84,6.01,2.56,7.7,4.79,1.45-2.3,2.29-5.02,2.29-7.94C29.93,6.7,23.23,0,14.97,0S0,6.7,0,14.97c0,3.17,.99,6.1,2.67,8.52,1.53-2.35,4.2-4.22,7.48-5.19ZM14.97,5.41c3.16,0,5.72,3.05,5.72,6.82s-2.56,6.82-5.72,6.82-5.72-3.05-5.72-6.82,2.56-6.82,5.72-6.82Z"></path></g></svg>
+                    <svg class="icone-perfil" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style></style>
+                        </defs>
+                        <g>
+                            <path fill="white" d="M10.15,18.29c1.26,1.42,2.95,2.3,4.82,2.3s3.7-.95,4.97-2.47c3.28,.84,6.01,2.56,7.7,4.79,1.45-2.3,2.29-5.02,2.29-7.94C29.93,6.7,23.23,0,14.97,0S0,6.7,0,14.97c0,3.17,.99,6.1,2.67,8.52,1.53-2.35,4.2-4.22,7.48-5.19ZM14.97,5.41c3.16,0,5.72,3.05,5.72,6.82s-2.56,6.82-5.72,6.82-5.72-3.05-5.72-6.82,2.56-6.82,5.72-6.82Z"></path>
+                        </g>
+                    </svg>
                     <span>Entrar</span>
-                </button>    
+                </button>
             </div>
         </div>
         <div class="topPage">
@@ -46,14 +53,14 @@
         <div class="gen">
             <div class="gencard">
                 <div class="icon_livros">
-                    <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon1"> 
+                    <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon1">
                 </div>
                 <h2 class="gentitle">Saúde</h2>
             </div>
             <div class="gencard">
-                    <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon2">
-                    </div>
+                <div class="icon_livros">
+                    <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon2">
+                </div>
                 <h2 class="gentitle">Saúde</h2>
             </div>
             <div class="gencard">
@@ -63,15 +70,15 @@
                 <h2 class="gentitle">Gestão</h2>
             </div>
             <div class="gencard">
-            <div class="icon_livros">
-                <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
-            </div>
+                <div class="icon_livros">
+                    <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
+                </div>
                 <h2 class="gentitle">Design</h2>
             </div>
             <div class="gencard">
-            <div class="icon_livros">
-                <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
-            </div>
+                <div class="icon_livros">
+                    <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
+                </div>
                 <h2 class="gentitle">Educação</h2>
             </div>
         </div>
@@ -136,8 +143,8 @@
 
     </div>
 
- 
-    <script src="./public/js/usuario/telaInicial.js"></script>
+
+    <script src="./public/js/usuario/tela-inicial.js"></script>
 </body>
 
 </html>
