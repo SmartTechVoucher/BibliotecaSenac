@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de cadastro de usuários</title>
-    <link rel="stylesheet" href="../../../public/css/admin/telaCadastroUsuarios.css">
+    <link rel="stylesheet" href="../../../public/css/admin/telaDeCadastroDeUsuarios.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,24 +106,24 @@
             <h3>Dados de RG:</h3>
 
             <label>Número:</label>
-            <input type="text">
+            <input type="text" class="inputRg">
 
             <label>Órgão emissor:</label>
-            <input type="text">
+            <input type="text" class="inputRg">
 
             <label>UF:</label>
-            <input type="text">
+            <input type="text" class="inputRg">
             
             <br>
             <br>
 
             <label>País</label>
-            <input type="text">
+            <input type="text" class="inputRg">
 
             <label>Data:</label>
-            <input type="text">           
+            <input type="text" class="inputRg">           
 
-            <button>Procurar</button>
+            <button class="inputRg">Procurar</button>
         </div>
         
         <div class="filiacao"> 
@@ -144,17 +144,17 @@
             <h3>Contato:</h3>
 
             <label>Telefone Residencial:</label>
-            <input type="text" class="">
+            <input type="text" class="inputTelefone">
             
             <label class="telefone">Telefone Comercial:
-                <input type="text" class="">
+                <input type="text" class="inputTelefone">
             </label>
 
             <br>
             <br>
 
             <label>Celular:</label>
-            <input type="text" class="">
+            <input type="text" class="inputTelefone">
 
             <label class="telefone">Outro telefone:
                 <input type="text" class="">
@@ -164,18 +164,19 @@
             <br>
 
             <label>Email:</label>
-            <input type="text" class="">
+            <input type="text" class="inputTelefone">
 
             <br>
             <br>
 
             <label>Homepage:</label>
-            <input type="text" class="">
+            <input type="text" class="inputTelefone">
              
-            
-            <input type="checkbox">
-            <label>Cancelar o recebimento de emails.</label>
-            
+            <div class="inputCheckbox">
+                <input type="checkbox">
+                <label>Cancelar o recebimento de emails.</label>
+            </div>
+        
         </div>
 
         <div class="profissao"> 

@@ -254,10 +254,67 @@ oportuno. */
         height: 100px;
     }
 
+    /*Inputs dentro do quadrado cinza*//*Inputs dentro do quadrado cinza*/
+
+    .quadradoCinza{
+        height: 1800px;
+    }
+
+    .quadradoCinza .nascimento{
+        width: 260px;
+        margin-left: 7%;
+    }
+
+    .quadradoCinza .cpf{
+        width: 268px;
+    }
+
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 22%;
+    }
+
+    .fotoPorAparecer{
+        width: 55px;
+        height: 200px;
+    }
+
+    .rg{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputRg{
+        width: 92%;
+    }
+
+    .contato{
+        display: flex;
+        flex-direction: column;  
+    }
+
+    .inputTelefone{
+        width: 91%;
+    }
+
+    .inputCheckbox{
+       margin-top: 1%;
+    }
+
+    .profissao{
+        display: flex;
+        flex-direction: column;
+        width: 91%;
+    }
+
 } 
 
 @media(min-width:414px){
 
+ .quadradoCinza{
+    height: 1860px;
+ }  
+    
  .opcional{
     padding-right: 15%;
  }
@@ -272,6 +329,67 @@ oportuno. */
     top: 17%; left: 72.5%;
  }
 
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 42%;
+ }
+
+ .filiacao{
+    display: flex;
+    flex-direction: column;
+    width: 91%;
+ }
+
+}
+
+@media(min-width:500px){
+
+ .opcional{
+    padding-right: 27%;
+ }
+
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 13%;
+ }
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 77.2%;
+ }
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 40%; left: 2%;
+ }
+
+}
+
+@media(min-width:600px){
+
+ .opcional{
+    padding-right: 38%;
+ }
+
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 13%;
+ }
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 81%;
+ }
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 40%; left: 2%;
+ }
+
+ .fotoPorAparecer{
+    width: 73px;
+ }
+
 }
 
 @media(min-width:768px){
@@ -280,6 +398,7 @@ oportuno. */
 
  .quadradoCinza{
     width: 60%;
+    height: 2200px;
     margin-left: 13%;
     border: solid 1px;
  }
@@ -292,12 +411,23 @@ oportuno. */
     height:30px;
  }
 
- .opcional p{
-    padding-right: 22%;
+ .opcional{
+    margin-left: 10%;
+    padding-right: 0%;
+    width: 268px;
  }
 
  .quadradoCinza .div{
     padding-right: 20%;
+ }
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 45%; left: 15%;
+ }
+
+ .fotoPorAparecer{
+    width: 91px;
  }
 
  /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
@@ -312,7 +442,72 @@ oportuno. */
 
 }
 
+@media(min-width:820px){
+ 
+/*Ipad Air*//*Ipad Air*//*Ipad Air*//*Ipad Air*//*Ipad Air*//*Ipad Air*/
+
+ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
+
+ .quadradoCinza{
+    width: 60%;
+    height: 2200px;
+    margin-left: 13%;
+    border: solid 1px;
+ }
+
+ .quadradoCinza input{
+    height: 30px;
+ }
+
+ .quadradoCinza img{
+    height:30px;
+ }
+
+ .opcional{
+    margin-left: 10%;
+    padding-right: 0%;
+    width: 268px;
+ }
+
+ .quadradoCinza .div{
+    padding-right: 20%;
+ }
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 52%; left: 15%;
+ }
+
+ .fotoPorAparecer{
+    width: 91px;
+ }
+
+ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
+    .rodape{
+        font-size: 14px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 85.8%;
+    }
+
+}
+
 @media(min-width:912px){
+
+ /*Surface Pro 7*//*Surface Pro 7*/  /*Surface Pro 7*/  /*Surface Pro 7*/  
+ 
+ /*corpo*//*corpo*//*corpo*//*corpo*//*corpo*//*corpo*//*corpo*//*corpo*/
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 57.3%; left: 15%;
+ }
+
+ .fotoPorAparecer{
+    width: 109px;
+ }
 
  /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
    
@@ -334,6 +529,8 @@ oportuno. */
 
 @media(min-width: 1024px){
 
+ /*IPad Pro*//*IPad Pro*//*IPad Pro*//*IPad Pro*//*IPad Pro*//*IPad Pro*/
+
     .conteiner .menuAdm{
         width: 304px;
     }
@@ -351,20 +548,68 @@ oportuno. */
         padding-right: 40% ;
     }
 
+    .fotoPorAparecer{
+        width: 130px;
+        height: 216px;
+    }
+
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 56%; left: 15%;
+    }
+
     .menu{
         position: var(--posicaoAbsoluta);
-        top: 20%;
+        top: 10%;
     }
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        top: 19%; left: 88.9%;
+        top: 10%; left: 88.7%;
+    }
+
+}
+
+@media(min-width: 1124px){
+
+ /*Respondendo da ferramenta de desenvolvimento 1124 x 1366*//*Respondendo da ferramenta de desenvolvimento 1124 x 1366*/
+
+    .fotoPorAparecer{
+        width: 148px;
+        height: 216px;
+    }
+
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 56%; left: 15%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 10%; left: 89.9%;
     }
 
 }
 
 @media(min-width: 1280px){
+
+ /*Nest Hub Max*//*Nest Hub Max*//*Nest Hub Max*//*Nest Hub Max*//*Nest Hub Max*/
     
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 8.5%; left: 15%;
+    }
+
+    .fotoPorAparecer{
+        width: 250px;
+        height: 316px;
+    }  
+
     .quadradoCinza .input{
         padding-left: 20%;
     }
@@ -374,7 +619,8 @@ oportuno. */
     }
 
     .quadradoCinza .opcional{
-        padding-left: 26%;
+        padding-right: 0%;
+        margin-left: 24%;
     }
 
     .quadradoCinza .div{
@@ -403,6 +649,18 @@ oportuno. */
 }
 
 @media(min-width:1358px){
+
+ /*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*/   
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: -3%; left: 15%;
+ } 
+ 
+ .fotoPorAparecer{
+    width: 350px;
+    height: 316px;
+}  
 
 .conteiner3 .esquerdo, .direito{
     width: 150px;
@@ -441,7 +699,7 @@ oportuno. */
 
 .minhaConta{
     position: var(--posicaoAbsoluta);
-    top: 19%; left: 91.5%;
+    top: 19%; left: 91.6%;
 }
 
 }
@@ -473,7 +731,6 @@ oportuno. */
  /*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*/   
     .dadosDeRg{
         padding-left: 0.3%;
-        font-family: var(--fontes);
     }
     
     .rg, .filiacao, .contato, .profissao{
@@ -482,8 +739,10 @@ oportuno. */
         padding-left: 2%;
         margin-left: 2%;
         margin-top: 2%;
-        height: 200px;
+        height: 205px;
     }
+
+    
 /*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*/
 
  /*Filiação*//*Filiação*//*Filiação*//*Filiação*//*Filiação*//*Filiação*/
