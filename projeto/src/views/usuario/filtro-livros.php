@@ -27,7 +27,7 @@ include "../../../public/components/header/header.php";
                     <option value="Ciências_Agrârias">Ciências Agrârias</option>
                 </select>
 
-               
+
 
                 <label for="Categoria/Tags">Categoria/Tags</label>
                 <select name="Categoria/Tags" id="Categoria/Tags" class="selecionar">
@@ -38,7 +38,7 @@ include "../../../public/components/header/header.php";
                     <option value="Livro">Livro</option>
                 </select>
 
-               
+
 
             </div>
 
@@ -52,7 +52,7 @@ include "../../../public/components/header/header.php";
                 <div class="cards_livros">
 
                     <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/card/card_componente.php"; ?>
+                        <?php include "../../../public/components/card/card-componente.php"; ?>
                     <?php endfor; ?>
 
                 </div>
@@ -67,7 +67,7 @@ include "../../../public/components/header/header.php";
 
                 <div class="card_livro_saude">
                     <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/card/card_componente.php"; ?>
+                        <?php include "../../../public/components/card/card-componente.php"; ?>
                     <?php endfor; ?>
                 </div>
 
@@ -80,7 +80,7 @@ include "../../../public/components/header/header.php";
                 <div class="card_livro_gestao">
 
                     <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/card/card_componente.php"; ?>
+                        <?php include "../../../public/components/card/card-componente.php"; ?>
                     <?php endfor; ?>
                 </div>
             </div>
@@ -123,7 +123,7 @@ include "../../../public/components/header/header.php";
 
         <?php include "../../../public/components/footer/footer.php" ?>
 
-        <script src="./../../../public/js/telaFiltroLivros.js"></script>
+        <script src="./../../../public/js/usuario/filtro-livros.js"></script>
 
 </body>
 
