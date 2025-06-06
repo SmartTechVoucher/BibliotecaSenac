@@ -15,22 +15,17 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
     background-color: #003162;
 }
 
 form {
     width: 50%;
     height: 60%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     gap: 20px;
-
-
     border-radius: 10px;
     border: solid 3px white;
     background-color: #003162;
@@ -40,8 +35,6 @@ form img {
     width: 200px;
     height: auto;
 }
-
-
 
 .login{
     width: 50%;
@@ -60,7 +53,6 @@ label{
     position: relative;
 }
 
-
 .tela_animacao{ 
     width: 50%;
     height: 100%;
@@ -78,31 +70,64 @@ img{
 .login-campos input{
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding: 3%;
     width: 80%;
-    height: 40px;
+    height: auto;
     outline: none;
     background-color: #EEEEEE;
     margin: -19px;
+    gap: 30px;
 
 }
+
+/* .campo-senha input {
+    width: 80%;
+    padding-right: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+  } */
+  
 /* 
 input:focus {
     border: 3px solid #F68B1F;
 } */
 
-#campo_login {
-    margin-bottom: 10px;
+
+.campo-usuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
 }
 
-
-#campo_senha     {
-    margin-bottom: 10px;
+.campo-senha {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
 }
+
+/* .toggle-senha {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+} */
+
+
 
 button{
     width: 80%;
-    height: 7%;
+    height: auto;
+    padding: 3%;
     border: none;
     border-radius: 5px;
     background-color: #F68B1F;
@@ -172,7 +197,7 @@ a{
     justify-content: space-between;
     align-items: center;
     width: 80%;
-    margin: 1%;
+    margin: 4%;
 }
 
 .checkbox-container  {
@@ -188,7 +213,7 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
     width: 100%;
 
 }

@@ -12,6 +12,17 @@ class LoginController{
     }
 
     public function ValidarLogin($nome,$senha){
+        if (!preg_match('/^\d{11}$/', $nome)) {
+            $_SESSION['toast'] = "Usuário deve conter exatamente 11 números.";
+            return false;
+        }
+    
+        if (!preg_match('/^\d{4}$/', $senha)) {
+            $_SESSION['toast'] = "A senha deve conter exatamente 4 números.";
+            return false;
+        }
+    
+
         try {
             $sql = "SELECT * FROM usuario WHERE nome = :nome AND senha = :senha";
             $db = $this->conn->prepare($sql);
@@ -26,6 +37,8 @@ class LoginController{
                 return false;
             }
         } catch (\Throwable $th) {
+            $_SESSION['toast'] = "Erro interno no servidor.";
+            return false;
             //throw $th;
         }
     }
