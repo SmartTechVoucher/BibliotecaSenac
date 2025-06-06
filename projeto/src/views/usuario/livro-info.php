@@ -42,6 +42,7 @@ $senacTLG = [
     <!-- header  -->
     <?php
     include "../../../public/components/header/header.php";
+    require "../../../config/constantes.php"
     ?>
 
 
