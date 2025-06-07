@@ -238,6 +238,8 @@ oportuno. */
 
 @media(min-width: 375px){
 
+ /*IPhone SE*//*IPhone SE*//*IPhone SE*//*IPhone SE*//*IPhone SE*//*IPhone SE*//*IPhone SE*//*IPhone SE*/
+
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
     .minhaConta{
@@ -311,6 +313,8 @@ oportuno. */
 
 @media(min-width:414px){
 
+ /*IPhone XR*//*IPhone XR*//*IPhone XR*//*IPhone XR*//*IPhone XR*//*IPhone XR*//*IPhone XR*//*IPhone XR*/   
+
  .quadradoCinza{
     height: 1860px;
  }  
@@ -344,6 +348,8 @@ oportuno. */
 
 @media(min-width:500px){
 
+ /*Responsividade 500 x 896*//*Responsividade 500 x 896*//*Responsividade 500 x 896*//*Responsividade 500 x 896*/
+
  .opcional{
     padding-right: 27%;
  }
@@ -366,6 +372,8 @@ oportuno. */
 }
 
 @media(min-width:600px){
+
+ /*Responsividade 600 x 896*//*Responsividade 600 x 896*//*Responsividade 600 x 896*//*Responsividade 600 x 896*/   
 
  .opcional{
     padding-right: 38%;
@@ -393,6 +401,8 @@ oportuno. */
 }
 
 @media(min-width:768px){
+
+ /*IPad mini*//*IPad mini*//*IPad mini*//*IPad mini*//*IPad mini*//*IPad mini*//*IPad mini*//*IPad mini*/   
  
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
@@ -654,7 +664,7 @@ oportuno. */
 
  .fotoApresentacao{
     position: var(--posicaoAbsoluta);
-    bottom: -3%; left: 15%;
+    bottom: -30%; left: 15%;
  } 
  
  .fotoPorAparecer{
@@ -678,7 +688,8 @@ oportuno. */
 }
 
 .quadradoCinza .opcional{
-    padding-right: 28%;
+    margin-left: 29%;
+    
 }
 
 .quadradoCinza .div{
@@ -699,7 +710,7 @@ oportuno. */
 
 .minhaConta{
     position: var(--posicaoAbsoluta);
-    top: 19%; left: 91.6%;
+    top: 19%; left: 91.5%;
 }
 
 }
@@ -719,7 +730,7 @@ oportuno. */
 
     .fotoApresentacao{
         position: var(--posicaoAbsoluta);
-        bottom: 16.5%; left: 27%;
+        bottom: 25.5%; left: 27%;
     }
 
     .fotoPorAparecer{
@@ -838,7 +849,8 @@ oportuno. */
    }
 
    .quadradoCinza .opcional{
-        padding-right: 24%;
+        padding-right: 0%;
+        margin-left: 38%;
    }
 
    .quadradoCinza .div{
@@ -847,12 +859,16 @@ oportuno. */
         width: 500px;
    }   
 
-   .quadradoCinza .nome, .nomeSocial, .cpf, .nascimento{
+   .quadradoCinza .nome, .nomeSocial, .cpf{
         width: 310px;
    }
 
+   .quadradoCinza .nascimento{
+        width: 318px;
+   }
+
    .quadradoCinza #nascimento{
-        padding-left: 32.7%;
+        padding-left: 31%;
    }
 
    .quadradoCinza #sexo{
@@ -861,7 +877,34 @@ oportuno. */
         width: 790px;
         gap: 0.5%;
    }
+
+   .quadradoCinza .rg{
+       display: block;
+       height: 207px;
+   }
+
+   .quadradoCinza .inputRg{
+        width: 20%;
+
+   }
+
+   .quadradoCinza .contato{
+        display: block;
+   }
    
+   .quadradoCinza .inputTelefone{
+        width: 20%;
+   }
+
+   /* .inputCheckbox{
+        display: block;
+        width: 40%;
+   } */
+
+   .profissao{
+        display: block;
+   }
+
  /*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*/  
    
  .menu{

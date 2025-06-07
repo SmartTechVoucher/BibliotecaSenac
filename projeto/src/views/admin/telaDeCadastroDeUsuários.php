@@ -166,17 +166,12 @@
             <label>Email:</label>
             <input type="text" class="inputTelefone">
 
-            <br>
-            <br>
-
             <label>Homepage:</label>
             <input type="text" class="inputTelefone">
              
-            <div class="inputCheckbox">
-                <input type="checkbox">
-                <label>Cancelar o recebimento de emails.</label>
-            </div>
-        
+            <input type="checkbox">
+            <label>Cancelar o recebimento de emails.</label>     
+
         </div>
 
         <div class="profissao"> 
