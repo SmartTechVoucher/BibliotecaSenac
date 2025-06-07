@@ -1,5 +1,8 @@
 <?php
 require "../../../config/constantes.php";
+
+require_once "../../../config/constantes.php";
+
 $livro = [
     "titulo" => "Simpósio do Barreado",
     "img" => "../../../public/assets/img/Simposio.png",
@@ -86,6 +89,7 @@ $senacTLG = [
                         </div>
                         
                         
+                    
 
                 
                     <!-- botao de reservar -->
