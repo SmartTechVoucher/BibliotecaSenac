@@ -85,7 +85,7 @@ $senacTLG = [
                             <button class="botaoReserva">Reservar</button>
                         </div>
                         
-                        <div class="info_2">
+                        
 
                 
                     <!-- botao de reservar -->
