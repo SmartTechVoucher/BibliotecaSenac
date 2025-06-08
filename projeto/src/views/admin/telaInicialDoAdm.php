@@ -59,7 +59,7 @@
     <div class="conteiner2">
 
         <div class="caixa">    
-            <a href="./Tela de cadastro de livros.php"><img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro"></a>
+            <a href="./telaDeCadastroDeLivros.php"><img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro"></a>
         </div>
 
         <div class="caixa">
