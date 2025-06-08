@@ -268,6 +268,9 @@ input:focus {
 }
 
 @media(min-width:375px){
+
+ /*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*/ 
+    
     .formulario .fundoBranco{
         width: 350px;
     }
@@ -296,6 +299,9 @@ input:focus {
 }
 
 @media(min-width:414px){
+
+ /*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*/
+
     .menu{   
         position: var(--posicaoAbsoluta);
         top: 11%;
@@ -322,7 +328,59 @@ input:focus {
 
 }
 
+@media(min-width:500px){
+
+ /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/ 
+    
+    .menu{   
+        position: var(--posicaoAbsoluta);
+        top: 11%;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 114.4%; right: 15%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 103.5%; left: 40%;
+    }
+
+    .formulario .fundoBranco{
+        width: 475px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 77%;
+    }
+
+}
+
+@media(min-width:600px){
+
+ /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/   
+
+    .formulario .fundoBranco{
+        width: 575px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 80.8%;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 114.4%; right: 25%;
+    }
+
+}
+
 @media(min-width:768px){
+
+ /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/   
 
     .formulario .fundoBranco{
         width: 750px;
@@ -366,19 +424,119 @@ input:focus {
 
 }
 
-@media(min-width:1024px){
+@media(min-width:820px){
+
+ /*ipad air*//*ipad air*//*ipad air*//*ipad air*/
+
+    .formulario .fundoBranco{
+        width: 775px;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 87%; right: 30%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 91%; left: 40%;
+    }
+
+    .titulo{
+        font-size: 12px;
+    }
+
+    .conteiner .logoSenacHub{
+        display: block;
+    }
+
+    .rodape{
+        font-size: 14px;
+    }
+
+    .rodape .faleConosco{
+        display: block;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 11%; left: 85.8%;
+    }
+
+    .menuAdm .logoSenacHub{
+        width: 200px;
+        height: 100px;
+    }
+
+} 
+
+@media(min-width:912px){
+
+ /*surface pro 7*//*surface pro 7*//*surface pro 7*/    
+
+     .formulario .fundoBranco{
+        width: 890px;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 75%; right: 33%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 91%; left: 40%;
+    }
+
+    .titulo{
+        font-size: 12px;
+    }
+
+    .conteiner .logoSenacHub{
+        display: block;
+    }
+
+    .rodape{
+        font-size: 14px;
+    }
+
+    .rodape .faleConosco{
+        display: block;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 10%; left: 87.4%;
+    }
+
+    .menuAdm .logoSenacHub{
+        width: 200px;
+        height: 100px;
+    }
+
     .menu{
+        position: var(--posicaoAbsoluta);
+        top:10%;
+    }
+
+} 
+
+@media(min-width:1024px){
+
+ /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/  
+    
+  .menu{
     position: var(--posicaoAbsoluta);
-    top: 18%;
+    top: 10%;
  }
 
  .formulario .fundoBranco{
-    width: 1010px;
+    width: 1000px;
 }
 
 .formulario .upload{
     position: var(--posicaoAbsoluta);
-    top: 170.6%; right: 35%;
+    top: 76%; right: 35%;
 }
 
 #mensagemPrimeiroForm{
@@ -388,12 +546,50 @@ input:focus {
 
 .minhaConta{
     position: var(--posicaoAbsoluta);
-    top: 20%; left: 88.9%;
+    top: 10%; left: 88.7%;
 }
 
 }
+
+/* @media(min-width:1124px){ */
+
+ /*1124 x1366*//*1124 x1366*//*1124 x1366*//*1124 x1366*/  
+    
+ /* .paraTestar{
+    display:none;
+ }
+
+  .menu{
+    position: var(--posicaoAbsoluta);
+    top: 10%;
+ }
+
+ .formulario .fundoBranco{
+    width: 1100px;
+}
+
+.formulario .upload{
+    position: var(--posicaoAbsoluta);
+    top: 75%; right: 35%;
+}
+
+#mensagemPrimeiroForm{
+    position: var(--posicaoAbsoluta);
+    top: 155%; left: 40%;
+}
+
+.minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 10%; left: 89.8%;
+}
+
+} */
 
 @media(min-width: 1280px){
+
+    /* .paraTestar{
+        display:block;
+    } */
 
     .formulario{
         display: none;
@@ -437,6 +633,11 @@ input:focus {
         position: var(--posicaoAbsoluta);
         top: 15%; left: 91%;
     }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top:16%;
+    }
 }
 
 @media(min-width:1358px){
@@ -458,7 +659,7 @@ input:focus {
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        top: 17%; left: 91.6%;
+        top: 18%; left: 91.55%;
     }
 }
 

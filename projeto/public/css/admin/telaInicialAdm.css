@@ -266,31 +266,6 @@ h2{
     font-family: var(--fontes);
 }
 
-.faleConosco{
-    width: 126px;
-    height: 102px;
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 15px;
-   
-}
-
-.email{
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 15px;
-}
-
-.siga-nos{
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 12px;
-}
-
-
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
 .menu{
@@ -304,15 +279,6 @@ h2{
     cursor: pointer;   
 }
 
-/*Overlay de cadastro*/ /*Overlay de cadastro*/ /*Overlay de cadastro*/
-
-.overlayCadastro{
-    background-color: var(--corParaOverlays);
-    cursor: var(--apontador);
-    display: none;
-    text-align: center;
-}
-
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
 
 a{
@@ -321,10 +287,6 @@ a{
 }
 
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
-
-.overlayCadastro .item{
-    color: black;
-}
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
@@ -600,29 +562,6 @@ a{
     .rodape{
         height: 255px;
     }
-
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-     .overlayCadastro{
-        position: var(--posicaoAbsoluta);
-        top: 39%; right: 86.4%;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 92%; right: 58.5%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
 }
 
