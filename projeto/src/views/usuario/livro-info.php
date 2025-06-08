@@ -5,7 +5,7 @@ require_once "../../../config/constantes.php";
 $livro = [
     "titulo" => "Simpósio do Barreado",
     "img" => "../../../public/assets/img/Simposio.png",
-    "desc" => "O livro, o autor aborda a pergunta chave: \"Afinal, o barreado nasceu em Paranaguá, Antonina ou Morretes?\". Esta pergunta é a razão do \"Simpósio do Barreado\". O livro mostra as origens e a receita do mais tradicional prato culinário do Paraná. Realizado ficticiamente em Porto de Cima, o simpósio reuniu especialistas de ontem e de hoje, daqui e de muitos lugares, em acaloradas discussões que naturalmente, terminaram em confraternização em volta da mesa. O barreado tem indicação geográfica (IG) na categoria \"indicação de procedência\" desde 2022 e é",
+    "desc" => "O livro, o autor aborda a pergunta chave: \"Afinal, o barreado nasceu em Paranaguá, Antonina ou Morretes?\". Esta pergunta é a razão do \"Simpósio do Barreado\". O livro mostra as origens e a receita do mais tradicional prato culinário do Paraná. Realizado ficticiamente em Porto de Cima, o simpósio reuniu especialistas de ontem e de hoje, daqui e de muitos lugares, em acaloradas discussões que naturalmente, terminaram em confraternização em volta da mesa.",
 ];
 
 $senacCG = [
@@ -60,7 +60,7 @@ $senacTLG = [
                             <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: 9788536512259</p>
                         </div>
                         <div class="review">
-                            <img src="../../../public/assets/icons/nota.png" alt=""><p>3 reviews</p>
+                            <img src="<?php echo $URLBASE?>/public/assets/icons/estrelas3.png" alt=""><p>3 reviews</p>
                         </div>
                         <div class="tags">
                             <h3>Tags:</h3>
@@ -76,15 +76,12 @@ $senacTLG = [
                         <!-- botao de reservar -->
                       
                         
-                        <p id="livroDescricao">O livro , o autor aborda a pergunta chave: "Afinal, o barreado nasceu em Paranaguá, Antonina ou Morretes?". Esta pergunta é a razão do "Simpósio do Barreado". O livro mostra as origens e a receita do mais tradicional prato culinário do Paraná. Realizado ficticiamente em Porto de Cima, o simpósio reuniu especialistas de ontem e de hoje, daqui e de muitos lugares, em acaloradas discussões que naturalmente, terminaram em confraternização em volta da mesa. O barreado tem indicação geográfica (IG) na categoria "indicação de procedência" desde 2022 e é </p>
-                        <div class="lerMais">
-                            <img src="../../../public/assets/icons/arrow.png" alt="">
-                            <p>Leia mais</p>
-                        </div>
+                        <p id="livroDescricao"><?php echo $livro["desc"]?></p>
+                        
                         <!-- botao de reservar -->
                          <div class="livroReservar">
                             <p>Disponível</p>
-                            <button class="botaoReserva">Reservar</button>
+                            <button id="botaoReserva" onclick="reservaConcluida()" data-status="livre">Reservar</button>
                         </div>
                         
                         

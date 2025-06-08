@@ -72,6 +72,7 @@ body{
     }
     #livroDescricao{
         margin-bottom: 0px;
+        margin-top: 20px;
     }
 
     .livroReservar{
@@ -83,8 +84,9 @@ body{
         margin-bottom: 5px;
         color: #258A14;
     }
-    .botaoReserva{
-        background-color: #004A90;
+    #botaoReserva{
+        background: #004A90;
+        cursor: pointer;
         color: white;
         border: 0;
         border-radius: 5px;
@@ -94,6 +96,7 @@ body{
         font-weight: bold;
         font-size: large;
         box-shadow: 0 2px 2px gray;
+        transition: background-color 0.3s ease;
     }
     .lerMais img{
         height: 30px;
@@ -252,6 +255,7 @@ body{
 }
 
 #comentario-botao{
+    cursor: pointer;
     background-color: #004A90;
     color: white;
     border: 0;

@@ -15,6 +15,26 @@ function exemplarToggle(){
     }
 }
 
+function reservaConcluida(){
+    const botaoReserva = document.getElementById('botaoReserva');
+    const estadoAtual = botaoReserva.getAttribute('data-status');
+    if (estadoAtual == "livre"){
+        botaoReserva.setAttribute('data-status', 'reservado');
+        botaoReserva.textContent = "Livro Reservado"
+        botaoReserva.style.background = "#F68B1F";
+    }
+    else{
+        const confirmarCancelamento = window.confirm("Você realmente quer cancelar a reserva?");
+        if(confirmarCancelamento){
+            botaoReserva.setAttribute('data-status', 'livre');
+            botaoReserva.textContent = "Reservar"
+            botaoReserva.style.background = "#004A90";
+        }
+    }
+        
+
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     const stars = document.querySelectorAll('.estrela-input');
     const ratingValue = document.getElementById('rating-value');
@@ -63,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
  
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
