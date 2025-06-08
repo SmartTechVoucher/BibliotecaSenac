@@ -149,20 +149,48 @@ input{
     border-radius: 23px;
 }
 table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
-    
+    border-radius: 10px; 
+    margin: auto;
     font-size: 18px;
-    border: 2px solid #d3cdcd; /* Borda externa */
+    border: 2px solid #d3cdcd;
+     overflow: hidden;
+}
+
+.main-container{
+    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
+    background: #fbfaff;
+    padding: 20px;
+    width: 90%;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.main-container h2{
+    text-align: center;
+}
+
+th:first-child {
+    border-top-left-radius: 10px; }
+th:last-child {
+    border-top-right-radius: 10px; 
 }
 
 
+tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; 
+}
+tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; 
+}
+
 th, td {
     border: 1px solid #000;
-    padding: 12px 16px; /* Melhora o espaçamento interno */
+    padding: 12px 16px; 
     text-align: center;
-    height: 50px; /* Mantém a altura uniforme */
-    vertical-align: middle; /* Alinha o conteúdo verticalmente */
+    height: 50px; 
+    vertical-align: middle; 
 }
 .lulusantos{
     background-color: #f1f1f1;

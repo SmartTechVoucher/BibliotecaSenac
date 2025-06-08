@@ -94,7 +94,7 @@
       </div>
     </div>
       
-    <script src = "/BibliotecaSenac/projeto/public/js/usuarios-cadastrados.js"></script>
+    <script src = "/BibliotecaSenac/projeto/public/js/admin/usuarios-cadastrados.js"></script>
   </main>
   <!-- footer  -->
   <?php   
