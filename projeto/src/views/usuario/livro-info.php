@@ -1,5 +1,4 @@
 <?php
-require "../../../config/constantes.php";
 
 require_once "../../../config/constantes.php";
 
@@ -188,38 +187,79 @@ $senacTLG = [
                 <p>Comentários</p>
                 <img src="../../../public/assets/icons/Read.png" alt="">
             </div>
-            <input type="text" placeholder="Escreva sua opinião...">
+            <form id="commentForm" action="/submit-comment" method="POST">
+                <div class="inputRating">
+                <img class="estrela-input" src="<?php echo $URLBASE?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="1">
+                <img class="estrela-input" src="<?php echo $URLBASE?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="2">
+                <img class="estrela-input" src="<?php echo $URLBASE?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="3">
+                <img class="estrela-input" src="<?php echo $URLBASE?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="4">
+            </div>
+            <input type="text" id="comentario-input" placeholder="Escreva sua opinião...">
+            <input type="hidden" name="rating" id="rating-value" value="0">
+            <button type= "button" id="comentario-botao">Enviar</button>
+            </form>
+            
+            <!-- comentario do usuario -->
+            <div class="comment_2" id="commentTemplate" style="display:none;">
+                <div class="commentName">
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="BibliotecaSenac/projeto/public/assets/icons/estrelas1.png" alt="">
+                    </div>
 
+                    <h3 class="commentTitulo">Nome do Usuário</h3>
+                </div>
+                <p class="commentUserinfo">Feito em: dd/mm/yyyy</p>
+                <p class="commentConteudo">Comentário do usuário aqui...</p>
+            </div>
+
+
+            <div id="reviewsContainer">
+
+            </div>
             <div class="comment_2" id="comment_2id">
                 <div class="commentName">
-                    <img src="../../../public/assets/icons/estrelas.png" alt="">
-                    <h3 id="commentTitulo">Uma obra prima</h3>
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE?>/public/assets/icons/estrelas4.png" alt="" >
+                    </div>
+
+                    <h3 id="commentTitulo">Neymar JR</h3>
                 </div>
-                <p id="commentUserinfo">Feito por: <a href="url">Neymar JR</a> 25/02/2023</p>
+                <p id="commentUserinfo">Feito em: 25/02/2023</p>
                 <p id="commentConteudo">O Simpósio do Barreado é uma obra-prima que transcende as páginas e mergulha o leitor nas tradições e sabores do litoral paranaense. Dante Mendonça habilmente entrelaça história, ficção e humor enquanto desvenda a intrigante origem do Barreado. As aquarelas do autor enriquecem a experiência, transportando-nos para as pitorescas paisagens costeiras. Uma leitura essencial para os amantes da gastronomia e da cultura regional. 👏🎨</p>
             </div>
             <div class="comment_2">
                 <div class="commentName">
-                    <img src="../../../public/assets/icons/estrelas.png" alt="">
-                    <h3 id="commentTitulo">Bom</h3>
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE?>/public/assets/icons/estrelas4.png" alt="" >
+                       
+                    </div>
+
+                    <h3 id="commentTitulo">Rodrigo Fato</h3>
                 </div>
-                <p id="commentUserinfo">Feito por: <a href="url">Rodrigo Fato</a> 10/02/2023</p>
+                <p id="commentUserinfo">Feito em: 10/02/2023</p>
                 <p id="commentConteudo">achei massa 👍</p>
             </div>
             <div class="comment_2">
                 <div class="commentName">
-                    <img src="../../../public/assets/icons/estrelas.png" alt="">
-                    <h3 id="commentTitulo">Bala</h3>
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE?>/public/assets/icons/estrelas4.png" alt="" >
+                    </div>
+
+                    <h3 id="commentTitulo">Matheus</h3>
                 </div>
-                <p id="commentUserinfo">Feito por: <a href="url">Matheus</a> 01/02/2023</p>
+                <p id="commentUserinfo">Feito em: 01/02/2023</p>
                 <p id="commentConteudo">achei interessante a maneira q o livro retrata os fatos</p>
             </div>
             <div class="comment_2">
                 <div class="commentName">
-                    <img src="../../../public/assets/icons/estrelas.png" alt="">
-                    <h3 id="commentTitulo">Top</h3>
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE?>/public/assets/icons/estrelas4.png" alt="" >
+                        
+                    </div>
+
+                    <h3 id="commentTitulo">Andrey Hipolito</h3>
                 </div>
-                <p id="commentUserinfo">Feito por: <a href="url">Andrey Hipolito</a> 16/11/2022</p>
+                <p id="commentUserinfo">Feito em: 16/11/2022</p>
                 <p id="commentConteudo">a nao sei oq q nao sei oq lá</p>
             </div>
         </div>

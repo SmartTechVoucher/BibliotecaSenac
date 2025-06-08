@@ -223,6 +223,48 @@ body{
     border-radius: 2px;
 }
 
+.inputRating{
+    margin: auto;
+}
+#commentForm{
+    align-items: center;
+    display: contents;
+}
+.estrela-input{
+    cursor: pointer;
+    width: 50px;
+    filter: grayscale(80%);
+    transition: color 0.2s;
+}
+
+
+.inputRating:hover .estrela-input {
+    filter: grayscale(0%);
+}
+
+.estrela-input:hover ~ .estrela-input {
+    filter: grayscale(80%);
+}
+
+
+.estrela-input.active{
+    filter: grayscale(0%);
+}
+
+#comentario-botao{
+    background-color: #004A90;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+    width: 30%;
+    height: 30px;
+    font-weight: bold;
+    font-size: large;
+    box-shadow: 0 2px 2px gray;
+}
+
 .comment_1{
     display: flex;
     justify-content: space-between;
@@ -250,12 +292,23 @@ a{
     align-items: center;
     
 }
+
 .commentName h3{
     margin: 0;
 }
-#commentUserinfo{
+.estrela-placeholder-container{
+    display: flex;
+    flex-direction: row;
+}
+.estrela-placeholder{
+    width: 80px;
+}
+
+
+#commentUserinfo, .commentUserinfo{
     color: gray;
     margin-top: 2px;
+
 }
 
 .livro {
