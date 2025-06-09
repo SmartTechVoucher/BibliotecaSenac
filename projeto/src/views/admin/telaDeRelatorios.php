@@ -156,8 +156,8 @@
 
      <div id="menu" class="menu">
 
-        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
-        <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
+        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
+        <div><a href="./telaDeCadastroDeUsuários.php">Cadastrar usuários</a></div>
         <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
         <div><a href="Por fazer">Usuários</a></div>
         <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
@@ -167,7 +167,7 @@
 
     </div>
 
-    <script src="../../../public/js/admin/Tela de relatórios.js"></script>
+    <script src="../../../public/js/admin/telaDeRelatorios.js"></script>
 
 </body>
 </html>

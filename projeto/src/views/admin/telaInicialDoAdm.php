@@ -67,7 +67,7 @@
         </div>
         
         <div class="caixa">
-            <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
+            <a href="./telaDeRelatorios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
         </div>
         
         <div class="caixa">
@@ -108,7 +108,7 @@
 
         <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
         <div><a href="./telaDeCadastroDeUsuários.php">Cadastrar usuários</a></div>
-        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
+        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
         <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
         <div><a href="Por fazer">Usuários cadastrados</a></div>
         <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
