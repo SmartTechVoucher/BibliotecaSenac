@@ -176,7 +176,9 @@ th:first-child {
 th:last-child {
     border-top-right-radius: 10px; 
 }
-
+tbody{
+    background: #e0e0e0;
+}
 
 tbody tr:last-child td:first-child {
     border-bottom-left-radius: 10px; 
