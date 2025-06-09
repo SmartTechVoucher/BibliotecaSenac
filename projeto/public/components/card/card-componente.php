@@ -4,16 +4,10 @@
             alt="Capa do livro"
             class="capa-livro">
 
-        <div class="container-info">
             <h3 class="titulo-livro">Guia do Mestre - D&D</h3>
-            <div>
-                <p class="autor-livro">Autor:</p>
-                <p class="autor-nome">(Nome do autor)</p>
-            </div>
+            <p class="autor-livro">Autor:</p>
+            <p class="autor-nome">(Nome do autor)</p>
+            <p class="status-livro">Disponível</p>
+            <button class="btn-ver-livro">Ver livro</button>
 
-            <div class="status-container">
-                <p class="status-livro">Disponível</p>
-                <button class="btn-ver-livro">Ver livro</button>
-            </div>
-        </div>
     </div>

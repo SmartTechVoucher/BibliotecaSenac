@@ -18,6 +18,8 @@ body {
   overflow: hidden;
   background: white;
   margin: 0 auto;
+
+  background-color: #9B2121;
 }
 
 .capa-livro {

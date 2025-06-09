@@ -65,7 +65,7 @@ include "../../../public/components/header/header.php";
 
 
 
-                <div class="card_livro_saude">
+                <div class="cards_livros">
                     <?php for ($i = 0; $i < 4; $i++): ?>
                         <?php include "../../../public/components/card/card-componente.php"; ?>
                     <?php endfor; ?>
@@ -77,7 +77,7 @@ include "../../../public/components/header/header.php";
                     <a href="" class="saiba_mais2">Saiba mais</a>
                 </div>
 
-                <div class="card_livro_gestao">
+                <div class="cards_livros">
 
                     <?php for ($i = 0; $i < 4; $i++): ?>
                         <?php include "../../../public/components/card/card-componente.php"; ?>
@@ -101,9 +101,9 @@ include "../../../public/components/header/header.php";
 
             <div class="gallery-wrapper">
                 <div class="gallery">
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
+                    <!-- <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
                         alt="Beach_Images" class="Item current-item">
-
+ -->
 
 
                     <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
