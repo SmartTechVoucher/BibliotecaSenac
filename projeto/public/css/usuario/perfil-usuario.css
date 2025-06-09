@@ -58,7 +58,7 @@ html,body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Três colunas fixas */
+  grid-template-columns: repeat(2, 1fr); /* Três colunas fixas */
   column-gap: 40px;
   row-gap: 190px;
   
@@ -73,6 +73,7 @@ html,body {
   position: relative;
   transition: 0.3s;
   cursor: pointer;
+  width: 75%;
 }
 
 /* .card img{

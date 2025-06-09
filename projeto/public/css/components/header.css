@@ -1,3 +1,4 @@
+
 :root {
 
     --fontes: 'Poppins', 'Roboto', 'Montaga';   /*Fontes usadas no projeto */
@@ -43,9 +44,6 @@ header {
     height: 100%
 }
 
-
-/* Logo Senac */
-
 /* Navbar oculta por padrão */
 nav {
     display: none;
@@ -56,6 +54,7 @@ nav {
     padding: 10px;
     border-radius: 5px;
 }
+
 
 /* Lista de navegação */
 nav ul {
@@ -77,6 +76,36 @@ nav ul li a {
 nav.show {
     display: block;
 }
+
+#nav-menu-perfil {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background: #001E3E;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#nav-menu-perfil li{
+    padding: 10px;
+}
+
+#nav-menu-perfil.show {
+    display: block;
+}
+
+nav ul li a,
+#nav-menu-perfil ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:visited,
+#nav-menu-perfil ul li a:visited {
+    color: white;
+}
+
 
 /* Centraliza o título no cabeçalho */
 .titulo {
