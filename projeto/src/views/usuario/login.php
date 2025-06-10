@@ -24,7 +24,7 @@ if (isset($_SESSION['toast'])) {
                     <div class="login-campos">
                         <div class="campo-usuario">
                             <label for="campo_login">Usuário</label>
-                            <input type="text" name="nome" id="campo_login" placeholder="Usuário">
+                            <input type="text" name="nome" id="campo_login" placeholder="Digite seu usuário">
                         </div> 
                         <div class="campo-senha">
                             <label for="campo_senha">Senha</label>
@@ -34,22 +34,23 @@ if (isset($_SESSION['toast'])) {
                     </div>
                     <!-- <?php
     
-    if (isset($_GET['error'])) {
-        echo "<p style='color:red;padding: 5px;'>Usuário ou senha incorretos!</p>";
-        unset($_SESSION['error']);
-    }
-    if(empty($login) || ($senha)){
-        $erro = true;
-    }
+    // if (isset($_GET['error'])) {
+    //     echo "<p style='color:red;padding: 5px;'>Usuário ou senha incorretos!</p>";
+    //     unset($_SESSION['error']);
+    // }
+    // if(empty($login) || ($senha)){
+    //     $erro = true;
+    // }
 
-    if($erro) {
-        echo "<p style='color:red;padding:5px;'> Usuário ou senha podem estar vazios!</p>";
-    } else {
-        $erro = false;
-        echo "<p style='color:green:padding:5px;'> Todos os campos estão preenchidos!</p>";
-    }
-    
+    // if($erro) {
+    //     echo "<p style='color:red;padding:5px;'> Usuário ou senha podem estar vazios!</p>";
+    // } else {
+    //     $erro = false;
+    //     echo "<p style='color:green:padding:5px;'> Todos os campos estão preenchidos!</p>";
+    // }
+
     ?> -->
+
             <div class="check-entrar">
                 <div class="checkbox-container">
                     <input type="checkbox"  id="lembrar">
@@ -65,9 +66,9 @@ if (isset($_SESSION['toast'])) {
                 
             </form>
             
-
             <!-- <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo">
             <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2"> -->
+
             <!-- <div class="decor-top-right">
                 <div class="square"></div>
                 <div class="square"></div>

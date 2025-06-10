@@ -19,6 +19,7 @@ body{
 }
 
 form {
+form {
     width: 50%;
     height: 60%;
     display: flex;
@@ -30,11 +31,19 @@ form {
     border: solid 3px white;
     background-color: #003162;
 }
+    border: solid 3px white;
+    background-color: #003162;
+}
 
 form img {
     width: 200px;
     height: auto;
+form img {
+    width: 200px;
+    height: auto;
 }
+
+
 
 .login{
     width: 50%;
@@ -44,10 +53,12 @@ form img {
     justify-content: center;
     align-items: center;
     border-right: solid 3px white;
+    border-right: solid 3px white;
 }
 
 label{
     font-size: 20px;
+    color: white;
     color: white;
     width: 80%;
     position: relative;
@@ -70,6 +81,7 @@ img{
 .login-campos input{
     border: none;
     border-radius: 5px;
+    padding: 3%;
     padding: 3%;
     width: 80%;
     height: auto;
@@ -146,7 +158,11 @@ button:hover{
 a{
     display: flex;
     justify-content: end    ;
+    display: flex;
+    justify-content: end    ;
     width: auto;
+    color: white;
+    text-decoration: none;
     color: white;
     text-decoration: none;
 }
@@ -253,6 +269,5 @@ a{
         width: 30%;
         left: -18%;
     }
-
-
+}
 }
