@@ -102,8 +102,13 @@ body{
 }
 
 .busca{
-    background-color: var(--corInput);
+    background-color: #ffffff;
     width: 100%;
+    border-radius: 23px;
+    height: 30px;
+    border: 1px solid #eee;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 /*Parte do input*//*Parte do input*//*Parte do input*//*Parte do input*/
@@ -113,10 +118,10 @@ body{
     cursor: var(--apontador);
 }
 
-p{
+#livros-por-aparecer{
     font-size: 20px;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 

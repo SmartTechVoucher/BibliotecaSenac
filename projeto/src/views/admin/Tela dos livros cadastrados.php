@@ -57,7 +57,7 @@
 
     </form>
 
-    <p>Livros por aparecer:</p>
+    <p id="livros-por-aparecer">Livros por aparecer:</p>
     
     <div class="livro-container">
         <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
