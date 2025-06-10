@@ -19,10 +19,9 @@ if (isset($_SESSION['toast'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo á Biblioteca SENAC HUB ACADEMY!</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="./public/css/bundles/style-tela-inicial.css">
+    <link rel="stylesheet" href="./public/css/usuario/tela-inicial.css">
 </head>
 
 <body>
@@ -76,14 +75,14 @@ if ($mensagemToast) {
         <div class="gen">
             <div class="gencard">
                 <div class="icon_livros">
-                    <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon1"> 
+                    <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon1">
                 </div>
                 <h2 class="gentitle">Saúde</h2>
             </div>
             <div class="gencard">
-                    <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon2">
-                    </div>
+                <div class="icon_livros">
+                    <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon2">
+                </div>
                 <h2 class="gentitle">Saúde</h2>
             </div>
             <div class="gencard">
@@ -93,15 +92,15 @@ if ($mensagemToast) {
                 <h2 class="gentitle">Gestão</h2>
             </div>
             <div class="gencard">
-            <div class="icon_livros">
-                <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
-            </div>
+                <div class="icon_livros">
+                    <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
+                </div>
                 <h2 class="gentitle">Design</h2>
             </div>
             <div class="gencard">
-            <div class="icon_livros">
-                <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
-            </div>
+                <div class="icon_livros">
+                    <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
+                </div>
                 <h2 class="gentitle">Educação</h2>
             </div>
         </div>
@@ -166,8 +165,8 @@ if ($mensagemToast) {
 
     </div>
 
- 
-    <script src="./public/js/usuario/telaInicial.js"></script>
+
+    <script src="./public/js/usuario/tela-inicial.js"></script>
 </body>
 
 </html>
