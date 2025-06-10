@@ -88,5 +88,5 @@ Classe: `UsuarioController`
 - Bianca Pacheco
 - Vitor Araujo
 - Gustavo Silva
-- Matheus Serpa
+- Mateus Serpa
 - Gabriel Minervini

@@ -59,15 +59,15 @@
     <div class="conteiner2">
 
         <div class="caixa">    
-            <a href="./telaDeCadastroDeLivros.php"><img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro"></a>
+            <img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro">
         </div>
 
         <div class="caixa">
-            <a href="./telaDeCadastroDeUsuários.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
+            <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
         </div>
         
         <div class="caixa">
-            <a href="./telaDeRelatorios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
+            <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
         </div>
         
         <div class="caixa">
@@ -75,11 +75,15 @@
         </div>
         
         <div class="caixa">
-            <a href="Por fazer"><img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario"></a>
+            <img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario">
         </div>
         
         <div class="caixa">
             <a href="./Tela dos livros cadastrados.php"><img src="../../../public/assets/icons/List Books.png" alt="Livro" class="estoque"></a>
+        </div>
+        
+        <div class="caixa">
+            <img src="../../../public/assets/icons/Reservas.png" alt="Livro" class="vectorRenova">   
         </div>
 
     </div>
@@ -106,9 +110,9 @@
 
     <div id="menu" class="menu">
 
-        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
-        <div><a href="./telaDeCadastroDeUsuários.php">Cadastrar usuários</a></div>
-        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
+        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
+        <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
+        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
         <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
         <div><a href="Por fazer">Usuários cadastrados</a></div>
         <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
@@ -116,7 +120,23 @@
         <div><a href="../usuario/login.php">Logout</a></div>
     </div>
 
-    <script src="../../../public/js/admin/telaInicialDoAdm.js"></script>
+    <div class="overlayCadastro">
+        <p><a href="./Tela de cadastro de livros.php" class="item">Cadastrar livro</a></p>
+        <hr>
+        
+        <p><a href="./Tela dos livros cadastrados.php" class="item">Ver livros cadastrados</a></p>
+        <hr>
+        
+        <p><a href="./Tela dos livros cadastrados.php" class="item">Excluir livro</a></p>
+        <hr>
+        
+        <p><a href="./Tela dos livros cadastrados.php" class="item">Editar informações de um livro</a></p>
+    </div>
+
+    <script src="../../../public/js/admin/Tela inicial do adm.js"></script>
+
+    <script src="../../../public/js/Tela inicial do adm.js"></script>
+
 
 </body>
 </html>
