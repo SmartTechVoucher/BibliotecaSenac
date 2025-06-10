@@ -224,6 +224,8 @@ configurações dos botões "cancelar" e "emitir" */
 
 @media(min-width: 375px){
 
+ /*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*/   
+
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
     .quadradoBranco .input{
@@ -263,6 +265,8 @@ configurações dos botões "cancelar" e "emitir" */
 
 @media(min-width:414px){
 
+ /*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*/   
+
  .quadradoBranco .unidade{
     position: var(--posicaoAbsoluta);
     left: 70%; bottom: 40%;
@@ -279,7 +283,29 @@ configurações dos botões "cancelar" e "emitir" */
 
 }
 
+@media(min-width:500px){
+
+ /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/   
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 12%; left: 77%;}
+
+}
+
+@media(min-width:600px){
+
+ /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 12%; left: 81%;}
+
+}
+
 @media(min-width:768px){
+   
+ /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/   
 
  /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/           
     .titulo{
@@ -304,7 +330,7 @@ configurações dos botões "cancelar" e "emitir" */
 
  .quadradoCinza .unidade{
     position: var(--posicaoAbsoluta);
-    left: 60%; bottom: 45%;
+    left: 60%; bottom: 40%;
  }
 
  /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
@@ -322,7 +348,51 @@ configurações dos botões "cancelar" e "emitir" */
         top: 11%; left: 85.2%;}
 }
 
+@media(min-width:820px){
+   
+ /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/   
+
+ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/           
+
+ .conteiner .logoSenacHub{
+    display: block;
+ }
+ 
+ .quadradoCinza .unidade{
+    position: var(--posicaoAbsoluta);
+    left: 60%; bottom: 48%;
+ }
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 11%; left: 85.8%;
+    }
+}
+
+@media(min-width:912px){
+   
+ /*surface pro 7*//*surface pro 7*//*surface pro 7*/
+
+ .quadradoCinza .unidade{
+    position: var(--posicaoAbsoluta);
+    left: 60%; bottom: 54%;
+ }
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 10%; left: 87.5%;
+    }
+
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 10%;
+
+ }
+}
+
 @media(min-width: 1024px){
+
+ /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/   
 
     .conteiner .menuAdm{
         width: 304px;
@@ -330,7 +400,7 @@ configurações dos botões "cancelar" e "emitir" */
 
     .quadradoCinza .unidade{
         position: var(--posicaoAbsoluta);
-        left: 57%; bottom: 3%;
+        left: 57%; bottom: 55%;
     }
 
     .rodape .Logo{
@@ -340,18 +410,45 @@ configurações dos botões "cancelar" e "emitir" */
 
     .menu{
         position: var(--posicaoAbsoluta);
-        top: 19%;
+        top: 10%;
+    }
+   
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 10%; left: 88.88%;
+    }
+
+    .inferior{
+        margin-top: 15%;
+    }
+
+}
+
+@media(min-width: 1124px){
+
+ /*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*/   
+
+    .quadradoCinza .unidade{
+        position: var(--posicaoAbsoluta);
+        left: 58%; bottom: 55%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
     }
 
     
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        top: 18%; left: 88.88%;
+        top: 10%; left: 89.75%;
     }
 
 }
 
 @media(min-width: 1280px){
+
+ /*nest hub max*//*nest hub max*//*nest hub max*/   
 
     .quadradoCinza .unidade{
         position: var(--posicaoAbsoluta);
@@ -379,6 +476,8 @@ configurações dos botões "cancelar" e "emitir" */
 
 @media(min-width:1358px){
 
+/*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*/    
+
 .conteiner3 .esquerdo, .direito{
     width: 150px;
     height: 150px;
@@ -386,7 +485,7 @@ configurações dos botões "cancelar" e "emitir" */
 
 .quadradoCinza .unidade{
         position: var(--posicaoAbsoluta);
-        left: 61%; bottom: 2%;
+        left: 61%; bottom: -20%;
     }
 
 .inferior img{
@@ -396,12 +495,12 @@ configurações dos botões "cancelar" e "emitir" */
 
 .menu{
     position: var(--posicaoAbsoluta);
-    top: 17%;
+    top: 20%;
 }
 
 .minhaConta{
     position: var(--posicaoAbsoluta);
-    top: 17%; left: 91.6%;}
+    top: 18%; left: 91.57%;}
 
 }
 
@@ -458,7 +557,7 @@ configurações dos botões "cancelar" e "emitir" */
         grid-template-rows: 100px;
         grid-template-columns: 170px;
         position: var(--posicaoAbsoluta);
-        left: 59.5%; bottom: 7%;
+        left: 59.5%; bottom: 10%;
     }
 
     .quadradoCinza .ordem{
@@ -491,7 +590,7 @@ configurações dos botões "cancelar" e "emitir" */
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        top: 14%; left: 94%;
+        top: 12%; left: 94%;
     }
 
 }

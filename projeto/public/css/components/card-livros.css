@@ -1,0 +1,119 @@
+
+body {
+  background: #f0f0f0;
+  padding: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.card-livro {
+  width: 300px;
+  height: 450px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  background: white;
+  margin: 0 auto;
+
+  background-color: #9B2121;
+}
+
+.capa-livro {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  position: relative;
+}
+
+.curva-container {
+  position: absolute;
+  bottom: 40%;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.curva {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+}
+
+.container-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  background: #DCE3EA;
+  padding: 6px 15px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-livro {
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Poppins',sans-serif;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.autor-livro {
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 2px;
+}
+
+.autor-nome {
+  color: #000000;;
+  font-size: 13px;
+}
+
+.status-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.status-livro {
+  font-size: 14px;
+  color: #9B2121;
+  font-weight: 500;
+}
+
+.btn-ver-livro {
+  background: #003162;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.btn-ver-livro:hover {
+  background: #34495e;
+}
+.curva-container {
+  position: relative;
+  width: 300px;
+  height: 150px;
+  background: #e1e8ef;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+}

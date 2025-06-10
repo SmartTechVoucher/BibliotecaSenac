@@ -1,0 +1,408 @@
+:root{
+
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --fonte_normal: 20px;
+    --branco: white;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --apontador: pointer;   
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #EDEDED;
+}
+
+*{
+    font-family: var(--fontes);
+}
+
+.containerConteudo{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    align-items: center;
+}
+
+/* QUADRADO BRANCO 1 */
+    .containerInfo{
+        width: 100%;
+        background-color: white;
+        border-radius: 2px;
+        display: flex;
+        padding: 40px;
+        flex-direction: row;
+        box-shadow: 0 2px 4px gray;
+    }
+    .livroInfo img{
+        height: 50px;
+    }
+    .review{
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .review p{
+        margin-left: 18px;
+    }
+
+
+    .info_1{
+        display: flex;
+        flex-direction: row;
+
+    }
+    .livroTitulo{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .livroTitulo h1{
+        font-size: 45px;
+        margin-bottom: 0px;
+    }
+    #livroIsbn{
+        font-size: small;
+        color: rgb(100, 100, 100);
+    }
+    #livroDescricao{
+        margin-bottom: 0px;
+        margin-top: 20px;
+    }
+
+    .livroReservar{
+        margin: 15px 0 0 0;
+    }
+
+    /* botao de reserva */
+    .livroReservar p{
+        margin-bottom: 5px;
+        color: #258A14;
+    }
+    #botaoReserva{
+        background: #004A90;
+        cursor: pointer;
+        color: white;
+        border: 0;
+        border-radius: 5px;
+        margin: auto;
+        width: 330px;
+        height: 60px;
+        font-weight: bold;
+        font-size: large;
+        box-shadow: 0 2px 2px gray;
+        transition: background-color 0.3s ease;
+    }
+    .lerMais img{
+        height: 30px;
+    }
+    .lerMais{
+        display: flex;
+        gap: 12px;
+    }
+    .lerMais p{
+        color: #3A5BB0;
+        text-align: center ;
+        margin: 0px
+    }
+
+    .info_2{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        margin: 70px 0 30px;
+    }
+    .info_2 img{
+        width: 56px;
+    }
+    .tags{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .autor, .paginas, .publicacao{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .tags a, .autor a, .paginas a, .publicacao a{
+        margin: 30px 0 0 0;
+    }
+    .tags2{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    .tag_icone{
+        background-color: #F2F1F9;
+        border: 2px solid #5691EA;
+        border-radius: 65px ;
+        width: 100px;
+        height: 40px;
+        padding: 3px;
+        align-content: center;
+    }
+    .tag_icone p{
+        text-align: center;
+        margin: auto;
+    }
+
+    .livroInfo{
+        margin: 0 0px 0 30px;
+        width: 100%;
+    }
+
+
+
+
+/* EXEMPLARES */
+    .containerExemplar{
+        width: 102%;
+        background-color: white;
+        display: flex;
+        align-items: center ;
+        margin: auto;
+        margin-top: 40px;
+        height: 53px;
+    }
+    .containerExemplar img{
+        width: 33px;
+        padding: 6px;
+    }
+    .containerExemplar p{
+        font-size: large;
+        margin-right: 88%;
+        margin-left: 1%;
+    }
+
+    #containerExemplarOpen{
+        width: 102%;
+        gap: 8px;
+        align-items: center;
+        justify-items: center;
+        background-color: rgb(241, 241, 241) ;
+        display: none;
+        margin: auto;
+    }
+    .containerGrid{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+        justify-items: center;
+        border: solid 1px #eee;
+    }
+    .gridA{
+        margin-left: 80%;
+        margin-right: 80%;
+        margin-top: 5%;
+    }
+
+/* COMENTARIOS */
+.containerComentarios{
+    background-color: white;
+    margin: auto;
+    padding: 15px;
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.containerComentarios input{
+    background-color: #F1EEEE;
+    border: 0;
+    width: 98%;
+    height: 30px;
+    margin: auto;
+    padding-left: 15px;
+    border-radius: 2px;
+}
+
+.inputRating{
+    margin: auto;
+}
+#commentForm{
+    align-items: center;
+    display: contents;
+}
+.estrela-input{
+    cursor: pointer;
+    width: 50px;
+    filter: grayscale(80%);
+    transition: color 0.2s;
+}
+
+
+.inputRating:hover .estrela-input {
+    filter: grayscale(0%);
+}
+
+.estrela-input:hover ~ .estrela-input {
+    filter: grayscale(80%);
+}
+
+
+.estrela-input.active{
+    filter: grayscale(0%);
+}
+
+#comentario-botao{
+    cursor: pointer;
+    background-color: #004A90;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+    width: 30%;
+    height: 30px;
+    font-weight: bold;
+    font-size: large;
+    box-shadow: 0 2px 2px gray;
+}
+
+.comment_1{
+    display: flex;
+    justify-content: space-between;
+}
+.comment_1 img{
+    width: 40px;
+    height: 40px;
+
+}
+a{
+    text-decoration: none
+}
+
+.comment_2{
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+}
+#comment_2id{
+    margin-top: 20px;
+}
+.commentName{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    
+}
+
+.commentName h3{
+    margin: 0;
+}
+.estrela-placeholder-container{
+    display: flex;
+    flex-direction: row;
+}
+.estrela-placeholder{
+    width: 80px;
+}
+
+
+#commentUserinfo, .commentUserinfo{
+    color: gray;
+    margin-top: 2px;
+
+}
+
+.livro {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+    font-size: 10px;
+    padding: 1rem;
+    padding: 0.5rem; 
+    
+
+    .conteudo_livro{
+        padding: 1rem;
+        text-align: justify;
+
+        
+    }
+    
+    p {
+        font-size: 15px;
+      }
+}
+
+.aa{
+    padding: 0.5rem; 
+}
+
+.titulo{
+    padding: 0.5rem; 
+}
+
+.livro img {
+    width: 170px;
+    padding: 0.5rem; 
+}
+
+/*.data {
+    /*align-items: ;
+}*/
+
+.botao button{
+    background-color: rgba(0, 74, 144, 1);
+    color: white;
+    transform: translate(1500%, -40px);
+    /* font-size: 13px; */
+    padding: 10px 20px;
+    position: relative;
+    bottom: 0px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.informacoes{
+padding: 0.5rem; 
+.form-group {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+
+    label {
+        width: 171px; /* largura fixa para alinhar todos */
+        font-weight: bold;
+        
+        
+    }
+
+    input[type="date"] {
+        padding: 1px;
+        width: 250px;
+    }
+
+}
+
+.form-group-dois {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+
+    label {
+        width: 80px; /* largura fixa para alinhar todos */
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="tel"], input[type="email"] {
+        padding: 1px;
+        width: 250px;
+    }
+
+}
+
+}

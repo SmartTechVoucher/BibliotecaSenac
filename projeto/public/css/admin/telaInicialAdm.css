@@ -266,31 +266,6 @@ h2{
     font-family: var(--fontes);
 }
 
-.faleConosco{
-    width: 126px;
-    height: 102px;
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 15px;
-   
-}
-
-.email{
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 15px;
-}
-
-.siga-nos{
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 12px;
-}
-
-
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
 .menu{
@@ -304,15 +279,6 @@ h2{
     cursor: pointer;   
 }
 
-/*Overlay de cadastro*/ /*Overlay de cadastro*/ /*Overlay de cadastro*/
-
-.overlayCadastro{
-    background-color: var(--corParaOverlays);
-    cursor: var(--apontador);
-    display: none;
-    text-align: center;
-}
-
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
 
 a{
@@ -321,10 +287,6 @@ a{
 }
 
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
-
-.overlayCadastro .item{
-    color: black;
-}
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
@@ -336,6 +298,8 @@ a{
 }
 
 @media(min-width:375px){
+
+ /*Iphone Se*/ /*Iphone Se*/ /*Iphone Se*/ /*Iphone Se*/ /*Iphone Se*/ /*Iphone Se*/ /*Iphone Se*/ /*Iphone Se*/   
 
     /*evento do cabeçalho*/ /*evento do cabeçalho*/ /*evento do cabeçalho*/
 
@@ -354,7 +318,7 @@ a{
         gap: 5px;
     }
 
-    .conteiner2 .emprestimo, .usuario, .estoque, .vectorRenova, .cadastrarLivro, .cadastrarUsuarios, .relatorios{
+    .conteiner2 .emprestimo, .usuario, .estoque, .cadastrarLivro, .cadastrarUsuarios, .relatorios{
         width: 80px;
         height: 105px;
     }
@@ -368,6 +332,10 @@ a{
         width: 300px;
     }
 
+    .inferiorDireito{
+        margin-top: 34%;
+    }
+
      .Libro, .copyright, .todos, .logo, .titulo {
          display: none;
      }
@@ -377,44 +345,11 @@ a{
         top: 110px;
      }
 
-   /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-   /* .overlayCadastro{
-    height: 230px;
-    width: 80px;
-    position: var(--posicaoAbsoluta);
-    bottom: -2%; right: 73%;
-   }
-
-.overlayCadastro .item{
-    font-size: 10px;
-    /* color: black; 
-} */
-
-/*O código acima ficará disponível para ser usado caso o overlay continue necessário*/
-
-/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-
-/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-/* #overlayRelatorio{
-    width: 80px;
-    position: var(--posicaoAbsoluta);
-    bottom: 20%; right: 27%;
-}
-
-#overlayRelatorio .relatorio{
-    font-size: 10px;
-} */
-
-/*O código acima ficará disponível para ser usado caso o overlay continue necessário*/
-
-/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 }
 
 @media(min-width:414px){
+
+ /*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*//*iphone xr*/
 
     .menu{
         position: var(--posicao);
@@ -427,16 +362,8 @@ a{
     }
 
     .inferiorDireito{
-        margin-top: 4.5%;
+        margin-top: 30%;
     }
-
- /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-   .overlayCadastro{
-        width: 80px;
-        position: var(--posicaoAbsoluta);
-        bottom: 17%; right: 75.5%;
-   }
 
 }
 
@@ -460,22 +387,6 @@ a{
         flex-wrap: nowrap;
         width: 500px;
     }
-
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-    .overlayCadastro{
-       
-        width: 67px;
-        height: 220px;
-        position: var(--posicaoAbsoluta);
-        bottom: -13%; right: 84%;
-    }
-
-    .overlayCadastro .item{
-        font-size: 10px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
     .inferiorDireito{
         margin-top: 43%;
@@ -523,25 +434,12 @@ a{
     .adm{
         width: 500px;
     }
-
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-    .overlayCadastro{  
-        position: var(--posicaoAbsoluta);
-        top: 50%; right: 83%;
-        width: 80px;
-        height: 240px;
-    }
-
-    .overlayCadastro .item{
-        font-size: 10px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
    
 }
 
 @media(min-width:768px){
+
+ /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/
 
    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
@@ -562,41 +460,14 @@ a{
        margin-top: 38.2%;
     }
 
- /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-   .overlayCadastro{
-    width: 80px;
-    position: var(--posicaoAbsoluta);
-    top: 44%; right: 87%;
- }
-
-    .overlayCadastro .item{
-        font-size: 10px;
- }
-
- /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-
- /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 80px;
-        position: var(--posicaoAbsoluta);
-        bottom: 46.5%; right: 60%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
     .rodape{
         margin-top: 8%;
     }
 }
 
 @media(min-width:820px){
+
+ /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/   
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
@@ -631,41 +502,14 @@ a{
         margin-top: 10%;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-    .overlayCadastro{
-    
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 43%; right: 84.7%;
-    }
-
-    .overlayCadastro .item{
-        font-size: 10px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 45.5%; right: 56.5%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
     .rodape{
         margin-top: 26.3%;
     } 
 }
 
 @media(min-width:912px){
+
+ /*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*/   
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
@@ -681,33 +525,6 @@ a{
     .rodape{
         margin-top: 46%;
     }
-
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-     .overlayCadastro{
-        position: var(--posicaoAbsoluta);
-        top: 38%; right: 86%;
-    }
-
-    .overlayCadastro .item{
-        font-size: 11px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 40%; right: 61%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 11px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
 }
 
@@ -746,32 +563,11 @@ a{
         height: 255px;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-     .overlayCadastro{
-        position: var(--posicaoAbsoluta);
-        top: 39%; right: 86.4%;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 92%; right: 58.5%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 }
 
 @media(min-width: 1280px){
+
+ /*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*/   
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
     
@@ -831,30 +627,6 @@ a{
         height: 140px;
     } 
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-     .overlayCadastro{
-        position: var(--posicaoAbsoluta);
-        top: 74%; right: 86.5%;
-        width: 150px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-      #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 72%; right: 62.4%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 }
 
 @media(min-width: 1358px){
@@ -868,7 +640,7 @@ a{
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 91.6%; top: 15%;
+        left: 91.5%; top: 20%;
     }
 
     .icone{

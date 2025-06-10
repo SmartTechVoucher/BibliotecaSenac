@@ -1,5 +1,5 @@
 <?php
-require "../../../config/constantes.php"
+require(__DIR__ . '../../../../config/constantes.php');
 
 
 ?>
@@ -28,7 +28,7 @@ require "../../../config/constantes.php"
             </div>
             
             <div class="livro-brilhante">
-                <img src="../../../public/assets/img/livro-brilhante.svg " alt="Livro icon">
+                <img src="<?php echo $URLBASE?>/public/assets/img/livro-brilhante.svg" alt="Livro icon">
                 <p>Senac MS Copyright © <br>
                     2024. Todos os Direitos Reservados</p>
             </div>
