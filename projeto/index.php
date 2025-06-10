@@ -27,7 +27,7 @@ if (isset($_SESSION['toast'])) {
 <body>
 <?php
 if ($mensagemToast) {
-    // Supondo que sua função toast() exiba a mensagem na tela
+    
     toast($mensagemToast);
 }
 ?>
