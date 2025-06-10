@@ -36,8 +36,6 @@ form img {
     height: auto;
 }
 
-
-
 .login{
     width: 50%;
     height: 100%;
@@ -78,7 +76,9 @@ img{
     outline: none;
     background-color: #EEEEEE;
     margin: -19px;
+    gap: 30px;
 
+}
 
 /* .campo-senha input {
     width: 80%;
@@ -91,6 +91,7 @@ img{
 input:focus {
     border: 3px solid #F68B1F;
 } */
+
 
 .campo-usuario {
     display: flex;
@@ -227,7 +228,8 @@ a{
 
 .checkbox-container label {
     cursor: pointer;
-}
+  }
+  
 
 @media screen and (max-width: 900px) {
     .container{
@@ -251,5 +253,6 @@ a{
         width: 30%;
         left: -18%;
     }
-}
+
+
 }
