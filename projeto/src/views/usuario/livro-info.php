@@ -37,6 +37,8 @@ $senacTLG = [
     "exemplarReservas" => "2"
 ];
 
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
