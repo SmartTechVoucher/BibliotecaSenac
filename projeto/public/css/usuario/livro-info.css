@@ -44,6 +44,8 @@ body{
     }
     .review{
         display: flex;
+        align-items: center;
+        margin-bottom: 20px;
     }
     .review p{
         margin-left: 18px;
@@ -67,15 +69,14 @@ body{
     #livroIsbn{
         font-size: small;
         color: rgb(100, 100, 100);
-        margin-bottom: -30px;
     }
     #livroDescricao{
         margin-bottom: 0px;
+        margin-top: 20px;
     }
 
     .livroReservar{
-        
-        gap: 10px;
+        margin: 15px 0 0 0;
     }
 
     /* botao de reserva */
@@ -83,8 +84,9 @@ body{
         margin-bottom: 5px;
         color: #258A14;
     }
-    .botaoReserva{
-        background-color: #004A90;
+    #botaoReserva{
+        background: #004A90;
+        cursor: pointer;
         color: white;
         border: 0;
         border-radius: 5px;
@@ -94,6 +96,7 @@ body{
         font-weight: bold;
         font-size: large;
         box-shadow: 0 2px 2px gray;
+        transition: background-color 0.3s ease;
     }
     .lerMais img{
         height: 30px;
@@ -112,7 +115,7 @@ body{
         display: flex;
         justify-content: space-around;
         flex-direction: row;
-        margin: 0 70px 0 30px;
+        margin: 70px 0 30px;
     }
     .info_2 img{
         width: 56px;
@@ -160,17 +163,46 @@ body{
 
 /* EXEMPLARES */
     .containerExemplar{
-        width: 100%;
+        width: 102%;
         background-color: white;
         display: flex;
-        justify-content: space-between;
-        padding: 10px;
+        align-items: center ;
         margin: auto;
         margin-top: 40px;
-
+        height: 53px;
+    }
+    .containerExemplar img{
+        width: 33px;
+        padding: 6px;
     }
     .containerExemplar p{
         font-size: large;
+        margin-right: 88%;
+        margin-left: 1%;
+    }
+
+    #containerExemplarOpen{
+        width: 102%;
+        gap: 8px;
+        align-items: center;
+        justify-items: center;
+        background-color: rgb(241, 241, 241) ;
+        display: none;
+        margin: auto;
+    }
+    .containerGrid{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        align-items: center;
+        justify-items: center;
+        border: solid 1px #eee;
+    }
+    .gridA{
+        margin-left: 80%;
+        margin-right: 80%;
+        margin-top: 5%;
     }
 
 /* COMENTARIOS */
@@ -192,6 +224,49 @@ body{
     margin: auto;
     padding-left: 15px;
     border-radius: 2px;
+}
+
+.inputRating{
+    margin: auto;
+}
+#commentForm{
+    align-items: center;
+    display: contents;
+}
+.estrela-input{
+    cursor: pointer;
+    width: 50px;
+    filter: grayscale(80%);
+    transition: color 0.2s;
+}
+
+
+.inputRating:hover .estrela-input {
+    filter: grayscale(0%);
+}
+
+.estrela-input:hover ~ .estrela-input {
+    filter: grayscale(80%);
+}
+
+
+.estrela-input.active{
+    filter: grayscale(0%);
+}
+
+#comentario-botao{
+    cursor: pointer;
+    background-color: #004A90;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20px;
+    width: 30%;
+    height: 30px;
+    font-weight: bold;
+    font-size: large;
+    box-shadow: 0 2px 2px gray;
 }
 
 .comment_1{
@@ -221,12 +296,23 @@ a{
     align-items: center;
     
 }
+
 .commentName h3{
     margin: 0;
 }
-#commentUserinfo{
+.estrela-placeholder-container{
+    display: flex;
+    flex-direction: row;
+}
+.estrela-placeholder{
+    width: 80px;
+}
+
+
+#commentUserinfo, .commentUserinfo{
     color: gray;
     margin-top: 2px;
+
 }
 
 .livro {
