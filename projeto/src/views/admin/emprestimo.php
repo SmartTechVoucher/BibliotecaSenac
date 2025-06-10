@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Empréstimo</title>
-    <link rel="stylesheet" href="../../../public/css/admin/c">
+    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/admin/emprestimo.css">
 </head>
 
 <body>
@@ -120,6 +120,9 @@
 
         </div>
     </main>
+    <?php
+        include "../../../public/components/footer/footer.php"
+    ?>
 
     
     

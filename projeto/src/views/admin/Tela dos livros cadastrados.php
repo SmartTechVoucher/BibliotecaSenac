@@ -24,41 +24,14 @@
 <body>
     
  <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
- <div class="conteiner">     
-        
-        <div class="menuAdm">
-            <img src="../../../public/assets/icons/Menu adm.png" alt="" class="hamburguer">
-            <img src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo" class="logoSenacHub">
-        </div>
-            
-        <div class="titulo"> 
-            <h2>Biblioteca Senac</h2> 
-            <h2 class="senac">Senac Mato Grosso do Sul</h2> 
-        </div>
-    
-        <div class="icone"><img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
-    
-        <div class="minhaConta">
-            <p>Minha conta</p>
-            <p><a href="../usuario/login.php">Sair</a></p>
-        </div>   
-    
-    </div>
+ <?php   
+    include "../../../public/components/header/header.php";
+    require_once "../../../config/constantes.php";
+
+  ?>
 
  <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
-
-     <div class="conteiner2">
-
-        <div class="superior">
-            <img src="../../../public/assets/icons/Superior esquerdo.png" alt="Superior esquerdo" class="esquerdo">
-        </div>
-
-        <div class="superior">
-            <img src="../../../public/assets/icons/Superior direito.png" alt="Superior direito" class="direito">
-        </div>
-
-    </div>
-
+    <h2 id="livro-titulomaster">Listagem de livros cadastrados</h1>
     <form>
 
         <div class="controle">
@@ -84,41 +57,167 @@
 
     </form>
 
-    <p>Livros por aparecer:</p>
+    <p id="livros-por-aparecer">Livros por aparecer:</p>
     
-    <div class="inferior">
-
-        <div class="direito">
-            <img src="../../../public/assets/icons/Inferior direito.png" alt="">
-        </div>     
-
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
     </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+    <div class="livro-container">
+        <img id="livro-img" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="">
+        <div class="livro-informacoes">
+            <span id="livro-titulo">O pequeno Principe</span>
+            <span>IBSM: <a href="">8583769238590205TY</a></span> 
+            <div id="livro-exemplares">
+                <span>Total de exemplares</span>
+                <span>Disponíveis: <b>5</b></span>
+                <span>Emprestados: <b>2</b></span>
+                <span>Reserva: <b>0</b></span>
+            </div>
+        </div>
+        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        
+    </div>
+
+    
+    
             
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
-    <div class="rodape">
-
-        <div class="logoFecomercio"><img src="../../../public/assets/icons/Fecomercio.png" alt="" class="Logo" ></div>
-        
-        <div><img src="../../../public/assets/icons/Livro.png" alt="" class="Libro">
-            <div class="copyright">Senac MS Copyright © <br></div>
-            <div class="todos"> 2024. Todos os Direitos Reservados</div>   
-        </div>
-        
-    </div>
-
-     <div id="menu" class="menu">
-
-        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
-        <div><a href="Por fazer">Cadastrar usuários</a></div>
-        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
-        <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
-        <div><a href="Por fazer">Usuários</a></div>
-        <hr>
-        <div><a href="../usuario/login.php">Logout</a></div>
-
-    </div>
-
+   <?php   
+    include "../../../public/components/footer/footer.php";
+    ?>
     <script src="../../../public/js/admin/Tela dos livros cadastrados.js"></script>
 
 </body>
