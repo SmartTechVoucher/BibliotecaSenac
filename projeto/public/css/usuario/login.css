@@ -18,7 +18,7 @@ body{
     background-color: #003162;
 }
 
-form {
+
 form {
     width: 50%;
     height: 60%;
@@ -31,21 +31,12 @@ form {
     border: solid 3px white;
     background-color: #003162;
 }
-    border: solid 3px white;
-    background-color: #003162;
-}
-
+ 
 form img {
     width: 200px;
     height: auto;
-form img {
-    width: 200px;
-    height: auto;
-}
 
-
-
-.login{
+.login {
     width: 50%;
     height: 100%;
     display: flex;
