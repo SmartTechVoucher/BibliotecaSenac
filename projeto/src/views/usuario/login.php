@@ -1,3 +1,13 @@
+<?php
+session_start();
+if (isset($_SESSION['toast'])) {
+    $mensagem = $_SESSION['toast'];
+    unset($_SESSION['toast']);
+    include_once __DIR__ . '../../../../public/components/toast/toast.php';
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,17 +19,20 @@
 <body>
     <div class="container">
         <section class="login">
-            <form action="../../../router.php?acao=validarLogin" method="POST">
-                <img src="../../../public/assets/img/LogoHub_academy.png" alt="logo-login">
-                <div class="login-campos">
-                      
-                        <label for="campo_login">Usuário</label>
-                        <input type="text" name="nome" id="campo_login" placeholder="Digite seu usuário">
-                        <label for="campo_senha">Senha</label>
-                        <input type="password" name="senha" id="campo_senha" placeholder="Digite sua Senha">
-                    
-                </div>
-                <?php
+                <form action="../../../router.php?acao=validarLogin" method="POST">
+                    <img src="../../../public/assets/img/LogoHub_academy.png" alt="logo-login">
+                    <div class="login-campos">
+                        <div class="campo-usuario">
+                            <label for="campo_login">Usuário</label>
+                            <input type="text" name="nome" id="campo_login" placeholder="Digite seu usuário">
+                        </div> 
+                        <div class="campo-senha">
+                            <label for="campo_senha">Senha</label>
+                            <input type="password" name="senha" id="campo_senha" placeholder="Digite sua Senha">
+                            <!-- <span class="toggle-senha" onclick="mostrarSenha()">👁️</span> -->
+                        </div>
+                    </div>
+                    <!-- <?php
     
     // if (isset($_GET['error'])) {
     //     echo "<p style='color:red;padding: 5px;'>Usuário ou senha incorretos!</p>";
@@ -35,8 +48,9 @@
     //     $erro = false;
     //     echo "<p style='color:green:padding:5px;'> Todos os campos estão preenchidos!</p>";
     // }
-    
-    ?>
+
+    ?> -->
+
             <div class="check-entrar">
                 <div class="checkbox-container">
                     <input type="checkbox"  id="lembrar">
@@ -48,20 +62,20 @@
                 
             </div>
 
-            <button type="submit">ENTRAR</button>
+            <button type="submit" id="btnEntrar">ENTRAR</button>
                 
             </form>
             
+            <!-- <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo">
+            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2"> -->
 
-            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo">
-            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2">
             <!-- <div class="decor-top-right">
                 <div class="square"></div>
                 <div class="square"></div>
                 <div class="square"></div>
-            </div>
+            </div> -->
 
-            <div class="decor-bottom-left">
+            <!-- <div class="decor-bottom-left">
             <div class="square"></div>
             <div class="square"></div>
             <div class="square"></div>
@@ -72,6 +86,6 @@
             <img src="../../../public/assets/img/gif_login.gif" alt="">
         </section>
     </div>
-    <script src="/projeto/public/js/login.js"></script>
+    <script src="../../../public/js/usuario/login.js"></script>
 </body>
 </html>

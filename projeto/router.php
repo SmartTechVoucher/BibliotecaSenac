@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . "../../projeto/src/controller/usuario/loginController.php";
+session_start();
+require_once __DIR__ . "../../projeto/src/controller/usuario/login-controller.php";
 $loginController = new LoginController();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,15 +16,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $senha = $_POST["senha"] ?? '';
             $resultado = $loginController->ValidarLogin($nome, $senha);
             if ($resultado) {
-                echo "funcionou";
-                header("Location: ./src/views/usuario/pagina_de_sucesso.php");
+                $_SESSION['toast'] = "Login feito com sucesso!";
+                header("Location: ./index.php");
                 exit;
             } else {
-                echo "deu ruim";
-                header("Location: ./src/views/usuario/login.php?error=1");
+                $_SESSION['toast'] = "Usuário ou senha inválidos!";
+                header("Location: ./src/views/usuario/login.php");
                 exit;
             }
-            break;
+            break; // <- aqui o break precisa estar dentro do switch e após o case
+
+            
+            // if ($resultado) {
+            //     $_SESSION['usuario'] = $nome; // salva o nome do usuário
+            //     $_SESSION['toast'] = "Login feito com sucesso!";
+            //     header("Location: ./index.php");
+            //     exit;
+            // }
+            
+            // } else {
+            //     else {
+            //         $_SESSION['toast'] = "Usuário ou senha inválidos!";
+            //         header("Location: ./src/views/usuario/login.php");
+            //         exit;
+            //     }
+            // }
+           
         
         default:
             echo "Erro: Ação não reconhecida.";
