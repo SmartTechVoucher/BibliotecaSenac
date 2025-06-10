@@ -3,7 +3,8 @@ session_start();
 if (isset($_SESSION['toast'])) {
     $mensagem = $_SESSION['toast'];
     unset($_SESSION['toast']);
-    include_once '../../../components/toast.php';
+    include_once __DIR__ . '../../../../public/components/toast/toast.php';
+
 }
 ?>
 
@@ -60,7 +61,7 @@ if (isset($_SESSION['toast'])) {
                 
             </div>
 
-            <button type="submit" id="btnEntrar" disabled>ENTRAR</button>
+            <button type="submit" id="btnEntrar">ENTRAR</button>
                 
             </form>
             
