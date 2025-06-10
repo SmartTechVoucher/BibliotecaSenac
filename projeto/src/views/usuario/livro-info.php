@@ -46,8 +46,9 @@ $senacTLG = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $livro["titulo"]?></title>
-    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/usuario/livro-info.css"> 
+    <title><?php echo $livro["titulo"] ?></title>
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/livro-info.css">
+    
 
 <body>
     <!-- header  -->
@@ -60,43 +61,44 @@ $senacTLG = [
     <div class="containerConteudo">
         <div class="containerInfo">
             <!-- info_1 -->
-                <img id="livroFoto" src="<?php echo $URLBASE?>/public/assets/img/Simposio.png" alt="livro.jpg">
-                <div class="info_1">
-                    
-                    <div class="livroInfo">
-                        <div class="livroTitulo">
-                            <h1><?php echo $livro["titulo"]?></h1>
-                            <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: 9788536512259</p>
-                        </div>
-                        <div class="review">
-                            <img src="<?php echo $URLBASE?>/public/assets/icons/estrelas3.png" alt=""><p>3 reviews</p>
-                        </div>
-                        <div class="tags">
-                            <h3>Tags:</h3>
-                            <div class="tags2">
-                                <div class="tag_icone">
-                                    <p>Culinária</p>
-                                </div>
-                                <div class="tag_icone">
-                                    <p>História</p>
-                                </div>
+            <img id="livroFoto" src="<?php echo $URLBASE ?>/public/assets/img/Simposio.png" alt="livro.jpg">
+            <div class="info_1">
+
+                <div class="livroInfo">
+                    <div class="livroTitulo">
+                        <h1><?php echo $livro["titulo"] ?></h1>
+                        <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: 9788536512259</p>
+                    </div>
+                    <div class="review">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/estrelas3.png" alt="">
+                        <p>3 reviews</p>
+                    </div>
+                    <div class="tags">
+                        <h3>Tags:</h3>
+                        <div class="tags2">
+                            <div class="tag_icone">
+                                <p>Culinária</p>
+                            </div>
+                            <div class="tag_icone">
+                                <p>História</p>
                             </div>
                         </div>
-                        <!-- botao de reservar -->
-                      
-                        
-                        <p id="livroDescricao"><?php echo $livro["desc"]?></p>
-                        
-                        <!-- botao de reservar -->
-                         <div class="livroReservar">
-                            <p>Disponível</p>
-                            <button id="botaoReserva" onclick="reservaConcluida()" data-status="livre">Reservar</button>
-                        </div>
-                        
-                        
-                    
+                    </div>
+                    <!-- botao de reservar -->
 
-                
+
+                    <p id="livroDescricao"><?php echo $livro["desc"] ?></p>
+
+                    <!-- botao de reservar -->
+                    <div class="livroReservar">
+                        <p>Disponível</p>
+                        <button id="botaoReserva" onclick="reservaConcluida()" data-status="livre">Reservar</button>
+                    </div>
+
+
+
+
+
                     <!-- botao de reservar -->
                     <div class="info_2">
 
@@ -133,7 +135,7 @@ $senacTLG = [
         <!-- exemplares -->
         <div class="containerExemplar">
             <p>Exemplares</p>
-            <img src="<?php echo $URLBASE?>/public/assets/icons/Plus Math.png" alt="" id="abrirExemplares" onclick="exemplarToggle()">
+            <img src="<?php echo $URLBASE ?>/public/assets/icons/Plus Math.png" alt="" id="abrirExemplares" onclick="exemplarToggle()">
         </div>
 
         <div id="containerExemplarOpen">
@@ -145,11 +147,11 @@ $senacTLG = [
                 <div class="gridA"><b>Emprestados</b></div>
                 <div class="gridA"><b>Reservados</b></div>
 
-                <div class="gridB"><?php echo $senacCG["unidade"]?></div>
-                <div class="gridB"><?php echo $senacCG["exemplarQntd"]?></div>
-                <div class="gridB"><?php echo $senacCG["exemplarDisponiveis"]?></div>
-                <div class="gridB"><?php echo $senacCG["exemplarEmprestados"]?></div>
-                <div class="gridB"><?php echo $senacCG["exemplarReservas"]?></div>
+                <div class="gridB"><?php echo $senacCG["unidade"] ?></div>
+                <div class="gridB"><?php echo $senacCG["exemplarQntd"] ?></div>
+                <div class="gridB"><?php echo $senacCG["exemplarDisponiveis"] ?></div>
+                <div class="gridB"><?php echo $senacCG["exemplarEmprestados"] ?></div>
+                <div class="gridB"><?php echo $senacCG["exemplarReservas"] ?></div>
             </div>
             <!-- Senac De Dourados -->
             <div class="containerGrid">
@@ -158,15 +160,15 @@ $senacTLG = [
                 <div class="gridA"><b>Disponível</b></div>
                 <div class="gridA"><b>Emprestados</b></div>
                 <div class="gridA"><b>Reservados</b></div>
-                
-                <div class="gridB"><?php echo $senacDOU["unidade"]?></div>
-                <div class="gridB"><?php echo $senacDOU["exemplarQntd"]?></div>
-                <div class="gridB"><?php echo $senacDOU["exemplarDisponiveis"]?></div>
-                <div class="gridB"><?php echo $senacDOU["exemplarEmprestados"]?></div>
-                <div class="gridB"><?php echo $senacDOU["exemplarReservas"]?></div>
+
+                <div class="gridB"><?php echo $senacDOU["unidade"] ?></div>
+                <div class="gridB"><?php echo $senacDOU["exemplarQntd"] ?></div>
+                <div class="gridB"><?php echo $senacDOU["exemplarDisponiveis"] ?></div>
+                <div class="gridB"><?php echo $senacDOU["exemplarEmprestados"] ?></div>
+                <div class="gridB"><?php echo $senacDOU["exemplarReservas"] ?></div>
             </div>
-            
-           
+
+
             <!-- Senac de Três LAgoas -->
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
@@ -175,17 +177,17 @@ $senacTLG = [
                 <div class="gridA"><b>Emprestados</b></div>
                 <div class="gridA"><b>Reservados</b></div>
 
-                <div class="gridB"><?php echo $senacTLG["unidade"]?></div>
-                <div class="gridB"><?php echo $senacTLG["exemplarQntd"]?></div>
-                <div class="gridB"><?php echo $senacTLG["exemplarDisponiveis"]?></div>
-                <div class="gridB"><?php echo $senacTLG["exemplarEmprestados"]?></div>
-                <div class="gridB"><?php echo $senacTLG["exemplarReservas"]?></div>
+                <div class="gridB"><?php echo $senacTLG["unidade"] ?></div>
+                <div class="gridB"><?php echo $senacTLG["exemplarQntd"] ?></div>
+                <div class="gridB"><?php echo $senacTLG["exemplarDisponiveis"] ?></div>
+                <div class="gridB"><?php echo $senacTLG["exemplarEmprestados"] ?></div>
+                <div class="gridB"><?php echo $senacTLG["exemplarReservas"] ?></div>
             </div>
-            
 
 
 
-            
+
+
 
         </div>
 
@@ -197,16 +199,16 @@ $senacTLG = [
             </div>
             <form id="commentForm" action="/submit-comment" method="POST">
                 <div class="inputRating">
-                <img class="estrela-input" src="<?php echo $URLBASE?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="1">
-                <img class="estrela-input" src="<?php echo $URLBASE?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="2">
-                <img class="estrela-input" src="<?php echo $URLBASE?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="3">
-                <img class="estrela-input" src="<?php echo $URLBASE?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="4">
-            </div>
-            <input type="text" id="comentario-input" placeholder="Escreva sua opinião...">
-            <input type="hidden" name="rating" id="rating-value" value="0">
-            <button type= "button" id="comentario-botao">Enviar</button>
+                    <img class="estrela-input" src="<?php echo $URLBASE ?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="1">
+                    <img class="estrela-input" src="<?php echo $URLBASE ?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="2">
+                    <img class="estrela-input" src="<?php echo $URLBASE ?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="3">
+                    <img class="estrela-input" src="<?php echo $URLBASE ?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="4">
+                </div>
+                <input type="text" id="comentario-input" placeholder="Escreva sua opinião...">
+                <input type="hidden" name="rating" id="rating-value" value="0">
+                <button type="button" id="comentario-botao">Enviar</button>
             </form>
-            
+
             <!-- comentario do usuario -->
             <div class="comment_2" id="commentTemplate" style="display:none;">
                 <div class="commentName">
@@ -227,7 +229,7 @@ $senacTLG = [
             <div class="comment_2" id="comment_2id">
                 <div class="commentName">
                     <div class="estrela-placeholder-container">
-                        <img class="estrela-placeholder" src="<?php echo $URLBASE?>/public/assets/icons/estrelas4.png" alt="" >
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas4.png" alt="">
                     </div>
 
                     <h3 id="commentTitulo">Neymar JR</h3>
@@ -239,8 +241,8 @@ $senacTLG = [
             <div class="comment_2">
                 <div class="commentName">
                     <div class="estrela-placeholder-container">
-                        <img class="estrela-placeholder" src="<?php echo $URLBASE?>/public/assets/icons/estrelas4.png" alt="" >
-                       
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas4.png" alt="">
+
                     </div>
 
                     <h3 id="commentTitulo">Rodrigo Fato</h3>
@@ -252,7 +254,7 @@ $senacTLG = [
                 <div class="commentName">
 
                     <div class="estrela-placeholder-container">
-                        <img class="estrela-placeholder" src="<?php echo $URLBASE?>/public/assets/icons/estrelas4.png" alt="" >
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas4.png" alt="">
                     </div>
 
                     <h3 id="commentTitulo">Matheus</h3>
@@ -265,8 +267,8 @@ $senacTLG = [
                 <div class="commentName">
 
                     <div class="estrela-placeholder-container">
-                        <img class="estrela-placeholder" src="<?php echo $URLBASE?>/public/assets/icons/estrelas4.png" alt="" >
-                        
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas4.png" alt="">
+
                     </div>
 
                     <h3 id="commentTitulo">Andrey Hipolito</h3>
@@ -283,9 +285,8 @@ $senacTLG = [
     ?>
 
 
-    <script src="<?php echo $URLBASE?>/public/js/usuario/livro-info.js">
-    exemplarToggle()
-
+    <script src="<?php echo $URLBASE ?>/public/js/usuario/livro-info.js">
+        exemplarToggle()
     </script>
 </body>
 

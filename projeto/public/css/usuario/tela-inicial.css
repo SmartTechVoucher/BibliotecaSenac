@@ -52,7 +52,7 @@ body {
 
 }
 
-button {
+/* button {
     width: 25%;
     height: 120%;
     border: solid white;
@@ -62,10 +62,12 @@ button {
     align-items: center;
     gap: 1rem;
 
-}
+} */
 
 
 .button-entrar {
+    width: 20%;
+    height: auto;
     border-radius: 1rem;
     border: none;
     color: #FFFFFF;
@@ -77,7 +79,7 @@ button {
     justify-content: center;
     align-items:center;
     gap: 10px;
-    font-size: 1.125rem;
+    font-size: 15px;
     
 
 

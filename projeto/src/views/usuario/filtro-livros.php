@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="../../../public/css/components/card_livros.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/card-livros.css">
     <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
 
 </head>
@@ -51,7 +51,6 @@ include "../../../public/components/header/header.php";
                     <?php for ($i = 0; $i < 4; $i++): ?>
                         <?php include "../../../public/components/card/card-componente.php"; ?>
                     <?php endfor; ?>
-
                 </div>
 
                 <div class="saude">

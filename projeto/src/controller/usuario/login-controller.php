@@ -50,7 +50,7 @@ class LoginController{
     // }
     public function ValidarLogin($nome, $senha) {
         // Simulação de login
-        if ($nome === "12345678901" && $senha === "Mar152007#") {
+        if ($nome === "12345678901" && $senha === "2007") {
             $_SESSION['usuario'] = [
                 'id' => 1,
                 'nome' => 'João da Silva'
