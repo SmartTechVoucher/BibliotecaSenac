@@ -59,19 +59,19 @@
     <div class="conteiner2">
 
         <div class="caixa">    
-            <img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro">
+            <a href="./telaDeCadastroDeLivros"><img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro"></a>
         </div>
 
         <div class="caixa">
-            <a href="./Tela de cadastro de usuários.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
+            <a href="./telaDeCadastroDeUsuarios.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
         </div>
         
         <div class="caixa">
-            <a href="./Tela de relatórios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
+            <a href="./telaDeRelatorios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
         </div>
         
         <div class="caixa">
-            <a href="./Histórico de empréstimos.php"><img src="../../../public/assets/icons/Empréstimo (1).png" alt="Livro" class="emprestimo"></a>
+            <a href="./historico-emprestimo.php"><img src="../../../public/assets/icons/Empréstimo (1).png" alt="Livro" class="emprestimo"></a>
         </div>
         
         <div class="caixa">
@@ -79,7 +79,7 @@
         </div>
         
         <div class="caixa">
-            <a href="./Tela dos livros cadastrados.php"><img src="../../../public/assets/icons/List Books.png" alt="Livro" class="estoque"></a>
+            <a href="./telaDosLivrosCadastrados.php"><img src="../../../public/assets/icons/List Books.png" alt="Livro" class="estoque"></a>
         </div>
         
     </div>
@@ -111,7 +111,7 @@
         <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
         <div><a href="./historico-emprestimo.php">Empréstimos</a></div>
         <div><a href="Por fazer">Usuários cadastrados</a></div>
-        <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
+        <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
         <hr>
         <div><a href="../usuario/login.php">Logout</a></div>
     </div>
