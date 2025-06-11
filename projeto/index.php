@@ -1,15 +1,17 @@
-<!-- <?php
-        session_start();
-        include_once './public/components/toast/toast.php';
 
-        if (isset($_SESSION['toast'])) {
-            $mensagemToast = $_SESSION['toast'];
-            unset($_SESSION['toast']);
-        } else {
-            $mensagemToast = null;
-        }
 
-        ?> -->
+<?php
+    session_start();
+
+    include_once __DIR__ . './public/components/toast/toast.php';
+   
+    if (isset($_SESSION['toast'])) {
+        showToast($_SESSION['toast']['mensagem'], $_SESSION['toast']['tipo']);
+        unset($_SESSION['toast']);
+    }
+        
+    
+?>
 
 
 <!DOCTYPE html>
@@ -25,15 +27,7 @@
 </head>
 
 <body>
-    <?php
-    // Inclui a função de toast
-    include_once '../projeto/public/components/toast/toast.php';
-
-
-    if ($mensagemToast) {
-        showToast("Login feito com sucesso", 'success');
-    }
-    ?>
+    
     <div class="conteiner">
         <div class="cabecalho">
             <div class="cbleft">

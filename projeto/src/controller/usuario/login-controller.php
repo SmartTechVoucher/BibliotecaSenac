@@ -49,19 +49,27 @@ class LoginController{
     //     }
     // }
     public function ValidarLogin($nome, $senha) {
-        // Simulação de login
+        session_start();
+
         if ($nome === "12345678901" && $senha === "2007") {
             $_SESSION['usuario'] = [
                 'id' => 1,
                 'nome' => 'João da Silva'
             ];
-            $_SESSION['toast'] = "Login efetuado com sucesso!";
+            $_SESSION['toast'] = [
+                'mensagem' => "Login efetuado com sucesso!",
+                'tipo' => "success"
+            ];
             return true;
         } else {
-            $_SESSION['toast'] = "Usuário ou senha inválidos.";
+            $_SESSION['toast'] = [
+                'mensagem' => "Usuário ou senha inválidos.",
+                'tipo' => "error"
+            ];
             return false;
         }
     }
+
     
 
 }
