@@ -2,6 +2,7 @@
 function redirectToPage() {
      window.location.href = "src/views/usuario/login.php";
 }
+
 window.addEventListener("DOMContentLoaded", () => {
      const span = document.querySelector('.nome-usuario');
      if (span) {
@@ -11,3 +12,4 @@ window.addEventListener("DOMContentLoaded", () => {
          span.style.setProperty('--char-ch', `${chLength}ch`);
      }
  });
+

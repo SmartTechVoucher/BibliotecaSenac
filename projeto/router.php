@@ -16,11 +16,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $senha = $_POST["senha"] ?? '';
             $resultado = $loginController->ValidarLogin($nome, $senha);
             if ($resultado) {
-                $_SESSION['toast'] = "Login feito com sucesso!";
+                $_SESSION['toast'] = [
+                    'mensagem' => "Login feito com sucesso!",
+                    'tipo' => "success"
+                ];
                 header("Location: ./index.php");
                 exit;
             } else {
-                $_SESSION['toast'] = "Usuário ou senha inválidos!";
+                $_SESSION['toast'] = [
+                    'mensagem' => "Usuário ou senha inválidos!",
+                    'tipo' => "error"
+                ];  
                 header("Location: ./src/views/usuario/login.php");
                 exit;
             }
