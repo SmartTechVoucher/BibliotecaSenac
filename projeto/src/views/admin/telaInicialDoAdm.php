@@ -39,7 +39,7 @@
     <div class="icone"><img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
 
     <div class="minhaConta">
-        <p>Minha conta</p>
+        <p><a href="./minha-conta.php">Minha conta</p></a>
         <p><a href="../usuario/login.php">Sair</a></p>
     </div>   
 
