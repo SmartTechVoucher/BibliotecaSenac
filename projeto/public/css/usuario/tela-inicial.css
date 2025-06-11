@@ -373,7 +373,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(imagens/bubblebk\ 1.png);
+    background-image: url(../../assets/img/bolhas-estante.png);
     background-size: contain;
     background-repeat: no-repeat;
     margin-top: 200px;
@@ -396,7 +396,7 @@ body {
  
 .tresPrimeiros{
     position: relative;
-    top: 10px;
+    margin-top: 15%;
     display: flex;
     justify-content: center;
     width: 1000px;
@@ -413,9 +413,12 @@ body {
 }
  
 .estanteimg{
-   
-    width: 80vw;
-    height: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    width: 100vw;
+    height: 54vw;
 }
 
 .perfil-logado {

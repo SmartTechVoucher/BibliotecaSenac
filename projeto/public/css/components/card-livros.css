@@ -1,19 +1,12 @@
-body {
-  background: #f0f0f0;
-  padding: 50px;
-  font-family: Arial, sans-serif;
-}
-
 .card-livro {
-  width: 300px;
-  height: 450px;
+  width: 320px;
+  height: 470px;
   position: relative;
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   background: white;
   margin: 0 auto;
-
-  background-color: #9B2121;
+  background-color: #DCE3EA;
 }
 
 .capa-livro {
