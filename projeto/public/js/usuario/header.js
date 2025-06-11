@@ -1,18 +1,46 @@
-function toggleMenu(abrir) {
+function toggleMenu() {
     const navMenu = document.getElementById("nav-menu");
-    if (abrir) {
-        navMenu.style.display = "block";
-    } else {
-        navMenu.style.display = "none";
+    const isOpen = navMenu.style.display === "block";
+
+    navMenu.style.display = isOpen ? "none" : "block";
+
+    // Se abrir, ativa escuta para cliques fora
+    if (!isOpen) {
+        document.addEventListener('click', handleClickForaMenuGeral);
     }
 }
 
-function toggleMenuPerfil(abrir) {
+function handleClickForaMenuGeral(event) {
+    const menuGeral = document.getElementById("nav-menu");
+    const iconeGeral = document.getElementById("menu-icone");
+
+    if (!menuGeral.contains(event.target) && !iconeGeral.contains(event.target)) {
+        menuGeral.style.display = "none";
+        document.removeEventListener('click', handleClickForaMenuGeral);
+    }
+}
+
+
+
+function toggleMenuPerfil() {
     const navPerfil = document.getElementById("nav-menu-perfil");
-    if (abrir) {
-        navPerfil.style.display = "block";
-    } else {
-        navPerfil.style.display = "none";
+    const isOpen = navPerfil.style.display === "block";
+    navPerfil.style.display = isOpen ? "none" : "block";
+
+    // Se abrir, ativa escuta para cliques fora
+    if (!isOpen) {
+        document.addEventListener('click', handleClickForaMenu);
+    }
+}
+
+function handleClickForaMenu(event) {
+    const menu = document.getElementById("nav-menu-perfil");
+    const icone = document.getElementById("icone-pessoa");
+
+    // Se o clique for fora do menu e fora do ícone, fecha o menu
+    if (!menu.contains(event.target) && !icone.contains(event.target)) {
+        menu.style.display = "none";
+        document.removeEventListener('click', handleClickForaMenu); // remove listener
     }
 }
 

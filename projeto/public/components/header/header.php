@@ -15,7 +15,7 @@ require "../../../config/constantes.php";
     <!-- CABEÇALHO -->
     <header>
         <!-- Menu hamburguer -->
-        <div class="menu-icon" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
+        <div class="menu-icon" id="menu-icone" onclick="toggleMenu()">
             <img src="../../../public/assets/icons/Menu adm.png" alt="Menu">
         </div>
 
@@ -25,7 +25,7 @@ require "../../../config/constantes.php";
         </div>
 
         <!-- Menu lateral -->
-        <nav id="nav-menu" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
+        <nav id="nav-menu">
             <ul>
                 <li><a href="../../../index.php">🏠 Início</a></li>
                 <li><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">🔍 Pesquisa</a></li>
@@ -40,7 +40,7 @@ require "../../../config/constantes.php";
         </div>
 
         <!-- Ícone e menu do perfil -->
-        <div class="iconepessoa" onmouseover="toggleMenuPerfil(true)" onmouseleave="toggleMenuPerfil(false)">
+        <div class="iconepessoa"  id="icone-pessoa" onclick="toggleMenuPerfil()">
             <div class="menu-icon2">
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/Icon perfil.png" alt="Ícone de pessoa">
             </div>
@@ -49,9 +49,18 @@ require "../../../config/constantes.php";
                 <span>Bem-vindo, Gabriel!</span>
                 <div id="nav-menu-perfil">
                     <ul>
-                        <li><a href="#">👤 Meu Perfil</a></li>
-                        <li><a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">📖 Área do Leitor</a></li>
-                        <li><a href="#" onclick="confirmarSaida(event)">🚪 Sair</a></li>
+                        <li>
+                            <a href="#">
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt="">
+                                Meu Perfil</a></li>
+                        <li>
+                            <a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
+                                Área do Leitor</a></li>
+                        <li>
+                            <a href="#" onclick="confirmarSaida(event)">
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
+                                Sair</a></li>
                     </ul>
                 </div>
             </div>
