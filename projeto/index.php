@@ -1,16 +1,15 @@
-
-
 <?php
-    session_start();
+session_start();
 
-    include_once __DIR__ . './public/components/toast/toast.php';
-   
-    if (isset($_SESSION['toast'])) {
-        showToast($_SESSION['toast']['mensagem'], $_SESSION['toast']['tipo']);
-        unset($_SESSION['toast']);
-    }
-        
-    
+include_once __DIR__ . '/public/components/toast/toast.php';
+
+
+if (isset($_SESSION['toast'])) {
+    showToast($_SESSION['toast']['mensagem'], $_SESSION['toast']['tipo']);
+    unset($_SESSION['toast']);
+}
+
+
 ?>
 
 
@@ -27,7 +26,7 @@
 </head>
 
 <body>
-    
+
     <div class="conteiner">
         <div class="cabecalho">
             <div class="cbleft">
