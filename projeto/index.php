@@ -42,7 +42,7 @@ if (isset($_SESSION['toast'])) {
                             </g>
                         </svg>
                         <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-                        <a href="logout.php" style="">Logout</a>
+                        <a href="logout.php">Logout</a>
                     </div>
                 <?php else: ?>
                     <button onclick="redirectToPage()" class="button-entrar">
@@ -69,9 +69,9 @@ if (isset($_SESSION['toast'])) {
 
                 </div>
             </div>
-            <!-- <div class="partebaixo">
+            <div class="partebaixo">
                 <img src="../projeto/public/assets/icons/bolha.png" alt="bolha" class="bolha">
-            </div> -->
+            </div>
             <div class="barrapesquisa">
                 <input type="text" class="pesquisa" auto> <button class="botaops" id="lupaId" onclick="focusInput()"><img src="../projeto/public/assets/icons/lupa.svg" alt=""></button>
             </div>
@@ -125,11 +125,11 @@ if (isset($_SESSION['toast'])) {
                 </div>
 
                 <div class="segundaFileira">
-                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
-                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
-                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
-                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
-                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
                 </div>
             </div>
         </div>

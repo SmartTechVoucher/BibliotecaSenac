@@ -367,14 +367,14 @@ body {
     font-size: 40px;
     color: white;
 }
-/*  
+
 .estante{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: url(../../assets/img/bolhas-estante.png);
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     margin-top: 200px;
     position: relative;
@@ -382,7 +382,7 @@ body {
     width: 100%;
     height: 1600px;
 }
- 
+ /*  
 .livros {
     position: absolute;
     flex-wrap: nowrap;
@@ -449,32 +449,51 @@ body {
     margin: 0 auto;
   }
   
-  .estanteimg {
+.estanteimg {
     width: 100%;
     height: auto;
     display: block; /* tira o espaço embaixo da img */
-  }
-  
-  .livros {
+}
+
+.livros {
     position: absolute;
-    top: 10%;   /* ajuste esses valores pra alinhar os cards dentro da imagem */
-    left: 10%;
+    top: 15%;   
+    left: 5%;
     width: 80%;
     height: 80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-  }
-  
-  .primeiraFileira, .segundaFileira {
+    gap: 5%;
+}
+
+.primeiraFileira {
+    margin-top: 5%;
+    gap: 15%;
+}
+
+.segundaFileira {
+    margin-top: 2%;
+    margin-left: 10%;
+    max-width: 2000px;
+    gap: 5%;
+    padding-bottom: 30px;
+}
+
+.primeiraFileira, .segundaFileira {
     display: flex;
-    gap: 250px;
-  }
-  
-  .livroEstante {
+    justify-content: center;
+    align-items: center;
+}
+
+
+.livroEstante {
     width: 120px; /* define o tamanho do card */
-    margin: 0 5px;
-  } 
+} 
+
+.livroEstante1 .card-livro {
+    width: 280px;
+    height: 400px;
+}
 
 .perfil-logado {
     /* border: solid red; */
