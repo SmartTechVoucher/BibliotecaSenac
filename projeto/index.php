@@ -115,46 +115,25 @@ if (isset($_SESSION['toast'])) {
         </div>
 
         <div class="estante">
-
             <img class="estanteimg" src="../projeto/public/assets/icons/estante 1.png" alt="">
 
             <div class="livros">
-
                 <div class="primeiraFileira">
-
-                    <div class="tresPrimeiros">
-                        <div class="livroEstante">
-                            <?php include "./public/components/card/card-componente.php"; ?>
-                        </div>
-                        <div class="livroEstante">
-                            <?php include "./public/components/card/card-componente.php"; ?>
-                        </div>
-                        <div class="livroEstante">
-                            <?php include "./public/components/card/card-componente.php"; ?>
-                        </div>
-                    </div>
-
-                    <!-- <div class="quatroUltimos">
-                            <div class="livroEstante">
-                                <?php include "./public/components/card/card-componente.php"; ?>
-                            </div>
-                            <div class="livroEstante">
-                                <?php include "./public/components/card/card-componente.php"; ?>
-                            </div>
-                            <div class="livroEstante">
-                                <?php include "./public/components/card/card-componente.php"; ?>
-                            </div>
-                            <div class="livroEstante">
-                                <?php include "./public/components/card/card-componente.php"; ?>
-                            </div>
-                        </div> -->
-
-
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
                 </div>
 
-
+                <div class="segundaFileira">
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                </div>
             </div>
         </div>
+
 
         <?php include '../projeto/public/components/footer/footer.php' ?>
 

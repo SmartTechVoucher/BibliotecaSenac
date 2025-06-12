@@ -367,7 +367,7 @@ body {
     font-size: 40px;
     color: white;
 }
- 
+/*  
 .estante{
     display: flex;
     flex-direction: column;
@@ -410,6 +410,27 @@ body {
     width: 1000px;
     gap: 30px;
     justify-content: center;
+} */
+
+/* .livros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.primeiraFileira {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.segundaFileira {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
  
 .estanteimg{
@@ -419,7 +440,41 @@ body {
     margin-top: 2%;
     width: 100vw;
     height: 54vw;
-}
+} */
+
+.estante {
+    position: relative;
+    width: 100%;     /* ou um valor fixo se preferir */
+    max-width: 3000px; /* pra não esticar demais */
+    margin: 0 auto;
+  }
+  
+  .estanteimg {
+    width: 100%;
+    height: auto;
+    display: block; /* tira o espaço embaixo da img */
+  }
+  
+  .livros {
+    position: absolute;
+    top: 10%;   /* ajuste esses valores pra alinhar os cards dentro da imagem */
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  .primeiraFileira, .segundaFileira {
+    display: flex;
+    gap: 250px;
+  }
+  
+  .livroEstante {
+    width: 120px; /* define o tamanho do card */
+    margin: 0 5px;
+  } 
 
 .perfil-logado {
     /* border: solid red; */
