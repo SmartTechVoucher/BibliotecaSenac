@@ -230,13 +230,15 @@ oportuno. */
 
 @media(max-width:1024px){
     
-    .titulo,.Libro, .copyright,.todos, .logoSenacHub{
+    .titulo,.Libro, .todos, .copyright, .logoSenacHub{
         display: none;
     }
     
 }
 
 @media(min-width: 375px){
+
+ /*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*/   
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
@@ -254,9 +256,65 @@ oportuno. */
         height: 100px;
     }
 
+ /*A partir daqui começam as mudanças feitas anteriormente*/
+
+    .quadradoCinza{
+        height: 1800px;
+    }
+    
+    .quadradoCinza .nascimento{
+        width: 260px;
+        margin-left: 7%;   
+    }
+   
+    .quadradoCinza .cpf{
+        width: 268px;        
+    }
+
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 22%;
+    }
+    
+    .fotoPorAparecer{
+        width: 55px;
+        height: 200px;
+    }
+
+    .rg{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputRg{
+        width: 92%;
+    }
+
+    .contato{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .inputTelefone{
+        width: 91%;
+    }
+
+    .inputCheckbox{
+        margin-top: 1%;
+    }
+
+    .profissao{
+        display: flex;
+        flex-direction: column;
+        width: 91%;
+    }
+
+
 } 
 
 @media(min-width:414px){
+
+ /*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*/   
 
  .opcional{
     padding-right: 15%;
@@ -272,14 +330,92 @@ oportuno. */
     top: 17%; left: 72.5%;
  }
 
+ /*A partir daqui vem as mudanças já feitas anteriormente*/
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 42%;
+ }
+
+ .filiacao{
+    display: flex;
+    flex-direction: column;
+    width: 91%;
+ }
+
+ .quadradoCinza{
+    height: 1870px;
+ }
+
+}
+
+@media(min-width:500px){
+
+ /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/   
+
+ .opcional{
+    padding-right: 27%;
+ }
+
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 13%;
+ }
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 77.2%;
+ }
+
+ /*A partir daqui vem as mudanças já feitas anteriormente*/
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 40%; left: 2%;
+ }
+
+}
+
+@media(min-width:600px){
+
+ /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/   
+
+ .opcional{
+    padding-right: 38%;
+ }
+
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 13%;
+ }
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 17%; left: 81%;
+ }
+
+ /*A partir daqui vem as mudanças já feitas anteriormente*/
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 40%; left: 2%;
+ }
+
+ .fotoPorAparecer{
+    width: 73px;
+ }
+
 }
 
 @media(min-width:768px){
+
+ /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/   
  
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
  .quadradoCinza{
     width: 60%;
+    height: 2200px;
     margin-left: 13%;
     border: solid 1px;
  }
@@ -292,8 +428,10 @@ oportuno. */
     height:30px;
  }
 
- .opcional p{
-    padding-right: 22%;
+ .opcional{
+    margin-left: 10%;
+    padding-right: 0%;
+    width: 268px;
  }
 
  .quadradoCinza .div{
@@ -310,15 +448,102 @@ oportuno. */
         top: 13%; left: 85.2%;
     }
 
+ /*A partir daqui vem as mudanças já feitas*/
+ 
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 45%; left: 15%;
+    }
+
+    .fotoPorAparecer{
+        width: 91px;
+    }
+
+}
+
+@media(min-width:820px){
+
+ /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/   
+ 
+ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
+
+ .quadradoCinza{
+    width: 60%;
+    height: 2200px;
+    margin-left: 13%;
+    border: solid 1px;
+ }
+
+ .quadradoCinza input{
+    height: 30px;
+ }
+
+ .quadradoCinza img{
+    height:30px;
+ }
+
+ .opcional{
+    margin-left: 10%;
+    padding-right: 0%;
+    width: 268px;
+ }
+
+ .quadradoCinza .div{
+    padding-right: 20%;
+ }
+
+ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
+    .rodape{
+        font-size: 14px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 13%; left: 85.8%;
+    }
+
+ /*A partir daqui vem as mudanças já feitas*/
+ 
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 52%; left: 15%;
+    }
+
+    .fotoPorAparecer{
+        width: 91px;
+    }
+
 }
 
 @media(min-width:912px){
 
- /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
+ /*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*/    
    
- .inferior{
+ /*A partir daqui começam as mudanças já feitas*/
+
+  .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 57.3%; left: 15%;
+  }  
+
+  .fotoPorAparecer{
+    width: 109px;
+  }
+
+  .quadradoCinza{
+    height: 2205px;
+    
+ }
+
+ /*Rodapé*//*Rodapé*//*Rodapé*//*Rodapé*//*Rodapé*//*Rodapé*/
+
+  .inferior{
        margin-top: 18.7%;
     }
+ 
+ /*Rodapé*//*Rodapé*//*Rodapé*//*Rodapé*//*Rodapé*//*Rodapé*/
+   
+ /*eventos*//*eventos*//*eventos*//*eventos*//*eventos*//*eventos*/
 
     .menu{
         position: var(--posicaoAbsoluta);
@@ -329,10 +554,14 @@ oportuno. */
         position: var(--posicaoAbsoluta);
         top: 11%; left: 87.5%;
     }
+ 
+ /*eventos*//*eventos*//*eventos*//*eventos*//*eventos*//*eventos*/
 
 }
 
 @media(min-width: 1024px){
+
+ /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/   
 
     .conteiner .menuAdm{
         width: 304px;
@@ -348,23 +577,99 @@ oportuno. */
     }
 
     .quadradoCinza .div{
-        padding-right: 40% ;
+        padding-right: 40%;
     }
+
+ /*a partir daqui aparecem as mudanças já feitas*/
+ 
+ .fotoPorAparecer{
+    width: 130px;
+    height: 216px;
+ }
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 56%; left: 15%;
+ }
+
+ /*a partir daqui aparecem as mudanças já feitas*/
 
     .menu{
         position: var(--posicaoAbsoluta);
-        top: 20%;
+        top: 10%;
     }
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        top: 19%; left: 88.9%;
+        top: 10%; left: 88.7%;
+    }
+
+}
+
+@media(min-width: 1124px){
+
+ /*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*/   
+
+    .conteiner .menuAdm{
+        width: 304px;
+    }
+
+    .quadradoCinza .input{
+        padding: 2%;
+        padding-left: 5%;
+    }
+
+    .quadradoCinza .opcional{
+        padding-right: 32%;
+    }
+
+    .quadradoCinza .div{
+        padding-right: 40%;
+    }
+
+ /*a partir daqui aparecem as mudanças já feitas*/
+ 
+ .fotoPorAparecer{
+    width: 148px;
+    height: 216px;
+ }
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: 56%; left: 15%;
+ }
+
+ /*a partir daqui aparecem as mudanças já feitas*/
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 10%; left: 89.9%;
     }
 
 }
 
 @media(min-width: 1280px){
+
+ /*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*/   
     
+ /*A partir daqui começam as mudanças já feitas*/
+
+    .fotoApresentacao{
+        position: var(--posicaoAbsoluta);
+        bottom: 8.5%; left: 15%;
+    }
+
+    .fotoPorAparecer{
+        width: 250px;
+        height: 316px;
+    }
+
+ /*A partir daqui começam as mudanças já feitas*/
     .quadradoCinza .input{
         padding-left: 20%;
     }
@@ -374,7 +679,8 @@ oportuno. */
     }
 
     .quadradoCinza .opcional{
-        padding-left: 26%;
+        padding-right: 0%;
+        margin-left: 24%;
     }
 
     .quadradoCinza .div{
@@ -404,6 +710,23 @@ oportuno. */
 
 @media(min-width:1358px){
 
+ /*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*/   
+
+ /*A partir daqui começam as mudanças já feitas*/
+
+ .fotoApresentacao{
+    position: var(--posicaoAbsoluta);
+    bottom: -3%; left: 15%;
+}
+
+ .fotoPorAparecer{
+    width: 350px;
+    height: 316px;
+ }
+
+ /*A partir daqui começam as mudanças já feitas*/   
+
+
 .conteiner3 .esquerdo, .direito{
     width: 150px;
     height: 150px;
@@ -420,7 +743,8 @@ oportuno. */
 }
 
 .quadradoCinza .opcional{
-    padding-right: 28%;
+    padding-right: 0%;
+    margin-left: 28.8%;
 }
 
 .quadradoCinza .div{
@@ -441,7 +765,7 @@ oportuno. */
 
 .minhaConta{
     position: var(--posicaoAbsoluta);
-    top: 19%; left: 91.5%;
+    top: 19%; left: 91.6%;
 }
 
 }
@@ -467,13 +791,11 @@ oportuno. */
     .fotoPorAparecer{
         height: 420px;
         width: 250px;
-        /* display: block; */
     }
     
  /*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*//*RG*/   
     .dadosDeRg{
         padding-left: 0.3%;
-        font-family: var(--fontes);
     }
     
     .rg, .filiacao, .contato, .profissao{
@@ -579,7 +901,8 @@ oportuno. */
    }
 
    .quadradoCinza .opcional{
-        padding-right: 24%;
+        /* padding-right: 0%; */
+        margin-left: 38%;
    }
 
    .quadradoCinza .div{
@@ -588,8 +911,13 @@ oportuno. */
         width: 500px;
    }   
 
-   .quadradoCinza .nome, .nomeSocial, .cpf, .nascimento{
+   .quadradoCinza .nome, .nomeSocial, .cpf{
         width: 310px;
+   }
+
+   .quadradoCinza .nascimento{
+     width: 310px;
+     margin-left: 2%;
    }
 
    .quadradoCinza #nascimento{
@@ -601,6 +929,23 @@ oportuno. */
         padding-left: 33%;
         width: 790px;
         gap: 0.5%;
+   }
+
+   .quadradoCinza .rg{
+    display: block;
+    height: 207px;
+   }
+   
+   .quadradoCinza .inputRg{
+     width: 20%;
+   }
+
+   .quadradoCinza .contato, .profissao{
+        display: block;
+   }
+   
+   .quadradoCinza .inputTelefone{
+        width: 20%;
    }
    
  /*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*//*Inputs*/  

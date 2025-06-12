@@ -38,7 +38,7 @@
         <div class="icone"><img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
 
         <div class="minhaConta">
-            <p>Minha conta</p>
+            <p><a href="./minha-conta.php">Minha conta</a></p>
             <a href="../usuario/login.php">Sair</a>
         </div>     
   
@@ -106,24 +106,24 @@
             <h3>Dados de RG:</h3>
 
             <label>Número:</label>
-            <input type="text">
+            <input type="text" class="inputRg">
 
             <label>Órgão emissor:</label>
-            <input type="text">
+            <input type="text" class="inputRg">
 
             <label>UF:</label>
-            <input type="text">
+            <input type="text" class="inputRg">
             
             <br>
             <br>
 
             <label>País</label>
-            <input type="text">
+            <input type="text" class="inputRg">
 
             <label>Data:</label>
-            <input type="text">           
+            <input type="text" class="inputRg">           
 
-            <button>Procurar</button>
+            <button class="inputRg">Procurar</button>
         </div>
         
         <div class="filiacao"> 
@@ -144,17 +144,17 @@
             <h3>Contato:</h3>
 
             <label>Telefone Residencial:</label>
-            <input type="text" class="">
+            <input type="text" class="inputTelefone">
             
             <label class="telefone">Telefone Comercial:
-                <input type="text" class="">
+                <input type="text" class="inputTelefone">
             </label>
 
             <br>
             <br>
 
             <label>Celular:</label>
-            <input type="text" class="">
+            <input type="text" class="inputTelefone">
 
             <label class="telefone">Outro telefone:
                 <input type="text" class="">
@@ -164,18 +164,14 @@
             <br>
 
             <label>Email:</label>
-            <input type="text" class="">
-
-            <br>
-            <br>
+            <input type="text" class="inputTelefone">
 
             <label>Homepage:</label>
-            <input type="text" class="">
-             
+            <input type="text" class="inputTelefone">         
             
             <input type="checkbox">
             <label>Cancelar o recebimento de emails.</label>
-            
+           
         </div>
 
         <div class="profissao"> 
@@ -232,18 +228,18 @@
 
     <div id="menu" class="menu">
 
-        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
-        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
-        <div><a href="./Histórico de empréstimos.php">Empréstimos</a></div>
-        <div><a href="Por fazer">Usuários</a></div>
-        <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
-        <div><a href="./Tela inicial do adm.php">Tela inicial</a></div>
+        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
+        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
+        <div><a href="./historico-emprestimo.php">Empréstimos</a></div>
+        <div><a href="usuarios-cadastrados.php">Usuários</a></div>
+        <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
+        <div><a href="./telaInicialDoAdm.php">Tela inicial</a></div>
         <hr>
         <div><a href="../usuario/login.php">Logout</a></div>
 
     </div>
 
-    <script src="../../../public/js/admin/telaDeCadastroDeUsuários.js"></script>
+    <script src="../../../public/js/admin/telaDeCadastroDeUsuarios.js"></script>
 
 </body>
 </html>
