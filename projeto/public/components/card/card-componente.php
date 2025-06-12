@@ -9,5 +9,4 @@
         <p class="autor-nome">(Nome do autor)</p>
         <p class="status-livro">Disponível</p>
         <button class="btn-ver-livro">Ver livro</button>
-
 </div>

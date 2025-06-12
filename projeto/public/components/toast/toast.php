@@ -1,10 +1,10 @@
 <?php
-include_once __DIR__ . '/../../../config/constantes.php'; // Caminho absoluto correto
+include_once __DIR__ . '/../../../config/constantes.php';
 
 function showToast($mensagemToast, $type = 'success')
 {
     global $URLBASE; // Torna a variável visível dentro da função
-    
+
     $color = $type === 'success' ? '#1F7E4D' : 'red';
 
     $imageTag = $type === 'success'
@@ -32,7 +32,6 @@ function showToast($mensagemToast, $type = 'success')
         $imageTag
         $mensagemToast
     </div>
+    <script src='$URLBASE/public/js/components/toast.js'></script>
     ";
 }
-
-
