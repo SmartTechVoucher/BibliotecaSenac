@@ -72,7 +72,7 @@ tr:hover {
     border: 1px solid #888;
     width: 80%;
     height: fit-content;
-    max-width: 400px;
+    max-width: 30%;
     border-radius: 8px;
 }
 /* .dados-text{
@@ -96,7 +96,8 @@ tr:hover {
 }
 
 #userImg{
-    width: 40%;
+    width: 170px;
+    margin-right: 3%;
 }
 
 #regularesBotao {
@@ -241,6 +242,7 @@ body {
    
 }
 
+
 /* Conteiner 3 */
 .conteiner3 {
     display: flex;
@@ -249,3 +251,15 @@ body {
     width: 100%;
 }
 
+.dados-container{
+    display: flex;
+}
+
+
+.modal-content input{
+    border: 1px solid #9f9f9f;
+    padding: 3px;
+}
+.modal-content input:read-only{
+    background-color: rgb(234, 234, 234);
+}

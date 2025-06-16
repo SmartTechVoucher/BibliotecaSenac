@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <title>Usuários cadastrados</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/BibliotecaSenac/projeto/public/css/admin/usuarios-cadastrados.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,8 +36,8 @@
     <div class="container">
 
       <h2>Usuários Cadastrados</h2>
-      <label for="search"><strong>Pesquisar:</strong></label>
-      <input type="text" id="search" placeholder="Pesquisar usuário..." onkeyup="filterTable()">
+      <label for="search"><label for="">Pesquisar:</label for=""></label>
+      <input readonly type="text" id="search" placeholder="Pesquisar usuário..." onkeyup="filterTable()">
     
       <div id="regulares" class="tab-content" style="display: block;"> <!-- tabela que lista usuarios regulares -->
 
@@ -69,26 +70,28 @@
     <div id="userModal" class="modal"> <!-- janela que contém dados do usuario -->
       <div class="modal-content">
         <h3>Dados do Usuário</h3>
-        <div class="dados1">
+        <div class="dados-container">
           <img src="<?php echo $URLBASE?>/public/assets/img/NullUser.jpg" alt="" id="userImg">
-          <div class="dados1.5">
-            <p><strong>Nome:</strong> <span id="userName"></span></p>
-            <p><strong>Nome social:</strong> <span id="userNameSocial"></span></p>
-            <p><strong>Nascimento:</strong> <span id="userNascimento"></span></p>
-            <p><strong>Sexo:</strong> <span id="userSexo"></span></p>
+          <div class="dados">
+            <div id= "dados-texto"><label for="">Nome:</label for=""> <input readonly id="userName"></input></div>
+            <div id= "dados-texto"><label for="">Nome social:</label for=""> <input readonly id="userNameSocial"></input></div>
+            <div id= "dados-texto"><label for="">Nascimento:</label for=""> <input type="date" readonly id="userNascimento"></input></div>
+            <div id= "dados-texto"><label for="">Sexo:</label for=""> <select disabled id="userSexo">
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+              <option value="outro">Outro</option>
+            </select></div>
+            <div id= "dados-texto"><label for="">CPF:</label for=""> <input readonly id="userCPF"></input></div>
           </div>
         </div>
         
-        
-        
-        <div class="dados2">
-          <p><strong>CPF:</strong> <span id="userCPF"></span></p>
-          <p><strong>Matrícula:</strong> <span id="userRegistration"></span></p>
-          <p><strong>Unidade:</strong> <span id="userUnidade"></span></p>
-          <p><strong>Telefone:</strong> <span id="userTelefone"></span></p>
-          <p><strong>Situação:</strong> <span id="userStatus"></span></p>
+       <div class="dados2">
+          <div id= "dados-texto"><label for="">Matrícula:</label> <input readonly id="userRegistration"></input></div>
+          <div id= "dados-texto"><label for="">Unidade:</label> <input readonly id="userUnidade"></input></div>
+          <div id= "dados-texto"><label for="">Telefone:</label> <input readonly id="userTelefone"></input></div>
+          <div id= "dados-texto"><label for="">Situação:</label> <input readonly id="userStatus"></input></div>
         </div>
-        
+
         <button onclick="blockUser()">Bloquear</button>
         <button onclick="closeModal()">Fechar</button>
       </div>

@@ -12,12 +12,12 @@ const button1 = document.getElementById('regularesBotao');
   });
 
   const users = [
-      { name: 'Tadinha Mora', registration: '970582024', status: 'Regular' , unidade: 'Senac Hub Academy', telefone: '6740028922', sexo: 'Feminino', nomeSocial: 'Tadalafila' , CPF: '000.000.000-00' , nascimento: '01/01/2000'},
-      { name: 'Danica Wia', registration: '978362024', status: 'Regular' , unidade: 'Senac Dourados', telefone: '6740028922', sexo: 'Feminino' , nomeSocial: '' , CPF: '000.000.000-00' , nascimento: '01/01/2000'},
-      { name: 'Tom Magaier', registration: '520362024', status: 'Regular' , unidade: 'Senac Três Lagoás', telefone: '6740028922', sexo: 'Masculino' , nomeSocial: '', CPF: '000.000.000-00', nascimento: '01/01/2000'},
-      { name: 'Thiago Neves', registration: '520362024', status: 'Regular' , unidade: 'Senac Hub Academy', telefone: '6740028922', sexo: 'Masculino' , nomeSocial: 'Thiaguinho', CPF: '000.000.000-00', nascimento: '01/01/2000'},
-      { name: 'Leticia Nunes', registration: '520362024', status: 'Regular' , unidade: 'Senac Hub Academy', telefone: '6740028922', sexo: 'Feminino' , nomeSocial: '', CPF: '000.000.000-00', nascimento: '01/01/2000'},
-      { name: 'Isabela Bela', registration: '520362024', status: 'Regular' , unidade: 'Senac Dourados', telefone: '6740028922', sexo: 'Feminino' , nomeSocial: 'Belinha', CPF: '000.000.000-00', nascimento: '01/01/2000'}
+      { name: 'Tadinha Mora', registration: '970582024', status: 'Regular' , unidade: 'Senac Hub Academy', telefone: '6740028922', sexo: 'feminino', nomeSocial: 'Tadalafila' , CPF: '000.000.000-00' , nascimento: '2000-01-01'},
+      { name: 'Danica Wia', registration: '978362024', status: 'Regular' , unidade: 'Senac Dourados', telefone: '6740028922', sexo: 'feminino' , nomeSocial: '' , CPF: '000.000.000-00' , nascimento: '2000-01-01'},
+      { name: 'Tom Magaier', registration: '520362024', status: 'Regular' , unidade: 'Senac Três Lagoás', telefone: '6740028922', sexo: 'masculino' , nomeSocial: '', CPF: '000.000.000-00', nascimento: '2000-01-01'},
+      { name: 'Thiago Neves', registration: '520362024', status: 'Regular' , unidade: 'Senac Hub Academy', telefone: '6740028922', sexo: 'masculino' , nomeSocial: 'Thiaguinho', CPF: '000.000.000-00', nascimento: '2000-01-01'},
+      { name: 'Leticia Nunes', registration: '520362024', status: 'Regular' , unidade: 'Senac Hub Academy', telefone: '6740028922', sexo: 'outro' , nomeSocial: '', CPF: '000.000.000-00', nascimento: '2000-01-01'},
+      { name: 'Isabela Bela', registration: '520362024', status: 'Regular' , unidade: 'Senac Dourados', telefone: '6740028922', sexo: 'feminino' , nomeSocial: 'Belinha', CPF: '000.000.000-00', nascimento: '2000-01-01'}
       
     ];
 
@@ -65,15 +65,15 @@ const button1 = document.getElementById('regularesBotao');
       if (index >= 0) {
         selectedUserIndex = index;
         const user = users[index];
-        document.getElementById('userName').innerText = user.name;
-        document.getElementById('userNameSocial').innerText = user.nomeSocial;
-        document.getElementById('userNascimento').innerText = user.nascimento;
-        document.getElementById('userSexo').innerText = user.sexo;
-        document.getElementById('userCPF').innerText = user.CPF;
-        document.getElementById('userRegistration').innerText = user.registration;
-        document.getElementById('userUnidade').innerText = user.unidade;
-        document.getElementById('userTelefone').innerText = user.telefone;
-        document.getElementById('userStatus').innerText = user.status;
+        document.getElementById('userName').value = user.name;
+        document.getElementById('userNameSocial').value = user.nomeSocial;
+        document.getElementById('userNascimento').value = user.nascimento;
+        document.getElementById('userSexo').value = user.sexo;
+        document.getElementById('userCPF').value = user.CPF;
+        document.getElementById('userRegistration').value = user.registration;
+        document.getElementById('userUnidade').value = user.unidade;
+        document.getElementById('userTelefone').value = user.telefone;
+        document.getElementById('userStatus').value = user.status;
         document.getElementById('userModal').style.display = 'flex';
       }
     }
