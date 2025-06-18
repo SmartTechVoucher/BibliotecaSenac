@@ -27,9 +27,20 @@ require "../../../config/constantes.php";
         <!-- Menu lateral -->
         <nav id="nav-menu">
             <ul>
-                <li><a href="../../../index.php">🏠 Início</a></li>
-                <li><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">🔍 Pesquisa</a></li>
-                <li><a href="contato.php">📞 Contato</a></li>
+                <li>
+                    <a href="../../../index.php">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/HomeIcone.png" alt="">
+                        Início</a>
+                </li>
+                <li>
+                    <a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/PesquisaIcon.png" alt="">
+                        Pesquisa</a></li>
+                <li>
+                    <a href="contato.php">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt="">
+                        Contato</a>
+                </li>
             </ul>
         </nav>
 
@@ -55,7 +66,7 @@ require "../../../config/constantes.php";
                                 Meu Perfil</a></li>
                         <li>
                             <a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">
-                                <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/AreaDoLeitor.png" alt="">
                                 Área do Leitor</a></li>
                         <li>
                             <a href="#" onclick="confirmarSaida(event)">
