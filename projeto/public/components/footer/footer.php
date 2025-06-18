@@ -33,8 +33,8 @@ require(__DIR__ . '../../../../config/constantes.php');
                     2024. Todos os Direitos Reservados</p>
             </div>
 
-            <div class="textos">
-                <div class="contato">
+            <!-- <div class="textos"> -->
+                <!-- <div class="contato">
                     <p>
                         Fale conosco
                         <br>
@@ -44,8 +44,8 @@ require(__DIR__ . '../../../../config/constantes.php');
                         <br>
                         (67) 3312-6260
                     </p>
-                </div>
-                <div class="email">
+                </div> -->
+                <!-- <div class="email">
                     <p>
                         Email:
                         <br>
@@ -68,8 +68,8 @@ require(__DIR__ . '../../../../config/constantes.php');
                         <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/WhatsApp.svg" alt="WhatsApp"></a>
                         <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/YouTube.svg" alt="YouTube"></a>
                       </div>
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
         </footer>
     </div>
 

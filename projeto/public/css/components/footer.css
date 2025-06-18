@@ -79,7 +79,7 @@ footer img {
     margin-right: 100px;
 }
 
-.textos {
+/* .textos {
     padding: 15px;
     font-size: 12px;
     gap: 50px;
@@ -109,7 +109,7 @@ footer img {
 
 .social-icons img:hover {
     transform: scale(1.1);
-}
+} */
 
 .logo-senac2 img {
     width: 50px;
