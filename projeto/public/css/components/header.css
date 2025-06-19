@@ -1,3 +1,4 @@
+
 :root {
 
     --fontes: 'Poppins', 'Roboto', 'Montaga';   /*Fontes usadas no projeto */
@@ -15,7 +16,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background: #001E3E;
+    background: #003162;
     color: white;
     position: fixed;  /* Fixa o cabeçalho no topo */
     top: 0;           /* Fixa no topo da página */
@@ -43,9 +44,6 @@ header {
     height: 100%
 }
 
-
-/* Logo Senac */
-
 /* Navbar oculta por padrão */
 nav {
     display: none;
@@ -56,6 +54,7 @@ nav {
     padding: 10px;
     border-radius: 5px;
 }
+
 
 /* Lista de navegação */
 nav ul {
@@ -77,6 +76,37 @@ nav ul li a {
 nav.show {
     display: block;
 }
+
+#nav-menu-perfil {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background: #001E3E;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#nav-menu-perfil li{
+    list-style-type: none;
+    padding: 10px;
+}
+
+#nav-menu-perfil.show {
+    display: block;
+}
+
+nav ul li a,
+#nav-menu-perfil ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:visited,
+#nav-menu-perfil ul li a:visited {
+    color: white;
+}
+
 
 /* Centraliza o título no cabeçalho */
 .titulo {
