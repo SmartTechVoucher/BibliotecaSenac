@@ -294,23 +294,14 @@ h2{
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
 .menu{
-    width: 400px;
-    height: 440px;
+    width: 300px;
+    height: 325px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);
-    font-size: 36px;
+    font-size: 25px;
     display: none;
     cursor: pointer;   
-}
-
-/*Overlay de cadastro*/ /*Overlay de cadastro*/ /*Overlay de cadastro*/
-
-.overlayCadastro{
-    background-color: var(--corParaOverlays);
-    cursor: var(--apontador);
-    display: none;
-    text-align: center;
 }
 
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
@@ -321,10 +312,6 @@ a{
 }
 
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
-
-.overlayCadastro .item{
-    color: black;
-}
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
@@ -424,10 +411,6 @@ a{
 
     .inferiorDireito{
         margin-top: 33%;
-    }
-    
-    .adm{
-        width: 500px;
     }
 
      .menu{
@@ -787,5 +770,11 @@ a{
     .menuAdm .logoSenacHub{
         height: 120px;
         width: 200px;
+    }
+
+    .menu{
+        width: 400px;
+        height: 400px;
+        font-size: 33px;
     }
 }
