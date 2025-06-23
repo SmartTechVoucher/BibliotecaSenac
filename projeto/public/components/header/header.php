@@ -63,8 +63,8 @@ require "../../../config/constantes.php";
 
     <!-- Ícones de canto -->
     <div class="iconesSuperiores">
-        <img src="<?php echo $URLBASE ?>/public/assets/img/Superior esquerdo.svg" alt="Superior esquerdo" class="esquerdo">
-        <img src="<?php echo $URLBASE ?>/public/assets/img/Superior direito.svg" alt="Superior direito" class="direito">
+        <img src="<?php echo $URLBASE ?>/public/assets/icons/Superior esquerdo.png" alt="Superior esquerdo" class="esquerdo">
+        <img src="<?php echo $URLBASE ?>/public/assets/icons/Superior direito.png" alt="Superior direito" class="direito">
     </div>
 
     <!-- Modal de confirmação -->
