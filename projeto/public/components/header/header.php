@@ -16,7 +16,7 @@ require "../../../config/constantes.php";
     <header>
         <!-- Menu hamburguer -->
         <div class="menu-icon" id="menu-icone" onclick="toggleMenu()">
-            <img src="../../../public/assets/icons/Menu adm.png" alt="Menu">
+            <img src="../../../public/assets/icons/MenuIconeHamburguer2.svg" alt="Menu">
         </div>
 
         <!-- Logo do Senac -->
@@ -29,7 +29,7 @@ require "../../../config/constantes.php";
             <ul>
                 <li>
                     <a href="../../../index.php">
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/HomeIcone.png" alt="">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/HomeIcone.png"  alt="">
                         Início</a>
                 </li>
                 <li>
@@ -62,12 +62,12 @@ require "../../../config/constantes.php";
                     <ul>
                         <li>
                             <a href="#">
-                                <img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt="">
-                                Meu Perfil</a></li>
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="">
+                                Perfil</a></li>
                         <li>
                             <a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">
                                 <img src="<?php echo $URLBASE ?>/public/assets/icons/AreaDoLeitor.png" alt="">
-                                Área do Leitor</a></li>
+                                Leitura</a></li>
                         <li>
                             <a href="#" onclick="confirmarSaida(event)">
                                 <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">

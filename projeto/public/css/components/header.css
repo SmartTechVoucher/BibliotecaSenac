@@ -40,19 +40,19 @@ header {
 
 .menu-icon img {
    
-    width: 90%;
-    height: 100%
+    width: 92%;
+    height: 104%
 }
 
 /* Navbar oculta por padrão */
 nav {
     display: none;
     position: absolute;
-    top: 80px;
-    left: 10px;
+    top: 80%;
+    left: 1%;
     background: #001E3E;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1%;
+    border-radius: 5%;
 }
 
 
@@ -68,8 +68,16 @@ nav ul li {
 }
 
 nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 7%;
     color: white;
     text-decoration: none;
+}
+
+nav ul li a img{
+    width: 20%;
+    height: 20%;
 }
 
 /* Exibir menu quando ativado */
@@ -80,11 +88,12 @@ nav.show {
 #nav-menu-perfil {
     display: none;
     position: absolute;
-    top: 80px;
-    right: 10px;
+    width: 8%;
+    top: 80%;
+    right: 1%;
     background: #001E3E;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1%;
+    border-radius: 5%;
 }
 
 #nav-menu-perfil li{
@@ -96,10 +105,17 @@ nav.show {
     display: block;
 }
 
-nav ul li a,
 #nav-menu-perfil ul li a {
+    display: flex;
+    align-items: center;
+    font-size: 102%;
+    gap: 7%;
     color: white;
     text-decoration: none;
+}
+
+#nav-menu-perfil ul li a img{
+    width: 20%;
 }
 
 nav ul li a:visited,
@@ -107,10 +123,10 @@ nav ul li a:visited,
     color: white;
 }
 
-
 /* Centraliza o título no cabeçalho */
 .titulo {
     display: flex;
+    font-size: 99%;
     flex-direction: column;
     align-items: center;
     transform: translateX(-200%);
@@ -161,6 +177,7 @@ nav ul li a:visited,
 
 #icone_top{
     height: 0%;   
+    width: 12%;
 }
 
 .iconeSenac img{
