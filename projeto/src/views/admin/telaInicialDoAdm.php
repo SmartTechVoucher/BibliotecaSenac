@@ -75,7 +75,7 @@
         </div>
         
         <div class="caixa">
-            <img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario">
+            <a href="./usuarios-cadastrados.php"><img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario"></a>
         </div>
         
         <div class="caixa">
@@ -110,7 +110,7 @@
         <div><a href="./telaDeCadastroDeUsuarios.php">Cadastrar usuários</a></div>
         <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
         <div><a href="./historico-emprestimo.php">Empréstimos</a></div>
-        <div><a href="Por fazer">Usuários cadastrados</a></div>
+        <div><a href="./usuarios-cadastrados.php">Usuários cadastrados</a></div>
         <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
         <hr>
         <div><a href="../usuario/login.php">Logout</a></div>
