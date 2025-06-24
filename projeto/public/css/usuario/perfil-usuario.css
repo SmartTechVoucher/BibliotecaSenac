@@ -126,3 +126,11 @@ html,body {
 .card:hover .hover-content {
   display: block;
 }
+
+@media (max-width: 480px){
+    .grid{
+      
+      grid-template-columns: 1fr;
+
+    }
+}

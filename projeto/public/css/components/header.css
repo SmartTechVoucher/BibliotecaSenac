@@ -41,7 +41,7 @@ header {
 .menu-icon img {
    
     width: 92%;
-    height: 104%
+    height: 86%
 }
 
 /* Navbar oculta por padrão */
@@ -186,6 +186,15 @@ nav ul li a:visited,
 
 /* RESPONSIVIDADE */
 
+@media (max-width: 974px) {
+    
+    .titulo{
+        font-size: 75%;
+    }
+   
+}
+
+
 @media (max-width: 480px) {
     
     .header{
@@ -197,4 +206,41 @@ nav ul li a:visited,
         display: none;
     }
    
+}
+
+
+@media (max-width: 930px) {
+    
+    .titulo{
+        display: none;
+    }
+   
+}
+
+
+
+
+@media (max-width: 930px){
+
+    #icone_top{
+
+        display: none;
+    }
+}
+
+@media (max-width: 1029px){
+
+    .menu-icon img {
+           
+        width: 200%;
+        height: 86%
+    }
+}
+
+@media (max-width: 1074px){
+
+    .iconepessoa{
+        
+        font-size: 11px;
+    }
 }
