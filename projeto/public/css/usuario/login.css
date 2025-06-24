@@ -1,195 +1,100 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     width: 100vw;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #003162;
 }
 
-.container{
+.container {
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: #003162;
+    flex-wrap: wrap;
+}
+
+.login {
+    width: 50%;
+    min-width: 320px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid 3px white;
+    padding: 2rem;
 }
 
 form {
-    width: 50%;
-    height: 60%;
+    width: 100%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
+    padding: 2rem;
     border-radius: 10px;
     border: solid 3px white;
     background-color: #003162;
 }
 
 form img {
-    width: 200px;
+    width: 180px;
     height: auto;
 }
 
-.login{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-right: solid 3px white;
-}
-
-label{
-    font-size: 20px;
+label {
+    font-size: 1rem;
     color: white;
     width: 80%;
-    position: relative;
 }
 
-.tela_animacao{ 
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #003162;
-}
-
-img{
-    width: 100%;
-}
-
-.login-campos input{
+.login-campos input {
     border: none;
     border-radius: 5px;
-    padding: 3%;
+    padding: 12px;
     width: 80%;
-    height: auto;
-    outline: none;
     background-color: #EEEEEE;
-    margin: -19px;
-    gap: 30px;
-
+    outline: none;
 }
 
-/* .campo-senha input {
-    width: 80%;
-    padding-right: 40px;
-    padding: 10px;
-    box-sizing: border-box;
-  } */
-  
-/* 
-input:focus {
-    border: 3px solid #F68B1F;
-} */
-
-
-.campo-usuario {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
-}
-
+.campo-usuario,
 .campo-senha {
-    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     width: 100%;
-    gap: 20px;
+    gap: 10px;
 }
 
-/* .toggle-senha {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 18px;
-    user-select: none;
-} */
-
-
-
-button{
+button {
     width: 80%;
-    height: auto;
-    padding: 3%;
+    padding: 12px;
     border: none;
     border-radius: 5px;
     background-color: #F68B1F;
     color: white;
-    font-weight: 800;
+    font-weight: bold;
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
 
-button:hover{
-
-    transition: all .2s ease-in-out;
+button:hover {
     background-color: #da7a1a;
 }
 
-a{
-    display: flex;
-    justify-content: end    ;
-    width: auto;
+a {
     color: white;
     text-decoration: none;
-}
-
-.logo{
-    width: 15%;
-    height: 15%;
-    position: absolute;
-    top: 0;
-    right: 40%;
-}
-.logo2{
-    width: 15%;
-    height: 15%;
-    position: absolute;
-    bottom: 0;
-    left: -10%;
-    transform: scale(-1);
-}
-
-.decor-top-right, .decor-bottom-left {
-    display: flex;
-    flex-wrap: wrap;
-    width: 60px;
-    gap: 5px;
-    position: absolute;
-}
-  
-.decor-top-right {
-    top: 20px;
-    right: 20px;
-}
-  
-  .decor-bottom-left {
-    bottom: 20px;
-    left: 20px;
-}
-  
-.square {
-    width: 18px;
-    height: 18px;
-    /* background-color: rgba(0, 51, 102, 0.3); azul com transparência */
-    background-color: white;
+    font-size: 0.9rem;
 }
 
 .check-entrar {
@@ -197,62 +102,74 @@ a{
     justify-content: space-between;
     align-items: center;
     width: 80%;
-    margin: 4%;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.checkbox-container  {
+.checkbox-container {
     display: flex;
     align-items: center;
-    flex-direction: row;
-    gap: 5px;
-    white-space: nowrap;
-}
-
-.login-campos {
-    display:flex; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    width: 100%;
-
-}
-
-.checkbox-container label {
-    font-size: 100%;
+    gap: 8px;
 }
 
 .checkbox-container input {
     accent-color: #F68B1F;
 }
 
-.checkbox-container label {
-    cursor: pointer;
-  }
-  
+.tela_animacao {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
 
-@media screen and (max-width: 900px) {
-    .container{
+.tela_animacao img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+}
+
+@media (max-width: 1024px) {
+    .container {
         flex-direction: column;
-    }
-    
-    form{
-        width: 90%;
+        height: auto;
     }
 
-    .tela_animacao{
-        display: none;
+    .login {
+        width: 100%;
+        height: auto;
+        border-right: none;
     }
 
-    .logo{
-        width: 30%;
-        right: -18%;
+    .tela_animacao {
+        width: 100%;
+        height: auto;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 100%;
+        padding: 1rem;
+        border: none;
     }
 
-    .logo2{
-        width: 30%;
-        left: -18%;
+    .login-campos input,
+    button {
+        width: 100%;
     }
 
+    label,
+    .check-entrar {
+        width: 100%;
+    }
 
+    .check-entrar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

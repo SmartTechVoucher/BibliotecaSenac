@@ -42,9 +42,10 @@ body {
     align-items: center;
     justify-content: space-between;
     background-color: #003366;
-    padding: 10px 40px 10px 0px;
+    padding: 10px 10px;
     flex-wrap: wrap;
     border-bottom: 1px solid white;
+    box-sizing: border-box;
 }
 
 .onda-inferior {
@@ -71,13 +72,22 @@ body {
 .cbleft {
     display: flex;
     align-items: center;
+    gap: 10px;
 }
 
 .cbmenu-icon {
     display: none;
-    font-size: 24px;
+}
+
+.cbmenu-icon i {
+    font-size: 22px;
     color: white;
     cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cbmenu-icon i:hover {
+    color: #F68B1F;
 }
 
 .cbquite nav ul {
@@ -91,7 +101,38 @@ body {
 .cbquite nav ul li {
     color: white;
     cursor: pointer;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
 }
+
+.navbar li a{
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    /* text-transform: uppercase; */
+    transition: color 0.3s ease;
+  }
+  
+  .navbar li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F68B1F;
+    transition: width 0.3s ease;
+  }
+  
+  .navbar li a:hover {
+    color: #F68B1F;
+  }
+  
+  .navbar li a:hover::after {
+    width: 100%;
+  }
 
 .cbquite {
     color: var(--cor-texto);
@@ -135,27 +176,29 @@ body {
 
 
 .button-entrar {
-
+    padding: 8px 12px; /* padding mais contido */
     height: auto;
-    padding: 10px 15px 10px 15px;
+    margin-right: 2%;
     border-radius: 1rem;
     border: none;
     color: #FFFFFF;
     cursor: pointer;
-    background-color:#F68B1F;
+    background-color: #F68B1F;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     display: flex;
     justify-content: center;
-    align-items:center;
+    align-items: center;
     gap: 10px;
-    font-size: 10px;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    white-space: nowrap; /* impede quebra de linha */
+    transition: background-color 0.3s ease;
 }
 
-/* .button-entrar:hover{
+.button-entrar:hover{
     background-color: white;
     color: #002043;
-    border: solid white;
+    transition: 0.1s;
 }
 
 .button-entrar:hover svg path {
@@ -163,8 +206,8 @@ body {
 }
     
 .button-entrar svg path {
-    transition: fill 0.3s;
-} */
+    transition: fill 0.1s;
+}
 
 .button-entrar span {
     font-family: 'Montserrat', sans-serif;
@@ -174,13 +217,11 @@ body {
 
 .icone-perfil {
     width: 30px;
-    height: 30px;
-    padding-bottom: 2%;
-    
+    height: 30px;    
 }
  
 .icsenac{
-    margin-left: 50px;
+    margin-left: 20px;
     width: 50px;
     height: auto;
 }
@@ -746,6 +787,10 @@ body {
 
 
 @media (max-width: 768px) {
+    .icsenac {
+        margin-left: 20px
+    }
+    
     .cbquite {
         display: none;
         width: 100%;
@@ -761,6 +806,10 @@ body {
         padding: 10px;
     }
 
+    .cbquite .navbar li a:active {
+        background-color: #f1f3f4;
+    }
+
     #botao-entrar {
         display: none;
     }
@@ -770,7 +819,6 @@ body {
     }
 
     .cabecalho {
-        
         justify-content: space-between;
     }
 
@@ -783,96 +831,92 @@ body {
     }
 }
 
-@media screen and (max-width: 768px) {
-    .geralinfo {
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-             
-        text-align: center;
-    }
-
-    .senacFoto {
-        margin: 20px auto;
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-
-    .letreiro {
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        width: 100%;
-    }
-
-    .letras, .letras2 {
-        font-size: 36px;
-        margin-left: 0;
-        border-right: none;
-        width: 100%;
-        white-space: normal;
-        animation: none;
-    }
-
-    .frase {
-        font-size: 18px;
-        padding: 10px;
-        line-height: 1.5;
-        animation: none;
-    }
-
-    .partebaixo {
-        position: relative;
-        height: 200px;
-        margin-top: 20px;
-    }
-
-    .bolha {
-        height: 60vw;
-    }
+.geralinfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
+.info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.senacFoto {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.letreiro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.letras {
+    font-size: 64px;
+    font-weight: bold;
+    color: white;
+}
+
+.letras2 {
+    font-size: 60px;
+    font-weight: bold;
+    color: #F68B1F;
+}
+
+.frase {
+    font-size: 24px;
+    color: white;
+    margin-top: 10px;
+}
+
+
+/* ========== Responsivo progressivo ========== */
 @media (max-width: 1024px) {
-    .geralinfo {
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-    }
-
     .senacFoto {
-        width: 350px;
+        width: 300px;
         height: auto;
-        margin: 0 auto;
     }
 
-    .letreiro {
-        align-items: center;
-        text-align: center;
+    .letras {
+        font-size: 52px;
     }
 
-    .letras, .letras2 {
-        font-size: 50px;
-        margin-left: 0;
-        border-right: none;
-        width: auto;
-        animation: none;
+    .letras2 {
+        font-size: 48px;
     }
 
     .frase {
-        font-size: 22px;
+        font-size: 20px;
     }
 }
 
-/* ==================== MOBILE ==================== */
-@media (max-width: 600px) {
-    .senacFoto {
-        width: 250px;
+@media (max-width: 800px) {
+    .geralinfo {
+        text-align: center;
     }
 
-    .letras, .letras2 {
-        font-size: 35px;
+    .senacFoto {
+        width: 200px;
+        height: auto;
+    }
+
+    .letras {
+        font-size: 42px;
+    }
+
+    .letras2 {
+        font-size: 40px;
     }
 
     .frase {
@@ -880,21 +924,20 @@ body {
     }
 }
 
-@media (max-width: 480px) {
-    .pesquisa {
-        font-size: 14px;
-        padding: 8px 10px;
+@media (max-width: 600px) {
+    .letras {
+        font-size: 36px;
     }
 
-    .botaops {
-        padding: 8px;
+    .letras2 {
+        font-size: 34px;
     }
 
-    .botaops img {
-        width: 16px;
-        height: 16px;
+    .frase {
+        font-size: 16px;
     }
 }
+
 
 
 

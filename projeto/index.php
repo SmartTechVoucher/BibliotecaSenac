@@ -38,16 +38,16 @@ if (isset($_SESSION['toast'])) {
             </div>
 
             <div class="cbmenu-icon">
-                <i id="menu-toggle" class="fas fa-bars"></i>
+                    <i id="menu-toggle" class="fas fa-bars"></i>
             </div>
 
             <div class="cbquite" id="menu-links">
                 <nav>
-                    <ul>
-                        <li>INICIO</li>
-                        <li>LIVROS</li>
-                        <li>CONTATO</li>
-                        <li>LOGAR</li>
+                    <ul class="navbar">
+                        <li><a href="./index.php">Início</a></li>
+                        <li><a href="">Livros</a></li>
+                        <li><a href="">Contato</a></li>
+                        <li><a href="">Logar</a></li>
                     </ul>
 
                     <div class="entrar-mobile">
