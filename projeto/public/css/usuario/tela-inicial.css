@@ -149,8 +149,9 @@ body {
 }
 
 .entrar-mobile {
-    display: none; /* padrão: escondido */
+    display: none; 
     margin-top: 10px;
+    margin-left: 10px;
     text-align: center;
 }
  
@@ -274,9 +275,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    box-shadow:  0 12px 0 #71B0EF,         /* sombra principal */
-    6px 12px 2px #71B0EF,     /* ponta direita mais grossa */
-    -6px 12px 2px #71B0EF;   /* ponta esquerda mais grossa */ 
+    box-shadow:  0 12px 0 #71B0EF,        
+    6px 12px 2px #71B0EF,
+    -6px 12px 2px #71B0EF;  
     border-bottom-left-radius: 70% 40%;
     border-bottom-right-radius: 70% 40%;
     overflow: hidden;
@@ -288,7 +289,7 @@ body {
     display: block;
     max-width: 450px;
     width: 100%;   
-    margin-left: 5%;      
+    margin-left: 1%;      
     margin-right: 0;
     margin-top: 2%;
     object-fit: contain;
@@ -299,24 +300,23 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start; /* ou start */
+    align-items: center;
     z-index: 3;
     max-width: 660px;
     width: 100%;
-    margin-top: px; /* antes estava 100px */
-    margin-left: 1%;
-    height: 400px; /* remove o tamanho fixo */
-    padding-right: 10%
+    /* margin-left: 1%; */
+    height: 200px;
+    padding: 15px 20px 20px 20px;
+    /* padding-right: 5% */
 }
  
 .letras{
     max-width: 700px;
-    margin: 0;
-    margin-left: 30px;
+    /* margin: 0;
+    margin-left: 30px; */
     font-size: 60px;
     font-family: "roboto";
     color: white;
-    border-right: 10px solid white;
     white-space: nowrap;
     width: 20.2ch;
     overflow: hidden;   
@@ -324,14 +324,13 @@ body {
 }
  
 .letras2{
-    max-width: 850px;
-    margin: 0;
-    margin-left: 30px;
+    max-width: 700px;
+    /* margin: 0;
+    margin-left: 30px; */
     font-size: 65px;
     font-family: "roboto";
     font-weight: bold;
     color: white;
-    border-right: 10px solid white;
     white-space: nowrap;
     width: 24.2ch;
     overflow: hidden;
@@ -753,12 +752,14 @@ body {
 
 @font-face {
     font-family: "Roboto";
-    src: url(font/roboto/Roboto-Bold.ttf);
+    src: url("font/roboto/Roboto-Bold.ttf") format("truetype");
 }
  
 @font-face {
-    font-family: "Roboto";
-    src: url('../assets/fonts/Roboto-Italic.ttf') format('truetype');
+    font-family: "Poppins";
+    src: url("font/poppins/Poppins-ExtraLight.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
 }
  
 @keyframes marca{
@@ -823,12 +824,29 @@ body {
     }
 
      #botao-entrar {
-        display: none; /* esconde o botão de fora no mobile */
+        display: none;
     }
 
     .entrar-mobile {
-        display: block; /* exibe dentro do menu no mobile */
+        display: block; 
     }
+
+    .letreiro {
+        height: 150px;
+        padding-bottom: 1%;
+        /* padding-left: 5%; */
+    }
+
+    .info {
+        border-bottom-left-radius: 180% 40%;
+        border-bottom-right-radius: 180% 40%;
+    }
+
+    .fachada-hub-mobile {
+        width: 100%;
+        height: 100%;
+    }
+
 }
 
 .geralinfo {
@@ -842,7 +860,6 @@ body {
 .info {
     display: flex;
     align-items: center;
-    gap: 20px;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
@@ -854,13 +871,13 @@ body {
     border-radius: 50%;
     object-fit: cover;
 }
-
+/* 
 .letreiro {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: left;
-}
+} */
 
 .letras {
     font-size: 64px;
@@ -875,17 +892,21 @@ body {
 }
 
 .frase {
+    font-family: 'Poppins', sans-serif;
     font-size: 24px;
+    font-style: italic;
     color: white;
     margin-top: 10px;
 }
 
 
 /* ========== Responsivo progressivo ========== */
+
 @media (max-width: 1024px) {
     .senacFoto {
         width: 300px;
-        height: auto;
+        height: 300px;
+        margin-top: 3%;
     }
 
     .letras {
@@ -907,8 +928,7 @@ body {
     }
 
     .senacFoto {
-        width: 200px;
-        height: auto;
+        background-image: url(../../assets/img/fachada-hub-academy.jpg);
     }
 
     .letras {
@@ -926,15 +946,17 @@ body {
 
 @media (max-width: 600px) {
     .letras {
-        font-size: 36px;
+        font-size: 28px;
     }
 
     .letras2 {
-        font-size: 34px;
+        font-size: 28px;
     }
 
     .frase {
-        font-size: 16px;
+        font-size: 12px;
+        padding-bottom: 5%;
+        margin-top: 0;
     }
 }
 

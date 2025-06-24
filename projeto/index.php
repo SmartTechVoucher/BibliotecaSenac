@@ -38,7 +38,7 @@ if (isset($_SESSION['toast'])) {
             </div>
 
             <div class="cbmenu-icon">
-                    <i id="menu-toggle" class="fas fa-bars"></i>
+                <i id="menu-toggle" class="fas fa-bars"></i>
             </div>
 
             <div class="cbquite" id="menu-links">
@@ -58,6 +58,11 @@ if (isset($_SESSION['toast'])) {
                             </div>
                         <?php else: ?>
                             <button onclick="redirectToPage()" class="button-entrar">
+                                <svg class="icone-perfil" xmlns="http://www.w3.org/2000/svg">
+                                    <g>
+                                        <path fill="white" d="M10.15,18.29c1.26,1.42,2.95,2.3,4.82,2.3s3.7-.95,4.97-2.47c3.28,.84,6.01,2.56,7.7,4.79,1.45-2.3,2.29-5.02,2.29-7.94C29.93,6.7,23.23,0,14.97,0S0,6.7,0,14.97c0,3.17,.99,6.1,2.67,8.52,1.53-2.35,4.2-4.22,7.48-5.19ZM14.97,5.41c3.16,0,5.72,3.05,5.72,6.82s-2.56,6.82-5.72,6.82-5.72-3.05-5.72-6.82,2.56-6.82,5.72-6.82Z"></path>
+                                    </g>
+                                </svg>
                                 <span>Entrar</span>
                             </button>
                         <?php endif; ?>
@@ -91,6 +96,7 @@ if (isset($_SESSION['toast'])) {
 
         <div class="geralinfo">
             <div class="info">
+                <!-- <img src="../projeto/public/assets/img/fachada-hub-academy.jpg" alt="" class="fachada-hub-mobile"> -->
                 <img src="../projeto/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
                 <div class="letreiro">
                     <h1 class="letras">Bem-vindo a Biblioteca</h1>
@@ -102,9 +108,9 @@ if (isset($_SESSION['toast'])) {
 
             <!-- <div class="partecima">
             </div> -->
-            <div class="barrapesquisa">
+            <!-- <div class="barrapesquisa">
                 <input type="text" class="pesquisa" auto> <button class="botaops" id="lupaId" onclick="focusInput()"><img src="../projeto/public/assets/icons/lupa.svg" alt=""></button>
-            </div>
+            </div> -->
         </div>
 
         <!--
