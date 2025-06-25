@@ -108,7 +108,7 @@ nav.show {
 #nav-menu-perfil ul li a {
     display: flex;
     align-items: center;
-    font-size: 102%;
+    font-size: 137%;
     gap: 7%;
     color: white;
     text-decoration: none;
@@ -126,10 +126,10 @@ nav ul li a:visited,
 /* Centraliza o título no cabeçalho */
 .titulo {
     display: flex;
-    font-size: 99%;
+    font-size: 61%;
     flex-direction: column;
     align-items: center;
-    transform: translateX(-200%);
+    transform: translateX(-358%);
     margin: 0 auto;  /* Garante a centralização do título */
 }
 
@@ -149,7 +149,7 @@ nav ul li a:visited,
     flex-direction: column;
     align-items: center;
     text-align: center;
-    font-size: 14px;
+    font-size: 59%;
     color: #fdfdfd; /* Cor do texto, ajuste conforme necessário */
     margin-top: 5px; /* Espaçamento entre a imagem e o texto */
 }
@@ -177,22 +177,12 @@ nav ul li a:visited,
 
 #icone_top{
     height: 0%;   
-    width: 12%;
+    width: 10%;
 }
 
-.iconeSenac img{
-    width: 17%;
-}
 
 /* RESPONSIVIDADE */
 
-@media (max-width: 974px) {
-    
-    .titulo{
-        font-size: 75%;
-    }
-   
-}
 
 
 @media (max-width: 480px) {
@@ -202,6 +192,23 @@ nav ul li a:visited,
         text-align: center;
         padding: 10px;
     }
+
+}
+
+@media (max-width: 807px){
+
+    
+    .menu-icon img {
+           
+        width: 200%;
+        height: 86%
+    }
+
+    #icone_top{
+
+       display: none;
+    }
+
     .titulo{
         display: none;
     }
@@ -212,15 +219,15 @@ nav ul li a:visited,
 @media (max-width: 930px) {
     
     .titulo{
-        display: none;
+        transform: translateX(-358%);
+        font-size: 61%;
     }
    
 }
 
 
 
-
-@media (max-width: 930px){
+@media (max-width: 600px){
 
     #icone_top{
 
@@ -237,10 +244,35 @@ nav ul li a:visited,
     }
 }
 
-@media (max-width: 1074px){
+@media (max-width: 1621px){
 
     .iconepessoa{
         
         font-size: 11px;
+    }
+}
+
+@media (max-width: 1501px){
+
+    #nav-menu-perfil{
+
+        right: 0;
+        transform: translateX(-20%);
+    }
+}
+
+@media (max-width: 1517px){
+
+    #nav-menu-perfil{
+
+        width: 10%;
+    }
+}
+
+@media (max-width: 1253px){
+
+    #nav-menu-perfil{
+
+        width: 10%;
     }
 }
