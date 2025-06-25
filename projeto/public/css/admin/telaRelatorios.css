@@ -481,7 +481,7 @@ configurações dos botões "cancelar" e "emitir" */
 
     .titulo{
         position: var(--posicao);
-        right: 10%;
+        right: 5%;
     }
 
     .minhaConta{
