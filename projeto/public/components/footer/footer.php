@@ -22,15 +22,23 @@ require(__DIR__ . '../../../../config/constantes.php');
 
 <body>
     <div>
+
+        <div class="inferior">
+            <img src="<?php echo $URLBASE?>/public/assets/icons/Inferior direito.png" alt="Ícone inferior" class="inferiorDireito">
+        </div>
+
         <footer>
+
             <div class="logo-senac">
                 <img src="<?php echo $URLBASE?>/public/assets/img/logosenac.svg" fill="white" alt="Logo Senac" id="logo-senac">
             </div>
             
             <div class="livro-brilhante">
-                <img src="<?php echo $URLBASE?>/public/assets/img/livro-brilhante.svg" alt="Livro icon">
-                <p>Senac MS Copyright © <br>
-                    2024. Todos os Direitos Reservados</p>
+                <img src="<?php echo $URLBASE?>/public/assets/icons/Livro.png" class="Libro" alt="Livro icon">
+                <div class="copyright">Senac MS Copyright © <br></div>
+                <div class="todos"> 2024. Todos os Direitos Reservados</div> 
+                <!-- <p>Senac MS Copyright © <br>
+                    2024. Todos os Direitos Reservados</p> -->
             </div>
 
             <!-- <div class="textos"> -->

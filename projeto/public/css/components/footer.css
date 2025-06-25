@@ -8,18 +8,6 @@
     --cor-texto: #FFFFFF;
 }
 
-/* footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    bottom: 0;
-    background-color: var(--azul-padrao);
-    width: 100%;
-    height: 120px;
-    font-family: 'Poppins', serif;
-    color: var(--cor-texto);
-} */
-
 footer {
     position: relative;         /* necessário para limitar elementos filhos */
     overflow: hidden;           /* impede a imagem de ultrapassar */
@@ -29,7 +17,7 @@ footer {
     bottom: 0;
     background-color: var(--azul-padrao-footer);
     width: 100%;
-    height: 120px;
+    height: 240px;
     font-family: 'Poppins', serif;
     color: var(--cor-texto);
 }
@@ -114,4 +102,10 @@ footer img {
 .logo-senac2 img {
     width: 50px;
     height: 50px;
+}
+
+.inferior{
+    display: flex;
+    justify-content: end;
+    margin-top: 5%;
 }

@@ -15,7 +15,7 @@ require "../../../config/constantes.php";
     <!-- CABEÇALHO -->
     <header>
         <!-- Menu hamburguer -->
-        <div class="menu-icon" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
+        <div class="menu">
             <img src="../../../public/assets/icons/Menu adm.png" alt="Menu">
         </div>
 
