@@ -3,7 +3,6 @@
 * {
     margin: 0;
     padding: 0;
- 
 }
  
 :root {
@@ -291,7 +290,7 @@ body {
     width: 100%;   
     margin-left: 1%;      
     margin-right: 0;
-    margin-top: 2%;
+    margin-top: 5%;
     object-fit: contain;
     height: auto;
 }
@@ -314,7 +313,7 @@ body {
     max-width: 700px;
     /* margin: 0;
     margin-left: 30px; */
-    font-size: clamp(28px, 6vw, 60px);
+    font-size: clamp(30px, 6vw, 60px);
     font-family: "roboto";
     color: white;
     white-space: nowrap;
@@ -322,13 +321,15 @@ body {
     width: 20.2ch;  
     overflow: hidden;   
     animation: marca 2.2s step-end forwards , write 1s steps(18, end);
+    padding-left: 6%;
+
 }
  
 .letras2{
     max-width: 700px;
     /* margin: 0;
     margin-left: 30px; */
-    font-size: clamp(28px, 6vw, 60px);
+    font-size: clamp(32px, 6vw, 60px);
     font-family: "roboto";
     font-weight: bold;
     color: #F68B1F;
@@ -339,6 +340,8 @@ body {
     opacity: 0;
     animation: aparecer 0s 3.2s forwards, marca 2.2s step-end forwards, write 1s steps(18, end);
     animation-delay: 1s;
+    padding-left: 12%;
+
    
 }
  
@@ -351,7 +354,7 @@ body {
     font-weight: 200;
     font-style: italic;
     /* font-size: clamp(10px, 2vw, 20px); */
-    font-size: 5%;
+    font-size: 20px;
     opacity: 0;
     animation: aparecer 3s ease-in-out 1s forwards ;
 }
@@ -791,6 +794,10 @@ body {
 
 
 @media (max-width: 768px) {
+    .conteiner {
+        overflow-y: auto;
+    }
+
     .icsenac {
         margin-left: 20px
     }
@@ -835,9 +842,12 @@ body {
     }
 
     .letreiro {
-        height: 150px;
-        padding-bottom: 1%;
-        /* padding-left: 5%; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding-bottom: 5%;
+    
     }
 
     .info {
@@ -855,14 +865,39 @@ body {
         max-width: none; 
     }
 
-}
+    .frase {
+        font-size: 10px;
+        flex-wrap: nowrap;
+    }
 
-.geralinfo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    .geralinfo {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    
+    .gentitle {
+        font-size: 28px;
+        margin-bottom: 10%;
+    }
+
+    .generos-livros {
+        margin-top: 10%;
+    }
+    
+    .gen {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-direction: column;
+        margin-top: 40%;
+        width: 100%; 
+        box-sizing: border-box;
+        min-height: 1300px;
+    }
 }
 
 .info {

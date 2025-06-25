@@ -24,6 +24,7 @@ if (isset($_SESSION['toast'])) {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./public/css/usuario/tela-inicial.css">
     <link rel="stylesheet" href="./public/css/components/card-livros.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -113,70 +114,70 @@ if (isset($_SESSION['toast'])) {
             </div> -->
         </div>
 
-        <!--
-                <div class="generos-livros">
-                <h1 class="gentitle">Gêneros de Livros</h1>
-                <div class="gen">
-                    <div class="gencard">
-                        <div class="icon_livros">
-                            <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon1">
-                        </div>
-                        <h2 class="gentitle">Tecnologia</h2>
+
+        <div class="generos-livros">
+            <h1 class="gentitle">Gêneros de Livros</h1>
+            <div class="gen">
+                <div class="gencard">
+                    <div class="icon_livros">
+                        <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon1">
                     </div>
-                    <div class="gencard">
-                        <div class="icon_livros">
-                            <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon2">
-                        </div>
-                        <h2 class="gentitle">Saúde</h2>
-                    </div>
-                    <div class="gencard">
-                        <div class="icon_livros">
-                            <img src="../projeto/public/assets/icons/gestao.svg" alt="" class="genicon3">
-                        </div>
-                        <h2 class="gentitle">Gestão</h2>
-                    </div>
-                    <div class="gencard">
-                        <div class="icon_livros">
-                            <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
-                        </div>
-                        <h2 class="gentitle">Design</h2>
-                    </div>
-                    <div class="gencard">
-                        <div class="icon_livros">
-                            <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
-                        </div>
-                        <h2 class="gentitle">Educação</h2>
-                    </div>
+                    <h2 class="gentitle">Tecnologia</h2>
                 </div>
+                <div class="gencard">
+                    <div class="icon_livros">
+                        <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon2">
+                    </div>
+                    <h2 class="gentitle">Saúde</h2>
+                </div>
+                <div class="gencard">
+                    <div class="icon_livros">
+                        <img src="../projeto/public/assets/icons/gestao.svg" alt="" class="genicon3">
+                    </div>
+                    <h2 class="gentitle">Gestão</h2>
+                </div>
+                <div class="gencard">
+                    <div class="icon_livros">
+                        <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
+                    </div>
+                    <h2 class="gentitle">Design</h2>
+                </div>
+                <div class="gencard">
+                    <div class="icon_livros">
+                        <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
+                    </div>
+                    <h2 class="gentitle">Educação</h2>
+                </div>
+            </div>
         </div>
 
 
-        <div class="sup">
+        <!-- <div class="sup">
             <h1 class="title">Livros</h1>
         </div>
 
         <div class="estante">
             <img class="estanteimg" src="../projeto/public/assets/icons/estante 1.png" alt="">
 
-                <div class="livros">
-                    <div class="primeiraFileira">
-                        <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
-                        <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
-                        <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
-                    </div>
+            <div class="livros">
+                <div class="primeiraFileira">
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/card/card-componente.php"; ?></div>
+                </div>
 
-                    <div class="segundaFileira">
-                        <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
-                        <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
-                        <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
-                        <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
-                        <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
-                    </div>
-                </div> -->
-    </div>
+                <div class="segundaFileira">
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/card/card-componente.php"; ?></div>
+                </div>
+            </div>
+        </div> -->
 
 
-    <!-- <?php include '../projeto/public/components/footer/footer.php' ?> -->
+        <!-- <?php include '../projeto/public/components/footer/footer.php' ?> -->
 
     </div>
 
