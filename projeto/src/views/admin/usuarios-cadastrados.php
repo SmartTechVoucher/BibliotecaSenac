@@ -85,15 +85,135 @@
           </div>
         </div>
         
-       <div class="dados2">
-          <div id= "dados-texto"><label for="">Matrícula:</label> <input readonly id="userRegistration"></input></div>
-          <div id= "dados-texto"><label for="">Unidade:</label> <input readonly id="userUnidade"></input></div>
-          <div id= "dados-texto"><label for="">Telefone:</label> <input readonly id="userTelefone"></input></div>
-          <div id= "dados-texto"><label for="">Situação:</label> <input readonly id="userStatus"></input></div>
+        <div class="details-section">
+            <h4>Dados de Matrícula</h4>
+            <div class="dados-texto-container">
+                <div id="dados-texto">
+                    <label for="userRegistration">Matrícula:</label>
+                    <input readonly id="userRegistration" value="20230001">
+                </div>
+                <div id="dados-texto">
+                    <label for="userUnidade">Unidade:</label>
+                    <input readonly id="userUnidade" value="Unidade Central">
+                </div>
+                <div id="dados-texto">
+                    <label for="userStatus">Situação:</label>
+                    <input readonly id="userStatus" value="Ativo">
+                </div>
+            </div>
         </div>
 
-        <button onclick="blockUser()">Bloquear</button>
+        <div class="details-section">
+            <h4>Dados de RG</h4>
+            <div class="dados-texto-container">
+                <div id="dados-texto">
+                    <label for="userRgNumero">Número:</label>
+                    <input readonly id="userRgNumero" value="12.345.678-9">
+                </div>
+                <div id="dados-texto">
+                    <label for="userRgOrgaoEmissor">Órgão Emissor:</label>
+                    <input readonly id="userRgOrgaoEmissor" value="SSP/SP">
+                </div>
+                <div id="dados-texto">
+                    <label for="userRgUF">UF:</label>
+                    <input readonly id="userRgUF" value="SP">
+                </div>
+                <div id="dados-texto">
+                    <label for="userRgPais">País:</label>
+                    <input readonly id="userRgPais" value="Brasil">
+                </div>
+                <div id="dados-texto">
+                    <label for="userRgDataEmissao">Data de Emissão:</label>
+                    <input type="date" readonly id="userRgDataEmissao" value="2008-03-20">
+                </div>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h4>Filiação</h4>
+            <div class="dados-texto-container">
+                <div id="dados-texto">
+                    <label for="userNomePai">Nome do Pai:</label>
+                    <input readonly id="userNomePai" value="Nome do Pai do Usuário">
+                </div>
+                <div id="dados-texto">
+                    <label for="userNomeMae">Nome da Mãe:</label>
+                    <input readonly id="userNomeMae" value="Nome da Mãe do Usuário">
+                </div>
+                <div id="dados-texto">
+                    <label for="userResponsavel">Responsável:</label>
+                    <input readonly id="userResponsavel" value="Nome do Responsável">
+                </div>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h4>Contato</h4>
+            <div class="dados-texto-container">
+                <div id="dados-texto">
+                    <label for="userTelResidencial">Telefone Residencial:</label>
+                    <input readonly id="userTelResidencial" value="(11) 2233-4455">
+                </div>
+                <div id="dados-texto">
+                    <label for="userTelComercial">Telefone Comercial:</label>
+                    <input readonly id="userTelComercial" value="(11) 5566-7788">
+                </div>
+                <div id="dados-texto">
+                    <label for="userCelular">Celular:</label>
+                    <input readonly id="userCelular" value="(11) 98765-4321">
+                </div>
+                <div id="dados-texto">
+                    <label for="userOutroTelefone">Outro Telefone:</label>
+                    <input readonly id="userOutroTelefone" value="">
+                </div>
+                <div id="dados-texto">
+                    <label for="userEmail">E-mail:</label>
+                    <input readonly id="userEmail" value="usuario@exemplo.com">
+                </div>
+                <div id="dados-texto">
+                    <label for="userHomepage">Homepage:</label>
+                    <input readonly id="userHomepage" value="www.siteusuario.com">
+                </div>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h4>Dados Profissionais</h4>
+            <div class="dados-texto-container">
+                <div id="dados-texto">
+                    <label for="userProfissao">Profissão:</label>
+                    <input readonly id="userProfissao" value="Desenvolvedor Web">
+                </div>
+                <div id="dados-texto">
+                    <label for="userCargo">Cargo:</label>
+                    <input readonly id="userCargo" value="Desenvolvedor Sênior">
+                </div>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h4>Endereço</h4>
+            <div class="dados-texto-container">
+                <div id="dados-texto">
+                    <label for="userEndResidencial">Endereço Residencial:</label>
+                    <input readonly id="userEndResidencial" value="Rua das Acácias, 100, Bairro Jardim, Cidade - UF">
+                </div>
+                <div id="dados-texto">
+                    <label for="userEndComercial">Endereço Comercial:</label>
+                    <input readonly id="userEndComercial" value="Av. Comercial, 500, Centro, Outra Cidade - UF">
+                </div>
+            </div>
+        </div>
+        <div class="modal-buttons">
+          <button id="botao-bloquear" onclick="blockUser()">Bloquear usuário</button>
+        <div id="edicao-usuario">
+          <button onclick="editUser()">Editar dados</button>
+          <button id="cancelar-edicao" onclick="editUserCancel()">Cancelar edição</button>
+        </div>
+        
         <button onclick="closeModal()">Fechar</button>
+        </div>
+        
       </div>
     </div>
       
