@@ -6,22 +6,24 @@
 }
  
 :root {
-    --azul-padrao: #003162;
-    --cor-texto: #FFFFFF;
+    --azul-tela-inicial: #003162;
+    --cor-texto: #ffffff;
+    --laranja-padrao: #F68B1F;
 }
- 
-.conteiner{
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
- 
+
 body {
     overflow-x: hidden;
     overflow-y: auto;
     margin: 0;
     height: 100vh;
     width: 100vw;
+}
+ 
+.conteiner{
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 70px;
 }
  
 /*PARTE DE CIMA */
@@ -40,11 +42,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #003366;
+    background-color: var(--azul-tela-inicial);
     padding: 10px 10px;
     flex-wrap: wrap;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid var(--cor-texto);
     box-sizing: border-box;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
 }
 
 .onda-inferior {
@@ -80,13 +85,13 @@ body {
 
 .cbmenu-icon i {
     font-size: 22px;
-    color: white;
+    color: var(--cor-texto);
     cursor: pointer;
     transition: color 0.3s;
 }
 
 .cbmenu-icon i:hover {
-    color: #F68B1F;
+    color: var(--laranja-padrao);
 }
 
 .cbquite nav ul {
@@ -98,7 +103,7 @@ body {
 }
 
 .cbquite nav ul li {
-    color: white;
+    color: var(--cor-texto);
     cursor: pointer;
     font-family: "Poppins",sans-serif;
     font-weight: 500;
@@ -109,7 +114,7 @@ body {
     position: relative;
     cursor: pointer;
     padding: 10px;
-    color: white;
+    color: var(--cor-texto);
     /* text-transform: uppercase; */
     transition: color 0.3s ease;
   }
@@ -121,12 +126,12 @@ body {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #F68B1F;
+    background-color: var(--laranja-padrao);
     transition: width 0.3s ease;
   }
   
   .navbar li a:hover {
-    color: #F68B1F;
+    color: var(--laranja-padrao);
   }
   
   .navbar li a:hover::after {
@@ -154,10 +159,8 @@ body {
     text-align: center;
 }
  
-.cbright{
-    /* width: 10%; */
+.cbright {
     height: auto;
-    /* padding: 20px 40px; */
     display: flex;
     justify-content: end;
 }
@@ -176,14 +179,14 @@ body {
 
 
 .button-entrar {
-    padding: 8px 12px; /* padding mais contido */
+    padding: 8px 12px;
     height: auto;
     margin-right: 2%;
     border-radius: 1rem;
     border: none;
-    color: #FFFFFF;
+    color: var(--cor-texto);
     cursor: pointer;
-    background-color: #F68B1F;
+    background-color: var(--laranja-padrao);
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     display: flex;
@@ -191,12 +194,12 @@ body {
     align-items: center;
     gap: 10px;
     font-size: clamp(0.75rem, 2vw, 1rem);
-    white-space: nowrap; /* impede quebra de linha */
+    white-space: nowrap;
     transition: background-color 0.3s ease;
 }
 
 .button-entrar:hover{
-    background-color: white;
+    background-color: var(--cor-texto);
     color: #002043;
     transition: 0.1s;
 }
@@ -246,7 +249,7 @@ body {
     justify-content: start;
     align-items: center;
     width: 100%;
-    background-color: white;
+    background-color: var(--cor-texto);
 }
  
 .geralinfo{
@@ -279,7 +282,6 @@ body {
     -6px 12px 2px #71B0EF;  
     border-bottom-left-radius: 70% 40%;
     border-bottom-right-radius: 70% 40%;
-    overflow: hidden;
     padding-bottom: 5%;
 }
  
@@ -315,9 +317,9 @@ body {
     margin-left: 30px; */
     font-size: clamp(30px, 6vw, 60px);
     font-family: "roboto";
-    color: white;
+    color: var(--cor-texto);
     white-space: nowrap;
-    border-right: 10px solid white;
+    border-right: 10px solid var(--cor-texto);
     width: 20.2ch;  
     overflow: hidden;   
     animation: marca 2.2s step-end forwards , write 1s steps(18, end);
@@ -332,9 +334,9 @@ body {
     font-size: clamp(32px, 6vw, 60px);
     font-family: "roboto";
     font-weight: bold;
-    color: #F68B1F;
+    color: var(--laranja-padrao);
     white-space: nowrap;
-    border-right: 10px solid white;
+    border-right: 10px solid var(--cor-texto);
     width: 20.2ch;
     overflow: hidden;
     opacity: 0;
@@ -349,7 +351,7 @@ body {
     width: 100%;
     text-align: center;
     align-self: center;
-    color: white;
+    color: var(--cor-texto);
     font-family:  'Poppins', sans-serif;
     font-weight: 200;
     font-style: italic;
@@ -362,7 +364,7 @@ body {
 .partecima{
     z-index: 1;
     position: absolute;
-    background-color: var(--azul-padrao);
+    background-color: var(--azul-tela-inicial);
     height: 30vw;
     width: 100vw;
 }
@@ -448,7 +450,7 @@ body {
 } */
 
 .botaops {
-    background-color: #F68B1F;
+    background-color: var(--laranja-padrao);
     border: none;
     padding: 15px;
     cursor: pointer;
@@ -469,18 +471,24 @@ body {
 .gen{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap; 
     gap: 6%;
-    height: 300px;
+    height: auto;
     width: 100%;
-    margin-top: 3%;
+    margin-top: 5%;
     padding-bottom: 10%;
+}
+
+.gen-title {
+    font-size: 50px;
+    color: grey;
+    text-align: center;
 }
  
 .gentitle{
     font-size: 50px;
     color: grey;
     text-align: center;
-   
 }
  
 .gencard{
@@ -528,14 +536,14 @@ body {
     border-radius: 50%;
 }
 .icon_livros:hover {
-    background-color: #F68B1F;
+    background-color: var(--laranja-padrao);
 }
  
  
 .sup{
     z-index: 2;
     position: absolute;
-    border: 10px solid white;
+    border: 10px solid var(--cor-texto);
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -545,7 +553,7 @@ body {
     justify-self: center;
     margin-left: 40%;
     top: 157%;
-    background-color: var(--azul-padrao);
+    background-color: var(--azul-tela-inicial);
     font-size: 80px;
 }
 
@@ -556,7 +564,7 @@ body {
 .title{
     font-family: "Roboto";
     font-size: 40px;
-    color: white;
+    color: var(--cor-texto);
 }
 
 .estante{
@@ -569,7 +577,7 @@ body {
     background-repeat: no-repeat;
     margin-top: 200px;
     position: relative;
-    background-color: var(--azul-padrao);
+    background-color: var(--azul-tela-inicial);
     width: 100%;
     height: 1600px;
 }
@@ -719,8 +727,8 @@ body {
     margin-left: 10px;
     font-size: 30px;
     font-family: "Roboto", sans-serif;
-    color: white;
-    border-right: 3px solid white;
+    color: var(--cor-texto);
+    border-right: 3px solid var(--cor-texto);
     white-space: nowrap;
     overflow: hidden;
     width: 0;
@@ -813,7 +821,7 @@ body {
 
     .cbquite nav ul {
         flex-direction: column;
-        background-color: #003366;
+        background-color: var(--azul-tela-inicial);
         padding: 10px;
     }
 
@@ -878,26 +886,66 @@ body {
         flex-wrap: wrap;
     }
 
+    .generos-livros {
+        margin-top: 10%;
+    }
+
+    .gen-title {
+        font-size: 20px;
+    }
     
     .gentitle {
-        font-size: 28px;
+        font-size: 20px;
+        margin-top: 15px;
         margin-bottom: 10%;
     }
 
-    .generos-livros {
-        margin-top: 10%;
+    .gencard {
+        margin: 10px;
+        width: 100%;
+        max-width: 100px;
     }
     
     .gen {
         display: flex;
-        justify-content: center;
-        align-items: stretch;
-        flex-direction: column;
-        margin-top: 40%;
-        width: 100%; 
-        box-sizing: border-box;
-        min-height: 1300px;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+        flex-wrap: wrap;
+        height: auto;
+        gap: 0px;
     }
+
+    .icon_livros  {
+        width: 90px;
+        height: 90px;
+    }
+
+    .genicon1 {
+        width: 60px;
+        height: auto;
+    }
+
+    .genicon2 {
+        width: 50px;
+        height: auto;
+    }
+
+    .genicon3 {
+        width: 50px;
+        height: auto;
+    }
+
+    .genicon4 {
+        width: 55px;
+        height: auto;
+    }
+
+    .genicon5 {
+        width: 45px;
+        height: auto;    
+}
 }
 
 .info {

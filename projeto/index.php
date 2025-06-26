@@ -116,7 +116,7 @@ if (isset($_SESSION['toast'])) {
 
 
         <div class="generos-livros">
-            <h1 class="gentitle">Gêneros de Livros</h1>
+            <h1 class="gen-title">Gêneros de Livros</h1>
             <div class="gen">
                 <div class="gencard">
                     <div class="icon_livros">
@@ -141,6 +141,12 @@ if (isset($_SESSION['toast'])) {
                         <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
                     </div>
                     <h2 class="gentitle">Design</h2>
+                </div>
+                <div class="gencard">
+                    <div class="icon_livros">
+                        <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
+                    </div>
+                    <h2 class="gentitle">Educação</h2>
                 </div>
                 <div class="gencard">
                     <div class="icon_livros">
