@@ -620,6 +620,7 @@ input:focus {
       .menu{
         position: var(--posicaoAbsoluta);
         top: 13%;
+        width: 400px;
      }
 
      .minhaConta{

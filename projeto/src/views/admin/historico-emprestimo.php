@@ -29,7 +29,7 @@
         <div class="icone"><img src="<?php echo $URLBASE?>/public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
 
         <div class="minhaConta">
-            <p>Minha conta</p>
+            <p><a href="./minha-conta.php">Minha conta</a></p>
             <a href="../usuario/login.php">Sair</a>
         </div>
 
@@ -58,21 +58,16 @@
                 <tbody id="userTable"></tbody>
                 </thead>
             </table>
-    </div>
-    
-
- 
-
-     
+    </div>     
      
     <div id="menu" class="menu">
 
-        <div><a href="./Tela de cadastro de usuários.php">Cadastrar usuários</a></div>
-        <div><a href="./Tela de cadastro de livros.php">Cadastrar livros</a></div>
-        <div><a href="Por fazer">Usuários cadastrados</a></div>
-        <div><a href="./Tela de relatórios.php">Relatórios</a></div>
-        <div><a href="./Tela inicial do adm.php">Tela inicial</a></div>
-        <div><a href="./Tela dos livros cadastrados.php">Estoque de livros</a></div>
+        <div><a href="./telaDeCadastroDeUsuarios.php">Cadastrar usuários</a></div>
+        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
+        <div><a href="./usuarios-cadastrados.php">Usuários cadastrados</a></div>
+        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
+        <div><a href="./telaInicialDoAdm.php">Tela inicial</a></div>
+        <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
         <hr>
         <div><a href="../usuario/login.php">Logout</a></div>
 
