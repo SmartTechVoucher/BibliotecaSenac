@@ -58,22 +58,23 @@ require "../../../config/constantes.php";
             
             <div class="perfil-container">
                 <span>Bem-vindo, Gabriel!</span>
-                <div id="nav-menu-perfil">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="">
-                                Perfil</a></li>
-                        <li>
-                            <a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">
-                                <img src="<?php echo $URLBASE ?>/public/assets/icons/AreaDoLeitor.png" alt="">
-                                Leitura</a></li>
-                        <li>
-                            <a href="#" onclick="confirmarSaida(event)">
-                                <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
-                                Sair</a></li>
+            </div>
+
+            <div id="nav-menu-perfil">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="">
+                            Perfil</a></li>
+                    <li>
+                        <a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">
+                            <img src="<?php echo $URLBASE ?>/public/assets/icons/AreaDoLeitor.png" alt="">
+                            Leitura</a></li>
+                    <li>
+                        <a href="#" onclick="confirmarSaida(event)">
+                            <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
+                            Sair</a></li>
                     </ul>
-                </div>
             </div>
         </div>
     </header>

@@ -42,7 +42,7 @@ html,body {
   padding: 1%;
   border: 2px solid #dbe8f4;
   border-radius: 8px;
-  height: 90%;
+  height: 91%;
   width: 75%; /*POSSIVEL BUG */
   max-width: 100%;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -50,7 +50,7 @@ html,body {
 
 .status {
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
 }
 
 .regular {
