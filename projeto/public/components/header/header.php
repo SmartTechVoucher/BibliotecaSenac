@@ -25,13 +25,13 @@ require "../../../config/constantes.php";
         </div>
 
         <!-- Menu lateral -->
-        <nav id="nav-menu" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
+        <!-- <nav id="nav-menu" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
             <ul>
                 <li><a href="../../../index.php">🏠 Início</a></li>
                 <li><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">🔍 Pesquisa</a></li>
                 <li><a href="contato.php">📞 Contato</a></li>
             </ul>
-        </nav>
+        </nav> -->
 
         <!-- Título central -->
         <div class="titulo"> 
@@ -40,12 +40,12 @@ require "../../../config/constantes.php";
         </div>
 
         <!-- Ícone e menu do perfil -->
-        <div class="iconepessoa" onmouseover="toggleMenuPerfil(true)" onmouseleave="toggleMenuPerfil(false)">
+        <div class="iconepessoa">
             <div class="menu-icon2">
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/Icon perfil.png" alt="Ícone de pessoa">
             </div>
             
-            <div class="perfil-container">
+            <!-- <div class="perfil-container">
                 <span>Bem-vindo, Gabriel!</span>
                 <div id="nav-menu-perfil">
                     <ul>
@@ -54,7 +54,7 @@ require "../../../config/constantes.php";
                         <li><a href="#" onclick="confirmarSaida(event)">🚪 Sair</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
     </header>
 
@@ -71,7 +71,7 @@ require "../../../config/constantes.php";
     <?php
         require_once __DIR__ . '../../../../public/components/modal/modal.php';
         echo renderModal('confirmModal', 'Confirmação', 'Você tem certeza que deseja sair?');
-    ?>
+    ?> 
 
     <script>
         const baseUrl = '<?php echo $URLBASE; ?>';
