@@ -33,6 +33,7 @@ html,body {
   display: flex;
   justify-content: center;
   padding: 20px;
+  padding-bottom: 4%;
 }
 
 
@@ -42,7 +43,7 @@ html,body {
   padding: 1%;
   border: 2px solid #dbe8f4;
   border-radius: 8px;
-  height: 91%;
+  height: 81%;
   width: 75%; /*POSSIVEL BUG */
   max-width: 100%;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -61,7 +62,7 @@ html,body {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Três colunas fixas */
   column-gap: 40px;
-  row-gap: 190px;
+  row-gap: 190%;
   
 }
 
@@ -74,7 +75,7 @@ html,body {
   position: relative;
   transition: 0.3s;
   cursor: pointer;
-  width: 75%;
+  width: 69%;
 }
 
 /* .card img{
@@ -97,7 +98,7 @@ html,body {
 
 .card .title {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 100%;
 }
 
 .card .hover-content {
@@ -115,7 +116,7 @@ html,body {
 }
 
 .card .hover-content img {
-  width: 130px;
+  width: 114px;
   margin-right: 10px;
   vertical-align: middle;
 
@@ -127,10 +128,79 @@ html,body {
   display: block;
 }
 
-@media (max-width: 480px){
-    .grid{
-      
-      grid-template-columns: 1fr;
+@media (max-width: 845px){
+
+    .card .title{
+
+      font-size: 65%;
 
     }
+}
+
+@media (max-width: 845px){
+
+  .card .icon{
+
+    font-size: 80%;
+
+  }
+}
+
+@media (max-width: 640px){
+
+  .card .icon{
+
+    font-size: 109%;
+
+  }
+}
+
+@media (max-width: 649px){
+
+    .grid{
+
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 38%;
+    }
+
+    .box{
+      height: 90%;
+    }
+
+}
+
+
+@media (max-width: 845px){
+
+  .card .hover-content img{
+
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 786px){
+
+  .card .hover-content img{
+
+    width: 100px;
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 717px){
+
+  .card .hover-content img{
+
+    width: 90px;
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
 }

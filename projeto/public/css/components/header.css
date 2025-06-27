@@ -45,6 +45,7 @@ nav {
     min-width: 200px;
     width: max-content; /* Se adapta ao conteúdo */
     max-width: 280px; /* Limite máximo */
+    left: 0%;
     top: 61%; /* Posiciona logo abaixo do elemento pai */
     background: #001E3E;
     padding: 10px 0; /* Padding em pixels */
@@ -107,7 +108,6 @@ nav.show {
     width: max-content; /* Se adapta ao conteúdo */
     max-width: 250px; /* Limite máximo */
     top: 79%; /* Posiciona logo abaixo do elemento pai */
-    right: 0; /* Alinha à direita do elemento pai */
     background: #001E3E;
     padding: 10px 0; /* Padding em pixels */
     border-radius: 8px;

@@ -21,7 +21,7 @@
 } */
 
 footer {
-    position: relative;         /* necessário para limitar elementos filhos */
+    position: fixed;         /* necessário para limitar elementos filhos */
     overflow: hidden;           /* impede a imagem de ultrapassar */
     display: flex;
     justify-content: space-between;
@@ -32,6 +32,7 @@ footer {
     height: 120px;
     font-family: 'Poppins', serif;
     color: var(--cor-texto);
+    z-index: 1000;
 }
 
 
