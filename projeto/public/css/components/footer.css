@@ -49,6 +49,11 @@ footer img {
     justify-content: center;
     align-items: center;
     max-height: 50%;
+    order: 1;
+}
+
+footer > *:not(.livro-brilhante){
+    order: 1;
 }
 
 .livro-brilhante img {
@@ -115,4 +120,73 @@ footer img {
 .logo-senac2 img {
     width: 50px;
     height: 50px;
+}
+
+@media (max-width: 1300px) {
+    footer {
+        height: 120px; /* importante: deixa o footer crescer */
+    }
+
+    .livro-brilhante {
+        
+        display: none;
+    }
+
+    footer > *:not(.livro-brilhante) {
+        order: 1;
+        width: 100%;
+    }
+
+    /* Ajustes específicos para os elementos ocuparem o espaço */
+    .logo-senac {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .logo-senac img {
+        padding-left: 0; /* remove o padding que centraliza no desktop */
+        margin-right: 0;
+        width: 250px; /* ajusta o tamanho se necessário */
+    }
+
+    .textos {
+        justify-content: center; /* centraliza os textos */
+
+        gap: 30px; /* reduz o gap para mobile */
+        margin-bottom: 15px;
+    }
+
+    .redes {
+        align-items: center;
+    }
+
+    /* Ajusta o tamanho da imagem do livro no mobile */
+    .livro-brilhante img {
+        width: 40%; /* menor no mobile */
+    }
+
+    .livro-brilhante p {
+        font-size: 9px; /* ajusta texto se necessário */
+    }
+}
+
+
+@media (max-width: 649px) {
+
+    .logo-senac img{
+
+        width: 139px;
+    }
+
+    .textos {
+
+        width: 100px;
+        gap: 20px;
+    }
+
+    .contato p, .email p, .redes p{
+
+        font-size: 10px;
+    }
 }

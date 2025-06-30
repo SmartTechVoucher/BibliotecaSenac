@@ -104,7 +104,8 @@ nav.show {
     display: none;
     position: absolute;
     /* Largura fixa em pixels ao invés de porcentagem */
-    min-width: 180px;
+    min-width: 200px;
+    right: -19%;
     width: max-content; /* Se adapta ao conteúdo */
     max-width: 250px; /* Limite máximo */
     top: 79%; /* Posiciona logo abaixo do elemento pai */
@@ -210,7 +211,7 @@ nav ul li a:visited,
 }
 
 .iconesSuperiores img {
-    height: 100%; /* Preenche altura da div */
+    height: 70%; /* Preenche altura da div */
     max-width: 100px; /* Limita o tamanho para não estourar */
     object-fit: contain; /* Mantém a proporção */
 }
@@ -230,23 +231,10 @@ nav ul li a:visited,
     }
 
     /* Ajustes específicos para o dropdown do perfil em mobile */
-    #nav-menu-perfil {
-        min-width: 160px;
-        max-width: calc(100vw - 40px); /* Não ultrapassa a tela */
-        right: 0;
-        transform: none;
-    }
 
     #nav-menu-perfil ul li a {
         font-size: 13px;
         padding: 10px 14px;
-    }
-
-    /* Ajustes específicos para o menu hamburger em mobile */
-    nav {
-        min-width: 180px;
-        max-width: calc(100vw - 40px); /* Não ultrapassa a tela */
-        left: 0;
     }
 
     nav ul li a {
@@ -277,8 +265,7 @@ nav ul li a:visited,
 
     /* Dropdown responsivo para tablets - menu hamburger */
     nav {
-        min-width: 190px;
-        left: 10px; /* Pequeno afastamento da borda */
+        min-width: 178px;
     }
 }
 
@@ -299,10 +286,6 @@ nav ul li a:visited,
         right: 5px;
     }
 
-    /* Ajuste adicional para telas pequenas - menu hamburger */
-    nav {
-        left: 5px;
-    }
 }
 
 @media (max-width: 1029px){
@@ -321,7 +304,7 @@ nav ul li a:visited,
 /* Simplificando as media queries do dropdown */
 @media (max-width: 1501px){
     #nav-menu-perfil{
-        right: 0;
+        right: -19%;
         /* Removido o transform problemático */
     }
 }
@@ -369,4 +352,15 @@ nav ul li a:visited,
         width: 16px;
         height: 16px;
     }
+}
+
+@media (max-width: 480px){
+
+    #nav-menu-perfil {
+        max-width: calc(100vw - 40px); /* Não ultrapassa a tela */
+        right: -19%;
+        transform: none;
+        min-width: 178px;
+    }
+
 }

@@ -33,7 +33,6 @@ html,body {
   display: flex;
   justify-content: center;
   padding: 20px;
-  padding-bottom: 4%;
 }
 
 
@@ -43,7 +42,7 @@ html,body {
   padding: 1%;
   border: 2px solid #dbe8f4;
   border-radius: 8px;
-  height: 81%;
+  height: 75%;
   width: 75%; /*POSSIVEL BUG */
   max-width: 100%;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -92,13 +91,13 @@ html,body {
 
 
 .card .icon {
-  font-size: 20px;
+  font-size: 17px;
   margin-right: 6px;
 }
 
 .card .title {
   font-weight: bold;
-  font-size: 100%;
+  font-size: 90%;
 }
 
 .card .hover-content {
@@ -160,11 +159,22 @@ html,body {
     .grid{
 
       grid-template-columns: repeat(1, 1fr);
-      row-gap: 38%;
+      row-gap: 70%;
     }
 
     .box{
-      height: 90%;
+      height: auto; /* remove altura fixa */
+      min-height: 84vh; /* altura mínima para garantir espaço */
+      max-height: none; /* remove limitação */
+      overflow-y: auto; /* adiciona scroll se necessário */
+      margin-bottom: 20px;
+      width: 78%;
+    }
+
+    .content-wrapper{
+      
+      padding-bottom: 140px;
+
     }
 
 }
@@ -201,6 +211,15 @@ html,body {
     margin-right: 3%;
     vertical-align: middle;
     border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 649px){
+
+  .card .hover-content img {
+      
+    width: 78px;
 
   }
 }
