@@ -23,7 +23,8 @@
   <?php   
     include "../../../public/components/header/header.php";
   ?>
-  <main>
+  
+  <main class="tabela">
 
     <title>Gerenciamento de Usuários</title>
     <div class="container-main">
@@ -64,8 +65,7 @@
         </table>
       </div>
     </div>
-    
-    
+       
     <div id="userModal" class="modal"> <!-- janela que contém dados do usuario -->
       <div class="modal-content">
         <h3>Dados do Usuário</h3>
@@ -78,9 +78,7 @@
             <p><strong>Sexo:</strong> <span id="userSexo"></span></p>
           </div>
         </div>
-        
-        
-        
+                
         <div class="dados2">
           <p><strong>CPF:</strong> <span id="userCPF"></span></p>
           <p><strong>Matrícula:</strong> <span id="userRegistration"></span></p>

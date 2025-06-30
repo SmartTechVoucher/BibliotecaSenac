@@ -1,8 +1,24 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #b7b7bb;
-    margin: 20px;
+:root {
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fonte_rodape: 14px;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --corFormulario: #E5E4E4;
+    --corBotao: #004A90;
+    --vermelho: red;
+    --apontador: pointer;
+    --cinza: #D9D9D9;
 }
+
+body {
+    margin: 0;
+    background-color: var(--fundoPadrao);
+    font-family: var(--fontes);
+}
+
 main{
     display: flex;
     justify-content: center;
@@ -11,49 +27,32 @@ main{
     gap: 0px;
 
 }
+
 .container-main{
     width: 80%;
 }
+
 .container {
-    padding: 40px;
+    padding: 20px;
     position: relative;
     margin: auto;
     background: #fbfaff;;
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 0px 8px 8px 8px;
     box-shadow: 0px 7px 8px rgba(0,0,0,0.1);
+    overflow-x: scroll;
 }
-/* .container ::before{
-    border-radius: 8px;
-    background: #e6e6fa;
-    content: "Cadastro De Empréstimo";
-    position: absolute;
-    top: -35px;
-    left: 0px;
-    width: 300px;
-    height: 45px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-th {
-    background-color: #7a7e83;
-    color: white;
-}
+
 tr:hover {
     background-color: #f1f1f1;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -65,6 +64,7 @@ tr:hover {
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
 }
+
 .modal-content {
     background-color: white;
     margin: 15% auto;
@@ -75,21 +75,20 @@ tr:hover {
     max-width: 400px;
     border-radius: 8px;
 }
-/* .dados-text{
 
-} */
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-.close:hover,
-.close:focus {
+
+.close:hover, .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
+
 .botoesFiltro{
     display: flex;
     width: 52.1%;
@@ -108,11 +107,12 @@ tr:hover {
     border-radius: 4px 4px 0px 0px;
     cursor: pointer;
     margin-top: 10px;
-    width: 220px;
+    /* width: 220px; */
     height: 45px;
     font-size: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
 #bloqueadosBotao {
     border-radius: 8px;
     background: #e2e1e6;
@@ -122,7 +122,7 @@ tr:hover {
     border-radius: 0px 4px 0px 0px;
     cursor: pointer;
     margin-top: 10px;
-    width: 220px;
+    /* width: 220px; */
     height: 45px;
     font-size: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -158,11 +158,9 @@ button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    
     font-size: 18px;
     border: 2px solid #d3cdcd; /* Borda externa */
 }
-
 
 th, td {
     border: 1px solid #000;
@@ -171,6 +169,12 @@ th, td {
     height: 50px; /* Mantém a altura uniforme */
     vertical-align: middle; /* Alinha o conteúdo verticalmente */
 }
+
+th {
+    background-color: #7a7e83;
+    color: white;
+}
+
 .lulusantos{
     background-color: #f1f1f1;
     max-width: 800px;
@@ -179,26 +183,6 @@ th, td {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-:root {
-    --azulCabecalho: #001E3E;
-    --fontes: 'Poppins', 'Roboto', 'Montaga';
-    --branco: white;
-    --fonte_rodape: 14px;
-    --fundoPadrao: #EDEDED;
-    --posicao: relative;
-    --posicaoAbsoluta: absolute;
-    --corFormulario: #E5E4E4;
-    --corBotao: #004A90;
-    --vermelho: red;
-    --apontador: pointer;
-    --cinza: #D9D9D9;
-}
-
-body {
-    margin: 0;
-    background-color: var(--fundoPadrao);
-    font-family: var(--fontes);
 }
 
 .conteiner {
@@ -220,12 +204,20 @@ body {
     cursor: var(--apontador)
 }
 
-.logoSenacHub{
-    width: 80px;
-    height: 60px;
-    padding-left: 30px;
+#icone_top{
+    width: 115px;
+    height: 90px;   
 }   
 
+.menu{
+    display: flex;
+    align-items: center;
+}
+
+#logo-senac{
+    padding: 0;
+    margin: 0;
+}
 
 /* Título centralizado */
 .titulo {
@@ -241,11 +233,50 @@ body {
    
 }
 
-/* Conteiner 3 */
-.conteiner3 {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    width: 100%;
+@media(max-width: 1024px){
+    .copyright, .todos, .Libro, .titulo{
+        display: none;
+    }
 }
+
+@media(min-width: 375px){
+
+    .iconesSuperiores .esquerdo{
+        height: 100px ;
+    }
+
+    .inferior .inferiorDireito{
+        width: 100px;
+        height: 100px;
+    }
+
+}
+
+@media(min-width: 1124px){
+
+    .titulo{
+        position: var(--posicao);
+        left: 55%;
+    }
+
+}
+
+@media(min-width: 1358px){
+
+    .titulo{
+        position: var(--posicao);
+        left: 50%;
+    }
+
+}
+
+@media(min-width: 1912px){
+
+    .titulo{
+        position: var(--posicao);
+        left: 40%;
+    }
+
+}
+
 

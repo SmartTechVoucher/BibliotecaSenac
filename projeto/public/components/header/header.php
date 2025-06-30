@@ -17,12 +17,13 @@ require "../../../config/constantes.php";
         <!-- Menu hamburguer -->
         <div class="menu">
             <img src="../../../public/assets/icons/Menu adm.png" alt="Menu">
+            <img id="icone_top" src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo">
         </div>
 
         <!-- Logo do Senac -->
-        <div class="iconeSenac">
+        <!-- <div class="iconeSenac">
             <img id="icone_top" src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo">
-        </div>
+        </div> -->
 
         <!-- Menu lateral -->
         <!-- <nav id="nav-menu" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">

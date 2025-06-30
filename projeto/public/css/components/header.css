@@ -4,7 +4,6 @@
     --fontes: 'Poppins', 'Roboto', 'Montaga';   /*Fontes usadas no projeto */
 }
 
-
 body{
     /* padding-top: 100px; */
     font-family: var(--fontes);
@@ -15,7 +14,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    /* padding: 20px; */
     background: #001e3e;
     color: white;
     /*position: fixed;   Fixa o cabeçalho no topo */
@@ -50,7 +49,6 @@ nav {
     padding: 10px;
     border-radius: 5px;
 }
-
 
 /* Lista de navegação */
 nav ul {
@@ -92,14 +90,12 @@ nav.show {
     display: block;
 }
 
-nav ul li a,
-#nav-menu-perfil ul li a {
+nav ul li a, #nav-menu-perfil ul li a {
     color: white;
     text-decoration: none;
 }
 
-nav ul li a:visited,
-#nav-menu-perfil ul li a:visited {
+nav ul li a:visited, #nav-menu-perfil ul li a:visited {
     color: white;
 }
 
@@ -121,7 +117,6 @@ nav ul li a:visited,
 .titulo h2:first-child {
     margin-bottom: 5px;  /* Ajuste o valor conforme necessário para aumentar a distância */
 }
-
 
 .iconepessoa{
 
@@ -153,18 +148,24 @@ nav ul li a:visited,
 .iconesSuperiores img {
     height: 100%; /* Preenche altura da div */
     max-width: 100px; /* Limita o tamanho para não estourar */
-    object-fit: contain; /* Mantém a proporção */
+    /* object-fit: contain; Mantém a proporção */
 }
 
-#icone_top{
+/* #icone_top{
     height: 0%;   
-}
+} */
 
 .iconeSenac img{
     width: 17%;
 }
 
 /* RESPONSIVIDADE */
+
+@media(max-width: 1024px){
+    .copyright, .todos, .Libro, .titulo{
+        display: none;
+    }
+}
 
 @media (max-width: 480px) {
     
