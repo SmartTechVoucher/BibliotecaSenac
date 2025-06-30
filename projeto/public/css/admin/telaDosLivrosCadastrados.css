@@ -437,6 +437,11 @@ definir a exibição como ao lado*/
         top: 18%;
     }
 
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 89.82%;
+    }
+
   
 }
 
