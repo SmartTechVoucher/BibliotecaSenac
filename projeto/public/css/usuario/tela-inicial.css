@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    /* box-sizing: border-box; */
 }
  
 :root {
@@ -12,17 +13,16 @@
 }
 
 body {
-    overflow-x: hidden;
-    overflow-y: auto;
     margin: 0;
-    height: 100vh;
-    width: 100vw;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
  
 .conteiner{
-    height: auto;
     width: 100%;
-    overflow: hidden;
+    max-width: 100%;
+    overflow-x: hidden;
     padding-top: 70px;
 }
  
@@ -309,10 +309,23 @@ body {
     height: 200px;
     padding: 15px 20px 20px 20px;
     /* padding-right: 5% */
+    /* border: solid blue; */
+}
+
+.letras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 660px;
+    width: 100%;
+    
+    /* border: solid red; */
+
 }
  
-.letras{
-    max-width: 700px;
+.letras1{
+    max-width: 660px;
     /* margin: 0;
     margin-left: 30px; */
     font-size: clamp(30px, 6vw, 60px);
@@ -323,15 +336,15 @@ body {
     width: 20.2ch;  
     overflow: hidden;   
     animation: marca 2.2s step-end forwards , write 1s steps(18, end);
-    padding-left: 6%;
+    /* padding-left: 6%; */
 
 }
  
 .letras2{
-    max-width: 700px;
+    max-width: 660px;
     /* margin: 0;
     margin-left: 30px; */
-    font-size: clamp(32px, 6vw, 60px);
+    font-size: clamp(30px, 6vw, 60px);
     font-family: "roboto";
     font-weight: bold;
     color: var(--laranja-padrao);
@@ -342,7 +355,7 @@ body {
     opacity: 0;
     animation: aparecer 0s 3.2s forwards, marca 2.2s step-end forwards, write 1s steps(18, end);
     animation-delay: 1s;
-    padding-left: 12%;
+    /* padding-left: 12%; */
 
    
 }
@@ -497,7 +510,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: auto;
+    flex: 1 1 300px;       /* tenta 300px no desktop */
+    max-width: 400px; 
     height: 100%;
     gap: 10%;
 }
@@ -855,11 +869,21 @@ body {
         justify-content: center;
         align-items: center;
         height: auto;
-        padding-bottom: 5%;
-    
+        padding: 0px 5% 5% 0px;
+        max-width: 320px;
+    }
+
+    .letras {
+        max-width: 320px;
+        margin-left: 5%;
     }
 
     .info {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
         border-bottom-left-radius: 180% 40%;
         border-bottom-right-radius: 180% 40%;
     }
@@ -872,12 +896,22 @@ body {
     .senacFoto {
         width: 80%;
         max-width: none; 
+        margin-left: 0px;
+        margin-bottom: 5%;
     }
 
     .frase {
         font-size: 10px;
         flex-wrap: nowrap;
     }
+
+    .letras1 {
+        max-width: 325px;
+    }
+    .letras2 {
+        max-width: 325px;
+    }
+    
 
     .geralinfo {
         display: flex;
@@ -888,11 +922,12 @@ body {
     }
 
     .generos-livros {
-        margin-top: 10%;
+        margin-top: 15%;
     }
 
     .gen-title {
-        font-size: 20px;
+        font-size: 22px;
+        margin-bottom: 5%;
     }
     
     .gentitle {
@@ -904,7 +939,9 @@ body {
     .gencard {
         margin: 10px;
         width: 100%;
-        max-width: 100px;
+
+        flex: 0 0 calc(50% - 20px); /* 2 por linha */
+        max-width: calc(50% - 20px);
     }
     
     .gen {
@@ -915,47 +952,77 @@ body {
         width: 100%;
         flex-wrap: wrap;
         height: auto;
-        gap: 0px;
+        gap: 0px;   
+        margin: 0 auto;
     }
 
     .icon_livros  {
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
     }
 
     .genicon1 {
-        width: 60px;
-        height: auto;
-    }
-
-    .genicon2 {
-        width: 50px;
-        height: auto;
-    }
-
-    .genicon3 {
-        width: 50px;
-        height: auto;
-    }
-
-    .genicon4 {
         width: 55px;
         height: auto;
     }
 
-    .genicon5 {
+    .genicon2 {
+        width: 40px;
+        height: auto;
+    }
+
+    .genicon3 {
+        width: 40px;
+        height: auto;
+    }
+
+    .genicon4 {
         width: 45px;
+        height: auto;
+    }
+
+    .genicon5 {
+        width: 40px;
         height: auto;    
 }
 }
 
-.info {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
+@media (max-width: 250px) {
+    .gencard {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+@media (max-width: 350px) {
+    .letras1,.letras2 {
+        font-size: 25px;
+    }
+
+    .letras {
+        margin-left: 12%;
+    }
+
+    .frase {
+        font-size: 7px;
+    }
 }
+
+
+@media (max-width: 300px) {
+    .letras {
+        margin-left: 4%;
+    }
+
+    .letras1, .letras2 {
+    white-space: normal;    /* permite quebra */
+    width: 100%;
+    text-align: center;        /* libera a largura */
+
+    
+    }
+}
+
 
 /* .senacFoto {
     width: 350px;

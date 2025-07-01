@@ -97,12 +97,15 @@ if (isset($_SESSION['toast'])) {
 
         <div class="geralinfo">
             <div class="info">
-                <!-- <img src="../projeto/public/assets/img/fachada-hub-academy.jpg" alt="" class="fachada-hub-mobile"> -->
+
                 <img src="../projeto/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
                 <div class="letreiro">
-                    <h1 class="letras">Bem-vindo a Biblioteca</h1>
-                    <h1 class="letras2">SENAC HUB ACADEMY.</h1>
+                    <div class="letras">
+                        <h1 class="letras1">Bem-vindo a Biblioteca</h1>
+                        <h1 class="letras2">SENAC HUB ACADEMY.</h1>
+                    </div>
                     <p class="frase">"O ensino do futuro do mundo: pessoas inovando pela <br>transformação do Brasil"</p>
+                    
                 </div>
             </div>
 
