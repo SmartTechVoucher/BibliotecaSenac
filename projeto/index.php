@@ -105,7 +105,7 @@ if (isset($_SESSION['toast'])) {
                         <h1 class="letras2">SENAC HUB ACADEMY.</h1>
                     </div>
                     <p class="frase">"O ensino do futuro do mundo: pessoas inovando pela <br>transformação do Brasil"</p>
-                    
+
                 </div>
             </div>
 
