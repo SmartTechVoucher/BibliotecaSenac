@@ -489,6 +489,7 @@ body {
     font-size: 50px;
     color: grey;
     text-align: center;
+    margin: 10%;
 }
  
 .gencard{
@@ -502,27 +503,27 @@ body {
 }
 
 .genicon1 {
-    width: 130px;
+    width: 100px;
     height: auto;
 }
 
 .genicon2 {
-    width: 100px;
+    width: 80px;
     height: auto;
 }
 
 .genicon3 {
-    width: 90px;
+    width: 75px;
     height: auto;
 }
 
 .genicon4 {
-    width: 100px;
+    width: 80px;
     height: auto;
 }
 
 .genicon5 {
-    width: 90px;
+    width: 75px;    
     height: auto;
 }
 
@@ -531,8 +532,8 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #003162;
-    width: 162px;
-    height: 162px;
+    width: 140px;
+    height:140px;
     border-radius: 50%;
 }
 .icon_livros:hover {
@@ -558,7 +559,7 @@ body {
 }
 
 .generos-livros {
-    margin-top: 3%;
+    margin-top: 10%;
 }
  
 .title{
