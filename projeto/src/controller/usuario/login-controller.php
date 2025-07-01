@@ -51,7 +51,7 @@ class LoginController{
     public function ValidarLogin($nome, $senha) {
         session_start();
 
-        if ($nome === "12345678901" && $senha === "2007") {
+        if ($nome === "12345678910" && $senha === "2020") {
             $_SESSION['usuario'] = [
                 'id' => 1,
                 'nome' => 'João da Silva'

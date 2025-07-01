@@ -294,23 +294,14 @@ h2{
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
 .menu{
-    width: 400px;
-    height: 440px;
+    width: 300px;
+    height: 325px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);
-    font-size: 36px;
+    font-size: 25px;
     display: none;
     cursor: pointer;   
-}
-
-/*Overlay de cadastro*/ /*Overlay de cadastro*/ /*Overlay de cadastro*/
-
-.overlayCadastro{
-    background-color: var(--corParaOverlays);
-    cursor: var(--apontador);
-    display: none;
-    text-align: center;
 }
 
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
@@ -321,10 +312,6 @@ a{
 }
 
 /*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
-
-.overlayCadastro .item{
-    color: black;
-}
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
@@ -337,14 +324,13 @@ a{
 
 @media(min-width:375px){
 
-    /*evento do cabeçalho*/ /*evento do cabeçalho*/ /*evento do cabeçalho*/
+ /*Iphone SE*//*Iphone SE*//*Iphone SE*//*Iphone SE*//*Iphone SE*//*Iphone SE*/
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
         left: 69.5%; top: 17%;
     }
 
-    /*evento do cabeçalho*//*evento do cabeçalho*//*evento do cabeçalho*//*evento do cabeçalho*/
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
@@ -377,44 +363,15 @@ a{
         top: 110px;
      }
 
-   /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-   /* .overlayCadastro{
-    height: 230px;
-    width: 80px;
-    position: var(--posicaoAbsoluta);
-    bottom: -2%; right: 73%;
-   }
-
-.overlayCadastro .item{
-    font-size: 10px;
-    /* color: black; 
-} */
-
-/*O código acima ficará disponível para ser usado caso o overlay continue necessário*/
-
-/*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-
-/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-/* #overlayRelatorio{
-    width: 80px;
-    position: var(--posicaoAbsoluta);
-    bottom: 20%; right: 27%;
-}
-
-#overlayRelatorio .relatorio{
-    font-size: 10px;
-} */
-
-/*O código acima ficará disponível para ser usado caso o overlay continue necessário*/
-
-/*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
+    .inferior{
+        margin-top: -3%;
+     }
 
 }
 
 @media(min-width:414px){
+
+ /*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*/   
 
     .menu{
         position: var(--posicao);
@@ -427,26 +384,18 @@ a{
     }
 
     .inferiorDireito{
-        margin-top: 4.5%;
+        margin-top: 34%;
     }
-
- /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-   .overlayCadastro{
-        width: 80px;
-        position: var(--posicaoAbsoluta);
-        bottom: 17%; right: 75.5%;
-   }
 
 }
 
-@media(min-width:565px){
+@media(min-width:500px){
 
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+ /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 79.8%; top: 20%;
+        left: 77.2%; top: 16%;
     }
 
     .icone{
@@ -456,33 +405,12 @@ a{
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
-    .conteiner2{
-        flex-wrap: nowrap;
-        width: 500px;
+    .rodape{
+        margin-top: 5%;
     }
-
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-    .overlayCadastro{
-       
-        width: 67px;
-        height: 220px;
-        position: var(--posicaoAbsoluta);
-        bottom: -13%; right: 84%;
-    }
-
-    .overlayCadastro .item{
-        font-size: 10px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
 
     .inferiorDireito{
-        margin-top: 43%;
-    }
-    
-    .adm{
-        width: 500px;
+        margin-top: 33%;
     }
 
      .menu{
@@ -493,6 +421,8 @@ a{
 }
 
 @media(min-width:600px){
+
+ /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/   
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
@@ -507,13 +437,9 @@ a{
     }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
-    
-    .conteiner2{
-        width: 600px;
-    }
 
     .inferiorDireito{
-        margin-top: 44.5%;
+        margin-top: 29%;
     }
 
     .rodape{
@@ -524,24 +450,11 @@ a{
         width: 500px;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-    .overlayCadastro{  
-        position: var(--posicaoAbsoluta);
-        top: 50%; right: 83%;
-        width: 80px;
-        height: 240px;
-    }
-
-    .overlayCadastro .item{
-        font-size: 10px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-   
 }
 
 @media(min-width:768px){
+
+ /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/   
 
    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
@@ -559,37 +472,8 @@ a{
     }
 
     .inferiorDireito{
-       margin-top: 38.2%;
+       margin-top: 41%;
     }
-
- /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-   .overlayCadastro{
-    width: 80px;
-    position: var(--posicaoAbsoluta);
-    top: 44%; right: 87%;
- }
-
-    .overlayCadastro .item{
-        font-size: 10px;
- }
-
- /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-
- /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 80px;
-        position: var(--posicaoAbsoluta);
-        bottom: 46.5%; right: 60%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
 
     .rodape{
         margin-top: 8%;
@@ -597,6 +481,8 @@ a{
 }
 
 @media(min-width:820px){
+
+ /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/   
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
@@ -617,13 +503,8 @@ a{
         width: 800px;
     }
 
-    .caixa{
-        width: 100px;
-        height: 125px;
-    }
-  
     .inferiorDireito{
-        margin-top: 46%;
+        margin-top: 50.5%;
     }
     
     .adm{
@@ -631,41 +512,14 @@ a{
         margin-top: 10%;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-    .overlayCadastro{
-    
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 43%; right: 84.7%;
-    }
-
-    .overlayCadastro .item{
-        font-size: 10px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 45.5%; right: 56.5%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
     .rodape{
         margin-top: 26.3%;
     } 
 }
 
 @media(min-width:912px){
+
+ /*Surface Pro 7*//*Surface Pro 7*//*Surface Pro 7*//*Surface Pro 7*/   
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
@@ -675,43 +529,18 @@ a{
     }
 
     .inferiorDireito{
-       margin-top: 62.5%;
+       margin-top: 67%;
     }
 
     .rodape{
         margin-top: 46%;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-     .overlayCadastro{
-        position: var(--posicaoAbsoluta);
-        top: 38%; right: 86%;
-    }
-
-    .overlayCadastro .item{
-        font-size: 11px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 40%; right: 61%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 11px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 }
 
 @media(min-width:1024px){
+
+ /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/   
 
     /*Cabeçalho*/  /*Cabeçalho*/
 
@@ -731,7 +560,53 @@ a{
     }
 
     .inferiorDireito{
-       margin-top: 59.5%;
+       margin-top: 64%;
+    }
+
+    /* .Libro, .copyright, .todos{
+        display: block;
+    } */
+
+    /* .copyright, .todos{
+        width: 300px;
+    } */
+
+    .rodape{
+        height: 255px;
+    }
+
+}
+
+@media(min-width:1124px){
+
+ /*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*/   
+
+    /*Cabeçalho*/  /*Cabeçalho*/
+
+   .logoSenacHub{
+        height: 120px;
+        width: 120px;
+   }
+    
+    .titulo{
+       font-size: 16px;
+       position: var(--posicao);
+       top: -8%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 89.9%; top: 10%;
+    }
+
+ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
+
+    .conteiner2{
+        width: 900px;
+    }
+
+    .inferiorDireito{
+       margin-top: 62%;
     }
 
     .Libro, .copyright, .todos{
@@ -739,6 +614,8 @@ a{
     }
 
     .copyright, .todos{
+        position: var(--posicao);
+        bottom: 10%;
         width: 300px;
     }
 
@@ -746,32 +623,11 @@ a{
         height: 255px;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-     .overlayCadastro{
-        position: var(--posicaoAbsoluta);
-        top: 39%; right: 86.4%;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 92%; right: 58.5%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 }
 
 @media(min-width: 1280px){
+
+ /*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*/   
 
     /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
     
@@ -802,7 +658,7 @@ a{
     }
 
     .conteiner2 .cadastrarLivro, .cadastrarUsuarios, .relatorios, .conteiner2 .emprestimo,
-    .usuario, .estoque, .vectorRenova{
+    .usuario, .estoque{
         width: 150px;
         height: 140px;
     }
@@ -820,44 +676,23 @@ a{
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
     
     .inferiorDireito{
-       margin-top: 53%;
+       margin-top: 13%;
     }
 
     .rodape{
-        align-items: center;  
+        align-items: center; 
+        margin-top: 3%; 
     }    
 
      .Libro{
         height: 140px;
     } 
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-     .overlayCadastro{
-        position: var(--posicaoAbsoluta);
-        top: 74%; right: 86.5%;
-        width: 150px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-      #overlayRelatorio{
-        width: 100px;
-        position: var(--posicaoAbsoluta);
-        top: 72%; right: 62.4%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 }
 
 @media(min-width: 1358px){
+
+ /*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*/
 
     /*Cabeçalho*/   /*Cabeçalho*/
 
@@ -883,7 +718,7 @@ a{
     }
 
     .inferiorDireito{
-        margin-top: 6%;
+        margin-top: 9%;
 
     }
 
@@ -891,37 +726,15 @@ a{
         margin-top: 0%;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-    .overlayCadastro{
-        position: var(--posicaoAbsoluta);
-        top: 78%; right: 86.5%;
-        height: 210px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
-    #overlayRelatorio{
-        width: 110px;
-        position: var(--posicaoAbsoluta);
-        top: 100%; right: 60.3%;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 10px;
-    }
-
-    /*Overlay de relatório*/ /*Overlay de relatório*/ /*Overlay de relatório*/
-
 }
 
 @media(min-width:1912px){
+
+ /*1912 x 1080*//*1912 x 1080*//*1912 x 1080*//*1912 x 1080*//*1912 x 1080*/   
     
     .titulo{
        position: var(--posicao);
-       bottom: 55%;
+       top: -40%;
     }
 
     .minhaConta{
@@ -941,50 +754,27 @@ a{
     }
 
     .conteiner2 .cadastrarLivro, .cadastrarUsuarios, .relatorios, 
-    .conteiner2 .emprestimo, .usuario, .estoque, .vectorRenova{
+    .conteiner2 .emprestimo, .usuario, .estoque{
         width: 207px;
         height: 210px;
     }
 
     .inferiorDireito{
-        margin-top: 0%;
+        margin-top: 3%;
     }
 
     .rodape{
         margin-top: 0.5%;
     }
 
-    /*Overlay de cadastro*/ /*Overlay de cadastro*//*Overlay de cadastro*/
-
-     .overlayCadastro{
-        height: 215px;
-        width: 207px;
-        position: var(--posicaoAbsoluta);
-        top: 62.5%; right: 83.1%;
-    }
-
-    .overlayCadastro .item{
-        font-size: 16px;
-    }
-
-    /*Overlay de cadastro*//*Overlay de cadastro*//*Overlay de cadastro*/
-    
-    /*Overlay de relatórios*/ /*Overlay de relatórios*/ /*Overlay de relatórios*/
-    
-    #overlayRelatorio{
-        position: var(--posicaoAbsoluta);
-        top: 73%; left: 33.6%;
-        width: 200px;
-    }
-
-    #overlayRelatorio .relatorio{
-        font-size: 16px;
-    }
-
-    /*Overlay de relatórios*/ /*Overlay de relatórios*/ /*Overlay de relatórios*/
-
     .menuAdm .logoSenacHub{
         height: 120px;
         width: 200px;
+    }
+
+    .menu{
+        width: 400px;
+        height: 400px;
+        font-size: 33px;
     }
 }

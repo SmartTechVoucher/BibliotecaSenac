@@ -7,7 +7,7 @@
 }
  
 :root {
-    --azul-padrao: #002043;
+    --azul-padrao: #003162;
     --cor-texto: #FFFFFF;
 }
  
@@ -285,9 +285,11 @@ body {
 .gen{
     display: flex;
     justify-content: center;
-    gap: 150px;
+    gap: 6%;
     height: 300px;
     width: 100%;
+    margin-top: 3%;
+    padding-bottom: 10%;
 }
  
 .gentitle{
@@ -304,6 +306,7 @@ body {
     align-items: center;
     width: auto;
     height: 100%;
+    gap: 10%;
 }
 
 .genicon1 {
@@ -348,7 +351,7 @@ body {
 .sup{
     z-index: 2;
     position: absolute;
-    border:10px solid white;
+    border: 10px solid white;
     border-radius: 50px;
     display: flex;
     align-items: center;
@@ -357,9 +360,13 @@ body {
     height: 125px;
     justify-self: center;
     margin-left: 40%;
-    top: 1380px;
+    top: 157%;
     background-color: var(--azul-padrao);
     font-size: 80px;
+}
+
+.generos-livros {
+    margin-top: 3%;
 }
  
 .title{
@@ -367,14 +374,14 @@ body {
     font-size: 40px;
     color: white;
 }
- 
+
 .estante{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url(imagens/bubblebk\ 1.png);
-    background-size: contain;
+    background-image: url(../../assets/img/bolhas-estante.png);
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     margin-top: 200px;
     position: relative;
@@ -382,7 +389,7 @@ body {
     width: 100%;
     height: 1600px;
 }
- 
+ /*  
 .livros {
     position: absolute;
     flex-wrap: nowrap;
@@ -396,7 +403,7 @@ body {
  
 .tresPrimeiros{
     position: relative;
-    top: 10px;
+    margin-top: 15%;
     display: flex;
     justify-content: center;
     width: 1000px;
@@ -410,12 +417,98 @@ body {
     width: 1000px;
     gap: 30px;
     justify-content: center;
+} */
+
+/* .livros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.primeiraFileira {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.segundaFileira {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
  
 .estanteimg{
-   
-    width: 80vw;
-    height: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    width: 100vw;
+    height: 54vw;
+} */
+
+.estante {
+    position: relative;
+    width: 100%;     
+    max-width: 3000px;
+    margin: 0 auto;
+  }
+  
+.estanteimg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.estanteimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    width: 100vw;
+    height: auto;
+    display: block;
+}
+
+.livros {
+    position: absolute;
+    top: 15%;   
+    left: 5%;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+.primeiraFileira {
+    margin-top: 8%;
+    gap: 15%;
+}
+
+.segundaFileira {
+    margin-left: 10%;
+    max-width: 2000px;
+    gap: 5%;
+    padding-bottom: 30px;
+}
+
+.primeiraFileira, .segundaFileira {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.livroEstante {
+    width: 120px; /* define o tamanho do card */
+} 
+
+.livroEstante1 .card-livro {
+    width: 250px;
+    height: 350px;
 }
 
 .perfil-logado {

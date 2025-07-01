@@ -3,7 +3,7 @@
 }
 
 body{
-    padding-top: 100px;
+    /* padding-top: 100px; */
     font-family: var(--fontes);
 }
 
@@ -13,9 +13,9 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background: #001E3E;
+    background: #001e3e;
     color: white;
-    position: fixed;  /* Fixa o cabeçalho no topo */
+    /*position: fixed;   Fixa o cabeçalho no topo */
     top: 0;           /* Fixa no topo da página */
     left: 0;          /* Garante que vai colar à esquerda */
     width: 100%;   
@@ -203,11 +203,12 @@ nav ul li a:visited,
 .iconesSuperiores {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* margin-top: 15%; */
+    /* align-items: center; */
     /* width: 100vw; Ocupa 100% da tela */
-    height: 100px;
-    box-sizing: border-box;
-    padding: 0; /* Sem padding, totalmente colado nas bordas */
+    /* height: 100px; */
+    /* box-sizing: border-box; */
+    /*padding: 0;  Sem padding, totalmente colado nas bordas */
 }
 
 .iconesSuperiores img {
