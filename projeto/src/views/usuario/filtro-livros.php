@@ -8,7 +8,7 @@
 </head>
 
 <?php
-include "../../../public/components/header/header.php";
+include "../../../public/components/usuario/header/header.php";
 ?>
 
 <body>

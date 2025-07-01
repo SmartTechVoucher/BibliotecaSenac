@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../../public/css/usuario/perfil-usuario.css">
-    <link rel="stylesheet" href="../../../public/css/components/modal.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../../../public/css/usuario/perfil-usuario.css">
+  <link rel="stylesheet" href="../../../public/css/components/modal.css">
 </head>
+
 <body>
 
-    <?php   
-        include "../../../public/components/header/header.php";
-    ?>
+  <?php
+  include "../../../public/components/usuario/header/header.php";
+  ?>
 
-     <!-- Conteúdo central -->
+  <!-- Conteúdo central -->
   <main class="content-wrapper">
     <div class="box">
       <div class="status">Situação: <span class="regular">Regular</span></div>
@@ -55,14 +57,14 @@
           </div>
         </div>
 
-        
+
       </div>
     </div>
   </main>
 
-  <?php   
-        include "../../../public/components/footer/footer.php";
-    ?>
+  <?php
+  include "../../../public/components/usuario/footer/footer.php";
+  ?>
 </body>
-</html>
 
+</html>
