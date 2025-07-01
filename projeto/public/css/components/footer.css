@@ -4,9 +4,21 @@
 }
 
 :root {
-    --azul-padrao-footer: #001E3E;
+    --azul-padrao: #001E3E;
     --cor-texto: #FFFFFF;
 }
+
+/* footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: c  enter;
+    bottom: 0;
+    background-color: var(--azul-padrao);
+    width: 100%;
+    height: 120px;
+    font-family: 'Poppins', serif;
+    color: var(--cor-texto);
+} */
 
 footer {
     position: fixed;         /* necessário para limitar elementos filhos */
@@ -15,9 +27,9 @@ footer {
     justify-content: space-between;
     align-items: center;
     bottom: 0;
-    background-color: var(--azul-padrao-footer);
+    background-color: var(--azul-padrao);
     width: 100%;
-    height: 240px;
+    height: 120px;
     font-family: 'Poppins', serif;
     color: var(--cor-texto);
     z-index: 1000;
@@ -73,7 +85,7 @@ footer > *:not(.livro-brilhante){
     margin-right: 100px;
 }
 
-/* .textos {
+.textos {
     padding: 15px;
     font-size: 12px;
     gap: 50px;
@@ -103,13 +115,12 @@ footer > *:not(.livro-brilhante){
 
 .social-icons img:hover {
     transform: scale(1.1);
-} */
+}
 
 .logo-senac2 img {
     width: 50px;
     height: 50px;
 }
-
 
 @media (max-width: 1300px) {
     footer {

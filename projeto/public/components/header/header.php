@@ -1,3 +1,4 @@
+
 <?php
 require "../../../config/constantes.php";
 ?>
@@ -15,10 +16,8 @@ require "../../../config/constantes.php";
     <!-- CABEÇALHO -->
     <header>
         <!-- Menu hamburguer -->
-
         <div class="menu-icon" id="menu-icone" onclick="toggleMenu()">
             <img src="../../../public/assets/icons/MenuIconeHamburguer2.svg" alt="Menu">
-
         </div>
 
         <!-- Logo do Senac -->
@@ -28,7 +27,6 @@ require "../../../config/constantes.php";
 
         <!-- Menu lateral -->
         <nav id="nav-menu">
-
             <ul>
                 <li>
                     <a href="../../../index.php">
@@ -45,7 +43,7 @@ require "../../../config/constantes.php";
                         Contato</a>
                 </li>
             </ul>
-        </nav> -->
+        </nav>
 
         <!-- Título central -->
         <div class="titulo"> 
@@ -55,12 +53,11 @@ require "../../../config/constantes.php";
 
         <!-- Ícone e menu do perfil -->
         <div class="iconepessoa"  id="icone-pessoa" onclick="toggleMenuPerfil()">
-
             <div class="menu-icon2">
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/Icon perfil.png" alt="Ícone de pessoa">
             </div>
             
-            <!-- <div class="perfil-container">
+            <div class="perfil-container">
                 <span>Bem-vindo, Gabriel!</span>
             </div>
 
@@ -79,12 +76,7 @@ require "../../../config/constantes.php";
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
                             Sair</a></li>
                     </ul>
-
             </div>
-
-                </div>
-            </div> -->
-
         </div>
     </header>
 
@@ -93,15 +85,15 @@ require "../../../config/constantes.php";
 
     <!-- Ícones de canto -->
     <div class="iconesSuperiores">
-        <img src="<?php echo $URLBASE ?>/public/assets/icons/Superior esquerdo.png" alt="Superior esquerdo" class="esquerdo">
-        <img src="<?php echo $URLBASE ?>/public/assets/icons/Superior direito.png" alt="Superior direito" class="direito">
+        <img src="<?php echo $URLBASE ?>/public/assets/img/Superior esquerdo.svg" alt="Superior esquerdo" class="esquerdo">
+        <img src="<?php echo $URLBASE ?>/public/assets/img/Superior direito.svg" alt="Superior direito" class="direito">
     </div>
 
     <!-- Modal de confirmação -->
     <?php
         require_once __DIR__ . '../../../../public/components/modal/modal.php';
         echo renderModal('confirmModal', 'Confirmação', 'Você tem certeza que deseja sair?');
-    ?> 
+    ?>
 
     <script>
         const baseUrl = '<?php echo $URLBASE; ?>';
