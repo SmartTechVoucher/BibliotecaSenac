@@ -220,7 +220,7 @@ const button1 = document.getElementById('regularesBotao');
           <td>${user.unidade}</td>
           <td>${user.telefone}</td>
           <td>${user.Status}</td>
-          <td><button onclick="unblockUser('${user.name}')">Desbloquear</button></td>
+          <td><button onclick="showUser('${user.name}')">Detalhes</button></td>
         </tr>
       `).join('');
     }
@@ -268,6 +268,7 @@ const button1 = document.getElementById('regularesBotao');
         closeModal();
         renderTable();
         renderBlockedTable();
+        console.log("Bloqueado!")
       }
     }
     function editUser() {
@@ -303,8 +304,10 @@ const button1 = document.getElementById('regularesBotao');
       const index = users.findIndex(u => u.name === userName);
       if (index >= 0) {
         users[index].Status = 'Regular';
+        closeModal();
         renderTable();
         renderBlockedTable();
+        console.log("Desbloqueado!")
       }
     }
 
@@ -340,3 +343,16 @@ const button1 = document.getElementById('regularesBotao');
       renderTable();
       renderBlockedTable();
     };
+    document.getElementById("botao-bloquear").addEventListener("click", blockORunblock);
+    function blockORunblock() {
+      if (selectedUserIndex !== null) {
+          const userToModify = users[selectedUserIndex];
+  
+          if (userToModify.Status === "Regular") {
+              blockUser();
+          } else if (userToModify.Status === "Bloqueado") {
+              // Pass the userName to unblockUser
+              unblockUser(userToModify.name);
+          }
+      }
+  }

@@ -57,12 +57,22 @@
         </table>
       </div>
     
-      <div id="bloqueados" class="tab-content">
+      <div id="bloqueados" class="tab-content" style="display: block;" >
         <table>
           <thead>
-
+            <tr>
+              <th>Nome</th>
+              <th>Nº de Matrícula</th>
+              <th>Unidade</th>
+              <th>Situação</th>
+              <th>Telefone</th>
+              <th>Situação</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
           <tbody id="blockedTable"></tbody>
-        </table>
+        </table>  
+          
       </div>
     </div>
     
@@ -205,7 +215,7 @@
             </div>
         </div>
         <div class="modal-buttons">
-          <button id="botao-bloquear" onclick="blockUser()">Bloquear usuário</button>
+          <button id="botao-bloquear"  value="1">Bloquear usuário</button>
         <div id="edicao-usuario">
           <button onclick="editUser()">Editar dados</button>
           <button id="cancelar-edicao" onclick="editUserCancel()">Cancelar edição</button>
