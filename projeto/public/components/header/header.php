@@ -15,8 +15,10 @@ require "../../../config/constantes.php";
     <!-- CABEÇALHO -->
     <header>
         <!-- Menu hamburguer -->
-        <div class="menu">
-            <img src="../../../public/assets/icons/Menu adm.png" alt="Menu">
+
+        <div class="menu-icon" id="menu-icone" onclick="toggleMenu()">
+            <img src="../../../public/assets/icons/MenuIconeHamburguer2.svg" alt="Menu">
+
         </div>
 
         <!-- Logo do Senac -->
@@ -25,11 +27,23 @@ require "../../../config/constantes.php";
         </div>
 
         <!-- Menu lateral -->
-        <!-- <nav id="nav-menu" onmouseover="toggleMenu(true)" onmouseleave="toggleMenu(false)">
+        <nav id="nav-menu">
+
             <ul>
-                <li><a href="../../../index.php">🏠 Início</a></li>
-                <li><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">🔍 Pesquisa</a></li>
-                <li><a href="contato.php">📞 Contato</a></li>
+                <li>
+                    <a href="../../../index.php">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/HomeIcone.png"  alt="">
+                        Início</a>
+                </li>
+                <li>
+                    <a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/PesquisaIcon.png" alt="">
+                        Pesquisa</a></li>
+                <li>
+                    <a href="contato.php">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt="">
+                        Contato</a>
+                </li>
             </ul>
         </nav> -->
 
@@ -40,21 +54,37 @@ require "../../../config/constantes.php";
         </div>
 
         <!-- Ícone e menu do perfil -->
-        <div class="iconepessoa">
+        <div class="iconepessoa"  id="icone-pessoa" onclick="toggleMenuPerfil()">
+
             <div class="menu-icon2">
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/Icon perfil.png" alt="Ícone de pessoa">
             </div>
             
             <!-- <div class="perfil-container">
                 <span>Bem-vindo, Gabriel!</span>
-                <div id="nav-menu-perfil">
-                    <ul>
-                        <li><a href="#">👤 Meu Perfil</a></li>
-                        <li><a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">📖 Área do Leitor</a></li>
-                        <li><a href="#" onclick="confirmarSaida(event)">🚪 Sair</a></li>
+            </div>
+
+            <div id="nav-menu-perfil">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="">
+                            Perfil</a></li>
+                    <li>
+                        <a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">
+                            <img src="<?php echo $URLBASE ?>/public/assets/icons/AreaDoLeitor.png" alt="">
+                            Leitura</a></li>
+                    <li>
+                        <a href="#" onclick="confirmarSaida(event)">
+                            <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
+                            Sair</a></li>
                     </ul>
+
+            </div>
+
                 </div>
             </div> -->
+
         </div>
     </header>
 
