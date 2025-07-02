@@ -565,8 +565,10 @@ body {
     width: 457px;
     height: 125px;
     justify-self: center;
-    margin-left: 40%;
-    top: 157%;
+    /* margin-left: 40%; */
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 0;
     background-color: var(--azul-tela-inicial);
     font-size: 80px;
 }
