@@ -52,7 +52,6 @@ nav {
     left: 0%;
     top: 61%; /* Posiciona logo abaixo do elemento pai */
     background: #001E3E;
-    padding: 10px 0; /* Padding em pixels */
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Sombra para destacar */
     z-index: 1001; /* Maior que o header */
@@ -114,7 +113,6 @@ nav.show {
     max-width: 250px; /* Limite máximo */
     top: 79%; /* Posiciona logo abaixo do elemento pai */
     background: #001E3E;
-    padding: 10px 0; /* Padding em pixels */
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Sombra para destacar */
     z-index: 1001; /* Maior que o header */
@@ -248,10 +246,6 @@ nav ul li a:visited,
 }
 
 @media (max-width: 807px){
-    .menu-icon img {
-        width: 200%;
-        height: 86%
-    }
 
     #icone_top{
         display: none;
