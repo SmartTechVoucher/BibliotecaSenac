@@ -13,7 +13,7 @@
 
 <body>
     <?php
-        include "../../../public/components/header/header.php"
+        include "../../../public/components/admin/header/header-admin.php"
     ?>
     
     <main>
@@ -121,7 +121,7 @@
         </div>
     </main>
     <?php
-        include "../../../public/components/footer/footer.php"
+        include "../../../public/components/admin/footer/footer-admin.php"
     ?>
 
     
