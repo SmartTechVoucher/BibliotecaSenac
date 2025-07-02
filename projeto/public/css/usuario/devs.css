@@ -1,0 +1,35 @@
+
+
+body {
+
+    font-family: 'Bai Jamjuree', sans-serif;
+    background-color: aquas;
+    background-color: rgba(0, 0, 0, 0.5); /* preto com 50% de opacidade */
+
+}
+
+.logo_dev{
+
+    h1 {
+        
+        font-weight: 700;
+        background-color: rgb(121, 178, 44);
+        color: aliceblue;
+        font-size: 50px;
+        padding: 0px;
+        
+        text-align: center;
+        justify-content: center;  /* horizontal */
+        align-items: center;      /* vertical */
+        
+    }
+
+    p {
+        font-size: 50px;
+        padding: 0px;
+        text-align: center;  
+        font-weight: 600;  
+        color: aliceblue;
+    
+    }
+}
