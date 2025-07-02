@@ -281,7 +281,7 @@ $senacTLG = [
     </div>
 
     <?php
-    include "../../../public/components/footer/footer.php";
+    include "../../../public/components/usuario/footer/footer.php";
     ?>
 
 

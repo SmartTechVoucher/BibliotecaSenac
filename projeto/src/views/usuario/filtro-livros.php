@@ -1,9 +1,15 @@
+<?php
+require(__DIR__ . '/../../../config/constantes.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/card-livros.css">
-    <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/filtro-livros.css">
 
 </head>
 
@@ -116,9 +122,9 @@ include "../../../public/components/usuario/header/header.php";
             </div>
         </div>
 
-        <?php include "../../../public/components/footer/footer.php" ?>
+        <?php include "../../../public/components/usuario/footer/footer.php" ?>
 
-        <script src="./../../../public/js/usuario/filtro-livros.js"></script>
+        <script src="<?php echo $URLBASE ?>/public/js/usuario/filtro-livros.js"></script>
 
 </body>
 
