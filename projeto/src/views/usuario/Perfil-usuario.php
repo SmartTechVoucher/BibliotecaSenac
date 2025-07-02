@@ -22,7 +22,7 @@
 
       <div class="grid">
         <div class="card" data-card="notificacoes">
-          <span class="icon">🔔</span>
+          <span class="icon"><img src="../../../public/assets/icons/notificacao.png" alt=""></span>
           <span class="title">Notificações</span>
           <div class="hover-content">
             <img src="../../../public/assets/img/Rectangle 4167.png" alt="Vovô virou semente" />

@@ -65,16 +65,7 @@ tr:hover {
     background-color: rgba(0,0,0,0.4);
 }
 
-.modal-content {
-    background-color: white;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    height: fit-content;
-    max-width: 400px;
-    border-radius: 8px;
-}
+/* .dados-text{
 
 .close {
     color: #aaa;
@@ -95,7 +86,8 @@ tr:hover {
 }
 
 #userImg{
-    width: 40%;
+    width: 170px;
+    margin-right: 3%;
 }
 
 #regularesBotao {
@@ -107,11 +99,11 @@ tr:hover {
     border-radius: 4px 4px 0px 0px;
     cursor: pointer;
     margin-top: 10px;
-    /* width: 220px; */
+    width: 220px; 
     height: 45px;
     font-size: 20px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+}*/
 
 #bloqueadosBotao {
     border-radius: 8px;
@@ -233,50 +225,190 @@ th {
    
 }
 
-@media(max-width: 1024px){
-    .copyright, .todos, .Libro, .titulo{
-        display: none;
-    }
-}
 
-@media(min-width: 375px){
-
-    .iconesSuperiores .esquerdo{
-        height: 100px ;
-    }
-
-    .inferior .inferiorDireito{
-        width: 100px;
-        height: 100px;
-    }
-
-}
-
-@media(min-width: 1124px){
-
-    .titulo{
-        position: var(--posicao);
-        left: 55%;
-    }
-
-}
-
-@media(min-width: 1358px){
-
-    .titulo{
-        position: var(--posicao);
-        left: 50%;
-    }
-
-}
-
-@media(min-width: 1912px){
-
-    .titulo{
-        position: var(--posicao);
-        left: 40%;
-    }
-
+/* Conteiner 3 */
+.conteiner3 {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
 }
 
 
+
+.modal-content {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: 15% auto;
+    height: fit-content;
+}
+
+.modal-content h3 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.dados-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+#userImg {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #3498db;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.dados{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    width: 95%;
+}
+
+.details-section {
+    width: 95%;
+}
+
+.details-section {
+    background-color: #f8fafd;
+    border: 1px solid #e0e6ed;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.details-section h4 {
+    color: #34495e;
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #aec6cf;
+    padding-bottom: 8px;
+}
+
+.dados-texto-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+}
+
+#dados-texto {
+    display: flex;
+    flex-direction: column;
+}
+
+#dados-texto label {
+    display: block;
+    margin-bottom: 6px;
+    color: #555;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+#dados-texto input,
+#dados-texto select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff; /* Cor de fundo para indicar que não é editável */
+    color: #495057;
+    font-size: 1em;
+    box-sizing: border-box;
+    cursor: not-allowed;
+    appearance: none; /* Remove estilo padrão de select */
+}
+#dados-texto input:read-only,
+#dados-texto select:read-only {
+    background-color: #e6e6e6
+}
+
+#dados-texto input[type="date"] {
+    padding-right: 10px; /* Espaço para o ícone do calendário */
+}
+
+#cancelar-edicao{
+    display: none;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.modal-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+#botao-bloquear { /* Botão Bloquear */
+    background-color: #e74c3c;
+    color: white;
+}
+
+
+#botao-bloquear:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.modal-buttons button:last-child { /* Botão Fechar */
+    background-color: #95a5a6;
+    color: white;
+}
+
+.modal-buttons button:last-child:hover {
+    background-color: #7f8c8d;
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .dados-container {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+    }
+    .dados {
+        flex-grow: 1; /* Permite que a div .dados ocupe o espaço restante */
+    }
+}
+
+@media (max-width: 767px) {
+    .modal-content {
+        padding: 20px;
+    }
+    .modal-content h3 {
+        font-size: 1.8em;
+    }
+    .dados, .dados2, .details-section {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    }
+}
