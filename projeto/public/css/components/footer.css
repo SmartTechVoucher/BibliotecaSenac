@@ -21,8 +21,7 @@
 } */
 
 footer {
-    position: fixed;         /* necessário para limitar elementos filhos */
-    overflow: hidden;           /* impede a imagem de ultrapassar */
+    overflow: hidden;      
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -37,9 +36,9 @@ footer {
 
 
 footer img {
-    max-height: 100%;         /* limita a altura à do footer */
+    max-height: 100%;        
     object-fit: contain;
-    margin: 0;                /* remove qualquer margem que empurre a imagem */
+    margin: 0;                
     padding: 0;
 }
 
