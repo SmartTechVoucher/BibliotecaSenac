@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -42,14 +43,15 @@ html,body {
   padding: 1%;
   border: 2px solid #dbe8f4;
   border-radius: 8px;
-  width: 90%; /*POSSIVEL BUG */
+  height: 75%;
+  width: 75%; /*POSSIVEL BUG */
   max-width: 100%;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .status {
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
 }
 
 .regular {
@@ -60,7 +62,7 @@ html,body {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Três colunas fixas */
   column-gap: 40px;
-  row-gap: 190px;
+  row-gap: 190%;
   
 }
 
@@ -73,7 +75,7 @@ html,body {
   position: relative;
   transition: 0.3s;
   cursor: pointer;
-  width: 75%;
+  width: 69%;
 }
 
 /* .card img{
@@ -90,13 +92,13 @@ html,body {
 
 
 .card .icon {
-  font-size: 20px;
+  font-size: 17px;
   margin-right: 6px;
 }
 
 .card .title {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 90%;
 }
 
 .card .hover-content {
@@ -114,7 +116,7 @@ html,body {
 }
 
 .card .hover-content img {
-  width: 130px;
+  width: 114px;
   margin-right: 10px;
   vertical-align: middle;
 
@@ -124,4 +126,101 @@ html,body {
 /* Mostrar ao passar o mouse */
 .card:hover .hover-content {
   display: block;
+}
+
+@media (max-width: 845px){
+
+    .card .title{
+
+      font-size: 65%;
+
+    }
+}
+
+@media (max-width: 845px){
+
+  .card .icon{
+
+    font-size: 80%;
+
+  }
+}
+
+@media (max-width: 640px){
+
+  .card .icon{
+
+    font-size: 109%;
+
+  }
+}
+
+@media (max-width: 649px){
+
+    .grid{
+
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 70%;
+    }
+
+    .box{
+      height: auto; /* remove altura fixa */
+      min-height: 84vh; /* altura mínima para garantir espaço */
+      max-height: none; /* remove limitação */
+      overflow-y: auto; /* adiciona scroll se necessário */
+      margin-bottom: 20px;
+      width: 78%;
+    }
+
+    .content-wrapper{
+      
+      padding-bottom: 140px;
+
+    }
+
+}
+
+
+@media (max-width: 845px){
+
+  .card .hover-content img{
+
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 786px){
+
+  .card .hover-content img{
+
+    width: 100px;
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 717px){
+
+  .card .hover-content img{
+
+    width: 90px;
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 649px){
+
+  .card .hover-content img {
+      
+    width: 78px;
+
+  }
 }

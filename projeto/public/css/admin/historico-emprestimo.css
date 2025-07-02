@@ -166,6 +166,7 @@ table {
     border-radius: 5px;
     margin: auto;
     margin-bottom: 20px;
+    margin-top: 5%;
 }
 .main-container h2{
     text-align: center;
@@ -322,11 +323,11 @@ body {
 
 .menu{
     width: 366px;
-    height: 400px;
+    height: 370px;
     background-color: var(--azulCabecalho);
     color: var(--branco);
     font-family: var(--fontes);
-    font-size: 36px;
+    font-size: 33px;
     display: none;
     cursor: pointer;  
       
@@ -361,6 +362,20 @@ body {
     .minhaConta{
         position: var(--posicaoAbsoluta);
         left: 69.5%;
+    }
+
+    .main-container{
+        overflow-x: scroll;
+    }
+
+    .conteiner3 .esquerdo, .direito, .inferior .inferiorDireito{
+        width: 100px;
+        height: 100px;
+    }
+
+    #logo-senac{
+        margin: 0px;
+        padding: 0px;
     }
 
 }
@@ -435,16 +450,38 @@ body {
 
 }
 
-@media(min-width:1000px){
+@media(min-width:1024px){
+
+ /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/   
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        left: 88.6%; top: 14%
+        left: 88.6%; top: 10%
     }
 
     .menu{
         position: var(--posicaoAbsoluta);
-        top: 14%;
+        top: 10%;
+    }
+
+    .inferior{
+        margin-top: 17%;
+    }
+
+}
+
+@media(min-width:1124px){
+
+ /*1124 x1366*//*1124 x1366*//*1124 x1366*//*1124 x1366*//*1124 x1366*/   
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 89.9%; top: 10%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
     }
 
     .inferior{
@@ -458,6 +495,11 @@ body {
     .minhaConta{
         position: var(--posicaoAbsoluta);
         left: 91.1%; top: 14%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
     }
 
 }
@@ -476,6 +518,19 @@ body {
     .minhaConta{
         position: var(--posicaoAbsoluta);
         left: 94%; top: 14%
+    }
+
+    .conteiner3 .esquerdo, .direito, .inferior .inferiorDireito{
+        width: 150px;
+        height: 150px;
+    }
+
+    #logo-senac{
+        height: 100px;
+    }
+
+    .Libro{
+        height: 252px;
     }
 
 }
