@@ -3,7 +3,7 @@
 }
 
 body{
-    padding-top: 100px;
+    padding-top: 72px;
     font-family: var(--fontes);
 }
 
@@ -19,7 +19,7 @@ header {
     top: 0;           /* Fixa no topo da página */
     left: 0;          /* Garante que vai colar à esquerda */
     width: 100%;   
-    height: 115px;   /* O cabeçalho vai ter a largura total da tela */
+    height: 87px;   /* O cabeçalho vai ter a largura total da tela */
     z-index: 1000;
     border-bottom: #769FCD 5px solid;    /* Garante que o cabeçalho fique sobre outros elementos */
 }
@@ -34,7 +34,11 @@ header {
 
 .menu-icon img {
     width: 92%;
-    height: 86%
+    height: 95%
+}
+
+.menu-icon2 img{
+    width: 44%;
 }
 
 /* MENU HAMBURGER - VERSÃO CORRIGIDA */
