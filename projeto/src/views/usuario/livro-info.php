@@ -48,12 +48,12 @@ $senacTLG = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $livro["titulo"] ?></title>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/livro-info.css">
-    
+
 
 <body>
     <!-- header  -->
     <?php
-    include "../../../public/components/header/header.php";
+    include "../../../public/components/usuario/header/header.php";
     ?>
 
 
