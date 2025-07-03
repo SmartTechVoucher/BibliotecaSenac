@@ -18,7 +18,7 @@
     </div>   
 
     <div class="foto_dev">
-        <img src="" alt="">
+        <img src="" alt=""> 
     </div>
     
 </body>
