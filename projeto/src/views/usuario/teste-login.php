@@ -4,12 +4,14 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/teste-login.css" />
 </head>
+
 <body>
   <div class="container">
     <section class="login">
@@ -17,24 +19,26 @@ session_start();
       <div class="gradiente"></div>
 
       <!-- bolhas -->
-      <div class="bolhas">
+      <div class="quadrados">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
         <span></span><span></span><span></span><span></span><span></span>
       </div>
 
       <!-- form -->
       <form action="../../../router.php?acao=validarLogin" method="POST">
-        <img src="../../../public/assets/img/LogoHub_academy.png" alt="logo-login" />
-        <p id="subtitulo"></p>
+        <img src="../../../public/assets/img/LogoHub_academy.png" alt="logo-login" class="logo-hub" />
+        <p id="subtitulo" class="titulo-login"></p>
 
         <div class="login-campos">
           <div class="campo-usuario">
-            <label for="campo_login">Usuário</label>
+            <label for="campo_login"><img src="../../../public/assets/icons/perfil.png" alt=""> Usuário</label>
             <input type="text" name="nome" id="campo_login" placeholder="Usuário" required />
           </div>
           <div class="campo-senha">
-            <label for="campo_senha">Senha</label>
+            <label for="campo_senha"><img src="../../../public/assets/icons/cadeado-senha.png" alt="" class="cadeado-senha"> Senha</label>
             <input type="password" name="senha" id="campo_senha" placeholder="Digite sua Senha" required />
-            <span class="toggle-senha" onclick="mostrarSenha()">👁️</span>
+            <span class="toggle-senha" onclick="mostrarSenha()"><img src="../../../public/assets/icons/ocultar-2.png" alt="" class="ocultar-senha"></span>
           </div>
         </div>
 
@@ -50,9 +54,9 @@ session_start();
       </form>
     </section>
 
-    <section class="tela_animacao">
+    <!-- <section class="tela_animacao">
       <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="animação login" />
-    </section>
+    </section> -->
   </div>
 
   <?php
@@ -71,17 +75,19 @@ session_start();
     // texto digitando
     const texto = ["Hub Academy", "Conectando você ao futuro..."];
     const el = document.getElementById("subtitulo");
-    let linha = 0, i = 0;
-    function digitar(){
-      if(linha < texto.length){
-        if(i < texto[linha].length){
+    let linha = 0,
+      i = 0;
+
+    function digitar() {
+      if (linha < texto.length) {
+        if (i < texto[linha].length) {
           el.innerHTML += texto[linha][i];
           i++;
           setTimeout(digitar, 80);
         } else {
           linha++;
           i = 0;
-          if(linha < texto.length){
+          if (linha < texto.length) {
             el.innerHTML += "<br>";
             setTimeout(digitar, 500);
           }
@@ -91,4 +97,5 @@ session_start();
     digitar();
   </script>
 </body>
+
 </html>
