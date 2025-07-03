@@ -578,8 +578,9 @@ body {
 }
  
 .title{
-    font-family: "Roboto";
-    font-size: 40px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 900;
+    font-size: 80px;
     color: var(--cor-texto);
 }
 

@@ -8,8 +8,10 @@ require(__DIR__ . '/../../../config/constantes.php');
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/card-livros.css">
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/filtro-livros.css">
+
+
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/card-livros.css">
+    <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
 
 </head>
 

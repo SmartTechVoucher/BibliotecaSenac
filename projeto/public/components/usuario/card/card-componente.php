@@ -5,23 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../../public/css/components/card-livros.css">
-    
+    <link rel="stylesheet" href="../../../css/components/usuario/card-livros.css">
+
 </head>
 
 
 
 <div class="card-livro">
     <img
-        src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
+        src="https://covers.odilo.io/publicms/Tecnologia_e_Comunica__o__Mario_Sergio_Cortella_e_Breno_Cortella__Papo_de_Fam_lia_/VD310_318x451.jpg"
         alt="Capa do livro"
         class="capa-livro">
 
-        <h3 class="titulo-livro">Guia do Mestre - D&D</h3>
-        <p class="autor-livro">Autor:</p>
-        <p class="autor-nome">(Nome do autor)</p>
-        <p class="status-livro">Disponível</p>
+    <div class="info-livros">
+        <h3 class="titulo-livro">Papo de Família</h3>
+        <div class="desc-livros">
+            <p class="autor-livro">Autor:</p>
+            <p class="autor-nome">( Breno Cortella)</p>
+            <p class="status-livro">Disponível</p>
+        </div>
         <button class="btn-ver-livro">Ver livro</button>
+    </div>
+
 </div>
 
 </html>

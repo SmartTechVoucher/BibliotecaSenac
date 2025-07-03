@@ -18,7 +18,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 <body>
 
   <?php
-  include "../../../public/components/usuario/header/header.php";
+    include "./projeto/public/components/usuario/header/header.php";
   ?>
 
   <!-- Conteúdo central -->
@@ -69,7 +69,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   </main>
 
   <?php
-  include "../../../public/components/usuario/footer/footer.php";
+    require_once "./projeto/public/components/usuario/footer/footer.php";
   ?>
 </body>
 

@@ -1,6 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
 .card-livro {
-  width: 280px;
-  height: 400px;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
@@ -10,8 +17,9 @@
 }
 
 .capa-livro {
+  max-width: 250px;
   width: 100%;
-  height: 70%;
+  height: auto;
   object-fit: cover;
   position: relative;
 }
@@ -34,17 +42,6 @@
   height: 60px;
 }
 
-.container-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: auto;
-  background: #DCE3EA;
-  padding: 6px 15px 20px;
-  display: flex;
-  flex-direction: column;
-}
 
 .titulo-livro {
   text-align: center;
@@ -52,7 +49,7 @@
   font-family: 'Poppins',sans-serif;
   font-weight: 700;
   color: #000000;
-  margin-bottom: 8px;
+  
 }
 
 .autor-livro {
@@ -70,7 +67,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 15px;
+  /* margin-top: 15px; */
 }
 
 .status-livro {
@@ -83,7 +80,7 @@
   background: #003162;
   color: white;
   border: none;
-  padding: 8px 16px;
+  /* padding: 8px 16px; */
   border-radius: 6px;
   font-size: 13px;
   cursor: pointer;
@@ -103,3 +100,8 @@
   border-radius: 10px;
 }
 
+
+.desc-livros {
+  margin: 1% 0px 0px 8%;
+  font-family: "Poppins",sans-serif;
+}
