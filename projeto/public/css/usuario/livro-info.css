@@ -5,99 +5,113 @@
     --fonte_normal: 20px;
     --branco: white;
     --fundoPadrao: #EDEDED;
-    --posicao: relative;
-    --posicaoAbsoluta: absolute;
-    --apontador: pointer;   
+    --verdeReserva: #258A14;
+    --azulBotao: #004A90;
+
 }
 
 body{
-    margin: 0;
-    padding: 0;
+
     background-color: #EDEDED;
 }
 
 *{
+    box-sizing: border-box;
     font-family: var(--fontes);
+    margin: 0;
+    padding: 0;
 }
 
 .containerConteudo{
-    width: 80%;
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin: auto;
     align-items: center;
 }
 
 /* QUADRADO BRANCO 1 */
-    .containerInfo{
-        width: 100%;
-        background-color: white;
-        border-radius: 2px;
-        display: flex;
-        padding: 40px;
-        flex-direction: row;
-        box-shadow: 0 2px 4px gray;
-    }
-    .livroInfo img{
-        height: 50px;
-    }
-    .review{
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    .review p{
-        margin-left: 18px;
-    }
+.containerInfo{
+    width: 97%;
+    background-color: white;
+    border-radius: 2px;
+    display: flex;
+    padding: 40px;
+    flex-direction: row;
+    box-shadow: 0 2px 4px gray;
+}
+
+.livroInfo img{
+    height: 50px;
+}
+
+.containerInfo img{
+    width: 28%;
+    height: 50%;
+}
+
+.review{
+    display: flex;
+    align-items: center;
+    margin-bottom: 4%;
+    width: 70%;
+}
+   
+.review p{
+    margin-left: 18px;
+}
 
 
-    .info_1{
-        display: flex;
-        flex-direction: row;
+.info_1{
+    display: flex;
+    flex-direction: row;
+}
 
-    }
-    .livroTitulo{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    .livroTitulo h1{
-        font-size: 45px;
-        margin-bottom: 0px;
-    }
-    #livroIsbn{
-        font-size: small;
-        color: rgb(100, 100, 100);
-    }
-    #livroDescricao{
-        margin-bottom: 0px;
-        margin-top: 20px;
-    }
+.livroTitulo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-    .livroReservar{
-        margin: 15px 0 0 0;
-    }
+.livroTitulo h1{
+    font-size: 195%;
+    margin-bottom: 0px;
+}
 
-    /* botao de reserva */
-    .livroReservar p{
-        margin-bottom: 5px;
-        color: #258A14;
-    }
-    #botaoReserva{
-        background: #004A90;
-        cursor: pointer;
-        color: white;
-        border: 0;
-        border-radius: 5px;
-        margin: auto;
-        width: 330px;
-        height: 60px;
-        font-weight: bold;
-        font-size: large;
-        box-shadow: 0 2px 2px gray;
-        transition: background-color 0.3s ease;
-    }
+#livroIsbn{
+    font-size: small;
+    color: rgb(100, 100, 100);
+}
+
+#livroDescricao{
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.livroReservar{
+    margin: 3% 0 0 0;
+}
+
+/* botao de reserva */
+.livroReservar p{
+    margin-bottom: 5px;
+    color: #258A14;
+}
+    
+#botaoReserva{
+    background: #004A90;
+    cursor: pointer;
+    color: white;
+    border: 0;
+    border-radius: 5px;
+    margin: auto;
+    width: 30%;
+    height: 60px;
+    font-weight: bold;
+    font-size: large;
+    box-shadow: 0 2px 2px gray;
+    transition: background-color 0.3s ease;
+}
     .lerMais img{
         height: 30px;
     }
@@ -115,7 +129,7 @@ body{
         display: flex;
         justify-content: space-around;
         flex-direction: row;
-        margin: 70px 0 30px;
+        margin: 4% 0 0%;
     }
     .info_2 img{
         width: 56px;
@@ -163,7 +177,7 @@ body{
 
 /* EXEMPLARES */
     .containerExemplar{
-        width: 102%;
+        width: 100%;
         background-color: white;
         display: flex;
         align-items: center ;
@@ -182,7 +196,7 @@ body{
     }
 
     #containerExemplarOpen{
-        width: 102%;
+        width: 100%;
         gap: 8px;
         align-items: center;
         justify-items: center;
@@ -405,4 +419,24 @@ padding: 0.5rem;
 
 }
 
+}
+
+@media (max-width: 701px){
+
+    .containerInfo{
+
+        display: flex;
+        flex-direction: column;
+
+    }
+    .containerInfo img{
+
+        width: 100%;
+    }
+    
+
+    .review{
+
+        width: 38%;
+    }
 }

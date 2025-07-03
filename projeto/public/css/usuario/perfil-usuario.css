@@ -33,7 +33,7 @@ html,body {
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: 1%;
 }
 
 
@@ -42,7 +42,7 @@ html,body {
   background-color: #ffffffee;
   padding: 1%;
   border: 2px solid #dbe8f4;
-  border-radius: 8px;
+  border-radius: 1%;
   height: 83%;
   width: 75%; /*POSSIVEL BUG */
   max-width: 100%;

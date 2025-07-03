@@ -12,14 +12,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 1%;
     background: #001E3E;
     color: white;
     position: fixed;  /* Fixa o cabeçalho no topo */
     top: 0;           /* Fixa no topo da página */
     left: 0;          /* Garante que vai colar à esquerda */
     width: 100%;   
-    height: 87px;   /* O cabeçalho vai ter a largura total da tela */
+    height: 10%;   /* O cabeçalho vai ter a largura total da tela */
     z-index: 1000;
     border-bottom: #769FCD 5px solid;    /* Garante que o cabeçalho fique sobre outros elementos */
 }
@@ -207,9 +207,9 @@ nav ul li a:visited,
     justify-content: space-between;
     align-items: center;
     /* width: 100vw; Ocupa 100% da tela */
-    height: 100px;
+    height: 12%;
     box-sizing: border-box;
-    padding: 0; /* Sem padding, totalmente colado nas bordas */
+    padding: 0; /* Sem padding, totalmente solado nas bordas */
 }
 
 .iconesSuperiores img {

@@ -49,7 +49,6 @@ $senacTLG = [
     <title><?php echo $livro["titulo"] ?></title>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/livro-info.css">
 
-
 <body>
     <!-- header  -->
     <?php
