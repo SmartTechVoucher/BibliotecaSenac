@@ -32,18 +32,6 @@ body {
     border-bottom: #769FCD 5px solid;
 }
 
-.menuAdm .hamburguer{
-    width: 90px;
-    height: 40px;
-    cursor: var(--apontador)
-}
-
-.logoSenacHub{
-    width: 80px;
-    height: 60px;
-    padding-left: 30px;
-}   
-
 
 /* Título centralizado */
 .titulo {
@@ -59,13 +47,15 @@ body {
 
 }
 .quadradoBranco {
-    width: 90%;
-    height: 500px;  
-    margin: 120px auto 0 auto;
-    background-color: var(--branco);
-    padding: 4%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ gap: 40px 60px;
+  background-color: #ffffffee;
+  padding: 1%;
+  border: 2px solid #dbe8f4;
+  border-radius: 8px;
+  height: 75%;
+  width: 75%; 
+  max-width: 100%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 .conteiner3 {
     display: flex;
@@ -77,27 +67,6 @@ body {
     
     
 }
-
-.imagemSuperiorEsquerda {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-}
-
-.imagemSuperiorDireita {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-}
-
-
-
 
 .linhaCima{
     display: flex;
@@ -122,7 +91,7 @@ body {
 
 .linhaBaixo {
     display: flex;
-    gap: 250px;
+    gap: 200px;
     flex-wrap: wrap;
     
     align-items: center; 
@@ -264,7 +233,7 @@ header {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
   h1 {
-    font-size: 50px;
+    font-size: 30px;
     margin-bottom: 10px;
   }
   label {
@@ -272,8 +241,8 @@ header {
     margin: 15px 0 5px;
   }
   input[type="text"], input[type="email"], input[type="password"] ,input[type="number"],input[type="tel"]{
-    width:300px;
-    padding: 10px;
+    width:170px;
+    padding: 7px;
     border: 1px solid #928d8d;
     border-radius: 7px;
     background-color:#D3D3D3;
@@ -308,6 +277,6 @@ button.esqueciSenha{
     cursor: pointer;
 }
 p{
-    font-size: 30px;
-    margin-bottom: 10px;
+    font-size: 20px;
+    margin-bottom: 7px;
 }
