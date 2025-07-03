@@ -36,7 +36,7 @@ if (isset($_SESSION['toast'])) {
                     <div class="campo-senha">
                         <label for="campo_senha">Senha</label>
                         <input type="password" name="senha" id="campo_senha" placeholder="Digite sua Senha">
-                        <!-- <span class="toggle-senha" onclick="mostrarSenha()">👁️</span> -->
+                            
                     </div>
                 </div>
                 <!-- <?php
@@ -88,9 +88,9 @@ if (isset($_SESSION['toast'])) {
             </div> -->
 
         </section>
-        <section class="tela_animacao">
+        <!-- <section class="tela_animacao">
             <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="">
-        </section>
+        </section> -->
     </div>
     <script src="<?php echo $URLBASE ?>/public/js/usuario/login.js"></script>
 </body>

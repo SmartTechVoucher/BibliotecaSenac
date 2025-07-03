@@ -27,3 +27,5 @@ const password = document.querySelector('#campo_senha');
 //         window.history.replaceState({}, document.title, window.location.pathname);
 //     }
 // });
+
+
