@@ -19,7 +19,7 @@ const button1 = document.getElementById('regularesBotao');
         unidade: 'Senac Hub Academy',
         telefone: '(67) 4002-8922', // Formatei o telefone para melhor legibilidade
         sexo: 'feminino',
-        nomeSocial: 'Tadalafila',
+        nomeSocial: 'Tadi',
         cpf: '000.000.000-00',
         nascimento: '2000-01-01',
         rgNumero: '12.345.678-9',

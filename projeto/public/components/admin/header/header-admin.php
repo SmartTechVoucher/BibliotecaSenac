@@ -29,19 +29,30 @@ require "../../../config/constantes.php";
         <nav id="nav-menu">
             <ul>
                 <li>
-                    <a href="../../../index.php">
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/HomeIcone.png"  alt="">
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaInicialDoAdm.php">
+                        <!-- <img src="php echo $URLBASE /public/assets/icons/telaInicialDoAdm.png"  alt=""> -->
                         Início</a>
                 </li>
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/PesquisaIcon.png" alt="">
-                        Pesquisa</a></li>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeLivros.php">Cadastrar Livros</a>
+                    </li>
                 <li>
-                    <a href="contato.php">
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt="">
-                        Contato</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php">Lista de Livros Cadastrados</a>
                 </li>
+                <li>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeUsuarios.php">Cadastrar Usuários</a>
+                </li>
+                <li>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php">Lista de Usuários Cadastrados</a>
+                </li>
+                
+                <li>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeLivros.php">Cadastrar Empréstimos</a>
+                </li>
+                <li>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/historico-emprestimo.php">Histórico de Empréstimos</a>
+                </li>
+
             </ul>
         </nav>
 
@@ -67,10 +78,7 @@ require "../../../config/constantes.php";
                         <a href="#">
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="">
                             Perfil</a></li>
-                    <li>
-                        <a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">
-                            <img src="<?php echo $URLBASE ?>/public/assets/icons/AreaDoLeitor.png" alt="">
-                            Leitura</a></li>
+                
                     <li>
                         <a href="#" onclick="confirmarSaida(event)">
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">

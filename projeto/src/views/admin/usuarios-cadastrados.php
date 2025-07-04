@@ -50,14 +50,13 @@
               <th>Situação</th>
               <th>Telefone</th>
               <th>Situação</th>
-              <th>Ação</th>
             </tr>
           </thead>
           <tbody id="userTable"></tbody>
         </table>
       </div>
     
-      <div id="bloqueados" class="tab-content" style="display: block;" >
+      <div id="bloqueados" class="tab-content" style="display: none;" >
         <table>
           <thead>
             <tr>
@@ -67,7 +66,6 @@
               <th>Situação</th>
               <th>Telefone</th>
               <th>Situação</th>
-              <th>Ação</th>
             </tr>
           </thead>
           <tbody id="blockedTable"></tbody>
