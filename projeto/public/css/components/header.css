@@ -159,8 +159,7 @@ nav.show {
     flex-shrink: 0; /* Evita que a imagem encolha */
 }
 
-nav ul li a:visited,
-#nav-menu-perfil ul li a:visited {
+nav ul li a:visited, #nav-menu-perfil ul li a:visited {
     color: white;
 }
 
@@ -213,10 +212,10 @@ nav ul li a:visited,
 .iconesSuperiores img {
     height: 70%; /* Preenche altura da div */
     max-width: 100px; /* Limita o tamanho para não estourar */
-    object-fit: contain; /* Mantém a proporção */
+    /* object-fit: contain; Mantém a proporção */
 }
 
-#icone_top{
+/* #icone_top{
     height: 0%;   
     width: 10%;
 }
