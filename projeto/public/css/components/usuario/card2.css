@@ -1,12 +1,37 @@
+.titulo-livro,
+.autor-livro,
+.status-livro {
+  margin: 0;
+  
+}
+
+
 .card-livro {
-  width: 250px;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
   border-radius: 12px;
   overflow: hidden;
-  background: #ffffff;
+  background: #003162;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
+  
+}
+
+.card-livro {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .card-livro:hover {
@@ -15,54 +40,149 @@
 }
 
 .capa-livro {
+  max-width: 200px;
   width: 100%;
-  height: 200px;
+  height: auto  ;
   object-fit: cover;
+  position: relative;
+  display: block; /* elimina espaços abaixo de img inline */
+  height: auto;
 }
 
 .conteudo-card {
-  padding: 1rem;
+  padding: 1% 5% 5% 5%;
+  font-family: "Poppins",sans-serif;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  color: white;
+  border-top: 1px solid white;;
 }
 
 .titulo-livro {
-  font-size: 1rem;
+  font-size: 15px;
+  font-family: "Poppins",sans-serif;
   font-weight: 700;
-  color: #003162;
+
 }
 
 .autor-livro {
-  font-size: 0.85rem;
-  color: #444;
+  font-size: 12px;
 }
 
 .status-livro {
   font-size: 0.8rem;
   font-weight: 600;
-  margin-top: 0.2rem;
+
 }
+/* 
+.status-livro::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  background: #20c997;
+  border-radius: 50%;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+} */
 
 .status-livro.disponivel {
   color: #20c997; /* verde turquesa */
 }
 
 .btn-reservar {
-  margin-top: 0.8rem;
+  
   background-color: #FF7F0E;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;        /* valor que você quer */
+  font-weight: bold;      /* ou 600, escolha */
   color: white;
   border: none;
-  border-radius: 6px;
-  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  padding: 3% 1%;
   cursor: pointer;
   transition: background 0.2s, transform 0.1s;
-  font-weight: 600;
-  font-size: 0.9rem;
-  box-shadow: 0 0 8px rgba(255,127,14,0.4);
 }
 
+
 .btn-reservar:hover {
-  background-color: #e06b00;
+  color: #003162;
+  background-color: white;
   transform: scale(1.03);
 }
+
+.btn-favorito {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  padding: 0.4rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 10;
+}
+
+.btn-favorito:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.btn-favorito i {
+  color: #FF7F0E;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* animação de “clique mágico” */
+.btn-favorito.clicked i {
+  color: #FF7F0E;
+  transform: scale(1.4);
+  text-shadow: 0 0 10px #FF7F0E;
+}
+
+.capa-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.9rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.capa-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+.descricao-livro {
+  line-height: 1.3;
+}
+
+
+
+
+

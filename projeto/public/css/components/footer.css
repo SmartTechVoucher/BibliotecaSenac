@@ -116,6 +116,38 @@ footer > *:not(.livro-brilhante){
     transform: scale(1.1);
 }
 
+.social-icons li {
+    list-style: none;
+    display: inline-block;
+}
+
+.social-icons ul {
+    display: flex;
+}
+
+.social-icons ul li {
+    font-weight: 700;
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.social-icons ul li a {
+    width: 30px;
+    height: 30px;
+    z-index:-1;
+    background-position: center;
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-color: white;
+    margin-right: 5px;
+    text-indent: -3000px;
+    float: left;
+    border-radius: 4px;
+    transition-property: all;
+    transition-duration: .3s;
+
+}
+
 .logo-senac2 img {
     width: 50px;
     height: 50px;

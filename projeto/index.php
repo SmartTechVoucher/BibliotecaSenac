@@ -27,7 +27,7 @@ if (isset($_SESSION['toast'])) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./public/css/usuario/tela-inicial.css">
-    <link rel="stylesheet" href="./public/css/components/usuario/card-livros.css">
+    <link rel="stylesheet" href="./public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
@@ -171,17 +171,17 @@ if (isset($_SESSION['toast'])) {
 
             <div class="livros">
                 <div class="primeiraFileira">
-                    <div class="livroEstante"><?php include "./public/components/usuario/card/card-componente.php"; ?></div>
-                    <div class="livroEstante"><?php include "./public/components/usuario/card/card-componente.php"; ?></div>
-                    <div class="livroEstante"><?php include "./public/components/usuario/card/card-componente.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/usuario/card/card2.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/usuario/card/card2.php"; ?></div>
+                    <div class="livroEstante"><?php include "./public/components/usuario/card/card2.php"; ?></div>
                 </div>
 
                 <div class="segundaFileira">
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card-componente.php"; ?></div>
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card-componente.php"; ?></div>
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card-componente.php"; ?></div>
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card-componente.php"; ?></div>
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card-componente.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
+                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
                 </div>
             </div>
         </div>

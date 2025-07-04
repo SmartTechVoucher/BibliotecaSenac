@@ -10,8 +10,11 @@ require(__DIR__ . '/../../../config/constantes.php');
 <head>
 
 
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/card-livros.css">
+    <!-- <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/card-livros.css"> -->
     <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
+    <link rel="stylesheet" href="../../../public/css/components/usuario/card2.css">
+    <link rel="stylesheet" href="../../../public/css/components/usuario/header.css">
+
 
 </head>
 
@@ -57,7 +60,7 @@ include "../../../public/components/usuario/header/header.php";
                 <div class="cards_livros">
 
                     <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/card/card-componente.php"; ?>
+                        <?php include "../../../public/components/usuario/card/card2.php"; ?>
                     <?php endfor; ?>
                 </div>
 
@@ -71,7 +74,7 @@ include "../../../public/components/usuario/header/header.php";
 
                 <div class="cards_livros">
                     <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/card/card-componente.php"; ?>
+                        <?php include "../../../public/components/usuario/card/card2.php"; ?>
                     <?php endfor; ?>
                 </div>
 
@@ -84,7 +87,7 @@ include "../../../public/components/usuario/header/header.php";
                 <div class="cards_livros">
 
                     <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/card/card-componente.php"; ?>
+                        <?php include "../../../public/components/usuario/card/card2.php"; ?>
                     <?php endfor; ?>
                 </div>
             </div>
