@@ -10,9 +10,7 @@
 </head>
 
 <body>
-    <?php
-    include "../../../public/components/header/header.php"
-    ?>
+    
     <main id="main-devs">
         <section>
             <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600;700&display=swap" rel="stylesheet">
