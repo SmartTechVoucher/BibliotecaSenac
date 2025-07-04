@@ -99,7 +99,7 @@ require "../../../config/constantes.php";
 
     <!-- Modal de confirmação -->
     <?php
-        require_once __DIR__ . '/../../../../public/components/usuario/modal/modal.php';
+        require_once __DIR__ . '/../../../components/usuario/modal/modal.php';
         echo renderModal('confirmModal', 'Confirmação', 'Você tem certeza que deseja sair?');
     ?>
 
