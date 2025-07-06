@@ -8,18 +8,6 @@
     --cor-texto: #FFFFFF;
 }
 
-/* footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: c  enter;
-    bottom: 0;
-    background-color: var(--azul-padrao);
-    width: 100%;
-    height: 120px;
-    font-family: 'Poppins', serif;
-    color: var(--cor-texto);
-} */
-
 footer {
     overflow: hidden;      
     display: flex;
@@ -28,12 +16,21 @@ footer {
     bottom: 0;
     background-color: var(--azul-padrao);
     width: 100%;
-    height: 120px;
+    height: 220px;
     font-family: 'Poppins', serif;
     color: var(--cor-texto);
     z-index: 1000;
 }
 
+/*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*/
+
+#inferiorDireito{
+    display: flex;
+    justify-content: end;
+    margin-top: 2%;
+}
+
+/*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*/
 
 footer img {
     max-height: 100%;        
@@ -84,41 +81,30 @@ footer > *:not(.livro-brilhante){
     margin-right: 100px;
 }
 
-.textos {
-    padding: 15px;
-    font-size: 12px;
-    gap: 50px;
-    display: flex;
-}
-
-.redes {
-    display: flex;
-    flex-direction: column;
-}
-
-.social-icons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-    max-width: 200px;
-    margin: auto;
-}
-
-.social-icons img {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-}
-
-.social-icons img:hover {
-    transform: scale(1.1);
-}
-
 .logo-senac2 img {
     width: 50px;
     height: 50px;
+}
+
+@media (max-width: 649px) {
+
+    .logo-senac img{
+
+        width: 139px;
+    }
+
+}
+
+@media(max-width:1024px){
+    .conteiner3 .esquerdo, .direito{
+        width: 100px;
+        height: 100px;
+    }
+
+    #inferiorDireito #inferior{
+        width: 100px;
+        height: 100px;
+    }
 }
 
 @media (max-width: 1300px) {
@@ -149,16 +135,6 @@ footer > *:not(.livro-brilhante){
         width: 250px; /* ajusta o tamanho se necessário */
     }
 
-    .textos {
-        justify-content: center; /* centraliza os textos */
-
-        gap: 30px; /* reduz o gap para mobile */
-        margin-bottom: 15px;
-    }
-
-    .redes {
-        align-items: center;
-    }
 
     /* Ajusta o tamanho da imagem do livro no mobile */
     .livro-brilhante img {
@@ -170,22 +146,16 @@ footer > *:not(.livro-brilhante){
     }
 }
 
-
-@media (max-width: 649px) {
-
-    .logo-senac img{
-
-        width: 139px;
+@media(min-width:1124px){
+    .conteiner3 .esquerdo, .direito{
+        width: 150px;
+        height: 150px;
     }
 
-    .textos {
-
-        width: 100px;
-        gap: 20px;
-    }
-
-    .contato p, .email p, .redes p{
-
-        font-size: 10px;
+    #inferiorDireito #inferior{
+        width: 150px;
+        height: 150px;
     }
 }
+
+
