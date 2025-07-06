@@ -22,54 +22,27 @@ require_once "../../../config/constantes.php";
 
 <body>
     <div>
+        
+        <div id="inferiorDireito">
+            <img src="../../../public/assets/icons/Inferior direito.png" alt="" id="inferior">
+        </div>
+        
         <footer>
+
             <div class="logo-senac">
                 <img src="<?php echo $URLBASE?>/public/assets/img/logosenac.svg" fill="white" alt="Logo Senac" id="logo-senac">
             </div>
             
             <div class="livro-brilhante">
-                <img src="<?php echo $URLBASE?>/public/assets/img/livro-brilhante.svg" alt="Livro icon">
-                <p>Senac MS Copyright © <br>
-                    2024. Todos os Direitos Reservados</p>
+                <img src="<?php echo $URLBASE?>/public/assets/img/livro-brilhante.svg" alt="Livro icon" class="Libro">
+                
+                <p>Senac MS Copyright © 
+                    
+                    <br>
+                  
+                 2024. Todos os Direitos Reservados</p>
             </div>
 
-            <div class="textos">
-                <div class="contato">
-                    <p>
-                        Fale conosco
-                        <br>
-                        Central de
-                        <br>
-                        Atendimento
-                        <br>
-                        (67) 3312-6260
-                    </p>
-                </div>
-                <div class="email">
-                    <p>
-                        Email:
-                        <br>
-                        atendimento@ms.senac.br
-                        <br>
-                        Sugestões, dúvidas
-                        elogios ou críticas
-                        
-                    </p>
-                </div>
-                <div class="redes">
-                    <p>
-                        Siga-nos
-                    </p>
-                    <div class="social-icons">
-                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Facebook.svg" alt="Facebook"></a>
-                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Instagram.svg" alt="Instagram"></a>
-                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/LinkedIn.svg" alt="LinkedIn"></a>
-                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/Twitter.svg" alt="Twitter"></a>
-                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/WhatsApp.svg" alt="WhatsApp"></a>
-                        <a href="#"><img src="<?php echo $URLBASE?>/public/assets/icons/YouTube.svg" alt="YouTube"></a>
-                      </div>
-                </div>
-            </div>
         </footer>
     </div>
 
