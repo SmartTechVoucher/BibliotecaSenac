@@ -24,8 +24,7 @@
   <?php   
     include "../../../public/components/admin/header/header-admin.php";
   ?>
-  
-  <main class="tabela">
+  <main>
 
     <title>Gerenciamento de Usuários</title>
     <div class="container-main">
@@ -76,7 +75,8 @@
           
       </div>
     </div>
-       
+    
+    
     <div id="userModal" class="modal"> <!-- janela que contém dados do usuario -->
       <div class="modal-content">
         <h3>Dados do Usuário</h3>
