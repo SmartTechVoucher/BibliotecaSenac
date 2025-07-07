@@ -153,6 +153,7 @@ html, body {
   .perfil-card {
     padding: 20px;
     width: 74%;
+    height: auto;
   }
 
   .perfil-container2 {

@@ -76,7 +76,7 @@ require "../../../config/constantes.php";
                             Leitura</a>
                     </li>
                     <li>
-                        <a href="#" onclick="confirmarSaida(event)">
+                        <a href="<?php echo $URLBASE ?>/logout.php" onclick="confirmarSaida(event)">
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
                             Sair</a>
                     </li>
