@@ -55,7 +55,7 @@ require(__DIR__ . '/../../../../config/constantes.php');
                         elogios ou críticas
                         <br>
                     </p>
-                    <a href="../../../../src/views/usuario/desenvolvedores.php" class="link-desenvolvedores">Desenvolvedores</a>
+                    <a href="<?php echo $URLBASE?>/src/views/usuario/desenvolvedores.php" class="link-desenvolvedores">Desenvolvedores</a>
                 </div>
                 <div class="redes">
                     <p>
