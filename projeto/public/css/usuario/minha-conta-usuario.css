@@ -16,7 +16,7 @@ html, body {
   padding: 40px 20px;
   display: flex;
   justify-content: center;
-  flex-grow: 1; /* Faz o main ocupar o espaço restante */
+  flex-grow: 1;
 }
 
 /* Card branco central */
@@ -28,7 +28,7 @@ html, body {
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
   width: 75%;
   height: 83%;
-  margin: 0 auto; /* <-- mantém centralizado */
+  margin: 0 auto;
 }
 
 /* Cabeçalho */
@@ -56,104 +56,79 @@ html, body {
 
 /* Conteúdo do perfil */
 .perfil-content {
-  display: grid;
+  display: flex;
   flex-direction: column;
-  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
 }
 
-/* Títulos de seções */
-.section-dados-pessoa h2,
-.section-nascimento h2,
-.section-apelido h2,
-.section-usuario h2,
-.section-editar h2 {
+/* Primeira linha: Nome, Data de Nascimento, Apelido e Botão */
+.primeira-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 20px;
+  align-items: end;
+}
+
+/* Segunda linha: E-mail, Senha e Criado em */
+.segunda-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: end;
+}
+
+/* Título da seção */
+.section-title {
+  margin: 10px 0;
+}
+
+.section-title h2 {
   font-size: 14px;
   color: #333;
-  margin: 0 0 10px 0;
+  margin: 0;
   font-weight: normal;
 }
 
-/* Linha com nascimento + apelido + botão */
-.section-row.align-apelido {
-  display: flex;
-  gap: 3%;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  margin-left: -48%;
-  margin-bottom: 10%;
-
-}
-
-.section-row.align-apelido > div {
-  flex: 1;
-}
-
-.section-editar {
-  flex: none;
-}
-
-.section-editar .btn-editar {
-  white-space: nowrap;
-}
-
-/* Linha com e-mail + senha + criado em */
-.form-row {
-  display: flex;
-  gap: 30px;
-  align-items: flex-end;
-}
-
-.form-group1 .form-group2 .form-group3{
+/* Campos individuais */
+.campo-nome,
+.campo-nascimento,
+.campo-apelido,
+.campo-botao,
+.campo-email,
+.campo-senha,
+.campo-criado {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  margin-bottom: 10%;
 }
 
-.form-group2{
-
-  margin-left: 18%;
-}
-
-.form-group3{
-
-  margin-left: 17%;
-}
-
-
-.form-group1 label .form-group2 label .form-group3 label{
+/* Labels */
+.campo-nome label,
+.campo-nascimento label,
+.campo-apelido label,
+.campo-botao label,
+.campo-email label,
+.campo-senha label,
+.campo-criado label {
   font-size: 14px;
   color: #333;
   margin-bottom: 5px;
   font-weight: normal;
 }
 
-/* Campos */
+/* Campos de input */
 .input-field {
   background-color: #e8e8e8;
   border: 1px solid #ccc;
   border-radius: 4px;
-  padding: 8px 12px;
+  padding: 3% 3%;
   font-size: 14px;
   color: #333;
-}
-
-
-.section-nascimento .input-field {
-  width: 65%;
-}
-
-.section-apelido .input-field {
-  width: 64%;
+  width: 83%;
 }
 
 .input-field:focus {
   outline: none;
   border-color: #4a90e2;
-}
-
-.section-dados-pessoa .input-field {
-  width: 31%;
 }
 
 /* Botão editar */
@@ -166,7 +141,7 @@ html, body {
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: 46%;
+  white-space: nowrap;
 }
 
 .btn-editar:hover {
@@ -174,251 +149,196 @@ html, body {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 862px) {
   .perfil-card {
     padding: 20px;
+    width: 74%;
   }
 
   .perfil-container2 {
     padding: 20px 10px;
   }
 
-  .section-row.align-apelido {
-    flex-direction: column;
-    align-items: stretch;
+  .primeira-linha {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
-  .form-row {
-    flex-direction: column;
+  .segunda-linha {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
   .btn-editar {
     width: 100%;
     text-align: center;
   }
+
+  .input-field{
+
+    padding: 2% 1%;
+    width: 64%;
+  }
+
+  .btn-editar{
+    width: 21%;
+  }
+
+  .btn-cancelar{
+
+    width: 21%;
+
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 498px) {
   .perfil-header h1 {
     font-size: 22px;
   }
+  
+  .perfil-card {
+    width: 95%;
+    padding: 15px;
+  }
 }
 
-@media (max-width: 1638px){
 
-  .section-row.align-apelido{
-
-    margin-left: -66%;
-
-  }
- 
-  .form-group3 {
-
-    margin-left: 6%;
-
-  }
-
-  .section-nascimento .input-field{
-
-    width: 83%;
-
-  }
-
-  .section-apelido .input-field{
-
-    width: 83%;
-  }
-
+/* Estilos para edição do apelido */
+.input-field.editando {
+  background-color: #ffffff !important;
+  border: 2px solid #4a90e2 !important;
 }
 
-@media (max-width: 1607px){
-
-  .section-row.align-apelido{
-
-    margin-left: -70%;
-
-  }
-
-  .btn-editar{
-
-    width: 49%;
-  }
-
+.btn-editar.btn-salvar {
+  background-color: #28a745 !important;
 }
 
-@media (max-width: 1573px){
-
-  .section-row.align-apelido{
-
-    margin-left: -74%;
-
-  }
-
+.btn-editar.btn-salvar:hover {
+  background-color: #218838 !important;
 }
 
-@media (max-width: 1547px){
-
-  .section-row.align-apelido{
-
-    margin-left: -77%;
-
-  }
-
-  .btn-editar{
-
-    width: 51%;
-  }
-
-  .form-group3 {
-
-    margin-left: 3%;
-  }
-
+.btn-cancelar {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+  margin-top: 2%;
 }
 
-@media (max-width: 1501px){
-
-  .section-row.align-apelido{
-
-    margin-left: -84%;
-  }
-
-  .btn-editar{
-
-    width: 53%;
-  }
-
+.btn-cancelar:hover {
+  background-color: #c82333;
 }
 
-@media (max-width: 1450px){
+/* Mensagens temporárias */
+.mensagem-temporaria {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease-out;
+  color: white;
+}
 
-  .section-row.align-apelido{
+.mensagem-temporaria.sucesso {
+  background-color: #28a745;
+}
 
-    margin-left: -94%;
+.mensagem-temporaria.erro {
+  background-color: #dc3545;
+}
+
+.mensagem-temporaria.info {
+  background-color: #dc3545;
+}
+
+.mensagem-temporaria.saindo {
+  animation: slideOut 0.3s ease-in;
+}
+
+/* Animações */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
-
-  .btn-editar{
-
-    width: 55%;
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
+}
 
-  .form-group3{
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
 
-    margin-left: -1%;
+/* Responsividade para os botões de edição */
+@media (max-width: 768px) {
+  .btn-cancelar {
+    margin-left: 0;
+    margin-top: 0%;
+    width: 21%;
   }
   
+  .campo-botao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 733px){
+
+  .btn-editar{
+
+    width: 26%;
+
+  }
+
+  .btn-salvar{
+
+    width: 21%;
+  }
 }
 
 
-@media (max-width: 1401px){
+@media (max-width: 654px){
 
-  .section-row.align-apelido{
+  .btn-editar{
 
-    margin-left: -123%;
+    width: 33%;
   }
 
-  .form-group3{
+  .btn-cancelar{
 
-    margin-left: -1%;
+    width: 33%;
   }
+}
 
-  .form-group2{
+@media (max-width: 382px){
 
-    margin-left: 10%;
+  .btn-editar{
+
+    width: 40%;
   }
   
-}
+  .btn-cancelar{
 
-
-@media (max-width: 1351px){
-
-  .section-row.align-apelido{
-
-    margin-left: -156%;
-  }
-
-  .form-group2{
-
-    margin-left: 5%;
-
-  }
-  
-}
-
-@media (max-width: 1308px){
-
-  .section-row.align-apelido{
-
-    margin-left: -179%;
-  }
-
-  .btn-editar{
-
-    width: 58%;
-  }
-
-}
-
-@media (max-width: 1284px){
-
-  .section-row.align-apelido{
-
-    margin-left: -195%;
-  }
-
-  .section-nascimento .input-field{
-
-    width: 96%;
-
-  }
-}
-
-
-@media (max-width: 1269px){
-
-  .section-row.align-apelido{
-
-    margin-left: -207%;
-  }
-
-  .btn-editar{
-
-    width: 60%;
-
-  }
-}
-
-@media (max-width: 1259px){
-
-  .section-row.align-apelido{
-
-    margin-left: -216%;
-  }
-
-  .btn-editar{
-
-    width: 62%;
-    
-  }
-}
-
-@media (max-width: 1252px){
-
-  .section-dados-pessoa .input-field{
-    width: 28%;
-  }
-  .section-row.align-apelido{
-
-    margin-left: -24%;
-  }
-
-  .btn-editar{
-
-    width: 62%;
-    
-  }
-
-  .form-group2 {
-    margin-left: 0%;
+    width: 40%;
   }
 }
