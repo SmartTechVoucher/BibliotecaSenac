@@ -1,313 +1,514 @@
-:root {
-    --azulCabecalho: #001E3E;
-    --fontes: 'Poppins', 'Roboto', 'Montaga';
-    --branco: white;
-    --fonte_rodape: 14px;
-    --fundoPadrao: #EDEDED;
-    --posicao: relative;
-    --posicaoAbsoluta: absolute;
-    --corFormulario: #E5E4E4;
-    --corBotao: #004A90;
-    --vermelho: red;
-    --apontador: pointer;
-    --cinza: #D9D9D9;
+* {
+  box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    background-color: var(--fundoPadrao);
-    font-family: var(--fontes);
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.conteiner {
-    background-color: var(--azulCabecalho);
+/* Container geral */
+.perfil-container2 {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+/* Card branco central */
+.perfil-card {
+  background: #ffffffee;
+  border: 2px solid #ced1d4;
+  border-radius: 8px;
+  padding: 44px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  width: 72%;
+  height: fit-content;
+  margin: 0 auto;
+}
+
+/* Cabeçalho */
+.perfil-header {
+  margin-bottom: 30px;
+}
+
+.perfil-header h1 {
+  font-size: 28px;
+  color: #111;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.situacao {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.status-regular {
+  color: #0077cc;
+  font-weight: bold;
+}
+
+/* Conteúdo do perfil */
+.perfil-content {
+  display: flex;
+  flex-direction: column;
+  gap: 65px; /* espaço entre as linhas */
+}
+
+/* MELHORIA: Primeira linha com espaçamento aumentado */
+.primeira-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%; /* Aumentado para melhor espaçamento */
+  align-items: end;
+  margin: 10px 0;
+}
+
+/* Segunda linha: Senha e Telefone */
+.segunda-linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10%; /* Aumentado para melhor espaçamento */
+  align-items: end;
+  margin: 10px 0;
+}
+
+/* Seção de botões */
+.botoes-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+/* Título da seção */
+.section-title {
+  margin: 10px 0;
+}
+
+.section-title h2 {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+  font-weight: normal;
+}
+
+/* Campos individuais */
+.campo-nome,
+.campo-nascimento,
+.campo-apelido,
+.campo-botao,
+.campo-email,
+.campo-senha,
+.campo-criado {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.campo-nome label,
+.campo-nascimento label,
+.campo-apelido label,
+.campo-botao label,
+.campo-email label,
+.campo-senha label,
+.campo-criado label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+/* MELHORIA: Campos de input com largura completa */
+.input-field {
+  background-color: #e8e8e8;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px 16px; /* Padding mais consistente */
+  font-size: 14px;
+  color: #333;
+  width: 100%; 
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+/* Botão editar */
+.btn-editar {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  white-space: nowrap;
+  min-width: 178px;
+  width: 100px;
+  height: 42px;
+  text-align: center;
+
+
+}
+.btn-editar:hover {
+  background-color: #357abd;
+}
+
+/* Responsividade */
+@media (max-width: 862px) {
+  .perfil-card {
+    padding: 20px;
+    width: 74%;
+  }
+
+  .perfil-container2 {
+    padding: 20px 10px;
+  }
+
+  .primeira-linha {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .segunda-linha {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .btn-editar {
     width: 100%;
-    height: 120px;
-    display: flex;
-    justify-content: center;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+
+  .botoes-section {
+    flex-direction: column;
     align-items: center;
-    position: relative;
-    padding: 0 20px;
-    box-sizing: border-box;
-    border-bottom: #769FCD 5px solid;
-}
+  }
 
-.menuAdm .hamburguer{
-    width: 90px;
-    height: 40px;
-    cursor: var(--apontador)
-}
-
-.logoSenacHub{
-    width: 80px;
-    height: 60px;
-    padding-left: 30px;
-}   
-
-
-/* Título centralizado */
-.titulo {
-    color: var(--branco);
-    font-size: 18px;
-    font-weight: 600px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0 auto;
-    max-width: calc(100% - 100px);
-
-}
-.quadradoBranco {
-    width: 90%;
-    height: 500px;  
-    margin: 120px auto 0 auto;
-    background-color: var(--branco);
-    padding: 4%;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.conteiner3 {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+  .btn-cancelar {
     width: 100%;
-        align-items: center; 
-        gap: 10px; 
-    
-    
+    max-width: 300px;
+  }
 }
 
-.imagemSuperiorEsquerda {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
+@media (max-width: 498px) {
+  .perfil-header h1 {
+    font-size: 22px;
+  }
+  
+  .perfil-card {
+    width: 95%;
+    padding: 15px;
+  }
 }
 
-.imagemSuperiorDireita {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
+  @media (max-width: 768px) {
+    .primeira-linha {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .segunda-linha {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .campo-botao {
+      justify-content: center;
+    }
+  
+    .btn-editar {
+      width: 100%;
+      max-width: 200px; /* largura máxima boa */
+    }
+  }
+
+/* Estilos para edição */
+.input-field.editando {
+  background-color: #ffffff !important;
+  border: 2px solid #4a90e2 !important;
 }
 
-
-
-
-.linhaCima{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 400px;
+.btn-editar.btn-salvar {
+  background-color: #28a745 !important;
 }
 
-.campo{
-    display: flex;
-    flex-direction: column;
+.btn-editar.btn-salvar:hover {
+  background-color: #218838 !important;
 }
 
-
-.campoSenha{
-    display: flex;
-    flex-direction: column; 
-    gap: 5px; 
+.btn-cancelar {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s;
 }
 
-
-
-
-.linhaBaixo {
-    display: flex;
-    gap: 250px;
-    flex-wrap: wrap;
-    
-    align-items: center; 
-}
-.campo1{
-    display: flex;
-    flex-direction: column;
+.btn-cancelar:hover {
+  background-color: #c82333;
 }
 
-
-
-.inferior {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1%;
-    padding-right: 20px;
-
+/* Mensagens temporárias */
+.mensagem-temporaria {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  animation: slideIn 0.3s ease-out;
+  color: white;
 }
 
-.inferior img {
-    width: 100px;
-    height: 100px;
+.mensagem-temporaria.sucesso {
+  background-color: #28a745;
 }
 
-/* Rodapé */
-.rodape {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: var(--azulCabecalho);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; 
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: var(--fonte_rodape);
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    height: 120px; 
+.mensagem-temporaria.erro {
+  background-color: #dc3545;
 }
 
-.rodape .Logo {
-    height: 50px;
-    width: 200px;
-    padding-left: 30%;
+.mensagem-temporaria.info {
+  background-color: #17a2b8;
 }
 
-.rodape .centro {
-    text-align: center;
-    font-size: 14px;
-    width: 100%;
+.mensagem-temporaria.saindo {
+  animation: slideOut 0.3s ease-in;
 }
 
-.rodape .direita {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    text-align: right;
-    justify-content: flex-end;
+/* Animações */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+/* Tablets grandes e desktops pequenos */
+@media (max-width: 1024px) {
+  .perfil-card {
+    width: 85%;
+    padding: 36px;
+  }
+  
+  .perfil-container2 {
+    padding: 30px 15px;
+  }
+}
 
+/* Tablets */
 @media (max-width: 768px) {
-    .rodape {
-        flex-direction: column; 
-        align-items: center; 
-        padding: 10px;
-        height: auto; 
-    }
-
-    .rodape .Logo, .rodape .Libro {
-        width: 60%; 
-        margin-bottom: 10px;
-    }
-
-    .rodape .centro {
-        margin-bottom: 10px; 
-        font-size: 12px; 
-    }
-
-    .rodape .direita {
-        width: 100%;
-        align-items: center;
-        margin-top: 10px;
-    }
-}
-
-
-.campoSenha {
-    display: flex;
-    flex-direction: column;
+  .perfil-card {
+    width: 90%;
+    padding: 28px;
+  }
+  
+  .perfil-container2 {
+    padding: 20px 10px;
+  }
+  
+  .primeira-linha {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .segunda-linha {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .campo-botao {
     justify-content: center;
-    align-items: flex-start;
-    width: 200px;
-}
-
-.campoSenha input {
+  }
+  
+  .btn-editar {
     width: 100%;
-}
-
-
-
-
-.campoSenha {
-    align-self: center;
-}
-button:hover{
-    color: #001E3E;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-}
-header {
-    background-color: #0a2d4d;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    position: relative;
+    max-width: 250px;
   }
-  header .bem-vindo {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-  }
-  nav {
-    background-color: #e9ecef;
-    padding: 10px 30px;
-    font-size: 14px;
-  }
-  .container {
-    background-color: white;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 30px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-  h1 {
-    font-size: 50px;
-    margin-bottom: 10px;
-  }
-  label {
-    display: block;
-    margin: 15px 0 5px;
-  }
-  input[type="text"], input[type="email"], input[type="password"] ,input[type="number"],input[type="tel"]{
-    width:300px;
-    padding: 10px;
-    border: 1px solid #928d8d;
-    border-radius: 7px;
-    background-color:#D3D3D3;
-  }
-
-
-
-  .form-container {
-    display: flex;
+  
+  .botoes-section {
     flex-direction: column;
-    align-items: flex-start; /* alinha à esquerda */
-    margin-top: 20px;
+    align-items: center;
+  }
+  
+  .btn-cancelar {
+    width: 100%;
+    max-width: 250px;
+  }
 }
 
+/* Smartphones grandes */
+@media (max-width: 640px) {
+  .perfil-card {
+    width: 95%;
+    padding: 24px;
+  }
+  
+  .perfil-container2 {
+    padding: 15px 8px;
+  }
+  
+  .perfil-content {
+    gap: 30px;
+  }
+  
+  .btn-editar {
+    max-width: 200px;
+  }
+  
+  .btn-cancelar {
+    max-width: 200px;
+  }
+}
 
-button.edit-btn{
-    height: 35px;
-    padding: 8px 35px;
-    background-color: var(--corBotao);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Smartphones */
+@media (max-width: 480px) {
+  .perfil-card {
+    width: 98%;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .perfil-container2 {
+    padding: 10px 5px;
+  }
+  
+  .perfil-header h1 {
+    font-size: 22px;
+  }
+  
+  .perfil-content {
+    gap: 25px;
+  }
+  
+  .input-field {
+    padding: 10px 12px;
+  }
+  
+  .btn-editar,
+  .btn-cancelar {
+    padding: 12px 16px;
+    font-size: 13px;
+    max-width: 180px;
+  }
+  
+  .mensagem-temporaria {
+    right: 10px;
+    top: 10px;
+    max-width: calc(100vw - 20px);
+    font-size: 13px;
+  }
 }
-button.esqueciSenha{
-    height: 35px;
-    padding: 5px 30px;
-    background-color: var(--corBotao);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+/* Smartphones muito pequenos */
+@media (max-width: 360px) {
+  .perfil-card {
+    width: 100%;
+    padding: 16px;
+    border-radius: 0;
+  }
+  
+  .perfil-container2 {
+    padding: 5px 0;
+  }
+  
+  .perfil-header h1 {
+    font-size: 20px;
+  }
+  
+  .input-field {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .btn-editar,
+  .btn-cancelar {
+    padding: 10px 12px;
+    font-size: 12px;
+    min-width: 100px;
+    max-width: 150px;
+  }
+  
+  .campo-nome label,
+  .campo-nascimento label,
+  .campo-apelido label,
+  .campo-botao label,
+  .campo-email label,
+  .campo-senha label,
+  .campo-criado label {
+    font-size: 13px;
+  }
 }
-p{
-    font-size: 30px;
-    margin-bottom: 10px;
+
+/* Modo paisagem em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+  .perfil-container2 {
+    padding: 10px;
+  }
+  
+  .perfil-card {
+    padding: 20px;
+  }
+  
+  .perfil-content {
+    gap: 20px;
+  }
+  
+  .perfil-header {
+    margin-bottom: 15px;
+  }
+  
+  .botoes-section {
+    margin-top: 15px;
+  }
 }
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .input-field,
+  .btn-editar,
+  .btn-cancelar {
+    transition: none;
+  }
+  
+  .mensagem-temporaria {
+    animation: none;
+  }
+}
+
