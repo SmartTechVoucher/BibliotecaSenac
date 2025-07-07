@@ -1,83 +1,67 @@
+<?php
+require(__DIR__ . '/../../../config/constantes.php');
+?>
+
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de relatórios</title>
-    <link rel="stylesheet" href="../../../public/css/admin/minha-conta.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montaga&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/minha-conta.css">
 </head>
+
 <body>
 
-  <?php
-  include "../../../public/components/usuario/header/header.php";
-  ?>
+  <?php include "../../../public/components/usuario/header/header.php"; ?>
 
-  <!-- Conteúdo central -->
- 
-  <div class="quadradoBranco">
+  <main class="perfil-container2">
+    <div class="perfil-card">
+      <div class="perfil-header">
+        <h1>Luciano (786543)</h1>
 
-        <form class="quadradoCinza">
+      <div class="perfil-content">
+        <!-- Primeira linha: Nome, Data de Nascimento, Apelido e Botão -->
+        <div class="primeira-linha">
+          <div class="campo-nome">
+            <label>*Perfil de acesso:</label>
+            <input type="text" value="Luciano" class="input-field" readonly>
+          </div>
+          <div class="campo-email">
+            <label>E-mail</label>
+            <input type="email" value="amojava@gmail.com" class="input-field" readonly>
+          </div>
 
-            Início / Perfil / Minha conta
+        </div>
 
-            <h1>Luciano (786543)</h1>
+        <!-- Título da seção -->
+        <div class="section-title">
+        <!-- Segunda linha: E-mail, Senha e Criado em -->
+        <div class="segunda-linha">
 
-            <form class="quadradoCinza">
+          <div class="campo-senha">
+            <label>Senha</label>
+            <input type="password" value="************" class="input-field" readonly>
+          </div>
 
-                <div class="linhaCima">
-
-                    <div class="campo">
-
-                        <p>*Perfil de acesso:</p>
-                        <input type="text" name="nome">
-
-                    </div>
-
-                    <div class="form-container">
-                        <p>*Email</p>
-                        <input type="email" id="email" name="email" />
-
-
-                    </div>
-                    <div class="campoSenha">
-                        <p>*Senha</p>
-                        <input type="password" id="senha" name="senha">
-                    </div>
-
-                </div>
-                <div class="linhaBaixo">
-                    <div class="campo">
-                        <p>*Telefone</p>
-                        <input type="tel" id="tel" name="tel">
-                        &nbsp;
-                    </div>
-                    <br><button class="edit-btn">Editar Informação</button><br />
-                    <div class="esqueciSenha">
-                        <br><button class="esqueciSenha">Esqueci Minha Senha</button></br>
-                    </div>
-                </div>
+          <div class="campo-criado">
+            <label>telefone</label>
+            <input type="text" value="13/05/2023" class="input-field" readonly>
+          </div>
+          </div>
+          <div class="campo-botao">
+            <label>&nbsp;</label>
+            <button class="btn-editar" type="button">Editar informação</button>
+    
+        </div>
+      </div>
     </div>
-    </form>
-    </div>
+  </main>
 
-
-  <?php
-  include "../../../public/components/usuario/footer/footer.php";
-  ?>
+  <?php include "../../../public/components/usuario/footer/footer.php"; ?>
+  
+  <script src="<?php echo $URLBASE ?>/public/js/usuario/editar-apelido.js"></script>
 </body>
 
 </html>
