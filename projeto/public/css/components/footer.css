@@ -12,12 +12,12 @@
 footer {
     overflow: hidden;      
     display: flex;
-    justify-content: space-between;
+    gap: 8%;
     align-items: center;
     bottom: 0;
     background-color: var(--azul-padrao);
     width: 100%;
-    height: auto;
+    height: 130px;
     font-family: 'Poppins', serif;
     color: var(--cor-texto);
     z-index: 1000;
