@@ -1,0 +1,424 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container geral */
+.perfil-container2 {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; /* Faz o main ocupar o espaço restante */
+}
+
+/* Card branco central */
+.perfil-card {
+  background: #ffffff;
+  border: 2px solid #dbe8f4;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  width: 75%;
+  height: 83%;
+  margin: 0 auto; /* <-- mantém centralizado */
+}
+
+/* Cabeçalho */
+.perfil-header {
+  margin-bottom: 30px;
+}
+
+.perfil-header h1 {
+  font-size: 28px;
+  color: #111;
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.situacao {
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.status-regular {
+  color: #0077cc;
+  font-weight: bold;
+}
+
+/* Conteúdo do perfil */
+.perfil-content {
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Títulos de seções */
+.section-dados-pessoa h2,
+.section-nascimento h2,
+.section-apelido h2,
+.section-usuario h2,
+.section-editar h2 {
+  font-size: 14px;
+  color: #333;
+  margin: 0 0 10px 0;
+  font-weight: normal;
+}
+
+/* Linha com nascimento + apelido + botão */
+.section-row.align-apelido {
+  display: flex;
+  gap: 3%;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  margin-left: -48%;
+  margin-bottom: 10%;
+
+}
+
+.section-row.align-apelido > div {
+  flex: 1;
+}
+
+.section-editar {
+  flex: none;
+}
+
+.section-editar .btn-editar {
+  white-space: nowrap;
+}
+
+/* Linha com e-mail + senha + criado em */
+.form-row {
+  display: flex;
+  gap: 30px;
+  align-items: flex-end;
+}
+
+.form-group1 .form-group2 .form-group3{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 10%;
+}
+
+.form-group2{
+
+  margin-left: 18%;
+}
+
+.form-group3{
+
+  margin-left: 17%;
+}
+
+
+.form-group1 label .form-group2 label .form-group3 label{
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+/* Campos */
+.input-field {
+  background-color: #e8e8e8;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+
+.section-nascimento .input-field {
+  width: 65%;
+}
+
+.section-apelido .input-field {
+  width: 64%;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.section-dados-pessoa .input-field {
+  width: 31%;
+}
+
+/* Botão editar */
+.btn-editar {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 46%;
+}
+
+.btn-editar:hover {
+  background-color: #357abd;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .perfil-card {
+    padding: 20px;
+  }
+
+  .perfil-container2 {
+    padding: 20px 10px;
+  }
+
+  .section-row.align-apelido {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .btn-editar {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .perfil-header h1 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 1638px){
+
+  .section-row.align-apelido{
+
+    margin-left: -66%;
+
+  }
+ 
+  .form-group3 {
+
+    margin-left: 6%;
+
+  }
+
+  .section-nascimento .input-field{
+
+    width: 83%;
+
+  }
+
+  .section-apelido .input-field{
+
+    width: 83%;
+  }
+
+}
+
+@media (max-width: 1607px){
+
+  .section-row.align-apelido{
+
+    margin-left: -70%;
+
+  }
+
+  .btn-editar{
+
+    width: 49%;
+  }
+
+}
+
+@media (max-width: 1573px){
+
+  .section-row.align-apelido{
+
+    margin-left: -74%;
+
+  }
+
+}
+
+@media (max-width: 1547px){
+
+  .section-row.align-apelido{
+
+    margin-left: -77%;
+
+  }
+
+  .btn-editar{
+
+    width: 51%;
+  }
+
+  .form-group3 {
+
+    margin-left: 3%;
+  }
+
+}
+
+@media (max-width: 1501px){
+
+  .section-row.align-apelido{
+
+    margin-left: -84%;
+  }
+
+  .btn-editar{
+
+    width: 53%;
+  }
+
+}
+
+@media (max-width: 1450px){
+
+  .section-row.align-apelido{
+
+    margin-left: -94%;
+  }
+
+  .btn-editar{
+
+    width: 55%;
+  }
+
+  .form-group3{
+
+    margin-left: -1%;
+  }
+  
+}
+
+
+@media (max-width: 1401px){
+
+  .section-row.align-apelido{
+
+    margin-left: -123%;
+  }
+
+  .form-group3{
+
+    margin-left: -1%;
+  }
+
+  .form-group2{
+
+    margin-left: 10%;
+  }
+  
+}
+
+
+@media (max-width: 1351px){
+
+  .section-row.align-apelido{
+
+    margin-left: -156%;
+  }
+
+  .form-group2{
+
+    margin-left: 5%;
+
+  }
+  
+}
+
+@media (max-width: 1308px){
+
+  .section-row.align-apelido{
+
+    margin-left: -179%;
+  }
+
+  .btn-editar{
+
+    width: 58%;
+  }
+
+}
+
+@media (max-width: 1284px){
+
+  .section-row.align-apelido{
+
+    margin-left: -195%;
+  }
+
+  .section-nascimento .input-field{
+
+    width: 96%;
+
+  }
+}
+
+
+@media (max-width: 1269px){
+
+  .section-row.align-apelido{
+
+    margin-left: -207%;
+  }
+
+  .btn-editar{
+
+    width: 60%;
+
+  }
+}
+
+@media (max-width: 1259px){
+
+  .section-row.align-apelido{
+
+    margin-left: -216%;
+  }
+
+  .btn-editar{
+
+    width: 62%;
+    
+  }
+}
+
+@media (max-width: 1252px){
+
+  .section-dados-pessoa .input-field{
+    width: 28%;
+  }
+  .section-row.align-apelido{
+
+    margin-left: -240%;
+  }
+
+  .btn-editar{
+
+    width: 62%;
+    
+  }
+
+  .form-group2 {
+    margin-left: 0%;
+  }
+}
