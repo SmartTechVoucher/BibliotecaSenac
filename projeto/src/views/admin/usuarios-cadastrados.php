@@ -38,7 +38,7 @@
 
       <h2>Usuários Cadastrados</h2>
       <label for="search"><label for="">Pesquisar:</label for=""></label>
-      <input readonly type="text" id="search" placeholder="Pesquisar usuário..." onkeyup="filterTable()">
+      <input readonly class="inputs-editaveis" type="text" id="search" placeholder="Pesquisar usuário..." onkeyup="filterTable()">
     
       <div id="regulares" class="tab-content" style="display: block;"> <!-- tabela que lista usuarios regulares -->
 
@@ -81,15 +81,15 @@
         <div class="dados-container">
           <img src="<?php echo $URLBASE?>/public/assets/img/NullUser.jpg" alt="" id="userImg">
           <div class="dados">
-            <div id= "dados-texto"><label for="">Nome:</label for=""> <input readonly id="userName"></input></div>
-            <div id= "dados-texto"><label for="">Nome social:</label for=""> <input readonly id="userNameSocial"></input></div>
-            <div id= "dados-texto"><label for="">Nascimento:</label for=""> <input type="date" readonly id="userNascimento"></input></div>
+            <div id= "dados-texto"><label for="">Nome:</label for=""> <input readonly class="inputs-editaveis" id="userName"></input></div>
+            <div id= "dados-texto"><label for="">Nome social:</label for=""> <input readonly class="inputs-editaveis" id="userNameSocial"></input></div>
+            <div id= "dados-texto"><label for="">Nascimento:</label for=""> <input type="date" readonly class="inputs-editaveis" id="userNascimento"></input></div>
             <div id= "dados-texto"><label for="">Sexo:</label for=""> <select disabled id="userSexo">
               <option value="masculino">Masculino</option>
               <option value="feminino">Feminino</option>
               <option value="outro">Outro</option>
             </select></div>
-            <div id= "dados-texto"><label for="">CPF:</label for=""> <input readonly id="userCPF"></input></div>
+            <div id= "dados-texto"><label for="">CPF:</label for=""> <input readonly class="inputs-editaveis" id="userCPF"></input></div>
           </div>
         </div>
         
@@ -98,15 +98,15 @@
             <div class="dados-texto-container">
                 <div id="dados-texto">
                     <label for="userRegistration">Matrícula:</label>
-                    <input readonly id="userRegistration" value="20230001">
+                    <input readonly class="inputs-editaveis" id="userRegistration" value="20230001">
                 </div>
                 <div id="dados-texto">
                     <label for="userUnidade">Unidade:</label>
-                    <input readonly id="userUnidade" value="Unidade Central">
+                    <input readonly class="inputs-editaveis" id="userUnidade" value="Unidade Central">
                 </div>
                 <div id="dados-texto">
                     <label for="userStatus">Situação:</label>
-                    <input readonly id="userStatus" value="Ativo">
+                    <input readonly class="inputs-editaveis" id="userStatus" value="Ativo">
                 </div>
             </div>
         </div>
@@ -116,23 +116,23 @@
             <div class="dados-texto-container">
                 <div id="dados-texto">
                     <label for="userRgNumero">Número:</label>
-                    <input readonly id="userRgNumero" value="12.345.678-9">
+                    <input readonly class="inputs-editaveis" id="userRgNumero" value="12.345.678-9">
                 </div>
                 <div id="dados-texto">
                     <label for="userRgOrgaoEmissor">Órgão Emissor:</label>
-                    <input readonly id="userRgOrgaoEmissor" value="SSP/SP">
+                    <input readonly class="inputs-editaveis" id="userRgOrgaoEmissor" value="SSP/SP">
                 </div>
                 <div id="dados-texto">
                     <label for="userRgUF">UF:</label>
-                    <input readonly id="userRgUF" value="SP">
+                    <input readonly class="inputs-editaveis" id="userRgUF" value="SP">
                 </div>
                 <div id="dados-texto">
                     <label for="userRgPais">País:</label>
-                    <input readonly id="userRgPais" value="Brasil">
+                    <input readonly class="inputs-editaveis" id="userRgPais" value="Brasil">
                 </div>
                 <div id="dados-texto">
                     <label for="userRgDataEmissao">Data de Emissão:</label>
-                    <input type="date" readonly id="userRgDataEmissao" value="2008-03-20">
+                    <input type="date" readonly class="inputs-editaveis" id="userRgDataEmissao" value="2008-03-20">
                 </div>
             </div>
         </div>
@@ -142,15 +142,15 @@
             <div class="dados-texto-container">
                 <div id="dados-texto">
                     <label for="userNomePai">Nome do Pai:</label>
-                    <input readonly id="userNomePai" value="Nome do Pai do Usuário">
+                    <input readonly class="inputs-editaveis" id="userNomePai" value="Nome do Pai do Usuário">
                 </div>
                 <div id="dados-texto">
                     <label for="userNomeMae">Nome da Mãe:</label>
-                    <input readonly id="userNomeMae" value="Nome da Mãe do Usuário">
+                    <input readonly class="inputs-editaveis" id="userNomeMae" value="Nome da Mãe do Usuário">
                 </div>
                 <div id="dados-texto">
                     <label for="userResponsavel">Responsável:</label>
-                    <input readonly id="userResponsavel" value="Nome do Responsável">
+                    <input readonly class="inputs-editaveis" id="userResponsavel" value="Nome do Responsável">
                 </div>
             </div>
         </div>
@@ -160,27 +160,27 @@
             <div class="dados-texto-container">
                 <div id="dados-texto">
                     <label for="userTelResidencial">Telefone Residencial:</label>
-                    <input readonly id="userTelResidencial" value="(11) 2233-4455">
+                    <input readonly class="inputs-editaveis" id="userTelResidencial" value="(11) 2233-4455">
                 </div>
                 <div id="dados-texto">
                     <label for="userTelComercial">Telefone Comercial:</label>
-                    <input readonly id="userTelComercial" value="(11) 5566-7788">
+                    <input readonly class="inputs-editaveis" id="userTelComercial" value="(11) 5566-7788">
                 </div>
                 <div id="dados-texto">
                     <label for="userCelular">Celular:</label>
-                    <input readonly id="userCelular" value="(11) 98765-4321">
+                    <input readonly class="inputs-editaveis" id="userCelular" value="(11) 98765-4321">
                 </div>
                 <div id="dados-texto">
                     <label for="userOutroTelefone">Outro Telefone:</label>
-                    <input readonly id="userOutroTelefone" value="">
+                    <input readonly class="inputs-editaveis" id="userOutroTelefone" value="">
                 </div>
                 <div id="dados-texto">
                     <label for="userEmail">E-mail:</label>
-                    <input readonly id="userEmail" value="usuario@exemplo.com">
+                    <input readonly class="inputs-editaveis" id="userEmail" value="usuario@exemplo.com">
                 </div>
                 <div id="dados-texto">
                     <label for="userHomepage">Homepage:</label>
-                    <input readonly id="userHomepage" value="www.siteusuario.com">
+                    <input readonly class="inputs-editaveis" id="userHomepage" value="www.siteusuario.com">
                 </div>
             </div>
         </div>
@@ -190,11 +190,11 @@
             <div class="dados-texto-container">
                 <div id="dados-texto">
                     <label for="userProfissao">Profissão:</label>
-                    <input readonly id="userProfissao" value="Desenvolvedor Web">
+                    <input readonly class="inputs-editaveis" id="userProfissao" value="Desenvolvedor Web">
                 </div>
                 <div id="dados-texto">
                     <label for="userCargo">Cargo:</label>
-                    <input readonly id="userCargo" value="Desenvolvedor Sênior">
+                    <input readonly class="inputs-editaveis" id="userCargo" value="Desenvolvedor Sênior">
                 </div>
             </div>
         </div>
@@ -204,18 +204,18 @@
             <div class="dados-texto-container">
                 <div id="dados-texto">
                     <label for="userEndResidencial">Endereço Residencial:</label>
-                    <input readonly id="userEndResidencial" value="Rua das Acácias, 100, Bairro Jardim, Cidade - UF">
+                    <input readonly class="inputs-editaveis" id="userEndResidencial" value="Rua das Acácias, 100, Bairro Jardim, Cidade - UF">
                 </div>
                 <div id="dados-texto">
                     <label for="userEndComercial">Endereço Comercial:</label>
-                    <input readonly id="userEndComercial" value="Av. Comercial, 500, Centro, Outra Cidade - UF">
+                    <input readonly class="inputs-editaveis" id="userEndComercial" value="Av. Comercial, 500, Centro, Outra Cidade - UF">
                 </div>
             </div>
         </div>
         <div class="modal-buttons">
           <button id="botao-bloquear"  value="1">Bloquear usuário</button>
         <div id="edicao-usuario">
-          <button onclick="editUser()">Editar dados</button>
+          <button id="botao-edicao" value="true">Editar dados</button>
           <button id="cancelar-edicao" onclick="editUserCancel()">Cancelar edição</button>
         </div>
         

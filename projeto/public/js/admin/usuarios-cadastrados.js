@@ -1,4 +1,5 @@
 const button1 = document.getElementById('regularesBotao');
+const botaoEdicao= document.getElementById('botao-edicao');
   const button2 = document.getElementById('bloqueadosBotao');
 
   button1.addEventListener('click', function regularclick() {
@@ -271,35 +272,30 @@ const button1 = document.getElementById('regularesBotao');
         console.log("Bloqueado!")
       }
     }
-    function editUser() {
+    const TodosInputs = document.querySelectorAll('.inputs-editaveis');
+    botaoEdicao.addEventListener('click', () =>{
         
-        document.getElementById('userName').readOnly = false;
-        document.getElementById('userNameSocial').readOnly = false;
-        document.getElementById('userNascimento').readOnly = false;
-        document.getElementById('userSexo').disabled = false;
-        document.getElementById('userCPF').readOnly = false;
-        document.getElementById('userRegistration').readOnly = false;
-        document.getElementById('userUnidade').readOnly = false;
-        document.getElementById('userStatus').readOnly = false;
-        document.getElementById('userRgNumero').readOnly = false;
-        document.getElementById('userRgOrgaoEmissor').readOnly = false;
-        document.getElementById('userRgUF').readOnly = false;
-        document.getElementById('userRgPais').readOnly = false;
-        document.getElementById('userRgDataEmissao').readOnly = false;
-        document.getElementById('userNomePai').readOnly = false;
-        document.getElementById('userNomeMae').readOnly = false;
-        document.getElementById('userResponsavel').readOnly = false;
-        document.getElementById('userTelResidencial').readOnly = false;
-        document.getElementById('userTelComercial').readOnly = false;
-        document.getElementById('userCelular').readOnly = false;
-        document.getElementById('userOutroTelefone').readOnly = false;
-        document.getElementById('userEmail').readOnly = false;
-        document.getElementById('userHomepage').readOnly = false;
-        document.getElementById('userProfissao').readOnly = false;
-        document.getElementById('userCargo').readOnly = false;
-        document.getElementById('userEndResidencial').readOnly = false;
-        document.getElementById('userEndComercial').readOnly = false;
-    }
+        const isReadOnly = TodosInputs[0].hasAttribute('readonly');
+        TodosInputs.forEach(input => {
+                if (isReadOnly) {
+                    input.removeAttribute('readonly');
+                } else {
+                    input.setAttribute('readonly', 'true');
+                }
+      
+            });
+            if (isReadOnly) {
+                botaoEdicao.textContent = 'Salvar dados';
+                // Optionally focus the first input when they become editable
+                if (TodosInputs.length > 0) {
+                    TodosInputs[0].focus();
+                }
+            } else {
+                botaoEdicao.textContent = 'Editar dados';
+            }
+        
+        
+    });
     function unblockUser(userName) {
       const index = users.findIndex(u => u.name === userName);
       if (index >= 0) {
