@@ -62,11 +62,12 @@ require(__DIR__ . '/../../../../config/constantes.php');
                     </p>
                     <div class="social-icons">
                         <ul>
-                            <li><a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/facebook-senac.svg" alt="Facebook"></a></li>
-                        
-                            <li><a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/linkedin-senac.svg" alt="LinkedIn"></a></li>
-                            <li><a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/whatsapp-senac.svg" alt="WhatsApp"></a></li>
-                            <li><a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/youtube-senac.svg" alt="YouTube"></a></li>
+                            <a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/Facebook.svg" alt="Facebook"></a>
+                            <a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/Instagram.svg" alt="Instagram"></a>
+                            <a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/LinkedIn.svg" alt="LinkedIn"></a>
+                            <a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/Twitter.svg" alt="Twitter"></a>
+                            <a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/WhatsApp.svg" alt="WhatsApp"></a>
+                            <a href="#"><img src="<?php echo $URLBASE ?>/public/assets/icons/YouTube.svg" alt="YouTube"></a>
                         </ul>
                     </div>
                 </div>
