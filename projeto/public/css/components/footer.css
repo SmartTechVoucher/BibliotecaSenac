@@ -81,31 +81,75 @@ footer > *:not(.livro-brilhante){
     margin-right: 100px;
 }
 
+.textos {
+    padding: 15px;
+    font-size: 12px;
+    gap: 50px;
+    display: flex;
+}
+
+.redes {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    max-width: 200px;
+    margin-top: 0;
+    margin-top: 1%;
+}
+
+.social-icons img {
+    width: 20px;
+    height: 20px;
+}
+
+.social-icons li {
+    list-style: none;
+    display: inline-block;
+}
+
+.social-icons ul {
+    display: flex;
+    gap: 5%;
+}
+
+.social-icons ul li {
+    font-weight: 700;
+    font-size: 20px;
+    
+    transition: transform 0.3s ease;
+}
+
+.social-icons ul li:hover {
+    transform: scale(1.2); /* Aumenta 20% */
+}
+
 .logo-senac2 img {
     width: 50px;
     height: 50px;
 }
 
-@media (max-width: 649px) {
-
-    .logo-senac img{
-
-        width: 139px;
-    }
-
+.email p {
+    margin-bottom: 2%;
 }
 
-@media(max-width:1024px){
-    .conteiner3 .esquerdo, .direito{
-        width: 100px;
-        height: 100px;
-    }
-
-    #inferiorDireito #inferior{
-        width: 100px;
-        height: 100px;
-    }
+.link-desenvolvedores {
+    text-decoration: none;
+    color: inherit;
 }
+
+.link-desenvolvedores:hover {
+    color: #F68B1F;
+}
+
+
+.social-icons ul li:nth-child(4) img { width: 18px; }
 
 @media (max-width: 1300px) {
     footer {
@@ -158,4 +202,79 @@ footer > *:not(.livro-brilhante){
     }
 }
 
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding-top: 20px;
+    }
 
+    .textos {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza a div .textos no footer */
+        gap: 20px;
+        padding: 0 20px;
+        margin-top: 5%;
+    }
+
+    .textos > div {
+        text-align: center; /* Alinha o conteúdo de cada bloco à esquerda */
+        width: 100%;      /* Faz ocupar toda a largura disponível */
+        max-width: 300px; /* Limita a largura pra não ficar esticado demais */
+    }
+    .logo-senac {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo-senac img {
+        width: 180px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .redes {
+        align-items: center;
+    }
+
+    .social-icons ul {
+        justify-content: center;
+    }
+
+    .livro-brilhante {
+        display: flex !important;
+        order: 2;
+        margin-top: 15px;
+    }
+
+    .livro-brilhante img {
+        width: 50%;
+    }
+
+    .livro-brilhante p {
+        font-size: 9px;
+        padding-bottom: 10px;
+    }
+
+    .livro-brilhante img {
+        width: 60%;
+    
+        -webkit-mask-image:
+            linear-gradient(to top, transparent 0%, black 40%), /* topo reforçado */
+            linear-gradient(to bottom, transparent 0%, black 80%), /* base visível */
+            linear-gradient(to right, transparent 0%, black 20%),
+            linear-gradient(to left, transparent 0%, black 20%);
+        -webkit-mask-composite: destination-in;
+        
+        mask-image:
+            linear-gradient(to top, transparent 0%, black 40%),
+            linear-gradient(to bottom, transparent 0%, black 80%),
+            linear-gradient(to right, transparent 0%, black 20%),
+            linear-gradient(to left, transparent 0%, black 20%);
+        mask-composite: intersect;
+    }
+    
+}
