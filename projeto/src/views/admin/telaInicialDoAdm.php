@@ -33,27 +33,27 @@
     <div class="conteiner2">
 
         <div class="caixa">    
-            <a href="./telaDeCadastroDeLivros"><img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeLivros.php"><img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro"></a>
         </div>
 
         <div class="caixa">
-            <a href="./telaDeCadastroDeUsuarios.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeUsuarios.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
         </div>
         
         <div class="caixa">
-            <a href="./telaDeRelatorios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeRelatorios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
         </div>
         
         <div class="caixa">
-            <a href="./historico-emprestimo.php"><img src="../../../public/assets/icons/Empréstimo (1).png" alt="Livro" class="emprestimo"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/emprestimo.php"><img src="../../../public/assets/icons/Empréstimo (1).png" alt="Livro" class="emprestimo"></a>
         </div>
         
         <div class="caixa">
-            <a href="./usuarios-cadastrados.php"><img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php"><img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario"></a>
         </div>
         
         <div class="caixa">
-            <a href="./telaDosLivrosCadastrados.php"><img src="../../../public/assets/icons/List Books.png" alt="Livro" class="estoque"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php"><img src="../../../public/assets/icons/List Books.png" alt="Livro" class="estoque"></a>
         </div>
         
     </div>
