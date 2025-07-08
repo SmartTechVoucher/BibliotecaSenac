@@ -73,7 +73,7 @@ session_start();
     }
 
     // texto digitando
-    const texto = ["Hub Academy", "Conectando você ao futuro..."];
+    const texto = ["Hub Academy", "Conectando você ao futuro"];
     const el = document.getElementById("subtitulo");
     let linha = 0,
       i = 0;
@@ -90,10 +90,23 @@ session_start();
           if (linha < texto.length) {
             el.innerHTML += "<br>";
             setTimeout(digitar, 500);
+          } else {
+            // Depois de terminar de digitar, inicia animação das reticências
+            animarReticencias();
           }
         }
       }
     }
+
+    let reticenciasCount = 0;
+    const maxReticencias = 3;
+
+    function animarReticencias() {
+      reticenciasCount = (reticenciasCount + 1) % (maxReticencias + 1);
+      el.innerHTML = texto[0] + "<br>" + texto[1] + ".".repeat(reticenciasCount);
+      setTimeout(animarReticencias, 500);
+    }
+
     digitar();
   </script>
 </body>
