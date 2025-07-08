@@ -268,6 +268,9 @@ input:focus {
 }
 
 @media(min-width:375px){
+
+ /*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*/ 
+    
     .formulario .fundoBranco{
         width: 350px;
     }
@@ -296,6 +299,9 @@ input:focus {
 }
 
 @media(min-width:414px){
+
+ /*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*/ 
+    
     .menu{   
         position: var(--posicaoAbsoluta);
         top: 11%;
@@ -322,7 +328,69 @@ input:focus {
 
 }
 
+@media(min-width:500px){
+
+ /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/
+    
+    .menu{   
+        position: var(--posicaoAbsoluta);
+        top: 11%;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 114.4%; right: 15%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 103.5%; left: 40%;
+    }
+
+    .formulario .fundoBranco{
+        width: 470px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 77.2%;
+    }
+
+}
+
+@media(min-width:600px){
+
+ /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/
+    
+    .menu{   
+        position: var(--posicaoAbsoluta);
+        top: 11%;
+    }
+
+    .formulario .upload{
+        position: var(--posicaoAbsoluta);
+        top: 114.4%; right: 20%;
+    }
+
+    #mensagemPrimeiroForm{
+        position: var(--posicaoAbsoluta);
+        top: 103.5%; left: 40%;
+    }
+
+    .formulario .fundoBranco{
+        width: 570px;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        top: 16%; left: 81%;
+    }
+
+}
+
 @media(min-width:768px){
+
+ /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/   
 
     .formulario .fundoBranco{
         width: 750px;
@@ -366,19 +434,65 @@ input:focus {
 
 }
 
-@media(min-width:1024px){
-    .menu{
+@media(min-width:820px){
+ /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/
+ 
+ .minhaConta{
     position: var(--posicaoAbsoluta);
-    top: 18%;
+    top: 11%; left: 85.8%;
  }
 
  .formulario .fundoBranco{
-    width: 1010px;
+    width: 775px;
+ }
+
+ .formulario .upload{
+    position: var(--posicaoAbsoluta);
+    top: 86.7%; right: 30%;
+ }
+
+}
+
+@media(min-width:912px){
+ /*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*/
+ 
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 10%;
+ }   
+
+ .minhaConta{
+    position: var(--posicaoAbsoluta);
+    top: 10%; left: 87.5%;
+ }
+
+ .formulario .fundoBranco{
+    width: 882px;
+ }
+
+ .formulario .upload{
+    position: var(--posicaoAbsoluta);
+    top: 74.8%; right: 35%;
+ }
+
+}
+
+@media(min-width:1024px){
+
+ /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/ 
+    
+ .menu{
+    position: var(--posicaoAbsoluta);
+    top: 10%;
+ }
+
+ .formulario .fundoBranco{
+    width: 979px;
 }
 
 .formulario .upload{
     position: var(--posicaoAbsoluta);
-    top: 170.6%; right: 35%;
+    top: 75.5%; right: 35%;
 }
 
 #mensagemPrimeiroForm{
@@ -388,12 +502,14 @@ input:focus {
 
 .minhaConta{
     position: var(--posicaoAbsoluta);
-    top: 20%; left: 88.9%;
+    top: 10%; left: 88.7%;
 }
 
 }
 
 @media(min-width: 1280px){
+
+ /*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*/
 
     .formulario{
         display: none;
@@ -435,7 +551,12 @@ input:focus {
 
     .minhaConta{
         position: var(--posicaoAbsoluta);
-        top: 15%; left: 91%;
+        top: 15%; left: 91.1%;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 14%;
     }
 }
 
@@ -453,7 +574,7 @@ input:focus {
 
     .formulario2 .Botao{
         position: var(--posicaoAbsoluta);
-        top: 175%;
+        top: 145%;
     }
 
     .minhaConta{
@@ -499,6 +620,7 @@ input:focus {
       .menu{
         position: var(--posicaoAbsoluta);
         top: 13%;
+        width: 400px;
      }
 
      .minhaConta{

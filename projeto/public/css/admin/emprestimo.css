@@ -2,7 +2,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #ff0000;
+    background-color: #EDEDED;
 }
 
 
@@ -18,12 +18,16 @@ a{
 
 /* main */
 
+
+
 .quadradoBranco{
     background-color: white;
     width: 80%;
     margin: auto;
     padding: 40px;
     position: relative; 
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 .quadradoBranco::before { /*pseudo elemento que faz aquele pequeno retangulo no topo do .quadradoBranco*/
     content: "Cadastro De Empréstimo";

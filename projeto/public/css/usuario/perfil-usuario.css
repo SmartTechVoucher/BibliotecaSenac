@@ -1,0 +1,260 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  background-color: #003366;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  background-color: #003366;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Conteúdo central */
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 1%;
+}
+
+
+.box {
+  gap: 40px 60px;
+  background-color: white;
+  padding: 1%;
+  border-radius: 14px;
+  height: 83%;
+  width: 75%; /*POSSIVEL BUG */
+  max-width: 100%;
+  box-shadow: 0 2px 4px gray;
+  margin-top: 1%;
+}
+
+.status {
+  font-size: 14px;
+  margin-bottom: 2%;
+}
+
+.regular {
+  color: #0077cc;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Três colunas fixas */
+  column-gap: 40px;
+  row-gap: 190%;
+  
+}
+
+.card {
+  border-bottom: 6px solid #003366;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
+  background-color: #f5f5f5;
+  padding: 7px;
+  position: relative;
+  transition: 0.3s;
+  cursor: pointer;
+  width: 69%;
+}
+
+/* .card img{
+
+  background: transparent;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+
+.card:hover img {
+  transform: scale(1.1); /* Dá um leve zoom    
+} */
+
+
+.card .icon{
+  font-size: 17px;
+  margin-right: 6px;
+}
+
+.card .icon img{
+  height: 20px;
+}
+
+.card .title {
+  font-weight: bold;
+  font-size: 90%;
+}
+
+.card .hover-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background-color: #ffffffee;
+  padding: 10px;
+
+  z-index: 10;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+  white-space: nowrap;
+}
+
+.card .hover-content img {
+  width: 114px;
+  margin-right: 10px;
+  vertical-align: middle;
+
+  border-radius: 4px;
+}
+
+/* Mostrar ao passar o mouse */
+.card:hover .hover-content {
+  display: block;
+}
+
+body .btn-voltar{
+
+  left: 13%;
+}
+
+@media (max-width: 845px){
+
+    .card .title{
+
+      font-size: 65%;
+
+    }
+}
+
+@media (max-width: 845px){
+
+  .card .icon{
+
+    font-size: 80%;
+
+  }
+}
+
+@media (max-width: 640px){
+
+  .card .icon{
+
+    font-size: 109%;
+
+  }
+}
+
+@media (max-width: 649px){
+
+    .grid{
+
+      grid-template-columns: repeat(1, 1fr);
+      row-gap: 70%;
+    }
+
+    .box{
+      height: auto; /* remove altura fixa */
+      min-height: 84vh; /* altura mínima para garantir espaço */
+      max-height: none; /* remove limitação */
+      overflow-y: auto; /* adiciona scroll se necessário */
+      width: 78%;
+    }
+
+
+}
+
+
+@media (max-width: 845px){
+
+  .card .hover-content img{
+
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 786px){
+
+  .card .hover-content img{
+
+    width: 100px;
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 717px){
+
+  .card .hover-content img{
+
+    width: 90px;
+    margin-right: 3%;
+    vertical-align: middle;
+    border-radius: 4px;
+
+  }
+}
+
+@media (max-width: 649px){
+
+  .card .hover-content img {
+      
+    width: 78px;
+
+  }
+}
+
+@media (max-width: 1352px){
+
+  body .btn-voltar{
+    top: 14%;
+
+  }
+}
+
+@media (max-width: 758px){
+
+  body .btn-voltar{
+    top: 18%;
+    height: 40px;
+    width: 40px;
+    left: 13%;
+  }
+
+  .box{
+
+    margin-top: 6%;
+  }
+}
+
+@media (max-width: 440px){
+
+  .box{
+
+    margin-top: 8%;
+  }
+}
