@@ -2,15 +2,6 @@
 require "../../../config/constantes.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cabecalho</title>
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/header.css">
-</head>
 
 <body>
 
@@ -40,9 +31,9 @@ require "../../../config/constantes.php";
                         Pesquisa</a>
                 </li>
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/usuario/desenvolvedores.php">
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/IconeDesenvolvedores.png" alt="">
-                        Desenvolvedores</a>
+                    <a href="<?php echo $URLBASE ?>https://api.whatsapp.com/send?phone=5567999492638">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt="">
+                        Contato</a>
                 </li>
             </ul>
         </nav>
@@ -108,4 +99,3 @@ require "../../../config/constantes.php";
     <script src="<?php echo $URLBASE ?>/public/js/usuario/header.js"></script>
 </body>
 
-</html>
