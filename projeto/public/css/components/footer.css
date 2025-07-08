@@ -194,7 +194,6 @@ footer > *:not(.livro-brilhante){
 
 @media(min-width:1124px){
     .conteiner3 .esquerdo, .direito{
-        width: 150px;
         height: 150px;
     }
 

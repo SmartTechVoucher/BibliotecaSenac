@@ -22,6 +22,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   include "../../../public/components/usuario/header/header.php";
   ?>
 
+  <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
   <!-- Conteúdo central -->
   <main class="content-wrapper">
     <div class="box">
@@ -68,7 +69,6 @@ require(__DIR__ . '/../../../config/constantes.php');
       </div>
     </div>
 
-  <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
     
   </main>
 
