@@ -188,7 +188,7 @@ label {
 }
 
 .campo-usuario label,.campo-senha label {
-  margin-bottom: 1%;
+  padding-bottom: 1%;
 }
 
 .campo-usuario {
@@ -198,6 +198,13 @@ label {
 .cadeado-senha {
   width: 20px;
   height: auto;
+}
+
+.campo-login img{
+  margin-bottom: 2px;
+}
+.campo-senha img{
+  margin-bottom: 2px;
 }
 
 .checkbox-container {
