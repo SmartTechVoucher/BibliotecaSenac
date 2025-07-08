@@ -1040,6 +1040,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  margin-top: 28%;
 }
 
 .segundaFileira {

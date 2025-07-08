@@ -36,7 +36,7 @@ $livros = $model->getLivrosMock();
     <link rel="stylesheet" href="./public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
 
 <body>
 
@@ -179,18 +179,18 @@ $livros = $model->getLivrosMock();
             </div>
 
             <div class="livros">
-                <div class="primeiraFileira">
+                <!-- <div class="primeiraFileira">
                 
                 <?php 
                     // Renderiza do índice 0 até 2 (3 cards)
-                    for ($i = 0; $i < 3 && $i < count($livros); $i++): 
+                    for ($i = 0; $i < 4 && $i < count($livros); $i++): 
                         $livro = $livros[$i]; 
                     ?>
                         <div class="livroEstante">
                             <?php include "./public/components/usuario/card/card2.php"; ?>
                         </div>
                     <?php endfor; ?>
-                </div>
+                </div> -->
 
                 <div class="segundaFileira">
                     <?php 
@@ -208,7 +208,7 @@ $livros = $model->getLivrosMock();
         </div>  
 
 
-        <!-- <?php include '../projeto/public/components/footer/footer.php' ?> -->
+        <?php include(__DIR__ . '/public/components/usuario/footer/footer.php'); ?>
 
     </div>
 
