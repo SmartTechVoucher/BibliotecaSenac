@@ -31,9 +31,9 @@ require "../../../config/constantes.php";
                         Pesquisa</a>
                 </li>
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/usuario/desenvolvedores.php">
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/IconeDesenvolvedores.png" alt="">
-                        Desenvolvedores</a>
+                    <a href="<?php echo $URLBASE ?>https://api.whatsapp.com/send?phone=5567999492638">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt="">
+                        Contato</a>
                 </li>
             </ul>
         </nav>
