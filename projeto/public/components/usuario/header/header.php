@@ -2,15 +2,6 @@
 require "../../../config/constantes.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cabecalho</title>
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/header.css">
-</head>
 
 <body>
 
@@ -108,4 +99,3 @@ require "../../../config/constantes.php";
     <script src="<?php echo $URLBASE ?>/public/js/usuario/header.js"></script>
 </body>
 
-</html>
