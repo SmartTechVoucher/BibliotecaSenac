@@ -60,8 +60,8 @@
      
    
     <?php   
-    include "../../../public/components/footer/footer.php";
-    ?>
+    include "../../../public/components/admin/footer/footer-admin.php";
+  ?>
 
     <script src="../../../public/js/admin/historico-emprestimo.js"></script>
 

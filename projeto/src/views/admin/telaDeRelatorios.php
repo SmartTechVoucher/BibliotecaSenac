@@ -108,7 +108,9 @@
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
     
-
+   <?php   
+    include "../../../public/components/admin/footer/footer-admin.php";
+  ?>
     <script src="../../../public/js/admin/telaDeRelatorios.js"></script>
 
 </body>
