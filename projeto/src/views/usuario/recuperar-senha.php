@@ -16,12 +16,20 @@ require(__DIR__ . '/../../../config/constantes.php');
 
 <body>
     <div class="container">
-        <section class="tela_animacao">
+        <!-- <section class="tela_animacao">
             <img src="../../../public/assets/img/gif_login.gif" alt="">
-        </section>
+        </section> -->
         <section class="login">
+            <div class="gradiente"></div>
+
+            <!-- bolhas -->
+            <div class="quadrados">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
             <form action="">
-                <label for="campo_email">E-mail</label>
+                <label for="campo_email"><img src="../../../public/assets/icons/email.png" alt="">E-mail</label>
                 <input type="text" name="email" id="campo_email" placeholder="Digite seu E-mail">
 
                 <button type="submit">Enviar</button>
