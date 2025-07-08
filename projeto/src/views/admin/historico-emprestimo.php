@@ -44,7 +44,21 @@
 
     <div class="main-container">
         <h2>Histórico de Empréstimos</h2>   
-                
+        <div class="filter-options">
+            <span>Filtrar por Status:</span>
+            <label>
+                <input type="radio" name="statusFilter" value="Todos" checked onchange="applyFilterAndPaginate()"> Todos
+            </label>
+            <label>
+                <input type="radio" name="statusFilter" value="Finalizado" onchange="applyFilterAndPaginate()"> Finalizado
+            </label>
+            <label>
+                <input type="radio" name="statusFilter" value="Atrasado" onchange="applyFilterAndPaginate()"> Atrasado
+            </label>
+            <label>
+                <input type="radio" name="statusFilter" value="Em andamento" onchange="applyFilterAndPaginate()"> Em andamento
+            </label>
+        </div>
             <table>
                 <thead>
                     <tr>
@@ -55,9 +69,17 @@
                         <th>Prazo</th>
                         <th>Devolução</th>
                     </tr>
-                <tbody id="userTable"></tbody>
                 </thead>
+                <tbody id="userTable"></tbody>
+                
             </table>
+
+    <div class="pagination-controls">
+        <button id="prevBtn" onclick="prevPage()">Anterior</button>
+        <span id="pageInfo" class="pagination-info"></span>
+        <button id="nextBtn" onclick="nextPage()">Próximo</button>
+    </div>
+
     </div>     
      
     <div id="menu" class="menu">
