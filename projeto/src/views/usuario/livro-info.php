@@ -48,7 +48,8 @@ $senacTLG = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $livro["titulo"] ?></title>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/livro-info.css">
-
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/modal.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
 
 <body>
     <!-- header  -->
@@ -279,6 +280,8 @@ $senacTLG = [
             </div>
         </div>
     </div>
+
+    <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
 
     <?php
     include "../../../public/components/usuario/footer/footer.php";

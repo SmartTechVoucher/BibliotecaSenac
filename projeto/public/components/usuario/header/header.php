@@ -66,7 +66,7 @@ require "../../../config/constantes.php";
             <div id="nav-menu-perfil">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php">
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="">
                             Perfil</a>
                     </li>
@@ -76,7 +76,7 @@ require "../../../config/constantes.php";
                             Leitura</a>
                     </li>
                     <li>
-                        <a href="#" onclick="confirmarSaida(event)">
+                        <a href="<?php echo $URLBASE ?>/logout.php" onclick="confirmarSaida(event)">
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">
                             Sair</a>
                     </li>
