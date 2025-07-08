@@ -12,7 +12,7 @@
 footer {
     overflow: hidden;      
     display: flex;
-    gap: 8%;
+    gap: 5%;
     align-items: center;
     bottom: 0;
     background-color: var(--azul-padrao);

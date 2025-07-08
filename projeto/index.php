@@ -175,37 +175,39 @@ $livros = $model->getLivrosMock();
                 <h1 class="title">Livros</h1>
             </div>
             <div class="estante">
-                <div class="prateleira"></div>
-            </div>
 
-            <div class="livros">
-                <!-- <div class="primeiraFileira">
-                
-                <?php 
-                    // Renderiza do índice 0 até 2 (3 cards)
-                    for ($i = 0; $i < 4 && $i < count($livros); $i++): 
-                        $livro = $livros[$i]; 
-                    ?>
-                        <div class="livroEstante">
-                            <?php include "./public/components/usuario/card/card2.php"; ?>
-                        </div>
-                    <?php endfor; ?>
-                </div> -->
+                <div class="livros">
+                    <div class="primeiraFileira">
+                        <?php
+                        // Renderiza do índice 3 até 6 (4 cards)
+                        for ($i = 3; $i < 7 && $i < count($livros); $i++):
+                            $livro = $livros[$i];
+                        ?>
+                            <div class="livroEstante1">
+                                <?php include "./public/components/usuario/card/card2.php"; ?>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+                    
+                    <div class="prateleira"></div>
 
-                <div class="segundaFileira">
-                    <?php 
-                    // Renderiza do índice 3 até 6 (4 cards)
-                    for ($i = 3; $i < 7 && $i < count($livros); $i++): 
-                        $livro = $livros[$i]; 
-                    ?>
-                        <div class="livroEstante1">
-                            <?php include "./public/components/usuario/card/card2.php"; ?>
-                        </div>
-                    <?php endfor; ?>
+                    <div class="segundaFileira">
+                        <?php
+                        // Renderiza do índice 3 até 6 (4 cards)
+                        for ($i = 3; $i < 8 && $i < count($livros); $i++):
+                            $livro = $livros[$i];
+                        ?>
+                            <div class="livroEstante1">
+                                <?php include "./public/components/usuario/card/card2.php"; ?>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
                 </div>
+
             </div>
-        
-        </div>  
+        </div>
+
+
 
 
         <?php include(__DIR__ . '/public/components/usuario/footer/footer.php'); ?>

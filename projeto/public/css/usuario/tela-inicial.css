@@ -488,7 +488,7 @@ body {
     height: auto;
     width: 100%;
     margin-top: 5%;
-    padding-bottom: 10%;
+    
 }
 
 .gen-title {
@@ -592,11 +592,11 @@ body {
     background-image: url(../../assets/img/bolhas-estante.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin-top: 200px;
+    margin-top: 250px;
     position: relative;
     background-color: var(--azul-tela-inicial);
     width: 100%;
-    height: 1600px;
+    min-height: auto; /* ou auto, se quiser que a página cresça conforme o conteúdo */
 }
  /*  
 .livros {
@@ -794,8 +794,10 @@ body {
         overflow-y: auto;
     }
 
+
     .icsenac {
-        margin-left: 20px
+        width: 30px;
+        margin-left: 20px;
     }
     
     .cbquite {
@@ -1006,6 +1008,8 @@ body {
   margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 /* prateleira central */
@@ -1024,30 +1028,41 @@ body {
 
 
 .livros {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem;
-  z-index: 2;
+    width: 100%; /* ou 100% se quiser largura total */
+    margin: 0 auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 3rem;
+    z-index: 2;
+    gap: 5rem;
 }
 
 .primeiraFileira {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-top: 28%;
+  margin-top: 22%;
+  flex-wrap: wrap;
 }
 
 .segundaFileira {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 28%;
+}
+
+.primeiraFileira,
+.segundaFileira {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0; /* importante */
 }
 
 
@@ -1106,6 +1121,58 @@ body {
         margin-top: 0;
     }
 }
+
+*/
+
+
+@media (max-width: 1400px) {
+    .card-livro {
+      width: 230px;
+      height: 330px;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .card-livro {
+      width: 220px;
+      height: 320px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .livros {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .card-livro {
+      width: 200px;
+      height: 300px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .card-livro {
+      width: 180px;
+      height: 280px;
+    }
+  }
+  
+  @media (max-width: 420px) {
+    .card-livro {
+      width: 160px;
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 320px) {
+    .card-livro {
+      width: 140px;
+      height: 220px;
+    }
+  }
+  
 
 
 
