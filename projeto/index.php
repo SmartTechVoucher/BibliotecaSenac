@@ -56,7 +56,7 @@ $livros = $model->getLivrosMock();
                         <li><a href="./index.php">Início</a></li>
                         <li><a href="">Livros</a></li>
                         <li><a href="">Contato</a></li>
-                        <li><a href="../projeto/src/views/usuario/x login.php">Logar</a></li>
+                        <li><a href="../projeto/src/views/usuario/login.php">Logar</a></li>
                     </ul>
 
                     <div class="entrar-mobile">
