@@ -1,6 +1,8 @@
-<div class="card-livro">
 
-  <button class="btn-favorito" onclick="this.classList.toggle('clicked')">
+
+
+<div class="card-livro">
+  <button class="btn-favorito" onclick="this.classList.toggle('clicked'); mostrarToast('Livro adicionado aos favoritos!')">
     <i class="fa-regular fa-heart icone-heart oco"></i>
     <i class="fa-solid fa-heart icone-heart cheio"></i>
   </button>
@@ -21,7 +23,8 @@
       <button class="btn-reservar">Reservar</button>
     <?php else: ?>
       <p class="status-livro indisponivel">Indisponível</p>
-      <button class="btn-reservar" disabled>Reservar</button>
+      <button class="btn-reservar" onclick="mostrarToast('Livro reservado com sucesso!')">Reservar</button>
+
     <?php endif; ?>
   </div>
 

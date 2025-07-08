@@ -1,7 +1,13 @@
 <?php
+
+
+require __DIR__ . '/config/constantes.php';
+
+
+
 session_start();
 
-include_once __DIR__ . '/public/components/usuario/toast/toast.php';
+
 
 
 if (isset($_SESSION['toast'])) {
@@ -32,7 +38,7 @@ $livros = $model->getLivrosMock();
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./public/css/usuario/tela-inicial.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/tela-inicial.css">
     <link rel="stylesheet" href="./public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -54,8 +60,8 @@ $livros = $model->getLivrosMock();
                 <nav>
                     <ul class="navbar">
                         <li><a href="./index.php">Início</a></li>
-                        <li><a href="">Livros</a></li>
-                        <li><a href="">Contato</a></li>
+                        <li><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=5567999492638">Contato</a></li>
                         <li><a href="../projeto/src/views/usuario/teste-login.php">Logar</a></li>
                     </ul>
 
@@ -63,7 +69,7 @@ $livros = $model->getLivrosMock();
                         <?php if (isset($_SESSION['usuario'])): ?>
                             <div class="perfil-logado" onclick="redirectToPerfil()">
                                 <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-
+                                <a href="./logout.php">sair</a>
                             </div>
                         <?php else: ?>
                             <button onclick="redirectToPage()" class="button-entrar">
@@ -214,6 +220,7 @@ $livros = $model->getLivrosMock();
 
 
     <script src="./public/js/usuario/tela-inicial.js"></script>
+    <script src="<?php echo $URLBASE ?>/public/js/usuario/toast.js"></script>
 </body>
 
 </html>

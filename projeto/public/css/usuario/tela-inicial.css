@@ -747,6 +747,23 @@ body {
     color: var(--cor-texto);
 }
 
+.iconepessoa{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 59%;
+    color: #fdfdfd; /* Cor do texto, ajuste conforme necessário */
+    margin-top: 5px; /* Espaçamento entre a imagem e o texto */
+    position: relative; /* IMPORTANTE: Para o posicionamento absoluto do dropdown */
+}
+
+.iconepessoa p {
+    margin: 5px 0 0; /* Espaço entre a imagem e o texto */
+    font-weight: bold;
+}
+
 
 .nome-usuario {
     display: inline-block;
