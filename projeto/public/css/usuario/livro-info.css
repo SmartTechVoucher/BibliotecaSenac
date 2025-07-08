@@ -254,13 +254,13 @@ body{
 }
 
 .containerComentarios input{
-    background-color: #F1EEEE;
+    background-color: #d6d2d2;
     border: 0;
     width: 49%;
     height: 35px;
     margin: auto;
     padding-left: 15px;
-    border-radius: 14px;
+    border-radius: 4px;
     margin-bottom: 2%;
 }
 
@@ -441,8 +441,13 @@ a{
 
 .containerConteudo .btn-voltar{
 
-        left: 13%;
-    }
+    left: 13%;
+}
+
+.containerComentarios ::placeholder{
+
+    color: rgb(14, 13, 13);
+}
 
 /* MEDIA QUERIES */
 @media (max-width: 935px){
@@ -783,7 +788,7 @@ a{
     }
 }
 
-@media (max-width: 644px){
+@media (max-width: 786px){
 
     .containerConteudo .btn-voltar{
 

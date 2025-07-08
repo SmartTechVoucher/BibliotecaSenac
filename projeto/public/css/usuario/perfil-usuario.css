@@ -41,12 +41,12 @@ html,body {
   gap: 40px 60px;
   background-color: white;
   padding: 1%;
-  border: 2px solid #dbe8f4;
   border-radius: 14px;
   height: 83%;
   width: 75%; /*POSSIVEL BUG */
   max-width: 100%;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px gray;
+  margin-top: 1%;
 }
 
 .status {
@@ -130,6 +130,11 @@ html,body {
 /* Mostrar ao passar o mouse */
 .card:hover .hover-content {
   display: block;
+}
+
+body .btn-voltar{
+
+  left: 13%;
 }
 
 @media (max-width: 845px){
@@ -220,5 +225,36 @@ html,body {
       
     width: 78px;
 
+  }
+}
+
+@media (max-width: 1352px){
+
+  body .btn-voltar{
+    top: 14%;
+
+  }
+}
+
+@media (max-width: 758px){
+
+  body .btn-voltar{
+    top: 18%;
+    height: 40px;
+    width: 40px;
+    left: 13%;
+  }
+
+  .box{
+
+    margin-top: 6%;
+  }
+}
+
+@media (max-width: 440px){
+
+  .box{
+
+    margin-top: 8%;
   }
 }
