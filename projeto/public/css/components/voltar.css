@@ -11,8 +11,9 @@
     font-size: 24px;
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    top: 20px; /* distância do card branco */
+    position: absolute;
+    top: 15%; /* distância do card branco */
+    left: 16%;
     margin: 0 auto; /* centraliza horizontalmente */
     cursor: pointer;
     transition: background-color 0.3s ease;
