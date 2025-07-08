@@ -29,8 +29,8 @@
     <title>Gerenciamento de Usuários</title>
     <div class="container-main">
       <div class="botoesFiltro">
-      <button id= "regularesBotao" class="tab-link active" onclick="openTab(event, 'regulares')">Regulares</button>
-      <button id="bloqueadosBotao" class="tab-link" onclick="openTab(event, 'bloqueados')">Bloqueados</button>
+      <button id= "" class="bloqueadosBotao tab-link active" onclick="openTab(event, 'regulares')">Regulares</button>
+      <button id="" class="bloqueadosBotao tab-link" onclick="openTab(event, 'bloqueados')">Bloqueados</button>
     </div>
 
     <div class="container">

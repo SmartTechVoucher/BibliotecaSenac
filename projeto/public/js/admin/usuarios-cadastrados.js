@@ -2,14 +2,16 @@ const button1 = document.getElementById('regularesBotao');
 const botaoEdicao= document.getElementById('botao-edicao');
   const button2 = document.getElementById('bloqueadosBotao');
 
-  button1.addEventListener('click', function regularclick() {
-    button1.classList.add('clicado');
-    button2.classList.remove('clicado');
+  const button = document.getElementsByClassName("bloqueadosBotao")
+
+  button[0].addEventListener('click', function regularclick() {
+    button[0].classList.add('active');
+    button[1].classList.remove('active');
   });
 
-  button2.addEventListener('click', function blockclick() {
-    button2.classList.add('clicado');
-    button1.classList.remove('clicado');
+  button[1].addEventListener('click', function blockclick() {
+    button[1].classList.add('active');
+    button[0].classList.remove('active');
   });
 
   const users = [
@@ -319,14 +321,18 @@ const botaoEdicao= document.getElementById('botao-edicao');
 
     function openTab(evt, tabName) {
       
-      button1.addEventListener('click', function regularclick() { /* muda a cor dos botões qndo selecionado "regulares" */
-        button1.style.backgroundColor = "#fbfaff";
-        button2.style.backgroundColor = "#e2e1e6";
+      button[0].addEventListener('click', function regularclick() { /* muda a cor dos botões qndo selecionado "regulares" */
+        // button[0].style.backgroundColor = "#fbfaff";
+        // button[1].style.backgroundColor = "#e2e1e6";
+        button[0].classList.add('active');
+        button[1].classList.remove('active');
       });
 
-      button2.addEventListener('click', function blockclick() { /* muda a cor dos botões qndo selecionado "bloqueados" */
-        button2.style.backgroundColor = "#fbfaff";
-        button1.style.backgroundColor = "#e2e1e6";
+      button[1].addEventListener('click', function blockclick() { /* muda a cor dos botões qndo selecionado "bloqueados" */
+        // button[1].style.backgroundColor = "#fbfaff";
+        // button[0].style.backgroundColor = "#e2e1e6";
+        button[1].classList.add('active');
+        button[0].classList.remove('active');
       });
 
       document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
