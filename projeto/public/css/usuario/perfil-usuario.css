@@ -33,17 +33,17 @@ html,body {
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: 1%;
 }
 
 
 .box {
   gap: 40px 60px;
-  background-color: #ffffffee;
+  background-color: white;
   padding: 1%;
   border: 2px solid #dbe8f4;
-  border-radius: 8px;
-  height: 75%;
+  border-radius: 14px;
+  height: 83%;
   width: 75%; /*POSSIVEL BUG */
   max-width: 100%;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
@@ -91,9 +91,13 @@ html,body {
 } */
 
 
-.card .icon {
+.card .icon{
   font-size: 17px;
   margin-right: 6px;
+}
+
+.card .icon img{
+  height: 20px;
 }
 
 .card .title {
@@ -168,15 +172,9 @@ html,body {
       min-height: 84vh; /* altura mínima para garantir espaço */
       max-height: none; /* remove limitação */
       overflow-y: auto; /* adiciona scroll se necessário */
-      margin-bottom: 20px;
       width: 78%;
     }
 
-    .content-wrapper{
-      
-      padding-bottom: 140px;
-
-    }
 
 }
 
