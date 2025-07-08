@@ -1,15 +1,7 @@
-.titulo-livro,
-.autor-livro,
-.status-livro {
-  margin: 0;
-  
-}
-
-
 .card-livro {
   width: 100%;
   max-width: 200px;
-  height: auto;
+  height: auto;  /* altura padrão */
   border-radius: 12px;
   overflow: hidden;
   background: #003162;
@@ -18,15 +10,210 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  
-}
-
-.card-livro {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 0.6s ease forwards;
+  /* border: 1px solid #FF7F0E;
+  outline: 2px solid #FF7F0E; */
 }
 
+.capa-wrapper {
+  position: relative;
+  width: 140px;
+  height: 200px;
+  margin: 5%;
+  overflow: hidden;
+  border-radius: 12px;
+  /* border: 1px solid white;
+  outline: 2px solid white; */
+  outline-offset: -1px;
+  position: relative;
+  flex-shrink: 0; /* evita encolher se dentro de flex */
+}
+
+.capa-livro {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* preenche o espaço cortando o excesso */
+  display: block;
+  border-radius: 12px;
+  border: 2px solid white;
+  box-sizing: border-box; 
+}
+
+
+/* overlay de descrição */
+.overlay {
+  position: absolute;
+  inset: 0; /* top 0, bottom 0, left 0, right 0 */
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.7rem;
+}
+.capa-wrapper:hover .overlay {
+  opacity: 1;
+}
+.descricao-livro {
+  line-height: 1.2;
+}
+
+/* texto ocupa 40% */
+.conteudo-card {
+  height: 30%;
+  padding: 5% 5% 5% 5%;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  border-top: 1px solid white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;           /* limita a 2 linhas */
+  -webkit-box-orient: vertical;
+  min-height: 2.4em; 
+  gap: 0.3rem ;
+  
+}
+
+/* título */
+.titulo-livro {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;           /* limita a 2 linhas */
+  -webkit-box-orient: vertical;
+  min-height: 2.4em;               /* reserva espaço para até 2 linhas (aprox 1.2em x 2) */
+  margin-bottom: 0.3rem
+}
+
+
+/* autor */
+.autor-livro {
+  font-size: 0.6rem;
+  margin: 0;
+  margin-bottom:0.1rem
+}
+
+/* status */
+.status-livro {
+  font-size: 0.6rem;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 0.3rem;
+}
+
+.autor-livro,
+.status-livro {
+  font-size: 0.6rem;
+  line-height: 1.2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.status-livro.disponivel { color: #20c997; }
+.status-livro.indisponivel { color: #ff4d4d; }
+
+/* botão reservar */
+.btn-reservar {
+  background-color: #FF7F0E;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  height: 30px;    /* altura menor e fixa */
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  align-self: center; /* centraliza horizontalmente */
+}
+.btn-reservar:hover {
+  color: #003162;
+  background-color: white;
+  transform: scale(1.03);
+}
+
+
+/* botão favorito */
+.btn-favorito {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 0.4rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.icone-heart {
+  font-size: 1.2rem;
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Coração oco padrão (visível) */
+.icone-heart.oco {
+  color: white;
+  opacity: 1;
+}
+
+/* Coração cheio inicialmente escondido */
+.icone-heart.cheio {
+  color: #FF7F0E;
+  opacity: 0;
+}
+
+/* Quando clicado, inverte visibilidade */
+.btn-favorito.clicked .icone-heart.oco {
+  opacity: 0;
+}
+.btn-favorito.clicked .icone-heart.cheio {
+  opacity: 1;
+  transform: scale(1.15);
+  text-shadow: 0 0 6px #FF7F0E;
+}
+
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1.3); }
+}
+
+.btn-favorito.clicked i {
+  animation: pop 0.3s ease;
+  color: #FF7F0E;
+  text-shadow: 0 0 10px #FF7F0E;
+  font-weight: 900;
+}
+
+
+
+/* animação fade */
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -34,155 +221,25 @@
   }
 }
 
-.card-livro:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+@media (max-width: 480px) {
+  .card-livro {
+    max-width: 100%;
+  }
+  .capa-wrapper {
+    width: 100%;
+    aspect-ratio: 140/200;
+    margin: 0 auto;
+  }
+  .btn-reservar {
+    font-size: 0.7rem;
+    height: auto;
+    padding: 0.4rem;
+  }
+  .titulo-livro {
+    font-size: 0.75rem;
+  }
+  .autor-livro,
+  .status-livro {
+    font-size: 0.55rem;
+  }
 }
-
-.capa-livro {
-  max-width: 200px;
-  width: 100%;
-  height: auto  ;
-  object-fit: cover;
-  position: relative;
-  display: block; /* elimina espaços abaixo de img inline */
-  height: auto;
-}
-
-.conteudo-card {
-  padding: 1% 5% 5% 5%;
-  font-family: "Poppins",sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  color: white;
-  border-top: 1px solid white;;
-}
-
-.titulo-livro {
-  font-size: 15px;
-  font-family: "Poppins",sans-serif;
-  font-weight: 700;
-
-}
-
-.autor-livro {
-  font-size: 12px;
-}
-
-.status-livro {
-  font-size: 0.8rem;
-  font-weight: 600;
-
-}
-/* 
-.status-livro::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 4px;
-  background: #20c997;
-  border-radius: 50%;
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-  100% { transform: scale(1); opacity: 1; }
-} */
-
-.status-livro.disponivel {
-  color: #20c997; /* verde turquesa */
-}
-
-.btn-reservar {
-  
-  background-color: #FF7F0E;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;        /* valor que você quer */
-  font-weight: bold;      /* ou 600, escolha */
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 3% 1%;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
-}
-
-
-.btn-reservar:hover {
-  color: #003162;
-  background-color: white;
-  transform: scale(1.03);
-}
-
-.btn-favorito {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  background: rgba(255, 255, 255, 0.8);
-  border: none;
-  border-radius: 50%;
-  padding: 0.4rem;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-  z-index: 10;
-}
-
-.btn-favorito:hover {
-  background: rgba(255, 255, 255, 1);
-}
-
-.btn-favorito i {
-  color: #FF7F0E;
-  font-size: 1.2rem;
-  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-}
-
-/* animação de “clique mágico” */
-.btn-favorito.clicked i {
-  color: #FF7F0E;
-  transform: scale(1.4);
-  text-shadow: 0 0 10px #FF7F0E;
-}
-
-.capa-wrapper {
-  position: relative;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  font-size: 0.9rem;
-  font-family: "Poppins", sans-serif;
-}
-
-.capa-wrapper:hover .overlay {
-  opacity: 1;
-}
-
-.descricao-livro {
-  line-height: 1.3;
-}
-
-
-
-
-

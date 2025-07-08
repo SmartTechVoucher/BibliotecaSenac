@@ -584,7 +584,7 @@ body {
     color: var(--cor-texto);
 }
 
-.estante{
+.container-estante{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -681,38 +681,10 @@ body {
     display: block;
 }
 
-.livros {
-    position: absolute;
-    top: 15%;   
-    left: 5%;
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
-}
-
-.primeiraFileira {
-    margin-top: 8%;
-    gap: 15%;
-}
-
-.segundaFileira {
-    margin-left: 10%;
-    max-width: 2000px;
-    gap: 5%;
-    padding-bottom: 30px;
-}
-
-.primeiraFileira, .segundaFileira {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 .livroEstante {
-    width: 120px; /* define o tamanho do card */
+    max-width: 400px;
 } 
 
 .livroEstante1 .card-livro {
@@ -728,7 +700,6 @@ body {
     align-items: center;
     color: var(--cor-texto);
     font-size: 10px;
-    
 }
  
 .perfil-logado span {
@@ -1024,6 +995,60 @@ body {
     
     }
 }
+
+.estante {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  aspect-ratio: 3/2; /* proporção responsiva aproximada */
+  background-color: white;
+  border-radius: 20px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* prateleira central */
+.prateleira {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 12px;
+  background-color: #f0f0f0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transform: translateY(-50%) perspective(300px) rotateX(5deg);
+  border-radius: 2px;
+}
+
+
+
+.livros {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  z-index: 2;
+}
+
+.primeiraFileira {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.segundaFileira {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 28%;
+}
+
 
 
 /* .senacFoto {

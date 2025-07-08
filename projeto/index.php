@@ -9,6 +9,12 @@ if (isset($_SESSION['toast'])) {
     unset($_SESSION['toast']);
 }
 
+include_once __DIR__ . '/src/model/usuario/livro-model.php';
+
+// Agora instancia a classe
+$model = new LivroModel();
+$livros = $model->getLivrosMock();
+
 
 ?>
 
@@ -29,6 +35,7 @@ if (isset($_SESSION['toast'])) {
     <link rel="stylesheet" href="./public/css/usuario/tela-inicial.css">
     <link rel="stylesheet" href="./public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
 <body>
@@ -162,29 +169,43 @@ if (isset($_SESSION['toast'])) {
         </div>
 
 
-        <div class="estante">
+        <div class="container-estante">
 
             <div class="sup">
                 <h1 class="title">Livros</h1>
             </div>
-            <img class="estanteimg" src="../projeto/public/assets/icons/estante 1.png" alt="">
+            <div class="estante">
+                <div class="prateleira"></div>
+            </div>
 
             <div class="livros">
                 <div class="primeiraFileira">
-                    <div class="livroEstante"><?php include "./public/components/usuario/card/card2.php"; ?></div>
-                    <div class="livroEstante"><?php include "./public/components/usuario/card/card2.php"; ?></div>
-                    <div class="livroEstante"><?php include "./public/components/usuario/card/card2.php"; ?></div>
+                
+                <?php 
+                    // Renderiza do índice 0 até 2 (3 cards)
+                    for ($i = 0; $i < 3 && $i < count($livros); $i++): 
+                        $livro = $livros[$i]; 
+                    ?>
+                        <div class="livroEstante">
+                            <?php include "./public/components/usuario/card/card2.php"; ?>
+                        </div>
+                    <?php endfor; ?>
                 </div>
 
                 <div class="segundaFileira">
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
-                    <div class="livroEstante1"><?php include "./public/components/usuario/card/card2.php"; ?></div>
+                    <?php 
+                    // Renderiza do índice 3 até 6 (4 cards)
+                    for ($i = 3; $i < 7 && $i < count($livros); $i++): 
+                        $livro = $livros[$i]; 
+                    ?>
+                        <div class="livroEstante1">
+                            <?php include "./public/components/usuario/card/card2.php"; ?>
+                        </div>
+                    <?php endfor; ?>
                 </div>
             </div>
-        </div>
+        
+        </div>  
 
 
         <!-- <?php include '../projeto/public/components/footer/footer.php' ?> -->
