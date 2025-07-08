@@ -13,6 +13,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   <title>Document</title>
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/perfil-usuario.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/modal.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
 </head>
 
 <body>
@@ -66,6 +67,9 @@ require(__DIR__ . '/../../../config/constantes.php');
 
       </div>
     </div>
+
+  <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
+    
   </main>
 
   <?php
