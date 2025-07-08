@@ -40,9 +40,9 @@ require "../../../config/constantes.php";
                         Pesquisa</a>
                 </li>
                 <li>
-                    <a href="contato.php">
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt="">
-                        Contato</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/usuario/desenvolvedores.php">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/IconeDesenvolvedores.png" alt="">
+                        Desenvolvedores</a>
                 </li>
             </ul>
         </nav>

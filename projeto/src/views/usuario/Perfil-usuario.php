@@ -19,9 +19,10 @@ require(__DIR__ . '/../../../config/constantes.php');
 <body>
 
   <?php
-  include "../../../public/components/usuario/header/header.php";
+    include "./projeto/public/components/usuario/header/header.php";
   ?>
 
+  <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
   <!-- Conteúdo central -->
   <main class="content-wrapper">
     <div class="box">
@@ -68,12 +69,11 @@ require(__DIR__ . '/../../../config/constantes.php');
       </div>
     </div>
 
-  <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
     
   </main>
 
   <?php
-  include "../../../public/components/usuario/footer/footer.php";
+    require_once "./projeto/public/components/usuario/footer/footer.php";
   ?>
 </body>
 

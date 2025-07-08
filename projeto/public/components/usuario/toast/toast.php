@@ -1,5 +1,5 @@
 <?php
-include_once __DIR__ . '/../../../config/constantes.php';
+include_once __DIR__ . '/../../../../config/constantes.php';
 
 function showToast($mensagemToast, $type = 'success')
 {

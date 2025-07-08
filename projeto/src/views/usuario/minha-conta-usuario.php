@@ -18,6 +18,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
   <?php include "../../../public/components/usuario/header/header.php"; ?>
   
+  <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
   <main class="perfil-container2">
     <div class="perfil-card">
       <div class="perfil-header">
@@ -72,7 +73,6 @@ require(__DIR__ . '/../../../config/constantes.php');
           </div>
         </div>
       </div>
-      <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
     </div>
   </main>
 

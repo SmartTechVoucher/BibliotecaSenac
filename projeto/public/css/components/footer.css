@@ -12,7 +12,7 @@
 footer {
     overflow: hidden;      
     display: flex;
-    gap: 8%;
+    gap: 5%;
     align-items: center;
     bottom: 0;
     background-color: var(--azul-padrao);
@@ -194,7 +194,6 @@ footer > *:not(.livro-brilhante){
 
 @media(min-width:1124px){
     .conteiner3 .esquerdo, .direito{
-        width: 150px;
         height: 150px;
     }
 

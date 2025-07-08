@@ -54,12 +54,13 @@ $senacTLG = [
 <body>
     <!-- header  -->
     <?php
-    include "../../../public/components/usuario/header/header.php";
+        include "../../../public/components/usuario/header/header.php";
     ?>
 
 
     <!-- conteudo da pagina -->
     <div class="containerConteudo">
+        <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
         <div class="containerInfo">
             <!-- info_1 -->
             <img id="livroFoto" src="<?php echo $URLBASE ?>/public/assets/img/Simposio.png" alt="livro.jpg">
@@ -280,8 +281,6 @@ $senacTLG = [
             </div>
         </div>
     </div>
-
-    <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
 
     <?php
     include "../../../public/components/usuario/footer/footer.php";
