@@ -28,35 +28,11 @@
 <body>
     
  <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->    
- 
-   <div class="conteiner">      
-            
-        <div class="menuAdm">
-            <img src="<?php echo $URLBASE?>/public/assets/icons/Menu adm.png" alt="" class="hamburguer">
-            <img src="<?php echo $URLBASE?>/public/assets/img/LogoHub_academy.png" alt="Imagem do logo" class="logoSenacHub">
-        </div>
-
-        <div class="titulo"> 
-            <h2>Biblioteca Senac</h2> 
-            <h2 class="senac">Senac Mato Grosso do Sul</h2> 
-        </div>
-
-        <div class="icone"><img src="<?php echo $URLBASE?>/public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
-
-        <div class="minhaConta">
-            <p><a href="./minha-conta.php">Minha conta</a></p>
-            <a href="../usuario/login.php">Sair</a>
-        </div>
-
-    </div>
-
- <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->  
- 
- <div class="conteiner3">      
-    <img src="<?php echo $URLBASE?>/public/assets/icons/Superior esquerdo.png" alt="" class="esquerdo">
-    <img src="<?php echo $URLBASE?>/public/assets/icons/Superior direito.png" alt="" class="direito">
- </div>
-
+ <?php   
+    include "../../../public/components/admin/header/header-admin.php";
+  ?>
+   
+<div class="container-main">
     <h2 id="livro-titulomaster">Listagem de livros cadastrados</h1>
     <form>
 
@@ -97,7 +73,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -112,7 +88,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -127,7 +103,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -142,7 +118,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -157,7 +133,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -172,7 +148,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -187,7 +163,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -202,7 +178,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -217,7 +193,7 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
     <div class="livro-container">
@@ -232,22 +208,11 @@
                 <span>Reserva: <b>0</b></span>
             </div>
         </div>
-        <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt="">
+        <!-- <img id="livro-pontos" src="<?php echo $URLBASE?>/public/assets/icons/pontinhos.png" alt=""> -->
         
     </div>
-
-    <div id="menu" class="menu">
-
-        <div><a href="./telaDeCadastroDeUsuarios.php">Cadastrar usuários</a></div>
-        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
-        <div><a href="./usuarios-cadastrados.php">Usuários cadastrados</a></div>
-        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
-        <div><a href="./telaInicialDoAdm.php">Tela inicial</a></div>
-        <div><a href="./historico-emprestimo.php">Estoque de livros</a></div>
-        <hr>
-        <div><a href="../usuario/login.php">Logout</a></div>
-
-    </div>
+</div>
+    
 
     
     
@@ -255,8 +220,8 @@
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
    <?php   
-    include "../../../public/components/footer/footer.php";
-    ?>
+    include "../../../public/components/admin/footer/footer-admin.php";
+  ?>
     <script src="../../../public/js/admin/telaDosLivrosCadastrados.js"></script>
 
 </body>
