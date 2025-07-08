@@ -14,38 +14,11 @@
     --bordaBaixaCabeçalho: #769FCD;
    
 }
-
+*{
+    box-sizing: border-box;
+}
 /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
 
-.conteiner{
-    background-color: var(--azulCabecalho);
-    width: 100%;
-    height: 150px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 5px;
-    font-family: var(--fontes);
-    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
-   
-}
-
-.conteiner .menuAdm{
-    display: flex;
-    align-items: center;
-   
-}
-
-.menuAdm .hamburguer{
-    width: 100px;
-    height: 50px;
-    cursor: var(--apontador);
-}
-
-.conteiner .logoSenacHub{
-    width: 150px;
-    height: 100px;
-}
 
 
 body{
@@ -59,16 +32,6 @@ h3{
     color: var(--bordaBaixaCabeçalho);
 }
 
-.titulo{
-  color: var(--branco);
-  font-size: 10px;
-   
-}
-
-.titulo .senac{
-    position: var(--posicao);
-    right: 20%;
-}
 
 /*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
 
@@ -175,62 +138,16 @@ h3{
 
 /*Parte inferior do corpo*/
 
-.inferior{
-    display: flex;
-    justify-content: end;
-    margin-top: 5%;
-}
 
-.inferior img{
-    width: 100px;
-    height: 100px;
-}
-
-/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
-
-.rodape{
-    background-color: var(--azulCabecalho);
-    height: 240px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: 10px;
-    text-align: center;
-   
-}
 
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
-.menu{
-    width: 366px;
-    height: 440px;
-    background-color: var(--azulCabecalho);
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: 36px;
-    display: none;
-    cursor: pointer;
-    position: var(--posicaoAbsoluta);
-    top: 20%;    
-}
-
-/*.menu a estará disponível para ser usado mais tarde para controlar as ligações entre telas. Será descomentado em tempo
-oportuno. */
-
-.menu a{
-    text-decoration: none;
-    color: var(--branco);
-    display: flex;
-}
 
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
 @media(max-width:1024px){
     
-    .titulo,.Libro, .todos, .copyright, .logoSenacHub{
+    .Libro, .todos, .copyright, .logoSenacHub{
         display: none;
     }
     
@@ -699,11 +616,6 @@ oportuno. */
     .minhaConta{
         position: var(--posicaoAbsoluta);
         top: 19%; left: 91.1%;
-    }
-
-    .titulo{
-        position: var(--posicao);
-        right: 10%;
     }
 
 }

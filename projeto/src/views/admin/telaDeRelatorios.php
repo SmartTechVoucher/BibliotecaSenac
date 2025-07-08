@@ -23,39 +23,9 @@
 <body>
     
  <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
-    <div class="conteiner">     
-        
-        <div class="menuAdm">
-            <img src="../../../public/assets/icons/Menu adm.png" alt="" class="hamburguer">
-            <img src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo" class="logoSenacHub">
-        </div>
-            
-        <div class="titulo"> 
-            <h2>Biblioteca Senac</h2> 
-            <h2 class="senac">Senac Mato Grosso do Sul</h2> 
-        </div>
-
-        <div class="icone"><img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
-
-        <div class="minhaConta">
-            <p><a href="./minha-conta.php">Minha conta</a></p>
-            <p><a href="../usuario/login.php">Sair</a></p>
-        </div>     
-    </div>
-
- <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
-
-     <div class="conteiner3">
-
-        <div class="superior">
-            <img src="../../../public/assets/icons/Superior esquerdo.png" alt="Superior esquerdo" class="esquerdo">
-        </div>
-
-        <div class="superior">
-            <img src="../../../public/assets/icons/Superior direito.png" alt="Superior direito" class="direito">
-        </div>
-
-    </div>
+ <?php   
+    include "../../../public/components/admin/header/header-admin.php";
+  ?>
 
     <div class="relatorio"><h1>Relatórios</h1></div>
 
@@ -133,39 +103,11 @@
    
     </div>
     
-    <div class="inferior">
-
-        <div class="direito">
-            <img src="../../../public/assets/icons/Inferior direito.png" alt="">
-        </div>     
-
-    </div>
+    
             
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
-    <div class="rodape">
-
-        <div class="logoFecomercio"><img src="../../../public/assets/icons/Fecomercio.png" alt="" class="Logo" ></div>
-        
-        <div><img src="../../../public/assets/icons/Livro.png" alt="" class="Libro">
-            <div class="copyright">Senac MS Copyright © <br></div>
-            <div class="todos"> 2024. Todos os Direitos Reservados</div>   
-        </div>
-        
-    </div>
-
-     <div id="menu" class="menu">
-
-        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
-        <div><a href="./telaDeCadastroDeUsuarios.php">Cadastrar usuários</a></div>
-        <div><a href="./historico-emprestimo.php">Empréstimos</a></div>
-        <div><a href="usuarios-cadastrados.php">Usuários</a></div>
-        <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
-        <div><a href="./telaInicialDoAdm.php">Tela inicial</a></div>
-        <hr>
-        <div><a href="../usuario/login.php">Logout</a></div>
-
-    </div>
+    
 
     <script src="../../../public/js/admin/telaDeRelatorios.js"></script>
 

@@ -14,7 +14,9 @@ require(__DIR__ . '/../../../config/constantes.php');
 
 <body>
 
-  <?php include "../../../public/components/usuario/header/header.php"; ?>
+<?php   
+    include "../../../public/components/admin/header/header-admin.php";
+  ?>
 
   <main class="perfil-container2">
     <div class="perfil-card">
@@ -59,7 +61,7 @@ require(__DIR__ . '/../../../config/constantes.php');
     </div>
   </main>
 
-  <?php include "../../../public/components/usuario/footer/footer.php"; ?>
+  <?php include "../../../public/components/footer/footer.php"; ?>
   
   <script src="<?php echo $URLBASE ?>/public/js/usuario/editar-apelido.js"></script>
 </body>

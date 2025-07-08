@@ -14,33 +14,9 @@
 
  <body>
     <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
-    <div class="conteiner">      
-            
-        <div class="menuAdm">
-            <img src="<?php echo $URLBASE?>/public/assets/icons/Menu adm.png" alt="" class="hamburguer">
-            <img src="<?php echo $URLBASE?>/public/assets/img/LogoHub_academy.png" alt="Imagem do logo" class="logoSenacHub">
-        </div>
-
-        <div class="titulo"> 
-            <h2>Biblioteca Senac</h2> 
-            <h2 class="senac">Senac Mato Grosso do Sul</h2> 
-        </div>
-
-        <div class="icone"><img src="<?php echo $URLBASE?>/public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
-
-        <div class="minhaConta">
-            <p><a href="./minha-conta.php">Minha conta</a></p>
-            <a href="../usuario/login.php">Sair</a>
-        </div>
-
-    </div>
-
- <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
-
-    <div class="conteiner3">      
-        <img src="<?php echo $URLBASE?>/public/assets/icons/Superior esquerdo.png" alt="" class="esquerdo">
-        <img src="<?php echo $URLBASE?>/public/assets/icons/Superior direito.png" alt="" class="direito">
-    </div>
+    <?php   
+    include "../../../public/components/admin/header/header-admin.php";
+  ?>
 
     <div class="main-container">
         <h2>Histórico de Empréstimos</h2>   
@@ -82,18 +58,7 @@
 
     </div>     
      
-    <div id="menu" class="menu">
-
-        <div><a href="./telaDeCadastroDeUsuarios.php">Cadastrar usuários</a></div>
-        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
-        <div><a href="./usuarios-cadastrados.php">Usuários cadastrados</a></div>
-        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
-        <div><a href="./telaInicialDoAdm.php">Tela inicial</a></div>
-        <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
-        <hr>
-        <div><a href="../usuario/login.php">Logout</a></div>
-
-    </div>
+   
     <?php   
     include "../../../public/components/footer/footer.php";
     ?>

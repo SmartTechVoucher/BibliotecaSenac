@@ -14,7 +14,9 @@ a{
     font-family: var(--fontes);
 }
 
-
+*{
+    box-sizing: border-box;
+}
 
 /* main */
 

@@ -51,7 +51,9 @@ th {
 tr:hover {
     background-color: #f1f1f1;
 }
-
+*{
+    box-sizing: border-box;
+}
 .modal {
     display: none;
     position: fixed;
@@ -202,69 +204,7 @@ body {
 }
 
 /*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*/
-.conteiner {
-    background-color: var(--azulCabecalho);
-    height: 140px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: #769FCD 5px solid;
-}
 
-.conteiner .menuAdm{
-    display: flex;
-    align-items: center;
-}
-
-.menuAdm .hamburguer{
-    width: 90px;
-    height: 40px;
-    cursor: var(--apontador)
-}
-
-.logoSenacHub{
-    width: 140px;
-    height: 100px;
-}   
-
-.tabela, h1{
-    margin-left: 1%;
-}
-
-/* Título centralizado */
-.titulo {
-    color: var(--branco);
-    font-size: 18px;
-    font-weight: 600px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0 auto;
-    max-width: calc(100% - 100px);
-}
-
-.conteiner #iconeComandante{
-    cursor: var(--apontador);
-}
-
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-.minhaConta{
-    display: none;
-    position: var(--posicaoAbsoluta);
-    top: 15%; left: 94%;
-    color: var(--branco);
-    background-color: var(--azulCabecalho);
-    width: 114px;
-    cursor: var(--apontador);
-}
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-.minhaConta a{
-    text-decoration: none;
-    color: var(--branco);
-}
 
 /*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*/
 

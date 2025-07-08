@@ -14,33 +14,8 @@
 }
 
 /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
-
-.conteiner{
-    background-color: var(--azulCabecalho);
-    height: 140px;
-    display: flex;
-    justify-content: space-between;
-    padding-top: 5px;
-    font-family: var(--fontes);
-    border-bottom: var(--bordaBaixaCabeçalho) solid 5px;
-}
-
-.menuAdm{
-    display: flex;
-    align-items: center;
-   
-}
-
-.menuAdm .hamburguer{
-    width: 90px;
-    height: 50px;
-    cursor: var(--apontador);
-}
-
-.icone{
-
-    display: flex;
-    align-items: center;
+*{
+    box-sizing: border-box;
 }
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
