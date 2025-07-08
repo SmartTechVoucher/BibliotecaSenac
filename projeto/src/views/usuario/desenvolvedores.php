@@ -30,7 +30,7 @@ $alunos = [
     ],
     [
         'nome' => 'Vitor Araujo',
-        'funcao' => 'UX Designer',
+        'funcao' => 'Back-End Developer',
         'imagem' => 'https://www.example.com/maria.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
@@ -45,14 +45,14 @@ $alunos = [
     [
         'nome' => 'Gabriel Augusto',
         'funcao' => 'Back-End Developer',
-        'imagem' => 'https://www.example.com/maria.jpg',
+        'imagem' => 'https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
     [
         'nome' => 'Gustavo Víctor',
-        'funcao' => 'UX Designer',
-        'imagem' => 'https://www.example.com/maria.jpg',
+        'funcao' => '"Front-End Developer"',
+        'imagem' => 'https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
