@@ -14,6 +14,8 @@ require(__DIR__ . '/../../../config/constantes.php');
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/perfil-usuario.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/modal.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
+
 </head>
 
 <body>

@@ -34,7 +34,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
                 <button type="submit">Enviar</button>
 
-                <a href="../views/loginView.php">Voltar</a>
+                <a href="../usuario/teste-login.php">Voltar</a>
             </form>
 
             <!-- <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2">

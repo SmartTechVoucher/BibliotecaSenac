@@ -56,14 +56,14 @@ $livros = $model->getLivrosMock();
                         <li><a href="./index.php">Início</a></li>
                         <li><a href="">Livros</a></li>
                         <li><a href="">Contato</a></li>
-                        <li><a href="">Logar</a></li>
+                        <li><a href="../projeto/src/views/usuario/teste-arlogin.php">Logar</a></li>
                     </ul>
 
                     <div class="entrar-mobile">
                         <?php if (isset($_SESSION['usuario'])): ?>
                             <div class="perfil-logado" onclick="redirectToPerfil()">
                                 <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-                                <a href="logout.php">Logout</a>
+
                             </div>
                         <?php else: ?>
                             <button onclick="redirectToPage()" class="button-entrar">
@@ -82,13 +82,9 @@ $livros = $model->getLivrosMock();
             <div class="cbright" id="botao-entrar">
                 <?php if (isset($_SESSION['usuario'])): ?>
                     <div class="perfil-logado" onclick="redirectToPerfil()">
-                        <svg class="icone-perfil" xmlns="http://www.w3.org/2000/svg">
-                            <g>
-                                <path fill="white" d="M10.15,18.29c1.26,1.42,2.95,2.3,4.82,2.3s3.7-.95,4.97-2.47c3.28,.84,6.01,2.56,7.7,4.79,1.45-2.3,2.29-5.02,2.29-7.94C29.93,6.7,23.23,0,14.97,0S0,6.7,0,14.97c0,3.17,.99,6.1,2.67,8.52,1.53-2.35,4.2-4.22,7.48-5.19ZM14.97,5.41c3.16,0,5.72,3.05,5.72,6.82s-2.56,6.82-5.72,6.82-5.72-3.05-5.72-6.82,2.56-6.82,5.72-6.82Z"></path>
-                            </g>
-                        </svg>
+                        <img src="../projeto/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
                         <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-                        <a href="logout.php">Logout</a>
+
                     </div>
                 <?php else: ?>
                     <button onclick="redirectToPage()" class="button-entrar">
@@ -118,11 +114,13 @@ $livros = $model->getLivrosMock();
             </div>
 
 
-            <!-- <div class="partecima">
-            </div> -->
-            <!-- <div class="barrapesquisa">
-                <input type="text" class="pesquisa" auto> <button class="botaops" id="lupaId" onclick="focusInput()"><img src="../projeto/public/assets/icons/lupa.svg" alt=""></button>
-            </div> -->
+
+            <form class="barrapesquisa">
+                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> <button type="button" class="botaops" id="lupaId" onclick="focusInput()" tabindex="0"><img src="../projeto/public/assets/icons/lupa.svg" alt="Buscar"></button>
+                <div class="listagem">
+                    <ul></ul>
+                </div>
+            </form>
         </div>
 
 
@@ -188,7 +186,7 @@ $livros = $model->getLivrosMock();
                             </div>
                         <?php endfor; ?>
                     </div>
-                    
+
                     <div class="prateleira"></div>
 
                     <div class="segundaFileira">

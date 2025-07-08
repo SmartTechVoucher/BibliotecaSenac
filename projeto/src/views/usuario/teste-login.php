@@ -47,7 +47,7 @@ session_start();
             <input type="checkbox" id="lembrar" />
             <label for="lembrar">Lembrar senha</label>
           </div>
-          <a href="../../views/usuario/recuperarSenha.php">Recuperar Senha</a>
+          <a href="../../views/usuario/recuperar-senha.php">Recuperar Senha</a>
         </div>
 
         <button type="submit">ENTRAR</button>
