@@ -46,9 +46,12 @@ require "../../../config/constantes.php";
                 <li>
                     <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php">Lista de Usuários Cadastrados</a>
                 </li>
+                <li>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeRelatorios.php">Relatórios</a>
+                </li>
                 
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeLivros.php">Cadastrar Empréstimos</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/emprestimo.php">Cadastrar Empréstimos</a>
                 </li>
                 <li>
                     <a href="<?php echo $URLBASE ?>/src/views/admin/historico-emprestimo.php">Histórico de Empréstimos</a>
@@ -76,7 +79,7 @@ require "../../../config/constantes.php";
             <div id="nav-menu-perfil">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="<?php echo $URLBASE ?>/src/views/admin/minha-conta.php">
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="">
                             Perfil</a></li>
                 
