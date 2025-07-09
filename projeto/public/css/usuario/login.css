@@ -1,281 +1,322 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    width: 100vw;
-    min-height: 100vh;
-    overflow-x: hidden;
-
+:root {
+  --azul-padrao: #003162;
+  --cor-texto:#ffffff;
 }
 
-.container{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: #003162;
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-form {
-    width: 50%;
-    max-width: 600px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    border-radius: 10px;
-    border: solid 3px white;
-    background-color: #003162;
+/* container geral em flex */
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
 }
 
-form img {
-    width: 200px;
-    height: auto;
+/* -------- LOGIN -------- */
+.login {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-right: solid 3px var(--cor-texto);
 }
 
-.login{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-right: solid 3px white;
+.titulo-login {
+  color: var(--cor-texto);
+  text-align: center;
+  font-family: "Poppins",sans-serif;
 }
 
-.login-campos label{
-    font-size: 20px;
-    font-family: "Poppins",sans-serif;
-    color: white;
-    width: 80%;
-    position: relative;
+/* gradiente só na section login */
+.gradiente {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+  270deg,
+  #6EB1FF,
+  #FF7E3E,
+  #6EB1FF,
+  #FF7E3E
+);
+
+  background-size: 600% 600%;
+  animation: moverGradiente 15s ease infinite;
+  z-index: 0;
 }
 
-.tela_animacao{ 
-    width: 50%;
-    height: 100%;
-    display: flex;  
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #003162;
+@keyframes moverGradiente {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-img{
-    width: 100%;
+/* bolhas só na section login */
+/* .bolhas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
-
-.login-campos input{
-    border: none;
-    border-radius: 5px;
-    padding: 3%;
-    width: 80%;
-    height: auto;
-    outline: none;
-    background-color: #EEEEEE;
-    margin: -19px;
-    gap: 30px;
-
+.bolhas span {
+  position: absolute;
+  bottom: -50px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  animation: subir 8s linear infinite;
 }
+.bolhas span:nth-child(1) {width:40px;height:40px;left:20%;animation-delay:0s;}
+.bolhas span:nth-child(2) {width:30px;height:30px;left:40%;animation-delay:2s;}
+.bolhas span:nth-child(3) {width:50px;height:50px;left:60%;animation-delay:4s;}
+.bolhas span:nth-child(4) {width:35px;height:35px;left:80%;animation-delay:6s;}
+.bolhas span:nth-child(5) {width:25px;height:25px;left:50%;animation-delay:8s;}
 
-/* .campo-senha input {
-    width: 80%;
-    padding-right: 40px;
-    padding: 10px;
-    box-sizing: border-box;
-  } */
-  
-/* 
-input:focus {
-    border: 3px solid #F68B1F;
+@keyframes gradienteAnimado {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+@keyframes subir {
+  0% { transform: translateY(0); opacity: 0.3; }
+  100% { transform: translateY(-120vh); opacity: 0; }
 } */
 
+/* form no login */
+
+
+
+.login form {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0,49,98,0.4);
+  border: 1px solid var(--cor-texto);
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.login form img .logo-hub {
+  width: 200px;
+  align-self: center;
+}
 .login-campos input {
-    transition: border 0.3s;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #EEE;
 }
+
 .login-campos input:focus {
-    border: 2px solid #F68B1F;
+  border: 2px solid #F68B1F;
 }
 
+input:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: transparent; /* opcional */
+}
 
-.campo-usuario {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
+label { 
+  color: var(--cor-texto);
+  font-family: "Poppins",sans-serif;
+  display: flex;
+  align-items: center;
 }
 
 .campo-senha {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
+  position: relative;
+  width: 100%;
 }
 
-/* .toggle-senha {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 18px;
-    user-select: none;
-} */
-
-
-
-button{
-    width: 80%;
-    height: auto;
-    padding: 3%;
-    border: none;
-    border-radius: 5px;
-    background-color: #F68B1F;
-    color: white;
-    font-weight: 800;
-    cursor: pointer;
-    transition: all .2s ease-in-out;
+.campo-senha input {
+  width: 100%;
+  padding-right: 30px; /* reserva espaço para o olho */
+  padding: 12px 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #EEE;
 }
 
-button:hover{
-
-    transition: all .2s ease-in-out;
-    background-color: #da7a1a;
+.campo-senha .toggle-senha {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  margin: 15px 5px 0px 0px;
+  color: #003162; /* cor do olho, opcional */
+  z-index: 2;
 }
 
-a{
-    display: flex;
-    justify-content: end;
-    width: auto;
-    color: white;
-    text-decoration: none;
-    font-family: "Poppins",sans-serif;
-    font-size: 12px;
+.campo-usuario label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: var(--cor-texto);
 }
 
-.logo{
-    width: 15%;
-    height: 15%;
-    position: absolute;
-    top: 0;
-    right: 40%;
-}
-.logo2{
-    width: 15%;
-    height: 15%;
-    position: absolute;
-    bottom: 0;
-    left: -10%;
-    transform: scale(-1);
+.campo-senha label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  color: var(--cor-texto);
 }
 
-.decor-top-right, .decor-bottom-left {
-    display: flex;
-    flex-wrap: wrap;
-    width: 60px;
-    gap: 5px;
-    position: absolute;
+.campo-usuario label img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
-  
-.decor-top-right {
-    top: 20px;
-    right: 20px;
+
+.campo-usuario label,.campo-senha label {
+  padding-bottom: 1%;
 }
-  
-  .decor-bottom-left {
-    bottom: 20px;
-    left: 20px;
+
+.campo-usuario {
+  margin-bottom: 5%;
 }
-  
-.square {
-    width: 18px;
-    height: 18px;
-    /* background-color: rgba(0, 51, 102, 0.3); azul com transparência */
-    background-color: white;
+
+.cadeado-senha {
+  width: 20px;
+  height: auto;
+}
+
+.campo-login img{
+  margin-bottom: 2px;
+}
+.campo-senha img{
+  margin-bottom: 2px;
+}
+
+.checkbox-container {
+  display: flex;
+  gap: 2%;
+  align-items: center;
+  white-space: nowrap;  
 }
 
 .check-entrar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin: 4%;
+  color: var(--cor-texto);
+  font-size: 12px;
+  font-family: "Poppins",sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;  
+  width: 100%;
+
 }
 
-.checkbox-container  {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 5px;
-    white-space: nowrap;
+button {
+  background-color: #F68B1F;
+  color: var(--cor-texto);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #F68B1F;
+  animation: glow 1.5s infinite alternate;
 }
 
-.checkbox-container label {
-    font-family: "Poppins",sans-serif;
-    font-size: 15px;
-    color: white;
+@keyframes glow {
+  from { box-shadow: 0 0 10px #F68B1F; }
+  to { box-shadow: 0 0 20px #F68B1F; }
 }
 
-.login-campos {
-    display:flex; 
+.check-entrar a {
+  text-decoration: none;
+  color: var(--cor-texto);
+  font-size: 12px;
+  white-space: nowrap;   
+}
+
+.ocultar-senha {
+  color: var(--azul-padrao);
+}
+
+button:hover { background-color: #da7a1a; }
+
+/* -------- TELA_ANIMACAO -------- */
+.tela_animacao {
+  flex: 1;
+  background-color: #003162;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tela_animacao img {
+  max-width: 90%;
+  border-radius: 10px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .container {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    width: 100%;
-
-}
-
-.checkbox-container input {
-    accent-color: #F68B1F;
-}
-
-.checkbox-container label {
-    cursor: pointer;
   }
-  form {
+  .tela_animacao {
+    display: none;
+  }
+}
+
+
+.quadrados {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.quadrados span {
+  position: absolute;
+  bottom: -50px;
+  background: rgba(255,255,255,0.2);
+  width: 30px;
+  height: 30px;
+  animation: subirQuadrados 10s linear infinite;
+}
+
+.quadrados span:nth-child(1) {left:20%;animation-delay:0s;}
+.quadrados span:nth-child(2) {left:40%;animation-delay:2s;}
+.quadrados span:nth-child(3) {left:60%;animation-delay:4s;}
+.quadrados span:nth-child(4) {left:80%;animation-delay:6s;}
+.quadrados span:nth-child(5) {left:50%;animation-delay:8s;}
+
+@keyframes subirQuadrados {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
     opacity: 0;
-    animation: fadein 1s ease forwards;
-}
-@keyframes fadein {
-    to { opacity: 1; }
-}
-  
-
-@media screen and (max-width: 900px) {
-    .container{
-        flex-direction: column;
-    }
-    
-    form{
-        width: 90%;
-    }
-
-    .tela_animacao{
-        display: none;
-    }
-
-    .logo{
-        width: 30%;
-        right: -18%;
-    }
-
-    .logo2{
-        width: 30%;
-        left: -18%;
-    }
-
-
+  }
 }

@@ -1,5 +1,9 @@
 <?php
 
+session_start();
+
+
+
 require __DIR__ . '/config/constantes.php';
 
 
@@ -31,8 +35,17 @@ $livros = $model->getLivrosMock();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
-
+    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
+</head>
 <body>
+
+    <?php if (isset($_SESSION['toast'])): ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                mostrarToast("<?php echo addslashes($_SESSION['toast']['mensagem']); ?>", "<?php echo $_SESSION['toast']['tipo']; ?>");
+            });
+        </script>
+    <?php unset($_SESSION['toast']); endif; ?>
 
     <div class="conteiner">
         <div class="cabecalho">
@@ -57,7 +70,7 @@ $livros = $model->getLivrosMock();
                         <?php if (isset($_SESSION['usuario'])): ?>
                             <div class="perfil-logado" onclick="redirectToPerfil()">
                                 <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-                                <a href="./logout.php">/a>
+                                <a href="./logout.php">
                             </div>
                         <?php else: ?>
                             <button onclick="redirectToPage()" class="button-entrar">
@@ -208,7 +221,6 @@ $livros = $model->getLivrosMock();
 
 
     <script src="./public/js/usuario/tela-inicial.js"></script>
-    <script src="<?php echo $URLBASE ?>/public/js/usuario/toast.js"></script>
 </body>
 
 </html>

@@ -3,13 +3,13 @@ require_once __DIR__ . "/../../../config/db/database.php";
 
 class LoginController{
 
-    private $conn;
+    // private $conn;
 
-    public function __construct(){
-        $banco = new Database();
+    // public function __construct(){
+    //     $banco = new Database();
 
-        $this->conn = $banco->Connect();
-    }
+    //     $this->conn = $banco->Connect();
+    // }
 
     // public function ValidarLogin($nome,$senha){
     //     if (!preg_match('/^\d{11}$/', $nome)) {
@@ -49,27 +49,41 @@ class LoginController{
     //     }
     // }
     public function ValidarLogin($nome, $senha) {
-        session_start();
+    session_start();
 
-        if ($nome === "12345678910" && $senha === "2020") {
-            $_SESSION['usuario'] = [
-                'id' => 1,
-                'nome' => 'João da Silva'
-            ];
-            $_SESSION['toast'] = [
-                'mensagem' => "Login efetuado com sucesso!",
-                'tipo' => "success"
-            ];
-            return true;
-        } else {
-            $_SESSION['toast'] = [
-                'mensagem' => "Usuário ou senha inválidos.",
-                'tipo' => "error"
-            ];
-            return false;
-        }
+    // Verifica login de administrador
+    if ($nome === "admin123" && $senha === "2020") {
+        $_SESSION['usuario'] = [
+            'id' => 0,
+            'nome' => 'Administrador'
+        ];
+        $_SESSION['toast'] = [
+            'mensagem' => "Login efetuado com sucesso!",
+            'tipo' => "success"
+        ];
+        return true;
     }
 
+    // Verifica login de usuário comum
+    if ($nome === "12345678910" && $senha === "2020") {
+        $_SESSION['usuario'] = [
+            'id' => 1,
+            'nome' => 'João da Silva'
+        ];
+        $_SESSION['toast'] = [
+            'mensagem' => "Login efetuado com sucesso!",
+            'tipo' => "success"
+        ];
+        return true;
+    }
+
+    // Login inválido
+    $_SESSION['toast'] = [
+        'mensagem' => "Usuário ou senha inválidos.",
+        'tipo' => "error"
+    ];
+    return false;
+}
     
 
 }

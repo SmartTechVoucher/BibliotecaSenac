@@ -46,6 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
       toast.remove();
-    }, 3500);
+    }, 5000);
   }
 });

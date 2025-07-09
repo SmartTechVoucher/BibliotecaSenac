@@ -23,7 +23,7 @@
       <button class="btn-reservar">Reservar</button>
     <?php else: ?>
       <p class="status-livro indisponivel">Indisponível</p>
-      <button class="btn-reservar" onclick="mostrarToast('Livro reservado com sucesso!')" >Reservar</button>
+      <button class="btn-reservar" onclick="mostrarToast('Livro reservado com sucesso!'); this.innerText = 'Livro reservado'; this.style.backgroundColor='#fff'; this.style.color='#003162';" >Reservar</button>
 
     <?php endif; ?>
   </div>
