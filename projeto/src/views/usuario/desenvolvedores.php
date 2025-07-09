@@ -13,7 +13,7 @@ $alunos = [
     [
         'nome' => 'Marlon Oliveira',
         'funcao' => 'Full-Stack Developer',
-        'imagem' => 'https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg',
+        'imagem' => '../../../public/assets/img/Marlon.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
