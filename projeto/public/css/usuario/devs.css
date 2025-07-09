@@ -8,6 +8,14 @@ body {
     margin: auto;
 }
 
+#main-devs .btn-voltar{
+
+    left: 8%;
+    top: 24%;
+    box-shadow: 0 0px 13px rgba(2, 255, 19, 0.5);
+    background-color: #40C057;
+}
+
 .cards-grid {
     width: 100%;
     display: grid;
@@ -96,4 +104,36 @@ body {
     100% {
         box-shadow: 0 10px 10px rgba(2, 255, 19, 0.5);
     }
+}
+
+@media (max-width: 1638px){
+
+    #main-devs .btn-voltar{
+
+    top: 26%;
+}
+}
+
+@media (max-width: 1142px){
+
+    #main-devs .btn-voltar{
+
+    left: 14%;
+}
+}
+
+@media (max-width: 757px){
+
+    #main-devs .btn-voltar{
+
+    left: 30%;
+}
+}
+
+@media (max-width: 563px){
+
+    #main-devs .btn-voltar{
+
+    left: 23%;
+}
 }

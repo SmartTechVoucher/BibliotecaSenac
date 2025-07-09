@@ -1,4 +1,7 @@
 <?php
+
+require(__DIR__ . '/../../../config/constantes.php');
+
 $alunos = [
     [
         'nome' => 'Gabriel Arruda',
@@ -68,6 +71,7 @@ $alunos = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../public/css/usuario/devs.css">
     <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
 </head>
 <body>
 
@@ -78,6 +82,7 @@ $alunos = [
             <h1>DE SISTEMA</h1>
         </div>
     </section>
+    <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
 
     <section class="cards-grid">
         <?php foreach ($alunos as $aluno): ?>
