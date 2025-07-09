@@ -32,7 +32,7 @@ let clicandoExcluir = false;
 
 
 function redirectToPage() {
-    window.location.href = "src/views/usuario/teste-login.php";
+    window.location.href = "src/views/usuario/login.php";
 }
 
 input.addEventListener('focus', () => {
