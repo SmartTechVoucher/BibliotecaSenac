@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela inicial do adm</title>
+    <?php
+    require_once "../../../config/constantes.php";
+  ?>
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="../../../public/css/admin/telaInicialAdm.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

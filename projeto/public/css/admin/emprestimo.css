@@ -28,7 +28,6 @@ a{
     margin: auto;
     padding: 40px;
     position: relative; 
-    margin-top: 30px;
     margin-bottom: 30px;
 }
 .quadradoBranco::before { /*pseudo elemento que faz aquele pequeno retangulo no topo do .quadradoBranco*/
@@ -54,19 +53,19 @@ a{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1523px;
+    width: 90%;
     height: 50px;
     border: 0px;
     background: #F1EEEE;
     margin: auto;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .searchInput input{
     background-color: #F1EEEE;
     border: 0px;
     padding-left: 20px;
-    width: 1490px;
+    width: 95%;
     height: 40px;
 }
 
@@ -105,9 +104,10 @@ a{
 /* livro emprestados do usuario */
 .livrosEmprestados{
     margin-top: 30px;
-    background-color: #FCFCFC;
+    background-color: #dfe2e5;;
     padding: 8px;
     height: 500px;
+    border-radius: 5px;
 }
 
 .tabela-header {
