@@ -170,7 +170,7 @@ nav ul li a:visited,
 /* Centraliza o título no cabeçalho */
 .titulo {
     display: flex;
-    font-size: 61%;
+    font-size: 60%;
     flex-direction: column;
     align-items: center;
     transform: translateX(-358%);

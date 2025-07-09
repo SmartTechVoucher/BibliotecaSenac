@@ -130,7 +130,7 @@
 .status-livro.indisponivel { color: #ff4d4d; }
 
 /* botão reservar */
-.btn-reservar {
+.btn-reservar{
   background-color: #FF7F0E;
   font-family: "Poppins", sans-serif;
   font-size: 0.75rem;

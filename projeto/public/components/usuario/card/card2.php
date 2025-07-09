@@ -1,3 +1,11 @@
+<?php
+
+  require(__DIR__ . '../../../../../config/constantes.php');
+
+
+?>
+
+
 <div class="card-livro">
 
   <button class="btn-favorito" onclick="this.classList.toggle('clicked')">
@@ -7,9 +15,11 @@
 
   <div class="capa-wrapper">
     <img src="<?= htmlspecialchars($livro['imagem']) ?>" class="capa-livro" alt="Capa do Livro">
-    <div class="overlay">
-      <p class="descricao-livro"><?= htmlspecialchars($livro['descricao']) ?></p>
-    </div>
+    <a href="<?php echo $URLBASE ?>/src/views/usuario/livro-info.php">
+      <div class="overlay">
+        <p class="descricao-livro"><?= htmlspecialchars($livro['descricao']) ?></p>
+      </div>
+    </a>
   </div>
 
   <div class="conteudo-card">
@@ -21,7 +31,7 @@
       <button class="btn-reservar">Reservar</button>
     <?php else: ?>
       <p class="status-livro indisponivel">Indisponível</p>
-      <button class="btn-reservar" disabled>Reservar</button>
+      <button class="btn-reservar" disabled >Reservar</button>
     <?php endif; ?>
   </div>
 

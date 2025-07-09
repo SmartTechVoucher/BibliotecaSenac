@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include_once __DIR__ . '/public/components/usuario/toast/toast.php';
 

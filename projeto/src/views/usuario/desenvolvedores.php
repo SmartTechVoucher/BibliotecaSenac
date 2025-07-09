@@ -10,7 +10,7 @@ $alunos = [
     [
         'nome' => 'Marlon Oliveira',
         'funcao' => 'Full-Stack Developer',
-        'imagem' => 'https://www.example.com/maria.jpg',
+        'imagem' => 'https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
@@ -31,14 +31,14 @@ $alunos = [
     [
         'nome' => 'Vitor Araujo',
         'funcao' => 'Back-End Developer',
-        'imagem' => 'https://www.example.com/maria.jpg',
+        'imagem' => '../../../public/assets/img/Vitor.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
-        'github' => 'https://github.com/mariasilva',
+        'github' => 'https://github.com/vitocrack',
     ],
     [
         'nome' => 'Matheus Serpa',
         'funcao' => 'UX Designer',
-        'imagem' => 'https://www.example.com/maria.jpg',
+        'imagem' => 'https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
@@ -52,9 +52,9 @@ $alunos = [
     [
         'nome' => 'Gustavo Víctor',
         'funcao' => '"Front-End Developer"',
-        'imagem' => 'https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg',
-        'linkedin' => 'https://www.linkedin.com/in/mariasilva',
-        'github' => 'https://github.com/mariasilva',
+        'imagem' => '../../../public/assets/img/Gustavo.jpg',
+        'linkedin' => 'https://www.linkedin.com/in/gustavo-silva-506949327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+        'github' => 'https://github.com/gustavo777-bot',
     ],
     // Adicione mais alunos aqui
 ];
