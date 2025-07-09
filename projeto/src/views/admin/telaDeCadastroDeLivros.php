@@ -31,6 +31,7 @@
  <?php   
     include "../../../public/components/admin/header/header-admin.php";
   ?>
+    <h2 id="titulo-cadastrodelivros">Cadastro de Livros</h2>
     <form class="formulario">
 
         <div class="tituloObrigatorio"> 

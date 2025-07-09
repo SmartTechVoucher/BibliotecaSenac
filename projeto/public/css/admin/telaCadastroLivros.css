@@ -74,6 +74,7 @@ definem o comprimento e a altura dos ícones em 100 pixels.*/
     padding: 15px;
     margin-top: 25px;
     gap: 15px;
+    border-radius: 8px;
 }
 
 .formulario .tituloObrigatorio, .autorObrigatorio, .codigoObrigatorio{
@@ -126,7 +127,9 @@ label{
 }
 
 /*Segundo formulário. Esse só aparece a partir de 1280 pixels. */
-
+#titulo-cadastrodelivros{
+    text-align: center;
+}
 #formulario2{ 
     width: 50%;
     display: flex;
@@ -135,12 +138,13 @@ label{
     padding: 15px;
     gap: 25px;
     grid-column: 3;
+    box-shadow: 0 2px 4px gray;
 }
 
 .paraTestar{
     display: grid;
     grid-template-columns: repeat(10,110px);
-    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .tituloObrigatorio2, .autorObrigatorio2, .codigoObrigatorio2{
@@ -466,7 +470,7 @@ input:focus {
         display: flex;
         width: 410.5px;
         border-right: 1px solid white;
-        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+        /* box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5); */
     }
 
     .formulario2_segundaMetade{
@@ -479,7 +483,7 @@ input:focus {
         padding: 10px;
         font-size: 18px;
         border-left: 4px solid white;
-        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 4px gray;
     }
 
     .formulario2 .Botao{
