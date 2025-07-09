@@ -13,8 +13,8 @@ require(__DIR__ . '/../../../config/constantes.php');
     <!-- <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/card-livros.css"> -->
     <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
     <link rel="stylesheet" href="../../../public/css/components/usuario/card2.css">
-    <link rel="stylesheet" href="../../../public/css/components/usuario/header.css">
-
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
 
 </head>
 

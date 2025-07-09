@@ -15,7 +15,7 @@ class LivroModel {
                 "titulo" => "1984",
                 "autor" => "George Orwell",
                 "status" => "Indisponível",
-                "imagem" => "https://covers.odilo.io/publicms/Tecnologia_e_Comunica__o__Mario_Sergio_Cortella_e_Breno_Cortella__Papo_de_Fam_lia_/VD310_318x451.jpg",
+                "imagem" => "https://covers.odilo.io/public/OdiloPlace_Bookwire_Brasil_BR/9788594496454_225x318.jpg",
                 "descricao" => "Um romance distópico que explora regimes totalitários."
             ],
             [
@@ -23,7 +23,7 @@ class LivroModel {
                 "titulo" => "Dom Casmurro",
                 "autor" => "Machado de Assis",
                 "status" => "Disponível",
-                "imagem" => "https://covers.odilo.io/publicms/Tecnologia_e_Comunica__o__Mario_Sergio_Cortella_e_Breno_Cortella__Papo_de_Fam_lia_/VD310_318x451.jpg",
+                "imagem" => "https://covers.odilo.io/public/OdiloPlace_Bookwire_Brasil_BR/9786525294117_318x451.jpg",
                 "descricao" => "Uma reflexão profunda sobre ciúmes e memórias."
             ],
             [
@@ -71,7 +71,7 @@ class LivroModel {
                 "titulo" => "Orgulho e Preconceito",
                 "autor" => "Jane Austen",
                 "status" => "Disponível",
-                "imagem" => "https://covers.odilo.io/publicms/Recep__o_e_conex_o__a_arte_de_cuidar_e_encantar_com_Ang_lica_Furtado/cachola_cast_8_318x451.jpg",
+                "imagem" => "https://covers.odilo.io/public/OdiloPlace_Bookwire_Brasil_BR/9788574525662_225x318.jpg",
                 "descricao" => "Um clássico da literatura romântica inglesa."
             ],
             [

@@ -14,12 +14,15 @@ require(__DIR__ . '/../../../config/constantes.php');
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/perfil-usuario.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/modal.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
+
 </head>
 
 <body>
 
   <?php
-    include "./projeto/public/components/usuario/header/header.php";
+  include "../../../public/components/usuario/header/header.php";
   ?>
 
   <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
@@ -73,7 +76,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   </main>
 
   <?php
-    require_once "./projeto/public/components/usuario/footer/footer.php";
+  include "../../../public/components/usuario/footer/footer.php";
   ?>
 </body>
 
