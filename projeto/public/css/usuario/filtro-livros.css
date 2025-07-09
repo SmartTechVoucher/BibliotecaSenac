@@ -129,16 +129,20 @@ body {
 }
 
 .book-card {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
-    min-height: 400px;
+    max-width: 200px;
+    height: auto;  /* altura padrão */
+    border-radius: 12px;
+    overflow: hidden;
+    background: #003162;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    max-width: 100%; /* Evita que o card cresça demais */
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 .book-card:hover {
