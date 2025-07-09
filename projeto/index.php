@@ -37,6 +37,7 @@ $livros = $model->getLivrosMock();
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
     <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
 </head>
+
 <body>
 
     <?php if (isset($_SESSION['toast'])): ?>
@@ -45,7 +46,8 @@ $livros = $model->getLivrosMock();
                 mostrarToast("<?php echo addslashes($_SESSION['toast']['mensagem']); ?>", "<?php echo $_SESSION['toast']['tipo']; ?>");
             });
         </script>
-    <?php unset($_SESSION['toast']); endif; ?>
+    <?php unset($_SESSION['toast']);
+    endif; ?>
 
     <div class="conteiner">
         <div class="cabecalho">
@@ -68,9 +70,13 @@ $livros = $model->getLivrosMock();
 
                     <div class="entrar-mobile">
                         <?php if (isset($_SESSION['usuario'])): ?>
-                            <div class="perfil-logado" onclick="redirectToPerfil()">
+                            <div class="perfil-logado" onclick="toggleMenu(event)">
+                                <img src="../projeto/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
                                 <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-                                <a href="./logout.php">
+                                <div class="menu-dropdown" id="menuPerfil">
+                                    <a href="../projeto/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png"> Meu Perfil</a>
+                                    <a href="logout.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
+                                </div>
                             </div>
                         <?php else: ?>
                             <button onclick="redirectToPage()" class="button-entrar">
@@ -88,10 +94,13 @@ $livros = $model->getLivrosMock();
 
             <div class="cbright" id="botao-entrar">
                 <?php if (isset($_SESSION['usuario'])): ?>
-                    <div class="perfil-logado" onclick="redirectToPerfil()">
+                    <div class="perfil-logado" onclick="toggleMenu(event)">
                         <img src="../projeto/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
                         <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-
+                        <div class="menu-dropdown" id="menuPerfil">
+                            <a href="../projeto/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="" class="perfil-header-inicial"> Meu Perfil</a>
+                            <a href="logout.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
+                        </div>
                     </div>
                 <?php else: ?>
                     <button onclick="redirectToPage()" class="button-entrar">
@@ -221,6 +230,19 @@ $livros = $model->getLivrosMock();
 
 
     <script src="./public/js/usuario/tela-inicial.js"></script>
+    <script>
+        function toggleMenu(event) {
+            event.stopPropagation(); // evita que o clique feche imediatamente
+            const menu = event.currentTarget.querySelector(".menu-dropdown");
+            const isVisible = menu.style.display === "block";
+            document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
+            menu.style.display = isVisible ? "none" : "block";
+        }
+
+        document.addEventListener("click", () => {
+            document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
+        });
+    </script>
 </body>
 
 </html>

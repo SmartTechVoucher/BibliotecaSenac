@@ -729,16 +729,41 @@ body {
     width: 250px;
     height: 350px;
 }
-
-.perfil-logado {
-    /* border: solid red; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--cor-texto);
-    font-size: 10px;
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #003162;
+    font-family: "Poppins",sans-serif;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 999;
+    min-width: 160px;
 }
+
+.menu-dropdown a {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border-bottom: 1px solid #82828261;
+}
+
+.perfil-header-inicial {
+
+}
+
+
+.menu-dropdown a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
  
 .perfil-logado span {
     font-size: 15px;
