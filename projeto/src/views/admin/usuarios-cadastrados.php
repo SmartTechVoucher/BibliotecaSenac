@@ -62,6 +62,10 @@ require_once "../../../config/constantes.php";
           </thead>
           <tbody id="userTable"></tbody>
         </table>
+        <div class="pagination-controls">
+            <button id="backButton" onclick="changePage(-1)" disabled>Voltar</button>
+            <button id="forwardButton" onclick="changePage(1)">Avançar</button>
+        </div>
       </div>
     
       <div id="bloqueados" class="tab-content" style="display: none;" >
@@ -78,9 +82,14 @@ require_once "../../../config/constantes.php";
           </thead>
           <tbody id="blockedTable"></tbody>
         </table>  
-          
+          <div class="pagination-controls">
+            <button id="backBlockedButton" onclick="changeBlockedPage(-1)" disabled>Voltar</button>
+            <button id="forwardBlockedButton" onclick="changeBlockedPage(1)">Avançar</button>
+        </div>
       </div>
+      
     </div>
+    
     
     
     <div id="userModal" class="modal"> <!-- janela que contém dados do usuario -->
