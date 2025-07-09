@@ -64,18 +64,19 @@ body{
 .relatorio{
     display: flex;
     justify-content: center;
-    margin-top: 5%;
     height: 70px;
 }
 
 .quadradoCinza{
     height: 500px;
     background-color: var(--branco);
+    margin: auto;
+    margin-bottom: 5%;
+    border-radius: 8px;
+    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
+    border-width: 0;
 }
 
-.quadradoBranco{
-    margin-left: 15%;
-}
 
 .quadradoBranco .input{
     display: flex;
@@ -121,11 +122,16 @@ da div que contêm os botões "cancelar" e "emitir" */
 configurações dos botões "cancelar" e "emitir" */
 
 .quadradoCinza .cancelar, .emitir{
-    width: 116px;
-    background-color: var(--corBotao);
-    color: var(--branco);
-    cursor: var(--apontador);
-    border-radius: 5px;
+   background-color: #004A90;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.quadradoCinza .cancelar:hover, .emitir:hover{
+   background-color: #0056b3;
 }
 
 /*Parte inferior do corpo*/
@@ -262,8 +268,6 @@ configurações dos botões "cancelar" e "emitir" */
 
  .quadradoCinza{
     width: 60%;
-    margin-left: 13%;
-    border: solid 1px;
  }
 
  .quadradoCinza .input{

@@ -74,7 +74,9 @@ h3{
     background-color: var(--cinza);
     padding-top: 5%;
     padding-left: 15%;
-    margin-top: 5%;
+    margin-bottom: 5%;
+    border-radius: 8px;
+    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
 }
 
 .quadradoCinza .nome, .nomeSocial{
@@ -334,7 +336,6 @@ h3{
     width: 60%;
     height: 2200px;
     margin-left: 13%;
-    border: solid 1px;
  }
 
  .quadradoCinza input{
@@ -388,7 +389,6 @@ h3{
     width: 60%;
     height: 2200px;
     margin-left: 13%;
-    border: solid 1px;
  }
 
  .quadradoCinza input{
