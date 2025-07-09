@@ -1,136 +1,145 @@
 <?php
+session_start();
 require(__DIR__ . '/../../../config/constantes.php');
+require_once(__DIR__ . '/../../../src/model/usuario/livro-model.php');
 
+$model = new LivroModel();
+$livros = $model->getLivrosMock();
 
+// Garante que todos os campos esperados existem
+function getLivroOuDefault($livros, $index) {
+    return $livros[$index] ?? [
+        'id' => 0,
+        'titulo' => 'O guia do mochileiro das galáxias',
+        'autor' => 'Douglas Adams',
+        'imagem' => 'https://i.pinimg.com/736x/a7/b2/0f/a7b20fc61df85a13f6ddcd365854966d.jpg',
+        'status' => 'disponível',
+        'area' => 'Ficção',
+        'descricao' => 'Livro padrão inserido quando não há mais resultados.',
+    ];
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <title>Filtro de Livros</title>
 
+    <!-- Fontes e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/card-livros.css"> -->
+    <!-- Estilos -->
     <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
     <link rel="stylesheet" href="../../../public/css/components/usuario/card2.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
-
 </head>
 
-<?php
-include "../../../public/components/usuario/header/header.php";
-?>
-
 <body>
+<?php include "../../../public/components/usuario/header/header.php"; ?>
 
+<div class="container">
+    <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
 
-    <div class="container">
-
-        <div class="superior">
-            <div class="menu_direita">
+    <div class="content-wrapper">
+        <div class="sidebar">
+            <!-- Filtros -->
+            <div class="filter-group">
                 <label for="area">Área</label>
-                <select name="area" id="area" class="selecionar">
+                <select id="area" class="filter-select">
                     <option value="">SELECIONE</option>
                     <option value="Ciência_Sociais_Aplicadas">Ciência Sociais Aplicadas</option>
                     <option value="Economia">Economia</option>
-                    <option value="Multidiciplinar">Multidiciplinar</option>
-                    <option value="Ciências_Agrârias">Ciências Agrârias</option>
+                    <option value="Multidiciplinar">Multidisciplinar</option>
+                    <option value="Ciências_Agrârias">Ciências Agrárias</option>
                 </select>
-
-
-                <label for="Categoria/Tags">Categoria/Tags</label>
-                <select name="Categoria/Tags" id="Categoria/Tags" class="selecionar">
+            </div>
+            <div class="filter-group">
+                <label for="categoria">Categoria/Tags</label>
+                <select id="categoria" class="filter-select">
                     <option value="">SELECIONE</option>
                     <option value="Literatura">Literatura</option>
                     <option value="Folheto">Folheto</option>
                     <option value="Artigo_Periódico">Artigo Periódico</option>
                     <option value="Livro">Livro</option>
                 </select>
-
             </div>
-
-            <div class="grid_card">
-                <div class="saude">
-                    <h1>Tecnologia</h1>
-
-                    <a href="" class="saiba_mais2">Saiba mais</a>
-                </div>
-
-                <div class="cards_livros">
-
-                    <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/usuario/card/card2.php"; ?>
-                    <?php endfor; ?>
-                </div>
-
-                <div class="saude">
-                    <h1>Saúde</h1>
-
-                    <a href="" class="saiba_mais2">Saiba mais</a>
-                </div>
-
-
-
-                <div class="cards_livros">
-                    <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/usuario/card/card2.php"; ?>
-                    <?php endfor; ?>
-                </div>
-
-                <div class="saude">
-                    <h1>Gestão</h1>
-
-                    <a href="" class="saiba_mais2">Saiba mais</a>
-                </div>
-
-                <div class="cards_livros">
-
-                    <?php for ($i = 0; $i < 4; $i++): ?>
-                        <?php include "../../../public/components/usuario/card/card2.php"; ?>
-                    <?php endfor; ?>
-                </div>
+            <div class="filter-group">
+                <label for="tipo">Unidade</label>
+                <select id="tipo" class="filter-select">
+                    <option value="">SELECIONE</option>
+                    <option value="PDF">BSCOR</option>
+                    <option value="EPUB">BSDOU</option>
+                    <option value="MOBI">BSHUB</option>
+                    <option value="DOC">BSPOP</option>
+                </select>
             </div>
         </div>
 
-        <div class="inferior">
-            <button class="arrow_left control" aria-label="Previous_image">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000">
-                    <path d="M400-80 0-480l400-400 56 57-343 343 343 343-56 57Z" />
-                </svg>
-            </button>
+        <div class="main-content">
+            <!-- Categorias -->
+            <?php
+            $categorias = ['Tecnologia' => [0, 4], 'Saúde' => [4, 8], 'Gestão' => [8, 12]];
+            foreach ($categorias as $titulo => [$inicio, $fim]):
+            ?>
+                <div class="category-section">
+                    <div class="category-header"><h2><?php echo $titulo; ?></h2></div>
+                    <div class="books-grid">
+                        <?php for ($i = $inicio; $i < $fim; $i++): ?>
+                            <?php $livro = getLivroOuDefault($livros, $i); ?>
+                            <div class="livroEstante1">
+                                <?php include "../../../public/components/usuario/card/card2.php"; ?>
+                            </div>
+                        <?php endfor; ?>
+                    </div>
+                    <?php if ($titulo === 'Gestão'): ?>
+                        <div class="pagination">
+                            <button class="pagination-btn" onclick="changePage('gestao', 1)">1</button>
+                            <button class="pagination-btn" onclick="changePage('gestao', 2)">2</button>
+                            <button class="pagination-btn active" onclick="changePage('gestao', 3)">3</button>
+                            <button class="pagination-btn" onclick="changePage('gestao', 4)">4</button>
+                            <button class="pagination-btn" onclick="changePage('gestao', 5)">5</button>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 
-            <button class="arrow_right control" aria-label="Next_image">
-                <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#000000">
-                    <path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z" />
-                </svg>
-            </button>
-
-            <div class="gallery-wrapper">
-                <div class="gallery">
-                    <!-- <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                        alt="Beach_Images" class="Item current-item">
- -->
-
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                        alt="Beach_Images" class="item">
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                        alt="Beach_Images" class="item">
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                        alt="Beach_Images" class="item">
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                        alt="Beach_Images" class="item">
-                    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg"
-                        alt="Beach_Images" class="item">
-
+    <!-- Destaques -->
+    <div class="highlights-section">
+        <div class="section-header"><h2>Destaques</h2></div>
+        <div class="carousel-container">
+            <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="carousel-wrapper">
+                <div class="carousel-track">
+                    <?php for ($i = 0; $i < 9; $i++): ?>
+                        <?php $livro = getLivroOuDefault($livros, $i); ?>
+                        <div class="carousel-item <?php echo $i === 3 ? 'active' : ''; ?>">
+                            <div class="carousel-book">
+                                <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
+                                <div class="carousel-info">
+                                    <h4><?php echo $livro['titulo']; ?></h4>
+                                    <p>Autor - <?php echo $livro['autor']; ?></p>
+                                    <p class="disponivel">(Jogue na mesa)</p>
+                                    <p>Disponível</p>
+                                    <button class="carousel-reserve-btn" onclick="window.location.href='<?php echo $URLBASE ?>/src/views/usuario/livro-info.php?id=<?php echo $livro['id']; ?>'">Reservar</button>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endfor; ?>
                 </div>
             </div>
+            <button class="carousel-btn next-btn" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
         </div>
+    </div>
+</div>
 
-        <?php include "../../../public/components/usuario/footer/footer.php" ?>
-
-        <script src="<?php echo $URLBASE ?>/public/js/usuario/filtro-livros.js"></script>
-
+<?php include "../../../public/components/usuario/footer/footer.php"; ?>
+<script src="<?php echo $URLBASE ?>/public/js/usuario/filtro-livros.js"></script>
 </body>
-
 </html>
