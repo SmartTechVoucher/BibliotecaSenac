@@ -73,7 +73,7 @@ require "../../../config/constantes.php";
             </div>
             
             <div class="perfil-container">
-                <span>Bem-vindo, Gabriel!</span>
+                <span>Bem-vindo, Luciano!</span>
             </div>
 
             <div id="nav-menu-perfil">
