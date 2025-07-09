@@ -84,7 +84,7 @@ body{
     width: 100%;
     border-radius: 23px;
     height: 30px;
-    border: 1px solid #eee;
+    border: 1px solid #ababab;
     padding: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -113,13 +113,14 @@ body{
     background: #fbfaff;
     padding: 20px;
     width: 90%;
-    border-radius: 5px;
+    border-radius: 8px;
     margin: auto;
+    margin-bottom: 5%;
 }
 
 .livro-container{
     background-color: rgb(255, 255, 255);
-    width: 80%;
+    width: 90%;
     height: 200px;
     display: flex;
     padding: 20px;
@@ -128,6 +129,7 @@ body{
     border-radius: 5px;
     margin-bottom: 10px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    border: 1px solid #ababab;
 
 
 
@@ -201,10 +203,6 @@ body{
 
     #livro-img{
         height: 100px;
-    }
-
-    #livro-titulomaster{
-        margin-top: 5%;
     }
 
 }
