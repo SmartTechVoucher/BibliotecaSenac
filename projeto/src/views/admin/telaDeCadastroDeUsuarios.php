@@ -43,7 +43,6 @@
             <input type="text" class="nomeSocial" placeholder="Nome social">
         </div>
 
-        <div class="opcional"><p>Opcional</p></div>
 
         <div class="input" id="nascimento">
             <input type="text" class="nascimento" placeholder="Nascimento">
@@ -114,7 +113,7 @@
             
         </div>
         
-        <div class="contato"> 
+        <div class="contato-user"> 
             <h3>Contato:</h3>
 
             <label>Telefone Residencial:</label>
