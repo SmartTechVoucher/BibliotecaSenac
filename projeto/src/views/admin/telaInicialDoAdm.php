@@ -63,8 +63,8 @@
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
     
-   <?php   
-    include "../../../public/components/admin/footer/footer-admin.php";
+   <?php
+    include "../../../public/components/usuario/footer/footer.php";
     ?>
     <script src="../../../public/js/admin/telaInicialDoAdm.js"></script>
 

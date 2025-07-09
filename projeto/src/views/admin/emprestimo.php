@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Empréstimo</title>
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/admin/emprestimo.css">
 </head>
 
@@ -121,9 +123,8 @@
         </div>
     </main>
     <?php
-        include "../../../public/components/admin/footer/footer-admin.php"
+    include "../../../public/components/usuario/footer/footer.php";
     ?>
-
     
     
 </body>

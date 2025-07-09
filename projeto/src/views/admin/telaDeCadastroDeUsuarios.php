@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de cadastro de usuários</title>
+    <?php
+    require_once "../../../config/constantes.php";
+  ?>
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="../../../public/css/admin/telaDeCadastroDeUsuarios.css"> 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -179,9 +184,9 @@
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
     
-   <?php   
-    include "../../../public/components/admin/footer/footer-admin.php";
-  ?>
+   <?php
+    include "../../../public/components/usuario/footer/footer.php";
+    ?>
     <script src="../../../public/js/admin/telaDeCadastroDeUsuarios.js"></script>
 
 </body>

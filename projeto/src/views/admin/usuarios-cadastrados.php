@@ -1,9 +1,17 @@
+<?php
+require_once "../../../config/constantes.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <title>Usuários cadastrados</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <?php
+    require_once "../../../config/constantes.php";
+  ?>
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
   <link rel="stylesheet" href="/BibliotecaSenac/projeto/public/css/admin/usuarios-cadastrados.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,8 +236,8 @@
     <script src = "/BibliotecaSenac/projeto/public/js/admin/usuarios-cadastrados.js"></script>
   </main>
   <!-- footer  -->
-  <?php   
-    include "../../../public/components/admin/footer/footer-admin.php";
-  ?>
+  <?php
+    include "../../../public/components/usuario/footer/footer.php";
+    ?>
 </body>
 </html>
