@@ -449,6 +449,24 @@ a{
     color: rgb(14, 13, 13);
 }
 
+
+.icone-heart.oco {
+    color: #333;
+}
+
+.icone-heart.preenchido {
+    color: #e60023;
+    opacity: 0;
+}
+
+.btn-favorito.clicked .icone-heart.preenchido {
+    opacity: 1;
+}
+
+.btn-favorito.clicked .icone-heart.oco {
+    opacity: 0;
+}
+
 /* MEDIA QUERIES */
 @media (max-width: 935px){
     .containerExemplar img{

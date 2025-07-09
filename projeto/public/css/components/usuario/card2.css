@@ -175,28 +175,25 @@
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Coração oco padrão (visível) */
 .icone-heart.oco {
   color: white;
   opacity: 1;
 }
 
-/* Coração cheio inicialmente escondido */
 .icone-heart.cheio {
   color: #FF7F0E;
   opacity: 0;
 }
 
-/* Quando clicado, inverte visibilidade */
 .btn-favorito.clicked .icone-heart.oco {
   opacity: 0;
 }
+
 .btn-favorito.clicked .icone-heart.cheio {
   opacity: 1;
   transform: scale(1.15);
   text-shadow: 0 0 6px #FF7F0E;
 }
-
 
 @keyframes pop {
   0% { transform: scale(1); }

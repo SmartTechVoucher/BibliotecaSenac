@@ -32,6 +32,7 @@ function getLivroOuDefault($livros, $index) {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
     <link rel="stylesheet" href="../../../public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
@@ -95,7 +96,8 @@ function getLivroOuDefault($livros, $index) {
                             <div class="book-image-container">
                                 <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
                                 <button class="favorite-btn" onclick="toggleFavorite(this)">
-                                    <i class="far fa-star"></i>
+                                    <i class="fa-regular fa-heart icone-heart oco"></i>
+                                    <i class="fa-solid fa-heart icone-heart preenchido"></i>
                                 </button>
                             </div>
                             <div class="book-info">
@@ -121,7 +123,8 @@ function getLivroOuDefault($livros, $index) {
                             <div class="book-image-container">
                                 <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
                                 <button class="favorite-btn" onclick="toggleFavorite(this)">
-                                    <i class="far fa-star"></i>
+                                    <i class="fa-regular fa-heart icone-heart oco"></i>
+                                    <i class="fa-solid fa-heart icone-heart preenchido"></i>
                                 </button>
                             </div>
                             <div class="book-info">
@@ -147,7 +150,8 @@ function getLivroOuDefault($livros, $index) {
                             <div class="book-image-container">
                                 <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
                                 <button class="favorite-btn" onclick="toggleFavorite(this)">
-                                    <i class="far fa-star"></i>
+                                    <i class="fa-regular fa-heart icone-heart oco"></i>
+                                    <i class="fa-solid fa-heart icone-heart preenchido"></i>
                                 </button>
                             </div>
                             <div class="book-info">
