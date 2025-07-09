@@ -15,26 +15,28 @@
 
   <div class="capa-wrapper">
     <img src="<?= htmlspecialchars($livro['imagem']) ?>" class="capa-livro" alt="Capa do Livro">
-    <a href="<?php echo $URLBASE ?>/src/views/usuario/livro-info.php">
-      <div class="overlay">
-        <p class="descricao-livro"><?= htmlspecialchars($livro['descricao']) ?></p>
-      </div>
-    </a>
+    <div class="overlay">
+      <p class="descricao-livro"><?= htmlspecialchars($livro['descricao']) ?></p>
+    </div>
   </div>
 
   <div class="conteudo-card">
     <h2 class="titulo-livro"><?= htmlspecialchars($livro['titulo']) ?></h2>
     <p class="autor-livro">Autor: <?= htmlspecialchars($livro['autor']) ?></p>
 
-    <?php if (strtolower($livro['status']) === 'disponível'): ?>
+    <?php
+      $link = htmlspecialchars($URLBASE . "/src/views/usuario/livro-info.php?id=" . $livro['id']);
+      $disponivel = strtolower($livro['status']) === 'disponível';
+    ?>
+
+    <?php if ($disponivel): ?>
       <p class="status-livro disponivel">Disponível</p>
-      <button class="btn-reservar">Reservar</button>
+      <button class="btn-reservar" onclick="window.location.href='<?= $link ?>'">Reservar</button>
     <?php else: ?>
       <p class="status-livro indisponivel">Indisponível</p>
-      <button class="btn-reservar" disabled >Reservar</button>
+      <button class="btn-reservar" disabled onclick="window.location.href='<?= $link ?>'">Reservar</button>
     <?php endif; ?>
   </div>
-
 </div>
 
 

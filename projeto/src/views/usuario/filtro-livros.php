@@ -12,10 +12,11 @@ function getLivroOuDefault($livros, $index) {
     if (isset($livros[$index])) {
         return $livros[$index];
     }
-    // Retorna um livro padrão se não existir
+    // Retorna um livro padrão se não existir (com id padrão zerado)
     return [
+        'id'     => 0,
         'titulo' => 'O guia do mochileiro das galaxias',
-        'autor' => 'Douglas Adams',
+        'autor'  => 'Douglas Adams',
         'imagem' => 'https://i.pinimg.com/736x/a7/b2/0f/a7b20fc61df85a13f6ddcd365854966d.jpg'
     ];
 }
@@ -89,6 +90,7 @@ function getLivroOuDefault($livros, $index) {
                 <div class="books-grid" id="tecnologia-grid">
                     <?php for ($i = 0; $i < 4; $i++): ?>
                         <?php $livro = getLivroOuDefault($livros, $i); ?>
+                        <?php $link = htmlspecialchars($URLBASE . "/src/views/usuario/livro-info.php?id=" . $livro['id']); ?>
                         <div class="book-card">
                             <div class="book-image-container">
                                 <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
@@ -100,7 +102,7 @@ function getLivroOuDefault($livros, $index) {
                                 <h3><?php echo $livro['titulo']; ?></h3>
                                 <p class="author"><?php echo $livro['autor']; ?></p>
                                 <p class="status disponivel">Disponível</p>
-                                <button class="reserve-btn">Reservar</button>
+                                <button class="reserve-btn" onclick="window.location.href='<?php echo $link; ?>'">Reservar</button>
                             </div>
                         </div>
                     <?php endfor; ?>
@@ -114,6 +116,7 @@ function getLivroOuDefault($livros, $index) {
                 <div class="books-grid" id="saude-grid">
                     <?php for ($i = 4; $i < 8; $i++): ?>
                         <?php $livro = getLivroOuDefault($livros, $i); ?>
+                        <?php $link = htmlspecialchars($URLBASE . "/src/views/usuario/livro-info.php?id=" . $livro['id']); ?>
                         <div class="book-card">
                             <div class="book-image-container">
                                 <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
@@ -125,7 +128,7 @@ function getLivroOuDefault($livros, $index) {
                                 <h3><?php echo $livro['titulo']; ?></h3>
                                 <p class="author"><?php echo $livro['autor']; ?></p>
                                 <p class="status disponivel">Disponível</p>
-                                <button class="reserve-btn">Reservar</button>
+                                <button class="reserve-btn" onclick="window.location.href='<?php echo $link; ?>'">Reservar</button>
                             </div>
                         </div>
                     <?php endfor; ?>
@@ -139,6 +142,7 @@ function getLivroOuDefault($livros, $index) {
                 <div class="books-grid books-grid-4" id="gestao-grid">
                     <?php for ($i = 8; $i < 12; $i++): ?>
                         <?php $livro = getLivroOuDefault($livros, $i); ?>
+                        <?php $link = htmlspecialchars($URLBASE . "/src/views/usuario/livro-info.php?id=" . $livro['id']); ?>
                         <div class="book-card">
                             <div class="book-image-container">
                                 <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
@@ -150,7 +154,7 @@ function getLivroOuDefault($livros, $index) {
                                 <h3><?php echo $livro['titulo']; ?></h3>
                                 <p class="author"><?php echo $livro['autor']; ?></p>
                                 <p class="status disponivel">Disponível</p>
-                                <button class="reserve-btn">Reservar</button>
+                                <button class="reserve-btn" onclick="window.location.href='<?php echo $link; ?>'">Reservar</button>
                             </div>
                         </div>
                     <?php endfor; ?>
@@ -166,35 +170,37 @@ function getLivroOuDefault($livros, $index) {
         </div>
     </div>
 
-    <div class="highlights-section">
+     <div class="highlights-section">
         <div class="section-header">
             <h2>Destaques</h2>
         </div>
-        
+
         <div class="carousel-container">
             <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">
                 <i class="fas fa-chevron-left"></i>
             </button>
-            
+
             <div class="carousel-wrapper">
                 <div class="carousel-track">
                     <?php for ($i = 0; $i < 9; $i++): ?>
+                        <?php $livro = getLivroOuDefault($livros, $i); ?>
+                        <?php $link = htmlspecialchars($URLBASE . "/src/views/usuario/livro-info.php?id=" . $livro['id']); ?>
                         <div class="carousel-item <?php echo $i === 3 ? 'active' : ''; ?>">
                             <div class="carousel-book">
-                                <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg" alt="Livro em destaque">
+                                <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
                                 <div class="carousel-info">
-                                    <h4>Guia do Mestre - D&D</h4>
-                                    <p>Autor - João Silva</p>
+                                    <h4><?php echo $livro['titulo']; ?></h4>
+                                    <p>Autor - <?php echo $livro['autor']; ?></p>
                                     <p class="disponivel">(Jogue na mesa)</p>
                                     <p>Disponível</p>
-                                    <button class="carousel-reserve-btn">Reservar</button>
+                                    <button class="carousel-reserve-btn" onclick="window.location.href='<?php echo $link; ?>'">Reservar</button>
                                 </div>
                             </div>
                         </div>
                     <?php endfor; ?>
                 </div>
             </div>
-            
+
             <button class="carousel-btn next-btn" onclick="moveCarousel(1)">
                 <i class="fas fa-chevron-right"></i>
             </button>
