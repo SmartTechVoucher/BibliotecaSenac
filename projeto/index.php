@@ -1,19 +1,7 @@
 <?php
 
-
 require __DIR__ . '/config/constantes.php';
 
-
-
-session_start();
-
-
-
-
-if (isset($_SESSION['toast'])) {
-    showToast($_SESSION['toast']['mensagem'], $_SESSION['toast']['tipo']);
-    unset($_SESSION['toast']);
-}
 
 include_once __DIR__ . '/src/model/usuario/livro-model.php';
 
@@ -42,7 +30,7 @@ $livros = $model->getLivrosMock();
     <link rel="stylesheet" href="./public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
 
 <body>
 
@@ -69,7 +57,7 @@ $livros = $model->getLivrosMock();
                         <?php if (isset($_SESSION['usuario'])): ?>
                             <div class="perfil-logado" onclick="redirectToPerfil()">
                                 <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-                                <a href="./logout.php">sair</a>
+                                <a href="./logout.php">/a>
                             </div>
                         <?php else: ?>
                             <button onclick="redirectToPage()" class="button-entrar">
