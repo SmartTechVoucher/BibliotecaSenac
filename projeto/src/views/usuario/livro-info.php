@@ -50,6 +50,8 @@ $senacTLG = [
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/livro-info.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/modal.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
 
 <body>
     <!-- header  -->
