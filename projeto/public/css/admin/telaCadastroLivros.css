@@ -15,44 +15,17 @@
 }
 
 /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
-
-.conteiner{
-    background-color: var(--azulCabecalho);
-    width: 100%;
-    height: 140px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 5px;
-    font-family: var(--fontes);
-    border-bottom: 5px solid var(--bordaBaixaCabeçalho);
+*{
+    box-sizing: border-box;
 }
+
 
 body{
     margin: 0;
     background-color: var(--fundoPadrao);
 }
 
-.conteiner .menuAdm{
-    display: flex;
-    align-items: center;
-}
 
-.menuAdm .hamburguer{
-    width: 100px;
-    height: 50px;
-    cursor: var(--apontador);
-}
-
-.titulo{
-  color: var(--branco);
-  font-size: 10px;  
-}
-
-.titulo .senac{
-    position: var(--posicao);
-    right: 20%;
-}
 
 .conteiner #iconeComandante{
     cursor: var(--apontador);
@@ -213,39 +186,13 @@ input:focus {
 
 /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
 
-.rodape{
-    background-color: var(--azulCabecalho);
-    height: 240px;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: 10px;
-    text-align: center;
-   
-}
+
 
 /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ 
 
 /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
 
-.menu{
-    width: 366px;
-    height: 440px;
-    background-color: var(--azulCabecalho);
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: 36px;
-    display: none;
-    cursor: pointer;    
-}
 
-.menu a {
-    text-decoration: none;
-    color: var(--branco);
-}
 
 /*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/
 

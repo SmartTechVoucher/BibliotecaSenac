@@ -9,42 +9,42 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Histórico de empréstimos</title>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+        <?php
+    require_once "../../../config/constantes.php";
+  ?>
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
         <link rel="stylesheet" href="/BibliotecaSenac/projeto/public/css/admin/historico-emprestimo.css">
     </head>
 
  <body>
     <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
-    <div class="conteiner">      
-            
-        <div class="menuAdm">
-            <img src="<?php echo $URLBASE?>/public/assets/icons/Menu adm.png" alt="" class="hamburguer">
-            <img src="<?php echo $URLBASE?>/public/assets/img/LogoHub_academy.png" alt="Imagem do logo" class="logoSenacHub">
-        </div>
-
-        <div class="titulo"> 
-            <h2>Biblioteca Senac</h2> 
-            <h2 class="senac">Senac Mato Grosso do Sul</h2> 
-        </div>
-
-        <div class="icone"><img src="<?php echo $URLBASE?>/public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
-
-        <div class="minhaConta">
-            <p><a href="./minha-conta.php">Minha conta</a></p>
-            <a href="../usuario/login.php">Sair</a>
-        </div>
-
-    </div>
-
- <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
-
-    <div class="conteiner3">      
-        <img src="<?php echo $URLBASE?>/public/assets/icons/Superior esquerdo.png" alt="" class="esquerdo">
-        <img src="<?php echo $URLBASE?>/public/assets/icons/Superior direito.png" alt="" class="direito">
-    </div>
+    <?php   
+    include "../../../public/components/admin/header/header-admin.php";
+  ?>
 
     <div class="main-container">
         <h2>Histórico de Empréstimos</h2>   
-                
+        <div class="filter-options">
+            <span>Filtrar por Status:</span>
+            <label>
+                <input type="radio" name="statusFilter" value="Todos" checked onchange="applyFilterAndPaginate()"> Todos
+            </label>
+            <label>
+                <input type="radio" name="statusFilter" value="Finalizado" onchange="applyFilterAndPaginate()"> Finalizado
+            </label>
+            <label>
+                <input type="radio" name="statusFilter" value="Atrasado" onchange="applyFilterAndPaginate()"> Atrasado
+            </label>
+            <label>
+                <input type="radio" name="statusFilter" value="Em andamento" onchange="applyFilterAndPaginate()"> Em andamento
+            </label>
+        </div>
             <table>
                 <thead>
                     <tr>
@@ -55,27 +55,23 @@
                         <th>Prazo</th>
                         <th>Devolução</th>
                     </tr>
-                <tbody id="userTable"></tbody>
                 </thead>
+                <tbody id="userTable"></tbody>
+                
             </table>
+
+    <div class="pagination-controls">
+        <button id="prevBtn" onclick="prevPage()">Anterior</button>
+        <span id="pageInfo" class="pagination-info"></span>
+        <button id="nextBtn" onclick="nextPage()">Próximo</button>
+    </div>
+
     </div>     
      
-    <div id="menu" class="menu">
-
-        <div><a href="./telaDeCadastroDeUsuarios.php">Cadastrar usuários</a></div>
-        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
-        <div><a href="./usuarios-cadastrados.php">Usuários cadastrados</a></div>
-        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
-        <div><a href="./telaInicialDoAdm.php">Tela inicial</a></div>
-        <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
-        <hr>
-        <div><a href="../usuario/login.php">Logout</a></div>
-
-    </div>
-    <?php   
-    include "../../../public/components/footer/footer.php";
+   
+    <?php
+    include "../../../public/components/usuario/footer/footer.php";
     ?>
-
     <script src="../../../public/js/admin/historico-emprestimo.js"></script>
 
  </body>

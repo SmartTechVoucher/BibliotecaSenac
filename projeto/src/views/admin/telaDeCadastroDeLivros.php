@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de cadastro de livros</title>
+    <?php
+    require_once "../../../config/constantes.php";
+  ?>
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="../../../public/css/admin/telaCadastroLivros.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,34 +28,9 @@
 <body>
     
  <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
-    <div class="conteiner">      
-            
-        <div class="menuAdm">
-            <img src="../../../public/assets/icons/Menu adm.png" alt="" class="hamburguer">
-            <img src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo" class="logoSenacHub">
-        </div>
-
-        <div class="titulo"> 
-            <h2>Biblioteca Senac</h2> 
-            <h2 class="senac">Senac Mato Grosso do Sul</h2> 
-        </div>
-
-        <div class="icone"><img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
-
-        <div class="minhaConta">
-            <p><a href="./minha-conta.php">Minha conta</a></p>
-            <a href="../usuario/login.php">Sair</a>
-        </div>
-
-    </div>
-
- <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
-
-    <div class="conteiner3">      
-        <img src="../../../public/assets/icons/Superior esquerdo.png" alt="" class="esquerdo">
-        <img src="../../../public/assets/icons/Superior direito.png" alt="" class="direito">
-    </div>
-
+ <?php   
+    include "../../../public/components/admin/header/header-admin.php";
+  ?>
     <form class="formulario">
 
         <div class="tituloObrigatorio"> 
@@ -268,38 +248,9 @@
 
  </div>  
     
-    <div class="inferiorDireito">
-
-        <img src="../../../public/assets/icons/Inferior direito.png" alt="" class="inferior">
-
-    </div>
-              
-   <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
-
-    <div class="rodape">
-
-        <div class="logoFecomercio"><img src="../../../public/assets/icons/Fecomercio.png" alt="" class="Logo" ></div>
-        
-        <div><img src="../../../public/assets/icons/Livro.png" alt="" class="Libro">
-            <div class="copyright">Senac MS Copyright © <br></div>
-            <div class="todos"> 2024. Todos os Direitos Reservados</div>   
-        </div>
-        
-    </div> 
-
-    <div id="menu" class="menu">
-
-        <div><a href="./telaDeCadastroDeUsuarios.php">Cadastrar usuários</a></div>
-        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
-        <div><a href="./historico-emprestimo.php">Empréstimos</a></div>
-        <div><a href="./usuarios-cadastrados.php">Usuários cadastrados</a></div>
-        <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
-        <div><a href="./telaInicialDoAdm.php">Tela inicial</a></div>
-        <hr>
-        <div><a href="../usuario/login.php">Logout</a></div>
-
-    </div>
-
+ <?php
+    include "../../../public/components/usuario/footer/footer.php";
+    ?>
     <script src="../../../public/js/admin/telaDeCadastroDeLivros.js"></script>
 
 </body>

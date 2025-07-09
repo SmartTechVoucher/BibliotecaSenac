@@ -33,9 +33,6 @@ main{
     box-shadow: 0px 7px 8px rgba(0,0,0,0.1);
 }
 
-h1{
-    margin-top: 2.5%;
-}
 
 table {
     width: 100%;
@@ -54,7 +51,9 @@ th {
 tr:hover {
     background-color: #f1f1f1;
 }
-
+*{
+    box-sizing: border-box;
+}
 .modal {
     display: none;
     position: fixed;
@@ -95,42 +94,6 @@ tr:hover {
     width: 52.1%;
 }
 
-#regularesBotao {
-    border-radius: 8px;
-    background: #e6e6fa;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px 4px 0px 0px;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 220px;
-    height: 45px;
-    font-size: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-#bloqueadosBotao {
-    border-radius: 8px;
-    background: #d8d8f5;
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 0px 4px 0px 0px;
-    cursor: pointer;
-    margin-top: 10px;
-    width: 220px;
-    height: 45px;
-    font-size: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-#bloqueadosBotao:hover, #regularesBotao:hover{
-    background-color: #cfcfe1;
-}
-
-.clicado{
-    background-color: #d8d8f5;;
-}
-
 button {
     background-color: #b4b8bd;
     color: white;
@@ -144,10 +107,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-input{
-    width: 50%;
-    border-radius: 23px;
-}
+
 table {
     width: 90%;
     border-collapse: collapse;
@@ -156,6 +116,38 @@ table {
     font-size: 18px;
     border: 2px solid #d3cdcd;
      overflow: hidden;
+}
+.filter-options{
+    display:flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+.pagination-controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+.pagination-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+.pagination-controls button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+.pagination-info {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #555;
 }
 
 .main-container{
@@ -166,7 +158,6 @@ table {
     border-radius: 5px;
     margin: auto;
     margin-bottom: 20px;
-    margin-top: 5%;
 }
 .main-container h2{
     text-align: center;
@@ -212,69 +203,7 @@ body {
 }
 
 /*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*/
-.conteiner {
-    background-color: var(--azulCabecalho);
-    height: 140px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: #769FCD 5px solid;
-}
 
-.conteiner .menuAdm{
-    display: flex;
-    align-items: center;
-}
-
-.menuAdm .hamburguer{
-    width: 90px;
-    height: 40px;
-    cursor: var(--apontador)
-}
-
-.logoSenacHub{
-    width: 140px;
-    height: 100px;
-}   
-
-.tabela, h1{
-    margin-left: 1%;
-}
-
-/* Título centralizado */
-.titulo {
-    color: var(--branco);
-    font-size: 18px;
-    font-weight: 600px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0 auto;
-    max-width: calc(100% - 100px);
-}
-
-.conteiner #iconeComandante{
-    cursor: var(--apontador);
-}
-
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-.minhaConta{
-    display: none;
-    position: var(--posicaoAbsoluta);
-    top: 15%; left: 94%;
-    color: var(--branco);
-    background-color: var(--azulCabecalho);
-    width: 114px;
-    cursor: var(--apontador);
-}
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-.minhaConta a{
-    text-decoration: none;
-    color: var(--branco);
-}
 
 /*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*/
 

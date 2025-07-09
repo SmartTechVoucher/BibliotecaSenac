@@ -21,6 +21,11 @@ if (!isset($_SESSION['toast'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela inicial do adm</title>
+    <?php
+    require_once "../../../config/constantes.php";
+  ?>
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="../../../public/css/admin/telaInicialAdm.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,98 +55,48 @@ if (!isset($_SESSION['toast'])) {
     
  <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
     
- <div class="conteiner">     
-        
-    <div class="menuAdm">
-        <img src="../../../public/assets/icons/Menu adm.png" alt="" class="hamburguer">
-        <img src="../../../public/assets/img/LogoHub_academy.png" alt="Imagem do logo" class="logoSenacHub">
-    </div>
-        
-    <div class="titulo"> 
-        <h2>Biblioteca Senac</h2> 
-        <h2 class="senac">Senac Mato Grosso do Sul</h2> 
-    </div>
-
-    <div class="icone"><img src="../../../public/assets/icons/Icon perfil.png" alt="Ícone de pessoa" id="iconeComandante"> </div>    
-
-    <div class="minhaConta">
-        <p><a href="./minha-conta.php">Minha conta</p></a>
-        <p><a href="../usuario/login.php">Sair</a></p>
-    </div>   
-
-</div>
-
- <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo--> <!--Corpo-->   
-
-    <div class="conteiner3">
-
-        <img src="../../../public/assets/icons/Superior esquerdo.png" alt="" class="esquerdo">
-        <img src="../../../public/assets/icons/Superior direito.png" alt="" class="direito">
-
-    </div>
+ <?php   
+    include "../../../public/components/admin/header/header-admin.php";
+  ?>
 
     <p class="adm">Administrativo</p>
 
     <div class="conteiner2">
 
         <div class="caixa">    
-            <a href="./telaDeCadastroDeLivros"><img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeLivros.php"><img src="../../../public/assets/icons/Cadastrar livros.png" alt="" class="cadastrarLivro"></a>
         </div>
 
         <div class="caixa">
-            <a href="./telaDeCadastroDeUsuarios.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeUsuarios.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
         </div>
         
         <div class="caixa">
-            <a href="./telaDeRelatorios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeRelatorios.php"><img src="../../../public/assets/icons/Relatorio.png" alt="" class="relatorios"></a>
         </div>
         
         <div class="caixa">
-            <a href="./historico-emprestimo.php"><img src="../../../public/assets/icons/Empréstimo (1).png" alt="Livro" class="emprestimo"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/emprestimo.php"><img src="../../../public/assets/icons/Empréstimo (1).png" alt="Livro" class="emprestimo"></a>
         </div>
         
         <div class="caixa">
-            <a href="./usuarios-cadastrados.php"><img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php"><img src="../../../public/assets/icons/Usuários.png" alt="Livro" class="usuario"></a>
         </div>
         
         <div class="caixa">
-            <a href="./telaDosLivrosCadastrados.php"><img src="../../../public/assets/icons/List Books.png" alt="Livro" class="estoque"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php"><img src="../../../public/assets/icons/List Books.png" alt="Livro" class="estoque"></a>
         </div>
         
     </div>
 
-    <div class="inferiorDireito">
-
-        <img src="../../../public/assets/icons/Inferior direito.png" alt="" class="inferior">
-
-    </div>
- 
+   
             
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
-    <div class="rodape">
-
-        <div class="logoFecomercio"><img src="../../../public/assets/icons/Fecomercio.png" alt="" class="Logo" ></div>
-        
-        <div><img src="../../../public/assets/icons/Livro.png" alt="" class="Libro">
-            <div class="copyright">Senac MS Copyright © <br></div>
-            <div class="todos"> 2024. Todos os Direitos Reservados</div>   
-        </div>
-        
-    </div>
-
-    <div id="menu" class="menu">
-
-        <div><a href="./telaDeCadastroDeLivros.php">Cadastrar livros</a></div>
-        <div><a href="./telaDeCadastroDeUsuarios.php">Cadastrar usuários</a></div>
-        <div><a href="./telaDeRelatorios.php">Relatórios</a></div>
-        <div><a href="./historico-emprestimo.php">Empréstimos</a></div>
-        <div><a href="./usuarios-cadastrados.php">Usuários cadastrados</a></div>
-        <div><a href="./telaDosLivrosCadastrados.php">Estoque de livros</a></div>
-        <hr>
-        <div><a href="../usuario/login.php">Logout</a></div>
-    </div>
-
+    
+   <?php
+    include "../../../public/components/usuario/footer/footer.php";
+    ?>
     <script src="../../../public/js/admin/telaInicialDoAdm.js"></script>
 
 </body>
