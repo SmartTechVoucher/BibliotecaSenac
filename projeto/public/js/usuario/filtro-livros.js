@@ -1,4 +1,4 @@
-function toggleFavorite(btn) {
+function alternarFavorito(btn) {
     const icon = btn.querySelector('i');
     icon.classList.toggle('far');
     icon.classList.toggle('fas');
@@ -8,27 +8,27 @@ function toggleFavorite(btn) {
 let currentSlide = 3;
 const totalSlides = 7;
 
-function moveCarousel(direction) {
+function moverCarrossel(direction) {
     const track = document.querySelector('.carousel-track');
     const items = document.querySelectorAll('.carousel-item');
     
-    // Remove active class from current item
+    // Remove a classe ativa do item atual
     items[currentSlide].classList.remove('active');
     
-    // Calculate new slide position
+    // Calcula a nova posição do slide
     currentSlide += direction;
     
-    // Loop around if necessary
+    // Loop ao redor se necessário
     if (currentSlide >= totalSlides) {
         currentSlide = 0;
     } else if (currentSlide < 0) {
         currentSlide = totalSlides - 1;
     }
     
-    // Add active class to new item
+    // Adicionar classe ativa ao novo item
     items[currentSlide].classList.add('active');
     
-    // Calculate translation
+    // Calcular translação
     const itemWidth = items[0].offsetWidth + 20; // item width + gap
     const translateX = -currentSlide * itemWidth + (track.offsetWidth / 2) - (itemWidth / 2);
     
@@ -36,7 +36,7 @@ function moveCarousel(direction) {
 }
 
 // Função para controlar a paginação
-function changePage(category, page) {
+function mudarPagina(category, page) {
     // Encontra todos os botões de paginação da categoria específica
     const categorySection = document.querySelector(`#${category}-grid`).closest('.category-section');
     const paginationButtons = categorySection.querySelectorAll('.pagination-btn');
@@ -64,7 +64,7 @@ function changePage(category, page) {
 }
 
 // Função opcional para carregar livros de uma página específica
-function loadBooksForPage(category, page) {
+// function carregarLivrosParaPagina(category, page) {
     // Aqui você faria uma requisição AJAX para o servidor
     // Por exemplo:
     /*
@@ -77,10 +77,10 @@ function loadBooksForPage(category, page) {
             console.error('Erro ao carregar livros:', error);
         });
     */
-}
+//}
 
 // Função para atualizar o grid de livros
-function updateBooksGrid(category, books) {
+function atualizarGridLivros(category, books) {
     const grid = document.querySelector(`#${category}-grid`);
     // Limpa o grid atual
     grid.innerHTML = '';
@@ -93,7 +93,7 @@ function updateBooksGrid(category, books) {
 }
 
 // Função para criar um card de livro
-function createBookCard(book) {
+function criarCartaoLivro(book) {
     const bookCard = document.createElement('div');
     bookCard.className = 'book-card';
     
@@ -115,9 +115,9 @@ function createBookCard(book) {
     return bookCard;
 }
 
-// Initialize carousel position
+// Inicializar a posição do carrossel
 document.addEventListener('DOMContentLoaded', function() {
-    moveCarousel(0);
+    moverCarrossel(0);
     
     // Inicializa o estado da paginação
     // Certifica-se de que o primeiro botão de cada categoria está ativo
