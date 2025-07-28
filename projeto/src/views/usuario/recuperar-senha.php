@@ -5,20 +5,18 @@ require(__DIR__ . '/../../../config/constantes.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Recuperar senha</title>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/recuperar-senha.css">
 </head>
 
 <body>
     <div class="container">
-        <!-- <section class="tela_animacao">
-            <img src="../../../public/assets/img/gif_login.gif" alt="">
-        </section> -->
+        
         <section class="login">
             <div class="gradiente"></div>
 
@@ -37,8 +35,6 @@ require(__DIR__ . '/../../../config/constantes.php');
                 <a href="../usuario/teste-login.php">Voltar</a>
             </form>
 
-            <!-- <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2">
-            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo"> -->
         </section>
 
     </div>
