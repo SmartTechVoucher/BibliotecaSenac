@@ -41,7 +41,7 @@ $senacTLG = [
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -54,6 +54,7 @@ $senacTLG = [
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+</head>
 
 <body>
     <!-- header  -->
@@ -102,9 +103,6 @@ $senacTLG = [
                     </div>
 
 
-
-
-
                     <!-- botao de reservar -->
                     <div class="info_2">
 
@@ -127,11 +125,7 @@ $senacTLG = [
                         </div>
                     </div>
                 </div>
-                <!-- botao de reservar -->
-                <!-- <div class="livroReservar">
-                        <p>Disponível</p>
-                        <button class="botaoReserva">Reservar</button>
-                    </div> -->
+               
             </div>
 
             <!-- info_2 -->
@@ -141,7 +135,7 @@ $senacTLG = [
         <!-- exemplares -->
         <div class="containerExemplar">
             <p>Exemplares</p>
-            <img src="<?php echo $URLBASE ?>/public/assets/icons/Plus Math.png" alt="" id="abrirExemplares" onclick="exemplarToggle()">
+            <img src="<?php echo $URLBASE ?>/public/assets/icons/Plus Math.png" alt="" id="abrirExemplares" onclick="alternarExemplar()">
         </div>
 
         <div id="containerExemplarOpen">
@@ -292,7 +286,7 @@ $senacTLG = [
 
 
     <script src="<?php echo $URLBASE ?>/public/js/usuario/livro-info.js">
-        exemplarToggle()
+        alternarExemplar()
     </script>
 </body>
 

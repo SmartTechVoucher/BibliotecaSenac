@@ -56,7 +56,7 @@ $alunos = [
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
-    // Adicione mais alunos aqui
+    
 ];
 ?>
 
