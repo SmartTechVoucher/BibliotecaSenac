@@ -212,6 +212,7 @@ label {
 .campo-senha img{
   display: flex;
   width: 16px;
+  margin-bottom: 2px;
 }
 
 .checkbox-container {
