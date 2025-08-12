@@ -249,9 +249,7 @@
 
  </div>  
     
- <?php
-    include "../../../public/components/usuario/footer/footer.php";
-    ?>
+ 
     <script src="../../../public/js/admin/telaDeCadastroDeLivros.js"></script>
 
 </body>

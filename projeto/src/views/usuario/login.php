@@ -10,6 +10,7 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -36,9 +37,9 @@ session_start();
             <input type="text" name="nome" id="campo_login" placeholder="Usuário" required />
           </div>
           <div class="campo-senha">
-            <label for="campo_senha"><img src="../../../public/assets/icons/cadeado-senha.png" alt="" class="cadeado-senha"> Senha</label>
+            <label for="campo_senha"><img src="../../../public/assets/icons/cadeado-senha.png" alt="" class="cadeado-senha">Senha</label>
             <input type="password" name="senha" id="campo_senha" placeholder="Senha" required />
-            <span class="toggle-senha" onclick="mostrarSenha()"><img src="../../../public/assets/icons/ocultar-2.png" alt="" class="ocultar-senha"></span>
+            <span class="toggle-senha" onclick="mostrarSenha()"><img src="../../../public/assets/icons/ocultar.png" alt="" class="ocultar-senha"></span>
           </div>
         </div>
 
@@ -53,10 +54,6 @@ session_start();
         <button type="submit">ENTRAR</button>
       </form>
     </section>
-
-    <!-- <section class="tela_animacao">
-      <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="animação login" />
-    </section> -->
   </div>
 
   <?php
@@ -69,7 +66,13 @@ session_start();
   <script>
     function mostrarSenha() {
       const campo = document.getElementById("campo_senha");
+      const ocultar = document.getElementsByClassName("ocultar-senha")[0];
       campo.type = campo.type === "password" ? "text" : "password";
+      if (campo.type === "password") {
+        ocultar.src = "../../../public/assets/icons/ocultar-fechado.png"
+      } else {
+        ocultar.src = "../../../public/assets/icons/ocultar.png"
+      }
     }
 
     // texto digitando

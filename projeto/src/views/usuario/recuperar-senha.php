@@ -16,7 +16,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
 <body>
     <div class="container">
-        
+
         <section class="login">
             <div class="gradiente"></div>
 
@@ -32,7 +32,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
                 <button type="submit">Enviar</button>
 
-                <a href="../usuario/teste-login.php">Voltar</a>
+                <a href="../usuario/login.php">Voltar</a>
             </form>
 
         </section>

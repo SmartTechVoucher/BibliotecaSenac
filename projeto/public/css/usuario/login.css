@@ -210,7 +210,8 @@ label {
   margin-bottom: 2px;
 }
 .campo-senha img{
-  margin-bottom: 2px;
+  display: flex;
+  width: 16px;
 }
 
 .checkbox-container {
@@ -232,10 +233,11 @@ label {
 
 }
 
-button {
+.login button {
   background-color: #F68B1F;
   color: var(--cor-texto);
-  font-weight: bold;
+  font-family: "Poppins",sans-serif;
+  font-weight: 700;
   border: none;
   border-radius: 5px;
   padding: 10px;
