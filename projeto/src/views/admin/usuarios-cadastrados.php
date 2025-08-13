@@ -48,7 +48,7 @@ require_once "../../../config/constantes.php";
       <h2>Usuários Cadastrados</h2>
       <label for="search"><label for="">Pesquisar:</label for=""></label>
       <?php   
-        InputAdmin("Escreva senha", 70, null,"breguenaite")
+        InputAdmin("text", "Escreva senha", 70, null,"breguenaite")
       ?>
     
       <div id="regulares" class="tab-content" style="display: block;"> <!-- tabela que lista usuarios regulares -->
