@@ -1,17 +1,17 @@
-let exemplarClosed = true
-function exemplarToggle(){
+let exemplarFechado = true
+function alternarExemplar(){
     const containerExemplarAberto = document.getElementById('containerExemplarOpen');
     const botaoExemplar = document.getElementById('abrirExemplares');
-    if (exemplarClosed){
+    if (exemplarFechado){
         botaoExemplar.src = "/BibliotecaSenac/projeto/public/assets/icons/Minus Math.png"
         containerExemplarAberto.style.display ="block";
-        exemplarClosed = false;
+        exemplarFechado = false;
     }
         
     else{
         botaoExemplar.src = "/BibliotecaSenac/projeto/public/assets/icons/Plus Math.png"
         containerExemplarAberto.style.display = "none";
-        exemplarClosed = true;
+        exemplarFechado = true;
     }
 }
 
@@ -36,86 +36,83 @@ function reservaConcluida(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    const stars = document.querySelectorAll('.estrela-input');
-    const ratingValue = document.getElementById('rating-value');
-    let currentRating = 0;
+    const estrelas = document.querySelectorAll('.estrela-input');
+    const valorDeRanqueamento = document.getElementById('rating-value');
+    let rankAtual = 0;
 
     
-    function updateStars(rating) {
-        stars.forEach(star => {
-            if (star.dataset.value <= rating) {
-                star.classList.add('active');
+    function atualizarEstrelas(avaliacao) {
+        estrelas.forEach(estrela => {
+            if (estrela.dataset.value <= avaliacao) {
+                estrela.classList.add('active');
             } else {
-                star.classList.remove('active');
+                estrela.classList.remove('active');
             }
         });
     }
 
-    stars.forEach(star => {
+    estrelas.forEach(estrela => {
         
-        star.addEventListener('mouseover', () => {
+        estrela.addEventListener('mouseover', () => {
             
-            updateStars(star.dataset.value);
+            atualizarEstrelas(estrela.dataset.value);
         });
 
-        star.addEventListener('mouseout', () => {
+        estrela.addEventListener('mouseout', () => {
             
-            updateStars(currentRating);
+            atualizarEstrelas(rankAtual);
         });
 
         
-        star.addEventListener('click', () => {
-            // Set the permanent rating on click
-            currentRating = star.dataset.value;
-            ratingValue.value = currentRating; 
-            updateStars(currentRating); 
+        estrela.addEventListener('click', () => {
+            // Define a classificação ao clicar
+            rankAtual = estrela.dataset.value;
+            valorDeRanqueamento.value = rankAtual; 
+            atualizarEstrelas(rankAtual); 
 
-            console.log(`Rating set to: ${currentRating}`); 
+            console.log(`Avaliação modificada para: ${rankAtual}`); 
         });
     });
 
     
     const form = document.getElementById('commentForm');
     form.addEventListener('reset', () => {
-        currentRating = 0;
-        ratingValue.value = 0;
-        updateStars(currentRating);
+        rankAtual = 0;
+        valorDeRanqueamento.value = 0;
+        atualizarEstrelas(rankAtual);
     });
 });
- 
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
     const cloneBtn = document.getElementById('comentario-botao'); 
-    const reviewsContainer = document.getElementById('reviewsContainer');
+    const conteinerDeRevisoes = document.getElementById('reviewsContainer');
 
     cloneBtn.addEventListener('click', function () {
-        const username = "Cristiano Ronaldo";
-        const comment = document.getElementById('comentario-input').value;
-        const rating = document.getElementById('rating-value').value;
-        console.log(rating)
+        const nomeDeUsuario = "Cristiano Ronaldo";
+        const comentario = document.getElementById('comentario-input').value;
+        const avaliacao = document.getElementById('rating-value').value;
+        console.log(avaliacao)
         // clonar o template
         const template = document.getElementById('commentTemplate');
-        const newComment = template.cloneNode(true);
-        newComment.style.display = 'block'; 
-        newComment.id = ''; 
+        const novoComentario = template.cloneNode(true);
+        novoComentario.style.display = 'block'; 
+        novoComentario.id = ''; 
 
     
-        newComment.querySelector('.commentTitulo').textContent = username;
-        newComment.querySelector('.commentConteudo').textContent = comment;
+        novoComentario.querySelector('.commentTitulo').textContent = nomeDeUsuario;
+        novoComentario.querySelector('.commentConteudo').textContent = comentario;
 
-        // pegaa a data atual
-        const today = new Date();
-        const dataFormatada = today.toLocaleDateString('pt-BR');
-        newComment.querySelector('.commentUserinfo').textContent = `Feito em: ${dataFormatada}`;
+        // pega a data atual
+        const hoje = new Date();
+        const dataFormatada = hoje.toLocaleDateString('pt-BR');
+        novoComentario.querySelector('.commentUserinfo').textContent = `Feito em: ${dataFormatada}`;
 
-        // escolhe uma das 4 variacao de img de acordo com a nota do usueridofosdfsofd
-        const estrelas =  newComment.querySelector('.estrela-placeholder');
-        estrelas.src = `../../../../projeto/public/assets/icons/estrelas${rating}.png`; 
+        // escolhe uma das 4 variacao de img de acordo com a nota do usuário
+        const estrelas =  novoComentario.querySelector('.estrela-placeholder');
+        estrelas.src = `../../../../projeto/public/assets/icons/estrelas${avaliacao}.png`; 
         console.log(estrelas.src)
 
         // Adicionar no container
-        reviewsContainer.insertBefore(newComment, reviewsContainer.firstChild);
+        conteinerDeRevisoes.insertBefore(novoComentario, conteinerDeRevisoes.firstChild);
     });
 });

@@ -7,7 +7,7 @@ $model = new LivroModel();
 $livros = $model->getLivrosMock();
 
 // Garante que todos os campos esperados existem
-function getLivroOuDefault($livros, $index) {
+function obterLivroOuPadrao($livros, $index) {
     return $livros[$index] ?? [
         'id' => 0,
         'titulo' => 'O guia do mochileiro das galáxias',
@@ -90,7 +90,7 @@ function getLivroOuDefault($livros, $index) {
                     <div class="category-header"><h2><?php echo $titulo; ?></h2></div>
                     <div class="books-grid">
                         <?php for ($i = $inicio; $i < $fim; $i++): ?>
-                            <?php $livro = getLivroOuDefault($livros, $i); ?>
+                            <?php $livro = obterLivroOuPadrao($livros, $i); ?>
                             <div class="livroEstante1">
                                 <?php include "../../../public/components/usuario/card/card2.php"; ?>
                             </div>
@@ -98,11 +98,11 @@ function getLivroOuDefault($livros, $index) {
                     </div>
                     <?php if ($titulo === 'Gestão'): ?>
                         <div class="pagination">
-                            <button class="pagination-btn" onclick="changePage('gestao', 1)">1</button>
-                            <button class="pagination-btn" onclick="changePage('gestao', 2)">2</button>
-                            <button class="pagination-btn active" onclick="changePage('gestao', 3)">3</button>
-                            <button class="pagination-btn" onclick="changePage('gestao', 4)">4</button>
-                            <button class="pagination-btn" onclick="changePage('gestao', 5)">5</button>
+                            <button class="pagination-btn" onclick="mudarPagina('gestao', 1)">1</button>
+                            <button class="pagination-btn" onclick="mudarPagina('gestao', 2)">2</button>
+                            <button class="pagination-btn active" onclick="mudarPagina('gestao', 3)">3</button>
+                            <button class="pagination-btn" onclick="mudarPagina('gestao', 4)">4</button>
+                            <button class="pagination-btn" onclick="mudarPagina('gestao', 5)">5</button>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -114,11 +114,11 @@ function getLivroOuDefault($livros, $index) {
     <div class="highlights-section">
         <div class="section-header"><h2>Destaques</h2></div>
         <div class="carousel-container">
-            <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn prev-btn" onclick="moverCarrossel(-1)"><i class="fas fa-chevron-left"></i></button>
             <div class="carousel-wrapper">
                 <div class="carousel-track">
                     <?php for ($i = 0; $i < 9; $i++): ?>
-                        <?php $livro = getLivroOuDefault($livros, $i); ?>
+                        <?php $livro = obterLivroOuPadrao($livros, $i); ?>
                         <div class="carousel-item <?php echo $i === 3 ? 'active' : ''; ?>">
                             <div class="carousel-book">
                                 <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
@@ -134,7 +134,7 @@ function getLivroOuDefault($livros, $index) {
                     <?php endfor; ?>
                 </div>
             </div>
-            <button class="carousel-btn next-btn" onclick="moveCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+            <button class="carousel-btn next-btn" onclick="moverCarrossel(1)"><i class="fas fa-chevron-right"></i></button>
         </div>
     </div>
 </div>

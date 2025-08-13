@@ -16,9 +16,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
 <body>
     <div class="container">
-        <!-- <section class="tela_animacao">
-            <img src="../../../public/assets/img/gif_login.gif" alt="">
-        </section> -->
+        
         <section class="login">
             <div class="gradiente"></div>
 
@@ -37,8 +35,6 @@ require(__DIR__ . '/../../../config/constantes.php');
                 <a href="../usuario/teste-login.php">Voltar</a>
             </form>
 
-            <!-- <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo2">
-            <img src="../../../public/assets/img/QuadradinhosHub_Login.png" alt="" class="logo"> -->
         </section>
 
     </div>

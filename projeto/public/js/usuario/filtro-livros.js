@@ -1,70 +1,66 @@
-function toggleFavorite(btn) {
-    const icon = btn.querySelector('i');
-    icon.classList.toggle('far');
-    icon.classList.toggle('fas');
+function alternarFavorito(btn) {
+    const icone = btn.querySelector('i');
+    icone.classList.toggle('far');
+    icone.classList.toggle('fas');
     btn.classList.toggle('favorited');
 }
 
-let currentSlide = 3;
+let slideAtual = 3;
 const totalSlides = 7;
 
-function moveCarousel(direction) {
-    const track = document.querySelector('.carousel-track');
+function moverCarrossel(direcao) {
+    const trilha = document.querySelector('.carousel-track');
     const items = document.querySelectorAll('.carousel-item');
     
-    // Remove active class from current item
-    items[currentSlide].classList.remove('active');
+    // Remove a classe ativa do item atual
+    items[slideAtual].classList.remove('active');
     
-    // Calculate new slide position
-    currentSlide += direction;
+    // Calcula a nova posição do slide
+    slideAtual += direcao;
     
-    // Loop around if necessary
-    if (currentSlide >= totalSlides) {
-        currentSlide = 0;
-    } else if (currentSlide < 0) {
-        currentSlide = totalSlides - 1;
+    // Loop ao redor se necessário
+    if (slideAtual >= totalSlides) {
+        slideAtual = 0;
+    } else if (slideAtual < 0) {
+        slideAtual = totalSlides - 1;
     }
     
-    // Add active class to new item
-    items[currentSlide].classList.add('active');
+    // Adicionar classe ativa ao novo item
+    items[slideAtual].classList.add('active');
     
-    // Calculate translation
-    const itemWidth = items[0].offsetWidth + 20; // item width + gap
-    const translateX = -currentSlide * itemWidth + (track.offsetWidth / 2) - (itemWidth / 2);
+    // Calcular translação
+    const comprimentoItem = items[0].offsetWidth + 20; // item width + gap
+    const translateX = -slideAtual * comprimentoItem + (trilha.offsetWidth / 2) - (comprimentoItem / 2);
     
-    track.style.transform = `translateX(${translateX}px)`;
+    trilha.style.transform = `translateX(${translateX}px)`;
 }
 
 // Função para controlar a paginação
-function changePage(category, page) {
+function mudarPagina(categoria, pagina) {
     // Encontra todos os botões de paginação da categoria específica
-    const categorySection = document.querySelector(`#${category}-grid`).closest('.category-section');
-    const paginationButtons = categorySection.querySelectorAll('.pagination-btn');
+    const categoriaDaSecao = document.querySelector(`#${categoria}-grid`).closest('.category-section');
+    const botoesDepaginacao = categoriaDaSecao.querySelectorAll('.pagination-btn');
     
     // Remove a classe 'active' de todos os botões
-    paginationButtons.forEach(btn => {
+    botoesDepaginacao.forEach(btn => {
         btn.classList.remove('active');
     });
     
     // Adiciona a classe 'active' ao botão clicado
-    const clickedButton = Array.from(paginationButtons).find(btn => 
-        btn.textContent.trim() === page.toString()
+    const botaoClicado = Array.from(botoesDepaginacao).find(btn => 
+        btn.textContent.trim() === pagina.toString()
     );
     
-    if (clickedButton) {
-        clickedButton.classList.add('active');
+    if (botaoClicado) {
+        botaoClicado.classList.add('active');
     }
     
-    // Aqui você pode adicionar lógica para carregar o conteúdo da página
-    // Por exemplo, fazer uma requisição AJAX para buscar os livros da página específica
-    console.log(`Mudando para página ${page} da categoria ${category}`);
+    console.log(`Mudando para página ${pagina} da categoria ${categoria}`);
     
-    // Exemplo de como você poderia implementar a troca de conteúdo:
-    // loadBooksForPage(category, page);
 }
 
 // Função opcional para carregar livros de uma página específica
-function loadBooksForPage(category, page) {
+// function carregarLivrosParaPagina(category, page) {
     // Aqui você faria uma requisição AJAX para o servidor
     // Por exemplo:
     /*
@@ -77,55 +73,55 @@ function loadBooksForPage(category, page) {
             console.error('Erro ao carregar livros:', error);
         });
     */
-}
+//}
 
 // Função para atualizar o grid de livros
-function updateBooksGrid(category, books) {
+function atualizarGridLivros(category, livros) {
     const grid = document.querySelector(`#${category}-grid`);
     // Limpa o grid atual
     grid.innerHTML = '';
     
     // Adiciona os novos livros
-    books.forEach(book => {
-        const bookCard = createBookCard(book);
-        grid.appendChild(bookCard);
+    livros.forEach(livro => {
+        const cartaoLivro = createBookCard(livro);
+        grid.appendChild(cartaoLivro);
     });
 }
 
 // Função para criar um card de livro
-function createBookCard(book) {
-    const bookCard = document.createElement('div');
-    bookCard.className = 'book-card';
+function criarCartaoLivro(livro) {
+    const cartaoLivro = document.createElement('div');
+    cartaoLivro.className = 'book-card';
     
-    bookCard.innerHTML = `
+    cartaoLivro.innerHTML = `
         <div class="book-image-container">
-            <img src="${book.imagem || 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg'}" alt="${book.titulo || 'Livro'}">
+            <img src="${livro.imagem || 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1714763387i/212703311.jpg'}" alt="${livro.titulo || 'Livro'}">
             <button class="favorite-btn" onclick="toggleFavorite(this)">
                 <i class="far fa-star"></i>
             </button>
         </div>
         <div class="book-info">
-            <h3>${book.titulo || 'Título do Livro'}</h3>
-            <p class="author">${book.autor || 'Autor'}</p>
+            <h3>${livro.titulo || 'Título do Livro'}</h3>
+            <p class="author">${livro.autor || 'Autor'}</p>
             <p class="status disponivel">Disponível</p>
             <button class="reserve-btn">Reservar</button>
         </div>
     `;
     
-    return bookCard;
+    return cartaoLivro;
 }
 
-// Initialize carousel position
+// Inicializar a posição do carrossel
 document.addEventListener('DOMContentLoaded', function() {
-    moveCarousel(0);
+    moverCarrossel(0);
     
     // Inicializa o estado da paginação
     // Certifica-se de que o primeiro botão de cada categoria está ativo
-    const allPaginationSections = document.querySelectorAll('.pagination');
-    allPaginationSections.forEach(section => {
-        const firstButton = section.querySelector('.pagination-btn');
-        if (firstButton && !section.querySelector('.pagination-btn.active')) {
-            firstButton.classList.add('active');
+    const todasAsSecoesDePaginacao = document.querySelectorAll('.pagination');
+    todasAsSecoesDePaginacao.forEach(section => {
+        const primeiroBotao = section.querySelector('.pagination-btn');
+        if (primeiroBotao && !section.querySelector('.pagination-btn.active')) {
+            primeiroBotao.classList.add('active');
         }
     });
 });
