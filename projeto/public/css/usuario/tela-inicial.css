@@ -77,11 +77,12 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 2%;
 }
 
-.cbmenu-icon {
-    display: none;
-}
+/* .cbmenu-icon {
+    display: flex;
+} */
 
 .cbmenu-icon i {
     font-size: 22px;
