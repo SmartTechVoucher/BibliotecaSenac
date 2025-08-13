@@ -256,6 +256,10 @@ button {
   white-space: nowrap;   
 }
 
+.check-entrar a:hover{
+   color: #da7a1a;
+}
+
 .ocultar-senha {
   color: var(--azul-padrao);
 }
