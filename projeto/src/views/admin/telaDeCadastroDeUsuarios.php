@@ -9,7 +9,9 @@
   ?>
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
-    <link rel="stylesheet" href="../../../public/css/admin/telaDeCadastroDeUsuarios.css"> 
+    <link rel="stylesheet" href="../../../public/css/admin/telaDeCadastroDeUsuarios.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/input-admin.css">
+  <?php include "../../../public/components/admin/input/input-admin.php"; ?>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,153 +34,18 @@
     include "../../../public/components/admin/header/header-admin.php";
   ?>
 
-    <form class="quadradoCinza"> 
-
-        <div class="input">
-            <img src="../../../public/assets/icons/Identidade.png" alt="">
-            <input type="text" class="nome" placeholder="Nome completo">    
+  <main>
+    <div class="container-main">
+      <form id="cadastro-form" action="" method="">
+        <div id="foto-usuario">
+          <img src="<?php echo $URLBASE ?>/public/assets/img/NullUser.jpg" alt="">
+          <?php
+            InputAdmin("file", 10, null, "foto-user");
+          ?>
         </div>
-       
-        <div class="input" id="nomeSocial1">
-            <input type="text" class="nomeSocial" placeholder="Nome social">
-        </div>
-
-
-        <div class="input" id="nascimento">
-            <input type="text" class="nascimento" placeholder="Nascimento">
-        </div>
-       
-        <div class="input" id="sexo">
-            <label for="">Sexo:</label>
-    
-            <select name="" id="">
-                <option value="">Masculino</option>
-                <option value="">Feminino</option>
-            </select>
-
-            <input type="radio" name="tipoPessoa" id=""> Pessoa Física
-            <input type="radio" name="tipoPessoa" id=""> Pessoa Jurídica
-        </div>
-        
-        <div class="input">
-            <img src="../../../public/assets/icons/cpf.png" alt="">
-            <input type="number" class="cpf" placeholder="CPF*" required min="11" max="11">
-        </div>
-
-        <div id="foto-container">
-            <label for="foto" id="labelFoto">Carregar foto:</label>
-            <input type="text" id="placeholder" placeholder="Nenhuma foto selecionada" readonly onchange="trocar()">
-            
-            <input type="file" id="foto" accept="image/*" style="display: none;">
-            
-            <button id="btn-procurar" style="position: relative; right: 0%;">Procurar</button>
-            <button id="btn-excluir">Excluir</button>
-        </div>
-
-        <div class="rg"> 
-            <h3>Dados de RG:</h3>
-
-            <label>Número:</label>
-            <input type="text" class="inputRg">
-
-            <label>Órgão emissor:</label>
-            <input type="text" class="inputRg">
-
-            <label>UF:</label>
-            <input type="text" class="inputRg">
-            
-            <br>
-            <br>
-
-            <label>País</label>
-            <input type="text" class="inputRg">
-
-            <label>Data:</label>
-            <input type="text" class="inputRg">           
-
-            <button class="inputRg">Procurar</button>
-        </div>
-        
-        <div class="filiacao"> 
-            <h3>Filiação:</h3>
-
-            <label>Nome do pai:</label>
-            <input type="text" class="inputFiliacao">
-
-            <label>Nome da mãe:</label>
-            <input type="text" class="inputFiliacao">
-
-            <label>Responsável:</label>
-            <input type="text" class="inputFiliacao">
-            
-        </div>
-        
-        <div class="contato-user"> 
-            <h3>Contato:</h3>
-
-            <label>Telefone Residencial:</label>
-            <input type="text" class="inputTelefone">
-            
-            <label class="telefone">Telefone Comercial:
-                <input type="text" class="inputTelefone">
-            </label>
-
-            <br>
-            <br>
-
-            <label>Celular:</label>
-            <input type="text" class="inputTelefone">
-
-            <label class="telefone">Outro telefone:
-                <input type="text" class="">
-            </label>
-
-            <br>
-            <br>
-
-            <label>Email:</label>
-            <input type="text" class="inputTelefone">
-
-            <label>Homepage:</label>
-            <input type="text" class="inputTelefone">         
-            
-            <input type="checkbox">
-            <label>Cancelar o recebimento de emails.</label>
-           
-        </div>
-
-        <div class="profissao"> 
-            <h3>Dados Profissionais:</h3>
-
-            <label>Profissão:</label>
-            <input type="text" class="inputProfissao">
-
-            <label>Cargo:</label>
-            <input type="text" class="inputProfissao">
-            
-        </div>
-        
-        <div class="endereco"> 
-            <p>Endereço residencial:</p>
-            <textarea cols="30" rows="5" class="textArea"></textarea>
-            
-            <p class="enderecoComercial">End. Comercial / End. Malote:</p>
-            <textarea cols="30" rows="5" class="textArea2"></textarea>
-            
-        </div>
-
-        <div class="botoes">
-            <button type="submit">Salvar</button>
-            <button type="reset">Cancelar</button>
-        </div>
-   
-    </form>
-
-    <div class="fotoApresentacao">
-        <input readonly placeholder="Sem foto" class="fotoPorAparecer">
+      </form>
     </div>
-
-   
+  </main>
             
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
