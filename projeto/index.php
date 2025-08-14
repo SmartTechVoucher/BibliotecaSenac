@@ -61,12 +61,12 @@ $livros = $model->getLivrosMock();
 
             <div class="cbquite" id="menu-links">
                 <nav>
-                    <!-- <ul class="navbar">
+                    <ul class="navbar">
                         <li><a href="./index.php">Início</a></li>
                         <li><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
                         <li><a href="https://api.whatsapp.com/send?phone=5567999492638">Contato</a></li>
                         <li><a href="../projeto/src/views/usuario/teste-login.php">Logar</a></li>
-                    </ul> -->
+                    </ul>
 
                     <div class="entrar-mobile">
                         <?php if (isset($_SESSION['usuario'])): ?>

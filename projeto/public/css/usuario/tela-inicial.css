@@ -85,7 +85,7 @@ body {
 } */
 
 .cbmenu-icon i {
-    font-size: 22px;
+    font-size: 30px;
     color: var(--cor-texto);
     cursor: pointer;
     transition: color 0.3s;
@@ -180,7 +180,7 @@ body {
 
 
 .button-entrar {
-    padding: 8px 12px;
+    padding: 4px 12px 2px 12px;
     height: auto;
     margin-right: 2%;
     border-radius: 1rem;
@@ -222,11 +222,12 @@ body {
 .icone-perfil {
     width: 35px;
     height: 35px;
+    margin: 5px 0px 0px 0px;
 }
  
 .icsenac{
-    margin-left: 20px;
-    width: 50px;
+    margin-left: 25px;
+    width: 45px;
     height: auto;
 }
  
