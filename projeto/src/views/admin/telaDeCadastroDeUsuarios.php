@@ -38,7 +38,7 @@
     <div class="container-main">
       <form id="cadastro-form" action="" method="">
         <div id="foto-usuario">
-          <img src="<?php echo $URLBASE ?>/public/assets/img/NullUser.jpg" alt="">
+          <img id="foto-perfil" src="<?php echo $URLBASE ?>/public/assets/img/NullUser.jpg" alt="">
           <?php
             InputAdmin("file", 10, null, "foto-user");
           ?>
