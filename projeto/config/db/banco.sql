@@ -108,3 +108,15 @@ CREATE TABLE favoritos (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
     FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE adminstrador (
+    id_administrador INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    data_nascimento DATE NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    rua VARCHAR(100) NOT NULL,
+    bairro VARCHAR(100) NOT NULL,
+    genero VARCHAR(50)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
