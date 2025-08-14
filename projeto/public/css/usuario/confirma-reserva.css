@@ -1,0 +1,74 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f8ff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 30px;
+  font-size: 24px;
+}
+
+table {
+  margin: 30px auto;
+  border-collapse: collapse;
+  width: 80%;
+  max-width: 900px;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Botões fixos no canto inferior direito */
+.button-fixed {
+  position: fixed;
+  bottom: 300px;
+  right: 340px;
+  display: flex;
+  gap: 15px;
+}
+
+.circle-btn {
+  width: 50px;
+  height: 50px;
+  background-color: #004A91;
+  color: white;
+  font-size: 24px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.circle-btn:hover {
+  background-color: #003b73;
+}
+
+.mensagem {
+  position: fixed;
+  bottom: 250px;
+  right: 80px;
+  background-color: #003b73;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  display: none;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  font-size: 16px;
+}

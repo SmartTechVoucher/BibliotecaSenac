@@ -7,9 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php
-        include "../../../public/components/admin/button/button-admin.php"
-    ?>
+    
     <title>Cadastro de Empréstimo</title>
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
@@ -87,9 +85,7 @@
                         <div class="grid4">18/03/2025</div>
                         <div class="grid5">21/03/2025</div>
                         <div class="grid6">
-                            <?php
-                             botao("Clique aqui", "yellow", "15px", null )
-                            ?>
+                        <button id="grid-button">Devolver <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Devolver.png" alt=""></button>
                             <button id="grid-button">Renovar <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Renovar.png" alt=""></button>
                         </div>
                     </div>

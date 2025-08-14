@@ -1,6 +1,6 @@
 <?php
 function botao($texto, $cor = "#2563eb", $tamanho = "16px", $onclick = "") {
-    return "<button style='
+    $buttonHTML = "<button style='
         background-color: {$cor};
         color: white;
         border: none;
@@ -10,7 +10,7 @@ function botao($texto, $cor = "#2563eb", $tamanho = "16px", $onclick = "") {
         cursor: pointer;'
         onclick=\"$onclick\"
     >{$texto}</button>";
+    echo $buttonHTML;
 }
 
-echo botao("Clique-me", "#004A90", "20px", "console.log('Hello')");
 ?>
