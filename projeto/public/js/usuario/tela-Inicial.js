@@ -16,11 +16,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
 const toggle = document.getElementById('menu-toggle');
 const menu = document.getElementById('menu-links');
+const menuLateral = document.getElementById('menu-lateral')
 
 
 toggle.addEventListener('click', () => {
     menu.classList.toggle('active');
 });
+toggle.addEventListener('click', () => {
+    menuLateral.classList.toggle('active');
+});
+
+
 
 
 const input = document.querySelector(".pesquisa")
@@ -29,11 +35,6 @@ const historicoUL = document.querySelector(".listagem ul");
 
 let historico = JSON.parse(localStorage.getItem('historicoPesquisa')) || [];
 let clicandoExcluir = false;
-
-
-function redirectToPage() {
-    window.location.href = "src/views/usuario/login.php";
-}
 
 input.addEventListener('focus', () => {
     listagem.classList.add('visivel');
