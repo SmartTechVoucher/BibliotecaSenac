@@ -114,7 +114,7 @@
 
     
    <?php
-    include "../../../public/components/usuario/footer/footer.php";
+    include "../../../public/components/admin/footer/footer-admin.php";
     ?>
     <script src="../../../public/js/admin/telaDeRelatorios.js"></script>
 

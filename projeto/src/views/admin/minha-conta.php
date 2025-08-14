@@ -69,7 +69,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   </main>
 
   <?php
-    include "../../../public/components/usuario/footer/footer.php";
+    include "../../../public/components/admin/footer/footer-admin.php";
     ?>
   
   <script src="<?php echo $URLBASE ?>/public/js/usuario/editar-apelido.js"></script>
