@@ -3,27 +3,19 @@ require_once __DIR__ . "/../../../config/db/database.php";
 
 class LoginController{
 
-    // private $conn;
+    private $conn;
 
-    // public function __construct(){
-    //     $banco = new Database();
+    public function __construct(){
+        $banco = new Database();
 
-    //     $this->conn = $banco->Connect();
-    // }
+        $this->conn = $banco->Connect();
 
-    // public function ValidarLogin($nome,$senha){
-    //     if (!preg_match('/^\d{11}$/', $nome)) {
-    //         $_SESSION['toast'] = "Usuário deve conter exatamente 11 números.";
-    //         return false;
-    //     }
-    
-    //     if (!preg_match('/^\d{4}$/', $senha)) {
-    //         $_SESSION['toast'] = "A senha deve conter exatamente 4 números.";
-    //         return false;
-    //     }
-    
-    //     try {
-    //         $sql = "SELECT * FROM usuario WHERE nome = :nome AND senha = :senha";
+    }
+
+    public function ValidarLogin($nome,$senha){
+   
+    try {
+        $sql = "SELECT * FROM usuario WHERE nome = :nome AND senha = :senha";
     //         $db = $this->conn->prepare($sql);
     //         $db->bindParam(":nome",$nome);
     //         $db->bindParam(":senha",$senha);

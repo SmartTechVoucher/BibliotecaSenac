@@ -2,7 +2,7 @@
 class Database
 {
     private $server = "localhost";
-    private $dbname = "biblioteca";
+    private $dbname = "bibliotecasenac";
     private $user = "root";
     private $pass = "";
 
@@ -12,13 +12,21 @@ class Database
                 "mysql:host=" . $this->server . ";dbname=" . $this->dbname,
                 $this->user,$this->pass
             );
-            
-            $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-           return $conn;
 
-        } catch (\Exception $th) {
-            echo $th->getMessage();
+            $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+            echo "Deu certo";
+            return $conn;
+
+        } catch (\PDOException $th) {
+            
+            echo "Erro: ".$th->getMessage();
         }
         
     }
+
 }
+
+$db = new Database();
+$db->Connect();
+
