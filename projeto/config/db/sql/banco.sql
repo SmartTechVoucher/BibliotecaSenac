@@ -59,6 +59,7 @@ CREATE TABLE usuarios (
     id_curso INT, 
     data_inicio DATE,
     data_fim DATE,
+    senha varchar (255) not null,
     genero VARCHAR(50),
     FOREIGN KEY (id_categoria_usuario) REFERENCES categorias_usuario(id_categoria_usuario),
     FOREIGN KEY (id_curso) REFERENCES cursos(id_curso)
