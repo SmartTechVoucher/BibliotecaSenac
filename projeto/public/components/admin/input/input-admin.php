@@ -1,7 +1,7 @@
 
 <body>
     <?php
-function InputAdmin($tipo, $largura, $placeholder = "", $name="", $id="input-admin",$readonly= false) {
+function InputAdmin($largura, $placeholder = "", $name="", $id="input-admin",$readonly= false, $tipo ="text") {
     $html = '<input class="input-admin" ';
     $html .='type="' . htmlspecialchars($tipo) . '" ';
 
