@@ -46,7 +46,7 @@ $senacTLG = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $livro["titulo"] ?></title>
+    <title>Informações do livro</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/livro-info.css">
@@ -101,7 +101,6 @@ $senacTLG = [
                         <p>Disponível</p>
                         <button id="botaoReserva" onclick="reservaConcluida()" data-status="livre">Reservar</button>
                     </div>
-
 
                     <!-- botao de reservar -->
                     <div class="info_2">

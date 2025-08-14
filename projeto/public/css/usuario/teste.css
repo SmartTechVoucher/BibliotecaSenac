@@ -1,3 +1,7 @@
+:root{
+    --azulClaro: #71b0ef;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -11,9 +15,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    box-shadow:  0 12px 0 #71B0EF,         /* sombra principal */
-    6px 12px 2px #71B0EF,     /* ponta direita mais grossa */
-    -6px 12px 2px #71B0EF;   /* ponta esquerda mais grossa */ 
+    box-shadow:  0 12px 0 var(--azulClaro),  /* sombra principal */
+    6px 12px 2px var(--azulClaro), /* ponta direita mais grossa */
+    -6px 12px 2px var(--azulClaro); /* ponta esquerda mais grossa */ 
     border-bottom-left-radius: 50% 40%;
     border-bottom-right-radius: 50% 40%;
     overflow: hidden;
