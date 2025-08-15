@@ -2,8 +2,6 @@
 
 session_start();
 
-
-
 require __DIR__ . '/config/constantes.php';
 
 

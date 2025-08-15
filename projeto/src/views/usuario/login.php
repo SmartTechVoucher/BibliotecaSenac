@@ -25,15 +25,18 @@ session_start();
         <span></span><span></span><span></span><span></span><span></span>
       </div>
 
+
+
       <!-- form -->
-      <form action="../../../router.php?acao=validarLogin" method="POST">
+      <form action="../../../router.php" method="POST">
         <img src="../../../public/assets/img/LogoHub_academy.png" alt="logo-login" class="logo-hub" />
         <p id="subtitulo" class="titulo-login"></p>
 
         <div class="login-campos">
           <div class="campo-usuario">
-            <label for="campo_login"><img src="../../../public/assets/icons/perfil.png" alt=""> Usuário</label>
-            <input type="text" name="nome" id="campo_login" placeholder="Usuário" required />
+            <!-- MUDANÇA: campo nome → email -->
+            <label for="campo_login"><img src="../../../public/assets/icons/perfil.png" alt=""> Email</label>
+            <input type="email" name="email" id="campo_login" placeholder="Seu email" required />
           </div>
           <div class="campo-senha">
             <label for="campo_senha"><img src="../../../public/assets/icons/cadeado-senha.png" alt="" class="cadeado-senha"> Senha</label>
@@ -52,11 +55,19 @@ session_start();
 
         <button type="submit">ENTRAR</button>
       </form>
-    </section>
 
-    <!-- <section class="tela_animacao">
-      <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="animação login" />
-    </section> -->
+      <!-- ADIÇÃO: Usuários demo para teste durante desenvolvimento -->
+      <?php if (defined('DESENVOLVIMENTO') && DESENVOLVIMENTO === true): ?>
+      <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; color: white; font-size: 12px;">
+        <strong>👤 Usuários de Teste:</strong><br>
+        <small>
+          📧 jogoperdi3@gmail.com - Senha: password (Estudante)<br>
+          📧 maria.santos@email.com - Senha: password (Professor)<br>
+          📧 admin@sistema.com - Senha: password (Admin)
+        </small>
+      </div>
+      <?php endif; ?>
+    </section>
   </div>
 
   <?php

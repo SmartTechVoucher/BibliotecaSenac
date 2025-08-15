@@ -1,135 +1,213 @@
 <?php
 require_once __DIR__ . "/../../../config/db/database.php";
 
-class LoginController{
-
+class LoginController {
     private $conn;
 
-    public function __construct(){
+    public function __construct() {
         $banco = new Database();
-
         $this->conn = $banco->Connect();
-
     }
 
-    public function ValidarLogin($nome,$email,$senha){
-        
-        if(empty($nome) || empty($email) || empty($senha)){ 
-            echo "ERRO: nome, email e senha sao obrigatorios";
-            return;
+    /**
+     * Valida o login do usuário usando email e senha
+     * @param string $email
+     * @param string $senha
+     * @param bool $redirect Se deve redirecionar após login bem-sucedido
+     * @return bool
+     */
+    public function ValidarLogin($email, $senha, $redirect = true) {
+        session_start();
+
+        try {
+            // Validação básica dos campos
+            if (empty($email) || empty($senha)) {
+                $_SESSION['toast'] = [
+                    'mensagem' => "Email e senha são obrigatórios.",
+                    'tipo' => "error"
+                ];
+                return false;
+            }
+
+            // Busca o usuário pelo email
+            $sql = "SELECT u.*, cu.nome as categoria_nome, c.nome as curso_nome 
+                    FROM usuarios u 
+                    LEFT JOIN categorias_usuario cu ON u.id_categoria_usuario = cu.id_categoria_usuario
+                    LEFT JOIN cursos c ON u.id_curso = c.id_curso
+                    WHERE u.email = :email";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':email' => $email]);
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($usuario && password_verify($senha, $usuario['senha'])) {
+                // Login bem-sucedido - salva os dados na sessão
+                $_SESSION['usuario'] = [
+                    'id' => $usuario['id_usuario'],
+                    'nome' => $usuario['nome'],
+                    'nome_social' => $usuario['nome_social'],
+                    'email' => $usuario['email'],
+                    'numero_matricula' => $usuario['numero_matricula'],
+                    'categoria' => $usuario['categoria_nome'],
+                    'categoria_id' => $usuario['id_categoria_usuario'],
+                    'curso' => $usuario['curso_nome'],
+                    'data_inicio' => $usuario['data_inicio'],
+                    'data_fim' => $usuario['data_fim']
+                ];
+
+                $_SESSION['toast'] = [
+                    'mensagem' => "Login efetuado com sucesso! Bem-vindo(a), " . $usuario['nome'] . "!",
+                    'tipo' => "success"
+                ];
+
+                // Se deve redirecionar, faz o redirect baseado na categoria
+                if ($redirect) {
+                    $redirectUrl = $this->getRedirectUrl($usuario['id_categoria_usuario']);
+                    header("Location: $redirectUrl");
+                    exit;
+                }
+
+                return true;
+
+            } else {
+                // Credenciais inválidas
+                $_SESSION['toast'] = [
+                    'mensagem' => "Email ou senha inválidos.",
+                    'tipo' => "error"
+                ];
+                return false;
+            }
+
+        } catch (Exception $e) {
+            // Erro interno
+            $_SESSION['toast'] = [
+                'mensagem' => "Erro interno no servidor. Tente novamente.",
+                'tipo' => "error"
+            ];
+            error_log("Erro no login: " . $e->getMessage());
+            return false;
         }
-
-        $stmt = $this->conn->prepare("SELECT * FROM usuarios WHERE email = :email");
-        $stmt->execute([':email' => $email]);
-        if($stmt->rowCount() > 0){
-            echo "Erro: Email já cadastrado!";
-            return;
-        }
-
-        $hash = password_hash($senha, PASSWORD_DEFAULT);
-
-        $nome_social = '';
-        $cpf = 'CPF'.rand(100000, 999999);
-        $data_nascimento = '2000-01-01';
-        $telefone = '0000000000';
-        $rua = 'Rua Fictícia';
-        $bairro = 'Bairro Teste';
-        $numero_matricula = rand(1000, 9999);
-        $data_inicio = '2025-01-01';
-        $data_fim = '2025-12-31';         
-        $id_categoria_usuario = 1;
-
-        $sql = "INSERT INTO usuarios (nome, nome_social, cpf, email, data_nascimento, telefone, rua, bairro, numero_matricula, data_inicio, data_fim, senha, id_categoria_usuario)
-        VALUES
-        (:nome, :nome_social, :cpf, :email, :data_nascimento, :telefone, :rua, :bairro, :numero_matricula, :data_inicio, :data_fim, :senha, :id_categoria_usuario)";
-
-        $stmt = $this->conn->prepare($sql);
-
-        $stmt->execute([
-            ':nome' => $nome,
-            ':nome_social' => $nome_social,
-            ':cpf' => $cpf,
-            ':email' => $email,
-            ':data_nascimento' => $data_nascimento,
-            ':telefone' => $telefone,
-            ':rua' => $rua,
-            ':bairro' => $bairro,
-            ':numero_matricula' => $numero_matricula,
-            ':data_inicio' => $data_inicio,    
-            ':data_fim' => $data_fim,
-            ':senha' => $hash,
-            ':id_categoria_usuario' => $id_categoria_usuario
-
-        ]);
-        
-        echo "Usuario criado com sucesso";
-
-    //try {
-        //$sql = "SELECT * FROM usuarios WHERE nome = :nome AND nome_social = :nome_social AND cpf = :cpf AND email = :email AND data_nascimento = :data_nascimento AND telefone = :telefone
-        //AND rua = :rua AND bairro = :bairro AND numero_matricula = :numero_matricula AND data_inicio = :data_inicio AND data_fim = :data_fim";
-    //         $db = $this->conn->prepare($sql);
-    //         $db->bindParam(":nome",$nome);
-    //         $db->bindParam(":senha",$senha);
-    //         $db->execute();
-    //         $usuario = $db->fetchAll(PDO::FETCH_ASSOC);
-
-    //         if ($usuario) {
-    //             // Salva os dados na sessão
-    //             $_SESSION['usuario'] = [
-    //                 'id' => $usuario['id'],
-    //                 'nome' => $usuario['nome']
-    //             ];
-    //             $_SESSION['toast'] = "Login efetuado com sucesso!";
-    //             return true;
-    //         } else {
-    //             $_SESSION['toast'] = "Usuário ou senha inválidos.";
-    //             return false;
-                
-    //     } catch (\Throwable $th) {
-    //         $_SESSION['toast'] = "Erro interno no servidor.";
-    //         return false;
-    //         //throw $th;
-    //     }
-    // }
-//     public function ValidarLogin($nome, $senha) {
-//     session_start();
-
-//     // Verifica login de administrador
-//     if ($nome === "admin123" && $senha === "2020") {
-//         $_SESSION['usuario'] = [
-//             'id' => 0,
-//             'nome' => 'Administrador'
-//         ];
-//         $_SESSION['toast'] = [
-//             'mensagem' => "Login efetuado com sucesso!",
-//             'tipo' => "success"
-//         ];
-//         return true;
-//     }
-
-//     // Verifica login de usuário comum
-//     if ($nome === "12345678910" && $senha === "2020") {
-//         $_SESSION['usuario'] = [
-//             'id' => 1,
-//             'nome' => 'João da Silva'
-//         ];
-//         $_SESSION['toast'] = [
-//             'mensagem' => "Login efetuado com sucesso!",
-//             'tipo' => "success"
-//         ];
-//         return true;
-//     }
-
-//     // Login inválido
-//     $_SESSION['toast'] = [
-//         'mensagem' => "Usuário ou senha inválidos.",
-//         'tipo' => "error"
-//     ];
-//     return false;
     }
 
+    /**
+     * Define a URL de redirecionamento baseada na categoria do usuário
+     * @param int $categoriaId
+     * @return string
+     */
+    private function getRedirectUrl($categoriaId) {
+        // Você pode ajustar essas URLs conforme sua estrutura
+        switch ($categoriaId) {
+            case 1: // Estudante
+                return '/index.php'; // ou '/dashboard/estudante.php'
+            case 2: // Professor  
+                return '/index.php'; // ou '/dashboard/professor.php'
+            case 3: // Funcionário/Admin
+                return '/admin/index.php'; // ou '/admin/dashboard.php'
+            default:
+                return '/index.php';
+        }
+    }
+
+    /**
+     * Realiza logout do usuário
+     * @param string $redirectTo URL para redirecionar após logout
+     * @return void
+     */
+    public function Logout($redirectTo = '/src/views/usuario/login.php') {
+        session_start();
+        
+        // Remove todas as variáveis da sessão
+        $_SESSION = array();
+        
+        // Destrói o cookie da sessão se existir
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+        
+        // Destrói a sessão
+        session_destroy();
+        
+        // Inicia nova sessão para o toast
+        session_start();
+        $_SESSION['toast'] = [
+            'mensagem' => "Logout realizado com sucesso!",
+            'tipo' => "success"
+        ];
+
+        // Redireciona para a página de login
+        header("Location: $redirectTo");
+        exit;
+    }
+
+    /**
+     * Verifica se o usuário está logado
+     * @return bool
+     */
+    public function isLoggedIn() {
+        session_start();
+        return isset($_SESSION['usuario']) && !empty($_SESSION['usuario']['id']);
+    }
+
+    /**
+     * Obtém os dados do usuário logado
+     * @return array|null
+     */
+    public function getUsuarioLogado() {
+        session_start();
+        return isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null;
+    }
+
+    /**
+     * Verifica se o usuário tem uma determinada categoria
+     * @param string $categoria Nome da categoria
+     * @return bool
+     */
+    public function hasCategoria($categoria) {
+        $usuario = $this->getUsuarioLogado();
+        return $usuario && $usuario['categoria'] === $categoria;
+    }
+
+    /**
+     * Middleware para proteger páginas - redireciona se não logado
+     * @param string $redirectTo URL para redirecionar se não logado
+     * @return void
+     */
+    public function requireLogin($redirectTo = '/src/views/usuario/login.php') {
+        if (!$this->isLoggedIn()) {
+            session_start();
+            $_SESSION['toast'] = [
+                'mensagem' => "Você precisa fazer login para acessar esta página.",
+                'tipo' => "error"
+            ];
+            header("Location: $redirectTo");
+            exit;
+        }
+    }
+
+    /**
+     * Middleware para proteger páginas por categoria
+     * @param array $allowedCategories IDs das categorias permitidas
+     * @param string $redirectTo URL para redirecionar se não autorizado
+     * @return void
+     */
+    public function requireCategory($allowedCategories, $redirectTo = '/acesso-negado.php') {
+        $this->requireLogin(); // Primeiro verifica se está logado
+        
+        $usuario = $this->getUsuarioLogado();
+        $userCategoryId = $usuario['categoria_id'] ?? 0;
+        
+        if (!in_array($userCategoryId, $allowedCategories)) {
+            session_start();
+            $_SESSION['toast'] = [
+                'mensagem' => "Você não tem permissão para acessar esta página.",
+                'tipo' => "error"
+            ];
+            header("Location: $redirectTo");
+            exit;
+        }
+    }
 }
-
-$teste = new LoginController();
-$teste->ValidarLogin("Gabriel","jogoperdi3@gmail.com", "1234");
-
