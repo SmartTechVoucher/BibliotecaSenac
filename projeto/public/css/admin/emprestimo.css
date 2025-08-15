@@ -5,22 +5,16 @@ body{
     background-color: #EDEDED;
 }
 
-
 a{
     text-decoration: none 
 }
 
 *{
     font-family: var(--fontes);
-}
-
-*{
     box-sizing: border-box;
 }
 
 /* main */
-
-
 
 .quadradoBranco{
     background-color: white;
@@ -29,7 +23,9 @@ a{
     padding: 40px;
     position: relative; 
     margin-bottom: 30px;
+    margin-top: 15%;
 }
+
 .quadradoBranco::before { /*pseudo elemento que faz aquele pequeno retangulo no topo do .quadradoBranco*/
     content: "Cadastro De Empréstimo";
     position: absolute;
@@ -44,11 +40,11 @@ a{
     background-color: white;
 }
 
-
 /* pesquisar usuario e livro */
 .searchInput img{
     height: 30px;
 }
+
 .searchInput{
     display: flex;
     justify-content: space-between;
@@ -69,7 +65,6 @@ a{
     height: 40px;
 }
 
-
 /* dados do usuario */
 .usuarioCadastrado{
     width: 50%;
@@ -77,29 +72,11 @@ a{
     margin-top: 50px;
     margin-bottom: 50px;
     display: flex;
+    
 }
 .usuarioCadastrado img{
     width: 150px;
 }
-.userInfo{
-    margin-left: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-#nameUser{
-    margin-bottom: 30px;
-}
-
-.userInfo3, .userInfo2{
-    gap: 20px;
-    display: flex;
-}
-.userInfo2 img{
-    width: 18px;
-    height: 18px;
-}
-
 
 /* livro emprestados do usuario */
 .livrosEmprestados{
@@ -108,6 +85,7 @@ a{
     padding: 8px;
     height: 500px;
     border-radius: 5px;
+    overflow-x: scroll;
 }
 
 .tabela-header {
@@ -154,6 +132,13 @@ a{
     background-color: #0677e0;
 }
 
+@media(max-width:1124px){
 
+    .quadradoBranco .usuarioCadastrado{
+
+        flex-direction: column;
+       
+    }
+}
 
         

@@ -3,18 +3,18 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Empréstimo</title>
-      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/admin/emprestimo.css">
 </head>
 
@@ -23,7 +23,7 @@
         include "../../../public/components/admin/header/header-admin.php"
     ?>
     
-    <main>
+    <!-- <main> -->
         <div class="quadradoBranco">
 
             <!-- pesquisas de usuario e livro -->
@@ -39,20 +39,19 @@
                 
                 <!-- dados do usuario -->
                 <div class="usuarioCadastrado">
+                    
                     <img src="<?php echo $URLBASE?>/public/assets/img/NullUser.jpg" alt="">
-                    <div class="userInfo">
-                        <span id="nameUser"><b>Nome:</b> Carlos Terrel </span>
-                        <div class="userInfo2">
-                            <span><b>N° de matrícula:</b> 31182092025</span>
-                            <span><b>Perfil de acesso:</b> Comum <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_PerfilAcesso.png" alt=""></span>
-                        </div>
-                        
-                        <div class="userInfo3">
-                            <span><b>Email:</b> iammusic@gmail.com</span>
-                            <span><b>Telefone:</b> 6740028922</span>
-                        </div>
-
-                    </div>
+                   
+                    <span id="nameUser"><b>Nome:</b> Carlos Terrel </span>
+                    <br>
+                   
+                    <span><b>N° de matrícula:</b> 31182092025</span>
+                    <span><b>Perfil de acesso:</b> Comum <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_PerfilAcesso.png" alt=""></span>
+                    <br>
+                   
+                    <span><b>Email:</b> iammusic@gmail.com</span>
+                    <span><b>Telefone:</b> 6740028922</span>
+                   
                 </div>
                 
                 <!-- pesquisar livro -->
@@ -119,18 +118,16 @@
                                 <button type="submit" id="grid-button">Renovar <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Renovar.png" alt=""></button>
                         </div>
                     </div>
-                </div>
-                
-                
+                </div>                
                 
             </div>
 
         </div>
-    </main>
+    <!-- </main> -->
+    
     <?php
     include "../../../public/components/admin/footer/footer-admin.php";
     ?>
-    
     
 </body>
 </html>
