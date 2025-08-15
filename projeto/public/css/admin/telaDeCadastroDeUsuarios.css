@@ -14,54 +14,102 @@
     --bordaBaixaCabeçalho: #769FCD;
    
 }
-*{
+* {
     box-sizing: border-box;
 }
-/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
-
-
-.container-main{
-    width: 80%;
+.container-main {
+    width: 70%;
     padding: 40px;
     position: relative;
     margin: auto;
-    background: #fbfaff;;
+    background: #fbfaff;
     padding: 20px;
-    border-radius: 8px 8px 8px 8px;
-    box-shadow: 0px 7px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
 }
-#cadastro-form legend{
+#cadastro-form legend {
     font-size: 1.3rem;
     font-weight: 500;
     padding: 0 0.5rem;
 }
-.form-section{
+.form-section {
     border: 1px solid #ced4da;
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 2rem;
 }
-
 .form-row {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
-
 .form-group {
-    flex: 1 1 45%; /* Permite duas colunas em telas maiores */
+    /* Flex-basis garante uma largura base */
+    flex: 1 1 300px;
     margin-bottom: 1rem;
 }
-
-
-#foto-perfil-container{
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+#foto-perfil-container {
     display: flex;
     gap: 10px;
     flex-direction: column;
     align-items: center;
+}
+#foto-perfil {
+    width: 150px; /* Tamanho fixo para melhor controle */
+    height: 150px;
+    border-radius: 50%; /* Deixa a imagem redonda */
+    object-fit: cover; /* Evita distorção da imagem */
+    border: 2px solid #ddd;
+}
+
+.botao-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 
 }
 
-#foto-perfil{
-    width: 15%;
+.botao-container button {
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: 500;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    button[type="submit"] {
+        background-color: #004A90;
+        color: white;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    
+    .cancel-button {
+        background-color: #900000;
+        color: white;
+    }
+    
+    .cancel-button:hover {
+        background-color: #5a6268;
+    }
+
+
+
+@media (max-width: 768px) {
+    .container-main {
+        width: 95%;
+    }
+    .form-group {
+        flex-basis: 100%; /* Em telas menores, os campos ocupam a largura total */
+    }
 }
