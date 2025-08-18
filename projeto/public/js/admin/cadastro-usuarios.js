@@ -1,4 +1,4 @@
-const inputFile = document.getElementById('foto-user'); 
+const inputFile = document.getElementById('foto-usuario'); 
 const fotoPerfil = document.getElementById('foto-perfil'); 
 
 
@@ -6,7 +6,7 @@ inputFile.addEventListener('change', function (event) {
    
     if (event.target.files && event.target.files[0]) {
         
-        const leitor = new ArquivoLeitor();
+        const leitor = new FileReader();
 
         leitor.onload = function (e) {
            
