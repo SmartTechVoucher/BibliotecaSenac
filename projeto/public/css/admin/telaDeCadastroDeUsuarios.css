@@ -68,6 +68,10 @@ label {
     border: 2px solid #ddd;
 }
 
+#notas_usuario{
+    width: 100%;
+}
+
 .botao-container{
     display: flex;
     justify-content: center;

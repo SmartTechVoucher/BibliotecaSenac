@@ -1,7 +1,7 @@
 
 <body>
     <?php
-function InputAdmin($largura, $placeholder = "", $name="", $id="input-admin",$readonly= false, $tipo ="text", $required= false, $valor = "") {
+function InputAdmin($largura, $altura ="auto", $padding = "12px", $placeholder = "", $name="", $id="input-admin",$readonly= false, $tipo ="text", $required= false, $valor = "" ,$accept = "") {
     static $css_adicionado = false;
 
     // Se o CSS ainda não foi adicionado, crie o bloco <style>
@@ -17,7 +17,6 @@ function InputAdmin($largura, $placeholder = "", $name="", $id="input-admin",$re
 
 
 .input-admin {
-    width: 200px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -53,8 +52,10 @@ function InputAdmin($largura, $placeholder = "", $name="", $id="input-admin",$re
     $html .= 'placeholder="' . htmlspecialchars($placeholder) . '" ';
 
     $html .= 'value="' . htmlspecialchars($valor) . '" ';
+
+    $html .= 'accept="' . htmlspecialchars($accept) . '" ';
     
-    $html .= 'style="width:' . htmlspecialchars($largura) . '%;" ';
+    $html .= 'style="width:' . htmlspecialchars($largura) . '%; height:' . htmlspecialchars($altura) . '; padding:' . htmlspecialchars($padding) . ';" ';
     
     if ($readonly) {
         $html .= 'readonly ';

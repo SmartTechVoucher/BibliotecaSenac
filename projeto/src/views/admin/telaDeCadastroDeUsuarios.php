@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
   <link rel="stylesheet" href="../../../public/css/admin/telaDeCadastroDeUsuarios.css">
-  
+
   <?php include "../../../public/components/admin/input/input-admin.php"; ?>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,15 +35,15 @@
   include "../../../public/components/admin/header/header-admin.php";
   ?>
 
-<main>
+  <main>
     <div class="container-main">
-      <form id="cadastro-form" action="" method="">
+      <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
         <fieldset class="form-section">
           <legend>Informações Pessoais</legend>
           <div id="foto-perfil-container">
-            <img id="foto-perfil" src="<?php echo $URLBASE ?>/public/assets/img/NullUser.jpg" alt="">
+            <img id="foto-perfil" src="https://placehold.co/150x150/f0f0f0/888888?text=Sua+Foto" alt="">
             <?php
-            InputAdmin(15, null, "foto-user", tipo: "file");
+            InputAdmin(15, null, "foto-user", tipo: "file", accept:"image/*");
             ?>
           </div>
           <div class="form-row">
@@ -157,14 +157,42 @@
             </div>
           </div>
 
+
+
         </fieldset>
-        <div class="botao-container">
-                <button type="submit">Salvar Usuário</button>
-                <button type="button" class="botao-cancelar">Cancelar</button>
+        <fieldset class="form-section">
+          <legend>Senha do usuário</legend>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="senha_usuario">Senha</label>
+              <?php
+              InputAdmin(largura: 100, name: "senha_usuario", id: "senha_usuario", tipo: "password")
+              ?>
             </div>
+            <div class="form-group">
+              <label for="senha_usuario_confirm">Confirmar senha</label>
+              <?php
+              InputAdmin(largura: 100, name: "senha_usuario_confirm", id: "senha_usuario_confirm", tipo: "password")
+              ?>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="form-section">
+          <legend>Notas</legend>
+          <div class="form-row">
+            <div class="form-group">
+              <textarea name="notas_usuario" id="notas_usuario" cols="30" rows="10"></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="botao-container">
+          <button type="submit">Salvar Usuário</button>
+          <button type="button" class="botao-cancelar">Cancelar</button>
+        </div>
       </form>
     </div>
-</main>
+  </main>
   <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé-->
 
 
