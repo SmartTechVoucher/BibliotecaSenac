@@ -62,21 +62,25 @@ $livros = $model->getLivrosMock();
             <div class="cbquite" id="menu-links">
                 <nav>
 
+                    <div id="overlay" class="overlay"></div>
 
-                    <ul class="navbar-desktop">
-                        <li><a href="./index.php">Início</a></li>
-                        <li><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
-                        <li><a href="https://api.whatsapp.com/send?phone=5567999492638">Contato</a></li>
-                        <li><a href="../projeto/src/views/usuario/teste-login.php">Logar</a></li>
-                    </ul>
-
-                    <div class="menu-sanduiche" id="menu-lateral">
+                    <div id="menu-lateral" class="menu-lateral">
                         <ul class="navbar-desktop">
-                            <li><a href="../projeto/src/views/usuario/minha-conta-usuario.php">Minha Conta</a></li>
-                            <li><a href="../projeto/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
-                            <!-- Adicione outras páginas secundárias aqui -->
+                            <li><a href="./index.php">Início</a></li>
+                            <li><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=5567999492638">Contato</a></li>
+                            <li><a href="../projeto/src/views/usuario/teste-login.php">Logar</a></li>
                         </ul>
+
+                        <div class="menu-sanduiche">
+                            <ul class="navbar-desktop">
+                                <li><a href="../projeto/src/views/usuario/minha-conta-usuario.php">Minha Conta</a></li>
+                                <li><a href="../projeto/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
+                                <!-- A dicione outras páginas secundárias aqui -->
+                            </ul>
+                        </div>
                     </div>
+
 
                     <div class="entrar-mobile">
                         <?php if (isset($_SESSION['usuario'])): ?>

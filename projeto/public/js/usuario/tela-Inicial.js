@@ -19,11 +19,16 @@ const menu = document.getElementById('menu-links');
 const menuLateral = document.getElementById('menu-lateral')
 
 
-toggle.addEventListener('click', () => {
-    menu.classList.toggle('active');
-});
-toggle.addEventListener('click', () => {
-    menuLateral.classList.toggle('active');
+// toggle.addEventListener('click', () => {
+//     menu.classList.toggle('active');
+// });
+// toggle.addEventListener('click', () => {
+//     menuLateral.classList.toggle('active');
+// });
+
+toggle.addEventListener("click", function () {
+    console.log("clicou");
+    menuLateral.classList.toggle("ativo");
 });
 
 
