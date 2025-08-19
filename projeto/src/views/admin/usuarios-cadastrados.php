@@ -12,6 +12,8 @@ require_once "../../../config/constantes.php";
   ?>
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/input-admin.css">
+  <?php include "../../../public/components/admin/input/input-admin.php"; ?>
   <link rel="stylesheet" href="/BibliotecaSenac/projeto/public/css/admin/usuarios-cadastrados.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +47,9 @@ require_once "../../../config/constantes.php";
 
       <h2>Usuários Cadastrados</h2>
       <label for="search"><label for="">Pesquisar:</label for=""></label>
-      <input readonly class="inputs-editaveis" type="text" id="search" placeholder="Pesquisar usuário..." onkeyup="filterTable()">
+      <?php   
+        InputAdmin("text", "Escreva senha", 70, null,"breguenaite")
+      ?>
     
       <div id="regulares" class="tab-content" style="display: block;"> <!-- tabela que lista usuarios regulares -->
 
