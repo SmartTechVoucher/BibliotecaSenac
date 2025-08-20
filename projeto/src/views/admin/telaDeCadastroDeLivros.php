@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de cadastro de livros</title>
+    <title>Cadastro de Livros</title>
     <?php
     require_once "../../../config/constantes.php";
-  ?>
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
+    ?>
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="../../../public/css/admin/telaCadastroLivros.css">
+    <?php include "../../../public/components/admin/input/input-admin.php"; ?>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,233 +28,76 @@
 </head>
 
 <body>
-    
- <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
- <?php   
+
+    <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->
+    <?php
     include "../../../public/components/admin/header/header-admin.php";
-  ?>
-    <h2 id="titulo-cadastrodelivros">Cadastro de Livros</h2>
-    <form class="formulario">
+    ?>
+    <div class="container-main">
+        <form id="cadastro-form" action="#" method="post">
 
-        <div class="tituloObrigatorio"> 
-            <label for="Titulo2">Título</label>
-            <p class="obrigatorio" id="obrigatorio1">obrigatório*</p>          
-        </div>
-        
-        <input type="text" class="titulo2" required oninput="mostrarFalta()">
-        
-        <!--O input acima se refere a TítuloObrigatório-->
+            <fieldset class="form-section">
+                <legend>Cadastro de livro</legend>
+                <div class="form-coluna">
+                    <label for="titulo-livro">Titulo</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
+                    ?>
+                    <label for="autor-livro">Autor</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "autor-livro", id: "autor-livro", required: true)
+                    ?>
+                    <label for="titulo-livro">Editora</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
+                    ?>
+                    <label for="codigo-livro">Código do livro</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "codigo-livro", id: "codigo-livro", required: true)
+                    ?>
+                    <label for="idioma-livro">Idioma</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "idioma-livro", id: "idioma-livro")
+                    ?>
+                    <label for="categoria-livro">Categoria</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "categoria-livro", id: "categoria-livro")
+                    ?>
+                    <label for="area-livro">Area</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "area-livro", id: "area-livro")
+                    ?>
+                    <label for="publicacao-livro">Ano</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "publicacao-livro", id: "publicacao-livro", tipo: "date")
+                    ?>
+                    <label for="capa-livro">Capa</label>
+                    <?php
+                    InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
+                    ?>
 
-        <div class="autorObrigatorio">
-            <label for="Autor">Autor </label>
-            <p class="obrigatorio" id="obrigatorio2">obrigatório*</p>
-        </div>
-       
-        <input type="text" class="autor" required oninput="mostrarFalta2()">
-        
-        <!--O input acima se refere a autorObrigatório-->
+                </div>
+                <div class="form-coluna">
+                    <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
+                    <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
+                    <label for="tipo-documento">Tipo de documento</label>
+                    <select id="tipo-documento" name="tipo-documento" class="input-admin" required>
+                        <option value="">Selecione</option>
+                        <option value="tipo-documento-livro">Livro</option>
+                        <option value="tipo-documento-ebook">eBook</option>
+                        <option value="tipo-documento-revista">Revista</option>
+                    </select>
 
-        <div class="codigoObrigatorio">
-            <label for="Código do livro">Código do livro</label>
-            <p class="obrigatorio" id="obrigatorio3">obrigatório*</p>
-        </div>
-        
-        <input type="text" class="codigo" required oninput="mostrarFalta3()">
-       
-        <!--O input acima se refere a codigoObrigatório-->
+            </fieldset>
 
-        <label for="Idioma">Idioma</label>
-        <input type="text" class="idioma">
-
-        <label for="Área">Área</label>
-        <select name="" id="" class="area">
-            <option>Selecione</option>
-            <option>Beleza</option>
-            <option>Comércio</option>
-            <option>Comunicação</option>
-            <option>Design</option>
-            <option>Gestão</option>
-            <option>Moda</option> 
-            <option>Saúde</option>
-            <option>Segurança</option>              
-            <option>Tecnologia da informação - TI</option>   
-        </select>
-
-        <label for="Unidade">Unidade</label>
-        <select name="" id="" class="unidade">
-            <option>Selecione</option>
-            <option>Dourados</option>
-            <option>Três Lagoas</option>
-            <option>Ponta Porã</option>
-            <option>Corumbá</option>
-            <option>Campo Grande - Gastronomia</option>
-        </select>       
-
-        <label for="Editora">Editora</label>
-        <input type="text" class="editora">
-        
-        <label for="Ano">Ano</label>
-        <input type="text" class="ano"> 
-
-        <label>Foto de capa</label>
-
-        <div id="mensagemPrimeiroForm"></div>
-
-        <label for="foto2" class="foto2">
-            <img src="../../../public/assets/icons/Group 36.png" alt="" class="fundoBranco">
-            <img src="../../../public/assets/icons/Group 34.png" alt="" class="upload">   
-        </label>
-        <input style="display: none;" type="file" id="foto2" onchange="texto2()">
-
-        <label for="Resumo do livro">Resumo do livro</label>
-        <textarea cols="30" rows="10" class="resumo"></textarea>
-
-        <label for="Notas">Notas</label>
-        <textarea cols="30" rows="10" class="notas"></textarea>
-
-        <label for="Tipo de documento">Tipo de documento</label>
-        <select name="" id="" class="tipoDocumento">
-            <option>Selecione</option>
-            <option>Artigo</option>
-            <option>Folheto</option>
-            <option>Livro</option>
-            <option>Periódico</option>
-        </select>
-
-        <label for="Local publicado">Local publicado</label>
-        <input type="text" class="localPublicado">
-
-        <label for="Categoria/tags">Categoria/tags</label>
-        <select name="" id="" class="categoria">
-            <option>Selecione</option>
-                <option>Beleza</option>
-                <option>Comércio</option>
-                <option>Comunicação</option>
-                <option>Design</option>
-                <option>Gestão</option>
-                <option>Moda</option>  
-                <option>Saúde</option>
-                <option>Segurança</option>   
-                <option>Tecnologia da informação - TI</option>
-        </select>
-
-        <button type="submit" class="botao">Enviar <img src="../../../public/assets/icons/Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button>       
-
-    </form>
-
-    <div class="paraTestar">
-
-        <form class="formulario2" id="formulario2">
-        
-            <div class="tituloObrigatorio2">
-                <label for="Titulo2">Título</label>
-                <p class="obrigatorio" id="obrigatorio1">obrigatório*</p>
-            </div>
-        
-            <input type="text" class="titulo2" id="titulo2" required oninput="mostrarFaltaSegundoForm()">
-            
-            <div class="autorObrigatorio2">
-                <label for="Autor">Autor </label>
-                <p class="obrigatorio" id="obrigatorio2">obrigatório*</p>
-            </div>
-        
-            <input type="text" class="autor" required oninput="mostrarFalta2SegundoForm()">
-        
-            <div class="codigoObrigatorio2">
-                <label for="Código do livro">Código do livro</label>
-                <p class="obrigatorio" id="obrigatorio3">obrigatório*</p>
-            </div>
-            
-            <input type="text" class="codigo" required oninput="mostrarFalta3SegundoForm()">
-        
-            <label for="Idioma">Idioma</label>
-            <input type="text" class="idioma">
-
-            <label for="Área">Área</label>
-            <select name="" id="" class="area">
-                <option>Selecione</option>
-                <option>Beleza</option>
-                <option>Comércio</option>
-                <option>Comunicação</option>
-                <option>Design</option>
-                <option>Gestão</option>
-                <option>Moda</option> 
-                <option>Saúde</option>
-                <option>Segurança</option>              
-                <option>Tecnologia da informação - TI</option>                 
-            </select>
-
-            <label for="Unidade">Unidade</label>
-            <select name="" id="" class="unidade">
-                <option>Selecione</option>
-                <option>Dourados</option>
-                <option>Três Lagoas</option>
-                <option>Ponta Porã</option>
-                <option>Corumbá</option>
-                <option>Campo Grande - Gastronomia</option>
-
-            </select>
-            
-            <label for="Editora">Editora</label>
-            <input type="text" class="editora">
-            
-            <label for="Ano">Ano</label>
-            <input type="text" class="ano"> 
-            
-            <label>Foto de capa</label>
-           
-            <label for="foto" class="foto2">
-                <img src="../../../public/assets/icons/Component 62.png" alt="" class="fundoBranco">
-            </label>
-            <input style="display: none;" type="file" id="foto" onchange="texto()">
-            
-            <div id="mensagem"></div>
-
-            <div class="Botao"><button class="botao" type="submit">Enviar <img src="../../../public/assets/icons/Novo Projeto (5) 1.png" alt="Imagem de seta" class="seta"></button></div>
         </form>
+    </div>
 
-        <form class="formulario2_segundaMetade" id="formulario2_segundaMetade">
-
-            <label for="Resumo do livro">Resumo do livro</label>
-            <textarea cols="30" rows="10" class="resumo"></textarea>
-    
-            <label for="Notas">Notas</label>
-            <textarea cols="30" rows="10" class="notas"></textarea>
-    
-            <label for="Tipo de documento">Tipo de documento</label>
-            <select name="" id="" class="tipoDocumento">
-                <option>Selecione</option>
-                <option>Artigo</option>
-                <option>Folheto</option>
-                <option>Livro</option>
-                <option>Periódico</option>         
-            </select>
-    
-            <label for="Local publicado">Local publicado</label>
-            <input type="text" class="localPublicado">
-    
-            <label for="Categoria/tags">Categoria/tags</label>
-            <select name="" id="" class="categoria">
-                <option>Selecione</option>
-                <option>Beleza</option>
-                <option>Comércio</option>
-                <option>Comunicação</option>
-                <option>Design</option>
-                <option>Gestão</option>
-                <option>Moda</option>  
-                <option>Saúde</option>
-                <option>Segurança</option>   
-                <option>Tecnologia da informação - TI</option>            
-            </select>          
-    
-        </form>
-
- </div>  
-    
- <?php
+    <?php
     include "../../../public/components/usuario/footer/footer.php";
     ?>
     <script src="../../../public/js/admin/telaDeCadastroDeLivros.js"></script>
 
 </body>
+
 </html>
