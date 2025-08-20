@@ -1,4 +1,6 @@
 
+console.log("JS carregado!");
+
 function redirectToPage() {
     window.location.href = "src/views/usuario/login.php";
 }
@@ -14,23 +16,22 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const toggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('menu-links');
-const menuLateral = document.getElementById('menu-lateral')
+const toggleMenuLateral = document.getElementById('menu-toggle');
+const menuLateral = document.getElementById('menu-lateral');
+const overlay = document.getElementById('overlay');
 
-
-// toggle.addEventListener('click', () => {
-//     menu.classList.toggle('active');
-// });
-// toggle.addEventListener('click', () => {
-//     menuLateral.classList.toggle('active');
-// });
-
-toggle.addEventListener("click", function () {
+// abrir/fechar no clique do botão
+toggleMenuLateral.addEventListener("click", () => {
     console.log("clicou");
     menuLateral.classList.toggle("ativo");
+    overlay.classList.toggle("ativo");
 });
 
+// fechar clicando no overlay
+overlay.addEventListener("click", () => {
+    menuLateral.classList.remove("ativo");
+    overlay.classList.remove("ativo");
+});
 
 
 
@@ -272,4 +273,17 @@ function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) modal.style.display = 'none';
 }
+
+function toggleMenu(event) {
+    event.stopPropagation(); // evita que o clique feche imediatamente
+    const menu = event.currentTarget.querySelector(".menu-dropdown");
+    const isVisible = menu.style.display === "block";
+    document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
+    menu.style.display = isVisible ? "none" : "block";
+}
+
+document.addEventListener("click", () => {
+    document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
+});
+
 

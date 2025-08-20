@@ -52,9 +52,9 @@ $livros = $model->getLivrosMock();
     <div class="conteiner">
         <div class="cabecalho">
             <div class="cbleft">
-                <div class="cbmenu-icon">
-                    <i id="menu-toggle" class="fas fa-bars"></i>
-                </div>
+                <button class="cbmenu-icon" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
 
                 <img class="icsenac" src="../projeto/public/assets/icons/SenacIcon 1.png" alt="Icone Hub academy">
             </div>
@@ -62,7 +62,7 @@ $livros = $model->getLivrosMock();
             <div class="cbquite" id="menu-links">
                 <nav>
 
-                    <div id="overlay" class="overlay"></div>
+
 
                     <div id="menu-lateral" class="menu-lateral">
                         <ul class="navbar-desktop">
@@ -128,6 +128,8 @@ $livros = $model->getLivrosMock();
                 <?php endif; ?>
             </div>
         </div>
+
+        <!-- <div id="overlay" class="overlay"></div> -->
 
         <div class="geralinfo">
             <div class="info">
@@ -243,20 +245,8 @@ $livros = $model->getLivrosMock();
     </div>
 
 
-    <script src="./public/js/usuario/tela-inicial.js"></script>
-    <script>
-        function toggleMenu(event) {
-            event.stopPropagation(); // evita que o clique feche imediatamente
-            const menu = event.currentTarget.querySelector(".menu-dropdown");
-            const isVisible = menu.style.display === "block";
-            document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
-            menu.style.display = isVisible ? "none" : "block";
-        }
+    <script src="./public/js/usuario/tela-inicial.js" defer></script>
 
-        document.addEventListener("click", () => {
-            document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
-        });
-    </script>
 </body>
 
 </html>
