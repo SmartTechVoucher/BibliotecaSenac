@@ -1,3 +1,8 @@
+:root{
+    --branco: white;
+    --brancoF1eeee: #f1eeee;
+}
+
 
 body{
     margin: 0;
@@ -14,35 +19,26 @@ a{
     box-sizing: border-box;
 }
 
-/* main */
-
 .quadradoBranco{
-    background-color: white;
+    background-color: var(--branco);
     width: 80%;
     margin: auto;
-    padding: 40px;
     position: relative; 
     margin-bottom: 30px;
-    margin-top: 15%;
+    margin-top: 10%;
 }
 
-.quadradoBranco::before { /*pseudo elemento que faz aquele pequeno retangulo no topo do .quadradoBranco*/
-    content: "Cadastro De Empréstimo";
-    position: absolute;
-    top: -35px;
-    left: 0px;
-    width: 300px;
-    height: 45px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
+.h3{
+   padding-top: 5%;
+   padding-left: 5%;
 }
 
-/* pesquisar usuario e livro */
-.searchInput img{
-    height: 30px;
+.quadradoBranco .nomeUsuario{
+    color: green;
+}
+
+.quadradoBranco .nomeUsuario2{
+    color: red;
 }
 
 .searchInput{
@@ -51,31 +47,73 @@ a{
     align-items: center;
     width: 90%;
     height: 50px;
-    background: #F1EEEE;
+    background: var(--brancoF1eeee);
     margin: auto;
+    margin-top: 2%;
     border-radius: 5px;
     border: 1px solid #ababab;
 }
 
 .searchInput input{
-    background-color: #F1EEEE;
+    background-color: var(--brancoF1eeee);
     border: 0px;
-    padding-left: 20px;
+    padding-left: 10px;
     width: 95%;
-    height: 40px;
+    height: 40px;   
 }
 
-/* dados do usuario */
+.searchBar::placeholder{
+    font-size: 10px;
+}
+
+.searchBook h3{
+    padding-left: 5%;
+}
+
 .usuarioCadastrado{
-    width: 50%;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    display: flex;
+    display: grid; 
+    grid-template-columns: repeat(4, 75px); 
+    grid-template-rows: repeat(6, 75px);
+    margin-top: 2%; 
     
 }
+
+#imagem{
+    grid-column: 2;
+    border-radius: 50%;    
+}
+
+#nome{
+    grid-column: 2/5;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+}
+
+#numero{
+    grid-row: 3;
+    grid-column: 2/5;
+}
+
+#perfil{
+    grid-row: 4;
+    grid-column: 2/5;
+}
+
+#email{
+    grid-row: 5;
+    grid-column: 2/5;
+}
+
+#telefone{
+    grid-row: 6;
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+}
+
 .usuarioCadastrado img{
-    width: 150px;
+    width: 75px;
 }
 
 /* livro emprestados do usuario */
@@ -120,25 +158,156 @@ a{
     background-color: #0585FF;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: var(--branco);
     display: flex;
     align-items: center;
     padding: 4px;
 }
+
 #grid-button img{
     width: 20px;
 }
+
 #grid-button:hover{
     background-color: #0677e0;
 }
 
-@media(max-width:1124px){
+/* @media(max-width:1124px){
 
     .quadradoBranco .usuarioCadastrado{
 
         flex-direction: column;
        
     }
+} */
+
+@media(min-width:414px){
+   
+    .usuarioCadastrado{
+        grid-template-columns: repeat(4, 82px);
+    }
+
+    #imagem{
+        width: 80px;
+        height: 76px;
+    }
 }
 
-        
+@media(min-width:500px){
+    .searchBar::placeholder{
+        font-size: 12px;
+    }
+
+    .usuarioCadastrado{
+        grid-template-columns: repeat(4, 97px);
+    }
+
+    #imagem{
+        width: 97px;
+    }
+}
+
+@media(min-width:600px){
+    
+    .searchBar::placeholder{
+        font-size: 12px;
+    }
+
+    .usuarioCadastrado{
+        grid-template-columns: repeat(4, 117px);
+    }
+
+    #imagem{
+        width: 117px;
+    }
+
+    #nome, #numero, #perfil, #email, #telefone{
+        font-size: 20px;
+    }
+}
+    
+@media(min-width:768px){
+    
+    .searchBar::placeholder{
+        font-size: 20px;
+    }
+
+    .usuarioCadastrado{
+        grid-template-columns: repeat(4, 150px);
+    }
+
+    #nome, #numero, #perfil, #email, #telefone{
+        font-size: 25px;
+    }
+
+    #imagem{
+        width: 150px;
+    }
+
+}
+
+@media(min-width:912px){
+    
+    .searchBar::placeholder{
+        font-size: 20px;
+    }
+
+    .usuarioCadastrado{
+        grid-template-columns: repeat(4, 170px);
+    }
+
+    #nome, #numero, #perfil, #email, #telefone{
+        font-size: 30px;
+    }
+
+    #imagem{
+        width: 170px;
+    }
+
+}
+
+@media(min-width:1124px){
+    
+    .searchBar::placeholder{
+        font-size: 20px;
+    }
+
+    .usuarioCadastrado{
+        grid-template-columns: repeat(4, 220px);
+    }
+
+    #nome, #numero, #perfil, #email, #telefone{
+        font-size: 35px;
+    }
+
+    #imagem{
+        width: 220px;
+    }
+
+}
+
+@media(min-width:1358px){
+    
+    .searchBar::placeholder{
+        font-size: 20px;
+    }
+
+    .usuarioCadastrado{
+        grid-template-columns: repeat(4, 270px);
+    }
+
+    #nome, #numero, #perfil, #email, #telefone{
+        font-size: 35px;
+    }
+
+    #imagem{
+        width: 270px;
+    }
+
+}
+
+@media(min-width: 1912px){
+    .usuarioCadastrado{
+        margin-left: 15%;
+    }
+}
