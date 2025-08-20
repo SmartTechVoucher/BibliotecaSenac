@@ -2,7 +2,7 @@
 require "../../../config/constantes.php";
 include "../../../public/components/admin/button/button-admin.php";
 
-// Lista de livros (simulação) - depois substitua pelo resultado do banco
+// Lista de livros (simulação) - depois so substituir pelo resultado do banco 😛
 $livros = [];
 for ($i = 1; $i <= 50; $i++) {
     $livros[] = [
@@ -16,7 +16,7 @@ for ($i = 1; $i <= 50; $i++) {
 }
 
 // Configuração da paginação
-$porPagina = 16; // livros por página
+$porPagina = 18; 
 $totalLivros = count($livros);
 $totalPaginas = ceil($totalLivros / $porPagina);
 $paginaAtual = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
@@ -84,34 +84,35 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
             <?php endforeach; ?>
         </div>
 
-        <!-- Paginação -->
-        <div class="paginacao">
-            <?php if ($paginaAtual > 1): ?>
-                <form method="get" style="display:inline;">
-                    <input type="hidden" name="pagina" value="<?php echo $paginaAtual - 1; ?>">
-                    <button type="submit">&laquo; Anterior</button>
-                </form>
-            <?php endif; ?>
+       
+    >
+<div class="paginacao">
+    <?php if ($paginaAtual > 1): ?>
+        <form method="get" style="display:inline;">
+            <input type="hidden" name="pagina" value="<?php echo $paginaAtual - 1; ?>">
+            <?php botao("&laquo; ", "submit", "#004A90", "14px"); ?>
+        </form>
+    <?php endif; ?>
 
-            <?php for ($p = 1; $p <= $totalPaginas; $p++): ?>
-                <form method="get" style="display:inline;">
-                    <input type="hidden" name="pagina" value="<?php echo $p; ?>">
-                    <button type="submit" class="<?php echo $p == $paginaAtual ? 'ativa' : ''; ?>">
-                        <?php echo $p; ?>
-                    </button>
-                </form>
-            <?php endfor; ?>
+    <?php for ($p = 1; $p <= $totalPaginas; $p++): ?>
+        <form method="get" style="display:inline;">
+            <input type="hidden" name="pagina" value="<?php echo $p; ?>">
+            <?php 
+                if ($p == $paginaAtual) {
+                    // Botão ativo (destaque)
+                    botao($p, "submit", "#2563eb", "10px");
+                } else {
+                    // Botão normal
+                    botao($p, "submit", "#004A90", "10px");
+                }
+            ?>
+        </form>
+    <?php endfor; ?>
 
-            <?php if ($paginaAtual < $totalPaginas): ?>
-                <form method="get" style="display:inline;">
-                    <input type="hidden" name="pagina" value="<?php echo $paginaAtual + 1; ?>">
-                    <button type="submit">Próximo &raquo;</button>
-                </form>
-            <?php endif; ?>
-        </div>
-
-    </div>
-    <?php include "../../../public/components/usuario/footer/footer.php"; ?>
-</body>
-
-</html>
+    <?php if ($paginaAtual < $totalPaginas): ?>
+        <form method="get" style="display:inline;">
+            <input type="hidden" name="pagina" value="<?php echo $paginaAtual + 1; ?>">
+            <?php botao(" &raquo;", "submit", "#004A90", "14px"); ?>
+        </form>
+    <?php endif; ?>
+</div>
