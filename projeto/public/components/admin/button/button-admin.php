@@ -12,6 +12,7 @@ function botao($texto, $tipo = "", $cor = "#004A90", $tamanho = "16px", $onclick
     >{$texto}</button>";
     echo $buttonHTML;
 }
-
-
+ 
 ?>
+ 
+ 
