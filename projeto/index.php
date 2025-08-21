@@ -59,24 +59,34 @@ $livros = $model->getLivrosMock();
                 <img class="icsenac" src="../projeto/public/assets/icons/SenacIcon 1.png" alt="Icone Hub academy">
             </div>
 
-            <div class="cbquite" id="menu-links">
+            <div id="menu-links">
                 <nav>
+
+                    <ul class="navbar-desktop-top">
+
+                        <li class="menu-li"><img src="./public/assets/icons/home.png" alt=""><a href="./index.php">Início</a></li>
+                        <li class="menu-li"><img src="./public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
+                        <li class="menu-li"><img src="./public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
+
+                    </ul>
 
 
 
                     <div id="menu-lateral" class="menu-lateral">
                         <ul class="navbar-desktop">
-                            <li><a href="./index.php">Início</a></li>
-                            <li><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
-                            <li><a href="https://api.whatsapp.com/send?phone=5567999492638">Contato</a></li>
-                            <li><a href="../projeto/src/views/usuario/teste-login.php">Logar</a></li>
+
+                            <li class="menu-li"><img src="./public/assets/icons/home.png" alt=""><a href="./index.php">Início</a></li>
+                            <li class="menu-li"><img src="./public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
+                            <li class="menu-li"><img src="./public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
+
                         </ul>
 
                         <div class="menu-sanduiche">
                             <ul class="navbar-desktop">
-                                <li><a href="../projeto/src/views/usuario/minha-conta-usuario.php">Minha Conta</a></li>
-                                <li><a href="../projeto/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
-                                <!-- A dicione outras páginas secundárias aqui -->
+                                <!-- <li class="menu-li"><img src="./public/assets/icons/perfil.png" alt=""><a href="../projeto/src/views/usuario/minha-conta-usuario.php">Minha Conta</a></li> -->
+                                <li class="menu-li"><img src="./public/assets/icons/PesquisaIcon.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
+                                <li class="menu-li"><img src="./public/assets/icons/PesquisaIcon.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -129,7 +139,6 @@ $livros = $model->getLivrosMock();
             </div>
         </div>
 
-        <!-- <div id="overlay" class="overlay"></div> -->
 
         <div class="geralinfo">
             <div class="info">
@@ -236,6 +245,9 @@ $livros = $model->getLivrosMock();
 
             </div>
         </div>
+
+        <div id="overlay" class="overlay"></div>
+
 
 
 

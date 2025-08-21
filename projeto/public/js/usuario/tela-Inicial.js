@@ -20,14 +20,12 @@ const toggleMenuLateral = document.getElementById('menu-toggle');
 const menuLateral = document.getElementById('menu-lateral');
 const overlay = document.getElementById('overlay');
 
-// abrir/fechar no clique do botão
 toggleMenuLateral.addEventListener("click", () => {
     console.log("clicou");
     menuLateral.classList.toggle("ativo");
     overlay.classList.toggle("ativo");
 });
 
-// fechar clicando no overlay
 overlay.addEventListener("click", () => {
     menuLateral.classList.remove("ativo");
     overlay.classList.remove("ativo");
