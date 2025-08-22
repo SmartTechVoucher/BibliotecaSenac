@@ -47,16 +47,19 @@ body {
 }
 
 .cbmenu-icon {
+    position: fixed; /* fixa na tela */
+    top: 15px;       /* ajuste a posição vertical */
+    left: 15px;      /* ajuste a posição horizontal */
     background-color: transparent !important; /* força transparência */
     border: none;
-    outline: none;          /* remove contorno ao clicar */
+    outline: none;        
     padding: 0;
     margin: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
+    z-index: 4000;
 }
 
 .cbmenu-icon i {
@@ -95,7 +98,7 @@ body {
     transition: color 0.3s ease;
   }
   
-  .navbar-desktop li a::after {
+.navbar-desktop li a::after {
     content: '';
     position: absolute;
     width: 0%;
@@ -104,15 +107,38 @@ body {
     left: 0;
     background-color: var(--laranja-padrao);
     transition: width 0.3s ease;
-  }
-  
-  .navbar-desktop li a:hover {
-    color: var(--laranja-padrao);
-  }
-  
-  .navbar-desktop li a:hover::after {
-    width: 100%;
-  }
+}
+
+.navbar-desktop li a:hover {
+color: var(--laranja-padrao);
+}
+
+.navbar-desktop li a:hover::after {
+width: 100%;
+}
+
+.menu-sanduiche .navbar-desktop {
+    display: flex;
+    flex-direction: column; /* itens empilhados */
+    align-items: flex-start; /* alinha todos à esquerda */
+    gap: 10px; /* distância entre os itens, opcional */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: "Poppins",sans-serif;
+}
+
+.menu-sanduiche .navbar-desktop li {
+    display: flex; /* para alinhar a imagem + link na mesma linha */
+    align-items: center; /* centraliza verticalmente imagem + texto */
+    gap: 10px; /* espaço entre imagem e texto */
+}
+
+.menu-sanduiche .navbar-desktop li a {
+    text-align: left;
+}
+
+
 
 /* Menu lateral fechado */
 .overlay {
@@ -122,7 +148,7 @@ body {
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.3);
-    z-index: 1001;
+    z-index: 2500;
     display:none;
     opacity: 0;
 }
@@ -137,7 +163,7 @@ body {
     box-shadow: 2px 0 8px rgba(0,0,0,0.3);
     transition: left 0.3s ease;
     padding: 5% 0px 0px 1%;
-    z-index: 1002;  
+    z-index: 3000;  
     color: var(--cor-texto);
     display: flex;
     flex-direction: column;
@@ -157,13 +183,14 @@ body {
     border-bottom: 1px solid var(--cor-texto);
     box-sizing: border-box;
     position: fixed;
-    z-index: 1000;
+    z-index: 2000;
     top: 0;
+
 }
 
 .overlay.ativo {
+    display: block; 
     opacity: 1;
-    display: inherit;
 }
 
 
@@ -264,18 +291,6 @@ body {
     display: flex;
     justify-content: end;
 }
-
-/* button {
-    width: 25%;
-    height: 120%;
-    border: solid white;
-    background-color: #002043;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-
-} */
 
 .button-entrar {
     padding: 4px 12px 2px 12px;
@@ -542,12 +557,6 @@ body {
     border-bottom-left-radius: 0;
     box-shadow: none;
 }
-
-
-/* .barrapesquisa:focus-within {
-    border: solid #620000; /* aparece borda quando focado */
-/* } */ */
-
 
 .pesquisa.visivel {
     border-bottom-left-radius: 0px;
