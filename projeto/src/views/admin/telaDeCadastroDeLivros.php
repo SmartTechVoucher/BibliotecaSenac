@@ -41,78 +41,88 @@
                 <div class="form-coluna">
                     <div class="form-grupo">
                         <label for="titulo-livro">Titulo</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
-                    ?>
+                        <?php
+                        InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
+                        ?>
                     </div>
                     <div class="form-grupo">
-                       <label for="autor-livro">Autor</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "autor-livro", id: "autor-livro", required: true)
-                    ?> 
+                        <label for="autor-livro">Autor</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "autor-livro", id: "autor-livro", required: true)
+                        ?>
                     </div>
                     <div class="form-grupo">
-                        <label for="titulo-livro">Editora</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
-                    ?>
+                        <label for="editora-livro">Editora</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "editora-livro", id: "editora-livro", required: true)
+                        ?>
                     </div>
-                    <div class="form-grupo">
-                        <label for="codigo-livro">Código do livro</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "codigo-livro", id: "codigo-livro", required: true)
-                    ?>
-                    </div>
-                    <div class="form-grupo">
-                        <label for="idioma-livro">Idioma</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "idioma-livro", id: "idioma-livro")
-                    ?>
-                    </div>
-                    <div class="form-grupo">
-                        <label for="categoria-livro">Categoria</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "categoria-livro", id: "categoria-livro")
-                    ?>
-                    </div>
-                    <div class="form-grupo">
-                        <label for="area-livro">Area</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "area-livro", id: "area-livro")
-                    ?>
-                    </div>
-                    <div class="form-grupo">
-                        <label for="publicacao-livro">Ano</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "publicacao-livro", id: "publicacao-livro", tipo: "date")
-                    ?>
-                    </div>
-                    <div class="form-grupo">
-                       <label for="capa-livro">Capa</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
-                    ?> 
-                    </div>
-                    
+
+
+
 
                 </div>
                 <div class="form-coluna">
-                <div class="form-grupo">
-                     <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
+                    <div class="form-grupo">
+                        <label for="isbn-livro">ISBN</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "isbn-livro", id: "isbn-livro", required: true)
+                        ?>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="idioma-livro">Idioma</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "idioma-livro", id: "idioma-livro")
+                        ?>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="categoria-livro">Categoria</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "categoria-livro", id: "categoria-livro")
+                        ?>
+                    </div>
                 </div>
-                <div class="form-grupo">
-                    <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
+                <div class="form-coluna">
+                    <div class="form-grupo">
+                        <label for="area-livro">Area</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "area-livro", id: "area-livro")
+                        ?>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="publicacao-livro">Ano</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "publicacao-livro", id: "publicacao-livro", tipo: "date")
+                        ?>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="capa-livro">Capa</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
+                        ?>
+                    </div>
                 </div>
-                <div class="form-grupo">
-                    <label for="tipo-documento">Tipo de documento</label>
-                    <select id="tipo-documento" name="tipo-documento" class="input-admin" required>
-                        <option value="">Selecione</option>
-                        <option value="tipo-documento-livro">Livro</option>
-                        <option value="tipo-documento-ebook">eBook</option>
-                        <option value="tipo-documento-revista">Revista</option>
-                    </select>
+                <div class="form-coluna">
+                    <div class="form-grupo">
+                        <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-grupo">
+                        <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="tipo-documento">Tipo de documento</label>
+                        <select id="tipo-documento" name="tipo-documento" class="input-admin" required>
+                            <option value="">Selecione</option>
+                            <option value="tipo-documento-livro">Livro</option>
+                            <option value="tipo-documento-ebook">eBook</option>
+                            <option value="tipo-documento-revista">Revista</option>
+                        </select>
+                    </div>
                 </div>
-                    
+
+
+
+
 
             </fieldset>
 
