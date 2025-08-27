@@ -19,8 +19,6 @@
     box-sizing: border-box;
 }
 
-
-
 body{
     margin: 0;
     background-color: var(--fundoPadrao);
@@ -28,15 +26,15 @@ body{
 
 /*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
 
-.conteiner #iconeComandante{
+/* .conteiner #iconeComandante{
     cursor: var(--apontador);
-}
+} */
 
 /*Define o ícone com o cursor apontador*/
 
 /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
 
-.minhaConta{
+/* .minhaConta{
     display: none;
     position: var(--posicaoAbsoluta);
     top: 17%; left: 91.5%;
@@ -49,7 +47,7 @@ body{
 .minhaConta a{
     text-decoration: none;
     color: var(--branco);
-}
+} */
 
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
@@ -65,6 +63,7 @@ body{
     display: flex;
     justify-content: center;
     height: 70px;
+    margin-top: 2%;
 }
 
 .quadradoCinza{
@@ -77,17 +76,33 @@ body{
     border-width: 0;
 }
 
-
-.quadradoBranco .input{
-    display: flex;
-    justify-content: space-between;
+.quadradoCinza .input{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 105px);
     padding-left: 5%;
     padding-right: 5%;
+    
+}
+
+.quadradoCinza .nome{
+    width: 127px;
+}
+
+.quadradoBranco .opcoesDeSalvamento{
+    grid-column: 2;
+    
+}
+
+.quadradoBranco .unidade{
+    grid-column: 2;
+    grid-row: 2;
+    /* padding-top: 15%; */
 }
 
 .quadradoCinza #calendario{
-    margin-top: 10%;
-    width: 400px;
+    margin-top: 5%;
+   
 }
 
 .quadradoCinza .Calendario{
@@ -99,13 +114,13 @@ body{
     height: 66px;
 }
 
-.quadradoCinza .unidade{
+/* .quadradoCinza .unidade{
     display: grid;
     grid-template-columns: 100px;
     grid-template-rows: 42px;
     position: var(--posicaoAbsoluta);
     left: 61%;
-}
+} */
 
 /*A classe .quadradoCinza .botoes define as configurações
 da div que contêm os botões "cancelar" e "emitir" */
@@ -115,7 +130,7 @@ da div que contêm os botões "cancelar" e "emitir" */
     justify-content: space-between;
     padding-right: 15%;
     padding-left: 9%;
-    margin-top:19%;
+    margin-top:3%;
 }
 
 /*A classe .quadradoCinza .cancelar, .emitir define as 
@@ -136,8 +151,6 @@ configurações dos botões "cancelar" e "emitir" */
 
 /*Parte inferior do corpo*/
 
-
-
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
 @media(max-width:1024px){
@@ -147,106 +160,60 @@ configurações dos botões "cancelar" e "emitir" */
     }
 }
 
-
-@media(min-width: 375px){
-
- /*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*/   
-
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-
-    .quadradoBranco .input{
-        flex-direction: column;
-    }
-
-    .quadradoBranco .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 70%; bottom: 20%;
-    }
-
-    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
-
-    /*Essa parte controla os comprimentos
-    e alturas dos ícones azuis superiores*/
-    .conteiner3 .esquerdo, .direito{
-        width: 100px;
-        height: 100px;
-    }
-   
-    .quadradoCinza #calendario{
-        width: 280px;
-    }
-
-    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 16%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 69.5%;}
-
-} 
-
 @media(min-width:414px){
 
  /*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*/   
 
- .quadradoBranco .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 70%; bottom: 40%;
- }  
-
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 12%;
+ .quadradoCinza{
+    height: 520px;
  }
 
- .minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 12%; left: 72.5%;}
-
-}
+} 
 
 @media(min-width:500px){
 
  /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/   
-
- .quadradoBranco .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 70%; bottom: 40%;
- }  
-
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 12%;
+ 
+ .quadradoCinza{
+    height: 532px;
  }
 
- .minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 12%; left: 77.1%;
+ .quadradoBranco h4, .quadradoBranco .ordenagem{
+    font-size: 18px;
  }
 
+ .quadradoBranco .nome, .salvar, .ordem, .opcoes{
+    font-size: 15px;
+ }
+ 
 }
 
 @media(min-width:600px){
 
  /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/    
 
- .quadradoBranco .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 70%; bottom: 40%;
- }  
-
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 12%;
+ .quadradoCinza{
+    height: 453px;
  }
 
- .minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 12%; left: 81%;
+ .quadradoCinza .input{
+    
+    grid-template-rows: repeat(2, 40px);
+ }
+
+ .quadradoCinza .botoes{
+    margin-top: 10%;
+ }
+
+ .opcoesDeSalvamento{
+    grid-row: 1;
+    grid-column: 2;
+
+ }
+
+ .quadradoBranco .unidade{
+    grid-column: 2;
+    grid-row: 4;
  }
 
 }
@@ -254,11 +221,6 @@ configurações dos botões "cancelar" e "emitir" */
 @media(min-width:768px){
 
  /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/   
-
- /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/           
-    .titulo{
-        font-size: 12px;
-    }
 
     .conteiner .logoSenacHub{
         display: block;
@@ -270,266 +232,52 @@ configurações dos botões "cancelar" e "emitir" */
     width: 60%;
  }
 
- .quadradoCinza .input{
-    flex-direction: row;
- }
-
- .quadradoCinza .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 60%; bottom: 45%;
- }
-
  /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
     .rodape{
         font-size: 14px;
     }
 
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 11%;
-    }
+} 
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 11%; left: 85.2%;}
-}
-
-@media(min-width:820px){
-
- /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/   
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 11%; left: 85.8%;}
-}
-
-@media(min-width: 912px){
-
- /*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*/   
-
-    .conteiner .menuAdm{
-        width: 304px;
-    }
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 55%; bottom: 55%;
-    }
-
-    .rodape .Logo{
-        width: 180px;
-        height: 70px;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
+@media(min-width:1024px){
     
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 10%; left: 87.5%;
+    .quadradoCinza .nome, .quadradoCinza .ordem, .quadradoCinza .opcoes, .quadradoCinza .salvar, .quadradoCinza .sobre, .quadradoCinza h4, .quadradoCinza .ordenagem, 
+    .quadradoCinza .calendar, .quadradoCinza .calendar2{
+        font-size: 20px;
     }
-
-    .inferior{
-        margin-top: 21%;
-    }
-
-}
-
-@media(min-width: 1024px){
-
- /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/   
-
-    .conteiner .menuAdm{
-        width: 304px;
-    }
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 57%; bottom: 55%;
-    }
-
-    .rodape .Logo{
-        width: 180px;
-        height: 70px;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
-    
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 10%; left: 88.6%;
-    }
-
-}
-
-@media(min-width: 1124px){
-
- /*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*/   
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 58%; bottom: 55%;
-    }
-    
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 10%; left: 89.9%;
-    }
-
-}
-
-@media(min-width: 1280px){
-
- /*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*/   
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 60.5%; bottom: 25%;
-    }
-    
-    .rodape .siga-nos{
-        display: block;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 14%;
-    }
-
-    .titulo{
-        position: var(--posicao);
-        right: 5%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 14%; left: 91.1%;}
 }
 
 @media(min-width:1358px){
 
  /*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*/   
 
-.conteiner3 .esquerdo, .direito{
+ .inferior img{
     width: 150px;
     height: 150px;
-}
-
-.quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 61%; bottom: 2%;
-    }
-
-.inferior img{
-    width: 150px;
-    height: 150px;
-}
-
-.menu{
-    position: var(--posicaoAbsoluta);
-    top: 17%;
-}
-
-.minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 17%; left: 91.6%;}
+ }
 
 }
 
 @media(min-width: 1912px){
-
-    .conteiner{
-        height: 140px;
-        align-items: center;
-    }
 
     .conteiner .titulo{
         font-size: 20px;
     }
 
     .quadradoCinza{
-        width: 992px;
-        height: 900px;
-        margin-left: 25%;
+        /* width: 992px; */
+        height: 534px;
+        /* margin-left: 25%; */
     }
     
     .quadradoBranco{
        margin-left: 0%;
     }
 
-    .sobre, .salvar, h4{
-        font-size:30px;
-    }
-
-    .nome, .opcoes{
-        height: 30px;
-        font-size: 20px;
-    }
-
-    .imagemCalendario{
-        width: 40px;
-        height: 50px;
-    }
-
-    .Calendario .imagemCalendario{
-        padding-top:18%;
-    }
-    
-    .Calendario .calendar, .Calendario .calendar2{
-        width: 200px;
-        height:50px;
-        font-size:22px;
-    }
-
-    .Calendario{
-        height: 400px;
-    }
-
-    .quadradoCinza .unidade{
-        grid-template-rows: 100px;
-        grid-template-columns: 170px;
-        position: var(--posicaoAbsoluta);
-        left: 59.5%; bottom: 7%;
-    }
-
-    .quadradoCinza .ordem{
-        height: 30px;
-        font-size: 20px;
-    }
-
     .botoes .emitir, .botoes .cancelar{
         width: 205px;
         height: 40px;
         font-size:20px;
-    }
-
-   .rodape{
-        height: 300px;
-   }
-
-   .rodape .Logo{
-        width: 247px;
-   }
-   
-   .rodape .faleConosco, .copyright, .todos{
-        font-size: 20px;
-   }
-
-   .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 14%; left: 94%;
     }
 
 }
