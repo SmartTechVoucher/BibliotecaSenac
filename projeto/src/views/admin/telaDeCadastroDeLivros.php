@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="../../../public/css/admin/telaCadastroLivros.css">
     <?php include "../../../public/components/admin/input/input-admin.php"; ?>
+    <?php include "../../../public/components/admin/button/button-admin.php"; ?>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -104,9 +105,11 @@
                 </div>
                 <div class="form-coluna">
                     <div class="form-grupo">
+                        <label for="resumo-livro">Resumo</label>
                         <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-grupo">
+                        <label for="notas-livro">Notas</label>
                         <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-grupo">
@@ -125,6 +128,13 @@
 
 
             </fieldset>
+            <div class="botao-container">
+                <?php
+                botao(texto: "Registrar", tipo: "submit");
+                botao(texto:"Cancelar", tipo:"reset", cor:"#b42b2b");
+                ?>
+            </div>
+
 
         </form>
     </div>
