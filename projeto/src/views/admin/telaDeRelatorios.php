@@ -38,73 +38,71 @@
         
         <form class="quadradoCinza">       
 
-        <div class="input">        
-            <div>
-                <h3 class="sobre">Sobre:</h3>
-                <select class="nome"> 
-                    <option value="">Acervo</option>   
-                    <option value="">Aquisição</option>   
-                    <option value="">Empréstimos</option>   
-                    <option value="">Usuários</option> 
-                </select>  
-            </div>    
-                 
-            <div>
-                <h3 class="salvar">Exportar/salvar como:</h3>
-                <select class="opcoes"> 
-                    <option value="">PDF</option>   
-                    <option value="">Png/Jpeg</option>   
-                    <option value="">Texto</option>   
-                    <option value="">Excel</option>   
-                </select>  
-            </div> 
-        
-        </div>
-         
-        <div class="unidade">
-            <h4>Unidade:</h4>
-            <select class="nome"> 
-                <option value="">Todos</option>   
-                <option value="">Dourados</option>   
-                <option value="">Três Lagoas</option>   
-                <option value="">Ponta Porã</option> 
-                <option value="">Corumbá</option> 
-                <option value="">Campo Grande-gastronomia</option> 
-            </select>  
-
-            <h4 class="ordenagem">Ordenagem:</h4>
-            <select class="ordem"> 
-                <option value="">Data crescente</option>   
-                <option value="">Data decrescente</option>   
-                <option value="">Crescente</option>   
-                <option value="">Decrescente</option> 
-            </select>  
-             
-        </div>    
-       
-        <div class="input" id="calendario">
-           
-            <div class="Calendario">
-                <img src="../../../public/assets/icons/Calendar.png " alt="Calendário" class="imagemCalendario"> 
-                
+            <div class="input">        
                 <div>
-                    <h4>Começando de:</h4>
-                    <input type="date" class="calendar">
+                    <h3 class="sobre">Sobre:</h3>
+                    <select class="nome"> 
+                        <option value="">Acervo</option>   
+                        <option value="">Aquisição</option>   
+                        <option value="">Empréstimos</option>   
+                        <option value="">Usuários</option> 
+                    </select>  
+                </div>    
+                    
+                <div class=opcoesDeSalvamento >
+                    <h3 class="salvar">Exportar/salvar como:</h3>
+                    <select class="opcoes"> 
+                        <option value="">PDF</option>   
+                        <option value="">Png/Jpeg</option>   
+                        <option value="">Texto</option>   
+                        <option value="">Excel</option>   
+                    </select>  
+                </div> 
 
-                    <h4>Até:</h4>
-                    <input type="date" class="calendar2">
-                </div>
-           
-            </div>
-                        
-        </div>
+                <div class="unidade">
+                    <h4>Unidade:</h4>
+                    <select class="nome"> 
+                        <option value="">Todos</option>   
+                        <option value="">Dourados</option>   
+                        <option value="">Três Lagoas</option>   
+                        <option value="">Ponta Porã</option> 
+                        <option value="">Corumbá</option> 
+                        <option value="">Campo Grande-gastronomia</option> 
+                    </select>  
 
-       <div class="botoes">
-            <button type="reset" class="cancelar">Cancelar</button>
-            <button type="submit" class="emitir">Emitir</button>
-       </div>
+                    <h4 class="ordenagem">Ordenagem:</h4>
+                    <select class="ordem"> 
+                        <option value="">Data crescente</option>   
+                        <option value="">Data decrescente</option>   
+                        <option value="">Crescente</option>   
+                        <option value="">Decrescente</option> 
+                    </select>                 
+               </div>    
+            
+            </div>                        
         
-     </form>
+            <div class="input" id="calendario">
+            
+                <div class="Calendario">
+                    <img src="../../../public/assets/icons/Calendar.png " alt="Calendário" class="imagemCalendario"> 
+                    
+                    <div>
+                        <h4>Começando de:</h4>
+                        <input type="date" class="calendar">
+
+                        <h4>Até:</h4>
+                        <input type="date" class="calendar2">
+                    </div>
+            
+                </div>
+                            
+            </div>
+
+            <div class="botoes">
+                <button type="reset" class="cancelar">Cancelar</button>
+                <button type="submit" class="emitir">Emitir</button>
+            </div>
+       </form>
    
     </div>
     
