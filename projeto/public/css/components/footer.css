@@ -25,10 +25,10 @@ footer {
 
 /*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*/
 
-#inferiorDireito{
+.inferiorDireito{
     display: flex;
     justify-content: end;
-    margin-top: 2%;
+    margin-top: 5%;
 }
 
 /*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*/
@@ -89,56 +89,9 @@ footer > *:not(.livro-brilhante){
     display: flex;
 }
 
-.redes {
-    display: flex;
-    flex-direction: column;
-    margin-right: 5%;
-}
-
-.social-icons {
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
-    justify-content: center;
-    align-items: center;
-    max-width: 200px;
-    margin-top: 0;
-    margin-top: 1%;
-}
-
-.social-icons img {
-    width: 20px;
-    height: 20px;
-}
-
-.social-icons li {
-    list-style: none;
-    display: inline-block;
-}
-
-.social-icons ul {
-    display: flex;
-    gap: 5%;
-}
-
-.social-icons ul li {
-    font-weight: 700;
-    font-size: 20px;
-    
-    transition: transform 0.3s ease;
-}
-
-.social-icons ul li:hover {
-    transform: scale(1.2); /* Aumenta 20% */
-}
-
 .logo-senac2 img {
     width: 50px;
     height: 50px;
-}
-
-.email p {
-    margin-bottom: 2%;
 }
 
 .link-desenvolvedores {
@@ -148,59 +101,6 @@ footer > *:not(.livro-brilhante){
 
 .link-desenvolvedores:hover {
     color: #F68B1F;
-}
-
-
-.social-icons ul li:nth-child(4) img { width: 18px; }
-
-@media (max-width: 1300px) {
-    footer {
-        height: 120px; /* importante: deixa o footer crescer */
-    }
-
-    .livro-brilhante {
-        
-        display: none;
-    }
-
-    footer > *:not(.livro-brilhante) {
-        order: 1;
-        width: 100%;
-    }
-
-    /* Ajustes específicos para os elementos ocuparem o espaço */
-    .logo-senac {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 15px;
-    }
-
-    .logo-senac img {
-        padding-left: 0; /* remove o padding que centraliza no desktop */
-        margin-right: 0;
-        width: 250px; /* ajusta o tamanho se necessário */
-    }
-
-
-    /* Ajusta o tamanho da imagem do livro no mobile */
-    .livro-brilhante img {
-        width: 40%; /* menor no mobile */
-    }
-
-    .livro-brilhante p {
-        font-size: 9px; /* ajusta texto se necessário */
-    }
-}
-
-@media(min-width:1124px){
-    .conteiner3 .esquerdo, .direito{
-        height: 150px;
-    }
-
-    #inferiorDireito #inferior{
-        width: 150px;
-        height: 150px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -278,4 +178,56 @@ footer > *:not(.livro-brilhante){
         mask-composite: intersect;
     }
     
+}
+
+@media (max-width: 1300px) {
+    footer {
+        height: 120px; /* importante: deixa o footer crescer */
+    }
+
+    .livro-brilhante {
+        
+        display: none;
+    }
+
+    footer > *:not(.livro-brilhante) {
+        order: 1;
+        width: 100%;
+    }
+
+    /* Ajustes específicos para os elementos ocuparem o espaço */
+    .logo-senac {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .logo-senac img {
+        padding-left: 0; /* remove o padding que centraliza no desktop */
+        margin-right: 0;
+        width: 250px; /* ajusta o tamanho se necessário */
+    }
+
+
+    /* Ajusta o tamanho da imagem do livro no mobile */
+    .livro-brilhante img {
+        width: 40%; /* menor no mobile */
+    }
+
+    .livro-brilhante p {
+        font-size: 9px; /* ajusta texto se necessário */
+    }
+
+    .inferiorDireito .inferior{
+        width: 100px;
+        height: 100px;
+    }
+
+}
+
+@media(min-width:1124px){
+    .conteiner3 .esquerdo, .direito{
+        height: 150px;
+    }
+
 }

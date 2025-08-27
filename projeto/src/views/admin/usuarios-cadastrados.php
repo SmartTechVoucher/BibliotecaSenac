@@ -250,7 +250,7 @@ require_once "../../../config/constantes.php";
   </main>
   <!-- footer  -->
   <?php
-    include "../../../public/components/usuario/footer/footer.php";
+    include "../../../public/components/admin/footer/footer-admin.php";
     ?>
 </body>
 </html>
