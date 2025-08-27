@@ -9,7 +9,6 @@ require __DIR__ . '/config/constantes.php';
 
 include_once __DIR__ . '/src/model/usuario/livro-model.php';
 
-// Agora instancia a classe
 $model = new LivroModel();
 $livros = $model->getLivrosMock();
 
@@ -18,7 +17,7 @@ $livros = $model->getLivrosMock();
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -175,9 +174,9 @@ $livros = $model->getLivrosMock();
                 </div>
                 <div class="gencard">
                     <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
+                        <img src="../projeto/public/assets/icons/Geography.png" alt="" class="genicon5" id="comunicacao">
                     </div>
-                    <h2 class="gentitle">Educação</h2>
+                    <h2 class="gentitle">Comunicação</h2>
                 </div>
             </div>
         </div>
