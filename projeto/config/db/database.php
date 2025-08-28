@@ -15,7 +15,7 @@ class Database
 
             $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-            echo "Deu certo";
+            echo "Deu certo pinto 32";
             return $conn;
 
         } catch (\PDOException $th) {
