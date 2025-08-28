@@ -48,9 +48,25 @@
                     </div>
                     <div class="form-grupo">
                         <label for="autor-livro">Autor</label>
-                        <?php
-                        InputAdmin(largura: 100, name: "autor-livro", id: "autor-livro", required: true)
-                        ?>
+                        <select name="autor-livro" id="autor-livro" class="input-admin">
+                        <option value="" disabled selected>Selecione um(a) autor(a)...</option>
+                            <?php
+                            $autores = [
+                                ['code' => '0', 'name' => 'Vinicius De Moraes'],
+                                ['code' => '1', 'name' => 'Rafael Vinicius'],
+                                ['code' => '2', 'name' => 'Pamela Taga'],
+                                ['code' => '3', 'name' => 'Alberto Hainstien'],
+                                ['code' => '4', 'name' => 'Cristiano Dourado'],
+                                ['code' => '5', 'name' => 'Paloma Celulares'],
+                                ['code' => '6', 'name' => 'Ronaldo Nazario'],
+                                ['code' => '7', 'name' => 'Roberto Carnes']
+                            ];
+                            foreach ($autores as $aut) {
+                                echo '<option value="' . htmlspecialchars($aut['code']) . '">' . htmlspecialchars($aut['name']) . '</option>';
+                            }
+                            ?>
+                            
+                        </select>
                     </div>
                     <div class="form-grupo">
                         <label for="editora-livro">Editora</label>
@@ -72,23 +88,70 @@
                     </div>
                     <div class="form-grupo">
                         <label for="idioma-livro">Idioma</label>
-                        <?php
-                        InputAdmin(largura: 100, name: "idioma-livro", id: "idioma-livro")
-                        ?>
+                        <select name="idioma-livro" id="idioma-livro" class="input-admin">
+                        <option value="" disabled selected>Selecione um idioma...</option>
+                            <?php
+                           $idioma = [
+                            ['code' => '0', 'name' => 'Português BR'],
+                            ['code' => '1', 'name' => 'Inglês'],
+                            ['code' => '2', 'name' => 'Espanhol'],
+                            ['code' => '3', 'name' => 'Francês'],
+                            ['code' => '4', 'name' => 'Alemão'],
+                            ['code' => '5', 'name' => 'Japonês'],
+                            ['code' => '6', 'name' => 'Chinês'],
+                            ['code' => '7', 'name' => 'Ronaldo'],
+                            ['code' => '8', 'name' => 'Italiano'],
+                            ['code' => '9', 'name' => 'Holandês'],
+                            ['code' => '10', 'name' => 'Sueco'],
+                            ['code' => '11', 'name' => 'Árabe'],
+                            ['code' => '12', 'name' => 'Russo'],
+                            ['code' => '13', 'name' => 'Coreano'],
+                            ['code' => '14', 'name' => 'Hindi'],
+                            ['code' => '15', 'name' => 'Grego'],
+                            ['code' => '16', 'name' => 'Polonês'],
+                            ['code' => '17', 'name' => 'Vietnamita']
+                        ];
+                            foreach ($idioma as $idi) {
+                                echo '<option value="' . htmlspecialchars($idi['code']) . '">' . htmlspecialchars($idi['name']) . '</option>';
+                            }
+                            ?>
+                            
+                        </select>
                     </div>
                     <div class="form-grupo">
                         <label for="categoria-livro">Categoria</label>
-                        <?php
-                        InputAdmin(largura: 100, name: "categoria-livro", id: "categoria-livro")
-                        ?>
+
                     </div>
                 </div>
                 <div class="form-coluna">
                     <div class="form-grupo">
                         <label for="area-livro">Area</label>
-                        <?php
-                        InputAdmin(largura: 100, name: "area-livro", id: "area-livro")
-                        ?>
+                        <option value="" disabled selected>Selecione as areas...</option>
+                            <?php
+                           $idioma = [
+                            ['code' => '0', 'name' => 'Português BR'],
+                            ['code' => '1', 'name' => 'Inglês'],
+                            ['code' => '2', 'name' => 'Espanhol'],
+                            ['code' => '3', 'name' => 'Francês'],
+                            ['code' => '4', 'name' => 'Alemão'],
+                            ['code' => '5', 'name' => 'Japonês'],
+                            ['code' => '6', 'name' => 'Chinês'],
+                            ['code' => '7', 'name' => 'Ronaldo'],
+                            ['code' => '8', 'name' => 'Italiano'],
+                            ['code' => '9', 'name' => 'Holandês'],
+                            ['code' => '10', 'name' => 'Sueco'],
+                            ['code' => '11', 'name' => 'Árabe'],
+                            ['code' => '12', 'name' => 'Russo'],
+                            ['code' => '13', 'name' => 'Coreano'],
+                            ['code' => '14', 'name' => 'Hindi'],
+                            ['code' => '15', 'name' => 'Grego'],
+                            ['code' => '16', 'name' => 'Polonês'],
+                            ['code' => '17', 'name' => 'Vietnamita']
+                        ];
+                            foreach ($idioma as $idi) {
+                                echo '<option value="' . htmlspecialchars($idi['code']) . '">' . htmlspecialchars($idi['name']) . '</option>';
+                            }
+                            ?>
                     </div>
                     <div class="form-grupo">
                         <label for="publicacao-livro">Ano</label>
@@ -131,7 +194,7 @@
             <div class="botao-container">
                 <?php
                 botao(texto: "Registrar", tipo: "submit");
-                botao(texto:"Cancelar", tipo:"reset", cor:"#b42b2b");
+                botao(texto: "Cancelar", tipo: "reset", cor: "#d00");
                 ?>
             </div>
 
