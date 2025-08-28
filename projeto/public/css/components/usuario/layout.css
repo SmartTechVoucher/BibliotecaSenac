@@ -1,3 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+:root {
+    --azul-tela-inicial: #003162;
+    --cor-texto: #ffffff;
+    --laranja-padrao: #F68B1F;
+}
+
 .cabecalho {
     width: 100%;
     display: flex;
