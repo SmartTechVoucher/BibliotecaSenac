@@ -1,5 +1,6 @@
 <?php
 
+require(__DIR__ . '/../../../config/constantes.php');
 require_once __DIR__ . "/../../../config/db/database.php";
 
 class UsuarioController{
@@ -13,50 +14,100 @@ class UsuarioController{
     $numero_matricula, $id_categoria_curso, $id_curso, $data_inicio, $data_fim, $genero, $senha){
         try {
             $conn = $this->db->Connect();
-
-            if (empty($nome)|| empty($nome_social) || empty($cpf) || empty($email) || empty($data_nascimento) 
-                || empty($telefone) || empty($rua) || empty($bairro) || empty($numero_matricula) || empty($id_categoria_curso) 
-                || empty($id_curso) || empty($data_inicio) || empty($data_fim) || empty($genero) || empty($senha)) {
-                throw new InvalidArgumentException("Todos os campos são obrigatórios.");
-            }
-
-            if ($this->emailJaExiste($Email)){
-                throw new InvalidArgumentException("Email já cadastro.");
-            }
-
-            if($this->cpfJaExiste($cpf)){
-                throw new InvalidArgumentException("CPF já cadastrado.");
-            }
-
-            $sql = "INSERT INTO usuarios (nome, nome_social, cpf, email, data_nascimento, telefone, rua, bairro, 
-            numero_matricula, id_categoria_curso, id_curso, data_inicio, data_fim, genero, senha) VALUES (:nome, :nome_social, :cpf, :email, :data_nascimento, :telefone, :rua, :bairro, 
-            :numero_matricula, :id_categoria_curso, :id_curso, :data_inicio, :data_fim, :genero, :senha)";
-
-            $db = $conn->prepare($sql);
             
-            $db->bindParam(':nome', $nome);
-            $db->bindParam(':nome_social', $nome_social);
-            $db->bindParam(':cpf', $cpf);
-            $db->bindParam(':data_nascimento', $data_nascimento);
-            $db->bindParam(':telefone', $telefone);
-            $db->bindParam(':rua', $rua);
-            $db->bindParam(':bairro', $bairro);
-            $db->bindParam(':numero_matricula', $numero_matricula);
-            $db->bindParam(':id_categoria_curso', $id_categoria_curso);
-            $db->bindParam(':id_curso', $id_curso);
-            $db->bindParam(':data_inicio', $data_inicio);
-            $db->bindParam(':data_fim', $data_fim);
-            $db->bindParam(':genero', $genero);
-            $db->bindParam(':senha', password_hash($senha, PASSWORD_BCRYPT));
-            $db->bindParam(':email', $email);
-
-            if($db->execute()){
-                return True;
-            }else{
-                return False;
+            // Verificar se email já existe
+            if ($this->emailJaExiste($email)) {
+                return false;
             }
+            
+            // Verificar se CPF já existe
+            if ($this->cpfJaExiste($cpf)) {
+                return false;
+            }
+            
+            $sql = "INSERT INTO usuarios (nome, nome_social, cpf, email, data_nascimento, telefone, rua, bairro, 
+                    numero_matricula, id_categoria_curso, id_curso, data_inicio, data_fim, genero, senha) 
+                    VALUES (:nome, :nome_social, :cpf, :email, :data_nascimento, :telefone, :rua, :bairro, 
+                    :numero_matricula, :id_categoria_curso, :id_curso, :data_inicio, :data_fim, :genero, :senha)";
+            
+            $stmt = $conn->prepare($sql);
+            
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':nome_social', $nome_social);
+            $stmt->bindParam(':cpf', $cpf);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':data_nascimento', $data_nascimento);
+            $stmt->bindParam(':telefone', $telefone);
+            $stmt->bindParam(':rua', $rua);
+            $stmt->bindParam(':bairro', $bairro);
+            $stmt->bindParam(':numero_matricula', $numero_matricula);
+            $stmt->bindParam(':id_categoria_curso', $id_categoria_curso);
+            $stmt->bindParam(':id_curso', $id_curso);
+            $stmt->bindParam(':data_inicio', $data_inicio);
+            $stmt->bindParam(':data_fim', $data_fim);
+            $stmt->bindParam(':genero', $genero);
+            $stmt->bindParam(':senha', password_hash($senha, PASSWORD_BCRYPT));
+
+            return $stmt->execute();
+            
         } catch (PDOException $e) {
-            // Log error or handle it as needed
+            error_log("Erro ao criar usuário: " . $e->getMessage());
+            return false;
+        }
+    }
+    
+    // Função para validar login
+    public function validarLogin($email, $senha) {
+        try {
+            $conn = $this->db->Connect();
+            
+            $sql = "SELECT id, nome, email, senha FROM usuarios WHERE email = :email";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            
+            if ($usuario && password_verify($senha, $usuario['senha'])) {
+                // Remove a senha do retorno por segurança
+                unset($usuario['senha']);
+                return $usuario;
+            }
+            
+            return false;
+            
+        } catch (PDOException $e) {
+            error_log("Erro ao validar login: " . $e->getMessage());
+            return false;
+        }
+    }
+    
+    // Verificar se email já existe
+    private function emailJaExiste($email) {
+        try {
+            $conn = $this->db->Connect();
+            $sql = "SELECT COUNT(*) FROM usuarios WHERE email = :email";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            
+            return $stmt->fetchColumn() > 0;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+    
+    // Verificar se CPF já existe
+    private function cpfJaExiste($cpf) {
+        try {
+            $conn = $this->db->Connect();
+            $sql = "SELECT COUNT(*) FROM usuarios WHERE cpf = :cpf";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':cpf', $cpf);
+            $stmt->execute();
+            
+            return $stmt->fetchColumn() > 0;
+        } catch (PDOException $e) {
             return false;
         }
     }

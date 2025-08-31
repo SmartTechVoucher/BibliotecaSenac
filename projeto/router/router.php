@@ -1,37 +1,94 @@
 <?php
+// router.php
+
 session_start();
-require_once __DIR__ . "../../projeto/src/controller/usuario/login-controller.php";
-$loginController = new LoginController();
+require_once __DIR__ . '/../config/constantes.php';
+require_once __DIR__ . '/../config/db/database.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Verificar se a ação foi enviada
+if (!isset($_GET['acao'])) {
+    header('Location: ' . $URLBASE);
+    exit;
+}
 
-    if (!isset($_GET["acao"])) {
-        echo "Erro: Nenhuma ação especificada.";
-        exit;
-    }
+$acao = $_GET['acao'];
 
-    switch ($_GET["acao"]) {
-        case 'validarLogin':
-            $nome = $_POST["nome"] ?? '';
-            $senha = $_POST["senha"] ?? '';
-            $resultado = $loginController->ValidarLogin($nome, $senha);
+switch ($acao) {
+    case 'validarLogin':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . $URLBASE);
+            exit;
+        }
+        
+        require_once __DIR__ . '/../src/controller/usuario/usuario-controller.php';
+        
+        $email = trim($_POST['email'] ?? '');
+        $senha = $_POST['senha'] ?? '';
+        
+        // Validações básicas
+        if (empty($email) || empty($senha)) {
+            $_SESSION['toast'] = [
+                'tipo' => 'erro',
+                'mensagem' => 'Email e senha são obrigatórios!'
+            ];
+            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+            exit;
+        }
+        
+        try {
+            $usuarioController = new UsuarioController();
+            $usuario = $usuarioController->validarLogin($email, $senha);
             
-            if ($resultado) {
-
-                // Redireciona conforme o login
-                if ($nome === 'admin123') {
-                    header("Location: ./src/views/admin/telaInicialDoAdm.php");
-                } else {
-                    header("Location: ./index.php");
-                }
+            if ($usuario) {
+                // Login bem-sucedido
+                $_SESSION['usuario_id'] = $usuario['id'];
+                $_SESSION['usuario_nome'] = $usuario['nome'];
+                $_SESSION['usuario_email'] = $usuario['email'];
+                
+                $_SESSION['toast'] = [
+                    'tipo' => 'sucesso',
+                    'mensagem' => 'Bem-vindo(a), ' . $usuario['nome'] . '!'
+                ];
+                
+                // Redirecionar para dashboard (ajuste o caminho)
+                header('Location: ' . $URLBASE . 'index.php');
                 exit;
+                
             } else {
-                header("Location: ./src/views/usuario/login.php");
+                // Login falhou
+                $_SESSION['toast'] = [
+                    'tipo' => 'erro',
+                    'mensagem' => 'Email ou senha incorretos!'
+                ];
+                header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
                 exit;
             }
-            break; // ✅ o break fica aqui, dentro do case
-        default:
-            echo "Erro: Ação não reconhecida.";
+            
+        } catch (Exception $e) {
+            $_SESSION['toast'] = [
+                'tipo' => 'erro',
+                'mensagem' => 'Erro interno do servidor. Tente novamente.'
+            ];
+            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
             exit;
-    }
+        }
+        break;
+        
+    case 'logout':
+        // Destruir sessão
+        session_destroy();
+        
+        $_SESSION['toast'] = [
+            'tipo' => 'sucesso',
+            'mensagem' => 'Logout realizado com sucesso!'
+        ];
+        
+        header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+        exit;
+        break;
+        
+    default:
+        header('Location: ' . $URLBASE);
+        exit;
 }
+?>

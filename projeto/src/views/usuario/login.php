@@ -1,6 +1,12 @@
 <?php
 require(__DIR__ . '/../../../config/constantes.php');
 session_start();
+
+// Se já estiver logado, redireciona
+if (isset($_SESSION['usuario_id'])) {
+    header('Location: ' . $URLBASE . 'index.php'); // Ajuste para sua página principal
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,28 +32,28 @@ session_start();
       </div>
 
       <!-- form -->
-      <form action="../../../router.php?acao=validarLogin" method="POST">
-        <img src="../../../public/assets/img/LogoHub_academy.png" alt="logo-login" class="logo-hub" />
+      <form action="<?php echo $URLBASE ?>/router/router.php?acao=validarLogin" method="POST">
+        <img src="<?php echo $URLBASE ?>/public/assets/img/LogoHub_academy.png" alt="logo-login" class="logo-hub" />
         <p id="subtitulo" class="titulo-login"></p>
 
         <div class="login-campos">
           <div class="campo-usuario">
-            <label for="campo_login"><img src="../../../public/assets/icons/perfil.png" alt=""> Usuário</label>
-            <input type="text" name="nome" id="campo_login" placeholder="Usuário" required />
+            <label for="campo_login"><img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt=""> Email</label>
+            <input type="email" name="email" id="campo_login" placeholder="Digite seu email" required />
           </div>
           <div class="campo-senha">
-            <label for="campo_senha"><img src="../../../public/assets/icons/cadeado-senha.png" alt="" class="cadeado-senha"> Senha</label>
-            <input type="password" name="senha" id="campo_senha" placeholder="Senha" required />
-            <span class="toggle-senha" onclick="mostrarSenha()"><img src="../../../public/assets/icons/ocultar-2.png" alt="" class="ocultar-senha"></span>
+            <label for="campo_senha"><img src="<?php echo $URLBASE ?>/public/assets/icons/cadeado-senha.png" alt="" class="cadeado-senha"> Senha</label>
+            <input type="password" name="senha" id="campo_senha" placeholder="Digite sua senha" required />
+            <span class="toggle-senha" onclick="mostrarSenha()"><img src="<?php echo $URLBASE ?>/public/assets/icons/ocultar-2.png" alt="" class="ocultar-senha"></span>
           </div>
         </div>
 
         <div class="check-entrar">
           <div class="checkbox-container">
-            <input type="checkbox" id="lembrar" />
+            <input type="checkbox" id="lembrar" name="lembrar" />
             <label for="lembrar">Lembrar senha</label>
           </div>
-          <a href="../../views/usuario/recuperar-senha.php">Recuperar Senha</a>
+          <a href="<?php echo $URLBASE ?>/src/views/usuario/recuperar-senha.php">Recuperar Senha</a>
         </div>
 
         <button type="submit">ENTRAR</button>
