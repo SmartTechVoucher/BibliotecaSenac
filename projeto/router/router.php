@@ -73,7 +73,57 @@ switch ($acao) {
             exit;
         }
         break;
-        
+
+    case 'validarAdminLogin':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . $URLBASE);
+            exit;
+        }
+
+        require_once __DIR__ . '/../src/controller/admin/AdminController.php';
+
+        $nome = trim($_POST['nome'] ?? '');
+        $senha = $_POST['senha'] ?? '';
+
+        // Validações básicas
+        if (empty($nome) || empty($senha)) {
+            $_SESSION['toast'] = [
+                'tipo' => 'erro',
+                'mensagem' => 'Nome e senha são obrigatórios!'
+            ];
+            header('Location: ' . $URLBASE . '/public/adm/login.php');
+            exit;
+        }
+
+        try {
+            $adminController = new AdminController();
+            $resultado = $adminController->login($nome, $senha);
+
+            if ($resultado) {
+                // Login bem-sucedido - redirecionar para tela inicial do admin
+                header('Location: ' . $URLBASE . '/src/views/admin/telaInicialDoAdm.php');
+                exit;
+
+            } else {
+                // Login falhou
+                $_SESSION['toast'] = [
+                    'tipo' => 'erro',
+                    'mensagem' => 'Nome ou senha incorretos!'
+                ];
+                header('Location: ' . $URLBASE . '/public/adm/login.php');
+                exit;
+            }
+
+        } catch (Exception $e) {
+            $_SESSION['toast'] = [
+                'tipo' => 'erro',
+                'mensagem' => 'Erro interno do servidor. Tente novamente.'
+            ];
+            header('Location: ' . $URLBASE . '/public/adm/login.php');
+            exit;
+        }
+        break;
+
     case 'logout':
         // Destruir sessão
         session_destroy();

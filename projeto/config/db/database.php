@@ -27,6 +27,3 @@ class Database
 
 }
 
-$db = new Database();
-$db->Connect();
-

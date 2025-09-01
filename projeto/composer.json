@@ -1,0 +1,28 @@
+{
+    "name": "biblioteca-senac/projeto",
+    "description": "Sistema de Biblioteca SENAC HUB ACADEMY",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BibliotecaSenac\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BibliotecaSenac\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit tests/Unit/Model/TesteModeloLivro.php tests/Unit/Controller/TesteControladorAdmin.php tests/Unit/Controller/TesteControladorLogin.php tests/Integration/TesteRoteador.php",
+        "test-unit": "phpunit tests/Unit/Model/TesteModeloLivro.php",
+        "test-integration": "./vendor/bin/phpunit tests/Integration/TesteRoteador.php tests/Integration/TesteIntegracaoLogin.php",
+        "test-integration-login": "./vendor/bin/phpunit tests/Integration/TesteIntegracaoLogin.php",
+        "test-controladores": "phpunit tests/Unit/Controller/TesteControladorAdmin.php tests/Unit/Controller/TesteControladorLogin.php",
+        "test-modelos": "./vendor/bin/phpunit tests/Unit/Model/TesteModeloBaseDados.php tests/Unit/Model/TesteModeloLivro.php",
+        "test-base-dados": "./vendor/bin/phpunit tests/Unit/Model/TesteModeloBaseDados.php",
+        "test-coverage": "phpunit --coverage-html reports/coverage tests/Unit/Model/TesteModeloLivro.php"
+    }
+}

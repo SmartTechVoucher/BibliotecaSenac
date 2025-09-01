@@ -1,81 +1,121 @@
 <?php
 require_once __DIR__ . "/../../../config/db/database.php";
+require_once __DIR__ . "/../../model/admin/AdminModel.php";
+require_once __DIR__ . "/../../model/usuario/UsuarioModel.php";
 
-class LoginController{
-
+class LoginController
+{
     private $conn;
+    private $adminModel;
+    private $usuarioModel;
 
-    public function __construct(){
+    public function __construct()
+    {
         $banco = new Database();
-
         $this->conn = $banco->Connect();
-
+        $this->adminModel = new AdminModel();
+        $this->usuarioModel = new UsuarioModel();
     }
 
-    public function ValidarLogin($nome,$senha){
-   
-    try {
-        $sql = "SELECT * FROM usuario WHERE nome = :nome AND senha = :senha";
-    //         $db = $this->conn->prepare($sql);
-    //         $db->bindParam(":nome",$nome);
-    //         $db->bindParam(":senha",$senha);
-    //         $db->execute();
-    //         $usuario = $db->fetchAll(PDO::FETCH_ASSOC);
+    public function validarLogin($nome, $senha) {
+        session_start();
 
-    //         if ($usuario) {
-    //             // Salva os dados na sessão
-    //             $_SESSION['usuario'] = [
-    //                 'id' => $usuario['id'],
-    //                 'nome' => $usuario['nome']
-    //             ];
-    //             $_SESSION['toast'] = "Login efetuado com sucesso!";
-    //             return true;
-    //         } else {
-    //             $_SESSION['toast'] = "Usuário ou senha inválidos.";
-    //             return false;
-                
-    //     } catch (\Throwable $th) {
-    //         $_SESSION['toast'] = "Erro interno no servidor.";
-    //         return false;
-    //         //throw $th;
-    //     }
-    // }
-    public function ValidarLogin($nome, $senha) {
-    session_start();
+        try {
+            // Primeiro tenta login como administrador
+            $adminModel = new AdminModel();
+            $admin = $adminModel->validarLogin($nome, $senha);
 
-    // Verifica login de administrador
-    if ($nome === "admin123" && $senha === "2020") {
-        $_SESSION['usuario'] = [
-            'id' => 0,
-            'nome' => 'Administrador'
-        ];
-        $_SESSION['toast'] = [
-            'mensagem' => "Login efetuado com sucesso!",
-            'tipo' => "success"
-        ];
-        return true;
+            if ($admin) {
+                $_SESSION['usuario'] = [
+                    'id' => $admin['id_administrador'],
+                    'nome' => $admin['nome'],
+                    'tipo' => 'admin'
+                ];
+                $_SESSION['toast'] = [
+                    'mensagem' => "Login efetuado com sucesso!",
+                    'tipo' => "success"
+                ];
+                return true;
+            }
+
+            // Se não encontrou admin, tenta como usuário comum
+            $usuarioModel = new UsuarioModel();
+            $usuario = $usuarioModel->validarLogin($nome, $senha);
+
+            if ($usuario) {
+                $_SESSION['usuario'] = [
+                    'id' => $usuario['id_usuario'],
+                    'nome' => $usuario['nome'],
+                    'tipo' => 'usuario'
+                ];
+                $_SESSION['toast'] = [
+                    'mensagem' => "Login efetuado com sucesso!",
+                    'tipo' => "success"
+                ];
+                return true;
+            }
+
+            // Login inválido tanto para admin quanto usuário
+            $_SESSION['toast'] = [
+                'mensagem' => "Usuário ou senha inválidos.",
+                'tipo' => "error"
+            ];
+            return false;
+
+        } catch (\Throwable $th) {
+            $_SESSION['toast'] = [
+                'mensagem' => "Erro interno no servidor.",
+                'tipo' => "error"
+            ];
+            return false;
+        }
     }
 
-    // Verifica login de usuário comum
-    if ($nome === "12345678910" && $senha === "2020") {
-        $_SESSION['usuario'] = [
-            'id' => 1,
-            'nome' => 'João da Silva'
-        ];
-        $_SESSION['toast'] = [
-            'mensagem' => "Login efetuado com sucesso!",
-            'tipo' => "success"
-        ];
-        return true;
+    /**
+     * Redireciona usuário baseado no tipo (admin ou usuário comum)
+     */
+    public function redirecionarUsuario()
+    {
+        if (!isset($_SESSION['usuario'])) {
+            header('Location: ' . $this->getUrlBase() . '/src/views/usuario/login.php');
+            exit;
+        }
+
+        $tipo = $_SESSION['usuario']['tipo'];
+
+        if ($tipo === 'admin') {
+            header('Location: ' . $this->getUrlBase() . '/src/views/admin/telaInicialDoAdm.php');
+        } else {
+            header('Location: ' . $this->getUrlBase() . '/index.php');
+        }
+        exit;
     }
 
-    // Login inválido
-    $_SESSION['toast'] = [
-        'mensagem' => "Usuário ou senha inválidos.",
-        'tipo' => "error"
-    ];
-    return false;
-}
-    
+    /**
+     * Verifica se usuário está logado
+     */
+    public function verificarSessao()
+    {
+        session_start();
+        return isset($_SESSION['usuario']);
+    }
 
+    /**
+     * Faz logout do usuário
+     */
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        header('Location: ' . $this->getUrlBase() . '/src/views/usuario/login.php');
+        exit;
+    }
+
+    private function getUrlBase()
+    {
+        if (defined('URLBASE')) {
+            return URLBASE;
+        }
+        return '/BibliotecaSenac/projeto';
+    }
 }

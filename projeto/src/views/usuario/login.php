@@ -1,11 +1,13 @@
 <?php
 require(__DIR__ . '/../../../config/constantes.php');
+require(__DIR__ . '/../../controller/usuario/login-controller.php');
+
 session_start();
 
-// Se já estiver logado, redireciona
-if (isset($_SESSION['usuario_id'])) {
-    header('Location: ' . $URLBASE . 'index.php'); // Ajuste para sua página principal
-    exit;
+// Se já estiver logado, redireciona baseado no tipo de usuário
+if (isset($_SESSION['usuario'])) {
+    $loginController = new LoginController();
+    $loginController->redirecionarUsuario();
 }
 ?>
 <!DOCTYPE html>

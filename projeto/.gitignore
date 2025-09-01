@@ -1,0 +1,35 @@
+# Dependências PHP
+vendor/
+
+# Relatórios de teste
+reports/
+*.xml
+*.html
+
+# Arquivos temporários
+*.tmp
+*.log
+
+# Dados sensíveis
+.env
+config/db/.env
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Cache
+cache/
+tmp/
+
+# Logs de erro
+logs/
+*.log
+
+# Arquivos de backup
+*.bak
+*.backup
