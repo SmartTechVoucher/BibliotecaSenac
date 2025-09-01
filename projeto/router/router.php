@@ -1,42 +1,39 @@
 <?php
 // router.php
 
-session_start();
 require_once __DIR__ . '/../config/constantes.php';
 require_once __DIR__ . '/../config/db/database.php';
+require_once __DIR__ . '/../src/controller/usuario/usuario-controller.php';
+
+session_start();
 
 // Verificar se a ação foi enviada
 if (!isset($_GET['acao'])) {
-    header('Location: ' . $URLBASE);
+    header('Location: ' . $URLBASE . '/index.php');
     exit;
 }
 
 $acao = $_GET['acao'];
+$usuarioController = new UsuarioController();
 
 switch ($acao) {
     case 'validarLogin':
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: ' . $URLBASE);
-            exit;
-        }
-        
-        require_once __DIR__ . '/../src/controller/usuario/usuario-controller.php';
-        
-        $email = trim($_POST['email'] ?? '');
-        $senha = $_POST['senha'] ?? '';
-        
-        // Validações básicas
-        if (empty($email) || empty($senha)) {
-            $_SESSION['toast'] = [
-                'tipo' => 'erro',
-                'mensagem' => 'Email e senha são obrigatórios!'
-            ];
-            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
-            exit;
-        }
-        
-        try {
-            $usuarioController = new UsuarioController();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $email = trim($_POST['email']);
+            $senha = $_POST['senha'];
+            $lembrar = isset($_POST['lembrar']);
+            
+            // Validações básicas
+            if (empty($email) || empty($senha)) {
+                $_SESSION['toast'] = [
+                    'tipo' => 'erro',
+                    'mensagem' => 'Email e senha são obrigatórios!'
+                ];
+                header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+                exit;
+            }
+            
+            // Tenta validar o login
             $usuario = $usuarioController->validarLogin($email, $senha);
             
             if ($usuario) {
@@ -45,13 +42,19 @@ switch ($acao) {
                 $_SESSION['usuario_nome'] = $usuario['nome'];
                 $_SESSION['usuario_email'] = $usuario['email'];
                 
+                // Se marcou "lembrar senha", pode implementar cookies aqui
+                if ($lembrar) {
+                    // Implementar lógica de "lembrar senha" se necessário
+                    // setcookie('lembrar_usuario', $usuario['id'], time() + (86400 * 30), '/');
+                }
+                
                 $_SESSION['toast'] = [
                     'tipo' => 'sucesso',
-                    'mensagem' => 'Bem-vindo(a), ' . $usuario['nome'] . '!'
+                    'mensagem' => 'Login realizado com sucesso! Bem-vindo, ' . $usuario['nome'] . '!'
                 ];
                 
-                // Redirecionar para dashboard (ajuste o caminho)
-                header('Location: ' . $URLBASE . 'index.php');
+                // Redireciona para a página principal
+                header('Location: ' . $URLBASE . '/index.php');
                 exit;
                 
             } else {
@@ -63,23 +66,20 @@ switch ($acao) {
                 header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
                 exit;
             }
-            
-        } catch (Exception $e) {
-            $_SESSION['toast'] = [
-                'tipo' => 'erro',
-                'mensagem' => 'Erro interno do servidor. Tente novamente.'
-            ];
+        } else {
+            // Método não permitido
             header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
             exit;
         }
         break;
         
     case 'logout':
-        // Destruir sessão
+        // Destrói a sessão
         session_destroy();
+        $_SESSION = array();
         
         $_SESSION['toast'] = [
-            'tipo' => 'sucesso',
+            'tipo' => 'info',
             'mensagem' => 'Logout realizado com sucesso!'
         ];
         
@@ -87,8 +87,42 @@ switch ($acao) {
         exit;
         break;
         
+    case 'criarUsuario':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Aqui você implementaria a lógica para criar usuário
+            // Similar ao validarLogin, mas chamando criarUsuario()
+            
+            $nome = trim($_POST['nome']);
+            $nome_social = trim($_POST['nome_social']);
+            $cpf = trim($_POST['cpf']);
+            $email = trim($_POST['email']);
+            // ... outros campos
+            
+            $resultado = $usuarioController->criarUsuario(
+                $nome, $nome_social, $cpf, $email, 
+                // ... outros parâmetros
+            );
+            
+            if ($resultado) {
+                $_SESSION['toast'] = [
+                    'tipo' => 'sucesso',
+                    'mensagem' => 'Usuário criado com sucesso!'
+                ];
+                header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+            } else {
+                $_SESSION['toast'] = [
+                    'tipo' => 'erro',
+                    'mensagem' => 'Erro ao criar usuário. Email ou CPF já existem.'
+                ];
+                header('Location: ' . $URLBASE . '/src/views/usuario/cadastro.php');
+            }
+            exit;
+        }
+        break;
+        
     default:
-        header('Location: ' . $URLBASE);
+        // Ação não reconhecida
+        header('Location: ' . $URLBASE . '/index.php');
         exit;
 }
 ?>
