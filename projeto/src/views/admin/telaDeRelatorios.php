@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de relatórios</title>
     <?php
     require_once "../../../config/constantes.php";
-  ?>
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
-    <link rel="stylesheet" href="../../../public/css/admin/telaRelatorios.css">
+    ?>
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/telaRelatorios.css">
+
+    <?php include "../../../public/components/admin/input/input-admin.php"; ?>
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,95 +30,108 @@
 </head>
 
 <body>
-    
- <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
- <?php   
+
+    <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->
+    <?php
     include "../../../public/components/admin/header/header-admin.php";
-  ?>
+    ?>
 
-    <div class="relatorio"><h1>Relatórios</h1></div>
+    <div class="container-main">
+        <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
+            <fieldset class="form-section">
+                <legend>Gerar relatórios</legend>
 
-    <div class="quadradoBranco">
-        
-        <form class="quadradoCinza">       
+                <div class="form-row">
 
-            <div class="input">        
-                <div>
-                    <h3 class="sobre">Sobre:</h3>
-                    <select class="nome"> 
-                        <option value="">Acervo</option>   
-                        <option value="">Aquisição</option>   
-                        <option value="">Empréstimos</option>   
-                        <option value="">Usuários</option> 
-                    </select>  
-                </div>    
-                    
-                <div class=opcoesDeSalvamento >
-                    <h3 class="salvar">Exportar/salvar como:</h3>
-                    <select class="opcoes"> 
-                        <option value="">PDF</option>   
-                        <option value="">Png/Jpeg</option>   
-                        <option value="">Texto</option>   
-                        <option value="">Excel</option>   
-                    </select>  
-                </div> 
-
-                <div class="unidade">
-                    <h4>Unidade:</h4>
-                    <select class="nome"> 
-                        <option value="">Todos</option>   
-                        <option value="">Dourados</option>   
-                        <option value="">Três Lagoas</option>   
-                        <option value="">Ponta Porã</option> 
-                        <option value="">Corumbá</option> 
-                        <option value="">Campo Grande-gastronomia</option> 
-                    </select>  
-
-                    <h4 class="ordenagem">Ordenagem:</h4>
-                    <select class="ordem"> 
-                        <option value="">Data crescente</option>   
-                        <option value="">Data decrescente</option>   
-                        <option value="">Crescente</option>   
-                        <option value="">Decrescente</option> 
-                    </select>                 
-               </div>    
-            
-            </div>                        
-        
-            <div class="input" id="calendario">
-            
-                <div class="Calendario">
-                    <img src="../../../public/assets/icons/Calendar.png " alt="Calendário" class="imagemCalendario"> 
-                    
-                    <div>
-                        <h4>Começando de:</h4>
-                        <input type="date" class="calendar">
-
-                        <h4>Até:</h4>
-                        <input type="date" class="calendar2">
+                    <div class="form-grupo">
+                        <label for="genero">Sobre:</label>
+                        <select id="genero" name="genero" class="input-admin">
+                            <option value="">Selecione</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="nao_binario">Não Binário</option>
+                            <option value="outros">Outros</option>
+                            <option value="nao_informar">Prefiro não informar</option>
+                        </select>
                     </div>
-            
+                    <div class="form-grupo">
+                        <label for="genero">Exportar/salvar como:</label>
+                        <select id="genero" name="genero" class="input-admin">
+                            <option value="">Selecione</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                            <option value="nao_binario">Não Binário</option>
+                            <option value="outros">Outros</option>
+                            <option value="nao_informar">Prefiro não informar</option>
+                        </select>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="unidade_senac">Unidade</label>
+                        <select id="unidade_senac" name="unidade_senac" class="input-admin" required>
+                            <option value="">Selecione</option>
+                            <option value="senac_hub">Senac Hub Academy</option>
+                            <option value="senac_dou">Senac Dourados</option>
+                            <option value="senac_tres">Senac Três Lagoas</option>
+                        </select>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="inicio">Começando de:</label>
+                        <input type="date" id="inicio" name="inicio">
+
+                        <label for="fim">Até:</label>
+                        <input type="date" id="fim" name="fim">
+
+                    </div>
+                    <div class="form-grupo">
+                        <label for="unidade_senac">Ordenagem</label>
+                        <select id="unidade_senac" name="unidade_senac" class="input-admin" required>
+                            <option value="">Selecione</option>
+                            <option value="senac_hub">Senac Hub Academy</option>
+                            <option value="senac_dou">Senac Dourados</option>
+                            <option value="senac_tres">Senac Três Lagoas</option>
+                        </select>
+                    </div>
+
                 </div>
-                            
+            </fieldset>
+
+
+
+            <div class="form-grupo">
+
+                <?php
+                InputAdmin(largura: 100, name: "matricula", id: "matricula", tipo: "text")
+                ?>
             </div>
 
-            <div class="botoes">
-                <button type="reset" class="cancelar">Cancelar</button>
-                <button type="submit" class="emitir">Emitir</button>
+
+
+
+
+
+
+
+            <div class="botao-container">
+
+                <button type="button" class="botao-cancelar">Cancelar</button>
+                <button type="submit">Emitir</button>
             </div>
-       </form>
-   
+        </form>
     </div>
-    
-    
-            
-   <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
 
-    
-   <?php
+
+
+
+
+
+    <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé-->
+
+
+    <?php
     include "../../../public/components/admin/footer/footer-admin.php";
     ?>
     <script src="../../../public/js/admin/telaDeRelatorios.js"></script>
 
 </body>
+
 </html>
