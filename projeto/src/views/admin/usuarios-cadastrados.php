@@ -39,8 +39,8 @@ require_once "../../../config/constantes.php";
     <title>Gerenciamento de Usuários</title>
     <div class="container-main">
       <div class="botoesFiltro">
-      <button id= "" class="bloqueadosBotao tab-link active" onclick="openTab(event, 'regulares')">Regulares</button>
-      <button id="" class="bloqueadosBotao tab-link" onclick="openTab(event, 'bloqueados')">Bloqueados</button>
+      <button id= "" class="bloqueadosBotao tab-link active" onclick="abrirTab(event, 'regulares')">Regulares</button>
+      <button id="" class="bloqueadosBotao tab-link" onclick="abrirTab(event, 'bloqueados')">Bloqueados</button>
     </div>
 
     <div class="container">
@@ -67,8 +67,8 @@ require_once "../../../config/constantes.php";
           <tbody id="userTable"></tbody>
         </table>
         <div class="pagination-controls">
-            <button id="backButton" onclick="changePage(-1)" disabled>Voltar</button>
-            <button id="forwardButton" onclick="changePage(1)">Avançar</button>
+            <button id="backButton" onclick="mudarPagina(-1)" disabled>Voltar</button>
+            <button id="forwardButton" onclick="mudarPagina(1)">Avançar</button>
         </div>
       </div>
     
@@ -87,8 +87,8 @@ require_once "../../../config/constantes.php";
           <tbody id="blockedTable"></tbody>
         </table>  
           <div class="pagination-controls">
-            <button id="backBlockedButton" onclick="changeBlockedPage(-1)" disabled>Voltar</button>
-            <button id="forwardBlockedButton" onclick="changeBlockedPage(1)">Avançar</button>
+            <button id="backBlockedButton" onclick="trocarParaPaginaDosBloqueados(-1)" disabled>Voltar</button>
+            <button id="forwardBlockedButton" onclick="trocarParaPaginaDosBloqueados(1)">Avançar</button>
         </div>
       </div>
       
@@ -240,7 +240,7 @@ require_once "../../../config/constantes.php";
           <button id="cancelar-edicao" onclick="editUserCancel()">Cancelar edição</button>
         </div>
         
-        <button onclick="closeModal()">Fechar</button>
+        <button onclick="fecharModal()">Fechar</button>
         </div>
         
       </div>

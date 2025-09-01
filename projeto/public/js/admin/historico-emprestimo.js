@@ -29,22 +29,22 @@ const emprestimos = [
     { status: 'Atrasado', exemplar: '343434', leitor: 'Thiago Mendes', data: '08/07/2024', prazo: '11/07/2024', devolucao: 'Em demanda' },
     { status: 'Em andamento', exemplar: '565656', leitor: 'Ursula Castro', data: '10/07/2024', prazo: '15/07/2024', devolucao: 'Em demanda' }
 ];
-        const userTable = document.getElementById('userTable'); // Renamed ID for clarity
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const pageInfoSpan = document.getElementById('pageInfo');
+        const TabelaDeUsuario = document.getElementById('userTable'); 
+        const botaoAnterior = document.getElementById('prevBtn');
+        const proximoBotao = document.getElementById('nextBtn');
+        const informacoesDaPagina = document.getElementById('pageInfo');
 
-        const ITEMS_PER_PAGE = 5;
-        let currentPage = 1;
-        let currentFilteredData = []; // This will store the data currently being paginated
+        const itens_por_pagina = 5;
+        let paginaAtual = 1;
+        let dadoAtualFiltrado = []; 
 
         // Function to render the table with the data for the current page
-        function renderTablePage() {
-            const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-            const endIndex = startIndex + ITEMS_PER_PAGE;
-            const itemsToDisplay = currentFilteredData.slice(startIndex, endIndex);
+        function renderizarTabelaDePaginas() {
+            const indiceInicial = (paginaAtual - 1) * itens_por_pagina;
+            const indiceFinal = indiceInicial + itens_por_pagina;
+            const itensEmTela = dadoAtualFiltrado.slice(indiceInicial, indiceFinal);
 
-            userTable.innerHTML = itemsToDisplay.map(user => `
+            TabelaDeUsuario.innerHTML = itensEmTela.map(user => `
                 <tr>
                     <td>${user.status}</td>
                     <td>${user.exemplar}</td>
@@ -55,102 +55,97 @@ const emprestimos = [
                 </tr>
             `).join('');
 
-            updatePaginationControls();
+            atualizarControlesDePaginacao();
         }
 
-        // Function to update the state of pagination buttons and info
-        function updatePaginationControls() {
-            const totalPages = Math.ceil(currentFilteredData.length / ITEMS_PER_PAGE);
+        
+        function atualizarControlesDePaginacao() {
+            const paginasTotais = Math.ceil(dadoAtualFiltrado.length / itens_por_pagina);
 
-            prevBtn.disabled = (currentPage === 1);
-            nextBtn.disabled = (currentPage === totalPages || totalPages === 0);
+            botaoAnterior.disabled = (paginaAtual === 1);
+            proximoBotao.disabled = (paginaAtual === paginasTotais || paginasTotais === 0);
 
-            pageInfoSpan.textContent = `Página ${currentPage} de ${totalPages || 1}`; // Show "1 de 1" if no items
+            informacoesDaPagina.textContent = `Página ${paginaAtual} de ${paginasTotais || 1}`; 
         }
 
-        // Handles "Previous" button click
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                renderTablePage();
+        function paginaAnterior() {
+            if (paginaAtual > 1) {
+                paginaAtual--;
+                renderizarTabelaDePaginas();
             }
         }
 
-        // Handles "Next" button click
-        function nextPage() {
-            const totalPages = Math.ceil(currentFilteredData.length / ITEMS_PER_PAGE);
-            if (currentPage < totalPages) {
-                currentPage++;
-                renderTablePage();
+        function proximaPagina() {
+            const paginasTotais = Math.ceil(dadoAtualFiltrado.length / itens_por_pagina);
+            if (paginaAtual < paginasTotais) {
+                paginaAtual++;
+                renderizarTabelaDePaginas();
             }
         }
 
-        // Function to apply the filter and reset pagination
-        function applyFilterAndPaginate() {
-            const selectedStatus = document.querySelector('input[name="statusFilter"]:checked').value;
+        function aplicarFiltroEPaginacao() {
+            const statusSelecionado = document.querySelector('input[name="statusFilter"]:checked').value;
             
-            if (selectedStatus === 'Todos') {
-                currentFilteredData = emprestimos;
+            if (statusSelecionado === 'Todos') {
+                dadoAtualFiltrado = emprestimos;
             } else {
-                currentFilteredData = emprestimos.filter(emprestimo => emprestimo.status === selectedStatus);
+                dadoAtualFiltrado = emprestimos.filter(emprestimo => emprestimo.status === statusSelecionado);
             }
             
-            currentPage = 1; // Reset to the first page whenever the filter changes
-            renderTablePage();
+            paginaAtual = 1; 
+            renderizarTabelaDePaginas();
         }
 
-        // Initial load: apply default filter (Todos) and render the first page
         document.addEventListener('DOMContentLoaded', () => {
-            applyFilterAndPaginate();
+            aplicarFiltroEPaginacao();
         });
-        
-        
-let botao = document.getElementsByClassName("hamburguer")
-let menu = document.getElementById("menu")
-let corpo = document.getElementsByTagName("body")
+           
+// let botao = document.getElementsByClassName("hamburguer")
+// let menu = document.getElementById("menu")
+// let corpo = document.getElementsByTagName("body")
      
-let menuAberto = false
+// let menuAberto = false
      
-botao[0].addEventListener("click", function(){
+// botao[0].addEventListener("click", function(){
          
 //Chamar o menu para o botão e definir sua posição com position 
 //absolute para aparecer abaixo do menu. Linhas 15 e 16
      
-menu.style.position="absolute" 
-menu.style.bottom="50px" 
+// menu.style.position="absolute" 
+// menu.style.bottom="50px" 
      
-  if(menuAberto==false){
-    menuAberto=true
-    menu.style.display="block"
-   }
+//   if(menuAberto==false){
+//     menuAberto=true
+//     menu.style.display="block"
+//    }
      
-  else{
-    menuAberto=false
-    menu.style.display="none"
-  }
+//   else{
+//     menuAberto=false
+//     menu.style.display="none"
+//   }
      
-})
+// })
      
 //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone.
      
-let icone = document.getElementById("iconeComandante")
-let minhaConta = document.getElementsByClassName("minhaConta")[0]
+// let icone = document.getElementById("iconeComandante")
+// let minhaConta = document.getElementsByClassName("minhaConta")[0]
      
-let menuAberto2 = false
+// let menuAberto2 = false
      
-icone.addEventListener("click", function(){
+// icone.addEventListener("click", function(){
      
-  if(menuAberto2==false){
-    menuAberto2=true
-    minhaConta.style.display="block"
-   }
+//   if(menuAberto2==false){
+//     menuAberto2=true
+//     minhaConta.style.display="block"
+//    }
      
-  else{
-    menuAberto2=false
-    minhaConta.style.display="none"
-  }
+//   else{
+//     menuAberto2=false
+//     minhaConta.style.display="none"
+//   }
      
-})
+// })
      
 //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone.
      
