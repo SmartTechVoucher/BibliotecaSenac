@@ -49,7 +49,7 @@
                     <div class="form-grupo">
                         <label for="autor-livro">Autor</label>
                         <select name="autor-livro" id="autor-livro" class="input-admin">
-                        <option value="" disabled selected>Selecione um(a) autor(a)...</option>
+                            <option value="" disabled selected>Selecione um(a) autor(a)...</option>
                             <?php
                             $autores = [
                                 ['code' => '0', 'name' => 'Vinicius De Moraes'],
@@ -65,7 +65,7 @@
                                 echo '<option value="' . htmlspecialchars($aut['code']) . '">' . htmlspecialchars($aut['name']) . '</option>';
                             }
                             ?>
-                            
+
                         </select>
                     </div>
                     <div class="form-grupo">
@@ -89,69 +89,98 @@
                     <div class="form-grupo">
                         <label for="idioma-livro">Idioma</label>
                         <select name="idioma-livro" id="idioma-livro" class="input-admin">
-                        <option value="" disabled selected>Selecione um idioma...</option>
+                            <option value="" disabled selected>Selecione um idioma...</option>
                             <?php
-                           $idioma = [
-                            ['code' => '0', 'name' => 'Português BR'],
-                            ['code' => '1', 'name' => 'Inglês'],
-                            ['code' => '2', 'name' => 'Espanhol'],
-                            ['code' => '3', 'name' => 'Francês'],
-                            ['code' => '4', 'name' => 'Alemão'],
-                            ['code' => '5', 'name' => 'Japonês'],
-                            ['code' => '6', 'name' => 'Chinês'],
-                            ['code' => '7', 'name' => 'Ronaldo'],
-                            ['code' => '8', 'name' => 'Italiano'],
-                            ['code' => '9', 'name' => 'Holandês'],
-                            ['code' => '10', 'name' => 'Sueco'],
-                            ['code' => '11', 'name' => 'Árabe'],
-                            ['code' => '12', 'name' => 'Russo'],
-                            ['code' => '13', 'name' => 'Coreano'],
-                            ['code' => '14', 'name' => 'Hindi'],
-                            ['code' => '15', 'name' => 'Grego'],
-                            ['code' => '16', 'name' => 'Polonês'],
-                            ['code' => '17', 'name' => 'Vietnamita']
-                        ];
+                            $idioma = [
+                                ['code' => '0', 'name' => 'Português BR'],
+                                ['code' => '1', 'name' => 'Inglês'],
+                                ['code' => '2', 'name' => 'Espanhol'],
+                                ['code' => '3', 'name' => 'Francês'],
+                                ['code' => '4', 'name' => 'Alemão'],
+                                ['code' => '5', 'name' => 'Japonês'],
+                                ['code' => '6', 'name' => 'Chinês'],
+                                ['code' => '7', 'name' => 'Ronaldo'],
+                                ['code' => '8', 'name' => 'Italiano'],
+                                ['code' => '9', 'name' => 'Holandês'],
+                                ['code' => '10', 'name' => 'Sueco'],
+                                ['code' => '11', 'name' => 'Árabe'],
+                                ['code' => '12', 'name' => 'Russo'],
+                                ['code' => '13', 'name' => 'Coreano'],
+                                ['code' => '14', 'name' => 'Hindi'],
+                                ['code' => '15', 'name' => 'Grego'],
+                                ['code' => '16', 'name' => 'Polonês'],
+                                ['code' => '17', 'name' => 'Vietnamita']
+                            ];
                             foreach ($idioma as $idi) {
                                 echo '<option value="' . htmlspecialchars($idi['code']) . '">' . htmlspecialchars($idi['name']) . '</option>';
                             }
                             ?>
-                            
+
                         </select>
                     </div>
                     <div class="form-grupo">
                         <label for="categoria-livro">Categoria</label>
+                        <select name="categoria-livro" id="categoria-livro" class="input-admin" size="6">
+                            <?php
+                            $categoria = [
+                                ['code' => '0', 'name' => 'Português BR'],
+                                ['code' => '1', 'name' => 'Inglês'],
+                                ['code' => '2', 'name' => 'Espanhol'],
+                                ['code' => '3', 'name' => 'Francês'],
+                                ['code' => '4', 'name' => 'Alemão'],
+                                ['code' => '5', 'name' => 'Japonês'],
+                                ['code' => '6', 'name' => 'Chinês'],
+                                ['code' => '7', 'name' => 'Ronaldo'],
+                                ['code' => '8', 'name' => 'Italiano'],
+                                ['code' => '9', 'name' => 'Holandês'],
+                                ['code' => '10', 'name' => 'Sueco'],
+                                ['code' => '11', 'name' => 'Árabe'],
+                                ['code' => '12', 'name' => 'Russo'],
+                                ['code' => '13', 'name' => 'Coreano'],
+                                ['code' => '14', 'name' => 'Hindi'],
+                                ['code' => '15', 'name' => 'Grego'],
+                                ['code' => '16', 'name' => 'Polonês'],
+                                ['code' => '17', 'name' => 'Vietnamita']
+                            ];
+                            foreach ($categoria as $cate) {
+                                echo '<option value="' . htmlspecialchars($cate['code']) . '">' . htmlspecialchars($cate['name']) . '</option>';
+                            }
+                            ?>
+                        </select>
 
                     </div>
                 </div>
                 <div class="form-coluna">
                     <div class="form-grupo">
                         <label for="area-livro">Area</label>
-                        <option value="" disabled selected>Selecione as areas...</option>
+                        <select name="area-livro" id="area-livro" class="input-admin">
                             <?php
-                           $idioma = [
-                            ['code' => '0', 'name' => 'Português BR'],
-                            ['code' => '1', 'name' => 'Inglês'],
-                            ['code' => '2', 'name' => 'Espanhol'],
-                            ['code' => '3', 'name' => 'Francês'],
-                            ['code' => '4', 'name' => 'Alemão'],
-                            ['code' => '5', 'name' => 'Japonês'],
-                            ['code' => '6', 'name' => 'Chinês'],
-                            ['code' => '7', 'name' => 'Ronaldo'],
-                            ['code' => '8', 'name' => 'Italiano'],
-                            ['code' => '9', 'name' => 'Holandês'],
-                            ['code' => '10', 'name' => 'Sueco'],
-                            ['code' => '11', 'name' => 'Árabe'],
-                            ['code' => '12', 'name' => 'Russo'],
-                            ['code' => '13', 'name' => 'Coreano'],
-                            ['code' => '14', 'name' => 'Hindi'],
-                            ['code' => '15', 'name' => 'Grego'],
-                            ['code' => '16', 'name' => 'Polonês'],
-                            ['code' => '17', 'name' => 'Vietnamita']
-                        ];
-                            foreach ($idioma as $idi) {
-                                echo '<option value="' . htmlspecialchars($idi['code']) . '">' . htmlspecialchars($idi['name']) . '</option>';
+                            $area = [
+                                ['code' => '0', 'name' => 'Português BR'],
+                                ['code' => '1', 'name' => 'Inglês'],
+                                ['code' => '2', 'name' => 'Espanhol'],
+                                ['code' => '3', 'name' => 'Francês'],
+                                ['code' => '4', 'name' => 'Alemão'],
+                                ['code' => '5', 'name' => 'Japonês'],
+                                ['code' => '6', 'name' => 'Chinês'],
+                                ['code' => '7', 'name' => 'Ronaldo'],
+                                ['code' => '8', 'name' => 'Italiano'],
+                                ['code' => '9', 'name' => 'Holandês'],
+                                ['code' => '10', 'name' => 'Sueco'],
+                                ['code' => '11', 'name' => 'Árabe'],
+                                ['code' => '12', 'name' => 'Russo'],
+                                ['code' => '13', 'name' => 'Coreano'],
+                                ['code' => '14', 'name' => 'Hindi'],
+                                ['code' => '15', 'name' => 'Grego'],
+                                ['code' => '16', 'name' => 'Polonês'],
+                                ['code' => '17', 'name' => 'Vietnamita']
+                            ];
+                            foreach ($area as $are) {
+                                echo '<option value="' . htmlspecialchars($are['code']) . '">' . htmlspecialchars($are['name']) . '</option>';
                             }
                             ?>
+                        </select>
+
                     </div>
                     <div class="form-grupo">
                         <label for="publicacao-livro">Ano</label>
