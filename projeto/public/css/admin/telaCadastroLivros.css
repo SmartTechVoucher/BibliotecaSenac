@@ -1,6 +1,7 @@
 :root{
 
     --azulCabecalho: #001E3E;
+    --cinza: gray;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
     --fundoPadrao: #EDEDED;
@@ -19,13 +20,10 @@
     box-sizing: border-box;
 }
 
-
 body{
     margin: 0;
     background-color: var(--fundoPadrao);
 }
-
-
 
 .conteiner #iconeComandante{
     cursor: var(--apontador);
@@ -49,12 +47,7 @@ body{
     color: var(--branco);
 }
 
-
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
-
-/*Conteiner3 contém os ícones superiores e os define com
-espaços um colado no início e outro no fim. Conteiner3 .esquerdo, .direito
-definem o comprimento e a altura dos ícones em 100 pixels.*/
 
 .conteiner3{
     display: flex;
@@ -138,7 +131,7 @@ label{
     padding: 15px;
     gap: 25px;
     grid-column: 3;
-    box-shadow: 0 2px 4px gray;
+    box-shadow: 0 2px 4px var(--cinza);
 }
 
 .paraTestar{
@@ -188,18 +181,6 @@ input:focus {
     z-index: 1;
 }
 
-/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
-
-
-
-/*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ 
-
-/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
-
-
-
-/*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/
-
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
 @media(max-width: 1024px){
@@ -237,27 +218,12 @@ input:focus {
         top: 139%; left: 40%;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 69.5%;
-    }
-    
-    .menu{   
-        position: var(--posicaoAbsoluta);
-        top: 16%;
-    }
-
 }
 
 @media(min-width:414px){
 
  /*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*//*iphone XR*/ 
     
-    .menu{   
-        position: var(--posicaoAbsoluta);
-        top: 11%;
-    }
-
     .formulario .upload{
         position: var(--posicaoAbsoluta);
         top: 114.4%; right: 10%;
@@ -272,22 +238,12 @@ input:focus {
         width: 400px;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 72.5%;
-    }
-
 }
 
 @media(min-width:500px){
 
  /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/
     
-    .menu{   
-        position: var(--posicaoAbsoluta);
-        top: 11%;
-    }
-
     .formulario .upload{
         position: var(--posicaoAbsoluta);
         top: 114.4%; right: 15%;
@@ -302,22 +258,12 @@ input:focus {
         width: 470px;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 77.2%;
-    }
-
 }
 
 @media(min-width:600px){
 
  /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/
     
-    .menu{   
-        position: var(--posicaoAbsoluta);
-        top: 11%;
-    }
-
     .formulario .upload{
         position: var(--posicaoAbsoluta);
         top: 114.4%; right: 20%;
@@ -330,11 +276,6 @@ input:focus {
 
     .formulario .fundoBranco{
         width: 570px;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 81%;
     }
 
 }
@@ -373,11 +314,6 @@ input:focus {
         display: block;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 13%; left: 85.2%;
-    }
-
     .menuAdm .logoSenacHub{
         width: 200px;
         height: 100px;
@@ -388,11 +324,6 @@ input:focus {
 @media(min-width:820px){
  /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/
  
- .minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 11%; left: 85.8%;
- }
-
  .formulario .fundoBranco{
     width: 775px;
  }
@@ -407,16 +338,6 @@ input:focus {
 @media(min-width:912px){
  /*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*/
  
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 10%;
- }   
-
- .minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 10%; left: 87.5%;
- }
-
  .formulario .fundoBranco{
     width: 882px;
  }
@@ -432,11 +353,6 @@ input:focus {
 
  /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/ 
     
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 10%;
- }
-
  .formulario .fundoBranco{
     width: 979px;
 }
@@ -449,11 +365,6 @@ input:focus {
 #mensagemPrimeiroForm{
     position: var(--posicaoAbsoluta);
     top: 155%; left: 40%;
-}
-
-.minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 10%; left: 88.7%;
 }
 
 }
@@ -469,7 +380,7 @@ input:focus {
     #formulario2{
         display: flex;
         width: 410.5px;
-        border-right: 1px solid white;
+        border-right: 1px solid var(--branco);
         /* box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5); */
     }
 
@@ -482,8 +393,8 @@ input:focus {
         gap: 15px;
         padding: 10px;
         font-size: 18px;
-        border-left: 4px solid white;
-        box-shadow: 0 2px 4px gray;
+        border-left: 4px solid var(--branco);
+        box-shadow: 0 2px 4px var(--cinza);
     }
 
     .formulario2 .Botao{
@@ -500,23 +411,9 @@ input:focus {
         top: 140.6%; right: 60%;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 15%; left: 91.1%;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 14%;
-    }
 }
 
 @media(min-width:1358px){
-
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 18%;
- }
 
   #mensagem{
       position: var(--posicaoAbsoluta);
@@ -528,10 +425,6 @@ input:focus {
         top: 145%;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 17%; left: 91.6%;
-    }
 }
 
 @media(min-width: 1912px){
@@ -566,17 +459,6 @@ input:focus {
     #mensagem{
         position: var(--posicaoAbsoluta);
         top: 126.5%; right: 57%;
-      }
-
-      .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
-        width: 400px;
-     }
-
-     .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 13%; left: 94%;
     }
 
     .menuAdm .logoSenacHub{

@@ -24,35 +24,6 @@ body{
     background-color: var(--fundoPadrao);
 }
 
-
-
-/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
-
-.conteiner #iconeComandante{
-    cursor: var(--apontador);
-}
-
-/*Define o ícone com o cursor apontador*/
-
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-.minhaConta{
-    display: none;
-    position: var(--posicaoAbsoluta);
-    top: 17%; left: 91.6%;
-    color: var(--branco);
-    background-color: var(--azulCabecalho);
-    width: 138px;
-    cursor: var(--apontador);
-}
-
-.minhaConta a{
-    text-decoration: none;
-    color: var(--branco);
-}
-
-/*Controla a div que aparece ao se clicar em ícone*//*Controla a div que aparece ao se clicar em ícone*/
-
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
 .conteiner2{
@@ -74,7 +45,7 @@ body{
 }
 
 .busca{
-    background-color: #ffffff;
+    background-color: var(--branco);
     width: 100%;
     border-radius: 23px;
     height: 30px;
@@ -96,8 +67,6 @@ body{
     margin-top: 2%;
 }
 
-
-
 /* cardizinho dos livros */
 #livro-titulomaster{
     text-align: center;
@@ -115,9 +84,8 @@ body{
     margin-bottom: 10px;
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
 
-
-
 }
+
 #livro-img{
     width:10%;
     height: 170px;
@@ -148,23 +116,12 @@ body{
     align-items: center ;
 }
 
-/*Parte inferior do corpo*/
-
-
-/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
-
-
-
 @media(max-width:1024px){
     
     .titulo, .Libro, .todos, .copyright{
         display: none;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 63.3%;
-    }
 }
 
 @media(min-width:414px){
@@ -176,45 +133,11 @@ body{
     .inferior{
         margin-top: 43.8%;
     }
-
- /*Menus invisíveis que aparecem somente através de interação*/
-   
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 66.6%; top: 12%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/   
-}
-
-@media(min-width: 768px){
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 82%; top: 12%;
-    }
+  
 }
 
 @media(min-width: 820px){
     
- /*Menus invisíveis que aparecem somente através de interação*/
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 83.2%; top: 12%;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 12%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/   
-   
     .inferior{
         margin-top: 51.8%;
     }
@@ -222,77 +145,21 @@ body{
 
 @media (min-width:912px){
    
- /*Menus invisíveis que aparecem somente através de interação*/ 
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 84.9%; top: 10%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/ 
-
  .inferior{
     margin-top: 71%;
  }
+
 }
 
 @media (min-width: 1024px) {
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 19%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 18%; left: 86.5%;
-    }
 
     .inferior{
         margin-top: 57.7%;
     }
 }
 
-@media(min-width:1280px){
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 15%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 89.2%;
-    }
-}
-
-@media(min-width:1358px){
-    
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 19%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 18%; left: 89.82%;
-    }
-}
-
 @media(min-width:1912px){
    
-   .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 13%; left: 92.7%;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
-    }
-
     .logoSenacHub{
         width: 250px;
         height: 120px;

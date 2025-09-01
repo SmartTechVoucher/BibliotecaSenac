@@ -51,23 +51,6 @@ h2{
   padding-left: 10%;   
 }
 
-.conteiner #iconeComandante{
-    cursor: var(--apontador);
-}
-
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-.minhaConta{
-    display: none;
-    position: var(--posicaoAbsoluta);
-    top: 15%; left: 94%;
-    color: var(--branco);
-    background-color: var(--azulCabecalho);
-    width: 114px;
-    cursor: var(--apontador);
-}
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
 .conteiner2{
@@ -87,25 +70,10 @@ h2{
 .caixa{
     height: 210.1px;
     width: 206.96px;
-    /* background-color: var(--branco); */
     color: black;
     border-radius: 5%;
    
 }
-
-/* .caixa p{
-    font-size: 24px;
-   
-} */
-
-/* .caixa .usuario{
-
-    width: 109.75px;
-    height: 109.75px;
-    position: var(--posicao);
-    left: 50px;
-    margin-top: 30px;
-} */
 
 .caixa .Usuario{
     
@@ -152,36 +120,10 @@ h2{
     color: black;
 }
 
-/* .caixa .estoque{
-   
-    position: var(--posicao);
-    top: 15%; left: 13%;
-} */
-
 .caixa .vectorRelatorio{
     position: var(--posicao);
     top: 15%; left: 20%;
 }
-
-/* .caixa .relatorios{
-    position: var(--posicao);
-    left: 18%; top: 5%;
-    color: black;
-} */
-
-/* .caixa .vectorRenova{
-    position: var(--posicao);
-    left: 20%; top: 15%;
-}
-
-.caixa .renovacoes{
-    text-align: center;
-} */
-
-/* .caixa .emprestimo{
-    position: var(--posicao);
-    left: 23%; top: 13%;
-} */
 
 .caixa .Emprestimo{
     text-align: center;
@@ -242,53 +184,6 @@ h2{
     font-family: var(--fontes);
 }
 
-.faleConosco{
-    width: 126px;
-    height: 102px;
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 15px;
-   
-}
-
-.email{
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 15px;
-}
-
-.siga-nos{
-    color: var(--branco);
-    font-family: var(--fontes);
-    align-items: center;
-    margin-top: 12px;
-}
-
-
-/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
-
-.menu{
-    width: 300px;
-    height: 325px;
-    background-color: var(--azulCabecalho);
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: 25px;
-    display: none;
-    cursor: pointer;   
-}
-
-/*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
-
-a{
-    text-decoration: none;
-    color: var(--branco) ;
-}
-
-/*Limpeza e estilização do atalho "a" para o menu*//*Limpeza e estilização do atalho "a"*/
-
 /*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
 
 @media(max-width:1024px){
@@ -320,44 +215,24 @@ a{
         width: 80px;
         height: 105px;
     }
-
-    .caixa{
-        width: 103px;
-        height: 105px;
-    }
     
     .adm{
         width: 300px;
     }
 
-     .Libro, .copyright, .todos, .logo, .titulo {
-         display: none;
-     }
-
-     .menu{
-        position: var(--posicao);
-        top: 110px;
-     }
+    .Libro, .copyright, .todos, .logo, .titulo {
+        display: none;
+    }
 
     .inferior{
         margin-top: -3%;
-     }
+    }
 
 }
 
 @media(min-width:414px){
 
  /*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*/   
-
-    .menu{
-        position: var(--posicao);
-        top: 100px;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 72.5%; top: 14%;
-    }
 
     .inferiorDireito{
         margin-top: 34%;
@@ -369,16 +244,6 @@ a{
 
  /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 77.2%; top: 16%;
-    }
-
-    .icone{
-        position: var(--posicao);
-        right: 3%;
-    }
-
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
     .rodape{
@@ -389,28 +254,11 @@ a{
         margin-top: 33%;
     }
 
-     .menu{
-        position: var(--posicao);
-        top: 120px;
-     }
-
 }
 
 @media(min-width:600px){
 
  /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/   
-
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-
-    .icone{
-        position: var(--posicao);
-        right: 3%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 81%; top: 12%;
-    }
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
@@ -433,18 +281,9 @@ a{
  /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/   
 
    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
-    
-   .minhaConta{
-    position: var(--posicaoAbsoluta);
-    left: 85.1%; top: 14%;
- }
 
     .conteiner2{
         width: 700px;
-    }
-
-    .caixa{
-        height: 110px;
     }
 
     .inferiorDireito{
@@ -460,7 +299,7 @@ a{
 
  /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/   
 
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+ /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
 
     .titulo{
         display: block;
@@ -468,12 +307,7 @@ a{
         padding-right: 10%;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 86.1%; top: 11%;
-    }
-
-    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+ /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
     .conteiner2{
         width: 800px;
@@ -499,11 +333,6 @@ a{
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 87.5%; top: 10%;
-    }
-
     .inferiorDireito{
        margin-top: 67%;
     }
@@ -524,11 +353,6 @@ a{
        font-size: 16px;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 88.7%; top: 10%;
-    }
-
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
     .conteiner2{
@@ -538,14 +362,6 @@ a{
     .inferiorDireito{
        margin-top: 64%;
     }
-
-    /* .Libro, .copyright, .todos{
-        display: block;
-    } */
-
-    /* .copyright, .todos{
-        width: 300px;
-    } */
 
     .rodape{
         height: 255px;
@@ -568,11 +384,6 @@ a{
        font-size: 16px;
        position: var(--posicao);
        top: -8%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 89.9%; top: 10%;
     }
 
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
@@ -612,16 +423,6 @@ a{
        bottom: 15%;
     }
 
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 91.1%; top: 17%;
-    }
-
-    .icone{
-        position: var(--posicao);
-        right: 1%;
-    }
-
     .logoSenacHub{
         width: 250px;
         height: 120px;
@@ -642,11 +443,6 @@ a{
     .conteiner2 .caixa{
         width: auto;
         height: auto;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 115px;
     }
 
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
@@ -676,16 +472,6 @@ a{
         position: var(--posicao);
         bottom: 24%;
     }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 91.6%; top: 15%;
-    }
-
-    .icone{
-        padding-right: 1%;
-        width: 50px;
-    }
  
     /*Corpo*/  /*Corpo*/  /*Corpo*/
     
@@ -711,11 +497,6 @@ a{
     .titulo{
        position: var(--posicao);
        top: -40%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 94%; top: 12%;
     }
 
     .adm{
@@ -748,9 +529,4 @@ a{
         width: 200px;
     }
 
-    .menu{
-        width: 400px;
-        height: 400px;
-        font-size: 33px;
-    }
 }

@@ -1,3 +1,10 @@
+:root{
+  --azulClaro: #4a90e2;
+  --branco: white;
+  --quasePreto: #333;
+  --vermelho: #dc3545;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -95,7 +102,7 @@ html, body {
 
 .section-title h2 {
   font-size: 14px;
-  color: #333;
+  color: var(--quasePreto);
   margin: 0;
   font-weight: normal;
 }
@@ -121,7 +128,7 @@ html, body {
 .campo-senha label,
 .campo-criado label {
   font-size: 14px;
-  color: #333;
+  color: var(--quasePreto);
   margin-bottom: 5px;
   font-weight: normal;
 }
@@ -133,19 +140,19 @@ html, body {
   border-radius: 4px;
   padding: 12px 16px; /* Padding mais consistente */
   font-size: 14px;
-  color: #333;
+  color: var(--quasePreto);
   width: 100%; 
 }
 
 .input-field:focus {
   outline: none;
-  border-color: #4a90e2;
+  border-color: var(--azulClaro);
 }
 
 /* Botão editar */
 .btn-editar {
-  background-color: #4a90e2;
-  color: white;
+  background-color: var(--azulClaro);
+  color: var(--branco);
   border: none;
   border-radius: 4px;
   padding: 10px 16px;
@@ -241,7 +248,7 @@ html, body {
 /* Estilos para edição */
 .input-field.editando {
   background-color: #ffffff !important;
-  border: 2px solid #4a90e2 !important;
+  border: 2px solid var(--azulClaro) !important;
 }
 
 .btn-editar.btn-salvar {
@@ -253,8 +260,8 @@ html, body {
 }
 
 .btn-cancelar {
-  background-color: #dc3545;
-  color: white;
+  background-color: var(--vermelho);
+  color: var(--branco);
   border: none;
   border-radius: 4px;
   padding: 12px 24px;
@@ -279,7 +286,7 @@ html, body {
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   animation: slideIn 0.3s ease-out;
-  color: white;
+  color: var(--branco);
 }
 
 .mensagem-temporaria.sucesso {
@@ -287,7 +294,7 @@ html, body {
 }
 
 .mensagem-temporaria.erro {
-  background-color: #dc3545;
+  background-color: var(--vermelho);
 }
 
 .mensagem-temporaria.info {

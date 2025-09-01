@@ -1,5 +1,6 @@
 :root {
     --azulCabecalho: #001E3E;
+    --azulEmbranquecido: #e6e6fa;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
     --fonte_rodape: 14px;
@@ -27,7 +28,7 @@ main{
     padding: 40px;
     position: relative;
     margin: auto;
-    background: #e6e6fa;
+    background: var(--azulEmbranquecido);
     padding: 20px;
     border-radius: 0px 8px 8px 8px;
     box-shadow: 0px 7px 8px rgba(0,0,0,0.1);
@@ -44,9 +45,10 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
+
 th {
     background-color: #7a7e83;
-    color: white;
+    color: var(--branco);
 }
 tr:hover {
     background-color: #f1f1f1;
@@ -96,7 +98,7 @@ tr:hover {
 
 button {
     background-color: #b4b8bd;
-    color: white;
+    color: var(--branco);
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -106,7 +108,6 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
 
 table {
     width: 90%;
@@ -128,7 +129,7 @@ table {
         }
 .pagination-controls button {
     background-color: #007bff;
-    color: white;
+    color: var(--branco);
     border: none;
     padding: 10px 20px;
     margin: 0 5px;
@@ -190,7 +191,7 @@ th, td {
     background-color: #f1f1f1;
     max-width: 800px;
     margin: 0 auto;
-    background: #e6e6fa;
+    background: var(--azulEmbranquecido);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -201,11 +202,6 @@ body {
     background-color: var(--fundoPadrao);
     font-family: var(--fontes);
 }
-
-/*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*/
-
-
-/*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*//*Cabeçalho*/
 
 /* Conteiner 3 *//* Conteiner 3 *//* Conteiner 3 *//* Conteiner 3 */
 .conteiner3 {
@@ -247,27 +243,6 @@ body {
 }
 
 /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ 
-
-/*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/ /*Evento*/
-
-.menu{
-    width: 366px;
-    height: 370px;
-    background-color: var(--azulCabecalho);
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: 33px;
-    display: none;
-    cursor: pointer;  
-      
-}
-
-.menu a {
-    text-decoration: none;
-    color: var(--branco);
-}
-
-/*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/
 
 @media(max-width:1024px){
 
@@ -463,6 +438,3 @@ body {
     }
 
 }
-
-
-

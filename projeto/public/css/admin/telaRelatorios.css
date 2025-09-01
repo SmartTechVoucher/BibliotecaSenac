@@ -24,31 +24,6 @@ body{
     background-color: var(--fundoPadrao);
 }
 
-/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
-
-/* .conteiner #iconeComandante{
-    cursor: var(--apontador);
-} */
-
-/*Define o ícone com o cursor apontador*/
-
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-/* .minhaConta{
-    display: none;
-    position: var(--posicaoAbsoluta);
-    top: 17%; left: 91.5%;
-    color: var(--branco);
-    background-color: var(--azulCabecalho);
-    width: 114px;
-    cursor: var(--apontador);
-}
-
-.minhaConta a{
-    text-decoration: none;
-    color: var(--branco);
-} */
-
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
 .conteiner3{
@@ -97,7 +72,7 @@ body{
 .quadradoBranco .unidade{
     grid-column: 2;
     grid-row: 2;
-    /* padding-top: 15%; */
+    
 }
 
 .quadradoCinza #calendario{
@@ -114,14 +89,6 @@ body{
     height: 66px;
 }
 
-/* .quadradoCinza .unidade{
-    display: grid;
-    grid-template-columns: 100px;
-    grid-template-rows: 42px;
-    position: var(--posicaoAbsoluta);
-    left: 61%;
-} */
-
 /*A classe .quadradoCinza .botoes define as configurações
 da div que contêm os botões "cancelar" e "emitir" */
 
@@ -137,8 +104,8 @@ da div que contêm os botões "cancelar" e "emitir" */
 configurações dos botões "cancelar" e "emitir" */
 
 .quadradoCinza .cancelar, .emitir{
-   background-color: #004A90;
-    color: white;
+   background-color: var(--corBotao);
+    color: var(--branco);
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -265,9 +232,9 @@ configurações dos botões "cancelar" e "emitir" */
     }
 
     .quadradoCinza{
-        /* width: 992px; */
+       
         height: 534px;
-        /* margin-left: 25%; */
+        
     }
     
     .quadradoBranco{

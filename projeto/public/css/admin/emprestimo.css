@@ -1,3 +1,6 @@
+:root{
+    --branco: white;
+}
 
 body{
     margin: 0;
@@ -5,31 +8,26 @@ body{
     background-color: #EDEDED;
 }
 
-
 a{
     text-decoration: none 
 }
 
 *{
     font-family: var(--fontes);
-}
-
-*{
     box-sizing: border-box;
 }
 
 /* main */
 
-
-
 .quadradoBranco{
-    background-color: white;
+    background-color: var(--branco);
     width: 80%;
     margin: auto;
     padding: 40px;
     position: relative; 
     margin-bottom: 30px;
 }
+
 .quadradoBranco::before { /*pseudo elemento que faz aquele pequeno retangulo no topo do .quadradoBranco*/
     content: "Cadastro De Empréstimo";
     position: absolute;
@@ -41,34 +39,33 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--branco);
 }
-
 
 /* pesquisar usuario e livro */
 .searchInput img{
     height: 30px;
 }
+
 .searchInput{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 90%;
     height: 50px;
-    background: #F1EEEE;
+    background: var(--branco);
     margin: auto;
     border-radius: 5px;
     border: 1px solid #ababab;
 }
 
 .searchInput input{
-    background-color: #F1EEEE;
+    background-color: var(--branco);
     border: 0px;
     padding-left: 20px;
     width: 95%;
     height: 40px;
 }
-
 
 /* dados do usuario */
 .usuarioCadastrado{
@@ -78,15 +75,18 @@ a{
     margin-bottom: 50px;
     display: flex;
 }
+
 .usuarioCadastrado img{
     width: 150px;
 }
+
 .userInfo{
     margin-left: 30px;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
+
 #nameUser{
     margin-bottom: 30px;
 }
@@ -99,7 +99,6 @@ a{
     width: 18px;
     height: 18px;
 }
-
 
 /* livro emprestados do usuario */
 .livrosEmprestados{
@@ -128,6 +127,7 @@ a{
     justify-items: center;
     height: 85px;
 }
+
 .book-grid img{
     width: 50px;
 }
@@ -142,18 +142,17 @@ a{
     background-color: #0585FF;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: var(--branco);
     display: flex;
     align-items: center;
     padding: 4px;
 }
+
 #grid-button img{
     width: 20px;
 }
+
 #grid-button:hover{
     background-color: #0677e0;
 }
-
-
-
         
