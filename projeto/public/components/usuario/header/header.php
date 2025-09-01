@@ -62,7 +62,7 @@ require "../../../config/constantes.php";
                             Perfil</a>
                     </li>
                     <li>
-                        <a href="<?php echo $URLBASE ?>/src/views/usuario/Perfil-usuario.php">
+                        <a href="<?php echo $URLBASE ?>/src/views/usuario/minha-atividade.php">
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/AreaDoLeitor.png" alt="">
                             Leitura</a>
                     </li>

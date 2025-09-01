@@ -12,7 +12,7 @@
 <body>
     <?php
 
-    include "../../../public/components/usuario/layout.php";
+    include "../../../public/components/usuario/header/layout.php";
     ?>
 
     <script src="../../../public/js/components/layout.js"></script>

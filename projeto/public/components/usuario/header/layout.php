@@ -1,10 +1,16 @@
+<?php
+require __DIR__ . '/../../../../config/constantes.php';
+?>
+
+<button class="cbmenu-icon" id="menu-toggle">
+    <i class="fas fa-bars"></i>
+</button>
+
 <div class="cabecalho">
     <div class="cbleft">
-        <button class="cbmenu-icon" id="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </button>
 
-        <img class="icsenac" src="../../.../../../public/assets/icons/SenacIcon 1.png" alt="Icone Hub academy">
+
+        <img class="icsenac" src="<?php echo $URLBASE ?>/public/assets/icons/SenacIcon 1.png" alt="Icone Hub academy">
     </div>
 
     <div id="menu-links">
@@ -12,9 +18,9 @@
 
             <ul class="navbar-desktop-top">
 
-                <li class="menu-li"><img src="../../.../../../public/assets/icons/home.png" alt=""><a href="./index.php">Início</a></li>
-                <li class="menu-li"><img src="../../.../../../public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
-                <li class="menu-li"><img src="../../.../../../public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
+                <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="./index.php">Início</a></li>
+                <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
+                <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
 
             </ul>
 
@@ -25,7 +31,7 @@
                         <img src="../projeto/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
                         <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
                         <div class="menu-dropdown" id="menuPerfil">
-                            <a href="../projeto/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png"> Meu Perfil</a>
+                            <a href="<?php echo $URLBASE ?>/projeto/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png"> Meu Perfil</a>
                             <a href="logout.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
                         </div>
                     </div>
@@ -46,10 +52,10 @@
     <div class="cbright" id="botao-entrar">
         <?php if (isset($_SESSION['usuario'])): ?>
             <div class="perfil-logado" onclick="toggleMenu(event)">
-                <img src="../projeto/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
+                <img src="<?php echo $URLBASE ?>/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
                 <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
                 <div class="menu-dropdown" id="menuPerfil">
-                    <a href="../projeto/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="" class="perfil-header-inicial"> Meu Perfil</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="" class="perfil-header-inicial"> Meu Perfil</a>
                     <a href="logout.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
                 </div>
             </div>
@@ -71,14 +77,17 @@
 
 
     <div class="menu-sanduiche">
+        
         <ul class="navbar-desktop">
-            <li class="menu-li"><img src="../../../public/assets/icons/home.png" alt=""><a href="./index.php">Início</a></li>
-            <li class="menu-li"><img src="../../../public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
-            <li class="menu-li"><img src="../../../public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
-            <li class="menu-li"><img src="../../../public/assets/icons/perfil.png" alt=""><a href="../projeto/src/views/usuario/minha-conta-usuario.php">Meu Perfil</a></li>
-            <li class="menu-li"><img src="../../../public/assets/icons/PesquisaIcon.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
-            <li class="menu-li"><img src="../../../public/assets/icons/ContatoIcon.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Contato</a></li>
-            <li class="menu-li"><img src="../../../public/assets/icons/atividades.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Minha Atividade</a></li>
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE ?>/index.php">Início</a></li>
+
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="">livre para usuar</a></li>
+            <!-- CORRIGIR CAMINHO QUANDO TIVER UMA TELA ESPECIFICA PARA LIVROS -->
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">Livros</a></li>
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php">Meu Perfil</a></li>
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/PesquisaIcon.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt=""><a href="https://ww3.ms.senac.br/">Contato</a></li>
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/atividades.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-atividade.php">Minha Atividade</a></li>
 
         </ul>
     </div>
