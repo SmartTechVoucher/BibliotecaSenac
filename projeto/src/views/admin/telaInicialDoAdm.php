@@ -95,7 +95,7 @@ if (!isset($_SESSION['toast'])) {
 
     
    <?php
-    include "../../../public/components/usuario/footer/footer.php";
+    include "../../../public/components/admin/footer/footer-admin.php";
     ?>
     <script src="../../../public/js/admin/telaInicialDoAdm.js"></script>
 
