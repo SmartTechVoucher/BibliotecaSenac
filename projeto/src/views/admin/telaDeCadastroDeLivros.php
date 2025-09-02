@@ -123,24 +123,24 @@
                         <select name="categoria-livro" id="categoria-livro" class="input-admin" size="6">
                             <?php
                             $categoria = [
-                                ['code' => '0', 'name' => 'Português BR'],
-                                ['code' => '1', 'name' => 'Inglês'],
-                                ['code' => '2', 'name' => 'Espanhol'],
-                                ['code' => '3', 'name' => 'Francês'],
-                                ['code' => '4', 'name' => 'Alemão'],
-                                ['code' => '5', 'name' => 'Japonês'],
-                                ['code' => '6', 'name' => 'Chinês'],
-                                ['code' => '7', 'name' => 'Ronaldo'],
-                                ['code' => '8', 'name' => 'Italiano'],
-                                ['code' => '9', 'name' => 'Holandês'],
-                                ['code' => '10', 'name' => 'Sueco'],
-                                ['code' => '11', 'name' => 'Árabe'],
-                                ['code' => '12', 'name' => 'Russo'],
-                                ['code' => '13', 'name' => 'Coreano'],
-                                ['code' => '14', 'name' => 'Hindi'],
-                                ['code' => '15', 'name' => 'Grego'],
-                                ['code' => '16', 'name' => 'Polonês'],
-                                ['code' => '17', 'name' => 'Vietnamita']
+                                ['code' => '0', 'name' => 'Ficção Científica'],
+                                ['code' => '1', 'name' => 'Fantasia'],
+                                ['code' => '2', 'name' => 'Suspense'],
+                                ['code' => '3', 'name' => 'Romance'],
+                                ['code' => '4', 'name' => 'Terror'],
+                                ['code' => '5', 'name' => 'Ação e Aventura'],
+                                ['code' => '6', 'name' => 'História'],
+                                ['code' => '7', 'name' => 'Biografia'],
+                                ['code' => '8', 'name' => 'Não-Ficção'],
+                                ['code' => '9', 'name' => 'Infantil'],
+                                ['code' => '10', 'name' => 'Jovem Adulto'],
+                                ['code' => '11', 'name' => 'Poesia'],
+                                ['code' => '12', 'name' => 'Autoajuda'],
+                                ['code' => '13', 'name' => 'Comédia'],
+                                ['code' => '14', 'name' => 'Drama'],
+                                ['code' => '15', 'name' => 'Policial'],
+                                ['code' => '16', 'name' => 'Crônicas'],
+                                ['code' => '17', 'name' => 'Contos']
                             ];
                             foreach ($categoria as $cate) {
                                 echo '<option value="' . htmlspecialchars($cate['code']) . '">' . htmlspecialchars($cate['name']) . '</option>';
@@ -156,24 +156,24 @@
                         <select name="area-livro" id="area-livro" class="input-admin">
                             <?php
                             $area = [
-                                ['code' => '0', 'name' => 'Português BR'],
-                                ['code' => '1', 'name' => 'Inglês'],
-                                ['code' => '2', 'name' => 'Espanhol'],
-                                ['code' => '3', 'name' => 'Francês'],
-                                ['code' => '4', 'name' => 'Alemão'],
-                                ['code' => '5', 'name' => 'Japonês'],
-                                ['code' => '6', 'name' => 'Chinês'],
-                                ['code' => '7', 'name' => 'Ronaldo'],
-                                ['code' => '8', 'name' => 'Italiano'],
-                                ['code' => '9', 'name' => 'Holandês'],
-                                ['code' => '10', 'name' => 'Sueco'],
-                                ['code' => '11', 'name' => 'Árabe'],
-                                ['code' => '12', 'name' => 'Russo'],
-                                ['code' => '13', 'name' => 'Coreano'],
-                                ['code' => '14', 'name' => 'Hindi'],
-                                ['code' => '15', 'name' => 'Grego'],
-                                ['code' => '16', 'name' => 'Polonês'],
-                                ['code' => '17', 'name' => 'Vietnamita']
+                                ['code' => '0', 'name' => 'Ficção Científica'],
+                                ['code' => '1', 'name' => 'Fantasia'],
+                                ['code' => '2', 'name' => 'Suspense'],
+                                ['code' => '3', 'name' => 'Romance'],
+                                ['code' => '4', 'name' => 'Terror'],
+                                ['code' => '5', 'name' => 'Ação e Aventura'],
+                                ['code' => '6', 'name' => 'História'],
+                                ['code' => '7', 'name' => 'Biografia'],
+                                ['code' => '8', 'name' => 'Não-Ficção'],
+                                ['code' => '9', 'name' => 'Infantil'],
+                                ['code' => '10', 'name' => 'Jovem Adulto'],
+                                ['code' => '11', 'name' => 'Poesia'],
+                                ['code' => '12', 'name' => 'Autoajuda'],
+                                ['code' => '13', 'name' => 'Comédia'],
+                                ['code' => '14', 'name' => 'Drama'],
+                                ['code' => '15', 'name' => 'Policial'],
+                                ['code' => '16', 'name' => 'Crônicas'],
+                                ['code' => '17', 'name' => 'Contos']
                             ];
                             foreach ($area as $are) {
                                 echo '<option value="' . htmlspecialchars($are['code']) . '">' . htmlspecialchars($are['name']) . '</option>';
