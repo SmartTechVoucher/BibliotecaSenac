@@ -12,9 +12,6 @@ if (!isset($_SESSION['toast'])) {
 }
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,8 +21,8 @@ if (!isset($_SESSION['toast'])) {
     <?php
     require_once "../../../config/constantes.php";
   ?>
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="../../../public/css/admin/telaInicialAdm.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,7 +65,7 @@ if (!isset($_SESSION['toast'])) {
         </div>
 
         <div class="caixa">
-            <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeUsuarios.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
+            <a href="<?php echo $URLBASE ?>/src/views/admin/cadastro-usuarios.php"><img src="../../../public/assets/icons/Cadastrar usuários.png" alt="" class="cadastrarUsuarios"></a>
         </div>
         
         <div class="caixa">
@@ -88,15 +85,13 @@ if (!isset($_SESSION['toast'])) {
         </div>
         
     </div>
-
-   
             
    <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->  <!--Rodapé-->
-
-    
+  
    <?php
-    include "../../../public/components/admin/footer/footer-admin.php";
+        include "../../../public/components/admin/footer/footer-admin.php";
     ?>
+    
     <script src="../../../public/js/admin/telaInicialDoAdm.js"></script>
 
 </body>
