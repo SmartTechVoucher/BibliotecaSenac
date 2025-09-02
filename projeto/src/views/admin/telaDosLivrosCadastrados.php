@@ -2,7 +2,7 @@
 require "../../../config/constantes.php";
 include "../../../public/components/admin/button/button-admin.php";
 
-// Lista de livros (simulação) - depois so substituir pelo resultado do banco 😛
+// Lista de livros (simulação) - depois so substituir pelo resultado do banco 
 $livros = [];
 for ($i = 1; $i <= 50; $i++) {
     $livros[] = [
@@ -40,21 +40,28 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
 
 <body>
     <?php include "../../../public/components/admin/header/header-admin.php"; ?>
+    <?php include "../../../public/components/admin/input/input-admin.php"; ?>
+
+
 
     <div class="container-main">
         <h2 id="livro-titulomaster">Listagem de livros cadastrados</h2>
 
         <form>
             <div class="controle">
-                <input type="text" class="busca" placeholder="Pesquise por título ou ISBN do livro">
+                <?php
+                InputAdmin(largura:60, placeholder:"Escreva nome ou código do livro...", id:"pesquisa_livro", name:"pesquisa_livro")
+                ?>
                 <button type="submit" class="botao">
-                    <img src="../../../public/assets/icons/Buscar.png" alt="Buscar">
+                <img src="../../../public/assets/icons/Buscar.png" alt="Buscar">
                 </button>
+            
                 <div class="controle2">
                     <label class="unidade">Unidade:</label>
                     <select>
                         <option value="">Selecione</option>
-                        <option>Dourados</option>
+                        <option>Dourados</option> V        
+                        .
                         <option>Três Lagoas</option>
                         <option>Ponta Porã</option>
                         <option>Corumbá</option>
@@ -79,7 +86,7 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
                             <span>Emprestados: <b><?php echo $livro['emprestados']; ?></b></span>
                             <span>Reserva: <b><?php echo $livro['reserva']; ?></b></span>
                         </div>
-                    </div>
+                    </div>   
                 </div>
             <?php endforeach; ?>
         </div>
