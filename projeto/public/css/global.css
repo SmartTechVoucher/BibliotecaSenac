@@ -1,0 +1,25 @@
+
+/*DESIGN DO SELECT PADRAO*/
+.select-padrao {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #495057;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: all 0.1s ease-in-out;
+    width: 100%;
+}
+
+
+.select-padrao:disabled {
+    background-color: #e6e6e6;
+}
+
+
+.select-padrao:focus {
+    border-color: dodgerblue; 
+    box-shadow: 0 0 5px dodgerblue; 
+    transform: scale(1.02); 
+}
