@@ -58,7 +58,7 @@
                         </select>
                     </div>
                     <div class="form-grupo">
-                        <label for="genero">Exportar/salvar como:</label>
+                        <label for="genero"><img src="../../../public/assets/icons/expor" alt="">Exportar/salvar como:</label>
                         <select id="genero" name="genero" class="select-padrao">
                             <option value="">Selecione</option>
                             <option value="masculino">Masculino</option>
@@ -78,7 +78,7 @@
                         </select>
                     </div>
                     <div class="form-grupo">
-                        <label for="inicio">Começando de:</label>
+                        <label for="inicio"><img src="<?php echo $URLBASE ?>/" alt="">Começando de:</label>
                         <input type="date" id="inicio" name="inicio" class="input-date-padrao">
                     </div>
 
