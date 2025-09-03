@@ -10,7 +10,6 @@
     ?>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/global.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/telaRelatorios.css">
 
     <?php include "../../../public/components/admin/input/input-admin.php"; ?>
@@ -40,15 +39,13 @@
     <div class="container-main">
         <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
             <fieldset class="form-section">
-                <legend> <img src="../../../public/assets/icons/relatorio.png" alt="">Gerar relatórios</legend>
-                <!-- ideia -->
-                <!-- <p>Configure os parâmetros para gerar seu relatório personalizado</p> -->
+                <legend>Gerar relatórios</legend>
 
                 <div class="form-row">
 
                     <div class="form-grupo">
-                        <label for="genero"><img src="../../../public/assets/icons/relatorio.png" alt="">Sobre:</label>
-                        <select id="genero" name="genero" class="select-padrao">
+                        <label for="genero">Sobre:</label>
+                        <select id="genero" name="genero" class="input-admin">
                             <option value="">Selecione</option>
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
@@ -59,7 +56,7 @@
                     </div>
                     <div class="form-grupo">
                         <label for="genero">Exportar/salvar como:</label>
-                        <select id="genero" name="genero" class="select-padrao">
+                        <select id="genero" name="genero" class="input-admin">
                             <option value="">Selecione</option>
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
@@ -69,8 +66,8 @@
                         </select>
                     </div>
                     <div class="form-grupo">
-                        <label for="unidade_senac">Unidade:</label>
-                        <select id="unidade_senac" name="unidade_senac" class="select-padrao" required>
+                        <label for="unidade_senac">Unidade</label>
+                        <select id="unidade_senac" name="unidade_senac" class="input-admin" required>
                             <option value="">Selecione</option>
                             <option value="senac_hub">Senac Hub Academy</option>
                             <option value="senac_dou">Senac Dourados</option>
@@ -79,17 +76,15 @@
                     </div>
                     <div class="form-grupo">
                         <label for="inicio">Começando de:</label>
-                        <input type="date" id="inicio" name="inicio" class="input-date-padrao">
-                    </div>
+                        <input type="date" id="inicio" name="inicio">
 
-                    <div class="form-grupo">
                         <label for="fim">Até:</label>
-                        <input type="date" id="fim" name="fim" class="input-date-padrao">
-                    </div>
+                        <input type="date" id="fim" name="fim">
 
+                    </div>
                     <div class="form-grupo">
                         <label for="unidade_senac">Ordenagem</label>
-                        <select id="unidade_senac" name="unidade_senac" class="select-padrao" required>
+                        <select id="unidade_senac" name="unidade_senac" class="input-admin" required>
                             <option value="">Selecione</option>
                             <option value="senac_hub">Senac Hub Academy</option>
                             <option value="senac_dou">Senac Dourados</option>
@@ -102,21 +97,9 @@
 
 
 
+            <div class="form-grupo">
 
-
-
-
-
-    </div>
-
-    <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé--> <!--Rodapé-->
-
-
-    <?php
-    include "../../../public/components/admin/footer/footer-admin.php";
-    ?>
-    <script src="../../../public/js/admin/telaDeRelatorios.js"></script>
-
-</body>
-
-</html>
+                <?php
+                InputAdmin(largura: 100, name: "matricula", id: "matricula", tipo: "text")
+                ?>
+            </div>

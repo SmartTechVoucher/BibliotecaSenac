@@ -36,7 +36,7 @@
     border: 1px solid #ced4da;
     border-radius: 8px;
     padding: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 .form-row {
     display: flex;
@@ -81,33 +81,73 @@ label {
 }
 
 .botao-container button {
-        padding: 12px 24px;
-        font-size: 1rem;
-        font-weight: 500;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-    
-    button[type="submit"] {
-        background-color: #004A90;
-        color: white;
-    }
-    
-    button[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-    
-    .cancel-button {
-        background-color: #900000;
-        color: white;
-    }
-    
-    .cancel-button:hover {
-        background-color: #5a6268;
-    }
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
+button[type="submit"] {
+    background-color: #004A90;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.cancel-button {
+    background-color: #900000;
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+/* Estilo para input type="date" igual ao select */
+.input-date-padrao {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #495057;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: all 0.1s ease-in-out;
+    width: 100%;
+
+    /* Remove estilo padrão do navegador */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.input-date-padrao:disabled {
+    background-color: #e6e6e6;
+}
+
+.input-date-padrao:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 5px dodgerblue;
+    transform: scale(1.02);
+}
+
+/* Ajuste do ícone do calendário no Chrome/Safari */
+.input-date-padrao::-webkit-calendar-picker-indicator {
+    background: transparent;
+    cursor: pointer;
+    padding: 0 5px;
+    color: #495057;
+    filter: invert(50%);
+}
+
+/* Firefox */
+.input-date-padrao::-moz-calendar-picker-indicator {
+    cursor: pointer;
+}
 
 
 @media (max-width: 768px) {
