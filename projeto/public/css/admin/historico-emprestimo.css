@@ -40,6 +40,7 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
 }
+
 th, td {
     padding: 12px;
     text-align: left;
@@ -50,12 +51,15 @@ th {
     background-color: #7a7e83;
     color: var(--branco);
 }
+
 tr:hover {
     background-color: #f1f1f1;
 }
+
 *{
     box-sizing: border-box;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -116,17 +120,20 @@ table {
     margin: auto;
     font-size: 18px;
     border: 2px solid #d3cdcd;
-     overflow: hidden;
+    overflow: hidden;
 }
+
 .filter-options{
     display:flex;
     gap: 15px;
     margin-top: 10px;
 }
+
 .pagination-controls {
             margin-top: 20px;
             text-align: center;
-        }
+}
+
 .pagination-controls button {
     background-color: #007bff;
     color: var(--branco);
@@ -138,13 +145,16 @@ table {
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
+
 .pagination-controls button:hover:not(:disabled) {
     background-color: #0056b3;
 }
+
 .pagination-controls button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
 .pagination-info {
     margin-top: 10px;
     font-size: 0.9em;
@@ -159,6 +169,7 @@ table {
     border-radius: 5px;
     margin: auto;
     margin-bottom: 20px;
+    margin-top: 5%;
 }
 .main-container h2{
     text-align: center;

@@ -46,11 +46,6 @@ h2{
    right: 60px;
 }
 
-.titulo{
-  padding-top: 5%;
-  padding-left: 10%;   
-}
-
 /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
 
 .conteiner2{
@@ -63,7 +58,6 @@ h2{
     font-family: var(--fontes);
     margin-left: 20px;
     cursor: pointer;
-    margin-bottom: 11%;
     
 }
 
@@ -73,60 +67,6 @@ h2{
     color: black;
     border-radius: 5%;
    
-}
-
-.caixa .Usuario{
-    
-    text-align: center;
-    position: var(--posicao);
-    bottom: 15%;
-}
-
-.caixa .Livro{
-    width: 80.43px;
-    height: 107.24;
-    position: var(--posicao);
-    left: 54px; top: 20px;
-}
-
-.caixa .adicao{
-    width: 60.32px;
-    height: 60.32px;
-    position: var(--posicao);
-    left: 10px; bottom: -25px;
-}
-
-.caixa .cadastro{
-    text-align: center;
-    
-}
-
-.caixa .user{
-   
-    position: var(--posicao);
-    left: 45px; top: 20px;
-
-}
-
-.sinalDeAdicao{
-    position: var(--posicao);
-    top: 27px; left: 10px;
-}
-
-.cadastroDeUsuario{
-    text-align: center;
-    position: var(--posicao);
-    bottom: 15px;
-    color: black;
-}
-
-.caixa .vectorRelatorio{
-    position: var(--posicao);
-    top: 15%; left: 20%;
-}
-
-.caixa .Emprestimo{
-    text-align: center;
 }
 
 .adm{
@@ -139,53 +79,6 @@ h2{
     
 } 
 
-.inferiorDireito{
-    display: flex;
-    justify-content: end;
-    margin-top: 37%;   
-}
-
-.inferiorDireito .inferior{
-    width: 100px;
-    height: 100px;
-}
-
-/*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/   /*Rodapé*/
-
-.logoFecomercio{
-    align-items: center;
-    display: flex;
-}
-
-.rodape{
-    background-color: var(--azulCabecalho);
-    height: 189px;
-    width: 100%;
-    position: var(--posicaoAbsoluta);
-    top: 775px;
-    display: flex;
-    justify-content: space-evenly;
-   
-}
-
-.copyright{
-    position: var(--posicao);
-    left: 35%; bottom: 32%;
-    color: var(--branco);
-    font-size: 15px;
-    font-family: var(--fontes);
-}
-
-.todos{
-    position: var(--posicao);
-    left: 28%; bottom: 32%;
-    color: var(--branco);
-    font-size: 15px;
-    font-family: var(--fontes);
-}
-
-/*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
-
 @media(max-width:1024px){
 
     .logoSenacHub{
@@ -196,12 +89,6 @@ h2{
 @media(min-width:375px){
 
  /*Iphone SE*//*Iphone SE*//*Iphone SE*//*Iphone SE*//*Iphone SE*//*Iphone SE*/
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 69.5%; top: 17%;
-    }
-
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
@@ -220,13 +107,13 @@ h2{
         width: 300px;
     }
 
-    .Libro, .copyright, .todos, .logo, .titulo {
-        display: none;
-    }
+    /* .Libro, .copyright, .todos, .logo, .titulo {
+         display: none;
+    } */
 
     .inferior{
-        margin-top: -3%;
-    }
+        margin-top: 3%;
+     }
 
 }
 
@@ -234,8 +121,16 @@ h2{
 
  /*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*/   
 
-    .inferiorDireito{
-        margin-top: 34%;
+    .adm{
+        margin-top: 15%;
+    }    
+    
+    .conteiner2{
+        margin-left: 11%;
+    }
+
+    .inferior{
+        margin-top: 40%;
     }
 
 }
@@ -244,14 +139,16 @@ h2{
 
  /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/
 
-    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
+    .adm{
+        margin-left: 6%;
+    }  
     
-    .rodape{
-        margin-top: 5%;
+    .conteiner2{
+        margin-left: 15%;
     }
 
-    .inferiorDireito{
-        margin-top: 33%;
+    .inferior{
+        margin-top: 30%;
     }
 
 }
@@ -262,16 +159,16 @@ h2{
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
-    .inferiorDireito{
-        margin-top: 29%;
+    .adm{
+        margin-left: 13%;
     }
 
-    .rodape{
-        margin-top: 5%;
+    .conteiner2{
+        margin-left: 20%;
     }
-    
-    .adm{
-        width: 500px;
+
+    .inferior{
+        margin-top: 22%;
     }
 
 }
@@ -282,49 +179,46 @@ h2{
 
    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
+    .adm{
+        margin-top: 30%;
+        margin-left: 0%;
+    }
+
     .conteiner2{
+        margin-left: 5%;
         width: 700px;
     }
 
-    .inferiorDireito{
-       margin-top: 41%;
+    .caixa{
+        height: 110px;
     }
 
-    .rodape{
-        margin-top: 8%;
+    .inferior{
+       margin-top: 28%;
     }
+
 }
 
 @media(min-width:820px){
 
  /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/   
 
- /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
+    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
-    .titulo{
-        display: block;
-        font-size: 14px;
-        padding-right: 10%;
+    .cadastrarLivro, .cadastrarUsuarios, .relatorios, .conteiner2 .emprestimo, .usuario, .estoque{
+        width: 95px;
+        height: 120px;
     }
 
- /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
-    
-    .conteiner2{
-        width: 800px;
+    .caixa{
+        width: auto;
+        height: auto;
     }
 
-    .inferiorDireito{
-        margin-top: 50.5%;
+    .inferior{
+        margin-top: 42%;
     }
     
-    .adm{
-        width: 700px;
-        margin-top: 10%;
-    }
-
-    .rodape{
-        margin-top: 26.3%;
-    } 
 }
 
 @media(min-width:912px){
@@ -333,13 +227,24 @@ h2{
 
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
 
-    .inferiorDireito{
-       margin-top: 67%;
+    .adm{
+        margin-left: 1%;
+        margin-top: 40%;
     }
 
-    .rodape{
-        margin-top: 46%;
+    .conteiner2{
+        width: 800px;
     }
+
+    .cadastrarLivro, .cadastrarUsuarios, .relatorios, .conteiner2 .emprestimo, .usuario, .estoque{
+        width: 105px;
+        height: 130px;
+    }
+
+    .inferior{
+       margin-top: 43%;
+    }
+
 
 }
 
@@ -347,24 +252,14 @@ h2{
 
  /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/   
 
-    /*Cabeçalho*/  /*Cabeçalho*/
-
-    .titulo{
-       font-size: 16px;
-    }
-
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
-    .conteiner2{
-        width: 900px;
+    .adm{
+        margin-top: 5%;
     }
 
-    .inferiorDireito{
-       margin-top: 64%;
-    }
-
-    .rodape{
-        height: 255px;
+    .inferior{
+       margin-top: 2%;
     }
 
 }
@@ -373,41 +268,10 @@ h2{
 
  /*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*/   
 
-    /*Cabeçalho*/  /*Cabeçalho*/
-
-   .logoSenacHub{
-        height: 120px;
-        width: 120px;
-   }
-    
-    .titulo{
-       font-size: 16px;
-       position: var(--posicao);
-       top: -8%;
-    }
-
  /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
 
-    .conteiner2{
-        width: 900px;
-    }
-
-    .inferiorDireito{
-       margin-top: 62%;
-    }
-
-    .Libro, .copyright, .todos{
-        display: block;
-    }
-
-    .copyright, .todos{
-        position: var(--posicao);
-        bottom: 10%;
-        width: 300px;
-    }
-
-    .rodape{
-        height: 255px;
+    .adm{
+        margin-left: 2%;
     }
 
 }
@@ -416,20 +280,12 @@ h2{
 
  /*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*/   
 
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-    
-    .titulo{
-       position: var(--posicao);
-       bottom: 15%;
-    }
-
-    .logoSenacHub{
-        width: 250px;
-        height: 120px;
-    }
-
     /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/
     
+    .adm{
+        margin-left: 3%;
+    }
+
     .conteiner2{
         width: 1150px;
     }
@@ -447,18 +303,9 @@ h2{
 
     /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
     
-    .inferiorDireito{
-       margin-top: 13%;
+    .inferior{
+       margin-top: 7.5%;
     }
-
-    .rodape{
-        align-items: center; 
-        margin-top: 3%; 
-    }    
-
-     .Libro{
-        height: 140px;
-    } 
 
 }
 
@@ -466,26 +313,15 @@ h2{
 
  /*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*/
 
-    /*Cabeçalho*/   /*Cabeçalho*/
-
-    .titulo{
-        position: var(--posicao);
-        bottom: 24%;
-    }
- 
     /*Corpo*/  /*Corpo*/  /*Corpo*/
     
-    .conteiner2{
-        width: 1300px;
+    .adm{
+        margin-left: 3%;
     }
 
-    .inferiorDireito{
-        margin-top: 9%;
+    .inferior{
+        margin-top: 3.5%;
 
-    }
-
-    .rodape{
-        margin-top: 0%;
     }
 
 }
@@ -494,13 +330,8 @@ h2{
 
  /*1912 x 1080*//*1912 x 1080*//*1912 x 1080*//*1912 x 1080*//*1912 x 1080*/   
     
-    .titulo{
-       position: var(--posicao);
-       top: -40%;
-    }
-
     .adm{
-        margin-left: 4%;
+        margin-left: 5%;
         margin-top: 4%;
     }
 
@@ -516,17 +347,8 @@ h2{
         height: 210px;
     }
 
-    .inferiorDireito{
-        margin-top: 3%;
-    }
-
-    .rodape{
-        margin-top: 0.5%;
-    }
-
-    .menuAdm .logoSenacHub{
-        height: 120px;
-        width: 200px;
+    .inferior{
+        margin-top: 0%;
     }
 
 }
