@@ -161,7 +161,6 @@ function renderSelectModal($name, $label, $items = [])
         <ul id="<?= $name ?>_dropdown" class="dropdown" style="display:none;"></ul>
     </div>
 
-    <!-- Modal -->
     <div id="<?= $name ?>_modal" class="modal">
         <div class="modal-content">
             <h2 id="<?= $name ?>_modalTitle">Cadastrar <?= $label ?></h2>
@@ -174,128 +173,127 @@ function renderSelectModal($name, $label, $items = [])
     </div>
 
     <script>
-        const input = document.getElementById("<?= $name ?>");
-        const dropdown = document.getElementById("<?= $name ?>_dropdown");
-        const modal = document.getElementById("<?= $name ?>_modal");
-        const novoInput = document.getElementById("<?= $name ?>_novoItem");
-        const btnCancelar = modal.querySelector(".btn-cancelar");
-        const btnSalvar = modal.querySelector(".btn-salvar");
-        const modalTitle = document.getElementById("<?= $name ?>_modalTitle");
+        /*FUNCAO IIFE*/
+        (function() {
+            const input = document.getElementById("<?= $name ?>");
+            const dropdown = document.getElementById("<?= $name ?>_dropdown");
+            const modal = document.getElementById("<?= $name ?>_modal");
+            const novoInput = document.getElementById("<?= $name ?>_novoItem");
+            const btnCancelar = modal.querySelector(".btn-cancelar");
+            const btnSalvar = modal.querySelector(".btn-salvar");
+            const modalTitle = document.getElementById("<?= $name ?>_modalTitle");
 
-        // Mock de dados
-        let items = <?= json_encode($items) ?>;
-        let editIndex = null;
+            let items = <?= json_encode($items) ?>;
+            let editIndex = null;
 
-        input.addEventListener("input", () => {
-            renderDropdown(input.value.trim().toLowerCase());
-        });
-
-        function renderDropdown(query) {
-            dropdown.innerHTML = "";
-            if (!query) {
-                dropdown.style.display = "none";
-                return;
-            }
-
-            const filtrados = items.map((item, i) => ({
-                    ...item,
-                    i
-                }))
-                .filter(i => i.nome.toLowerCase().includes(query));
-
-            filtrados.forEach(({
-                nome,
-                id,
-                i
-            }) => {
-                const li = document.createElement("li");
-
-                const span = document.createElement("span");
-                span.textContent = nome;
-                span.onclick = () => {
-                    input.value = nome;
-                    dropdown.style.display = "none";
-                };
-
-                const actions = document.createElement("div");
-                actions.classList.add("actions");
-
-                const btnEditar = document.createElement("button");
-                btnEditar.textContent = "✏️";
-                btnEditar.title = "Editar";
-                btnEditar.onclick = (e) => {
-                    e.stopPropagation();
-                    editIndex = i;
-                    modalTitle.textContent = "Editar <?= $label ?>";
-                    novoInput.value = items[i].nome;
-                    modal.style.display = "flex";
-                };
-
-                const btnExcluir = document.createElement("button");
-                btnExcluir.textContent = "🗑️";
-                btnExcluir.title = "Excluir";
-                btnExcluir.onclick = (e) => {
-                    e.stopPropagation();
-                    if (confirm(`Tem certeza que deseja excluir "${nome}"?`)) {
-                        items.splice(i, 1);
-                        renderDropdown(query);
-                    }
-                };
-
-                actions.appendChild(btnEditar);
-                actions.appendChild(btnExcluir);
-
-                li.appendChild(span);
-                li.appendChild(actions);
-                dropdown.appendChild(li);
+            input.addEventListener("input", () => {
+                renderDropdown(input.value.trim().toLowerCase());
             });
 
-            const addLi = document.createElement("li");
-            addLi.classList.add("add-author");
-            addLi.innerHTML = `<span>+</span> Cadastrar <?= $label ?>`;
-            addLi.onclick = () => {
-                editIndex = null;
-                modalTitle.textContent = "Cadastrar <?= $label ?>";
-                novoInput.value = input.value.trim();
-                modal.style.display = "flex";
-            };
-            dropdown.appendChild(addLi);
+            function renderDropdown(query) {
+                dropdown.innerHTML = "";
+                if (!query) {
+                    dropdown.style.display = "none";
+                    return;
+                }
 
-            dropdown.style.display = "block";
-        }
+                const filtrados = items.map((item, i) => ({
+                        ...item,
+                        i
+                    }))
+                    .filter(i => i.nome.toLowerCase().includes(query));
 
-        btnSalvar.onclick = () => {
-            const nome = novoInput.value.trim();
-            if (!nome) return;
+                filtrados.forEach(({ nome, id, i }) => {
+                    const li = document.createElement("li");
+                    
+                    const span = document.createElement("span");
+                    span.textContent = nome;
+                    span.onclick = () => {
+                        input.value = nome;
+                        dropdown.style.display = "none";
+                    };
 
-            if (editIndex !== null) {
-                items[editIndex].nome = nome;
-                input.value = nome;
-                alert("<?= $label ?> atualizado!");
-            } else {
-                const novoId = items.length ? Math.max(...items.map(i => i.id)) + 1 : 1;
-                items.push({
-                    id: novoId,
-                    nome
+                    const actions = document.createElement("div");
+                    actions.classList.add("actions");
+
+                    const btnEditar = document.createElement("button");
+                    btnEditar.textContent = "✏️";
+                    btnEditar.title = "Editar";
+                    btnEditar.onclick = (e) => {
+                        e.stopPropagation();
+                        editIndex = i;
+                        modalTitle.textContent = "Editar <?= $label ?>";
+                        novoInput.value = items[i].nome;
+                        modal.style.display = "flex";
+                    };
+
+                    const btnExcluir = document.createElement("button");
+                    btnExcluir.textContent = "🗑️";
+                    btnExcluir.title = "Excluir";
+                    btnExcluir.onclick = (e) => {
+                        e.stopPropagation();
+                        if (confirm(`Tem certeza que deseja excluir "${nome}"?`)) {
+                            items.splice(i, 1);
+                            renderDropdown(query);
+                        }
+                    };
+
+                    actions.appendChild(btnEditar);
+                    actions.appendChild(btnExcluir);
+                    
+                    li.appendChild(span);
+                    li.appendChild(actions);
+                    dropdown.appendChild(li);
                 });
-                input.value = nome;
-                alert("<?= $label ?> cadastrado!");
+
+                const addLi = document.createElement("li");
+                addLi.classList.add("add-author");
+                addLi.innerHTML = `<span>+</span> Cadastrar <?= $label ?>`;
+                addLi.onclick = () => {
+                    editIndex = null;
+                    modalTitle.textContent = "Cadastrar <?= $label ?>";
+                    novoInput.value = input.value.trim();
+                    modal.style.display = "flex";
+                };
+                dropdown.appendChild(addLi);
+
+                dropdown.style.display = "block";
             }
 
-            modal.style.display = "none";
-            dropdown.style.display = "none";
-            editIndex = null;
-        };
+            btnSalvar.onclick = () => {
+                const nome = novoInput.value.trim();
+                if (!nome) return;
 
-        btnCancelar.onclick = () => {
-            modal.style.display = "none";
-            editIndex = null;
-        };
-        document.addEventListener("click", e => {
-            if (!input.contains(e.target) && !dropdown.contains(e.target) && !modal.contains(e.target)) {
+                if (editIndex !== null) {
+                    items[editIndex].nome = nome;
+                    input.value = nome;
+                    alert("<?= $label ?> atualizado!");
+                } else {
+                    const novoId = items.length ? Math.max(...items.map(i => i.id)) + 1 : 1;
+                    items.push({
+                        id: novoId,
+                        nome
+                    });
+                    input.value = nome;
+                    alert("<?= $label ?> cadastrado!");
+                }
+
+                modal.style.display = "none";
                 dropdown.style.display = "none";
-            }
-        });
+                editIndex = null;
+            };
+
+            btnCancelar.onclick = () => {
+                modal.style.display = "none";
+                editIndex = null;
+            };
+            
+            document.addEventListener("click", e => {
+                if (!input.contains(e.target) && !dropdown.contains(e.target) && !modal.contains(e.target)) {
+                    dropdown.style.display = "none";
+                }
+            });
+        })(); // End of IIFE
     </script>
 <?php
 }

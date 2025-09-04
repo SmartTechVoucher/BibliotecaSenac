@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../../public/css/admin/telaCadastroLivros.css">
     <?php include "../../../public/components/admin/input/input-admin.php"; ?>
     <?php include "../../../public/components/admin/button/button-admin.php"; ?>
+    <?php require_once __DIR__ . '/../../../public/components/admin/select/input-select.php'; ?>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,32 +47,58 @@
                         InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
                         ?>
                     </div>
+                    
                     <div class="form-grupo">
-                        <label for="autor-livro">Autor</label>
-                        <select name="autor-livro" id="autor-livro" class="input-admin">
-                            <option value="" disabled selected>Selecione um(a) autor(a)...</option>
-                            <?php
-                            $autores = [
-                                ['code' => '0', 'name' => 'Vinicius De Moraes'],
-                                ['code' => '1', 'name' => 'Rafael Vinicius'],
-                                ['code' => '2', 'name' => 'Pamela Taga'],
-                                ['code' => '3', 'name' => 'Alberto Hainstien'],
-                                ['code' => '4', 'name' => 'Cristiano Dourado'],
-                                ['code' => '5', 'name' => 'Paloma Celulares'],
-                                ['code' => '6', 'name' => 'Ronaldo Nazario'],
-                                ['code' => '7', 'name' => 'Roberto Carnes']
-                            ];
-                            foreach ($autores as $aut) {
-                                echo '<option value="' . htmlspecialchars($aut['code']) . '">' . htmlspecialchars($aut['name']) . '</option>';
-                            }
-                            ?>
+                        <?php
+                        $autoresMock = [
+                            ['id' => 1, 'nome' => 'Machado de Assis'],
+                            ['id' => 2, 'nome' => 'Clarice Lispector'],
+                            ['id' => 3, 'nome' => 'Graciliano Ramos'],
+                            ['id' => 4, 'nome' => 'Carlos Drummond de Andrade'],
+                            ['id' => 5, 'nome' => 'José Saramago'],
+                            ['id' => 6, 'nome' => 'Fernando Pessoa'],
+                            ['id' => 7, 'nome' => 'J.R.R. Tolkien'],
+                            ['id' => 8, 'nome' => 'George Orwell'],
+                            ['id' => 9, 'nome' => 'Gabriel García Márquez'],
+                            ['id' => 10, 'nome' => 'Stephen King'],
+                            ['id' => 11, 'nome' => 'Agatha Christie'],
+                            ['id' => 12, 'nome' => 'Isaac Asimov'],
+                            ['id' => 13, 'nome' => 'Virginia Woolf'],
+                            ['id' => 14, 'nome' => 'H.P. Lovecraft'],
+                            ['id' => 15, 'nome' => 'Albert Camus'],
+                            ['id' => 16, 'nome' => 'J.K. Rowling'],
+                            ['id' => 17, 'nome' => 'Jane Austen'],
+                            ['id' => 18, 'nome' => 'C.S. Lewis'],
+                        ];
+
+                        renderSelectModal('autor', 'Autor', $autoresMock);
+                        ?>
 
                         </select>
                     </div>
                     <div class="form-grupo">
-                        <label for="editora-livro">Editora</label>
+
                         <?php
-                        InputAdmin(largura: 100, name: "editora-livro", id: "editora-livro", required: true)
+                        
+                        $editorasMock = [
+                            ['id' => 1, 'nome' => 'Companhia das Letras'],
+                            ['id' => 2, 'nome' => 'Editora Rocco'],
+                            ['id' => 3, 'nome' => 'Editora Record'],
+                            ['id' => 4, 'nome' => 'Penguin Random House'],
+                            ['id' => 5, 'nome' => 'Grupo Editorial Pensamento'],
+                            ['id' => 6, 'nome' => 'Intrínseca'],
+                            ['id' => 7, 'nome' => 'Globo Livros'],
+                            ['id' => 8, 'nome' => 'Editora Martins Fontes'],
+                            ['id' => 9, 'nome' => 'HarperCollins Brasil'],
+                            ['id' => 10, 'nome' => 'Saraiva'],
+                            ['id' => 11, 'nome' => 'Editora 34'],
+                            ['id' => 12, 'nome' => 'Zahar'],
+                            ['id' => 13, 'nome' => 'Editora Aleph'],
+                            ['id' => 14, 'nome' => 'Cengage Learning'],
+                            ['id' => 15, 'nome' => 'Manole']
+                        ];
+
+                        renderSelectModal('editora', 'Editora', $editorasMock);
                         ?>
                     </div>
 
@@ -87,133 +114,105 @@
                         ?>
                     </div>
                     <div class="form-grupo">
-                        <label for="idioma-livro">Idioma</label>
-                        <select name="idioma-livro" id="idioma-livro" class="input-admin">
-                            <option value="" disabled selected>Selecione um idioma...</option>
-                            <?php
-                            $idioma = [
-                                ['code' => '0', 'name' => 'Português BR'],
-                                ['code' => '1', 'name' => 'Inglês'],
-                                ['code' => '2', 'name' => 'Espanhol'],
-                                ['code' => '3', 'name' => 'Francês'],
-                                ['code' => '4', 'name' => 'Alemão'],
-                                ['code' => '5', 'name' => 'Japonês'],
-                                ['code' => '6', 'name' => 'Chinês'],
-                                ['code' => '7', 'name' => 'Ronaldo'],
-                                ['code' => '8', 'name' => 'Italiano'],
-                                ['code' => '9', 'name' => 'Holandês'],
-                                ['code' => '10', 'name' => 'Sueco'],
-                                ['code' => '11', 'name' => 'Árabe'],
-                                ['code' => '12', 'name' => 'Russo'],
-                                ['code' => '13', 'name' => 'Coreano'],
-                                ['code' => '14', 'name' => 'Hindi'],
-                                ['code' => '15', 'name' => 'Grego'],
-                                ['code' => '16', 'name' => 'Polonês'],
-                                ['code' => '17', 'name' => 'Vietnamita']
-                            ];
-                            foreach ($idioma as $idi) {
-                                echo '<option value="' . htmlspecialchars($idi['code']) . '">' . htmlspecialchars($idi['name']) . '</option>';
-                            }
-                            ?>
+                        <?php
+                        
 
-                        </select>
+                        $idiomasMock = [
+                            ['id' => 1, 'nome' => 'Português'],
+                            ['id' => 2, 'nome' => 'Inglês'],
+                            ['id' => 3, 'nome' => 'Espanhol'],
+                            ['id' => 4, 'nome' => 'Francês'],
+                            ['id' => 5, 'nome' => 'Alemão'],
+                            ['id' => 6, 'nome' => 'Italiano'],
+                            ['id' => 7, 'nome' => 'Japonês'],
+                            ['id' => 8, 'nome' => 'Chinês'],
+                            ['id' => 9, 'nome' => 'Russo'],
+                            ['id' => 10, 'nome' => 'Árabe'],
+                        ];
+
+                        renderSelectModal('idioma', 'Idioma', $idiomasMock);
+                        ?>
                     </div>
                     <div class="form-grupo">
-                        <label for="categoria-livro">Categoria</label>
-                        <select name="categoria-livro" id="categoria-livro" class="input-admin" size="6">
-                            <?php
-                            $categoria = [
-                                ['code' => '0', 'name' => 'Ficção Científica'],
-                                ['code' => '1', 'name' => 'Fantasia'],
-                                ['code' => '2', 'name' => 'Suspense'],
-                                ['code' => '3', 'name' => 'Romance'],
-                                ['code' => '4', 'name' => 'Terror'],
-                                ['code' => '5', 'name' => 'Ação e Aventura'],
-                                ['code' => '6', 'name' => 'História'],
-                                ['code' => '7', 'name' => 'Biografia'],
-                                ['code' => '8', 'name' => 'Não-Ficção'],
-                                ['code' => '9', 'name' => 'Infantil'],
-                                ['code' => '10', 'name' => 'Jovem Adulto'],
-                                ['code' => '11', 'name' => 'Poesia'],
-                                ['code' => '12', 'name' => 'Autoajuda'],
-                                ['code' => '13', 'name' => 'Comédia'],
-                                ['code' => '14', 'name' => 'Drama'],
-                                ['code' => '15', 'name' => 'Policial'],
-                                ['code' => '16', 'name' => 'Crônicas'],
-                                ['code' => '17', 'name' => 'Contos']
-                            ];
-                            foreach ($categoria as $cate) {
-                                echo '<option value="' . htmlspecialchars($cate['code']) . '">' . htmlspecialchars($cate['name']) . '</option>';
-                            }
-                            ?>
-                        </select>
+                        <?php
+                        
+
+                        $categoriasMock = [
+                            ['id' => 1, 'nome' => 'Ficção'],
+                            ['id' => 2, 'nome' => 'Não-ficção'],
+                            ['id' => 3, 'nome' => 'Romance'],
+                            ['id' => 4, 'nome' => 'Suspense'],
+                            ['id' => 5, 'nome' => 'Fantasia'],
+                            ['id' => 6, 'nome' => 'Ficção Científica'],
+                            ['id' => 7, 'nome' => 'Biografia'],
+                            ['id' => 8, 'nome' => 'Autoajuda'],
+                            ['id' => 9, 'nome' => 'História'],
+                            ['id' => 10, 'nome' => 'Culinária'],
+                            ['id' => 11, 'nome' => 'Infantil'],
+                            ['id' => 12, 'nome' => 'Poesia'],
+                            ['id' => 13, 'nome' => 'Aventura'],
+                            ['id' => 14, 'nome' => 'Humor'],
+                        ];
+
+                        renderSelectModal('categoria', 'Categoria', $categoriasMock);
+                        ?>
 
                     </div>
                 </div>
                 <div class="form-coluna">
                     <div class="form-grupo">
-                        <label for="area-livro">Area</label>
-                        <select name="area-livro" id="area-livro" class="input-admin">
-                            <?php
-                            $area = [
-                                ['code' => '0', 'name' => 'Ficção Científica'],
-                                ['code' => '1', 'name' => 'Fantasia'],
-                                ['code' => '2', 'name' => 'Suspense'],
-                                ['code' => '3', 'name' => 'Romance'],
-                                ['code' => '4', 'name' => 'Terror'],
-                                ['code' => '5', 'name' => 'Ação e Aventura'],
-                                ['code' => '6', 'name' => 'História'],
-                                ['code' => '7', 'name' => 'Biografia'],
-                                ['code' => '8', 'name' => 'Não-Ficção'],
-                                ['code' => '9', 'name' => 'Infantil'],
-                                ['code' => '10', 'name' => 'Jovem Adulto'],
-                                ['code' => '11', 'name' => 'Poesia'],
-                                ['code' => '12', 'name' => 'Autoajuda'],
-                                ['code' => '13', 'name' => 'Comédia'],
-                                ['code' => '14', 'name' => 'Drama'],
-                                ['code' => '15', 'name' => 'Policial'],
-                                ['code' => '16', 'name' => 'Crônicas'],
-                                ['code' => '17', 'name' => 'Contos']
-                            ];
-                            foreach ($area as $are) {
-                                echo '<option value="' . htmlspecialchars($are['code']) . '">' . htmlspecialchars($are['name']) . '</option>';
-                            }
-                            ?>
-                        </select>
+                        <?php
+                           
 
+                            $areasMock = [
+                                ['id' => 1, 'nome' => 'Ciências Exatas'],
+                                ['id' => 2, 'nome' => 'Ciências Biológicas'],
+                                ['id' => 3, 'nome' => 'Ciências Humanas'],
+                                ['id' => 4, 'nome' => 'Ciências Sociais Aplicadas'],
+                                ['id' => 5, 'nome' => 'Engenharias'],
+                                ['id' => 6, 'nome' => 'Saúde'],
+                                ['id' => 7, 'nome' => 'Linguística, Letras e Artes'],
+                                ['id' => 8, 'nome' => 'Agricultura e Meio Ambiente'],
+                                ['id' => 9, 'nome' => 'Arquitetura e Urbanismo'],
+                                ['id' => 10, 'nome' => 'Computação e Informática'],
+                            ];
+
+                            renderSelectModal('area', 'Área', $areasMock);
+                            ?>
+
+                            </div>
+                            <div class="form-grupo">
+                                <label for="publicacao-livro">Ano</label>
+                                <?php
+                                InputAdmin(largura: 100, name: "publicacao-livro", id: "publicacao-livro", tipo: "date")
+                                ?>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="capa-livro">Capa</label>
+                                <?php
+                                InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
+                                ?>
+                            </div>
                     </div>
-                    <div class="form-grupo">
-                        <label for="publicacao-livro">Ano</label>
-                        <?php
-                        InputAdmin(largura: 100, name: "publicacao-livro", id: "publicacao-livro", tipo: "date")
-                        ?>
+                    <div class="form-coluna">
+                        <div class="form-grupo">
+                            <label for="resumo-livro">Resumo</label>
+                            <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="notas-livro">Notas</label>
+                            <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="tipo-documento">Tipo de documento</label>
+                            <select id="tipo-documento" name="tipo-documento" class="input-admin" required>
+                                <option value="">Selecione</option>
+                                <option value="tipo-documento-livro">Livro</option>
+                                <option value="tipo-documento-ebook">eBook</option>
+                                <option value="tipo-documento-revista">Revista</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-grupo">
-                        <label for="capa-livro">Capa</label>
-                        <?php
-                        InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
-                        ?>
-                    </div>
-                </div>
-                <div class="form-coluna">
-                    <div class="form-grupo">
-                        <label for="resumo-livro">Resumo</label>
-                        <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
-                    </div>
-                    <div class="form-grupo">
-                        <label for="notas-livro">Notas</label>
-                        <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
-                    </div>
-                    <div class="form-grupo">
-                        <label for="tipo-documento">Tipo de documento</label>
-                        <select id="tipo-documento" name="tipo-documento" class="input-admin" required>
-                            <option value="">Selecione</option>
-                            <option value="tipo-documento-livro">Livro</option>
-                            <option value="tipo-documento-ebook">eBook</option>
-                            <option value="tipo-documento-revista">Revista</option>
-                        </select>
-                    </div>
-                </div>
 
 
 
