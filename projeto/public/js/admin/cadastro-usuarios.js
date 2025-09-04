@@ -1,8 +1,8 @@
-const inputFile = document.getElementById('foto-usuario'); 
+const arquivoDeEntrada = document.getElementById('foto-usuario'); 
 const fotoPerfil = document.getElementById('foto-perfil'); 
 
 
-inputFile.addEventListener('change', function (event) {
+arquivoDeEntrada.addEventListener('change', function (event) {
    
     if (event.target.files && event.target.files[0]) {
         

@@ -1,20 +1,20 @@
-const button1 = document.getElementById('regularesBotao');
+const botao1 = document.getElementById('regularesBotao');
 const botaoEdicao= document.getElementById('botao-edicao');
-  const button2 = document.getElementById('bloqueadosBotao');
+  const botao2 = document.getElementById('bloqueadosBotao');
 
-  const button = document.getElementsByClassName("bloqueadosBotao")
+  const botao = document.getElementsByClassName("bloqueadosBotao")
 
-  button[0].addEventListener('click', function regularclick() {
-    button[0].classList.add('active');
-    button[1].classList.remove('active');
+  botao[0].addEventListener('click', function regularclick() {
+    botao[0].classList.add('active');
+    botao[1].classList.remove('active');
   });
 
-  button[1].addEventListener('click', function blockclick() {
-    button[1].classList.add('active');
-    button[0].classList.remove('active');
+  botao[1].addEventListener('click', function blockclick() {
+    botao[1].classList.add('active');
+    botao[0].classList.remove('active');
   });
 
-  const users = [
+  const usuarios = [
     {
         name: 'Tadinha Mora',
         registration: '970582024',
@@ -1234,30 +1234,26 @@ const botaoEdicao= document.getElementById('botao-edicao');
                 endComercial: 'Rua Barão do Rio Branco, 800, Centro, Campo Grande - MS'
             }
 ];
-    let selectedUserIndex = null;
-    let currentPage = 1;
-        let filteredRegularUsers = []; // To store regular users after filtering
+    let indiceDeUsuarioSelecionado = null;
+    let paginaAtual = 1;
+        let usuariosRegularesFiltrados = []; 
+        let paginaDeBloqueadosAtualmente = 1;
+        let usuariosFiltradosComoBloqueados = []; 
+        const usuariosPorPagina = 6; 
 
-        // Pagination variables for Blocked Users table
-        let blockedCurrentPage = 1;
-        let filteredBlockedUsers = []; // To store blocked users after filtering
+    function renderizarTabela() {
+      const tabelaDeUsuario = document.getElementById('userTable');
+      const BotaoVoltar = document.getElementById('backButton');
+      const botaoAvancar = document.getElementById('forwardButton');
 
-        const usersPerPage = 6; // Number of users to display per page for both tables
+      const usuariosRegulares = usuarios.filter(user => user.Status === 'Regular');
+      const indiceInicial = (paginaAtual - 1) * usuariosPorPagina;
+      const indiceFinal = indiceInicial + usuariosPorPagina;
 
-
-    function renderTable() {
-      const userTable = document.getElementById('userTable');
-      const backButton = document.getElementById('backButton');
-      const forwardButton = document.getElementById('forwardButton');
-
-      const regularUsers = users.filter(user => user.Status === 'Regular');
-      const startIndex = (currentPage - 1) * usersPerPage;
-      const endIndex = startIndex + usersPerPage;
-
-      const usersToDisplay = regularUsers.slice(startIndex, endIndex);
+      const usuariosParaExibir = usuariosRegulares.slice(indiceInicial, indiceFinal);
             
       
-      userTable.innerHTML = usersToDisplay.map((user) => `
+      tabelaDeUsuario.innerHTML = usuariosParaExibir.map((user) => `
         
         <tr>
         <td>${user.name}</td>
@@ -1268,23 +1264,23 @@ const botaoEdicao= document.getElementById('botao-edicao');
         <td><button onclick="showUser('${user.name}')">Detalhes</button></td>
         </tr>
       `).join('');
-      backButton.disabled = currentPage === 1;
-            forwardButton.disabled = endIndex >= regularUsers.length;
+      BotaoVoltar.disabled = paginaAtual === 1;
+            botaoAvancar.disabled = indiceFinal >= usuariosRegulares.length;
     }
 
     
-    function renderBlockedTable() {
-      const blockedTable = document.getElementById('blockedTable');
-      const backBlockedButton = document.getElementById('backBlockedButton');
-            const forwardBlockedButton = document.getElementById('forwardBlockedButton');
+    function renderizarTabelaDosBloqueados() {
+      const tabelaDosBloqueados = document.getElementById('blockedTable');
+      const botaoVoltarBloqueado = document.getElementById('backBlockedButton');
+      const botaoAvancarBloqueado = document.getElementById('forwardBlockedButton');
       
-      const blockedUsers = users.filter(user => user.Status === 'Bloqueado');
-      const startIndex = (currentPage - 1) * usersPerPage;
-      const endIndex = startIndex + usersPerPage;
+      const usuariosBloqueados = usuarios.filter(user => user.Status === 'Bloqueado');
+      const indiceInicial = (paginaAtual - 1) * usuariosPorPagina;
+      const indiceFinal = indiceInicial + usuariosPorPagina;
 
-      const blockedUsersToDisplay = blockedUsers.slice(startIndex, endIndex);
+      const usuariosBloqueadosParaExibir = usuariosBloqueados.slice(indiceInicial, indiceFinal);
 
-      blockedTable.innerHTML = blockedUsersToDisplay.map((user) => `
+      tabelaDosBloqueados.innerHTML = usuariosBloqueadosParaExibir.map((user) => `
         <tr>
           <td>${user.name}</td>
           <td>${user.registration}</td>
@@ -1294,32 +1290,31 @@ const botaoEdicao= document.getElementById('botao-edicao');
           <td><button onclick="showUser('${user.name}')">Detalhes</button></td>
         </tr>
       `).join('');
-      backBlockedButton.disabled = blockedCurrentPage === 1;
-      forwardBlockedButton.disabled = endIndex >= blockedUsers.length;
+      botaoVoltarBloqueado.disabled = paginaDeBloqueadosAtualmente === 1;
+      botaoAvancarBloqueado.disabled = indiceFinal >= usuariosBloqueados.length;
     }
 
-    function changeBlockedPage(direction) {
-            blockedCurrentPage += direction;
-            renderBlockedTable(); // Re-render the table for the new page
+    function trocarParaPaginaDosBloqueados(direction) {
+            paginaDeBloqueadosAtualmente += direction;
+            renderizarTabelaDosBloqueados(); 
         }
 
- function changePage(direction) {
-            currentPage += direction;
-            renderTable(); // Re-render the table for the new page
+ function mudarPagina(direction) {
+            paginaAtual += direction;
+            renderizarTabela(); 
         }
 
-        // Function to filter the table (called on keyup in search input)
-        function filterTable() {
-            currentPage = 1; // Reset to the first page when filtering
-            renderTable();
+        function filtrarTabela() {
+            paginaAtual = 1; // Reset to the first page when filtering
+            renderizarTabela();
         }
 
-    function showUser(userName) {
+    function mostrarUsuario(userName) {
       
-      const index = users.findIndex(u => u.name === userName);
-      if (index >= 0) {
-        selectedUserIndex = index;
-        const user = users[index];
+      const indice = usuarios.findIndex(u => u.name === userName);
+      if (indice >= 0) {
+        indiceDeUsuarioSelecionado = indice;
+        const user = usuarios[indice];
         document.getElementById('userName').value = user.name;
         document.getElementById('userNameSocial').value = user.nomeSocial;
         document.getElementById('userNascimento').value = user.nascimento;
@@ -1351,12 +1346,12 @@ const botaoEdicao= document.getElementById('botao-edicao');
     }
 
     
-    function blockUser() {
-      if (selectedUserIndex !== null) {
-        users[selectedUserIndex].Status = 'Bloqueado';
-        closeModal();
-        renderTable();
-        renderBlockedTable();
+    function bloquearUsuario() {
+      if (indiceDeUsuarioSelecionado !== null) {
+        usuarios[indiceDeUsuarioSelecionado].Status = 'Bloqueado';
+        fecharModal();
+        renderizarTabela();
+        renderizarTabelaDosBloqueados();
         console.log("Bloqueado!")
       }
     }
@@ -1374,7 +1369,7 @@ const botaoEdicao= document.getElementById('botao-edicao');
             });
             if (isReadOnly) {
                 botaoEdicao.textContent = 'Salvar dados';
-                // Optionally focus the first input when they become editable
+                
                 if (TodosInputs.length > 0) {
                     TodosInputs[0].focus();
                 }
@@ -1384,41 +1379,41 @@ const botaoEdicao= document.getElementById('botao-edicao');
         
         
     });
-    function unblockUser(userName) {
-      const index = users.findIndex(u => u.name === userName);
-      if (index >= 0) {
-        users[index].Status = 'Regular';
-        closeModal();
-        renderTable();
-        renderBlockedTable();
+    function desbloquearUsuario(userName) {
+      const indice = usuarios.findIndex(u => u.name === userName);
+      if (indice >= 0) {
+        usuarios[indice].Status = 'Regular';
+        fecharModal();
+        renderizarTabela();
+        renderizarTabelaDosBloqueados();
         console.log("Desbloqueado!")
       }
     }
 
-    function closeModal() {
+    function fecharModal() {
       document.getElementById('userModal').style.display = 'none';
     }
 
-    function filterTable() {
+    function filtrarTabela() {
     
-      renderTable();
-      renderBlockedTable();
+      renderizarTabela();
+      renderizarTabelaDosBloqueados();
     }
 
-    function openTab(evt, tabName) {
+    function abrirTab(evt, tabName) {
       
-      button[0].addEventListener('click', function regularclick() { /* muda a cor dos botões qndo selecionado "regulares" */
+      botao[0].addEventListener('click', function cliqueRegular() { /* muda a cor dos botões qndo selecionado "regulares" */
         // button[0].style.backgroundColor = "#fbfaff";
         // button[1].style.backgroundColor = "#e2e1e6";
-        button[0].classList.add('active');
-        button[1].classList.remove('active');
+        botao[0].classList.add('active');
+        botao[1].classList.remove('active');
       });
 
-      button[1].addEventListener('click', function blockclick() { /* muda a cor dos botões qndo selecionado "bloqueados" */
+      botao[1].addEventListener('click', function cliqueBloquear() { /* muda a cor dos botões qndo selecionado "bloqueados" */
         // button[1].style.backgroundColor = "#fbfaff";
         // button[0].style.backgroundColor = "#e2e1e6";
-        button[1].classList.add('active');
-        button[0].classList.remove('active');
+        botao[1].classList.add('active');
+        botao[0].classList.remove('active');
       });
 
       document.querySelectorAll('.tab-content').forEach(tab => tab.style.display = 'none');
@@ -1428,19 +1423,19 @@ const botaoEdicao= document.getElementById('botao-edicao');
     }
 
     window.onload = () => {
-      renderTable();
-      renderBlockedTable();
+      renderizarTabela();
+      renderizarTabelaDosBloqueados();
     };
     document.getElementById("botao-bloquear").addEventListener("click", blockORunblock);
     function blockORunblock() {
-      if (selectedUserIndex !== null) {
-          const userToModify = users[selectedUserIndex];
+      if (indiceDeUsuarioSelecionado !== null) {
+          const userToModify = usuarios[indiceDeUsuarioSelecionado];
   
           if (userToModify.Status === "Regular") {
-              blockUser();
+              bloquearUsuario();
           } else if (userToModify.Status === "Bloqueado") {
               // Pass the userName to unblockUser
-              unblockUser(userToModify.name);
+              desbloquearUsuario(userToModify.name);
           }
       }
   }

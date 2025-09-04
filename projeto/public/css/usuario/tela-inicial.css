@@ -523,6 +523,10 @@ body {
     height: auto;
 }
 
+#comunicacao{
+    filter: invert(100%);
+}
+
 .icon_livros{
     display: flex;
     justify-content: center;
