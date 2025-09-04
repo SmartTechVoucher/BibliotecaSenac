@@ -31,6 +31,9 @@
     font-size: 1.3rem;
     font-weight: 500;
     padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
 .form-section {
     border: 1px solid #ced4da;
@@ -48,11 +51,19 @@
     flex: 1 1 300px;
     margin-bottom: 1rem;
 }
+
+.icons {
+    width: 20px;
+}
+
 label {
     display: block;
     font-weight: 500;
     margin-bottom: 0.5rem;
     color: #555;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
 }
 #foto-perfil-container {
     display: flex;
@@ -81,6 +92,8 @@ label {
 }
 
 .botao-container button {
+    max-width: 650px;
+    width: 100%;
     padding: 12px 24px;
     font-size: 1rem;
     font-weight: 500;
@@ -120,9 +133,7 @@ button[type="submit"]:hover {
     width: 100%;
 
     /* Remove estilo padrão do navegador */
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+   
 }
 
 .input-date-padrao:disabled {
@@ -137,12 +148,13 @@ button[type="submit"]:hover {
 
 /* Ajuste do ícone do calendário no Chrome/Safari */
 .input-date-padrao::-webkit-calendar-picker-indicator {
-    background: transparent;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%23495057' viewBox='0 0 24 24'><path d='M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z'/></svg>") no-repeat center;
+    background-size: 18px 18px;
     cursor: pointer;
-    padding: 0 5px;
-    color: #495057;
-    filter: invert(50%);
+    opacity: 1;
+    margin-right: 5px;
 }
+
 
 /* Firefox */
 .input-date-padrao::-moz-calendar-picker-indicator {
