@@ -26,9 +26,9 @@ require_once "../../../config/constantes.php";
 
     <div>
 
-        <div class="inferiorDireito">
+        <!-- <div class="inferiorDireito">
             <img src="<?php echo $URLBASE?>/public/assets/icons/Inferior direito.png" alt="Ícone inferior" class="inferior">
-        </div>
+        </div> -->
 
         <footer>
             <div class="logo-senac">
