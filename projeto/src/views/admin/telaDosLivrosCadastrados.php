@@ -50,7 +50,7 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
         <form>
             <div class="controle">
                 <?php
-                InputAdmin(largura:60, placeholder:"Escreva nome ou código do livro...", id:"pesquisa_livro", name:"pesquisa_livro")
+                InputAdmin(largura:100, placeholder:"Escreva nome ou código do livro...", id:"pesquisa_livro", name:"pesquisa_livro")
                 ?>
                 <button type="submit" class="botao">
                 <img src="../../../public/assets/icons/Buscar.png" alt="Buscar">
@@ -71,7 +71,7 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
             </div>
         </form>
 
-        <p id="livros-por-aparecer">Mostrando <?php echo count($livrosPagina); ?> de <?php echo $totalLivros; ?> livros</p>
+        
 
         <div class="livros-grid">
             <?php foreach ($livrosPagina as $livro): ?>
