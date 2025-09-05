@@ -79,11 +79,7 @@ require __DIR__ . '/../../../../config/constantes.php';
     <div class="menu-sanduiche">
 
         <ul class="navbar-desktop">
-            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE ?>/e">Início</a></li>
-
-            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="">livre para usuar</a></li>
-            <!-- CORRIGIR CAMINHO QUANDO TIVER UMA TELA ESPECIFICA PARA LIVROS -->
-            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">Livros</a></li>
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE ?>/index.php">Início</a></li>
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php">Meu Perfil</a></li>
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/PesquisaIcon.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt=""><a href="https://ww3.ms.senac.br/">Contato</a></li>

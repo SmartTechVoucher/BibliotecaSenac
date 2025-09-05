@@ -10,7 +10,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil do Usuário</title>
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/minha-conta-usuario.css">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/modal.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">

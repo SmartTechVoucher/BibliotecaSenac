@@ -141,5 +141,6 @@ function obterLivroOuPadrao($livros, $index) {
 
 <?php include "../../../public/components/usuario/footer/footer.php"; ?>
 <script src="<?php echo $URLBASE ?>/public/js/usuario/filtro-livros.js"></script>
+<script src="<?php echo $URLBASE ?>/public/js/components/header.js"></script>
 </body>
 </html>

@@ -16,7 +16,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden
 }
  
 .conteiner{
@@ -47,10 +47,10 @@ body {
 }
 
 .cbmenu-icon {
-    position: fixed; /* fixa na tela */
-    top: 15px;       /* ajuste a posição vertical */
-    left: 15px;      /* ajuste a posição horizontal */
-    background-color: transparent !important; /* força transparência */
+    position: fixed;
+    top: 18px;       
+    left: 15px;      
+    background-color: transparent !important;
     border: none;
     outline: none;        
     padding: 0;
@@ -92,7 +92,7 @@ body {
     text-decoration: none;
     position: relative;
     cursor: pointer;
-    padding:  10px 10px 8px 20px;;
+    padding:  10px 10px 5px 0px;;
     color: var(--cor-texto);
     /* text-transform: uppercase; */
     transition: color 0.3s ease;
@@ -231,7 +231,7 @@ width: 100%;
     text-decoration: none;
     position: relative;
     cursor: pointer;
-    padding:  10px 10px 8px 20px;;
+    padding:  10px 10px 5px 0px;;
     color: var(--cor-texto);
     /* text-transform: uppercase; */
     transition: color 0.3s ease;
@@ -339,7 +339,7 @@ width: 100%;
 }
  
 .icsenac{
-    margin-left: 25px;
+    margin-left: 40px;
     width: 45px;
     height: auto;
 }
@@ -872,6 +872,7 @@ width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 .perfil-logado span {
