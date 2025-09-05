@@ -9,7 +9,7 @@
 
   <div class="capa-wrapper">
     <img src="<?= htmlspecialchars($livro['imagem']) ?>" class="capa-livro" alt="Capa do Livro">
-    <div class="overlay">
+    <div class="card-overlay">
       <p class="descricao-livro"><?= htmlspecialchars($livro['descricao']) ?></p>
     </div>
   </div>

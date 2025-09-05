@@ -20,7 +20,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden
 }
  
 .conteiner{
@@ -28,21 +28,6 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     padding-top: 50px;
-}
-
-.cabecalho {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--azul-tela-inicial);
-    padding: 10px 10px;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--cor-texto);
-    box-sizing: border-box;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
 }
 
 .onda-inferior {
@@ -62,14 +47,27 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 1%;
 }
 
 .cbmenu-icon {
-    display: none;
+    position: fixed;
+    top: 18px;       
+    left: 15px;      
+    background-color: transparent !important;
+    border: none;
+    outline: none;        
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4000;
 }
 
 .cbmenu-icon i {
-    font-size: 22px;
+    font-size: 30px;
     color: var(--cor-texto);
     cursor: pointer;
     transition: color 0.3s;
@@ -94,16 +92,155 @@ body {
     font-weight: 500;
 }
 
-.navbar li a{
+.navbar-desktop li a{
     text-decoration: none;
     position: relative;
     cursor: pointer;
-    padding: 10px;
+    padding:  10px 10px 5px 0px;;
     color: var(--cor-texto);
     transition: color 0.3s ease;
   }
   
-  .navbar li a::after {
+.navbar-desktop li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--laranja-padrao);
+    transition: width 0.3s ease;
+}
+
+.navbar-desktop li a:hover {
+color: var(--laranja-padrao);
+}
+
+.navbar-desktop li a:hover::after {
+width: 100%;
+}
+
+.menu-sanduiche .navbar-desktop {
+    display: flex;
+    flex-direction: column; /* itens empilhados */
+    align-items: flex-start; /* alinha todos à esquerda */
+    gap: 10px; /* distância entre os itens, opcional */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: "Poppins",sans-serif;
+}
+
+.menu-sanduiche .navbar-desktop li {
+    display: flex; /* para alinhar a imagem + link na mesma linha */
+    align-items: center; /* centraliza verticalmente imagem + texto */
+    gap: 10px; /* espaço entre imagem e texto */
+}
+
+.menu-sanduiche .navbar-desktop li a {
+    text-align: left;
+}
+
+
+
+/* Menu lateral fechado */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 2500;
+    display:none;
+    opacity: 0;
+}
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -340px; /* começa fora da tela */
+    width: 300px;
+    height: 100vh; /* ocupa 100% da tela */
+    background: var(--azul-tela-inicial);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+    transition: left 0.3s ease;
+    padding: 5% 0px 0px 1%;
+    z-index: 3000;  
+    color: var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.cabecalho {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--azul-tela-inicial);
+    padding: 10px 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--cor-texto);
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+
+}
+
+.overlay.ativo {
+    display: block; 
+    opacity: 1;
+}
+
+
+
+.menu-lateral.ativo {
+    left: 0;
+}
+
+#menu-lateral ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu-lateral ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#menu-lateral.active {
+    display: block;
+}
+
+.cabecalho nav {
+    font-family: "Poppins",sans-serif;
+}
+
+/* Desktop: menu rápido visível */
+.navbar-desktop-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    
+}
+
+.navbar-desktop-top li a{
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    padding:  10px 10px 5px 0px;;
+    color: var(--cor-texto);
+    /* text-transform: uppercase; */
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-desktop-top li a::after {
     content: '';
     position: absolute;
     width: 0%;
@@ -114,17 +251,26 @@ body {
     transition: width 0.3s ease;
   }
   
-  .navbar li a:hover {
+  .navbar-deskto-2 li a:hover {
     color: var(--laranja-padrao);
   }
   
-  .navbar li a:hover::after {
+  .navbar-desktop-top li a:hover::after {
     width: 100%;
   }
+
+
+/* Mobile: só mostra o botão e o menu lateral */
+@media (max-width: 768px) {
+    .navbar-desktop {
+        display: none;
+    }
+}
 
 .cbquite {
     color: var(--cor-texto);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -150,7 +296,7 @@ body {
 }
 
 .button-entrar {
-    padding: 8px 12px;
+    padding: 4px 12px 2px 12px;
     height: auto;
     margin-right: 2%;
     border-radius: 1rem;
@@ -192,11 +338,12 @@ body {
 .icone-perfil {
     width: 35px;
     height: 35px;
+    margin: 5px 0px 0px 0px;
 }
  
 .icsenac{
-    margin-left: 20px;
-    width: 50px;
+    margin-left: 40px;
+    width: 45px;
     height: auto;
 }
  
@@ -645,8 +792,14 @@ body {
 .menu-dropdown a:hover {
     background-color: rgba(255,255,255,0.1);
 }
-
  
+.menu-li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .perfil-logado span {
     font-size: 15px;
     font-family: "Roboto", sans-serif;
@@ -787,6 +940,7 @@ body {
 
     .cbmenu-icon {
         display: block;
+        
     }
 
     .cabecalho {
@@ -958,6 +1112,14 @@ body {
 
     
     }
+}
+
+/* TESTE SANDUICHE */
+@media (max-width: 768px) {
+    
+    /* .menu-sanduiche {
+        display: block;
+    } */
 }
 
 .estante {

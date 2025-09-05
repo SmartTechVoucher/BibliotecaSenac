@@ -34,10 +34,13 @@ $livros = $model->getLivrosMock();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/layout.css">
     <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
 </head>
 
 <body>
+
+    <div id="overlay" class="overlay"></div>
 
     <?php if (isset($_SESSION['toast'])): ?>
         <script>
@@ -49,71 +52,8 @@ $livros = $model->getLivrosMock();
     endif; ?>
 
     <div class="conteiner">
-        <div class="cabecalho">
-            <div class="cbleft">
-                <img class="icsenac" src="../projeto/public/assets/icons/SenacIcon 1.png" alt="Icone Hub academy">
-            </div>
 
-            <div class="cbmenu-icon">
-                <i id="menu-toggle" class="fas fa-bars"></i>
-            </div>
-
-            <div class="cbquite" id="menu-links">
-                <nav>
-                    <ul class="navbar">
-                        <li><a href="./index.php">Início</a></li>
-                        <li><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
-                        <li><a href="https://api.whatsapp.com/send?phone=5567999492638">Contato</a></li>
-                        <li><a href="../projeto/src/views/usuario/teste-login.php">Logar</a></li>
-                    </ul>
-
-                    <div class="entrar-mobile">
-                        <?php if (isset($_SESSION['usuario'])): ?>
-                            <div class="perfil-logado" onclick="toggleMenu(event)">
-                                <img src="../projeto/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
-                                <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-                                <div class="menu-dropdown" id="menuPerfil">
-                                    <a href="../projeto/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png"> Meu Perfil</a>
-                                    <a href="logout.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
-                                </div>
-                            </div>
-                        <?php else: ?>
-                            <button onclick="redirectToPage()" class="button-entrar">
-                                <svg class="icone-perfil" xmlns="http://www.w3.org/2000/svg">
-                                    <g>
-                                        <path fill="white" d="M10.15,18.29c1.26,1.42,2.95,2.3,4.82,2.3s3.7-.95,4.97-2.47c3.28,.84,6.01,2.56,7.7,4.79,1.45-2.3,2.29-5.02,2.29-7.94C29.93,6.7,23.23,0,14.97,0S0,6.7,0,14.97c0,3.17,.99,6.1,2.67,8.52,1.53-2.35,4.2-4.22,7.48-5.19ZM14.97,5.41c3.16,0,5.72,3.05,5.72,6.82s-2.56,6.82-5.72,6.82-5.72-3.05-5.72-6.82,2.56-6.82,5.72-6.82Z"></path>
-                                    </g>
-                                </svg>
-                                <span>Entrar</span>
-                            </button>
-                        <?php endif; ?>
-                    </div>
-                </nav>
-            </div>
-
-            <div class="cbright" id="botao-entrar">
-                <?php if (isset($_SESSION['usuario'])): ?>
-                    <div class="perfil-logado" onclick="toggleMenu(event)">
-                        <img src="../projeto/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
-                        <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
-                        <div class="menu-dropdown" id="menuPerfil">
-                            <a href="../projeto/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="" class="perfil-header-inicial"> Meu Perfil</a>
-                            <a href="logout.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
-                        </div>
-                    </div>
-                <?php else: ?>
-                    <button onclick="redirectToPage()" class="button-entrar">
-                        <svg class="icone-perfil" xmlns="http://www.w3.org/2000/svg">
-                            <g>
-                                <path fill="white" d="M10.15,18.29c1.26,1.42,2.95,2.3,4.82,2.3s3.7-.95,4.97-2.47c3.28,.84,6.01,2.56,7.7,4.79,1.45-2.3,2.29-5.02,2.29-7.94C29.93,6.7,23.23,0,14.97,0S0,6.7,0,14.97c0,3.17,.99,6.1,2.67,8.52,1.53-2.35,4.2-4.22,7.48-5.19ZM14.97,5.41c3.16,0,5.72,3.05,5.72,6.82s-2.56,6.82-5.72,6.82-5.72-3.05-5.72-6.82,2.56-6.82,5.72-6.82Z"></path>
-                            </g>
-                        </svg>
-                        <span>Entrar</span>
-                    </button>
-                <?php endif; ?>
-            </div>
-        </div>
-
+        <?php include "./public/components/usuario/header/header.php" ?>
         <div class="geralinfo">
             <div class="info">
 
@@ -223,25 +163,17 @@ $livros = $model->getLivrosMock();
 
 
 
+
+
+
         <?php include(__DIR__ . '/public/components/usuario/footer/footer.php'); ?>
 
     </div>
 
 
-    <script src="./public/js/usuario/tela-inicial.js"></script>
-    <script>
-        function toggleMenu(event) {
-            event.stopPropagation(); // evita que o clique feche imediatamente
-            const menu = event.currentTarget.querySelector(".menu-dropdown");
-            const isVisible = menu.style.display === "block";
-            document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
-            menu.style.display = isVisible ? "none" : "block";
-        }
+    <script src="./public/js/usuario/tela-inicial.js" defer></script>
+    <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
 
-        document.addEventListener("click", () => {
-            document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
-        });
-    </script>
 </body>
 
 </html>
