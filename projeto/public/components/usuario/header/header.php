@@ -2,6 +2,8 @@
 require __DIR__ . '/../../../../config/constantes.php';
 ?>
 
+
+
 <button class="cbmenu-icon" id="menu-toggle">
     <i class="fas fa-bars"></i>
 </button>
@@ -73,6 +75,10 @@ require __DIR__ . '/../../../../config/constantes.php';
 </div>
 
 <div id="menu-lateral" class="menu-lateral">
+    <div class="perfil-lateral">
+        <h2 class="hub">HUB ACADEMY</h2>
+        <h2 class="biblioteca">Biblioteca</h2>
+    </div>
 
 
 
@@ -86,6 +92,13 @@ require __DIR__ . '/../../../../config/constantes.php';
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/atividades.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-atividade.php">Minha Atividade</a></li>
 
         </ul>
+    </div>
+
+    <div class="perfil-lateral-2">
+        <a href="<?php echo $URLBASE ?>/logout.php" class="logout-link">
+            <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="Sair">
+            <p>Sair</p>
+        </a>
     </div>
 </div>
 

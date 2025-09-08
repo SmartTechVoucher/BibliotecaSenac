@@ -17,7 +17,7 @@ overlay.addEventListener("click", () => {
 
 
 function redirectToPage() {
-    window.location.href = "src/views/usuario/login.php";
+    window.location.href = "../usuario/login.php";
 }
 
 function toggleMenu() {

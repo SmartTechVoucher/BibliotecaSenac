@@ -33,10 +33,9 @@ $livros = $model->getLivrosMock();
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/tela-inicial.css">
     <link rel="stylesheet" href="./public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/layout.css">
-    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
+
 </head>
 
 <body>
@@ -51,10 +50,10 @@ $livros = $model->getLivrosMock();
         </script>
     <?php unset($_SESSION['toast']);
     endif; ?>
-
+    <?php include "./public/components/usuario/header/header.php" ?>
     <div class="conteiner">
 
-        <?php include "./public/components/usuario/header/header.php" ?>
+
         <div class="geralinfo">
             <div class="info">
 
@@ -174,6 +173,7 @@ $livros = $model->getLivrosMock();
 
     <script src="./public/js/usuario/tela-inicial.js" defer></script>
     <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
+    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
 
 </body>
 

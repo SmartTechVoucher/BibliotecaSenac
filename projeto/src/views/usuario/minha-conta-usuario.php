@@ -9,17 +9,22 @@ require(__DIR__ . '/../../../config/constantes.php');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil do Usuário</title>
+
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/minha-conta-usuario.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
   <?php include "../../../public/components/usuario/header/header.php"; ?>
-  
+
   <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
   <main class="perfil-container2">
     <div class="perfil-card">
@@ -79,7 +84,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   </main>
 
   <?php include "../../../public/components/usuario/footer/footer.php"; ?>
-  
+
   <script src="<?php echo $URLBASE ?>/public/js/usuario/editar-apelido.js"></script>
   <script src="<?php echo $URLBASE ?>/public/js/components/header.js"></script>
 </body>

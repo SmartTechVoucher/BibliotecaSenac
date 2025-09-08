@@ -29,13 +29,13 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-left: 1%;
+    margin-left: 2%;
 }
 
 .cbmenu-icon {
     position: fixed; /* fixa na tela */
     top: 18px;       /* ajuste a posição vertical */
-    left: 15px;      /* ajuste a posição horizontal */
+    left: 40px;      /* ajuste a posição horizontal */
     background-color: transparent !important; /* força transparência */
     border: none;
     outline: none;        
@@ -298,7 +298,7 @@
     background: var(--azul-tela-inicial);
     box-shadow: 2px 0 8px rgba(0,0,0,0.3);
     transition: left 0.3s ease;
-    padding: 5% 0px 0px 1%;
+    padding: 5% 0px 0px 2%;
     z-index: 3000;  
     color: var(--cor-texto);
     display: flex;
@@ -383,3 +383,39 @@ width: 100%;
     gap: 10px;
 }
 
+.perfil-lateral-2 {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+  
+.perfil-lateral-2 a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--cor-texto);
+}
+
+.perfil-lateral {
+    font-family: "Poppins",sans-serif;
+    position: absolute;
+    top: 0px;
+    left: 65px;
+    color: hsl(0, 0%, 100%);
+    padding: 8px 20px 20px 20px;
+}
+  
+.perfil-lateral .biblioteca {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--laranja-padrao);
+} 
+.perfil-lateral .hub {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+} 
