@@ -1,17 +1,21 @@
+:root {
+    --azul-tela-inicial: #003162;
+    --azulClaro: #71b0ef;
+    --branco: white;
+    --cinza: gray;
+    --cor-texto: #ffffff;
+    --laranja-padrao: #F68B1F;
+    --roxo: #002043;
+}
+
 /* GERAL */
  
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
+   
 }
  
-:root {
-    --azul-tela-inicial: #003162;
-    --cor-texto: #ffffff;
-    --laranja-padrao: #F68B1F;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -39,8 +43,6 @@ body {
     height: 80px; /* ajuste conforme o visual desejado */
 }
 
-
-
 /* Mobile: só mostra o botão e o menu lateral */
 @media (max-width: 768px) {
     .navbar-desktop {
@@ -48,7 +50,6 @@ body {
     }
 }
 
- 
 /* PARTE "PRINCIPAL" */
  
 .topPage{
@@ -62,13 +63,7 @@ body {
 }
  
 .geralinfo{
-    /* display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    min-height: 600px;
-    background-color: var(--azul-padrao)*/
+    
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -77,18 +72,17 @@ body {
     
 }
 
-
 .info {
-    background-color: #003162;
+    background-color: var(--azul-tela-inicial);
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    box-shadow:  0 12px 0 #71B0EF,        
-    6px 12px 2px #71B0EF,
-    -6px 12px 2px #71B0EF;  
+    box-shadow:  0 12px 0 var(--azulClaro),        
+    6px 12px 2px var(--azulClaro),
+    -6px 12px 2px var(--azulClaro);  
     border-bottom-left-radius: 70% 40%;
     border-bottom-right-radius: 70% 40%;
     padding-bottom: 5%;
@@ -114,11 +108,9 @@ body {
     z-index: 3;
     max-width: 660px;
     width: 100%;
-    /* margin-left: 1%; */
     height: 200px;
     padding: 15px 20px 20px 20px;
-    /* padding-right: 5% */
-    /* border: solid blue; */
+
 }
 
 .letras {
@@ -128,15 +120,11 @@ body {
     flex-direction: column;
     max-width: 660px;
     width: 100%;
-    
-    /* border: solid red; */
 
 }
  
 .letras1{
     max-width: 660px;
-    /* margin: 0;
-    margin-left: 30px; */
     font-size: clamp(30px, 6vw, 60px);
     font-family: "roboto";
     color: var(--cor-texto);
@@ -145,14 +133,11 @@ body {
     width: 20.2ch;  
     overflow: hidden;   
     animation: marca 2.2s step-end forwards , write 1s steps(18, end);
-    /* padding-left: 6%; */
 
 }
  
 .letras2{
     max-width: 660px;
-    /* margin: 0;
-    margin-left: 30px; */
     font-size: clamp(30px, 6vw, 60px);
     font-family: "roboto";
     font-weight: bold;
@@ -164,8 +149,6 @@ body {
     opacity: 0;
     animation: aparecer 0s 3.2s forwards, marca 2.2s step-end forwards, write 1s steps(18, end);
     animation-delay: 1s;
-    /* padding-left: 12%; */
-
    
 }
  
@@ -177,7 +160,6 @@ body {
     font-family:  'Poppins', sans-serif;
     font-weight: 200;
     font-style: italic;
-    /* font-size: clamp(10px, 2vw, 20px); */
     font-size: 20px;
     opacity: 0;
     animation: aparecer 3s ease-in-out 1s forwards ;
@@ -223,7 +205,7 @@ body {
     border-bottom: none;
     border-style: hidden;
     box-shadow: 2px 2px 6px rgb(138, 137, 137);
-    background-color: white;
+    background-color: var(--branco);
     outline: 0;
     font-size: 20px;
     margin: 0;
@@ -247,7 +229,7 @@ body {
 .pesquisa:focus {
     border-style: solid;
     border-width: 2px 0 0 2px;
-    border-color:#F68B1F;
+    border-color:var(--laranja-padrao);
     border-bottom-left-radius: 0;
     box-shadow: none;
 }
@@ -264,7 +246,7 @@ body {
     background: #ffffff;
     border-style: solid solid solid solid;
     border-width: 0 2px 2px 2px; 
-    border-color: #F68B1F;
+    border-color: var(--laranja-padrao);
     border-radius: 0 0 10px 10px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     z-index: 10;
@@ -296,8 +278,8 @@ body {
     border-bottom-right-radius: 10px;
     cursor:pointer;
     border: transparent;
-    background-color: #F68B1F;
-    color: white;
+    background-color: var(--laranja-padrao);
+    color: var(--branco);
     margin: 0;
     width: 96px;
     font-size: 25px;
@@ -334,13 +316,13 @@ body {
 
 .gen-title {
     font-size: 50px;
-    color: grey;
+    color: var(--cinza);
     text-align: center;
 }
  
 .gentitle{
     font-size: 50px;
-    color: grey;
+    color: var(--cinza);
     text-align: center;
     margin: 10%;
 }
@@ -381,11 +363,15 @@ body {
     height: auto;
 }
 
+#comunicacao{
+    filter: invert(100%);
+}
+
 .icon_livros{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #003162;
+    background-color: var(--azul-tela-inicial);
     width: 140px;
     height:140px;
     border-radius: 50%;
@@ -406,7 +392,6 @@ body {
     width: 457px;
     height: 125px;
     justify-self: center;
-    /* margin-left: 40%; */
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
     top: 0;
@@ -463,8 +448,6 @@ body {
     display: block;
 }
 
-
-
 .livroEstante {
     max-width: 400px;
 } 
@@ -478,9 +461,9 @@ body {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #003162;
+    background-color: var(--azul-tela-inicial);
     font-family: "Poppins",sans-serif;
-    color: white;
+    color: var(--branco);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     z-index: 999;
@@ -494,7 +477,7 @@ body {
     gap: 10px;
     padding: 10px 15px;
     text-decoration: none;
-    color: white;
+    color: var(--branco);
     font-weight: 500;
     border-bottom: 1px solid #82828261;
 }
@@ -832,7 +815,7 @@ body {
   width: 100%;
   max-width: 1300px;
   aspect-ratio: 3/2; /* proporção responsiva aproximada */
-  background-color: white;
+  background-color: var(--branco);
   border-radius: 20px;
   margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -894,66 +877,6 @@ body {
   margin: 0; /* importante */
 }
 
-
-
-/* .senacFoto {
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    object-fit: cover;
-} */
-/* 
-.letreiro {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-} */
-
-/* ========== Responsivo progressivo ========== */
-
-/* s
-@media (max-width: 800px) {
-    .geralinfo {
-        text-align: center;
-    }
-
-    .senacFoto {
-        background-image: url(../../assets/img/fachada-hub-academy.jpg);
-    }
-
-    .letras {
-        font-size: 42px;
-    }
-
-    .letras2 {
-        font-size: 40px;
-    }
-
-    .frase {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 600px) {
-    .letras {
-        font-size: 28px;
-    }
-
-    .letras2 {
-        font-size: 28px;
-    }
-
-    .frase {
-        font-size: 12px;
-        padding-bottom: 5%;
-        margin-top: 0;
-    }
-}
-
-*/
-
-
 @media (max-width: 1400px) {
     .card-livro {
       width: 230px;
@@ -1001,9 +924,5 @@ body {
       height: 220px;
     }
   }
-  
-
-
-
 
  

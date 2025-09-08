@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.input-admin{
+    width: 200px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #495057;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: all 0.1s ease-in-out;
+}
+.input-admin:read-only{
+    background-color: #e6e6e6;
+}
+.input-admin:focus {
+    border-color: dodgerblue; /* Change border color on focus */
+    box-shadow: 0 0 5px dodgerblue; /* Add a subtle shadow */
+    transform: scale(1.02); /* Slightly scale up the input */
+}

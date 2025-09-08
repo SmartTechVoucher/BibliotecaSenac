@@ -41,7 +41,7 @@ require "../../../config/constantes.php";
                     <a href="<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php">Lista de Livros Cadastrados</a>
                 </li>
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeUsuarios.php">Cadastrar Usuários</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/cadastro-usuarios.php">Cadastrar Usuários</a>
                 </li>
                 <li>
                     <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php">Lista de Usuários Cadastrados</a>

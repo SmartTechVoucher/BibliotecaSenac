@@ -3,13 +3,14 @@
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --fonte_normal: 20px;
     --branco: white;
+    --cinza: gray;
     --fundoPadrao: #EDEDED;
     --verdeReserva: #258A14;
     --azulBotao: #004A90;
 }
 
 body{
-    background-color: #EDEDED;
+    background-color: var(--fundoPadrao);
 }
 
 *{
@@ -35,12 +36,12 @@ body{
 /* QUADRADO BRANCO 1 */
 .containerInfo{
     width: 81%;
-    background-color: white;
+    background-color: var(--branco);
     border-radius: 14px;
     display: flex;
     padding: 40px;
     flex-direction: row;
-    box-shadow: 0 2px 4px gray;
+    box-shadow: 0 2px 4px var(--cinza);
 }
 
 .livroInfo img{
@@ -96,13 +97,13 @@ body{
 /* botao de reserva */
 .livroReservar p{
     margin-bottom: 5px;
-    color: #258A14;
+    color: var(--verdeReserva);
 }
     
 #botaoReserva{
-    background: #004A90;
+    background: var(--azulBotao);
     cursor: pointer;
-    color: white;
+    color: var(--branco);
     border: 0;
     border-radius: 5px;
     margin: auto;
@@ -110,7 +111,7 @@ body{
     height: 60px;
     font-weight: bold;
     font-size: large;
-    box-shadow: 0 2px 2px gray;
+    box-shadow: 0 2px 2px var(--cinza);
     transition: background-color 0.3s ease;
 }
 
@@ -186,7 +187,7 @@ body{
 /* EXEMPLARES */
 .containerExemplar{
     width: 81%;
-    background-color: white;
+    background-color: var(--branco);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -196,7 +197,7 @@ body{
     height: 53px;
     padding: 0 20px;
     box-sizing: border-box;
-    box-shadow: 0 2px 4px gray;
+    box-shadow: 0 2px 4px var(--cinza);
 }
 
 .containerExemplar img{
@@ -239,14 +240,14 @@ body{
 
 /* COMENTARIOS */
 .containerComentarios{
-    background-color: white;
+    background-color: var(--branco);
     margin: 40px auto 80px auto; /* Aumenta a margem inferior para desgrudar do footer */
     padding: 15px;
     width: 81%;
     border-radius: 14px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 2px 4px gray;
+    box-shadow: 0 2px 4px var(--cinza);
 }
 
 .containerComentarios p{
@@ -295,8 +296,8 @@ body{
 
 #comentario-botao{
     cursor: pointer;
-    background-color: #004A90;
-    color: white;
+    background-color: var(--azulBotao);
+    color: var(--branco);
     border: 0;
     border-radius: 5px;
     margin: auto;
@@ -306,7 +307,7 @@ body{
     font-weight: bold;
     font-size: large;
     border-radius: 5px;
-    box-shadow: 0 2px 2px gray;
+    box-shadow: 0 2px 2px var(--cinza);
 }
 
 .comment_1{
@@ -353,7 +354,7 @@ a{
 }
 
 #commentUserinfo, .commentUserinfo{
-    color: gray;
+    color: var(--cinza);
     margin-top: 2px;
 }
 
@@ -391,7 +392,7 @@ a{
 
 .botao button{
     background-color: rgba(0, 74, 144, 1);
-    color: white;
+    color: var(--branco);
     transform: translate(1500%, -40px);
     padding: 10px 20px;
     position: relative;

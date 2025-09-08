@@ -1,3 +1,12 @@
+:root{
+    --azulEscuro: #003162;
+    --branco: #fff;
+    --cinza: #333;
+    --cinzaGray: gray;
+    --laranja: #f68b1f;
+    --laranjaLevementeEscuro: #e67e22;
+    --verde: #28a745;
+}
 
 * {
     margin: 0;
@@ -8,7 +17,7 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f5f5f5;
-    color: #333;
+    color: var(--cinza);
     padding-top: 67px;
 }
 
@@ -33,10 +42,10 @@ body {
 .sidebar {
     width: 250px;
     flex-shrink: 0; /* Evita que a sidebar encolha */
-    background: #fff;
+    background: var(--branco);
     padding: 20px;
     border-radius: 14px;
-    box-shadow: 0 2px 4px gray;
+    box-shadow: 0 2px 4px var(--cinzaGray);
     height: fit-content;
     position: relative; /* Adicionado para que left funcione */
 }
@@ -49,7 +58,7 @@ body {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #333;
+    color: var(--cinza);
 }
 
 .filter-select {
@@ -57,30 +66,30 @@ body {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #003162;
-    color: white;
+    background-color: var(--azulEscuro);
+    color: var(--branco);
     font-size: 14px;
     cursor: pointer;
 }
 
 .filter-select:focus {
     outline: none;
-    border-color: #f68b1f;
+    border-color: var(--laranja);
 }
 
 .filter-select option {
-    background-color: #003162;
-    color: white;
+    background-color: var(--azulEscuro);
+    color: var(--branco);
 }
 
 /* Main Content */
 .main-content {
     flex: 1;
     min-width: 0; /* Importante para evitar overflow */
-    background: #fff;
+    background: var(--branco);
     padding: 30px;
     border-radius: 14px;
-    box-shadow: 0 2px 4px gray;
+    box-shadow: 0 2px 4px var(--cinzaGray);
 }
 
 .category-section {
@@ -96,12 +105,12 @@ body {
 
 .category-header h2 {
     font-size: 24px;
-    color: #333;
+    color: var(--cinza);
     font-weight: 600;
 }
 
 .saiba-mais {
-    color: #f68b1f;
+    color: var(--laranja);
     text-decoration: none;
     font-weight: 500;
     font-size: 14px;
@@ -136,7 +145,7 @@ body {
     height: auto;  /* altura padrão */
     border-radius: 12px;
     overflow: hidden;
-    background: #003162;
+    background: var(--azulEscuro);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -182,7 +191,7 @@ body {
 }
 
 .favorite-btn:hover {
-    background: rgba(255, 255, 255, 1);
+    background: var(--branco);
     transform: scale(1.1);
 }
 
@@ -197,7 +206,7 @@ body {
 
 .book-info {
     padding: 15px;
-    background: #003162;
+    background: var(--azulEscuro);
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -207,7 +216,7 @@ body {
 .book-info h3 {
     font-size: 16px;
     margin-bottom: 8px;
-    color: #ffffff;
+    color: var(--branco);
     font-weight: 600;
     line-height: 1.3;
     min-height: 40px;
@@ -219,7 +228,7 @@ body {
 
 .book-info .author {
     font-size: 14px;
-    color: #ffffff;
+    color: var(--branco);
     margin-bottom: 8px;
     min-height: 20px;
 }
@@ -231,7 +240,7 @@ body {
 }
 
 .status.disponivel {
-    color: #28a745;
+    color: var(--verde);
 }
 
 .status.indisponivel {
@@ -241,8 +250,8 @@ body {
 .reserve-btn {
     width: 100%;
     padding: 8px;
-    background: #f68b1f;
-    color: white;
+    background: var(--laranja);
+    color: var(--branco);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -253,7 +262,7 @@ body {
 }
 
 .reserve-btn:hover {
-    background: #e67e22;
+    background: var(--laranjaLevementeEscuro);
     transform: translateY(-1px);
 }
 
@@ -268,36 +277,36 @@ body {
 
 .pagination-btn {
     padding: 8px 12px;
-    background: #fff;
+    background: var(--branco);
     border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: var(--cinza);
     transition: all 0.3s ease;
     min-width: 40px;
     text-align: center;
 }
 
 .pagination-btn:hover {
-    background: #f68b1f;
-    color: white;
-    border-color: #f68b1f;
+    background: var(--laranja);
+    color: var(--branco);
+    border-color: var(--laranja);
     transform: translateY(-1px);
 }
 
 .pagination-btn.active {
-    background: #003162;
-    color: white;
-    border-color: #003162;
+    background: var(--azulEscuro);
+    color: var(--branco);
+    border-color: var(--azulEscuro);
     font-weight: 600;
 }
 
 .pagination-btn.active:hover {
-    background: #003162;
-    color: white;
-    border-color: #003162;
+    background: var(--azulEscuro);
+    color: var(--branco);
+    border-color: var(--azulEscuro);
 }
 
 /* Efeito de loading/transição para quando trocar de página */
@@ -321,16 +330,16 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     font-weight: 600;
-    color: #333;
+    color: var(--cinza);
 }
 
 /* Highlights Section */
 .highlights-section {
     margin-top: 60px;
     padding: 30px 0;
-    background: #fff;
+    background: var(--branco);
     border-radius: 14px;
-    box-shadow: 0 2px 4px gray;
+    box-shadow: 0 2px 4px var(--cinzaGray);
 }
 
 .section-header {
@@ -343,7 +352,7 @@ body {
 
 .section-header h2 {
     font-size: 24px;
-    color: #333;
+    color: var(--cinza);
     font-weight: 600;
 }
 
@@ -378,7 +387,7 @@ body {
 }
 
 .carousel-book {
-    background: #003162;
+    background: var(--azulEscuro);
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -398,26 +407,26 @@ body {
 .carousel-info h4 {
     font-size: 14px;
     margin-bottom: 5px;
-    color: #ffffff;
+    color: var(--branco);
     font-weight: 600;
 }
 
 .carousel-info p {
     font-size: 12px;
-    color: #ffffff;
+    color: var(--branco);
     margin-bottom: 3px;
 }
 
 .carousel-info .disponivel {
-    color: #28a745;
+    color: var(--verde);
     font-weight: 500;
 }
 
 .carousel-reserve-btn {
     width: 100%;
     padding: 8px;
-    background: #f68b1f;
-    color: white;
+    background: var(--laranja);
+    color: var(--branco);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -428,7 +437,7 @@ body {
 }
 
 .carousel-reserve-btn:hover {
-    background: #e67e22;
+    background: var(--laranjaLevementeEscuro);
 }
 
 .carousel-btn {
@@ -436,7 +445,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     background: rgba(0, 0, 0, 0.5);
-    color: white;
+    color: var(--branco);
     border: none;
     border-radius: 50%;
     width: 40px;

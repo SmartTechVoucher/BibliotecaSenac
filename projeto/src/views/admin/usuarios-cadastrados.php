@@ -12,6 +12,8 @@ require_once "../../../config/constantes.php";
   ?>
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/input-admin.css">
+  <?php include "../../../public/components/admin/input/input-admin.php"; ?>
   <link rel="stylesheet" href="/BibliotecaSenac/projeto/public/css/admin/usuarios-cadastrados.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,15 +39,17 @@ require_once "../../../config/constantes.php";
     <title>Gerenciamento de Usuários</title>
     <div class="container-main">
       <div class="botoesFiltro">
-      <button id= "" class="bloqueadosBotao tab-link active" onclick="openTab(event, 'regulares')">Regulares</button>
-      <button id="" class="bloqueadosBotao tab-link" onclick="openTab(event, 'bloqueados')">Bloqueados</button>
+      <button id= "" class="bloqueadosBotao tab-link active" onclick="abrirTab(event, 'regulares')">Regulares</button>
+      <button id="" class="bloqueadosBotao tab-link" onclick="abrirTab(event, 'bloqueados')">Bloqueados</button>
     </div>
 
     <div class="container">
 
       <h2>Usuários Cadastrados</h2>
       <label for="search"><label for="">Pesquisar:</label for=""></label>
-      <input readonly class="inputs-editaveis" type="text" id="search" placeholder="Pesquisar usuário..." onkeyup="filterTable()">
+      <?php   
+        InputAdmin("text", "Escreva senha", 70, null,"breguenaite")
+      ?>
     
       <div id="regulares" class="tab-content" style="display: block;"> <!-- tabela que lista usuarios regulares -->
 
@@ -63,8 +67,8 @@ require_once "../../../config/constantes.php";
           <tbody id="userTable"></tbody>
         </table>
         <div class="pagination-controls">
-            <button id="backButton" onclick="changePage(-1)" disabled>Voltar</button>
-            <button id="forwardButton" onclick="changePage(1)">Avançar</button>
+            <button id="backButton" onclick="mudarPagina(-1)" disabled>Voltar</button>
+            <button id="forwardButton" onclick="mudarPagina(1)">Avançar</button>
         </div>
       </div>
     
@@ -83,8 +87,8 @@ require_once "../../../config/constantes.php";
           <tbody id="blockedTable"></tbody>
         </table>  
           <div class="pagination-controls">
-            <button id="backBlockedButton" onclick="changeBlockedPage(-1)" disabled>Voltar</button>
-            <button id="forwardBlockedButton" onclick="changeBlockedPage(1)">Avançar</button>
+            <button id="backBlockedButton" onclick="trocarParaPaginaDosBloqueados(-1)" disabled>Voltar</button>
+            <button id="forwardBlockedButton" onclick="trocarParaPaginaDosBloqueados(1)">Avançar</button>
         </div>
       </div>
       
@@ -236,7 +240,7 @@ require_once "../../../config/constantes.php";
           <button id="cancelar-edicao" onclick="editUserCancel()">Cancelar edição</button>
         </div>
         
-        <button onclick="closeModal()">Fechar</button>
+        <button onclick="fecharModal()">Fechar</button>
         </div>
         
       </div>
@@ -246,7 +250,7 @@ require_once "../../../config/constantes.php";
   </main>
   <!-- footer  -->
   <?php
-    include "../../../public/components/usuario/footer/footer.php";
+    include "../../../public/components/admin/footer/footer-admin.php";
     ?>
 </body>
 </html>
