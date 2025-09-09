@@ -1,366 +1,421 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
 :root {
-    --fontes: 'Poppins', 'Roboto', 'Montaga';   /*Fontes usadas no projeto */
+    --azul-tela-inicial: #003162;
+    --cor-texto: #ffffff;
+    --laranja-padrao: #F68B1F;
 }
 
-body{
-    padding-top: 72px;
-    font-family: var(--fontes);
-    background-color: #EDEDED;
-}
-
-/* Estilo do cabeçalho */
-header {
+.cabecalho {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1%;
-    background: #001E3E;
-    color: white;
-    position: fixed;  /* Fixa o cabeçalho no topo */
-    top: 0;           /* Fixa no topo da página */
-    left: 0;          /* Garante que vai colar à esquerda */
-    width: 100%;   
-    height: 10%;   /* O cabeçalho vai ter a largura total da tela */
-    z-index: 1000;
-    border-bottom: #769FCD 5px solid;    /* Garante que o cabeçalho fique sobre outros elementos */
-}
-
-/* Ícone do menu */
-.menu-icon {
-    cursor: pointer;
-    width: 5%;
-    height: 70%;
-    position: relative; /* IMPORTANTE: Para o posicionamento do dropdown */
-}
-
-.menu-icon img {
-    width: 92%;
-    height: 95%
-}
-
-.menu-icon2 img{
-    width: 44%;
-}
-
-/* MENU HAMBURGER - VERSÃO CORRIGIDA */
-nav {
-    display: none;
-    position: absolute;
-    /* Largura fixa em pixels ao invés de porcentagem */
-    min-width: 200px;
-    width: max-content; /* Se adapta ao conteúdo */
-    max-width: 280px; /* Limite máximo */
-    left: 0%;
-    top: 61%; /* Posiciona logo abaixo do elemento pai */
-    background: #001E3E;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Sombra para destacar */
-    z-index: 1001; /* Maior que o header */
-    /* Evita que o menu seja cortado */
-    overflow: visible;
-}
-
-/* Lista de navegação */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    padding: 0; /* Remove o padding do li */
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-nav ul li:last-child {
-    border-bottom: none;
-}
-
-nav ul li a {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Gap fixo em pixels */
-    color: white;
-    text-decoration: none;
-    padding: 18px 18px; /* Padding adequado */
-    white-space: nowrap; /* IMPORTANTE: Evita quebra de linha */
-    transition: background-color 0.3s ease;
-    font-size: 14px; /* Tamanho fixo */
-}
-
-nav ul li a:hover {
-    background-color: rgba(255,255,255,0.1);
-}
-
-nav ul li a img {
-    width: 18px; /* Tamanho fixo para os ícones */
-    height: 18px;
-    flex-shrink: 0; /* Evita que a imagem encolha */
-}
-
-/* Exibir menu quando ativado */
-nav.show {
-    display: block;
-}
-
-/* MENU DROPDOWN DO PERFIL - VERSÃO CORRIGIDA */
-#nav-menu-perfil {
-    display: none;
-    position: absolute;
-    /* Largura fixa em pixels ao invés de porcentagem */
-    min-width: 200px;
-    right: -19%;
-    width: max-content; /* Se adapta ao conteúdo */
-    max-width: 250px; /* Limite máximo */
-    top: 79%; /* Posiciona logo abaixo do elemento pai */
-    background: #001E3E;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Sombra para destacar */
-    z-index: 1001; /* Maior que o header */
-    /* Evita que o menu seja cortado */
-    overflow: visible;
-}
-
-#nav-menu-perfil.show {
-    display: block;
-}
-
-#nav-menu-perfil ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#nav-menu-perfil li {
-    padding: 0; /* Remove o padding do li */
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-#nav-menu-perfil li:last-child {
-    border-bottom: none;
-}
-
-#nav-menu-perfil ul li a {
-    display: flex;
-    align-items: center;
-    font-size: 14px; /* Tamanho fixo ao invés de porcentagem */
-    gap: 10px; /* Gap fixo em pixels */
-    color: white;
-    text-decoration: none;
-    padding: 12px 16px; /* Padding adequado */
-    white-space: nowrap; /* IMPORTANTE: Evita quebra de linha */
-    transition: background-color 0.3s ease;
-}
-
-#nav-menu-perfil ul li a:hover {
-    background-color: rgba(255,255,255,0.1);
-}
-
-#nav-menu-perfil ul li a img {
-    width: 18px; /* Tamanho fixo para os ícones */
-    height: 18px;
-    flex-shrink: 0; /* Evita que a imagem encolha */
-}
-
-nav ul li a:visited,
-#nav-menu-perfil ul li a:visited {
-    color: white;
-}
-
-/* Centraliza o título no cabeçalho */
-.titulo {
-    display: flex;
-    font-size: 61%;
-    flex-direction: column;
-    align-items: center;
-    transform: translateX(-358%);
-    margin: 0 auto;  /* Garante a centralização do título */
-}
-
-.titulo h2 {
-    margin: 0;
-    padding: 0;
-}
-
-.titulo h2:first-child {
-    margin-bottom: 5px;  /* Ajuste o valor conforme necessário para aumentar a distância */
-}
-
-.iconepessoa{
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    font-size: 59%;
-    color: #fdfdfd; /* Cor do texto, ajuste conforme necessário */
-    margin-top: 5px; /* Espaçamento entre a imagem e o texto */
-    position: relative; /* IMPORTANTE: Para o posicionamento absoluto do dropdown */
-}
-
-.iconepessoa p {
-    margin: 5px 0 0; /* Espaço entre a imagem e o texto */
-    font-weight: bold;
-}
-
-.iconesSuperiores {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* width: 100vw; Ocupa 100% da tela */
-    height: 12%;
+    background-color: var(--azul-tela-inicial);
+    padding: 10px 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--cor-texto);
     box-sizing: border-box;
-    padding: 0; /* Sem padding, totalmente solado nas bordas */
+    position: fixed;
+    z-index: 2000;
+    top: 0;
 }
 
-.iconesSuperiores img {
-    height: 70%; /* Preenche altura da div */
-    max-width: 100px; /* Limita o tamanho para não estourar */
-    object-fit: contain; /* Mantém a proporção */
+.cbleft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 2%;
 }
 
-#icone_top{
-    height: 0%;   
-    width: 10%;
+.cbmenu-icon {
+    position: fixed; /* fixa na tela */
+    top: 18px;       /* ajuste a posição vertical */
+    left: 40px;      /* ajuste a posição horizontal */
+    background-color: transparent !important; /* força transparência */
+    border: none;
+    outline: none;        
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 4000 !important;
 }
 
-/* RESPONSIVIDADE MELHORADA */
-
-@media (max-width: 480px) {
-    .header{
-        flex-direction: column;
-        text-align: center;
-        padding: 10px;
-    }
-
-    /* Ajustes específicos para o dropdown do perfil em mobile */
-
-    #nav-menu-perfil ul li a {
-        font-size: 13px;
-        padding: 10px 14px;
-    }
-
-    nav ul li a {
-        font-size: 13px;
-        padding: 10px 14px;
-    }
+.cbmenu-icon i {
+    font-size: 30px;
+    color: var(--cor-texto);
+    cursor: pointer;
+    transition: color 0.3s;
 }
 
-@media (max-width: 807px){
-
-    #icone_top{
-        display: none;
-    }
-
-    .titulo{
-        display: none;
-    }
-
-    /* Dropdown responsivo para tablets - perfil */
-    #nav-menu-perfil {
-        min-width: 170px;
-        right: 10px; /* Pequeno afastamento da borda */
-    }
-
-    /* Dropdown responsivo para tablets - menu hamburger */
-    nav {
-        min-width: 178px;
-    }
+.cbmenu-icon i:hover {
+    color: var(--laranja-padrao);
 }
 
-@media (max-width: 930px) {
-    .titulo{
-        transform: translateX(-358%);
-        font-size: 61%;
-    }
+.icsenac{
+    margin-left: 40px;
+    width: 45px;
+    height: auto;
 }
 
-@media (max-width: 600px){
-    #icone_top{
-        display: none;
-    }
-
-    /* Ajuste adicional para telas pequenas - perfil */
-    #nav-menu-perfil {
-        right: 5px;
-    }
-
+.cbquite nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
 }
 
-@media (max-width: 1029px){
-    .menu-icon img {
-        width: 200%;
-        height: 86%
-    }
+.cbquite nav ul li {
+    color: var(--cor-texto);
+    cursor: pointer;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
 }
 
-@media (max-width: 1621px){
-    .iconepessoa{
-        font-size: 11px;
-    }
+.navbar-desktop-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    
 }
 
-/* Simplificando as media queries do dropdown */
-@media (max-width: 1501px){
-    #nav-menu-perfil{
-        right: -19%;
-        /* Removido o transform problemático */
-    }
+.navbar-desktop-top li a{
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    padding:  10px 10px 8px 0px;;
+    color: var(--cor-texto);
+    /* text-transform: uppercase; */
+    transition: color 0.3s ease;
 }
 
-@media (max-width: 1253px){
-    #nav-menu-perfil{
-        min-width: 180px; /* Mantém largura mínima */
-    }
+.navbar-desktop-top li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--laranja-padrao);
+    transition: width 0.3s ease;
 }
 
-/* Media query adicional para telas muito pequenas */
-@media (max-width: 320px) {
-    /* Menu do perfil */
-    #nav-menu-perfil {
-        min-width: 140px;
-        max-width: calc(100vw - 20px);
-        right: 10px;
-    }
-
-    #nav-menu-perfil ul li a {
-        font-size: 12px;
-        padding: 8px 12px;
-        gap: 8px;
-    }
-
-    #nav-menu-perfil ul li a img {
-        width: 16px;
-        height: 16px;
-    }
-
-    /* Menu hamburger */
-    nav {
-        min-width: 160px;
-        max-width: calc(100vw - 20px);
-        left: 10px;
-    }
-
-    nav ul li a {
-        font-size: 12px;
-        padding: 8px 12px;
-        gap: 8px;
-    }
-
-    nav ul li a img {
-        width: 16px;
-        height: 16px;
-    }
+.navbar-deskto-2 li a:hover {
+    color: var(--laranja-padrao);
 }
 
-@media (max-width: 480px){
-
-    #nav-menu-perfil {
-        max-width: calc(100vw - 40px); /* Não ultrapassa a tela */
-        right: -19%;
-        transform: none;
-        min-width: 178px;
-    }
-
+.navbar-desktop-top li a:hover::after {
+    width: 100%;
 }
 
+.menu-li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.entrar-mobile {
+    display: none; 
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.perfil-logado span {
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    color: var(--cor-texto);
+}
+
+.icone-perfil {
+    width: 35px;
+    height: 35px;
+    margin: 5px 0px 0px 0px;
+}
+ 
+.icsenac{
+    margin-left: 40px;
+    width: 45px;
+    height: auto;
+}
+ 
+.icperfil{
+    cursor: pointer;
+    height: 100px;
+    margin-top: 16px;
+    margin-right: 50px;
+    filter: brightness(80%);
+    width: 74px;
+    height: 70px;
+}
+
+.nome-usuario {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 30px;
+    font-family: "Roboto", sans-serif;
+    color: var(--cor-texto);
+    border-right: 3px solid var(--cor-texto);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    opacity: 0;
+    animation:
+        aparecerUsuario 0s 1.5s forwards,
+        escreverUsuario steps(var(--char-count), end) 2s 1.5s forwards,
+        esconderCursor 0s 3.6s forwards;
+}
+
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #003162;
+    font-family: "Poppins",sans-serif;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 999;
+    min-width: 160px;
+}
+
+.menu-dropdown a {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border-bottom: 1px solid #82828261;
+}
+
+.menu-dropdown a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+
+.button-entrar {
+    padding: 4px 12px 2px 12px;
+    height: auto;
+    margin-right: 2%;
+    border-radius: 1rem;
+    border: none;
+    color: var(--cor-texto);
+    cursor: pointer;
+    background-color: var(--laranja-padrao);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.button-entrar:hover{
+    background-color: var(--cor-texto);
+    color: #002043;
+    transition: 0.1s;
+}
+
+.button-entrar:hover svg path {
+    fill: #002043;
+}
+    
+.button-entrar svg path {
+    transition: fill 0.1s;
+}
+
+.button-entrar span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* SIDEBAR */
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -340px; /* começa fora da tela */
+    width: 300px;
+    height: 100vh; /* ocupa 100% da tela */
+    background: var(--azul-tela-inicial);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+    transition: left 0.3s ease;
+    padding: 5% 0px 0px 1%;
+    z-index: 3000;  
+    color: var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 2500;
+    display:none;
+    opacity: 0;
+}
+
+.overlay.ativo {
+    display: block; 
+    opacity: 1;
+}
+
+
+
+.cabecalho nav {
+    font-family: "Poppins",sans-serif;
+}
+
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -340px; /* começa fora da tela */
+    width: 300px;
+    height: 100vh; /* ocupa 100% da tela */
+    background: var(--azul-tela-inicial);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+    transition: left 0.3s ease;
+    padding: 5% 0px 0px 2%;
+    z-index: 3000;  
+    color: var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+
+.menu-lateral.ativo {
+    left: 0;
+}
+
+#menu-lateral ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu-lateral ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#menu-lateral.active {
+    display: block;
+}
+
+.menu-sanduiche .navbar-desktop {
+    display: flex;
+    flex-direction: column; /* itens empilhados */
+    align-items: flex-start; /* alinha todos à esquerda */
+    gap: 10px; /* distância entre os itens, opcional */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: "Poppins",sans-serif;
+}
+
+.menu-sanduiche .navbar-desktop li {
+    display: flex; /* para alinhar a imagem + link na mesma linha */
+    align-items: center; /* centraliza verticalmente imagem + texto */
+    gap: 10px; /* espaço entre imagem e texto */
+}
+
+.menu-sanduiche .navbar-desktop li a {
+    text-align: left;
+}
+
+.navbar-desktop li a{
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    padding:  10px 10px 8px 0px;;
+    color: var(--cor-texto);
+    /* text-transform: uppercase; */
+    transition: color 0.3s ease;
+  }
+  
+.navbar-desktop li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--laranja-padrao);
+    transition: width 0.3s ease;
+}
+
+.navbar-desktop li a:hover {
+color: var(--laranja-padrao);
+}
+
+.navbar-desktop li a:hover::after {
+width: 100%;
+}
+
+.menu-li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.perfil-lateral-2 {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+  
+.perfil-lateral-2 a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--cor-texto);
+}
+
+.perfil-lateral {
+    font-family: "Poppins",sans-serif;
+    position: absolute;
+    top: 0px;
+    left: 65px;
+    color: hsl(0, 0%, 100%);
+    padding: 8px 20px 20px 20px;
+}
+  
+.perfil-lateral .biblioteca {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--laranja-padrao);
+} 
+.perfil-lateral .hub {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+} 

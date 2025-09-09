@@ -12,524 +12,161 @@
     --apontador: pointer;
     --cinza: #D9D9D9;
     --bordaBaixaCabeçalho: #769FCD;
+   
 }
-
-/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
-*{
+* {
     box-sizing: border-box;
 }
-
-
-
-body{
-    margin: 0;
-    background-color: var(--fundoPadrao);
-}
-
-/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
-
-.conteiner #iconeComandante{
-    cursor: var(--apontador);
-}
-
-/*Define o ícone com o cursor apontador*/
-
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-.minhaConta{
-    display: none;
-    position: var(--posicaoAbsoluta);
-    top: 17%; left: 91.5%;
-    color: var(--branco);
-    background-color: var(--azulCabecalho);
-    width: 114px;
-    cursor: var(--apontador);
-}
-
-.minhaConta a{
-    text-decoration: none;
-    color: var(--branco);
-}
-
-/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
-
-.conteiner3{
-    display: flex;
-    justify-content: space-between;
-   
-}
-
-/*Corpo central*/ /*Corpo central*/ /*Corpo central*/
-
-.relatorio{
-    display: flex;
-    justify-content: center;
-    height: 70px;
-}
-
-.quadradoCinza{
-    height: 500px;
-    background-color: var(--branco);
+.container-main {
+    width: 70%;
+    padding: 40px;
+    position: relative;
     margin: auto;
-    margin-bottom: 5%;
+    background: #fbfaff;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
-    border-width: 0;
 }
-
-
-.quadradoBranco .input{
+#cadastro-form legend {
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 0 0.5rem;
     display: flex;
-    justify-content: space-between;
-    padding-left: 5%;
-    padding-right: 5%;
+    align-items: center;
+    gap: .5rem;
 }
-
-.quadradoCinza #calendario{
-    margin-top: 10%;
-    width: 400px;
+.form-section {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 0.5rem;
 }
-
-.quadradoCinza .Calendario{
+.form-row {
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.form-grupo {
+    /* Flex-basis garante uma largura base */
+    flex: 1 1 300px;
+    margin-bottom: 1rem;
 }
 
-.quadradoCinza .imagemCalendario{
-    padding-top: 10%;
-    height: 66px;
+.icons {
+    width: 20px;
 }
 
-.quadradoCinza .unidade{
-    display: grid;
-    grid-template-columns: 100px;
-    grid-template-rows: 42px;
-    position: var(--posicaoAbsoluta);
-    left: 61%;
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+#foto-perfil-container {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+#foto-perfil {
+    width: 150px; /* Tamanho fixo para melhor controle */
+    height: 150px;
+    border-radius: 50%; /* Deixa a imagem redonda */
+    object-fit: cover; /* Evita distorção da imagem */
+    border: 2px solid #ddd;
 }
 
-/*A classe .quadradoCinza .botoes define as configurações
-da div que contêm os botões "cancelar" e "emitir" */
-
-.quadradoCinza .botoes{
-    display:flex;
-    justify-content: space-between;
-    padding-right: 15%;
-    padding-left: 9%;
-    margin-top:19%;
+#notas_usuario{
+    width: 100%;
 }
 
-/*A classe .quadradoCinza .cancelar, .emitir define as 
-configurações dos botões "cancelar" e "emitir" */
+.botao-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 
-.quadradoCinza .cancelar, .emitir{
-   background-color: #004A90;
-    color: white;
-    padding: 10px 20px;
+}
+
+.botao-container button {
+    max-width: 650px;
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    margin-top: 10px;
-}
-.quadradoCinza .cancelar:hover, .emitir:hover{
-   background-color: #0056b3;
+    transition: background-color 0.3s ease;
 }
 
-/*Parte inferior do corpo*/
-
-
-
-/*Um pouco de responsividade*/ /*Um pouco de responsividade*/ /*Um pouco de responsividade*/
-
-@media(max-width:1024px){
-    
-    .titulo, .Libro, .copyright, .todos, .logoSenacHub{
-        display: none;
-    }
+button[type="submit"] {
+    background-color: #004A90;
+    color: white;
 }
 
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
 
-@media(min-width: 375px){
+.cancel-button {
+    background-color: #900000;
+    color: white;
+}
 
- /*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*//*iphone SE*/   
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+/* Estilo para input type="date" igual ao select */
+.input-date-padrao {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #495057;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: all 0.1s ease-in-out;
+    width: 100%;
 
-    /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/  /*Cabeçalho*/
-
-    .quadradoBranco .input{
-        flex-direction: column;
-    }
-
-    .quadradoBranco .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 70%; bottom: 20%;
-    }
-
-    /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/  /*Corpo*/ 
-
-    /*Essa parte controla os comprimentos
-    e alturas dos ícones azuis superiores*/
-    .conteiner3 .esquerdo, .direito{
-        width: 100px;
-        height: 100px;
-    }
+    /* Remove estilo padrão do navegador */
    
-    .quadradoCinza #calendario{
-        width: 280px;
-    }
-
-    /*Fim da página*/ /*Fim da página*/ /*Fim da página*/ /*Fim da página*/
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 16%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 69.5%;}
-
-} 
-
-@media(min-width:414px){
-
- /*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*//*Iphone XR*/   
-
- .quadradoBranco .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 70%; bottom: 40%;
- }  
-
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 12%;
- }
-
- .minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 12%; left: 72.5%;}
-
 }
 
-@media(min-width:500px){
-
- /*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*//*500 x 896*/   
-
- .quadradoBranco .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 70%; bottom: 40%;
- }  
-
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 12%;
- }
-
- .minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 12%; left: 77.1%;
- }
-
+.input-date-padrao:disabled {
+    background-color: #e6e6e6;
 }
 
-@media(min-width:600px){
-
- /*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*//*600 x 896*/    
-
- .quadradoBranco .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 70%; bottom: 40%;
- }  
-
- .menu{
-    position: var(--posicaoAbsoluta);
-    top: 12%;
- }
-
- .minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 12%; left: 81%;
- }
-
+.input-date-padrao:focus {
+    border-color: dodgerblue;
+    box-shadow: 0 0 5px dodgerblue;
+    transform: scale(1.02);
 }
 
-@media(min-width:768px){
-
- /*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*//*ipad mini*/   
-
- /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/           
-    .titulo{
-        font-size: 12px;
-    }
-
-    .conteiner .logoSenacHub{
-        display: block;
-    }
- 
- /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/
-
- .quadradoCinza{
-    width: 60%;
- }
-
- .quadradoCinza .input{
-    flex-direction: row;
- }
-
- .quadradoCinza .unidade{
-    position: var(--posicaoAbsoluta);
-    left: 60%; bottom: 45%;
- }
-
- /*Rodapé*/ /*Rodapé*/ /*Rodapé*/ /*Rodapé*/  
-    .rodape{
-        font-size: 14px;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 11%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 11%; left: 85.2%;}
+/* Ajuste do ícone do calendário no Chrome/Safari */
+.input-date-padrao::-webkit-calendar-picker-indicator {
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='%23495057' viewBox='0 0 24 24'><path d='M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z'/></svg>") no-repeat center;
+    background-size: 18px 18px;
+    cursor: pointer;
+    opacity: 1;
+    margin-right: 5px;
 }
 
-@media(min-width:820px){
 
- /*ipad air*//*ipad air*//*ipad air*//*ipad air*//*ipad air*/   
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 11%; left: 85.8%;}
+/* Firefox */
+.input-date-padrao::-moz-calendar-picker-indicator {
+    cursor: pointer;
 }
 
-@media(min-width: 912px){
 
- /*surface pro 7*//*surface pro 7*//*surface pro 7*//*surface pro 7*/   
-
-    .conteiner .menuAdm{
-        width: 304px;
+@media (max-width: 768px) {
+    .container-main {
+        width: 95%;
     }
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 55%; bottom: 55%;
+    .form-group {
+        flex-basis: 100%; /* Em telas menores, os campos ocupam a largura total */
     }
-
-    .rodape .Logo{
-        width: 180px;
-        height: 70px;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
-    
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 10%; left: 87.5%;
-    }
-
-    .inferior{
-        margin-top: 21%;
-    }
-
-}
-
-@media(min-width: 1024px){
-
- /*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*//*ipad pro*/   
-
-    .conteiner .menuAdm{
-        width: 304px;
-    }
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 57%; bottom: 55%;
-    }
-
-    .rodape .Logo{
-        width: 180px;
-        height: 70px;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
-    
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 10%; left: 88.6%;
-    }
-
-}
-
-@media(min-width: 1124px){
-
- /*1124 x 1366*//*1124 x 1366*//*1124 x 1366*//*1124 x 1366*/   
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 58%; bottom: 55%;
-    }
-    
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 10%; left: 89.9%;
-    }
-
-}
-
-@media(min-width: 1280px){
-
- /*nest hub max*//*nest hub max*//*nest hub max*//*nest hub max*/   
-
-    .quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 60.5%; bottom: 25%;
-    }
-    
-    .rodape .siga-nos{
-        display: block;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 14%;
-    }
-
-    .titulo{
-        position: var(--posicao);
-        right: 5%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 14%; left: 91.1%;}
-}
-
-@media(min-width:1358px){
-
- /*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*//*1358 x 768*/   
-
-.conteiner3 .esquerdo, .direito{
-    width: 150px;
-    height: 150px;
-}
-
-.quadradoCinza .unidade{
-        position: var(--posicaoAbsoluta);
-        left: 61%; bottom: 2%;
-    }
-
-.inferior img{
-    width: 150px;
-    height: 150px;
-}
-
-.menu{
-    position: var(--posicaoAbsoluta);
-    top: 17%;
-}
-
-.minhaConta{
-    position: var(--posicaoAbsoluta);
-    top: 17%; left: 91.6%;}
-
-}
-
-@media(min-width: 1912px){
-
-    .conteiner{
-        height: 140px;
-        align-items: center;
-    }
-
-    .conteiner .titulo{
-        font-size: 20px;
-    }
-
-    .quadradoCinza{
-        width: 992px;
-        height: 900px;
-        margin-left: 25%;
-    }
-    
-    .quadradoBranco{
-       margin-left: 0%;
-    }
-
-    .sobre, .salvar, h4{
-        font-size:30px;
-    }
-
-    .nome, .opcoes{
-        height: 30px;
-        font-size: 20px;
-    }
-
-    .imagemCalendario{
-        width: 40px;
-        height: 50px;
-    }
-
-    .Calendario .imagemCalendario{
-        padding-top:18%;
-    }
-    
-    .Calendario .calendar, .Calendario .calendar2{
-        width: 200px;
-        height:50px;
-        font-size:22px;
-    }
-
-    .Calendario{
-        height: 400px;
-    }
-
-    .quadradoCinza .unidade{
-        grid-template-rows: 100px;
-        grid-template-columns: 170px;
-        position: var(--posicaoAbsoluta);
-        left: 59.5%; bottom: 7%;
-    }
-
-    .quadradoCinza .ordem{
-        height: 30px;
-        font-size: 20px;
-    }
-
-    .botoes .emitir, .botoes .cancelar{
-        width: 205px;
-        height: 40px;
-        font-size:20px;
-    }
-
-   .rodape{
-        height: 300px;
-   }
-
-   .rodape .Logo{
-        width: 247px;
-   }
-   
-   .rodape .faleConosco, .copyright, .todos{
-        font-size: 20px;
-   }
-
-   .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 14%; left: 94%;
-    }
-
 }

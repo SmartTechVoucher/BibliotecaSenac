@@ -230,9 +230,12 @@
         </form>
     </div>
 
-    <?php
-    include "../../../public/components/usuario/footer/footer.php";
-    ?>
+
+ </div>  
+    
+   <?php
+    include "../../../public/components/admin/footer/footer-admin.php";
+   ?>
     <script src="../../../public/js/admin/telaDeCadastroDeLivros.js"></script>
 
 </body>

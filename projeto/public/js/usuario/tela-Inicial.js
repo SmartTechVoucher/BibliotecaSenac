@@ -1,4 +1,6 @@
 
+console.log("JS carregado!");
+
 function redirectToPage() {
     window.location.href = "src/views/usuario/login.php";
 }
@@ -13,27 +15,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-
-const toggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('menu-links');
-
-
-toggle.addEventListener('click', () => {
-    menu.classList.toggle('active');
-});
-
-
 const input = document.querySelector(".pesquisa")
 const listagem = document.querySelector(".listagem")
 const historicoUL = document.querySelector(".listagem ul");
 
 let historico = JSON.parse(localStorage.getItem('historicoPesquisa')) || [];
 let clicandoExcluir = false;
-
-
-function redirectToPage() {
-    window.location.href = "src/views/usuario/login.php";
-}
 
 input.addEventListener('focus', () => {
     listagem.classList.add('visivel');
@@ -266,4 +253,17 @@ function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) modal.style.display = 'none';
 }
+
+function toggleMenu(event) {
+    event.stopPropagation(); // evita que o clique feche imediatamente
+    const menu = event.currentTarget.querySelector(".menu-dropdown");
+    const isVisible = menu.style.display === "block";
+    document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
+    menu.style.display = isVisible ? "none" : "block";
+}
+
+document.addEventListener("click", () => {
+    document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
+});
+
 

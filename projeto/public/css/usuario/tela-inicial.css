@@ -20,7 +20,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: hidden
 }
  
 .conteiner{
@@ -28,21 +28,6 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     padding-top: 50px;
-}
-
-.cabecalho {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--azul-tela-inicial);
-    padding: 10px 10px;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--cor-texto);
-    box-sizing: border-box;
-    position: fixed;
-    z-index: 1000;
-    top: 0;
 }
 
 .onda-inferior {
@@ -58,158 +43,13 @@ body {
     height: 80px; /* ajuste conforme o visual desejado */
 }
 
-.cbleft {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Mobile: só mostra o botão e o menu lateral */
+@media (max-width: 768px) {
+    .navbar-desktop {
+        display: none;
+    }
 }
 
-.cbmenu-icon {
-    display: none;
-}
-
-.cbmenu-icon i {
-    font-size: 22px;
-    color: var(--cor-texto);
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.cbmenu-icon i:hover {
-    color: var(--laranja-padrao);
-}
-
-.cbquite nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-}
-
-.cbquite nav ul li {
-    color: var(--cor-texto);
-    cursor: pointer;
-    font-family: "Poppins",sans-serif;
-    font-weight: 500;
-}
-
-.navbar li a{
-    text-decoration: none;
-    position: relative;
-    cursor: pointer;
-    padding: 10px;
-    color: var(--cor-texto);
-    transition: color 0.3s ease;
-  }
-  
-  .navbar li a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--laranja-padrao);
-    transition: width 0.3s ease;
-  }
-  
-  .navbar li a:hover {
-    color: var(--laranja-padrao);
-  }
-  
-  .navbar li a:hover::after {
-    width: 100%;
-  }
-
-.cbquite {
-    color: var(--cor-texto);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.cbquite ul {
-    list-style: none;
-    display: flex;
-    gap: 10%;
-    
-}
-
-.entrar-mobile {
-    display: none; 
-    margin-top: 10px;
-    margin-left: 10px;
-    text-align: center;
-}
- 
-.cbright {
-    height: auto;
-    display: flex;
-    justify-content: end;
-}
-
-.button-entrar {
-    padding: 8px 12px;
-    height: auto;
-    margin-right: 2%;
-    border-radius: 1rem;
-    border: none;
-    color: var(--cor-texto);
-    cursor: pointer;
-    background-color: var(--laranja-padrao);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-size: clamp(0.75rem, 2vw, 1rem);
-    white-space: nowrap;
-    transition: background-color 0.3s ease;
-}
-
-.button-entrar:hover{
-    background-color: var(--cor-texto);
-    color: var(--roxo);
-    transition: 0.1s;
-}
-
-.button-entrar:hover svg path {
-    fill: var(--roxo);
-}
-    
-.button-entrar svg path {
-    transition: fill 0.1s;
-}
-
-.button-entrar span {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-}
-
-.icone-perfil {
-    width: 35px;
-    height: 35px;
-}
- 
-.icsenac{
-    margin-left: 20px;
-    width: 50px;
-    height: auto;
-}
- 
-.icperfil{
-    cursor: pointer;
-    height: 100px;
-    margin-top: 16px;
-    margin-right: 50px;
-    filter: brightness(80%);
-    width: 74px;
-    height: 70px;
-}
-  
 /* PARTE "PRINCIPAL" */
  
 .topPage{
@@ -645,8 +485,14 @@ body {
 .menu-dropdown a:hover {
     background-color: rgba(255,255,255,0.1);
 }
-
  
+.menu-li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .perfil-logado span {
     font-size: 15px;
     font-family: "Roboto", sans-serif;
@@ -689,6 +535,13 @@ body {
         esconderCursor 0s 3.6s forwards;
 }
 
+
+.perfil-lateral-2 {
+    position: absolute;
+    bottom: 120px !important;
+}
+
+
 /* Faz aparecer com opacidade */
 @keyframes aparecerUsuario {
     to {
@@ -713,18 +566,6 @@ body {
 
 
 /*IMPORTAÇÕES*/
-
-@font-face {
-    font-family: "Roboto";
-    src: url("font/roboto/Roboto-Bold.ttf") format("truetype");
-}
- 
-@font-face {
-    font-family: "Poppins";
-    src: url("font/poppins/Poppins-ExtraLight.ttf") format("truetype");
-    font-weight: 200;
-    font-style: normal;
-}
  
 @keyframes marca{
     50%{
@@ -787,6 +628,7 @@ body {
 
     .cbmenu-icon {
         display: block;
+        
     }
 
     .cabecalho {
@@ -958,6 +800,14 @@ body {
 
     
     }
+}
+
+/* TESTE SANDUICHE */
+@media (max-width: 768px) {
+    
+    /* .menu-sanduiche {
+        display: block;
+    } */
 }
 
 .estante {
