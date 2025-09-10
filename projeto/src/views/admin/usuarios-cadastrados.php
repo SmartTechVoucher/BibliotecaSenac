@@ -10,7 +10,7 @@ require_once "../../../config/constantes.php";
   <?php
     require_once "../../../config/constantes.php";
   ?>
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/input-admin.css">
   <?php include "../../../public/components/admin/input/input-admin.php"; ?>

@@ -8,7 +8,7 @@
     <?php
     require_once "../../../config/constantes.php";
     ?>
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/global.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/telaRelatorios.css">

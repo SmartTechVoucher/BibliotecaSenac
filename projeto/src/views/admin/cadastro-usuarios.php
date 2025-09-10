@@ -8,7 +8,7 @@
   <?php
   require_once "../../../config/constantes.php";
   ?>
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
   <link rel="stylesheet" href="../../../public/css/admin/cadastro-usuarios.css">C:\xampp\htdocs\BibliotecaSenac\projeto\public\css\global.css
   <link rel="stylesheet" href="../../../public/css/global.css">
