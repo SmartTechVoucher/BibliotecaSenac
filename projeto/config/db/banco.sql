@@ -118,5 +118,6 @@ CREATE TABLE adminstrador (
     telefone VARCHAR(20) NOT NULL,
     rua VARCHAR(100) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
-    genero VARCHAR(50)
+    genero VARCHAR(50),
+    senha VARCHAR(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

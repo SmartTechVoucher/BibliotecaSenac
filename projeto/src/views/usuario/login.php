@@ -32,12 +32,12 @@ session_start();
 
         <div class="login-campos">
           <div class="campo-usuario">
-            <label for="campo_login"><img src="../../../public/assets/icons/perfil.png" alt=""> Usuário</label>
-            <input type="text" name="nome" id="campo_login" placeholder="Usuário" required />
+            <label for="campo_login"><img src="../../../public/assets/icons/perfil.png" alt="">Usuário</label>
+            <input type="text" name="nome" id="campo_login" placeholder="Usuário"/>
           </div>
           <div class="campo-senha">
             <label for="campo_senha"><img src="../../../public/assets/icons/cadeado-senha.png" alt="" class="cadeado-senha"> Senha</label>
-            <input type="password" name="senha" id="campo_senha" placeholder="Senha" required />
+            <input type="password" name="senha" id="campo_senha" placeholder="Senha"/>
             <span class="toggle-senha" onclick="mostrarSenha()"><img src="../../../public/assets/icons/ocultar-2.png" alt="" class="ocultar-senha"></span>
           </div>
         </div>
