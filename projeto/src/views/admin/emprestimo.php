@@ -15,7 +15,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
-    <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/admin/emprestimo.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE?>/public/css/admin/emprestimo.css">
+  <link rel="stylesheet" href="../../../public/css/global.css">
+    <?php include "../../../public/components/admin/input/input-admin.php"; ?>
+    <?php include "../../../public/components/admin/button/button-admin.php"; ?>
+    <?php require_once __DIR__ . '/../../../public/components/admin/select/input-select.php'; ?>
+
 </head>
 
 <body>
@@ -24,107 +29,49 @@
     ?>
     
     <main>
-        <div class="quadradoBranco">
-
-            <!-- pesquisas de usuario e livro -->
-            <div class="search-container">
-                <!-- pesquisar usuario -->
-                <div class="searchUser">
-                    <h3>Usuário:</h3>
-                    <form class="searchInput">
-                        <input type="text" name="" id="searchBar" placeholder="Insira nome, CPF ou nº de matrícula">
-                        <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Usuario.png" alt="">
-                    </form> 
-                </div>
-                
-                <!-- dados do usuario -->
-                <div class="usuarioCadastrado">
-                    <img src="<?php echo $URLBASE?>/public/assets/img/NullUser.jpg" alt="">
-                    <div class="userInfo">
-                        <span id="nameUser"><b>Nome:</b> Carlos Terrel </span>
-                        <div class="userInfo2">
-                            <span><b>N° de matrícula:</b> 31182092025</span>
-                            <span><b>Perfil de acesso:</b> Comum <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_PerfilAcesso.png" alt=""></span>
+        <div class="container-main">
+            <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
+                <fieldset class="form-section">
+                    <legend>
+                        <img src="<?php echo $URLBASE?>/public/assets/icons/emprestimo-icon.png" id="fieldset-icon" alt="">
+                        Cadastro de emprestimo</legend>
+                        <div class="form-row">
+                            <label for="nome-usuario">Nome do usuário</label>
+                            <?php
+                            // $usuariosMock = [
+                            //     ['id' => 1, 'nome' => 'José da Silva'],
+                            //     ['id' => 2, 'nome' => 'Ana Maria Santos'],
+                            //     ['id' => 3, 'nome' => 'Pedro Oliveira'],
+                            //     ['id' => 4, 'nome' => 'Fernanda Costa'],
+                            //     ['id' => 5, 'nome' => 'Lucas Pereira'],
+                            //     ['id' => 6, 'nome' => 'Mariana Almeida'],
+                            //     ['id' => 7, 'nome' => 'Rafaela Martins'],
+                            //     ['id' => 8, 'nome' => 'Guilherme Souza'],
+                            //     ['id' => 9, 'nome' => 'Beatriz Ferreira'],
+                            //     ['id' => 10, 'nome' => 'Gabriel Rodrigues'],
+                            //     ['id' => 11, 'nome' => 'Juliana Gomes'],
+                            //     ['id' => 12, 'nome' => 'Daniel Barbosa'],
+                            //     ['id' => 13, 'nome' => 'Carolina Lima'],
+                            //     ['id' => 14, 'nome' => 'Thiago Fernandes'],
+                            //     ['id' => 15, 'nome' => 'Isabela Rocha'],
+                            //     ['id' => 16, 'nome' => 'Artur Nunes'],
+                            //     ['id' => 17, 'nome' => 'Laura Dias'],
+                            //     ['id' => 18, 'nome' => 'Felipe Castro'],
+                            // ];
+                            //     renderSelectModal(name:"nome-usuario", label:"Nome do usuário", items:$usuariosMock)
+                                InputAdmin(largura:100, placeholder:"Nome completo do usuário", id:"nome-usuario", name:"nome-usuario")
+                            ?>
                         </div>
-                        
-                        <div class="userInfo3">
-                            <span><b>Email:</b> iammusic@gmail.com</span>
-                            <span><b>Telefone:</b> 6740028922</span>
-                        </div>
+                        <fieldset class="form-section">
+                                <legend>Dados do Usuário</legend>
+                                <img src="<?php echo $URLBASE?>/public/assets/img/NullUser.jpg" alt="">
+                                <?php
+                                    
+                                ?>
+                        </fieldset>
+                </fieldset>
 
-                    </div>
-                </div>
-                
-                <!-- pesquisar livro -->
-                <div class="searchBook">
-                    <h3>Código do livro:</h3>
-                    <form class="searchInput">
-                        <input type="text" name="" id="searchBar" placeholder="Insira código de exemplar">
-                        <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_CodigoDoLivro.png" alt="">
-                    </form>
-                </div>
-
-            </div>
-
-            <!-- emprestimos já cadastrados no nome do usuario -->
-            <div class="livrosEmprestados">
-                <div class="tabela-header">
-                    <div class="div1">Capa</div>
-                    <div class="div2">Título</div>
-                    <div class="div3">Exemplar</div>
-                    <div class="div4">Data empres.</div>
-                    <div class="div5">Data devo.</div>
-                </div>
-
-                <div class="tabela-footer"> 
-                    <div class="book-grid">
-                        <img class="grid1" src="<?php echo $URLBASE?>/public/assets/img/livroCapa.jpg"></img>
-                        <div class="grid2"><a href="" url="">A Gaia Ciência</a></div>
-                        <div class="grid3">618.92 T157e</div>
-                        <div class="grid4">18/03/2025</div>
-                        <div class="grid5">21/03/2025</div>
-                        <div class="grid6">
-                            <button id="grid-button">Devolver <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Devolver.png" alt=""></button>
-                            <button id="grid-button">Renovar <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Renovar.png" alt=""></button>
-                        </div>
-                    </div>
-                    <div class="book-grid">
-                        <img class="grid1" src="<?php echo $URLBASE?>/public/assets/img/livroCapa.jpg"></img>
-                        <div class="grid2"><a href="" url="">A Gaia Ciência</a></div>
-                        <div class="grid3">618.92 T157e</div>
-                        <div class="grid4">18/03/2025</div>
-                        <div class="grid5">21/03/2025</div>
-                        <div class="grid6">
-                            <button id="grid-button">Devolver <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Devolver.png" alt=""></button>
-                            <button id="grid-button">Renovar <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Renovar.png" alt=""></button>
-                        </div>
-                    </div><div class="book-grid">
-                        <img class="grid1" src="<?php echo $URLBASE?>/public/assets/img/livroCapa.jpg"></img>
-                        <div class="grid2"><a href="" url="">A Gaia Ciência</a></div>
-                        <div class="grid3">618.92 T157e</div>
-                        <div class="grid4">18/03/2025</div>
-                        <div class="grid5">21/03/2025</div>
-                        <div class="grid6">
-                            <button id="grid-button">Devolver <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Devolver.png" alt=""></button>
-                            <button id="grid-button">Renovar <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Renovar.png" alt=""></button>
-                        </div>
-                    </div><div class="book-grid">
-                        <img class="grid1" src="<?php echo $URLBASE?>/public/assets/img/livroCapa.jpg"></img>
-                        <div class="grid2"><a href="" url="">A Gaia Ciência</a></div>
-                        <div class="grid3">618.92 T157e</div>
-                        <div class="grid4">18/03/2025</div>
-                        <div class="grid5">21/03/2025</div>
-                        <div class="grid6">
-                                <button type="submit" id="grid-button">Devolver <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Devolver.png" alt=""></button>
-                                <button type="submit" id="grid-button">Renovar <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Renovar.png" alt=""></button>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                
-            </div>
-
+            </form>
         </div>
     </main>
     <?php

@@ -19,141 +19,27 @@ a{
 }
 
 /* main */
-
-
-
-.quadradoBranco{
-    background-color: white;
-    width: 80%;
-    margin: auto;
+.container-main {
+    width: 70%;
     padding: 40px;
-    position: relative; 
-    margin-bottom: 30px;
-}
-.quadradoBranco::before { /*pseudo elemento que faz aquele pequeno retangulo no topo do .quadradoBranco*/
-    content: "Cadastro De Empréstimo";
-    position: absolute;
-    top: -35px;
-    left: 0px;
-    width: 300px;
-    height: 45px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-}
-
-
-/* pesquisar usuario e livro */
-.searchInput img{
-    height: 30px;
-}
-.searchInput{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    height: 50px;
-    background: #F1EEEE;
+    position: relative;
     margin: auto;
-    border-radius: 5px;
-    border: 1px solid #ababab;
+    background: #fbfaff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
 }
-
-.searchInput input{
-    background-color: #F1EEEE;
-    border: 0px;
-    padding-left: 20px;
-    width: 95%;
-    height: 40px;
+#cadastro-form legend {
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 0 0.5rem;
 }
-
-
-/* dados do usuario */
-.usuarioCadastrado{
-    width: 50%;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    display: flex;
+.form-section {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
 }
-.usuarioCadastrado img{
-    width: 150px;
+#fieldset-icon{
+    width: 24px;
 }
-.userInfo{
-    margin-left: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-#nameUser{
-    margin-bottom: 30px;
-}
-
-.userInfo3, .userInfo2{
-    gap: 20px;
-    display: flex;
-}
-.userInfo2 img{
-    width: 18px;
-    height: 18px;
-}
-
-
-/* livro emprestados do usuario */
-.livrosEmprestados{
-    margin-top: 30px;
-    background-color: #dfe2e5;;
-    padding: 8px;
-    height: 500px;
-    border-radius: 5px;
-}
-
-.tabela-header {
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 8px;
-    border-bottom: 3px #A5A5A5 solid;
-}
-
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 8px;
-    align-items: center;
-    justify-items: center;
-    height: 85px;
-}
-.book-grid img{
-    width: 50px;
-}
-
-.grid6{
-    display: flex;
-    gap: 10px;
-}
-
-/* botão de devolução e renovação */
-#grid-button{
-    background-color: #0585FF;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 4px;
-}
-#grid-button img{
-    width: 20px;
-}
-#grid-button:hover{
-    background-color: #0677e0;
-}
-
-
-
-        
