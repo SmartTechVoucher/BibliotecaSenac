@@ -249,3 +249,10 @@ body .btn-voltar{
     margin-top: 8%;
   }
 }
+.card .hover-content {
+  display: none;
+}
+
+.card .hover-content.active {
+  display: block;
+}

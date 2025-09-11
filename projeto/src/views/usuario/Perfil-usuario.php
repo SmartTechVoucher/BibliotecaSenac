@@ -78,6 +78,9 @@ require(__DIR__ . '/../../../config/constantes.php');
   <?php
   include "../../../public/components/usuario/footer/footer.php";
   ?>
+
+
+<script src="<?php echo $URLBASE ?>/public/js/usuario/perfil-usuario.js">
 </body>
 
 </html>
