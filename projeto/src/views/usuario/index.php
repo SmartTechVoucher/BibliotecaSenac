@@ -172,7 +172,7 @@ $livros = $model->getLivrosMock();
     </div>
 
 
-    <script src="./public/js/usuario/tela-inicial.js" defer></script>
+    <script src="<?php echo $URLBASE ?>/public/js/usuario/tela-inicial.js" defer></script>
     <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
     <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
 
