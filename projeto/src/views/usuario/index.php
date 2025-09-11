@@ -4,10 +4,10 @@ session_start();
 
 
 
-require __DIR__ . '/config/constantes.php';
+require __DIR__ . '/../../../config/constantes.php';
 
 
-include_once __DIR__ . '/src/model/usuario/livro-model.php';
+include_once __DIR__ . '/../../../src/model/usuario/livro-model.php';
 
 $model = new LivroModel();
 $livros = $model->getLivrosMock();
@@ -30,7 +30,7 @@ $livros = $model->getLivrosMock();
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/tela-inicial.css">
-    <link rel="stylesheet" href="./public/css/components/usuario/card2.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
@@ -49,14 +49,14 @@ $livros = $model->getLivrosMock();
         </script>
     <?php unset($_SESSION['toast']);
     endif; ?>
-    <?php include "./public/components/usuario/header/header.php" ?>
+    <?php include "../../../public/components/usuario/header/header.php" ?>
     <div class="conteiner">
 
 
         <div class="geralinfo">
             <div class="info">
 
-                <img src="../projeto/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
+                <img src="<?php echo $URLBASE ?>/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
                 <div class="letreiro">
                     <div class="letras">
                         <h1 class="letras1">Bem-vindo a Biblioteca</h1>
@@ -83,37 +83,37 @@ $livros = $model->getLivrosMock();
             <div class="gen">
                 <div class="gencard">
                     <div class="icon_livros">
-                        <img src="./public/assets/icons/tecnologia.svg" alt="" class="genicon1">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/tecnologia.svg" alt="" class="genicon1">
                     </div>
                     <h2 class="gentitle">Tecnologia</h2>
                 </div>
                 <div class="gencard">
                     <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/saude.svg" alt="" class="genicon2">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/saude.svg" alt="" class="genicon2">
                     </div>
                     <h2 class="gentitle">Saúde</h2>
                 </div>
                 <div class="gencard">
                     <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/gestao.svg" alt="" class="genicon3">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/gestao.svg" alt="" class="genicon3">
                     </div>
                     <h2 class="gentitle">Gestão</h2>
                 </div>
                 <div class="gencard">
                     <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/Designer-teste.png" alt="" class="genicon4">
                     </div>
                     <h2 class="gentitle">Design</h2>
                 </div>
                 <div class="gencard">
                     <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/Livros-teste.png" alt="" class="genicon5">
                     </div>
                     <h2 class="gentitle">Educação</h2>
                 </div>
                 <div class="gencard">
                     <div class="icon_livros">
-                        <img src="../projeto/public/assets/icons/Geography.png" alt="" class="genicon5" id="comunicacao">
+                        <img src="<?php echo $URLBASE ?>/public/assets/icons/Geography.png" alt="" class="genicon5" id="comunicacao">
                     </div>
                     <h2 class="gentitle">Comunicação</h2>
                 </div>
@@ -136,7 +136,7 @@ $livros = $model->getLivrosMock();
                             $livro = $livros[$i];
                         ?>
                             <div class="livroEstante1">
-                                <?php include "./public/components/usuario/card/card2.php"; ?>
+                                <?php include "../../../public/components/usuario/card/card2.php"; ?>
                             </div>
                         <?php endfor; ?>
                     </div>
@@ -150,7 +150,7 @@ $livros = $model->getLivrosMock();
                             $livro = $livros[$i];
                         ?>
                             <div class="livroEstante1">
-                                <?php include "./public/components/usuario/card/card2.php"; ?>
+                                <?php include "../../../public/components/usuario/card/card2.php";   ?>
                             </div>
                         <?php endfor; ?>
                     </div>
@@ -165,7 +165,9 @@ $livros = $model->getLivrosMock();
 
 
 
-        <?php include(__DIR__ . '/public/components/usuario/footer/footer.php'); ?>
+        <?php
+            include "../../../public/components/usuario/footer/footer.php";
+        ?>
 
     </div>
 
