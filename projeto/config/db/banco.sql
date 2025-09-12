@@ -61,7 +61,8 @@ CREATE TABLE usuarios (
     data_fim DATE,
     genero VARCHAR(50),
     FOREIGN KEY (id_categoria_usuario) REFERENCES categorias_usuario(id_categoria_usuario),
-    FOREIGN KEY (id_curso) REFERENCES cursos(id_curso)
+    FOREIGN KEY (id_curso) REFERENCES cursos(id_curso),
+    senha VARCHAR (100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE livros (

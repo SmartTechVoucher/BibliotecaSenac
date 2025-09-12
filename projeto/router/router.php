@@ -10,7 +10,7 @@ ini_set('session.cookie_httponly', 1);
 if (session_status() === PHP_SESSION_NONE) session_start();
  
 if (!isset($_GET['acao'])) {
-    header('Location: ' . $URLBASE . '/index.php');
+    header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
     exit;
 }
  

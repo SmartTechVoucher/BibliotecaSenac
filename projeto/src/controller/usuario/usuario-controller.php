@@ -75,7 +75,7 @@ class UsuarioController {
  
             return false;
         } catch (PDOException $e) {
-            error_log("Erro ao validar login: " . $e->getMessage());
+            error_log("Erro ao validar logwin: " . $e->getMessage());
             return false;
         }
     }

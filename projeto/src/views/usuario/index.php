@@ -1,20 +1,30 @@
 <?php
 
-session_start();
-
-
+// Segurança de sessão
+ini_set('session.cookie_lifetime', 0);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_httponly', 1);
+if (session_status() === PHP_SESSION_NONE) session_start();
 
 require __DIR__ . '/../../../config/constantes.php';
 
-
 include_once __DIR__ . '/../../../src/model/usuario/livro-model.php';
+
+// Verificar se o usuário está logado
+$usuarioLogado = false;
+$nomeUsuario = '';
+$emailUsuario = '';
+
+if (isset($_SESSION['usuario_id']) && isset($_SESSION['usuario_nome']) && isset($_SESSION['usuario_email'])) {
+    $usuarioLogado = true;
+    $nomeUsuario = $_SESSION['usuario_nome'];
+    $emailUsuario = $_SESSION['usuario_email'];
+}
 
 $model = new LivroModel();
 $livros = $model->getLivrosMock();
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -59,8 +69,13 @@ $livros = $model->getLivrosMock();
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
                 <div class="letreiro">
                     <div class="letras">
-                        <h1 class="letras1">Bem-vindo a Biblioteca</h1>
-                        <h1 class="letras2">SENAC HUB ACADEMY.</h1>
+                        <?php if ($usuarioLogado): ?>
+                            <h1 class="letras1">Bem-vindo de volta, <?php echo htmlspecialchars($nomeUsuario); ?>!</h1>
+                            <h1 class="letras2">SENAC HUB ACADEMY.</h1>
+                        <?php else: ?>
+                            <h1 class="letras1">Bem-vindo a Biblioteca</h1>
+                            <h1 class="letras2">SENAC HUB ACADEMY.</h1>
+                        <?php endif; ?>
                     </div>
                     <p class="frase">"O ensino do futuro do mundo: pessoas inovando pela <br>transformação do Brasil"</p>
 
@@ -158,12 +173,7 @@ $livros = $model->getLivrosMock();
 
             </div>
         </div>
-
-
-
-
-
-
+                            
 
         <?php
             include "../../../public/components/usuario/footer/footer.php";
@@ -175,6 +185,16 @@ $livros = $model->getLivrosMock();
     <script src="<?php echo $URLBASE ?>/public/js/usuario/tela-inicial.js" defer></script>
     <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
     <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
+
+    <?php if ($usuarioLogado): ?>
+    <script>
+        // Funcionalidades extras para usuário logado
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Usuário logado: <?php echo htmlspecialchars($nomeUsuario); ?>');
+            // Aqui você pode adicionar funcionalidades específicas para usuários autenticados
+        });
+    </script>
+    <?php endif; ?>
 
 </body>
 
