@@ -1,20 +1,19 @@
-
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: #EDEDED;
 }
 
 
-a{
-    text-decoration: none 
+a {
+    text-decoration: none
 }
 
-*{
+* {
     font-family: var(--fontes);
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -29,17 +28,88 @@ a{
     border-radius: 8px;
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
 }
+
 #cadastro-form legend {
     font-size: 1.3rem;
     font-weight: 500;
     padding: 0 0.5rem;
 }
+
 .form-section {
     border: 1px solid #ced4da;
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 2rem;
 }
-#fieldset-icon{
+
+
+#fieldset-icon {
     width: 24px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #3498db;
+}
+
+#card-usuario {
+    display: flex;
+    align-items: center;
+    width: 500px;
+    padding: 20px;
+    gap: 30px;
+    margin: auto;
+}
+
+.tabela-livro h1 {
+    text-align: center;
+    color: #555;
+}
+.tabela-livro table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+.tabela-livro th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.tabela-livro th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+.tabela-livro tr:hover {
+    background-color: #f1f1f1;
+}
+.book-image {
+    width: 70px;
+    height: auto;
+    border-radius: 4px;
+}
+.details-row {
+    display: none;
+}
+.toggle-btn {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.toggle-btn:hover {
+    background-color: #777;
 }
