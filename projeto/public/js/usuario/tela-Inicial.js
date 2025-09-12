@@ -1,8 +1,8 @@
 
 console.log("JS carregado!");
 
-function redirectToPage() {
-    window.location.href = "src/views/usuario/login.php";
+function redirectToPage2() {
+    window.location.href = "../usuario/login.php";
 }
 
 window.addEventListener("DOMContentLoaded", () => {
