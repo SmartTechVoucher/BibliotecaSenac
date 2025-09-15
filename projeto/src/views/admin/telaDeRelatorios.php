@@ -61,8 +61,6 @@
                         <select id="genero" name="genero" class="select-padrao">
                             <option value="">Selecione</option>
                             <option value="">PDF</option>
-                            <option value="">Png/Jpeg</option>
-                            <option value="">Texto</option>
                             <option value="">Excel</option>
                         </select>
                     </div>
