@@ -70,6 +70,7 @@ $livros = $model->getLivrosMock();
                 <div class="letreiro">
                     <div class="letras">
                         <?php if ($usuarioLogado): ?>
+                            <?php $primeiro = explode(' ', trim($nomeUsuario))[0] ?? trim($nomeUsuario); ?>
                             <h1 class="letras1">Bem-vindo de volta, <?php echo htmlspecialchars($nomeUsuario); ?>!</h1>
                             <h1 class="letras2">SENAC HUB ACADEMY.</h1>
                         <?php else: ?>
