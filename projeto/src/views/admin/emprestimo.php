@@ -111,7 +111,7 @@ require "../../../config/constantes.php"
                         ]
                     ];
                     ?>
-                    <div class="tabela-livro">
+                    <div class="tabela-livros">
                         <table>
                         <thead>
                             <tr>
@@ -127,43 +127,72 @@ require "../../../config/constantes.php"
                     </div>
                     
 
+
                     <script>
-                        // Here, PHP generates a JavaScript variable directly in the HTML.
-                        // `json_encode()` converts the PHP array into a valid JSON string.
-                        const books = <?php echo json_encode($livros); ?>;
+                        const borrowedBooks = [{
+                                id: 'COD001',
+                                title: 'O Pequeno Príncipe',
+                                image: 'https://via.placeholder.com/60x90.png?text=Pequeno+Principe',
+                                borrowDate: '10/09/2025',
+                                dueDate: '24/09/2025',
+                                returnDate: '---' // '---' se ainda não foi devolvido
+                            },
+                            {
+                                id: 'COD002',
+                                title: '1984',
+                                image: 'https://via.placeholder.com/60x90.png?text=1984',
+                                borrowDate: '05/09/2025',
+                                dueDate: '19/09/2025',
+                                returnDate: '---'
+                            },
+                            {
+                                id: 'COD003',
+                                title: 'Dom Quixote',
+                                image: 'https://via.placeholder.com/60x90.png?text=Dom+Quixote',
+                                borrowDate: '01/09/2025',
+                                dueDate: '15/09/2025',
+                                returnDate: '14/09/2025' // Exemplo de livro já devolvido
+                            }
+                        ];
 
                         const bookList = document.getElementById('book-list');
 
-                        books.forEach(book => {
-                            const mainRow = document.createElement('tr');
-                            mainRow.innerHTML = `
-                <td><img src="${book.foto}" alt="Capa do livro ${book.titulo}" class="book-image"></td>
-                <td>${book.titulo}</td>
-                <td>${book.codigo}</td>
-                <td><button class="toggle-btn" onclick="toggleDetails(this)">Abrir mais</button></td>
+                        borrowedBooks.forEach(book => {
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                <td><img src="${book.image}" alt="Capa do livro ${book.title}" class="book-img"></td>
+                <td>${book.title}</td>
+                <td>${book.id}</td>
+                <td>
+                    <div class="btn-container">
+                        <button class="btn btn-toggle" onclick="toggleDetails('${book.id}')">Abrir Mais</button>
+                        <button class="btn btn-renew">Renovar</button>
+                        <button class="btn btn-return">Devolver</button>
+                    </div>
+                </td>
             `;
-                            bookList.appendChild(mainRow);
+                            bookList.appendChild(row);
 
+                            // Adiciona a linha de detalhes oculta
                             const detailsRow = document.createElement('tr');
-                            detailsRow.className = 'details-row';
+                            detailsRow.id = `details-${book.id}`;
+                            detailsRow.classList.add('details-row');
                             detailsRow.innerHTML = `
                 <td colspan="4">
-                    <strong>Data de Empréstimo:</strong> ${book.dataEmprestimo}<br>
-                    <strong>Prazo de Devolução:</strong> ${book.prazoDevolucao}<br>
-                    <strong>Data de Devolução:</strong> ${book.dataDevolucao}
+                    <strong>Data de Empréstimo:</strong> ${book.borrowDate}<br>
+                    <strong>Prazo de Devolução:</strong> ${book.dueDate}<br>
+                    <strong>Data de Devolução:</strong> ${book.returnDate}
                 </td>
             `;
                             bookList.appendChild(detailsRow);
                         });
 
-                        function toggleDetails(button) {
-                            const detailsRow = button.closest('tr').nextElementSibling;
-                            if (detailsRow.style.display === 'none' || detailsRow.style.display === '') {
-                                detailsRow.style.display = 'table-row';
-                                button.textContent = 'Fechar';
-                            } else {
+                        function toggleDetails(bookId) {
+                            const detailsRow = document.getElementById(`details-${bookId}`);
+                            if (detailsRow.style.display === 'table-row') {
                                 detailsRow.style.display = 'none';
-                                button.textContent = 'Abrir mais';
+                            } else {
+                                detailsRow.style.display = 'table-row';
                             }
                         }
                     </script>
