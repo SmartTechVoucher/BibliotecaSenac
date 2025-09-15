@@ -18,43 +18,55 @@ $acao = $_GET['acao'];
 $usuarioController = new UsuarioController();
  
 switch ($acao) {
-    case 'validarLogin':
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
-            exit;
+    // Apenas a parte do validarLogin no seu router.php - SUBSTITUA esta seção
+
+case 'validarLogin':
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+        exit;
+    }
+
+    $email = trim($_POST['email'] ?? '');
+    $senha = $_POST['senha'] ?? '';
+    $lembrar = isset($_POST['lembrar']);
+
+    if (empty($email) || empty($senha)) {
+        $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Email e senha são obrigatórios!'];
+        header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+        exit;
+    }
+
+    $usuario = $usuarioController->validarLogin($email, $senha);
+
+    if ($usuario) {
+        // proteção contra fixation
+        session_regenerate_id(true);
+
+        // usar chaves consistentes: id, nome, email
+        $_SESSION['usuario_id'] = $usuario['id'];
+        $_SESSION['usuario_nome'] = $usuario['nome'];
+        $_SESSION['usuario_email'] = $usuario['email'];
+
+        $_SESSION['toast'] = ['tipo' => 'sucesso', 'mensagem' => 'Login realizado com sucesso! Bem-vindo, ' . $usuario['nome'] . '!'];
+        
+        // REDIRECIONAMENTO INTELIGENTE
+        $redirecionarPara = $URLBASE . '/src/views/usuario/index.php'; // padrão
+        
+        // Se há uma página que o usuário tentou acessar antes do login
+        if (isset($_SESSION['redirect_after_login'])) {
+            $redirecionarPara = $_SESSION['redirect_after_login'];
+            unset($_SESSION['redirect_after_login']); // limpar
         }
- 
-        $email = trim($_POST['email'] ?? '');
-        $senha = $_POST['senha'] ?? '';
-        $lembrar = isset($_POST['lembrar']);
- 
-        if (empty($email) || empty($senha)) {
-            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Email e senha são obrigatórios!'];
-            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
-            exit;
-        }
- 
-        $usuario = $usuarioController->validarLogin($email, $senha);
- 
-        if ($usuario) {
-            // proteção contra fixation
-            session_regenerate_id(true);
- 
-            // usar chaves consistentes: id, nome, email
-            $_SESSION['usuario_id'] = $usuario['id'];
-            $_SESSION['usuario_nome'] = $usuario['nome'];
-            $_SESSION['usuario_email'] = $usuario['email'];
- 
-            $_SESSION['toast'] = ['tipo' => 'sucesso', 'mensagem' => 'Login realizado com sucesso! Bem-vindo, ' . $usuario['nome'] . '!'];
-            header('Location: ' . $URLBASE . '/index.php');
-            exit;
-        } else {
-            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Email ou senha incorretos!'];
-            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
-            exit;
-        }
-        break;
- 
+        
+        header('Location: ' . $redirecionarPara);
+        exit;
+    } else {
+        $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Email ou senha incorretos!'];
+        header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+        exit;
+    }
+    break;
+
     case 'logout':
         // remover dados do usuário (mantém a sessão para poder setar toast)
         unset($_SESSION['usuario_id'], $_SESSION['usuario_nome'], $_SESSION['usuario_email']);
@@ -64,7 +76,7 @@ switch ($acao) {
         // opcional: regenerar id para limpar associação antiga
         session_regenerate_id(true);
  
-        header('Location: ' . $URLBASE . '/index.php');
+        header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;
         break;
  

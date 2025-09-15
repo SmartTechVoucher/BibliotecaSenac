@@ -1,5 +1,15 @@
 <?php
 require(__DIR__ . '/../../../config/constantes.php');
+
+// PROTEGER ESTA PÁGINA - adicionar no topo
+require_once __DIR__ . '/../../../config/auth-check.php';
+protegerPagina(); // Se não estiver logado, redireciona para login
+
+// Obter dados do usuário
+$usuario = obterUsuarioLogado();
+
+// Resto do código da página...
+require __DIR__ . '/../../../config/constantes.php';
 ?>
 
 <!DOCTYPE html>
