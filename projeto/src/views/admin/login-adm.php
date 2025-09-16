@@ -36,36 +36,54 @@ require(__DIR__ . '/../../../config/constantes.php');
                     </div>
                 </div>
 
-                <p class="label-bemvindo">
-                    Bem-vindo ao sistema de gerenciamento
-                </p>
+
+            </div>
+            <div class="container-form">
+                <form action="../../../router.php?acao=validarLogin" method="POST" class="card-login">
+                    <div class="titles-form">
+                        <h2>Acesso Administrativo</h2>
+                        <p>Entre com suas credenciais</p>
+                    </div>
+
+                    <div class="input-1">
+                        <label for="campo_login">Usuário</label>
+                        <input type="text" name="nome" id="campo_login" placeholder="Digite seu usuário">
+                    </div>
+
+                    <div class="input-2">
+                        <label for="campo_senha">Senha</label>
+                        <input type="password" name="senha" id="campo_senha" placeholder="Digite sua senha">
+                    </div>
+
+                    <button type="submit">Entrar no Sistema</button>
+                    <div class="text-center">
+                        <a href="../../views/usuario/recuperarSenha.php">Esqueceu sua Senha ?</a>
+                    </div>
+
+                </form>
+                <form action="../../../router.php?acao=validarLogin" method="POST" class="card-recuperar-senha">
+                    <div class="titles-form">
+                        <h2>Recuperar Senha</h2>
+                        <p>Digite seu email para receber as instruções</p>
+                    </div>
+
+                    <div class="input-1">
+                        <label for="campo_login">Email</label>
+                        <input type="text" name="nome" id="campo_login" placeholder="Digite seu email">
+                    </div>
+
+                    <button type="submit">Enviar instruções</button>
+                    <div class="text-center">
+                        <a href="../../views/usuario/recuperarSenha.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/voltar-admin.png" alt="" class="icon-voltar">Voltar ao login</a>
+                    </div>
+
+                </form>
             </div>
 
-            <form action="../../../router.php?acao=validarLogin" method="POST">
-                <div class="titles-form">
-                    <h2>Acesso Administrativo</h2>
-                    <p>Entre com suas credenciais</p>
-                </div>
-
-                <div class="input-1">
-                    <label for="campo_login">Usuário</label>
-                    <input type="text" name="nome" id="campo_login" placeholder="Digite seu usuário">
-                </div>
-
-                <div class="input-2">
-                    <label for="campo_senha">Senha</label>
-                    <input type="password" name="senha" id="campo_senha" placeholder="Digite sua senha">
-                </div>
-
-                <button type="submit">Entrar no Sistema</button>
-                <div class="text-center">
-                    <a href="../../views/usuario/recuperarSenha.php">Esqueceu sua Senha ?</a>
-                </div>
-                
-            </form>
+            
         </section>
         <section class="tela_animacao">
-            <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="">
+            <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="" >
         </section>
     </div>
     <script src="<?php echo $URLBASE ?>/projeto/public/js/login.js"></script>
