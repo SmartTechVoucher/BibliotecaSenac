@@ -31,9 +31,9 @@ require "../../../config/constantes.php"
 
     <main>
         <div class="container-main">
-        <fieldset class="form-section">
-            <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
-                
+            <fieldset class="form-section">
+                <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
+
                     <legend>
                         <img src="<?php echo $URLBASE ?>/public/assets/icons/emprestimo-icon.png" id="fieldset-icon" alt="">
                         Cadastro de emprestimo
@@ -86,88 +86,86 @@ require "../../../config/constantes.php"
                         ?>
                     </div>
 
-                    
 
 
-            </form>
-            <?php
-                    // lista mock só pra apresentar na daily
-                    $livros = [
-                        [
-                            'id' => 1,
-                            'titulo' => 'Dom Casmurro',
-                            'codigo' => 'LIV-001',
-                            'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
-                            'data_emprestimo' => '10/09/2025',
-                            'prazo_devolucao' => '24/09/2025',
-                            'data_devolucao' => 'N/A'
-                        ],
-                        [
-                            'id' => 2,
-                            'titulo' => 'O Pequeno Príncipe',
-                            'codigo' => 'LIV-002',
-                            'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
-                            'data_emprestimo' => '05/09/2025',
-                            'prazo_devolucao' => '19/09/2025',
-                            'data_devolucao' => 'N/A'
-                        ],
-                        [
-                            'id' => 3,
-                            'titulo' => '1984',
-                            'codigo' => 'LIV-003',
-                            'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
-                            'data_emprestimo' => '01/09/2025',
-                            'prazo_devolucao' => '15/09/2025',
-                            'data_devolucao' => '15/09/2025'
-                        ]
-                    ];
-                    ?>
-            
-                    <div class="tabela-livro">
-                        <table class="tabela-emprestimos">
-                            <thead>
-                                <tr>
-                                    <th>Foto</th>
-                                    <th>Título</th>
-                                    <th>Código</th>
-                                    <th>Ações</th>
+
+                </form>
+                <?php
+                // lista mock só pra apresentar na daily
+                $livros = [
+                    [
+                        'id' => 1,
+                        'titulo' => 'Dom Casmurro',
+                        'codigo' => 'LIV-001',
+                        'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
+                        'data_emprestimo' => '10/09/2025',
+                        'prazo_devolucao' => '24/09/2025',
+                        'data_devolucao' => 'N/A'
+                    ],
+                    [
+                        'id' => 2,
+                        'titulo' => 'O Pequeno Príncipe',
+                        'codigo' => 'LIV-002',
+                        'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
+                        'data_emprestimo' => '05/09/2025',
+                        'prazo_devolucao' => '19/09/2025',
+                        'data_devolucao' => 'N/A'
+                    ],
+                    [
+                        'id' => 3,
+                        'titulo' => '1984',
+                        'codigo' => 'LIV-003',
+                        'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
+                        'data_emprestimo' => '01/09/2025',
+                        'prazo_devolucao' => '15/09/2025',
+                        'data_devolucao' => '15/09/2025'
+                    ]
+                ];
+                ?>
+
+                <div class="tabela-livro">
+                    <table class="tabela-emprestimos">
+                        <thead>
+                            <tr>
+                                <th>Foto</th>
+                                <th>Título</th>
+                                <th>Código</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($livros as $livro): ?>
+                                <tr id="livro-<?= $livro['id']; ?>">
+                                    <td><img src="<?= $livro['foto']; ?>" alt="Capa do livro <?= $livro['titulo']; ?>" class="livro-imagem"></td>
+                                    <td><?= $livro['titulo']; ?></td>
+                                    <td><?= $livro['codigo']; ?></td>
+                                    
+                                    <td class="botoes-acao">
+                                        <button class="btn-abrir-mais" onclick="toggleDetalhes(<?= $livro['id']; ?>)">Abrir Mais</button>
+                                        <button class="btn-renovar"><img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Renovar.png" alt="">Renovar</button>
+                                        <button class="btn-devolver"><img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Devolver.png" alt="">Devolver</button>
+                                    </td>
+
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($livros as $livro): ?>
-                                    <tr id="livro-<?= $livro['id']; ?>">
-                                        <td><img src="<?= $livro['foto']; ?>" alt="Capa do livro <?= $livro['titulo']; ?>" class="livro-imagem"></td>
-                                        <td><?= $livro['titulo']; ?></td>
-                                        <td><?= $livro['codigo']; ?></td>
-                                        <td class="botoes-acao">
-                                            <button class="btn-abrir-mais" onclick="toggleDetalhes(<?= $livro['id']; ?>)">Abrir Mais</button>
-                                            <button class="btn-renovar"><img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Renovar.png" alt="">Renovar</button>
-                                            <button class="btn-devolver"><img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Devolver.png" alt="">Devolver</button>
-                                        </td>
-                                    </tr>
-                                    <tr id="detalhes-livro-<?= $livro['id']; ?>" class="info-detalhes">
-                                        <td colspan="4">
-                                            <p><strong>Data de Empréstimo:</strong> <?= $livro['data_emprestimo']; ?></p>
-                                            <p><strong>Prazo para Devolução:</strong> <?= $livro['prazo_devolucao']; ?></p>
-                                            <p><strong>Data de Devolução:</strong> <?= $livro['data_devolucao']; ?></p>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
+
+                                <tr id="detalhes-livro-<?= $livro['id']; ?>" class="info-detalhes">
+                                    <td colspan="4">
+                                        <p><strong>Data de Empréstimo:</strong> <?= $livro['data_emprestimo']; ?></p>
+                                        <p><strong>Prazo para Devolução:</strong> <?= $livro['prazo_devolucao']; ?></p>
+                                        <p><strong>Data de Devolução:</strong> <?= $livro['data_devolucao']; ?></p>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </fieldset>
         </div>
+
     </main>
-    <script>
-         function toggleDetalhes(id) {
-        const detalhes = document.getElementById('detalhes-livro-' + id);
-        if (detalhes.style.display === 'table-row') {
-            detalhes.style.display = 'none';
-        } else {
-            detalhes.style.display = 'table-row';
-        }
-    }
+    
+    <script src="<?php echo $URLBASE ?>/public/js/admin/emprestimo.js">
+
     </script>
     <?php
     include "../../../public/components/admin/footer/footer-admin.php";
