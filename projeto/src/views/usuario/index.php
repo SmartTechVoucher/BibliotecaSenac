@@ -1,5 +1,4 @@
 <?php
-
 // Segurança de sessão
 ini_set('session.cookie_lifetime', 0);
 ini_set('session.use_only_cookies', 1);
@@ -7,7 +6,6 @@ ini_set('session.cookie_httponly', 1);
 if (session_status() === PHP_SESSION_NONE) session_start();
 
 require __DIR__ . '/../../../config/constantes.php';
-
 include_once __DIR__ . '/../../../src/model/usuario/livro-model.php';
 
 // Verificar se o usuário está logado
@@ -24,6 +22,15 @@ if (isset($_SESSION['usuario_id']) && isset($_SESSION['usuario_nome']) && isset(
 $model = new LivroModel();
 $livros = $model->getLivrosMock();
 
+// Capturar dados do toast ANTES de destruir a sessão
+$toastData = null;
+if (isset($_SESSION['toast'])) {
+    $toastData = [
+        'mensagem' => $_SESSION['toast']['mensagem'],
+        'tipo' => $_SESSION['toast']['tipo']
+    ];
+    unset($_SESSION['toast']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,28 +51,16 @@ $livros = $model->getLivrosMock();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
-
 </head>
 
 <body>
-
     <div id="overlay" class="overlay"></div>
 
-    <?php if (isset($_SESSION['toast'])): ?>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                mostrarToast("<?php echo addslashes($_SESSION['toast']['mensagem']); ?>", "<?php echo $_SESSION['toast']['tipo']; ?>");
-            });
-        </script>
-    <?php unset($_SESSION['toast']);
-    endif; ?>
     <?php include "../../../public/components/usuario/header/header.php" ?>
+    
     <div class="conteiner">
-
-
         <div class="geralinfo">
             <div class="info">
-
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
                 <div class="letreiro">
                     <div class="letras">
@@ -79,20 +74,19 @@ $livros = $model->getLivrosMock();
                         <?php endif; ?>
                     </div>
                     <p class="frase">"O ensino do futuro do mundo: pessoas inovando pela <br>transformação do Brasil"</p>
-
                 </div>
             </div>
 
-
-
             <form class="barrapesquisa">
-                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> <button type="button" class="botaops" id="lupaId" onclick="focusInput()" tabindex="0"><img src="../projeto/public/assets/icons/lupa.svg" alt="Buscar"></button>
+                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off">
+                <button type="button" class="botaops" id="lupaId" onclick="focusInput()" tabindex="0">
+                    <img src="../projeto/public/assets/icons/lupa.svg" alt="Buscar">
+                </button>
                 <div class="listagem">
                     <ul></ul>
                 </div>
             </form>
         </div>
-
 
         <div class="generos-livros">
             <h1 class="gen-title">Gêneros de Livros</h1>
@@ -136,18 +130,14 @@ $livros = $model->getLivrosMock();
             </div>
         </div>
 
-
         <div class="container-estante">
-
             <div class="sup">
                 <h1 class="title">Livros</h1>
             </div>
             <div class="estante">
-
                 <div class="livros">
                     <div class="primeiraFileira">
                         <?php
-                        // Renderiza do índice 3 até 6 (4 cards)
                         for ($i = 3; $i < 7 && $i < count($livros); $i++):
                             $livro = $livros[$i];
                         ?>
@@ -161,42 +151,45 @@ $livros = $model->getLivrosMock();
 
                     <div class="segundaFileira">
                         <?php
-                        // Renderiza do índice 3 até 6 (4 cards)
                         for ($i = 3; $i < 8 && $i < count($livros); $i++):
                             $livro = $livros[$i];
                         ?>
                             <div class="livroEstante1">
-                                <?php include "../../../public/components/usuario/card/card2.php";   ?>
+                                <?php include "../../../public/components/usuario/card/card2.php"; ?>
                             </div>
                         <?php endfor; ?>
                     </div>
                 </div>
-
             </div>
         </div>
-                            
 
-        <?php
-            include "../../../public/components/usuario/footer/footer.php";
-        ?>
-
+        <?php include "../../../public/components/usuario/footer/footer.php"; ?>
     </div>
 
-
+    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
     <script src="<?php echo $URLBASE ?>/public/js/usuario/tela-inicial.js" defer></script>
     <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
-    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
+    
+    <?php if ($toastData): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Toast data:', {
+                mensagem: "<?php echo addslashes($toastData['mensagem']); ?>",
+                tipo: "<?php echo $toastData['tipo']; ?>"
+            });
+            
+            mostrarToast("<?php echo addslashes($toastData['mensagem']); ?>", "<?php echo $toastData['tipo']; ?>");
+        });
+    </script>
+    <?php endif; ?>
 
     <?php if ($usuarioLogado): ?>
     <script>
-        // Funcionalidades extras para usuário logado
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Usuário logado: <?php echo htmlspecialchars($nomeUsuario); ?>');
-            // Aqui você pode adicionar funcionalidades específicas para usuários autenticados
         });
     </script>
     <?php endif; ?>
 
 </body>
-
 </html>

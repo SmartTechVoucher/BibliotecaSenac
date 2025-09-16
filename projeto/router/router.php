@@ -48,7 +48,7 @@ switch ($acao) {
             $_SESSION['usuario_nome'] = $usuario['nome'];
             $_SESSION['usuario_email'] = $usuario['email'];
 
-            $_SESSION['toast'] = ['tipo' => 'sucesso', 'mensagem' => 'Login realizado com sucesso! Bem-vindo, ' . $usuario['nome'] . '!'];
+            $_SESSION['toast'] = ['tipo' => 'success', 'mensagem' => 'Login realizado com sucesso! Bem-vindo, ' . $usuario['nome'] . '!'];
         
             // REDIRECIONAMENTO INTELIGENTE
             $redirecionarPara = $URLBASE . '/src/views/usuario/index.php'; // padrão
@@ -96,7 +96,7 @@ switch ($acao) {
         $resultado = $usuarioController->criarUsuario($nome, '', $cpf, $email, null, null, null, null, null, null, null, null, null, null, $senha);
  
         if ($resultado) {
-            $_SESSION['toast'] = ['tipo' => 'sucesso', 'mensagem' => 'Usuário criado com sucesso!'];
+            $_SESSION['toast'] = ['tipo' => 'success', 'mensagem' => 'Usuário criado com sucesso!'];
             header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
             exit;
         } else {

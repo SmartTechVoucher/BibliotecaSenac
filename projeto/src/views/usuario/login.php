@@ -7,6 +7,16 @@ ini_set('session.cookie_lifetime', 0);
 ini_set('session.use_only_cookies', 1);
 ini_set('session.cookie_httponly', 1);
 if (session_status() === PHP_SESSION_NONE) session_start();
+
+// Capturar dados do toast ANTES de destruir a sessão
+$toastData = null;
+if (isset($_SESSION['toast'])) {
+    $toastData = [
+        'mensagem' => $_SESSION['toast']['mensagem'],
+        'tipo' => $_SESSION['toast']['tipo']
+    ];
+    unset($_SESSION['toast']);
+}
  
 // Se já está logado, redireciona para index
 if (!empty($_SESSION['usuario_id'])) {
@@ -59,13 +69,21 @@ if (!empty($_SESSION['usuario_id'])) {
     </section>
   </div>
  
-  <?php if (!empty($_SESSION['toast'])): ?>
+  <!-- Importar o toast.js PRIMEIRO -->
+  <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
+
+  <!-- Toast executado DEPOIS que a função foi carregada -->
+  <?php if ($toastData): ?>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        mostrarToast("<?php echo addslashes($_SESSION['toast']['mensagem']); ?>", "<?php echo $_SESSION['toast']['tipo']; ?>");
+        console.log('Toast data:', {
+          mensagem: "<?php echo addslashes($toastData['mensagem']); ?>",
+          tipo: "<?php echo $toastData['tipo']; ?>"
+        });
+        
+        mostrarToast("<?php echo addslashes($toastData['mensagem']); ?>", "<?php echo $toastData['tipo']; ?>");
       });
     </script>
-    <?php unset($_SESSION['toast']); ?>
   <?php endif; ?>
  
   <script>
@@ -92,5 +110,3 @@ if (!empty($_SESSION['usuario_id'])) {
   </script>
 </body>
 </html>
- 
- 
