@@ -42,11 +42,15 @@ a {
     margin-bottom: 2rem;
 }
 
+.form-row{
+    margin-bottom: 40px;
+}
 
 #fieldset-icon {
     width: 24px;
 }
 
+/* o cardzinho lá que mostra os dados do usuario */
 .user-info {
     display: flex;
     flex-direction: column;
@@ -64,72 +68,93 @@ a {
 #card-usuario {
     display: flex;
     align-items: center;
-    width: 500px;
+    width: 40%;
     padding: 20px;
     gap: 30px;
     margin: auto;
 }
 
-.tabela-livro table {
+/* Tabela que mostra os livros emprestimo  */
+.tabela-emprestimos {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
-.tabela-livro th, td {
+
+.tabela-emprestimos th, 
+.tabela-emprestimos td {
     padding: 12px 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
-.tabela-livro th {
-    background-color: #f8f8f8;
+
+.tabela-emprestimos th {
+    background-color: #f2f2f2;
+    color: #555;
     font-weight: bold;
+    text-transform: uppercase;
 }
-.tabela-livro tr:hover {
-    background-color: #f1f1f1;
+
+.tabela-emprestimos tr:hover {
+    background-color: #f9f9f9;
 }
-.book-img {
-    width: 60px;
-    height: auto;
-    border-radius: 4px;
+
+.info-detalhes {
+    display: none;
+    background-color: #fafafa;
+    border-left: 3px solid #007bff;
 }
-.btn-container {
-    display: flex;
-    gap: 5px;
+
+.info-detalhes td {
+    padding: 15px;
+    font-style: italic;
+    color: #666;
 }
-.btn {
+
+.botoes-acao button {
     padding: 8px 12px;
+    margin-left: 5px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
-.btn-toggle {
+
+.btn-abrir-mais {
     background-color: #007bff;
-    color: white;
+    color: #fff;
 }
-.btn-toggle:hover {
+
+.btn-abrir-mais:hover {
     background-color: #0056b3;
 }
-.btn-renew {
+
+.btn-renovar {
     background-color: #28a745;
-    color: white;
+    color: #fff;
 }
-.btn-renew:hover {
+
+.btn-renovar:hover {
     background-color: #218838;
 }
-.btn-return {
+
+.btn-devolver {
     background-color: #dc3545;
-    color: white;
+    color: #fff;
 }
-.btn-return:hover {
+
+.btn-devolver:hover {
     background-color: #c82333;
 }
-.details-row {
-    display: none;
+.btn-renovar img, .btn-devolver img {
+    width: 15px;
 }
-.details-row td {
-    background-color: #f9f9f9;
+
+.livro-imagem {
+    width: 70px;
+    height: auto;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
