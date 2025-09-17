@@ -17,6 +17,9 @@ require(__DIR__ . '/../../../config/constantes.php');
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -72,12 +75,13 @@ require(__DIR__ . '/../../../config/constantes.php');
       </div>
     </div>
 
-    
+
   </main>
 
   <?php
   include "../../../public/components/usuario/footer/footer.php";
   ?>
+  <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
 </body>
 
 </html>

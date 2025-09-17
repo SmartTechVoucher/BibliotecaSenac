@@ -17,7 +17,7 @@
         <?php
             require_once "../../../config/constantes.php";
         ?>
-        <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+        <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
         <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
         <link rel="stylesheet" href="/BibliotecaSenac/projeto/public/css/admin/historico-emprestimo.css">
     </head>
