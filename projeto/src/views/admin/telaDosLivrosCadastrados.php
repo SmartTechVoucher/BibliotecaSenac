@@ -92,7 +92,7 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
         </div>
 
        
-    >
+  
 <div class="paginacao">
     <?php if ($paginaAtual > 1): ?>
         <form method="get" style="display:inline;">

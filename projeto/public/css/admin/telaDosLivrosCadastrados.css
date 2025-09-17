@@ -8,6 +8,7 @@
     --cinzaClaro: #fafafa;
     --cinzaBorda: #ddd;
     --textoCinza: #555;
+    --pretodosexemplares:black;
 }
 
 
@@ -93,63 +94,80 @@ body {
 
 .livros-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* aumentei largura mínima */
+    gap: 20px; /* mais espaçamento entre os cards */
 }
+
 .livro-container {
     background-color: var(--branco);
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1px solid var(--cinzaBorda);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     transition: transform 0.2s, box-shadow 0.2s;
-    padding: 12px;
+    padding: 16px; /* mais espaço interno */
 }
+
 .livro-container:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    transform: translateY(-6px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
     background-color: var(--cinzaClaro);
 }
+
 #livro-img {
     width: 100%;
-    max-width: 140px;
+    max-width: 160px; /* aumentei a capa */
     height: auto;
     aspect-ratio: 3/4;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid var(--cinzaBorda);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
+
 .livro-informacoes {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     width: 100%;
 }
+
 #livro-titulo {
-    font-size: clamp(13px, 2vw, 15px);
+    font-size: clamp(14px, 2vw, 17px); /* título maior */
     font-weight: bold;
-    color: var(--azulCabecalho);
-    line-height: 1.2;
+    color: var(--azulPrincipal); /* reforçado na cor azul principal */
+    line-height: 1.3;
 }
+
 .livro-informacoes span {
-    font-size: clamp(11px, 1.5vw, 12px);
+    font-size: clamp(12px, 1.5vw, 13px);
     color: var(--textoCinza);
 }
+
+/* Caixa com exemplares */
 #livro-exemplares {
     background-color: var(--fundoPadrao);
-    border-radius: 6px;
+    border-radius: 8px;
     border: 1px solid var(--cinzaBorda);
-    padding: 6px;
-    font-size: 11px;
-    margin-top: 6px;
+    padding: 8px;
+    font-size: 12px;
+    margin-top: 8px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
 }
+
+/* Deixa os rótulos (Total, Disponíveis, etc.) em negrito */
+#livro-exemplares span {
+    font-weight: 600;
+    color: var(--textoCinza);
+}
+
+/* Mantém os números em azul e ainda mais destacados */
+
 
 .paginacao {
     display: flex;
@@ -190,7 +208,7 @@ body {
     }
 
     .controle .input-admin{
-       font-size: clamp(8px, 2vw, 20px);
+       font-size: clamp(10px, 2vw, 20px);
     }
 
 }
