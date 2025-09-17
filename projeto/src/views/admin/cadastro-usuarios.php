@@ -8,9 +8,10 @@
   <?php
   require_once "../../../config/constantes.php";
   ?>
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
-  <link rel="stylesheet" href="../../../public/css/admin/cadastro-usuarios.css">
+  <link rel="stylesheet" href="../../../public/css/admin/cadastro-usuarios.css">C:\xampp\htdocs\BibliotecaSenac\projeto\public\css\global.css
+  <link rel="stylesheet" href="../../../public/css/global.css">
 
   <?php include "../../../public/components/admin/input/input-admin.php"; ?>
 
@@ -98,7 +99,7 @@
             </div>
             <div class="form-grupo">
               <label for="genero">Gênero</label>
-              <select id="genero" name="genero" class="input-admin">
+              <select id="genero" name="genero" class="select-padrao">
                 <option value="">Selecione</option>
                 <option value="masculino">Masculino</option>
                 <option value="feminino">Feminino</option>
@@ -120,7 +121,7 @@
             </div>
             <div class="form-grupo">
               <label for="categoria">Categoria</label>
-              <select id="categoria" name="categoria" class="input-admin" required>
+              <select id="categoria" name="categoria" class="select-padrao" required>
                 <option value="">Selecione</option>
                 <option value="graduacao">Aluno</option>
                 <option value="pos">Docente</option>
@@ -129,7 +130,7 @@
             </div>
             <div class="form-grupo">
               <label for="unidade_senac">Unidade</label>
-              <select id="unidade_senac" name="unidade_senac" class="input-admin" required>
+              <select id="unidade_senac" name="unidade_senac" class="select-padrao" required>
                 <option value="">Selecione</option>
                 <option value="senac_hub">Senac Hub Academy</option>
                 <option value="senac_dou">Senac Dourados</option>

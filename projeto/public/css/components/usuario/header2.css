@@ -1,0 +1,196 @@
+.cabecalho {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--azul-tela-inicial);
+    padding: 10px 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--cor-texto);
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+}
+
+.cbleft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 1%;
+}
+
+.cbmenu-icon {
+    position: fixed; /* fixa na tela */
+    top: 18px;       /* ajuste a posição vertical */
+    left: 15px;      /* ajuste a posição horizontal */
+    background-color: transparent !important; /* força transparência */
+    border: none;
+    outline: none;        
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4000 !important;
+}
+
+.cbmenu-icon i {
+    font-size: 30px;
+    color: var(--cor-texto);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cbmenu-icon i:hover {
+    color: var(--laranja-padrao);
+}
+
+.icsenac{
+    margin-left: 40px;
+    width: 45px;
+    height: auto;
+}
+
+.cbquite nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.cbquite nav ul li {
+    color: var(--cor-texto);
+    cursor: pointer;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+}
+
+.navbar-desktop-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    
+}
+
+.navbar-desktop-top li a{
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    padding:  10px 10px 8px 20px;;
+    color: var(--cor-texto);
+    /* text-transform: uppercase; */
+    transition: color 0.3s ease;
+}
+
+.navbar-desktop-top li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--laranja-padrao);
+    transition: width 0.3s ease;
+}
+
+.navbar-deskto-2 li a:hover {
+    color: var(--laranja-padrao);
+}
+
+.navbar-desktop-top li a:hover::after {
+    width: 100%;
+}
+
+.menu-li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.entrar-mobile {
+    display: none; 
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.perfil-logado span {
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    color: var(--cor-texto);
+}
+
+.icone-perfil {
+    width: 35px;
+    height: 35px;
+    margin: 5px 0px 0px 0px;
+}
+ 
+.icsenac{
+    margin-left: 40px;
+    width: 45px;
+    height: auto;
+}
+ 
+.icperfil{
+    cursor: pointer;
+    height: 100px;
+    margin-top: 16px;
+    margin-right: 50px;
+    filter: brightness(80%);
+    width: 74px;
+    height: 70px;
+}
+
+.nome-usuario {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 30px;
+    font-family: "Roboto", sans-serif;
+    color: var(--cor-texto);
+    border-right: 3px solid var(--cor-texto);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    opacity: 0;
+    animation:
+        aparecerUsuario 0s 1.5s forwards,
+        escreverUsuario steps(var(--char-count), end) 2s 1.5s forwards,
+        esconderCursor 0s 3.6s forwards;
+}
+
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #003162;
+    font-family: "Poppins",sans-serif;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    z-index: 999;
+    min-width: 160px;
+}
+
+.menu-dropdown a {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    border-bottom: 1px solid #82828261;
+}
+
+.menu-dropdown a:hover {
+    background-color: rgba(255,255,255,0.1);
+}

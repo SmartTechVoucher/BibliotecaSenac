@@ -33,8 +33,13 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livros cadastrados</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
+=======
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
+>>>>>>> a605737f87838882aac8a6e71edb39039444af6c
     <link rel="stylesheet" href="../../../public/css/admin/telaDosLivrosCadastrados.css">
 </head>
 
@@ -92,7 +97,7 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
         </div>
 
        
-    >
+  
 <div class="paginacao">
     <?php if ($paginaAtual > 1): ?>
         <form method="get" style="display:inline;">

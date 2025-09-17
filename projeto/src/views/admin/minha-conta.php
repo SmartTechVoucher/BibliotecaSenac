@@ -14,7 +14,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/minha-conta.css">
 </head>
