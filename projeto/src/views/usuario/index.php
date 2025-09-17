@@ -1,28 +1,19 @@
 <?php
-// Segurança de sessão
-ini_set('session.cookie_lifetime', 0);
-ini_set('session.use_only_cookies', 1);
-ini_set('session.cookie_httponly', 1);
-if (session_status() === PHP_SESSION_NONE) session_start();
-
+// index.php
 require __DIR__ . '/../../../config/constantes.php';
+require __DIR__ . '/../../../config/auth-check.php';
 include_once __DIR__ . '/../../../src/model/usuario/livro-model.php';
 
-// Verificar se o usuário está logado
-$usuarioLogado = false;
-$nomeUsuario = '';
-$emailUsuario = '';
-
-if (isset($_SESSION['usuario_id']) && isset($_SESSION['usuario_nome']) && isset($_SESSION['usuario_email'])) {
-    $usuarioLogado = true;
-    $nomeUsuario = $_SESSION['usuario_nome'];
-    $emailUsuario = $_SESSION['usuario_email'];
-}
+// Usar a nova função para obter os dados do usuário logado
+$usuario = obterUsuarioLogado();
+$usuarioLogado = ($usuario !== null);
+$nomeUsuario = $usuario['nome'] ?? '';
+$emailUsuario = $usuario['email'] ?? '';
 
 $model = new LivroModel();
 $livros = $model->getLivrosMock();
 
-// Capturar dados do toast ANTES de destruir a sessão
+// Capturar dados do toast
 $toastData = null;
 if (isset($_SESSION['toast'])) {
     $toastData = [
@@ -35,11 +26,10 @@ if (isset($_SESSION['toast'])) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo á Biblioteca SENAC HUB ACADEMY!</title>
+    <title>Bem-vindo à Biblioteca SENAC HUB ACADEMY!</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
@@ -65,11 +55,10 @@ if (isset($_SESSION['toast'])) {
                 <div class="letreiro">
                     <div class="letras">
                         <?php if ($usuarioLogado): ?>
-                            <?php $primeiro = explode(' ', trim($nomeUsuario))[0] ?? trim($nomeUsuario); ?>
                             <h1 class="letras1">Bem-vindo de volta, <?php echo htmlspecialchars($nomeUsuario); ?>!</h1>
                             <h1 class="letras2">SENAC HUB ACADEMY.</h1>
                         <?php else: ?>
-                            <h1 class="letras1">Bem-vindo a Biblioteca</h1>
+                            <h1 class="letras1">Bem-vindo à Biblioteca</h1>
                             <h1 class="letras2">SENAC HUB ACADEMY.</h1>
                         <?php endif; ?>
                     </div>
@@ -173,11 +162,6 @@ if (isset($_SESSION['toast'])) {
     <?php if ($toastData): ?>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('Toast data:', {
-                mensagem: "<?php echo addslashes($toastData['mensagem']); ?>",
-                tipo: "<?php echo $toastData['tipo']; ?>"
-            });
-            
             mostrarToast("<?php echo addslashes($toastData['mensagem']); ?>", "<?php echo $toastData['tipo']; ?>");
         });
     </script>
