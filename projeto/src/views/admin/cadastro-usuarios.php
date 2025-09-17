@@ -11,7 +11,7 @@
 
      // --- CÓDIGO TEMPORÁRIO PARA TESTES ---
     // ATENÇÃO: ISSO NÃO DEVE SER USADO EM AMBIENTE DE PRODUÇÃO
-    // SIMULA UM LOGIN DE ADMINISTRADOR PARA QUE VOCÊ POSSA TESTAR A PÁGINA
+    // SIMULA UM LOGIN DE ADMINISTRADOR PARA TESTAR A PÁGINA
     if (session_status() === PHP_SESSION_NONE) session_start();
     $_SESSION['usuario_id'] = 1; 
     $_SESSION['usuario_nome'] = 'Admin Teste'; 
