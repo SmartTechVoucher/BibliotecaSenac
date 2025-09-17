@@ -18,9 +18,12 @@ require "../../../config/constantes.php"
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/emprestimo.css">
     <link rel="stylesheet" href="../../../public/css/global.css">
-    <?php include "../../../public/components/admin/input/input-admin.php"; ?>
-    <?php include "../../../public/components/admin/button/button-admin.php"; ?>
-    <?php require_once __DIR__ . '/../../../public/components/admin/select/input-select.php'; ?>
+    <?php 
+        include "../../../public/components/admin/input/input-admin.php";
+        include "../../../public/components/admin/button/button-admin.php";
+        include "../../../public/components/admin/pesquisa/pesquisa-admin.php";
+        require_once __DIR__ . '/../../../public/components/admin/select/input-select.php'; 
+    ?>
 
 </head>
 
@@ -61,8 +64,10 @@ require "../../../config/constantes.php"
                             ['id' => 17, 'nome' => 'Laura Dias', 'email' => 'laura.dias@email.com', 'matricula' => '2023017', 'acesso' => 'regular', 'telefone' => '67981234583'],
                             ['id' => 18, 'nome' => 'Felipe Castro', 'email' => 'felipe.castro@email.com', 'matricula' => '2023018', 'acesso' => 'regular', 'telefone' => '67981234584'],
                         ];
+                        $nomesDeUsuarios = array_column($usuariosMock, 'nome');
                         //     renderSelectModal(name:"nome-usuario", label:"Nome do usuário", items:$usuariosMock)
-                        InputAdmin(largura: 100, placeholder: "Nome completo do usuário", id: "nome-usuario", name: "nome-usuario")
+                        // InputAdmin(largura: 100, placeholder: "Nome completo do usuário", id: "nome-usuario", name: "nome-usuario")
+                        barra_de_pesquisa($nomesDeUsuarios);
                         ?>
                     </div>
                     <div class="form-row">
@@ -139,7 +144,7 @@ require "../../../config/constantes.php"
                                     <td><img src="<?= $livro['foto']; ?>" alt="Capa do livro <?= $livro['titulo']; ?>" class="livro-imagem"></td>
                                     <td><?= $livro['titulo']; ?></td>
                                     <td><?= $livro['codigo']; ?></td>
-                                    
+
                                     <td class="botoes-acao">
                                         <button class="btn-abrir-mais" onclick="toggleDetalhes(<?= $livro['id']; ?>)">Abrir Mais</button>
                                         <button class="btn-renovar"><img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Renovar.png" alt="">Renovar</button>
@@ -163,7 +168,7 @@ require "../../../config/constantes.php"
         </div>
 
     </main>
-    
+
     <script src="<?php echo $URLBASE ?>/public/js/admin/emprestimo.js">
 
     </script>
