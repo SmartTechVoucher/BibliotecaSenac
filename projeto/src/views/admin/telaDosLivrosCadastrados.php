@@ -16,7 +16,7 @@ for ($i = 1; $i <= 50; $i++) {
 }
 
 // Configuração da paginação
-$porPagina = 18; 
+$porPagina = 18;
 $totalLivros = count($livros);
 $totalPaginas = ceil($totalLivros / $porPagina);
 $paginaAtual = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
@@ -33,14 +33,10 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livros cadastrados</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
-=======
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
->>>>>>> a605737f87838882aac8a6e71edb39039444af6c
     <link rel="stylesheet" href="../../../public/css/admin/telaDosLivrosCadastrados.css">
+    <link rel="stylesheet" href="../../../public/css/global.css">
 </head>
 
 <body>
@@ -50,81 +46,90 @@ $livrosPagina = array_slice($livros, $offset, $porPagina);
 
 
     <div class="container-main">
-        <h2 id="livro-titulomaster">Listagem de livros cadastrados</h2>
 
-        <form>
-            <div class="controle">
-                <?php
-                InputAdmin(largura:100, placeholder:"Escreva nome ou código do livro...", id:"pesquisa_livro", name:"pesquisa_livro")
-                ?>
-                <button type="submit" class="botao">
-                <img src="../../../public/assets/icons/Buscar.png" alt="Buscar">
-                </button>
-            
-                <div class="controle2">
-                    <label class="unidade">Unidade:</label>
-                    <select>
-                        <option value="">Selecione</option>
-                        <option>Dourados</option> V        
-                        .
-                        <option>Três Lagoas</option>
-                        <option>Ponta Porã</option>
-                        <option>Corumbá</option>
-                        <option>Campo Grande</option>
-                    </select>
+        <fieldset class="form-section">
+            <legend>
+                Livros cadastrados
+            </legend>
+            <form>
+                <div class="controle">
+                    <?php
+                    InputAdmin(largura: 80, placeholder: "Escreva nome ou código do livro...", id: "pesquisa_livro", name: "pesquisa_livro")
+                    ?>
+                    <button type="submit" class="botao">
+                        <img src="../../../public/assets/icons/Buscar.png" alt="Buscar">
+                    </button>
+
+                    <div class="controle2">
+                        <label class="unidade">Unidade:</label>
+                        <select class="select-padrao">
+                            <option value="">Selecione</option>
+                            <option>Dourados</option> V
+                            .
+                            <option>Três Lagoas</option>
+                            <option>Ponta Porã</option>
+                            <option>Corumbá</option>
+                            <option>Campo Grande</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
 
-        
 
-        <div class="livros-grid">
-            <?php foreach ($livrosPagina as $livro): ?>
-                <div class="livro-container">
-                    <img id="livro-img" src="<?php echo $URLBASE ?>/public/assets/img/Simposio.png" alt="Capa do livro">
-                    <div class="livro-informacoes">
-                        <span id="livro-titulo"><?php echo $livro['titulo']; ?></span>
-                        <span>ISBN: <a href="#"><?php echo $livro['isbn']; ?></a></span>
-                        <div id="livro-exemplares">
-                            <span>Total: <?php echo $livro['total']; ?></span>
-                            <span>Disponíveis: <b><?php echo $livro['disponiveis']; ?></b></span>
-                            <span>Emprestados: <b><?php echo $livro['emprestados']; ?></b></span>
-                            <span>Reserva: <b><?php echo $livro['reserva']; ?></b></span>
+
+            <div class="livros-grid">
+                <?php foreach ($livrosPagina as $livro): ?>
+                    <div class="livro-container">
+                        <img id="livro-img" src="<?php echo $URLBASE ?>/public/assets/img/Simposio.png" alt="Capa do livro">
+                        <div class="livro-informacoes">
+                            <span id="livro-titulo"><?php echo $livro['titulo']; ?></span>
+                            <span>ISBN: <a href="#"><?php echo $livro['isbn']; ?></a></span>
+                            <div id="livro-exemplares">
+                                <span>Total: <?php echo $livro['total']; ?></span>
+                                <span>Disponíveis: <b><?php echo $livro['disponiveis']; ?></b></span>
+                                <span>Emprestados: <b><?php echo $livro['emprestados']; ?></b></span>
+                                <span>Reserva: <b><?php echo $livro['reserva']; ?></b></span>
+                            </div>
                         </div>
-                    </div>   
-                </div>
-            <?php endforeach; ?>
-        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
 
-       
-  
-<div class="paginacao">
-    <?php if ($paginaAtual > 1): ?>
-        <form method="get" style="display:inline;">
-            <input type="hidden" name="pagina" value="<?php echo $paginaAtual - 1; ?>">
-            <?php botao("&laquo; ", "submit", "#004A90", "14px"); ?>
-        </form>
-    <?php endif; ?>
 
-    <?php for ($p = 1; $p <= $totalPaginas; $p++): ?>
-        <form method="get" style="display:inline;">
-            <input type="hidden" name="pagina" value="<?php echo $p; ?>">
-            <?php 
-                if ($p == $paginaAtual) {
-                    // Botão ativo (destaque)
-                    botao($p, "submit", "#2563eb", "10px");
-                } else {
-                    // Botão normal
-                    botao($p, "submit", "#004A90", "10px");
-                }
-            ?>
-        </form>
-    <?php endfor; ?>
 
-    <?php if ($paginaAtual < $totalPaginas): ?>
-        <form method="get" style="display:inline;">
-            <input type="hidden" name="pagina" value="<?php echo $paginaAtual + 1; ?>">
-            <?php botao(" &raquo;", "submit", "#004A90", "14px"); ?>
-        </form>
-    <?php endif; ?>
-</div>
+            <div class="paginacao">
+                <?php if ($paginaAtual > 1): ?>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="pagina" value="<?php echo $paginaAtual - 1; ?>">
+                        <?php botao("&laquo; ", "submit", "#004A90", "14px"); ?>
+                    </form>
+                <?php endif; ?>
+
+                <?php for ($p = 1; $p <= $totalPaginas; $p++): ?>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="pagina" value="<?php echo $p; ?>">
+                        <?php
+                        if ($p == $paginaAtual) {
+                            // Botão ativo (destaque)
+                            botao($p, "submit", "#2563eb", "10px");
+                        } else {
+                            // Botão normal
+                            botao($p, "submit", "#004A90", "10px");
+                        }
+                        ?>
+                    </form>
+                <?php endfor; ?>
+
+                <?php if ($paginaAtual < $totalPaginas): ?>
+                    <form method="get" style="display:inline;">
+                        <input type="hidden" name="pagina" value="<?php echo $paginaAtual + 1; ?>">
+                        <?php botao(" &raquo;", "submit", "#004A90", "14px"); ?>
+                    </form>
+                <?php endif; ?>
+            </div>
+
+        </fieldset>
+    </div>
+    <?php include "../../../public/components/admin/footer/footer-admin.php"; ?>
+    <script></script>
+</body>
