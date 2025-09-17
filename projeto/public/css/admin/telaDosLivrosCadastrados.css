@@ -25,14 +25,14 @@ body {
 
 
 .container-main {
-    background: var(--branco);
-    padding: 15px;
-    width: 98%;         
-    max-width: 1600px;    
-    border-radius: 10px;
+    width: 90%;
+    padding: 40px;
+    position: relative;
     margin: auto;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    background: #fbfaff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
 }
 
 
