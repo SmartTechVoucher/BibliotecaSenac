@@ -46,7 +46,7 @@ switch ($acao) {
             $_SESSION['usuario_email'] = $usuario['email'];
             $_SESSION['usuario_categoria'] = $usuario['categoria'];
 
-            $_SESSION['toast'] = ['tipo' => 'sucesso', 'mensagem' => 'Login realizado com sucesso! Bem-vindo, ' . $usuario['nome'] . '!'];
+            $_SESSION['toast'] = ['tipo' => 'success', 'mensagem' => 'Login realizado com sucesso! Bem-vindo, ' . $usuario['nome'] . '!'];
         
             // REDIRECIONAMENTO INTELIGENTE
             $redirecionarPara = $URLBASE . '/src/views/usuario/index.php'; // padrão
@@ -159,7 +159,7 @@ switch ($acao) {
         );
 
         if ($resultado['success']) {
-            $_SESSION['toast'] = ['tipo' => 'sucesso', 'mensagem' => $resultado['message']];
+            $_SESSION['toast'] = ['tipo' => 'success', 'mensagem' => $resultado['message']];
             header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
             exit;
         } else {
