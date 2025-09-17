@@ -41,7 +41,7 @@ require(__DIR__ . '/../../../config/constantes.php');
                 </p>
             </div>
 
-            <form action="../../../router.php?acao=validarLogin" method="POST">
+            <form action="../../../router.php?acao=loginAdmin" method="POST">
                 <div class="titles-form">
                     <h2>Acesso Administrativo</h2>
                     <p>Entre com suas credenciais</p>
@@ -63,12 +63,27 @@ require(__DIR__ . '/../../../config/constantes.php');
                 </div>
                 
             </form>
+            <?php if (isset($_SESSION['toast'])): ?>
+            <div id="toast" class="toast <?= $_SESSION['toast']['tipo'] ?>">
+                <?= $_SESSION['toast']['mensagem'] ?>
+            </div>
+            <?php unset($_SESSION['toast']); ?>
+            <?php endif; ?>
         </section>
         <section class="tela_animacao">
             <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="">
         </section>
     </div>
-    <script src="<?php echo $URLBASE ?>/projeto/public/js/login.js"></script>
+    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
+    <script>
+        const toast = document.getElementById('toast');
+        if (toast) {
+            setTimeout(() => {
+                toast.style.display = 'block';
+                setTimeout(() => toast.remove(), 5000);
+            }, 100);
+        }
+    </script>
 </body>
 
 </html>
