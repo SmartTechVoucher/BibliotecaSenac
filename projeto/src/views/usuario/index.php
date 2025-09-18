@@ -4,8 +4,10 @@ require __DIR__ . '/../../../config/constantes.php';
 require __DIR__ . '/../../../config/auth-check.php';
 include_once __DIR__ . '/../../../src/model/usuario/livro-model.php';
 
-// Usar a nova função para obter os dados do usuário logado
+// Usar a função de verificação de login do auth-check.php
 $usuario = obterUsuarioLogado();
+
+// Definir as variáveis que o header.php e o restante da página precisam
 $usuarioLogado = ($usuario !== null);
 $nomeUsuario = $usuario['nome'] ?? '';
 $emailUsuario = $usuario['email'] ?? '';
@@ -163,14 +165,6 @@ if (isset($_SESSION['toast'])) {
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             mostrarToast("<?php echo addslashes($toastData['mensagem']); ?>", "<?php echo $toastData['tipo']; ?>");
-        });
-    </script>
-    <?php endif; ?>
-
-    <?php if ($usuarioLogado): ?>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Usuário logado: <?php echo htmlspecialchars($nomeUsuario); ?>');
         });
     </script>
     <?php endif; ?>

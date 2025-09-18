@@ -1,9 +1,14 @@
 <?php
-require __DIR__ . '/../../../../config/constantes.php';
+// header.php
 
-// Verificar se o usuário está logado (usando as variáveis corretas do router)
-$usuarioLogado = isset($_SESSION['usuario_id']) && isset($_SESSION['usuario_nome']) && isset($_SESSION['usuario_email']);
-$nomeUsuario = $usuarioLogado ? $_SESSION['usuario_nome'] : '';
+// Apenas inclua as constantes, sem a lógica de sessão
+require_once __DIR__ . '/../../../../config/constantes.php';
+
+// Verifique se as variáveis existem antes de usá-las.
+// Se não existirem, defina-as com valores padrão para evitar avisos da IDE.
+$usuarioLogado = isset($usuarioLogado) ? $usuarioLogado : false;
+$nomeUsuario = isset($nomeUsuario) ? $nomeUsuario : '';
+
 ?>
 
 <button class="cbmenu-icon" id="menu-toggle">
@@ -81,22 +86,22 @@ $nomeUsuario = $usuarioLogado ? $_SESSION['usuario_nome'] : '';
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE ?>/index.php">Início</a></li>
             
             <?php if ($usuarioLogado): ?>
-                <!-- Links só para usuários logados -->
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php">Meu Perfil</a></li>
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/atividades.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-atividade.php">Minha Atividade</a></li>
             <?php endif; ?>
             
-            <!-- Links públicos -->
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/PesquisaIcon.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt=""><a href="https://ww3.ms.senac.br/">Contato</a></li>
         </ul>
     </div>
 
     <div class="perfil-lateral-2">
-        <a href="<?php echo $URLBASE ?>/router/router.php?acao=logout" class="logout-link">
-            <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="Sair">
-            <p>Sair</p>
-        </a>
+        <?php if ($usuarioLogado): ?>
+            <a href="<?php echo $URLBASE ?>/router/router.php?acao=logout" class="logout-link">
+                <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="Sair">
+                <p>Sair</p>
+            </a>
+        <?php endif; ?>
     </div>
 </div>
 

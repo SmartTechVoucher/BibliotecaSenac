@@ -33,12 +33,12 @@
 }
 
 .cbmenu-icon {
-    position: fixed; /* fixa na tela */
-    top: 18px;       /* ajuste a posição vertical */
-    left: 40px;      /* ajuste a posição horizontal */
-    background-color: transparent !important; /* força transparência */
+    position: fixed;
+    top: 18px;
+    left: 40px;
+    background-color: transparent !important;
     border: none;
-    outline: none;        
+    outline: none;
     padding: 0;
     margin: 0;
     cursor: pointer;
@@ -92,7 +92,6 @@
     cursor: pointer;
     padding:  10px 10px 8px 0px;;
     color: var(--cor-texto);
-    /* text-transform: uppercase; */
     transition: color 0.3s ease;
 }
 
@@ -157,21 +156,18 @@
     height: 70px;
 }
 
+/* CÓDIGO CORRIGIDO AQUI */
 .nome-usuario {
     display: inline-block;
     margin-left: 10px;
     font-size: 30px;
     font-family: "Roboto", sans-serif;
     color: var(--cor-texto);
-    border-right: 3px solid var(--cor-texto);
+    /* Removido o border-right para evitar o efeito de "cursor" */
     white-space: nowrap;
     overflow: hidden;
-    width: 0;
-    opacity: 0;
-    animation:
-        aparecerUsuario 0s 1.5s forwards,
-        escreverUsuario steps(var(--char-count), end) 2s 1.5s forwards,
-        esconderCursor 0s 3.6s forwards;
+    /* Removidas as propriedades de opacidade e largura que escondiam o texto */
+    /* Removida a animação */
 }
 
 .menu-dropdown {
@@ -282,12 +278,9 @@
     opacity: 1;
 }
 
-
-
 .cabecalho nav {
     font-family: "Poppins",sans-serif;
 }
-
 
 .menu-lateral {
     position: fixed;
@@ -306,8 +299,6 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
-
-
 
 .menu-lateral.ativo {
     left: 0;
@@ -329,9 +320,9 @@
 
 .menu-sanduiche .navbar-desktop {
     display: flex;
-    flex-direction: column; /* itens empilhados */
-    align-items: flex-start; /* alinha todos à esquerda */
-    gap: 10px; /* distância entre os itens, opcional */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -339,9 +330,9 @@
 }
 
 .menu-sanduiche .navbar-desktop li {
-    display: flex; /* para alinhar a imagem + link na mesma linha */
-    align-items: center; /* centraliza verticalmente imagem + texto */
-    gap: 10px; /* espaço entre imagem e texto */
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .menu-sanduiche .navbar-desktop li a {
@@ -354,10 +345,9 @@
     cursor: pointer;
     padding:  10px 10px 8px 0px;;
     color: var(--cor-texto);
-    /* text-transform: uppercase; */
     transition: color 0.3s ease;
-  }
-  
+}
+ 
 .navbar-desktop li a::after {
     content: '';
     position: absolute;
@@ -370,11 +360,11 @@
 }
 
 .navbar-desktop li a:hover {
-color: var(--laranja-padrao);
+    color: var(--laranja-padrao);
 }
 
 .navbar-desktop li a:hover::after {
-width: 100%;
+    width: 100%;
 }
 
 .menu-li {
@@ -418,4 +408,4 @@ width: 100%;
     margin: 0;
     font-size: 18px;
     font-weight: 700;
-} 
+}
