@@ -1,7 +1,9 @@
 <?php
 /**
- * Model para cadastro de categorias (usado em modal da tela de cadastro de livros).
- * Usa PDO real para inserção e listagem.
+ * Model para CRUD de categorias (usado em modal da tela de cadastro de livros).
+ * Usa PDO real para inserção, listagem, update, delete.
+ * Todos nomes e comentários em português.
+ * Nota: Para múltiplas categorias por livro, implementar tabela pivot livros_categorias no futuro.
  */
 
 require_once __DIR__ . '/../../../config/db/database.php';
@@ -19,8 +21,9 @@ class CategoriaModel {
 
     /**
      * Cadastra uma nova categoria via modal.
+     * Usa validação case insensitive para evitar duplicatas como "Filosofia" e "filosofia".
      * @param string $nome Nome da categoria
-     * @return int|false ID da categoria inserido ou false se erro
+     * @return int|false ID da categoria inserida ou false se erro
      */
     public function cadastrarCategoria($nome) {
         try {
@@ -28,13 +31,16 @@ class CategoriaModel {
                 throw new Exception('Nome da categoria é obrigatório.');
             }
 
-            // Verifica se já existe
-            $sql_check = "SELECT id_categoria FROM categorias WHERE nome = :nome";
+            // Trim mas mantém espaços para nomes compostos
+            $nome = trim($nome);
+
+            // Verifica se já existe (case insensitive)
+            $sql_check = "SELECT id_categoria FROM categorias WHERE LOWER(nome) = LOWER(:nome)";
             $stmt_check = $this->conn->prepare($sql_check);
             $stmt_check->bindParam(':nome', $nome);
             $stmt_check->execute();
             if ($stmt_check->rowCount() > 0) {
-                throw new Exception('Categoria já cadastrada.');
+                throw new Exception('Categoria já cadastrada (não diferencia maiúsculas/minúsculas).');
             }
 
             $sql = "INSERT INTO categorias (nome) VALUES (:nome)";
@@ -80,14 +86,16 @@ class CategoriaModel {
                 throw new Exception('ID e nome são obrigatórios.');
             }
 
-            // Verifica se nome já existe em outro registro
-            $sql_check = "SELECT id_categoria FROM categorias WHERE nome = :nome AND id_categoria != :id";
+            $nome = trim($nome);
+
+            // Verifica se nome já existe em outro registro (case insensitive)
+            $sql_check = "SELECT id_categoria FROM categorias WHERE LOWER(nome) = LOWER(:nome) AND id_categoria != :id";
             $stmt_check = $this->conn->prepare($sql_check);
             $stmt_check->bindParam(':nome', $nome);
             $stmt_check->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt_check->execute();
             if ($stmt_check->rowCount() > 0) {
-                throw new Exception('Nome de categoria já existe.');
+                throw new Exception('Nome de categoria já existe (não diferencia maiúsculas/minúsculas).');
             }
 
             $sql = "UPDATE categorias SET nome = :nome WHERE id_categoria = :id";
@@ -109,7 +117,7 @@ class CategoriaModel {
     /**
      * Exclui uma categoria.
      * @param int $id ID da categoria
-     * @return bool True se excluído, false se erro ou não encontrado
+     * @return bool True se excluída, false se erro ou não encontrada
      */
     public function excluirCategoria($id) {
         try {
@@ -139,6 +147,14 @@ class CategoriaModel {
             error_log("Erro ao excluir categoria: " . $e->getMessage());
             return false;
         }
+    }
+
+    /**
+     * Obtém opções para select (compatibilidade com LivroModel).
+     * @return array Lista de categorias para select
+     */
+    public function getOpcoesSelect() {
+        return $this->getAllCategorias();
     }
 }
 ?>

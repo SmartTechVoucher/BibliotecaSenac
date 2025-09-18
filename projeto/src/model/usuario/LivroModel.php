@@ -155,6 +155,170 @@ class LivroModel {
     }
 
     /**
+     * Conta total de livros com filtros aplicados (para paginação).
+     * @param string|null $busca Termo para busca
+     * @param int|null $id_unidade ID da unidade
+     * @return int Total de livros
+     */
+    private function contarLivrosComFiltros($busca = null, $id_unidade = null) {
+        try {
+            $sql = "SELECT COUNT(*) as total
+                    FROM livros l
+                    LEFT JOIN autores a ON l.id_autor = a.id_autor
+                    LEFT JOIN categorias c ON l.id_categoria = c.id_categoria
+                    LEFT JOIN unidades u ON l.id_unidade = u.id_unidade
+                    LEFT JOIN idiomas i ON l.id_idioma = i.id_idioma
+                    LEFT JOIN documentos d ON l.id_documento = d.id_documento
+                    LEFT JOIN areas ar ON l.id_area = ar.id_area";
+
+            $where_conditions = [];
+            $params = [];
+
+            if (!empty($busca)) {
+                $where_conditions[] = "(l.titulo LIKE :busca OR l.isbn LIKE :busca)";
+                $params[':busca'] = '%' . $busca . '%';
+            }
+
+            if ($id_unidade > 0) {
+                $where_conditions[] = "l.id_unidade = :id_unidade";
+                $params[':id_unidade'] = $id_unidade;
+            }
+
+            if (!empty($where_conditions)) {
+                $sql .= " WHERE " . implode(" AND ", $where_conditions);
+            }
+
+            $stmt = $this->conn->prepare($sql);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
+            $stmt->execute();
+            return (int) $stmt->fetchColumn();
+
+        } catch (PDOException $e) {
+            error_log("Erro ao contar livros: " . $e->getMessage());
+            return 0;
+        }
+    }
+
+    /**
+     * Lista livros com filtros e paginação.
+     * Inclui joins com entidades relacionadas e calcula contagens de exemplares.
+     * @param string|null $busca Termo para busca em título ou ISBN
+     * @param int|null $id_unidade ID da unidade para filtro
+     * @param int $pagina Número da página (default 1)
+     * @param int $limite Itens por página (default 10)
+     * @return array ['livros' => array, 'total_paginas' => int, 'pagina_atual' => int, 'total_livros' => int]
+     */
+    public function listarLivrosComFiltros($busca = null, $id_unidade = null, $pagina = 1, $limite = 10) {
+        try {
+            $pagina = max(1, (int) $pagina);
+            $offset = ($pagina - 1) * $limite;
+
+            $sql = "SELECT l.*,
+                           a.nome as autor_nome,
+                           c.nome as categoria_nome,
+                           u.nome as unidade_nome,
+                           i.nome as idioma_nome,
+                           d.nome as documento_nome,
+                           ar.nome as area_nome
+                    FROM livros l
+                    LEFT JOIN autores a ON l.id_autor = a.id_autor
+                    LEFT JOIN categorias c ON l.id_categoria = c.id_categoria
+                    LEFT JOIN unidades u ON l.id_unidade = u.id_unidade
+                    LEFT JOIN idiomas i ON l.id_idioma = i.id_idioma
+                    LEFT JOIN documentos d ON l.id_documento = d.id_documento
+                    LEFT JOIN areas ar ON l.id_area = ar.id_area";
+
+            $where_conditions = [];
+            $params = [];
+
+            if (!empty($busca)) {
+                $where_conditions[] = "(l.titulo LIKE :busca OR l.isbn LIKE :busca)";
+                $params[':busca'] = '%' . $busca . '%';
+            }
+
+            if ($id_unidade > 0) {
+                $where_conditions[] = "l.id_unidade = :id_unidade";
+                $params[':id_unidade'] = $id_unidade;
+            }
+
+            if (!empty($where_conditions)) {
+                $sql .= " WHERE " . implode(" AND ", $where_conditions);
+            }
+
+            $sql .= " ORDER BY l.titulo LIMIT :limite OFFSET :offset";
+
+            $stmt = $this->conn->prepare($sql);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
+            $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $livros = $stmt->fetchAll();
+
+            // Adiciona contagens para cada livro
+            foreach ($livros as &$livro) {
+                $livro['total_exemplares'] = $this->getTotalExemplares($livro['id_livro']);
+                $livro['disponiveis'] = $livro['total_exemplares'] - $this->getEmprestados($livro['id_livro']);
+                $livro['emprestados'] = $this->getEmprestados($livro['id_livro']);
+                $livro['reservas'] = 0; // Implementar reservas futuramente
+            }
+
+            $total_livros = $this->contarLivrosComFiltros($busca, $id_unidade);
+            $total_paginas = ceil($total_livros / $limite);
+
+            return [
+                'livros' => $livros,
+                'total_paginas' => $total_paginas,
+                'pagina_atual' => $pagina,
+                'total_livros' => $total_livros
+            ];
+
+        } catch (PDOException $e) {
+            error_log("Erro ao listar livros com filtros: " . $e->getMessage());
+            return ['livros' => [], 'total_paginas' => 0, 'pagina_atual' => 1, 'total_livros' => 0];
+        }
+    }
+
+    /**
+     * Obtém o total de exemplares para um livro (por enquanto, retorna 1 como default).
+     * Futuramente pode ser implementado com tabela de exemplares.
+     * @param int $id_livro ID do livro
+     * @return int Total de exemplares (default: 1)
+     */
+    public function getTotalExemplares($id_livro) {
+        // Por enquanto, assume 1 exemplar por livro cadastrado
+        // Futuramente: SELECT total_exemplares FROM exemplares WHERE id_livro = :id
+        return 1;
+    }
+
+    /**
+     * Obtém a quantidade de exemplares emprestados (ativos) de um livro.
+     * Conta movimentações com status 'emprestado' e sem data_real_devolucao.
+     * @param int $id_livro ID do livro
+     * @return int Quantidade de exemplares emprestados
+     */
+    public function getEmprestados($id_livro) {
+        try {
+            $sql = "SELECT COUNT(*) as count
+                    FROM movimentacoes m
+                    WHERE m.id_livro = :id_livro
+                    AND m.status = 'emprestado'
+                    AND m.data_real_devolucao IS NULL";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
+            $stmt->execute();
+            return (int) $stmt->fetchColumn();
+        } catch (PDOException $e) {
+            error_log("Erro ao contar empréstimos do livro $id_livro: " . $e->getMessage());
+            return 0;
+        }
+    }
+
+    /**
      * Obtém livros mock para listagem (mantido para compatibilidade ou testes).
      * @return array Lista de livros de exemplo
      */
