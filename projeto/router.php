@@ -3,6 +3,11 @@ session_start();
 require_once __DIR__ . "/src/controller/usuario/login-controller.php";
 require_once __DIR__ . "/src/controller/admin/AdminController.php";
 
+// Função helper para verificar auth admin
+function isAdminLoggedIn() {
+    return isset($_SESSION['admin']) && !empty($_SESSION['admin']) && isset($_SESSION['admin']['id']);
+}
+
 if (!isset($_GET["acao"])) {
     echo "Erro: Nenhuma ação especificada.";
     exit;
@@ -11,21 +16,30 @@ if (!isset($_GET["acao"])) {
 $acao = $_GET["acao"];
 
 if ($acao === 'auxEntity') {
-    error_log('T1: Router auxEntity reached, tipo: ' . ($_GET['tipo'] ?? 'none'));
-    require_once __DIR__ . "/src/controller/admin/AuxEntityController.php";
-    if (!isset($_GET['tipo'])) {
+    $isAjax = true; // auxEntity is always AJAX
+    if (!isAdminLoggedIn()) {
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(['sucesso' => false, 'mensagem' => 'Tipo de entidade não especificado.']);
+        echo json_encode([
+            'sucesso' => false,
+            'mensagem' => 'Acesso negado. Faça login como administrador.'
+        ]);
         exit;
     }
-    $tipo = $_GET['tipo'];
+    
+    header('Content-Type: application/json; charset=utf-8');
+    error_log('T1: Router auxEntity reached, tipo: ' . ($_GET['tipo'] ?? 'none'));
+    
     try {
+        require_once __DIR__ . "/src/controller/admin/AuxEntityController.php";
+        if (!isset($_GET['tipo'])) {
+            throw new Exception('Tipo de entidade não especificado.');
+        }
+        $tipo = $_GET['tipo'];
         $auxController = new AuxEntityController($tipo);
         $auxController->handle();
     } catch (Exception $e) {
         error_log('T2: Router auxEntity error: ' . $e->getMessage());
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(['sucesso' => false, 'mensagem' => 'Erro interno no controlador.']);
+        echo json_encode(['sucesso' => false, 'mensagem' => 'Erro interno no controlador: ' . $e->getMessage()]);
     }
     exit;
 }
@@ -63,20 +77,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
 
         case 'cadastrarLivro':
-            require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
-            $cadastrarLivroController = new CadastrarLivroController();
-            $sucesso = $cadastrarLivroController->cadastrar();
+            if (!isAdminLoggedIn()) {
+                $isAjax = isset($_POST['ajax']) && $_POST['ajax'] == '1';
+                header('Content-Type: application/json; charset=utf-8');
+                if ($isAjax) {
+                    echo json_encode([
+                        'sucesso' => false,
+                        'mensagem' => 'Acesso negado. Faça login como administrador.'
+                    ]);
+                    exit;
+                } else {
+                    session_start();
+                    $_SESSION['toast'] = [
+                        'mensagem' => 'Acesso negado. Faça login como administrador.',
+                        'tipo' => 'error'
+                    ];
+                    header("Location: ./src/views/admin/login-adm.php");
+                    exit;
+                }
+            }
             
-            if (headers_sent()) {
+            header('Content-Type: application/json; charset=utf-8');
+            $isAjax = isset($_POST['ajax']) && $_POST['ajax'] == '1';
+            
+            try {
+                require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
+                $cadastrarLivroController = new CadastrarLivroController();
+                $sucesso = $cadastrarLivroController->cadastrar();
+                
+                if ($isAjax) {
+                    // Controller already outputs JSON for AJAX
+                    exit;
+                }
+                
+                if ($sucesso) {
+                    session_start();
+                    $_SESSION['toast'] = [
+                        'mensagem' => 'Livro cadastrado com sucesso!',
+                        'tipo' => 'success'
+                    ];
+                    header("Location: ./src/views/admin/telaDosLivrosCadastrados.php");
+                } else {
+                    session_start();
+                    $_SESSION['toast'] = [
+                        'mensagem' => 'Erro ao cadastrar livro.',
+                        'tipo' => 'error'
+                    ];
+                    header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
+                }
                 exit;
+                
+            } catch (Exception $e) {
+                error_log('Router cadastrarLivro error: ' . $e->getMessage());
+                if ($isAjax) {
+                    echo json_encode([
+                        'sucesso' => false,
+                        'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
+                    ]);
+                    exit;
+                } else {
+                    session_start();
+                    $_SESSION['toast'] = [
+                        'mensagem' => 'Erro interno no servidor.',
+                        'tipo' => 'error'
+                    ];
+                    header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
+                    exit;
+                }
             }
-            
-            if ($sucesso) {
-                header("Location: ./src/views/admin/telaDosLivrosCadastrados.php");
-            } else {
-                header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
-            }
-            exit;
             break;
 
         default:

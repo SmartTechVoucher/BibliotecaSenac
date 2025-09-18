@@ -74,11 +74,14 @@ class AuxEntityController {
                     $this->excluir();
                     break;
                 default:
-                    echo json_encode(['sucesso' => false, 'mensagem' => 'Subação inválida.']);
+                    throw new Exception('Subação inválida: ' . $subacao);
             }
         } catch (Exception $e) {
-            error_log('AuxEntity handle error: ' . $e->getMessage());
-            echo json_encode(['sucesso' => false, 'mensagem' => $e->getMessage()]);
+            error_log('AuxEntity handle error [' . $this->tipo . ']: ' . $e->getMessage() . ' | Subacao: ' . $subacao);
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => $e->getMessage()
+            ], JSON_UNESCAPED_UNICODE);
         }
     }
 
@@ -96,20 +99,27 @@ class AuxEntityController {
         // Chama método cadastrar dinamicamente
         $method = 'cadastrar' . ucfirst($this->tipo);
         if (!method_exists($this->model_instance, $method)) {
-            throw new Exception('Método de cadastro não encontrado para ' . $this->tipo);
+            throw new Exception('Método de cadastro não encontrado para ' . $this->tipo . '. Método: ' . $method);
         }
 
-        $id = $this->model_instance->$method($nome);
+        $id = false;
+        if ($this->tipo === 'autor') {
+            $nacionalidade = trim($_POST['nacionalidade'] ?? null);
+            $id = $this->model_instance->$method($nome, $nacionalidade);
+        } else {
+            $id = $this->model_instance->$method($nome);
+        }
 
-        if ($id) {
+        if ($id !== false && $id > 0) {
             echo json_encode([
-                'sucesso' => true, 
+                'sucesso' => true,
                 'mensagem' => ucfirst($this->tipo) . ' cadastrado com sucesso!',
                 'id' => $id,
                 'nome' => $nome
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         } else {
-            throw new Exception('Erro ao cadastrar ' . $this->tipo . '. Verifique logs.');
+            error_log('AuxEntity cadastrar failed for ' . $this->tipo . ': nome=' . $nome);
+            throw new Exception('Erro ao cadastrar ' . $this->tipo . '. Nome já existe ou erro no banco.');
         }
     }
 
@@ -184,26 +194,27 @@ class AuxEntityController {
 
         $nacionalidade = null;
         if ($this->tipo === 'autor') {
-            $nacionalidade = trim($_POST['nacionalidade'] ?? '');
+            $nacionalidade = trim($_POST['nacionalidade'] ?? null);
         }
 
+        $success = false;
         if ($this->tipo === 'autor') {
             $success = $this->model_instance->$method($id, $nome, $nacionalidade);
         } else {
             $success = $this->model_instance->$method($id, $nome);
         }
 
-        if ($success) {
+        if ($success !== false) {
             error_log('T1: ' . ucfirst($this->tipo) . ' atualizado com sucesso ID: ' . $id);
             echo json_encode([
                 'sucesso' => true,
                 'mensagem' => ucfirst($this->tipo) . ' atualizado com sucesso!',
                 'id' => $id,
                 'nome' => $nome
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
         } else {
-            error_log('T2: Falha ao atualizar ' . $this->tipo . ' - ID: ' . $id . ', nome: ' . $nome . ', nacionalidade: ' . $nacionalidade);
-            throw new Exception('Erro ao atualizar ' . $this->tipo . '. Verifique logs.');
+            error_log('T2: Falha ao atualizar ' . $this->tipo . ' - ID: ' . $id . ', nome: ' . $nome . ', nacionalidade: ' . ($nacionalidade ?? 'null'));
+            throw new Exception('Erro ao atualizar ' . $this->tipo . '. Nome já existe ou erro no banco.');
         }
     }
 

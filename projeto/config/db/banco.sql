@@ -137,7 +137,7 @@ CREATE TABLE adminstrador (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dados de teste para FKs (autores, categorias, etc.)
-INSERT INTO categorias (nome) VALUES 
+INSERT INTO categorias (nome) VALUES    
 ('Ficção'), ('Não-ficção'), ('Romance'), ('Suspense'), ('Fantasia'), ('Ficção Científica'), ('Biografia'), ('Autoajuda'), ('História'), ('Culinária'), ('Infantil'), ('Poesia'), ('Aventura'), ('Humor');
 
 INSERT INTO autores (nome, nacionalidade) VALUES 
