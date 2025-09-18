@@ -61,7 +61,7 @@ require(__DIR__ . '/../../../config/constantes.php');
                     </div>
 
                 </form>
-                <form action="../../../router.php?acao=validarLogin" method="POST" class="card-recuperar-senha">
+                <form action="../../../router.php?acao=validarLogin" method="POST" class="card-recuperar-senha" id="recuperar-senha">
                     <div class="titles-form">
                         <h2>Recuperar Senha</h2>
                         <p>Digite seu email para receber as instruções</p>
@@ -86,7 +86,7 @@ require(__DIR__ . '/../../../config/constantes.php');
             <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="" >
         </section>
     </div>
-    <script src="<?php echo $URLBASE ?>/projeto/public/js/login.js"></script>
+    
 </body>
 
 </html>
