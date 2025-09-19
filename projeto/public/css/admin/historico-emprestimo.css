@@ -13,6 +13,58 @@
     --cinza: #D9D9D9;
 }
 
+.container-main {
+    width: 90%;
+    padding: 40px;
+    position: relative;
+    margin: auto;
+    background: #fbfaff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
+}
+.form-section legend {
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 0 0.5rem;
+}
+.form-section {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+.tabela-emprestimos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.tabela-emprestimos th, 
+.tabela-emprestimos td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabela-emprestimos th {
+    background-color: #f2f2f2;
+    color: #555;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tabela-emprestimos tr:hover {
+    background-color: #f9f9f9;
+}
+
+
 main{
     display: flex;
     justify-content: center;
