@@ -38,8 +38,10 @@ require(__DIR__ . '/../../../config/constantes.php');
 
 
             </div>
+
             <div class="container-form">
-                <form action="../../../router.php?acao=validarLogin" method="POST" class="card-login">
+                
+                <form action="../../../router.php?acao=validarLogin" method="POST" class="card-login" id="card-login">
                     <div class="titles-form">
                         <h2>Acesso Administrativo</h2>
                         <p>Entre com suas credenciais</p>
@@ -57,36 +59,40 @@ require(__DIR__ . '/../../../config/constantes.php');
 
                     <button type="submit">Entrar no Sistema</button>
                     <div class="text-center">
-                        <a href="../../views/usuario/recuperarSenha.php">Esqueceu sua Senha ?</a>
+                        <a href="#" id="link-recuperar">Esqueceu sua Senha ?</a>
                     </div>
-
                 </form>
-                <form action="../../../router.php?acao=validarLogin" method="POST" class="card-recuperar-senha" id="recuperar-senha">
+
+                <form action="../../../router.php?acao=recuperarSenha" method="POST" class="card-recuperar-senha hidden" id="card-recuperar">
                     <div class="titles-form">
                         <h2>Recuperar Senha</h2>
                         <p>Digite seu email para receber as instruções</p>
                     </div>
 
                     <div class="input-1">
-                        <label for="campo_login">Email</label>
-                        <input type="text" name="nome" id="campo_login" placeholder="Digite seu email">
+                        <label for="campo_email">Email</label>
+                        <input type="email" name="email" id="campo_email" placeholder="Digite seu email">
                     </div>
 
                     <button type="submit">Enviar instruções</button>
                     <div class="text-center">
-                        <a href="../../views/usuario/recuperarSenha.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/voltar-admin.png" alt="" class="icon-voltar">Voltar ao login</a>
+                        <a href="#" id="link-voltar">
+                            <img src="<?php echo $URLBASE ?>/public/assets/icons/voltar-admin.png" alt="" class="icon-voltar">
+                            Voltar ao login
+                        </a>
                     </div>
-
                 </form>
             </div>
 
-            
+
         </section>
         <section class="tela_animacao">
-            <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="" >
+            <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="">
         </section>
     </div>
-    
+
+    <script src="../../../public/js/admin/login-adm.js"></script>
+
 </body>
 
 </html>
