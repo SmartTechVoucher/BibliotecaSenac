@@ -1,18 +1,5 @@
 <?php
 require_once "../../../config/constantes.php";
-
-include '../../../public/components/admin/pagination/pagination.php';
-
-$items = range(1, 120);
-$totalItems = count($items);
-
-// Pega página da URL (?page=2)
-$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-$pageSize = 10; // sempre fixo
-
-// Itens da página atual
-$offset = ($page - 1) * $pageSize;
-$currentItems = array_slice($items, $offset, $pageSize);
 ?>
 
 <!DOCTYPE html>
@@ -266,16 +253,6 @@ $currentItems = array_slice($items, $offset, $pageSize);
   include "../../../public/components/admin/footer/footer-admin.php";
   ?>
 
-
-  <h2>Lista de itens (página <?= $page ?>)</h2>
-  <ul>
-    <?php foreach ($currentItems as $item): ?>
-      <li>Item <?= $item ?></li>
-    <?php endforeach; ?>
-  </ul>
-
-  <!-- Renderiza a paginação -->
-  <?= renderPagination($totalItems, $page, $pageSize, [5, 10, 20, 50]) ?>
 </body>
 
 </html>
