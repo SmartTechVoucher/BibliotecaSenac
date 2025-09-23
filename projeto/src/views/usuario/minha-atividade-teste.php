@@ -7,19 +7,24 @@ require(__DIR__ . '/../../../config/constantes.php');
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioTech - Dashboard</title>
     <link rel="stylesheet" href="../../../public/css/usuario/minha-atividade-teste.css">
     <link rel="stylesheet" href="../../../public/css/components/usuario/header.css">
+    <link rel="stylesheet" href="../../../public/css/components/usuario/footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Header -->  
+    <!-- Header -->
     <?php
-  include "../../../public/components/usuario/header/header.php";
-  ?>
+    include "../../../public/components/usuario/header/header.php";
+    ?>
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -202,6 +207,12 @@ require(__DIR__ . '/../../../config/constantes.php');
         </div>
     </div>
 
+    <?php
+    include "../../../public/components/usuario/footer/footer.php";
+    ?>
+
     <script src="../../../public/js/usuario/teste-minha-atividade.js"></script>
+    <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
 </body>
+
 </html>
