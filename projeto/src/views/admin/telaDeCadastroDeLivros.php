@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/../../../config/constantes.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,9 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Livros</title>
-    <?php
-    require_once "../../../config/constantes.php";
-    ?>
+
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="../../../public/css/admin/telaCadastroLivros.css">
@@ -47,7 +49,7 @@
                         InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
                         ?>
                     </div>
-                    
+
                     <div class="form-grupo">
                         <?php
                         $autoresMock = [
@@ -79,7 +81,7 @@
                     <div class="form-grupo">
 
                         <?php
-                        
+
                         $editorasMock = [
                             ['id' => 1, 'nome' => 'Companhia das Letras'],
                             ['id' => 2, 'nome' => 'Editora Rocco'],
@@ -115,7 +117,7 @@
                     </div>
                     <div class="form-grupo">
                         <?php
-                        
+
 
                         $idiomasMock = [
                             ['id' => 1, 'nome' => 'Português'],
@@ -135,7 +137,7 @@
                     </div>
                     <div class="form-grupo">
                         <?php
-                        
+
 
                         $categoriasMock = [
                             ['id' => 1, 'nome' => 'Ficção'],
@@ -162,57 +164,57 @@
                 <div class="form-coluna">
                     <div class="form-grupo">
                         <?php
-                           
 
-                            $areasMock = [
-                                ['id' => 1, 'nome' => 'Ciências Exatas'],
-                                ['id' => 2, 'nome' => 'Ciências Biológicas'],
-                                ['id' => 3, 'nome' => 'Ciências Humanas'],
-                                ['id' => 4, 'nome' => 'Ciências Sociais Aplicadas'],
-                                ['id' => 5, 'nome' => 'Engenharias'],
-                                ['id' => 6, 'nome' => 'Saúde'],
-                                ['id' => 7, 'nome' => 'Linguística, Letras e Artes'],
-                                ['id' => 8, 'nome' => 'Agricultura e Meio Ambiente'],
-                                ['id' => 9, 'nome' => 'Arquitetura e Urbanismo'],
-                                ['id' => 10, 'nome' => 'Computação e Informática'],
-                            ];
 
-                            renderSelectModal('area', 'Área', $areasMock);
-                            ?>
+                        $areasMock = [
+                            ['id' => 1, 'nome' => 'Ciências Exatas'],
+                            ['id' => 2, 'nome' => 'Ciências Biológicas'],
+                            ['id' => 3, 'nome' => 'Ciências Humanas'],
+                            ['id' => 4, 'nome' => 'Ciências Sociais Aplicadas'],
+                            ['id' => 5, 'nome' => 'Engenharias'],
+                            ['id' => 6, 'nome' => 'Saúde'],
+                            ['id' => 7, 'nome' => 'Linguística, Letras e Artes'],
+                            ['id' => 8, 'nome' => 'Agricultura e Meio Ambiente'],
+                            ['id' => 9, 'nome' => 'Arquitetura e Urbanismo'],
+                            ['id' => 10, 'nome' => 'Computação e Informática'],
+                        ];
 
-                            </div>
-                            <div class="form-grupo">
-                                <label for="publicacao-livro">Ano</label>
-                                <?php
-                                InputAdmin(largura: 100, name: "publicacao-livro", id: "publicacao-livro", tipo: "date")
-                                ?>
-                            </div>
-                            <div class="form-grupo">
-                                <label for="capa-livro">Capa</label>
-                                <?php
-                                InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
-                                ?>
-                            </div>
+                        renderSelectModal('area', 'Área', $areasMock);
+                        ?>
+
                     </div>
-                    <div class="form-coluna">
-                        <div class="form-grupo">
-                            <label for="resumo-livro">Resumo</label>
-                            <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
-                        </div>
-                        <div class="form-grupo">
-                            <label for="notas-livro">Notas</label>
-                            <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
-                        </div>
-                        <div class="form-grupo">
-                            <label for="tipo-documento">Tipo de documento</label>
-                            <select id="tipo-documento" name="tipo-documento" class="input-admin" required>
-                                <option value="">Selecione</option>
-                                <option value="tipo-documento-livro">Livro</option>
-                                <option value="tipo-documento-ebook">eBook</option>
-                                <option value="tipo-documento-revista">Revista</option>
-                            </select>
-                        </div>
+                    <div class="form-grupo">
+                        <label for="publicacao-livro">Ano</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "publicacao-livro", id: "publicacao-livro", tipo: "date")
+                        ?>
                     </div>
+                    <div class="form-grupo">
+                        <label for="capa-livro">Capa</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
+                        ?>
+                    </div>
+                </div>
+                <div class="form-coluna">
+                    <div class="form-grupo">
+                        <label for="resumo-livro">Resumo</label>
+                        <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="notas-livro">Notas</label>
+                        <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="tipo-documento">Tipo de documento</label>
+                        <select id="tipo-documento" name="tipo-documento" class="input-admin" required>
+                            <option value="">Selecione</option>
+                            <option value="tipo-documento-livro">Livro</option>
+                            <option value="tipo-documento-ebook">eBook</option>
+                            <option value="tipo-documento-revista">Revista</option>
+                        </select>
+                    </div>
+                </div>
 
 
 
@@ -231,11 +233,11 @@
     </div>
 
 
- </div>  
-    
-   <?php
+    </div>
+
+    <?php
     include "../../../public/components/admin/footer/footer-admin.php";
-   ?>
+    ?>
     <script src="../../../public/js/admin/telaDeCadastroDeLivros.js"></script>
 
 </body>

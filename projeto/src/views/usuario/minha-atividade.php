@@ -15,7 +15,7 @@ require(__DIR__ . '/../../../config/constantes.php');
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/modal.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
+  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">

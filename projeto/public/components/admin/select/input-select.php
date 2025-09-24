@@ -14,7 +14,6 @@ function renderSelectModal($name, $label, $items = [])
     <style>
         body {
             font-family: Arial, sans-serif;
-            padding: 40px;
         }
 
         label {

@@ -180,10 +180,7 @@ nav ul li a:visited,
 .titulo h2 {
     margin: 0;
     padding: 0;
-}
- 
-.titulo h2:first-child {
-    margin-bottom: 5px;  /* Ajuste o valor conforme necessário para aumentar a distância */
+    text-wrap: nowrap;
 }
  
 .iconepessoa{
