@@ -79,12 +79,21 @@ class CadastrarLivroController {
                         error_log("Falha ao criar $upload_dir");
                         throw new Exception('Erro ao criar pasta uploads/. Verifique permissões.');
                     }
+                    // Garante permissões adequadas (chmod não funciona bem no Windows)
+                    error_log("Pasta uploads/ criada: $upload_dir");
                 }
-                
+
                 // Verifica se pasta é gravável
                 if (!is_writable($upload_dir)) {
                     error_log("Pasta $upload_dir não é gravável");
                     throw new Exception('Pasta uploads/ não tem permissão de escrita. No Windows/XAMPP: clique direito > Propriedades > Segurança > Editar > dar controle total para Everyone.');
+                }
+
+                // Verifica se existe arquivo .gitkeep para garantir que a pasta seja rastreada
+                $gitkeep_file = $upload_dir . '.gitkeep';
+                if (!file_exists($gitkeep_file)) {
+                    file_put_contents($gitkeep_file, '');
+                    error_log("Arquivo .gitkeep criado em uploads/");
                 }
                 
                 $extensao = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));

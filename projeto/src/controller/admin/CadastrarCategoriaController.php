@@ -49,7 +49,6 @@ class CadastrarCategoriaController {
     }
 }
 
-// Se chamado diretamente (para testes), mas normalmente chamado via AJAX do modal
 if (basename(__FILE__) == basename($_SERVER['SCRIPT_FILENAME'])) {
     $controller = new CadastrarCategoriaController();
     $controller->cadastrar();

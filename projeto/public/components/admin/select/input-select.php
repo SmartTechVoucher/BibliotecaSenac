@@ -203,15 +203,11 @@ function renderSelectModal($name, $label, $items = [])
             let items = [];
             let editId = null;
 
-            // Função para carregar itens do servidor
             async function loadItems() {
                 try {
                     const url = `../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=listar`;
-                    console.log('AJAX Load URL:', url);
                     const response = await fetch(url);
-                    console.log('Load Response Status:', response.status);
                     const data = await response.json();
-                    console.log('Load Response:', data);
                     if (data.sucesso) {
                         items = data[`${tipo}s`] || [];
                         if (input.value.trim()) {
@@ -225,15 +221,11 @@ function renderSelectModal($name, $label, $items = [])
                 }
             }
 
-            // Função para buscar itens (filtro no servidor)
             async function searchItems(query) {
                 try {
                     const url = `../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=buscar&query=${encodeURIComponent(query)}`;
-                    console.log('AJAX Search URL:', url);
                     const response = await fetch(url);
-                    console.log('Search Response Status:', response.status);
                     const data = await response.json();
-                    console.log('Search Response:', data);
                     if (data.sucesso) {
                         items = data[`${tipo}s`] || [];
                         renderDropdown();
@@ -259,20 +251,32 @@ function renderSelectModal($name, $label, $items = [])
                     const span = document.createElement("span");
                     span.textContent = item.nome;
                     span.style.cursor = "pointer";
+                    span.style.flex = "1";
                     span.onclick = (e) => {
                         e.preventDefault();
                         e.stopPropagation();
                         console.log('Item selected:', item.nome, 'ID:', item.id);
+
+                        // Define o valor do input
                         input.value = item.nome;
+
+                        // Define o ID selecionado
                         input.dataset.selectedId = item.id;
+
+                        // Atualiza o campo hidden
                         const hidden = document.getElementById('hidden-' + input.id);
                         if (hidden) {
                             hidden.value = item.id;
                             console.log('Hidden value set to:', item.id);
                         }
+
+                        // Fecha o dropdown
                         dropdown.style.display = "none";
+
+                        // Remove foco do input
                         input.blur();
-                        console.log('Dropdown closed, input blurred');
+
+                        console.log('Selection completed for:', item.nome);
                     };
 
                     const actions = document.createElement("div");
@@ -341,32 +345,63 @@ function renderSelectModal($name, $label, $items = [])
             // Carrega itens iniciais
             loadItems();
 
-            input.addEventListener("input", async () => {
-                const query = input.value.trim().toLowerCase();
-                if (query.length >= 1) {
-                    await searchItems(query);
-                } else if (query.length === 0) {
-                    await loadItems();
-                }
+            // Event listener para input com debouncing
+            let searchTimeout;
+            input.addEventListener("input", (e) => {
+                clearTimeout(searchTimeout);
+                const query = e.target.value.trim().toLowerCase();
+
+                searchTimeout = setTimeout(async () => {
+                    if (query.length >= 1) {
+                        await searchItems(query);
+                    } else if (query.length === 0) {
+                        await loadItems();
+                    }
+                }, 300); // Delay de 300ms para evitar muitas requisições
             });
 
-            btnSalvar.onclick = async () => {
-                const nome = novoInput.value.trim();
-                if (!nome) return;
+            // Event listener para focus - carrega todos os itens
+            input.addEventListener("focus", async () => {
+                if (items.length === 0) {
+                    await loadItems();
+                }
+                dropdown.style.display = "block";
+            });
 
+            btnSalvar.onclick = async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const nome = novoInput.value.trim();
+                if (!nome) {
+                    alert('Nome é obrigatório.');
+                    return;
+                }
+
+                // Adiciona nacionalidade para autores
                 const formData = new FormData();
                 formData.append('nome', nome);
+                if (tipo === 'autor') {
+                    const nacionalidadeInput = document.getElementById("<?= $name ?>_nacionalidade");
+                    if (nacionalidadeInput) {
+                        formData.append('nacionalidade', nacionalidadeInput.value.trim());
+                    }
+                }
+
                 if (editId) {
                     formData.append('id', editId);
                 }
 
                 try {
                     const url = `../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=${editId ? 'atualizar' : 'cadastrar'}`;
+                    console.log('Salvando:', url, editId ? 'atualizar' : 'cadastrar');
                     const response = await fetch(url, {
                         method: 'POST',
                         body: formData
                     });
                     const data = await response.json();
+                    console.log('Resposta salvar:', data);
+
                     if (data.sucesso) {
                         if (editId) {
                             // Atualiza item local
@@ -381,20 +416,32 @@ function renderSelectModal($name, $label, $items = [])
                             input.dataset.selectedId = data.id;
                         }
                         input.value = nome;
+
+                        // Define o hidden field
+                        const hidden = document.getElementById('hidden-' + input.id);
+                        if (hidden) {
+                            hidden.value = data.id;
+                            console.log('Hidden field atualizado:', hidden.value);
+                        }
+
+                        // Fecha modal e dropdown
+                        modal.style.display = "none";
+                        dropdown.style.display = "none";
+                        editId = null;
+                        novoInput.value = '';
+
+                        // Remove borda vermelha se existir
+                        input.style.border = '';
+
                         alert(data.mensagem);
                         await loadItems(); // Recarrega para consistência
                     } else {
-                        alert(data.mensagem);
+                        alert(data.mensagem || 'Erro ao salvar item.');
                     }
                 } catch (error) {
                     console.error('Erro na requisição:', error);
-                    alert('Erro ao salvar item.');
+                    alert('Erro ao salvar item. Verifique a conexão.');
                 }
-
-                modal.style.display = "none";
-                dropdown.style.display = "none";
-                editId = null;
-                novoInput.value = '';
             };
 
             btnCancelar.onclick = () => {
@@ -403,10 +450,21 @@ function renderSelectModal($name, $label, $items = [])
                 novoInput.value = '';
             };
             
+            // Event listener para fechar dropdown quando clicar fora
             document.addEventListener("click", e => {
-                if (!input.contains(e.target) && !dropdown.contains(e.target) && !modal.contains(e.target)) {
+                const isInput = input.contains(e.target);
+                const isDropdown = dropdown.contains(e.target);
+                const isModal = modal.contains(e.target);
+
+                // Só fecha se o clique não foi no input, dropdown ou modal
+                if (!isInput && !isDropdown && !isModal) {
                     dropdown.style.display = "none";
                 }
+            });
+
+            // Previne que cliques no dropdown se propaguem
+            dropdown.addEventListener("click", e => {
+                e.stopPropagation();
             });
         })(); // End of IIFE
     </script>

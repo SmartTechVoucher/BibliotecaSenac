@@ -129,7 +129,6 @@ class CadastrarIdiomaController {
     }
 }
 
-// Executa se chamado diretamente via router
 if (basename(__FILE__) == basename($_SERVER['SCRIPT_FILENAME'])) {
     $controller = new CadastrarIdiomaController();
     $controller->handle();

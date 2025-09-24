@@ -69,7 +69,7 @@ CREATE TABLE usuarios (
     bairro VARCHAR(100) NOT NULL,
     numero_matricula VARCHAR(50) NOT NULL UNIQUE,
     id_categoria_usuario INT NOT NULL,
-    id_curso INT, 
+    id_curso INT,
     data_inicio DATE,
     data_fim DATE,
     genero VARCHAR(50),
@@ -133,7 +133,17 @@ CREATE TABLE adminstrador (
     telefone VARCHAR(20) NOT NULL,
     rua VARCHAR(100) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
-    genero VARCHAR(50)
+    genero VARCHAR(100)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE exemplares (
+    id_livro INT PRIMARY KEY NOT NULL,
+    total_exemplares INT NOT NULL DEFAULT 1,
+    disponiveis INT NOT NULL DEFAULT 1,
+    emprestados INT NOT NULL DEFAULT 0,
+    reservas INT NOT NULL DEFAULT 0,
+    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dados de teste para FKs (autores, categorias, etc.)
@@ -164,9 +174,4 @@ INSERT INTO cursos (nome) VALUES
 -- Admin de teste (senha 'admin2020')
 INSERT INTO adminstrador (nome, cpf, email, senha, data_nascimento, telefone, rua, bairro, genero) VALUES 
 ('Admin Principal', '123.456.789-10', 'admin@biblioteca.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '1980-01-01', '(11) 99999-9999', 'Rua Admin 123', 'Centro', 'Masculino')
-ON DUPLICATE KEY UPDATE senha = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; 
-
--- Usuário de teste (senha 'user2020')
-INSERT INTO usuarios (nome, cpf, email, senha, data_nascimento, telefone, rua, bairro, numero_matricula, id_categoria_usuario, id_curso, genero) VALUES 
-('João da Silva', '987.654.321-00', 'joao@example.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '1990-01-01', '(11) 88888-8888', 'Rua João 456', 'Zona Norte', '12345678910', 1, 1, 'Masculino')
 ON DUPLICATE KEY UPDATE senha = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';

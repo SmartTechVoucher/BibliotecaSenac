@@ -259,12 +259,21 @@ class LivroModel {
 
             $livros = $stmt->fetchAll();
 
-            // Adiciona contagens para cada livro
+            // Adiciona contagens para cada livro usando dados da tabela exemplares
             foreach ($livros as &$livro) {
-                $livro['total_exemplares'] = $this->getTotalExemplares($livro['id_livro']);
-                $livro['disponiveis'] = $livro['total_exemplares'] - $this->getEmprestados($livro['id_livro']);
-                $livro['emprestados'] = $this->getEmprestados($livro['id_livro']);
-                $livro['reservas'] = 0; // Implementar reservas futuramente
+                $estoque = $this->getEstoqueByLivro($livro['id_livro']);
+                if ($estoque) {
+                    $livro['total_exemplares'] = $estoque['total_exemplares'];
+                    $livro['disponiveis'] = $estoque['disponiveis'];
+                    $livro['emprestados'] = $estoque['emprestados'];
+                    $livro['reservas'] = $estoque['reservas'];
+                } else {
+                    // Fallback para valores padrão se não há registro de estoque
+                    $livro['total_exemplares'] = 1;
+                    $livro['disponiveis'] = 1;
+                    $livro['emprestados'] = 0;
+                    $livro['reservas'] = 0;
+                }
             }
 
             $total_livros = $this->contarLivrosComFiltros($busca, $id_unidade);
@@ -284,15 +293,66 @@ class LivroModel {
     }
 
     /**
-     * Obtém o total de exemplares para um livro (por enquanto, retorna 1 como default).
-     * Futuramente pode ser implementado com tabela de exemplares.
+     * Obtém os dados de estoque de um livro da tabela exemplares.
      * @param int $id_livro ID do livro
-     * @return int Total de exemplares (default: 1)
+     * @return array|false Dados do estoque ou false se erro
+     */
+    public function getEstoqueByLivro($id_livro) {
+        try {
+            $sql = "SELECT * FROM exemplares WHERE id_livro = :id_livro";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Se não existe registro, criar um com valores padrão
+            if (!$resultado) {
+                return $this->criarEstoqueInicial($id_livro);
+            }
+
+            return $resultado;
+        } catch (PDOException $e) {
+            error_log("Erro ao obter estoque do livro $id_livro: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Cria um registro inicial de estoque para um livro.
+     * @param int $id_livro ID do livro
+     * @return array Dados do estoque criado
+     */
+    private function criarEstoqueInicial($id_livro) {
+        try {
+            $sql = "INSERT INTO exemplares (id_livro, total_exemplares, disponiveis, emprestados, reservas)
+                    VALUES (:id_livro, 1, 1, 0, 0)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return [
+                'id_livro' => $id_livro,
+                'total_exemplares' => 1,
+                'disponiveis' => 1,
+                'emprestados' => 0,
+                'reservas' => 0,
+                'data_atualizacao' => date('Y-m-d H:i:s')
+            ];
+        } catch (PDOException $e) {
+            error_log("Erro ao criar estoque inicial para livro $id_livro: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+     * Obtém o total de exemplares para um livro (por enquanto, retorna 1 como default).
+     * @param int $id_livro ID do livro
+     * @return int Total de exemplares
      */
     public function getTotalExemplares($id_livro) {
-        // Por enquanto, assume 1 exemplar por livro cadastrado
-        // Futuramente: SELECT total_exemplares FROM exemplares WHERE id_livro = :id
-        return 1;
+        $estoque = $this->getEstoqueByLivro($id_livro);
+        return $estoque ? $estoque['total_exemplares'] : 1;
     }
 
     /**

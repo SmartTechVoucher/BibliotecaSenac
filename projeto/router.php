@@ -16,7 +16,7 @@ if (!isset($_GET["acao"])) {
 $acao = $_GET["acao"];
 
 if ($acao === 'auxEntity') {
-    $isAjax = true; // auxEntity is always AJAX
+    $isAjax = true; 
     if (!isAdminLoggedIn()) {
         header('Content-Type: application/json; charset=utf-8');
         echo json_encode([
@@ -96,20 +96,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     exit;
                 }
             }
-            
+
             header('Content-Type: application/json; charset=utf-8');
             $isAjax = isset($_POST['ajax']) && $_POST['ajax'] == '1';
-            
+
             try {
                 require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
                 $cadastrarLivroController = new CadastrarLivroController();
                 $sucesso = $cadastrarLivroController->cadastrar();
-                
+
                 if ($isAjax) {
                     // Controller already outputs JSON for AJAX
                     exit;
                 }
-                
+
                 if ($sucesso) {
                     session_start();
                     $_SESSION['toast'] = [
@@ -126,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
                 }
                 exit;
-                
+
             } catch (Exception $e) {
                 error_log('Router cadastrarLivro error: ' . $e->getMessage());
                 if ($isAjax) {
@@ -144,6 +144,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
                     exit;
                 }
+            }
+            break;
+
+        case 'atualizarEstoque':
+            if (!isAdminLoggedIn()) {
+                header('Content-Type: application/json; charset=utf-8');
+                echo json_encode([
+                    'sucesso' => false,
+                    'mensagem' => 'Acesso negado. Faça login como administrador.'
+                ]);
+                exit;
+            }
+
+            header('Content-Type: application/json; charset=utf-8');
+
+            try {
+                require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
+                $controller = new AtualizarEstoqueController();
+                $resultado = $controller->atualizarEstoque();
+
+                echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+                exit;
+
+            } catch (Exception $e) {
+                error_log('Router atualizarEstoque error: ' . $e->getMessage());
+                echo json_encode([
+                    'sucesso' => false,
+                    'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
+                ]);
+                exit;
             }
             break;
 
