@@ -132,7 +132,8 @@ body {
     border-right: 10px solid var(--cor-texto);
     width: 20.2ch;  
     animation: marca 2.2s step-end forwards , write 1s steps(18, end);
-
+    overflow: hidden;
+    animation-delay: 1s;
 }
  
 .letras2{

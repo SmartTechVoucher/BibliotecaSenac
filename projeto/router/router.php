@@ -2,21 +2,21 @@
 // router.php
 require_once __DIR__ . '/../config/constantes.php';
 require_once __DIR__ . '/../src/controller/usuario/usuario-controller.php';
- 
+
 // Segurança antes do start
 ini_set('session.cookie_lifetime', 0);
 ini_set('session.use_only_cookies', 1);
 ini_set('session.cookie_httponly', 1);
 if (session_status() === PHP_SESSION_NONE) session_start();
- 
+
 if (!isset($_GET['acao'])) {
     header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
     exit;
 }
- 
+
 $acao = $_GET['acao'];
 $usuarioController = new UsuarioController();
- 
+
 switch ($acao) {
     case 'validarLogin':
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -47,16 +47,14 @@ switch ($acao) {
             $_SESSION['usuario_categoria'] = $usuario['categoria'];
 
             $_SESSION['toast'] = ['tipo' => 'success', 'mensagem' => 'Login realizado com sucesso! Bem-vindo, ' . $usuario['nome'] . '!'];
-        
+
             // REDIRECIONAMENTO INTELIGENTE
             $redirecionarPara = $URLBASE . '/src/views/usuario/index.php'; // padrão
-        
-            // Se há uma página que o usuário tentou acessar antes do login
             if (isset($_SESSION['redirect_after_login'])) {
                 $redirecionarPara = $_SESSION['redirect_after_login'];
-                unset($_SESSION['redirect_after_login']); // limpar
+                unset($_SESSION['redirect_after_login']);
             }
-        
+
             header('Location: ' . $redirecionarPara);
             exit;
         } else {
@@ -67,18 +65,14 @@ switch ($acao) {
         break;
 
     case 'logout':
-        // remover dados do usuário (mantém a sessão para poder setar toast)
         unset($_SESSION['usuario_id'], $_SESSION['usuario_nome'], $_SESSION['usuario_email'], $_SESSION['usuario_categoria']);
- 
         $_SESSION['toast'] = ['tipo' => 'info', 'mensagem' => 'Logout realizado com sucesso!'];
- 
-        // opcional: regenerar id para limpar associação antiga
         session_regenerate_id(true);
- 
+
         header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;
         break;
- 
+
     case 'criarUsuario':
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
@@ -104,24 +98,26 @@ switch ($acao) {
         $senha = $_POST['senha_usuario'] ?? '';
         $senha_confirm = $_POST['senha_usuario_confirm'] ?? '';
 
+        // Helper para redirecionar com dados
+        $redirectWithForm = function($mensagem) use ($URLBASE) {
+            $_SESSION['form_data'] = $_POST;
+            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => $mensagem];
+            header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
+            exit;
+        };
+
         // Validações básicas
         if (empty($nome) || empty($cpf) || empty($email) || empty($data_nascimento) || 
             empty($categoria) || empty($unidade_senac) || empty($senha)) {
-            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Preencha todos os campos obrigatórios!'];
-            header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
-            exit;
+            $redirectWithForm('Preencha todos os campos obrigatórios!');
         }
 
         if ($senha !== $senha_confirm) {
-            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'As senhas não coincidem!'];
-            header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
-            exit;
+            $redirectWithForm('As senhas não coincidem!');
         }
 
         if (strlen($senha) < 6) {
-            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'A senha deve ter pelo menos 6 caracteres!'];
-            header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
-            exit;
+            $redirectWithForm('A senha deve ter pelo menos 6 caracteres!');
         }
 
         // Upload de foto (se enviado)
@@ -159,16 +155,18 @@ switch ($acao) {
         );
 
         if ($resultado['success']) {
+            unset($_SESSION['form_data']); // limpa dados ao sucesso
             $_SESSION['toast'] = ['tipo' => 'success', 'mensagem' => $resultado['message']];
             header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
             exit;
         } else {
+            $_SESSION['form_data'] = $_POST;
             $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => $resultado['message']];
             header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
             exit;
         }
         break;
- 
+
     default:
         header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;

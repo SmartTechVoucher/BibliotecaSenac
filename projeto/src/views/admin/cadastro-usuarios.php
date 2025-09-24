@@ -7,22 +7,20 @@
   <title>Tela de cadastro de usuários</title>
   <?php
   require_once "../../../config/constantes.php";
-  
+
   // Segurança de sessão
   ini_set('session.cookie_lifetime', 0);
   ini_set('session.use_only_cookies', 1);
   ini_set('session.cookie_httponly', 1);
   if (session_status() === PHP_SESSION_NONE) session_start();
 
-  // Capturar dados do toast ANTES de destruir a sessão
-  $toastData = null;
-  if (isset($_SESSION['toast'])) {
-      $toastData = [
-          'mensagem' => $_SESSION['toast']['mensagem'],
-          'tipo' => $_SESSION['toast']['tipo']
-      ];
-      unset($_SESSION['toast']);
-  }
+  // Capturar dados do toast
+  $toastData = $_SESSION['toast'] ?? null;
+  if (isset($_SESSION['toast'])) unset($_SESSION['toast']);
+
+  // Capturar dados do formulário preenchidos anteriormente
+  $formData = $_SESSION['form_data'] ?? [];
+  if (isset($_SESSION['form_data'])) unset($_SESSION['form_data']);
   ?>
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
@@ -49,119 +47,136 @@
         <fieldset class="form-section">
           <legend>Informações Pessoais</legend>
           <div id="foto-perfil-container">
-            <img id="foto-perfil" src="https://placehold.co/150x150/f0f0f0/888888?text=Sua+Foto" alt="">
+            <img id="foto-perfil" src="<?= $formData['foto-usuario'] ?? 'https://placehold.co/150x150/f0f0f0/888888?text=Sua+Foto' ?>" alt="">
             <?php InputAdmin(largura: 15, name: "foto-usuario", id: "foto-usuario", tipo: "file", accept: "image/*"); ?>
           </div>
           <div class="form-row"> 
             <div class="form-grupo">
               <label for="nome">Nome Completo *</label>
-              <?php InputAdmin(largura: 100, name: "nome", id: "nome", tipo: "text", required: true) ?>
+              <?php InputAdmin(largura: 100, name: "nome", id: "nome", tipo: "text", required: true, valor: $formData['nome'] ?? ''); ?>
             </div>
             <div class="form-grupo">
               <label for="cpf">CPF *</label>
-              <?php InputAdmin(largura: 100, name: "cpf", id: "cpf", tipo: "text", required: true) ?>
+              <?php InputAdmin(largura: 100, name: "cpf", id: "cpf", tipo: "text", required: true, valor: $formData['cpf'] ?? ''); ?>
             </div>
           </div>
           <div class="form-row">
             <div class="form-grupo">
               <label for="email">E-mail *</label>
-              <?php InputAdmin(largura: 100, name: "email", id: "email", tipo: "email", required: true); ?>
+              <?php InputAdmin(largura: 100, name: "email", id: "email", tipo: "email", required: true, valor: $formData['email'] ?? ''); ?>
             </div>
             <div class="form-grupo">
               <label for="data_nascimento">Data de Nascimento *</label>
-              <?php InputAdmin(largura: 100, name: "data_nascimento", id: "data_nascimento", tipo: "date", required: true) ?>
+              <?php InputAdmin(largura: 100, name: "data_nascimento", id: "data_nascimento", tipo: "date", required: true, valor: $formData['data_nascimento'] ?? ''); ?>
             </div>
           </div>
           <div class="form-row">
             <div class="form-grupo">
               <label for="telefone">Telefone</label>
-              <?php InputAdmin(largura: 100, placeholder: "(99) 99999-9999", name: "telefone", id: "telefone", tipo: "tel") ?>
+              <?php InputAdmin(largura: 100, placeholder: "(99) 99999-9999", name: "telefone", id: "telefone", tipo: "tel", valor: $formData['telefone'] ?? ''); ?>
             </div>
             <div class="form-grupo">
               <label for="endereco">Endereço Completo</label>
-              <?php InputAdmin(largura: 100, placeholder: "Ex: Rua das Flores, 123, Centro", name: "endereco", id: "endereco", tipo: "text"); ?>
+              <?php InputAdmin(largura: 100, placeholder: "Ex: Rua das Flores, 123, Centro", name: "endereco", id: "endereco", tipo: "text", valor: $formData['endereco'] ?? ''); ?>
             </div>
           </div>
           <div class="form-row">
             <div class="form-grupo">
               <label for="nome_social">Nome Social</label>
-              <?php InputAdmin(largura: 100, placeholder: "Ex: João", name: "nome_social", id: "nome_social", tipo: "text"); ?>
+              <?php InputAdmin(largura: 100, placeholder: "Ex: João", name: "nome_social", id: "nome_social", tipo: "text", valor: $formData['nome_social'] ?? ''); ?>
             </div>
             <div class="form-grupo">
               <label for="genero">Gênero</label>
               <select id="genero" name="genero" class="select-padrao">
                 <option value="">Selecione</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Feminino">Feminino</option>
-                <option value="Não binario">Não binário</option>
-                <option value="Outros">Outros</option>
-                <option value="Não informar">Prefiro não informar</option>
+                <?php 
+                  $genero = $formData['genero'] ?? '';
+                  $opcoesGenero = ['Masculino','Feminino','Não binario','Outros','Não informar'];
+                  foreach($opcoesGenero as $opcao){
+                      $sel = ($genero === $opcao) ? 'selected' : '';
+                      echo "<option value='$opcao' $sel>$opcao</option>";
+                  }
+                ?>
               </select>
             </div>
           </div>
         </fieldset>
-        
+
+        <!-- Mantém todas as outras seções do formulário iguais, só adicionando repopulação -->
+        <!-- Informações Acadêmicas -->
         <fieldset class="form-section">
           <legend>Informações Acadêmicas</legend>
           <div class="form-row">
             <div class="form-grupo">
               <label for="matricula">Nº de Matrícula</label>
-              <?php InputAdmin(largura: 100, name: "matricula", id: "matricula", tipo: "text") ?>
+              <?php InputAdmin(largura: 100, name: "matricula", id: "matricula", tipo: "text", valor: $formData['matricula'] ?? ''); ?>
             </div>
             <div class="form-grupo">
               <label for="categoria">Categoria *</label>
               <select id="categoria" name="categoria" class="select-padrao" required>
                 <option value="">Selecione</option>
-                <option value="Aluno">Aluno</option>
-                <option value="Docente">Docente</option>
-                <option value="Bibliotecario">Bibliotecário</option>
+                <?php 
+                  $categoria = $formData['categoria'] ?? '';
+                  $opcoesCat = ['Aluno','Docente','Bibliotecario'];
+                  foreach($opcoesCat as $opcao){
+                      $sel = ($categoria === $opcao) ? 'selected' : '';
+                      echo "<option value='$opcao' $sel>$opcao</option>";
+                  }
+                ?>
               </select>
             </div>
             <div class="form-grupo">
               <label for="unidade_senac">Unidade *</label>
               <select id="unidade_senac" name="unidade_senac" class="select-padrao" required>
                 <option value="">Selecione</option>
-                <option value="Senac Hub Academy">Senac Hub Academy</option>
-                <option value="Senac Dourados">Senac Dourados</option>
-                <option value="Senac Três Lagoas">Senac Três Lagoas</option>
+                <?php 
+                  $unidade = $formData['unidade_senac'] ?? '';
+                  $opcoesUnidade = ['Senac Hub Academy','Senac Dourados','Senac Três Lagoas'];
+                  foreach($opcoesUnidade as $opcao){
+                      $sel = ($unidade === $opcao) ? 'selected' : '';
+                      echo "<option value='$opcao' $sel>$opcao</option>";
+                  }
+                ?>
               </select>
             </div>
           </div>
           <div class="form-row">
             <div class="form-grupo">
               <label for="curso">Curso</label>
-              <?php InputAdmin(largura: 100, name: "curso", id: "curso", tipo: "text") ?>
+              <?php InputAdmin(largura: 100, name: "curso", id: "curso", tipo: "text", valor: $formData['curso'] ?? ''); ?>
             </div>
             <div class="form-grupo">
               <label for="turma">Turma</label>
-              <?php InputAdmin(largura: 100, name: "turma", id: "turma", tipo: "text") ?>
+              <?php InputAdmin(largura: 100, name: "turma", id: "turma", tipo: "text", valor: $formData['turma'] ?? ''); ?>
             </div>
             <div class="form-grupo">
               <label for="data_fim_curso">Data de Término do Curso</label>
-              <?php InputAdmin(largura: 100, name: "data_fim_curso", id: "data_fim_curso", tipo: "date") ?>
+              <?php InputAdmin(largura: 100, name: "data_fim_curso", id: "data_fim_curso", tipo: "date", valor: $formData['data_fim_curso'] ?? ''); ?>
             </div>
           </div>
         </fieldset>
-        
+
+        <!-- Senha -->
         <fieldset class="form-section">
           <legend>Senha do usuário</legend>
           <div class="form-row">
             <div class="form-grupo">
               <label for="senha_usuario">Senha *</label>
-              <?php InputAdmin(largura: 100, name: "senha_usuario", id: "senha_usuario", tipo: "password", required: true) ?>
+              <?php InputAdmin(largura: 100, name: "senha_usuario", id: "senha_usuario", tipo: "password", required: true); ?>
             </div>
             <div class="form-grupo">
               <label for="senha_usuario_confirm">Confirmar senha *</label>
-              <?php InputAdmin(largura: 100, name: "senha_usuario_confirm", id: "senha_usuario_confirm", tipo: "password", required: true) ?>
+              <?php InputAdmin(largura: 100, name: "senha_usuario_confirm", id: "senha_usuario_confirm", tipo: "password", required: true); ?>
             </div>
           </div>
         </fieldset>
-        
+
+        <!-- Notas -->
         <fieldset class="form-section">
           <legend>Notas</legend>
           <div class="form-row">
             <div class="form-grupo">
-              <textarea name="notas_usuario" id="notas_usuario" cols="30" rows="10" placeholder="Observações administrativas sobre o usuário..."></textarea>
+              <textarea name="notas_usuario" id="notas_usuario" cols="30" rows="10" placeholder="Observações administrativas sobre o usuário..."><?= htmlspecialchars($formData['notas_usuario'] ?? '') ?></textarea>
             </div>
           </div>
         </fieldset>
@@ -185,15 +200,9 @@
   <?php if ($toastData): ?>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        console.log('Toast data:', {
-          mensagem: "<?php echo addslashes($toastData['mensagem']); ?>",
-          tipo: "<?php echo $toastData['tipo']; ?>"
-        });
-        
         mostrarToast("<?php echo addslashes($toastData['mensagem']); ?>", "<?php echo $toastData['tipo']; ?>");
       });
     </script>
   <?php endif; ?>
-
 </body>
 </html>
