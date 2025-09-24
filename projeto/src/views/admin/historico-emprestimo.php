@@ -46,7 +46,7 @@ require "../../../config/constantes.php"
                     <input type="radio" name="statusFilter" value="Em andamento" onchange="aplicarFiltroEPaginacao()"> Em andamento
                 </label>
             </div>
-            
+             
             <table>
                 <thead>
                     <tr>
