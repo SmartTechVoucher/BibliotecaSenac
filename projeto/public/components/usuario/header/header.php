@@ -23,7 +23,6 @@ $nomeUsuario = isset($nomeUsuario) ? $nomeUsuario : '';
     <div id="menu-links">
         <nav>
             <ul class="navbar-desktop-top">
-
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE?>/src/views/usuario/index.php">Início</a></li>
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>

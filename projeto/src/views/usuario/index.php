@@ -56,8 +56,10 @@ if (isset($_SESSION['toast'])) {
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
                 <div class="letreiro">
                     <div class="letras">
-                        <?php if ($usuarioLogado): ?>
-                            <h1 class="letras1">Bem-vindo de volta, <?php echo htmlspecialchars($nomeUsuario); ?>!</h1>
+                        <?php if ($usuarioLogado): 
+                            $primeiroNome = explode(' ', trim($nomeUsuario))[0] ?? trim($nomeUsuario);
+                            ?>
+                            <h1 class="letras1">Bem-vindo de volta, <?php echo htmlspecialchars($primeiroNome); ?>!</h1>
                             <h1 class="letras2">SENAC HUB ACADEMY.</h1>
                         <?php else: ?>
                             <h1 class="letras1">Bem-vindo à Biblioteca</h1>
