@@ -31,13 +31,13 @@ require "../../../config/constantes.php"
 
     <main>
         <div class="container-main">
-            <fieldset class="form-section">
-                <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
-
-                    <legend>
+            <fieldset class="form-section"><legend>
                         <img src="<?php echo $URLBASE ?>/public/assets/icons/emprestimo-icon.png" id="fieldset-icon" alt="">
                         Cadastro de emprestimo
                     </legend>
+                <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
+
+                    
                     <div class="form-row">
                         <label for="nome-usuario">Nome do usuário</label>
                         <?php
