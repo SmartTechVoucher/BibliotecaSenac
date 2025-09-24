@@ -35,11 +35,11 @@ function obterLivroOuPadrao($livros, $index)
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="../../../public/css/usuario/filtro-livros.css">
-    <link rel="stylesheet" href="../../../public/css/components/usuario/card2.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/filtro-livros.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
 </head>
 
 <body>

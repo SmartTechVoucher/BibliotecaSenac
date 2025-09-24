@@ -25,7 +25,7 @@ require(__DIR__ . '/../../../config/constantes.php');
     <?php
     include "../../../public/components/usuario/header/header.php";
     ?>
-    <header class="header">
+    <!-- <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -43,7 +43,7 @@ require(__DIR__ . '/../../../config/constantes.php');
                 </div>
             </div>
         </div>
-    </header>
+    </header> -->
 
     <!-- Main Content -->
     <main class="main">
@@ -51,7 +51,7 @@ require(__DIR__ . '/../../../config/constantes.php');
             <!-- Welcome Card -->
             <div class="welcome-card">
                 <div class="welcome-content">
-                    <h1 class="welcome-title">Bem-vindo de volta, Ana!</h1>
+                    <h1 class="welcome-title">Bem-vindo de volta, Marlon!</h1>
                     <p class="welcome-description">Explore nossa vasta coleção de livros digitais e físicos.</p>
                     <span class="welcome-status">Conta Premium</span>
                 </div>
@@ -110,7 +110,7 @@ require(__DIR__ . '/../../../config/constantes.php');
             </div>
 
             <!-- Quick Stats -->
-            <div class="stats-grid">
+            <!-- <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">127</div>
                     <div class="stat-label">Livros Lidos</div>
@@ -127,7 +127,7 @@ require(__DIR__ . '/../../../config/constantes.php');
                     <div class="stat-number accent">95%</div>
                     <div class="stat-label">Meta Mensal</div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
 

@@ -4,6 +4,7 @@
   --cinza: #333;
   --verdeLevementeClaro: #28a745;
   --vermelhoQuaseRosa: #dc3545;
+  --background: hsl(210, 20%, 98%);
 }
 
 * {
@@ -27,6 +28,7 @@ html, body {
   justify-content: center;
   flex-grow: 1;
   margin-top: 67px;
+  background-color: var(--background);
 }
 
 /* Card branco central */
