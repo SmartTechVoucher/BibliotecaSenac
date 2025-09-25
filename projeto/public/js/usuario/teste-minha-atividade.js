@@ -30,7 +30,7 @@ class Dashboard {
                         id: 1,
                         name: 'Marlon',
                         email: 'ana.silva@email.com',
-                        account_type: 'Premium',
+                        account_type: 'sdnjndw',
                         member_since: '2023-01-15',
                         avatar_url: null
                     },
@@ -227,18 +227,18 @@ class Dashboard {
     }
 
     // Update welcome card with user data
-    updateWelcomeCard(userData) {
-        const welcomeTitle = document.querySelector('.welcome-title');
-        const welcomeStatus = document.querySelector('.welcome-status');
+    // updateWelcomeCard(userData) {
+    //     const welcomeTitle = document.querySelector('.welcome-title');
+    //     const welcomeStatus = document.querySelector('.welcome-status');
         
-        if (welcomeTitle) {
-            welcomeTitle.textContent = `Bem-vindo de volta, ${userData.name}!`;
-        }
+    //     if (welcomeTitle) {
+    //         welcomeTitle.textContent = `Bem-vindo de volta, ${userData.name}!`;
+    //     }
         
-        if (welcomeStatus) {
-            welcomeStatus.textContent = `Conta ${userData.account_type}`;
-        }
-    }
+    //     if (welcomeStatus) {
+    //         welcomeStatus.textContent = `Conta ${userData.account_type}`;
+    //     }
+    // }
 
     // Update stats with real data
     updateStats(statsData) {

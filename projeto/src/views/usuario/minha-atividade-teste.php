@@ -52,8 +52,12 @@ require(__DIR__ . '/../../../config/constantes.php');
             <div class="welcome-card">
                 <div class="welcome-content">
                     <h1 class="welcome-title">Bem-vindo de volta, Marlon!</h1>
-                    <p class="welcome-description">Explore nossa vasta coleção de livros digitais e físicos.</p>
-                    <span class="welcome-status">Conta Premium</span>
+                    <p class="welcome-description">Explore nossa vasta coleção de livros.</p>
+                    
+                    <div class="regular" style="display: flex; align-items:center;" justiz>
+                    <p>Situação:</p><button class="welcome-status">Regular</button>
+                    </div>
+                    
                 </div>
                 <div class="welcome-icon">📖</div>
             </div>
@@ -62,7 +66,7 @@ require(__DIR__ . '/../../../config/constantes.php');
             <div class="dashboard-grid">
                 <div class="dashboard-card" data-modal="notifications">
                     <div class="card-header">
-                        <div class="card-icon">🔔</div>
+                        <div class="card-icon"><img src="<?php echo $URLBASE ?>/public/assets/icons/notificacao.png" alt=""></div>
                         <div class="card-count">3</div>
                     </div>
                     <div class="card-content">
@@ -74,7 +78,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
                 <div class="dashboard-card" data-modal="favorites">
                     <div class="card-header">
-                        <div class="card-icon">❤️</div>
+                        <div class="card-icon"><img src="<?php echo $URLBASE ?>/public/assets/icons/favorito.png" alt=""></div>
                         <div class="card-count">12</div>
                     </div>
                     <div class="card-content">
@@ -86,7 +90,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
                 <div class="dashboard-card accent" data-modal="recommendations">
                     <div class="card-header">
-                        <div class="card-icon">📚</div>
+                        <div class="card-icon"><img src="<?php echo $URLBASE ?>/public/assets/icons/book.png" alt=""></div>
                         <div class="card-count">8</div>
                     </div>
                     <div class="card-content">
@@ -98,7 +102,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
                 <div class="dashboard-card" data-modal="loans">
                     <div class="card-header">
-                        <div class="card-icon">⏰</div>
+                        <div class="card-icon"><img src="<?php echo $URLBASE ?>/public/assets/icons/relogio.png" alt=""></div>
                         <div class="card-count">2</div>
                     </div>
                     <div class="card-content">
@@ -136,7 +140,7 @@ require(__DIR__ . '/../../../config/constantes.php');
         <div class="modal-overlay"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h2>🔔 Notificações</h2>
+                <h2><img src="<?php echo $URLBASE ?>/public/assets/icons/notificacao.png" alt=""> Notificações</h2>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
@@ -154,7 +158,7 @@ require(__DIR__ . '/../../../config/constantes.php');
         <div class="modal-overlay"></div>
         <div class="modal-content large">
             <div class="modal-header">
-                <h2>❤️ Meus Favoritos</h2>
+                <h2><img src="<?php echo $URLBASE ?>/public/assets/icons/favorito.png" alt=""> Meus Favoritos</h2>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
@@ -173,7 +177,7 @@ require(__DIR__ . '/../../../config/constantes.php');
         <div class="modal-overlay"></div>
         <div class="modal-content extra-large">
             <div class="modal-header">
-                <h2>📚 Recomendações</h2>
+                <h2><img src="<?php echo $URLBASE ?>/public/assets/icons/book.png" alt=""> Recomendações</h2>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
@@ -192,7 +196,7 @@ require(__DIR__ . '/../../../config/constantes.php');
         <div class="modal-overlay"></div>
         <div class="modal-content large">
             <div class="modal-header">
-                <h2>⏰ Empréstimos Ativos</h2>
+                <h2><img src="<?php echo $URLBASE ?>/public/assets/icons/relogio.png" alt=""> Empréstimos Ativos</h2>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">

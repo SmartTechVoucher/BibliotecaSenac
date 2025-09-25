@@ -46,7 +46,7 @@ function obterLivroOuPadrao($livros, $index)
     <?php include "../../../public/components/usuario/header/header.php"; ?>
 
     <div class="container">
-        <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
+        
 
         <div class="content-wrapper">
             <div class="sidebar">
