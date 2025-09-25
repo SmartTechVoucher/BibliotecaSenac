@@ -81,22 +81,7 @@ CREATE TABLE usuarios (
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ativo BOOLEAN DEFAULT TRUE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-    telefone VARCHAR(20) NULL,
-    endereco TEXT NULL, 
-    genero ENUM('Masculino', 'Feminino', 'Não binario', 'Outros', 'Não informar') NULL,
-    foto_perfil VARCHAR(255) NULL, 
-    numero_matricula VARCHAR(50) NULL,
-    categoria ENUM('Aluno', 'Docente', 'Bibliotecario') NOT NULL,
-    unidade_senac ENUM('Senac Hub Academy', 'Senac Dourados', 'Senac Três Lagoas') NOT NULL,
-    curso VARCHAR(100) NULL,
-    turma VARCHAR(50) NULL,
-    data_fim_curso DATE NULL,
-    notas_usuario TEXT NULL,
-    senha VARCHAR(255) NOT NULL,
-    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ativo BOOLEAN DEFAULT TRUE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 CREATE TABLE livros (
     id_livro INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
