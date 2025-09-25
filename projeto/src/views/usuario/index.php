@@ -1,28 +1,37 @@
 <?php
-
-session_start();
-
-
-
+// index.php
 require __DIR__ . '/../../../config/constantes.php';
-
-
+require __DIR__ . '/../../../config/auth-check.php';
 include_once __DIR__ . '/../../../src/model/usuario/livro-model.php';
+
+// Usar a função de verificação de login do auth-check.php
+$usuario = obterUsuarioLogado();
+
+// Definir as variáveis que o header.php e o restante da página precisam
+$usuarioLogado = ($usuario !== null);
+$nomeUsuario = $usuario['nome'] ?? '';
+$emailUsuario = $usuario['email'] ?? '';
 
 $model = new LivroModel();
 $livros = $model->getLivrosMock();
 
-
+// Capturar dados do toast
+$toastData = null;
+if (isset($_SESSION['toast'])) {
+    $toastData = [
+        'mensagem' => $_SESSION['toast']['mensagem'],
+        'tipo' => $_SESSION['toast']['tipo']
+    ];
+    unset($_SESSION['toast']);
+}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo á Biblioteca SENAC HUB ACADEMY!</title>
+    <title>Bem-vindo à Biblioteca SENAC HUB ACADEMY!</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
@@ -34,40 +43,32 @@ $livros = $model->getLivrosMock();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
-
 </head>
 
 <body>
-
     <div id="overlay" class="overlay"></div>
 
-    <?php if (isset($_SESSION['toast'])): ?>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                mostrarToast("<?php echo addslashes($_SESSION['toast']['mensagem']); ?>", "<?php echo $_SESSION['toast']['tipo']; ?>");
-            });
-        </script>
-    <?php unset($_SESSION['toast']);
-    endif; ?>
     <?php include "../../../public/components/usuario/header/header.php" ?>
+    
     <div class="conteiner">
-
-
         <div class="geralinfo">
             <div class="info">
-
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/fotoSenac 1.png" alt="Foto do Senac" class="senacFoto">
                 <div class="letreiro">
                     <div class="letras">
-                        <h1 class="letras1">Bem-vindo a Biblioteca</h1>
-                        <h1 class="letras2">SENAC HUB ACADEMY.</h1>
+                        <?php if ($usuarioLogado): 
+                            $primeiroNome = explode(' ', trim($nomeUsuario))[0] ?? trim($nomeUsuario);
+                            ?>
+                            <h1 class="letras1">Bem-vindo de volta, <?php echo htmlspecialchars($primeiroNome); ?>!</h1>
+                            <h1 class="letras2">SENAC HUB ACADEMY.</h1>
+                        <?php else: ?>
+                            <h1 class="letras1">Bem-vindo à Biblioteca</h1>
+                            <h1 class="letras2">SENAC HUB ACADEMY.</h1>
+                        <?php endif; ?>
                     </div>
                     <p class="frase">"O ensino do futuro do mundo: pessoas inovando pela <br>transformação do Brasil"</p>
-
                 </div>
             </div>
-
-
 
             <form class="barrapesquisa">
                 <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> <button type="button" class="botaops" id="lupaId" onclick="focusInput()" tabindex="0"><img src="<?php echo $URLBASE ?>/public/assets/icons/lupa.svg" alt="Buscar"></button>
@@ -76,7 +77,6 @@ $livros = $model->getLivrosMock();
                 </div>
             </form>
         </div>
-
 
         <div class="generos-livros">
             <h1 class="gen-title">Gêneros de Livros</h1>
@@ -120,18 +120,14 @@ $livros = $model->getLivrosMock();
             </div>
         </div>
 
-
         <div class="container-estante">
-
             <div class="sup">
                 <h1 class="title">Livros</h1>
             </div>
             <div class="estante">
-
                 <div class="livros">
                     <div class="primeiraFileira">
                         <?php
-                        // Renderiza do índice 3 até 6 (4 cards)
                         for ($i = 3; $i < 7 && $i < count($livros); $i++):
                             $livro = $livros[$i];
                         ?>
@@ -145,37 +141,32 @@ $livros = $model->getLivrosMock();
 
                     <div class="segundaFileira">
                         <?php
-                        // Renderiza do índice 3 até 6 (4 cards)
                         for ($i = 3; $i < 8 && $i < count($livros); $i++):
                             $livro = $livros[$i];
                         ?>
                             <div class="livroEstante1">
-                                <?php include "../../../public/components/usuario/card/card2.php";   ?>
+                                <?php include "../../../public/components/usuario/card/card2.php"; ?>
                             </div>
                         <?php endfor; ?>
                     </div>
                 </div>
-
             </div>
         </div>
 
-
-
-
-
-
-
-        <?php
-            include "../../../public/components/usuario/footer/footer.php";
-        ?>
-
+        <?php include "../../../public/components/usuario/footer/footer.php"; ?>
     </div>
 
-
+    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
     <script src="<?php echo $URLBASE ?>/public/js/usuario/tela-inicial.js" defer></script>
     <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
-    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
+    
+    <?php if ($toastData): ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            mostrarToast("<?php echo addslashes($toastData['mensagem']); ?>", "<?php echo $toastData['tipo']; ?>");
+        });
+    </script>
+    <?php endif; ?>
 
 </body>
-
 </html>
