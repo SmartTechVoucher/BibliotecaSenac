@@ -1,8 +1,15 @@
 <?php
-require __DIR__ . '/../../../../config/constantes.php';
+// header.php
+
+// Apenas inclua as constantes, sem a lógica de sessão
+require_once __DIR__ . '/../../../../config/constantes.php';
+
+// Verifique se as variáveis existem antes de usá-las.
+// Se não existirem, defina-as com valores padrão para evitar avisos da IDE.
+$usuarioLogado = isset($usuarioLogado) ? $usuarioLogado : false;
+$nomeUsuario = isset($nomeUsuario) ? $nomeUsuario : '';
+
 ?>
-
-
 
 <button class="cbmenu-icon" id="menu-toggle">
     <i class="fas fa-bars"></i>
@@ -10,31 +17,25 @@ require __DIR__ . '/../../../../config/constantes.php';
 
 <div class="cabecalho">
     <div class="cbleft">
-
-
         <img class="icsenac" src="<?php echo $URLBASE ?>/public/assets/icons/SenacIcon 1.png" alt="Icone Hub academy">
     </div>
 
     <div id="menu-links">
         <nav>
-
             <ul class="navbar-desktop-top">
-
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE?>/src/views/usuario/index.php">Início</a></li>
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/livro-menu.png" alt=""><a href="../projeto/src/views/usuario/filtro-livros.php">Livros</a></li>
-
             </ul>
 
-
             <div class="entrar-mobile">
-                <?php if (isset($_SESSION['usuario'])): ?>
+                <?php if ($usuarioLogado): ?>
                     <div class="perfil-logado" onclick="toggleMenu(event)">
                         <img src="../projeto/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
-                        <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
+                        <span class="nome-usuario">Bem-vindo, <?php echo htmlspecialchars($nomeUsuario); ?></span>
                         <div class="menu-dropdown" id="menuPerfil">
-                            <a href="<?php echo $URLBASE ?>/projeto/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png"> Meu Perfil</a>
-                            <a href="logout.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
+                            <a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png"> Meu Perfil</a>
+                            <a href="<?php echo $URLBASE ?>/router/router.php?acao=logout"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
                         </div>
                     </div>
                 <?php else: ?>
@@ -52,13 +53,13 @@ require __DIR__ . '/../../../../config/constantes.php';
     </div>
 
     <div class="cbright" id="botao-entrar">
-        <?php if (isset($_SESSION['usuario'])): ?>
+        <?php if ($usuarioLogado): ?>
             <div class="perfil-logado" onclick="toggleMenu(event)">
                 <img src="<?php echo $URLBASE ?>/public/assets/icons/Icon perfil.png" alt="" class="icone-perfil">
-                <span class="nome-usuario">Bem-vindo, <?php echo $_SESSION['usuario']['nome'] ?? 'Usuário'; ?></span>
+                <span class="nome-usuario">Bem-vindo, <?php echo htmlspecialchars($nomeUsuario); ?></span>
                 <div class="menu-dropdown" id="menuPerfil">
                     <a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/Perfil2.png" alt="" class="perfil-header-inicial"> Meu Perfil</a>
-                    <a href="logout.php"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
+                    <a href="<?php echo $URLBASE ?>/router/router.php?acao=logout"><img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="">Sair</a>
                 </div>
             </div>
         <?php else: ?>
@@ -80,25 +81,27 @@ require __DIR__ . '/../../../../config/constantes.php';
         <h2 class="biblioteca">Biblioteca</h2>
     </div>
 
-
-
     <div class="menu-sanduiche">
-
         <ul class="navbar-desktop">
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/index.php">Início</a></li>
-            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php">Meu Perfil</a></li>
+            
+            <?php if ($usuarioLogado): ?>
+                <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php">Meu Perfil</a></li>
+                <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/atividades.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-atividade.php">Minha Atividade</a></li>
+            <?php endif; ?>
+            
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/PesquisaIcon.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/filtro-livros.php">Pesquisar Livros</a></li>
             <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/ContatoIcon.png" alt=""><a href="https://ww3.ms.senac.br/">Contato</a></li>
-            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/atividades.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-atividade.php">Minha Atividade</a></li>
-
         </ul>
     </div>
 
     <div class="perfil-lateral-2">
-        <a href="<?php echo $URLBASE ?>/logout.php" class="logout-link">
-            <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="Sair">
-            <p>Sair</p>
-        </a>
+        <?php if ($usuarioLogado): ?>
+            <a href="<?php echo $URLBASE ?>/router/router.php?acao=logout" class="logout-link">
+                <img src="<?php echo $URLBASE ?>/public/assets/icons/sair.png" alt="Sair">
+                <p>Sair</p>
+            </a>
+        <?php endif; ?>
     </div>
 </div>
 
