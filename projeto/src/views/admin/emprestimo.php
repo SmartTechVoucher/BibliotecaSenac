@@ -31,8 +31,8 @@
                 <!-- pesquisar usuario -->
                 <div class="searchUser">
                     <h3>Usuário:</h3>
-                    <form class="searchInput">
-                        <input type="text" name="" id="searchBar" placeholder="Insira nome, CPF ou nº de matrícula">
+                    <form class="searchInput" name="formularioDeBuscaDeUsuario">
+                        <input type="text" name="buscarUsuario" id="searchBar" placeholder="Insira nome, CPF ou nº de matrícula">
                         <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_Usuario.png" alt="">
                     </form> 
                 </div>
@@ -58,8 +58,8 @@
                 <!-- pesquisar livro -->
                 <div class="searchBook">
                     <h3>Código do livro:</h3>
-                    <form class="searchInput">
-                        <input type="text" name="" id="searchBar" placeholder="Insira código de exemplar">
+                    <form class="searchInput" name="formularioDeBuscaDeLivro">
+                        <input type="text" name="buscarLivro" id="searchBar" placeholder="Insira código de exemplar">
                         <img src="<?php echo $URLBASE?>/public/assets/icons/Icone_CodigoDoLivro.png" alt="">
                     </form>
                 </div>
