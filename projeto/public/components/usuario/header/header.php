@@ -83,7 +83,7 @@ $nomeUsuario = isset($nomeUsuario) ? $nomeUsuario : '';
 
     <div class="menu-sanduiche">
         <ul class="navbar-desktop">
-            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE ?>/index.php">Início</a></li>
+            <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/index.php">Início</a></li>
             
             <?php if ($usuarioLogado): ?>
                 <li class="menu-li"><img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt=""><a href="<?php echo $URLBASE ?>/src/views/usuario/minha-conta-usuario.php">Meu Perfil</a></li>
