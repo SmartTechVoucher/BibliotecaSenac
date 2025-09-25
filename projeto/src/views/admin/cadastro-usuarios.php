@@ -39,7 +39,7 @@
 
   <main>
     <div class="container-main">
-      <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
+      <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data" name="cadastrarDiversasInformacoes">
         <fieldset class="form-section">
           <legend>Informações Pessoais</legend>
           <div id="foto-perfil-container">
