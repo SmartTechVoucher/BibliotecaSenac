@@ -1,7 +1,22 @@
 <?php
     require "../../../config/constantes.php"
 ?>
+<?php
+include 'conexao.php';
 
+// Verifica se veio algum filtro (GET)
+$filtro = isset($_GET['status']) ? $_GET['status'] : 'Todos';
+
+// Query base
+$sql = "SELECT * FROM emprestimos";
+
+// Se tiver filtro aplica
+if ($filtro != 'Todos') {
+    $sql .= " WHERE status = '$filtro'";
+}
+
+$result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -47,18 +62,30 @@
         </div>
             <table>
                 <thead>
-                    <tr>
-                        <th>Status</th>
-                        <th>Exemplar</th>
-                        <th>Leitor</th>
-                        <th>Data</th>
-                        <th>Prazo</th>
-                        <th>Devolução</th>
-                    </tr>
-                </thead>
-                <tbody id="userTable"></tbody>
-                
-            </table>
+                <tr>
+      <th>Status</th>
+      <th>Exemplar</th>
+      <th>Leitor</th>
+      <th>Data</th>
+      <th>Prazo</th>
+      <th>Devolução</th>
+    </tr>
+    <?php
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>
+                    <td>{$row['status']}</td>
+                    <td>{$row['exemplar']}</td>
+                    <td>{$row['leitor']}</td>
+                    <td>" . date('d/m/Y', strtotime($row['data'])) . "</td>
+                    <td>" . date('d/m/Y', strtotime($row['prazo'])) . "</td>
+                    <td>{$row['devolucao']}</td>
+                  </tr>";
+        }
+    } else {
+        echo "<tr><td colspan='6'>Nenhum empréstimo encontrado</td></tr>";
+    }
+    ?>
 
     <div class="pagination-controls">
         <button id="prevBtn" onclick="paginaAnterior()">Anterior</button>
