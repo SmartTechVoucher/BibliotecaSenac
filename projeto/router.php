@@ -78,20 +78,19 @@ switch ($acao) {
         exit;
         break;
 
-    case 'criarUsuario':
+    // ====== ADMIN ======
+
+     case 'criarUsuario':
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
             exit;
         }
-
-        // (mesmo código de validação e upload que você já tinha — não alterei)
         // ...
         // $resultado = $usuarioController->criarUsuario(...);
         // if ($resultado['success']) { ... }
 
         break;
 
-    // ====== ADMIN ======
     case 'loginAdmin':
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');

@@ -164,10 +164,8 @@
     font-family: "Roboto", sans-serif;
     color: var(--cor-texto);
     border-right: 3px solid var(--cor-texto);
-    white-space: nowrap;
-    overflow: hidden;
+    white-space: nowrap;    
     width: 0;
-    opacity: 0;
     animation:
         aparecerUsuario 0s 1.5s forwards,
         escreverUsuario steps(var(--char-count), end) 2s 1.5s forwards,

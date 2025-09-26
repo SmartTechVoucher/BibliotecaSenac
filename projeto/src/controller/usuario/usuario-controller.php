@@ -2,29 +2,28 @@
 // UsuarioController.php
 require_once __DIR__ . '/../../../config/constantes.php';
 require_once __DIR__ . '/../../../config/db/database.php';
- 
+
 class UsuarioController {
     private $db;
- 
+
     public function __construct() {
         $this->db = new Database();
     }
- 
+
     public function criarUsuario($nome, $nome_social, $cpf, $email, $data_nascimento, $telefone, 
                                 $endereco, $genero, $foto_perfil, $numero_matricula, $categoria, 
                                 $unidade_senac, $curso, $turma, $data_fim_curso, $notas_usuario, $senha) {
         try {
             $conn = $this->db->Connect();
- 
+
             if ($this->emailJaExiste($email)) {
                 return ['success' => false, 'message' => 'Este email já está cadastrado!'];
             }
- 
+
             if ($this->cpfJaExiste($cpf)) {
                 return ['success' => false, 'message' => 'Este CPF já está cadastrado!'];
             }
 
-            // Validar valores ENUM
             if (!$this->validarCategoria($categoria)) {
                 return ['success' => false, 'message' => 'Categoria inválida!'];
             }
@@ -36,18 +35,17 @@ class UsuarioController {
             if ($genero && !$this->validarGenero($genero)) {
                 return ['success' => false, 'message' => 'Gênero inválido!'];
             }
- 
+
             $sql = "INSERT INTO usuarios (nome, nome_social, cpf, email, data_nascimento, telefone, endereco,
                     genero, foto_perfil, numero_matricula, categoria, unidade_senac, curso, turma, 
                     data_fim_curso, notas_usuario, senha)
                     VALUES (:nome, :nome_social, :cpf, :email, :data_nascimento, :telefone, :endereco,
                     :genero, :foto_perfil, :numero_matricula, :categoria, :unidade_senac, :curso, :turma,
                     :data_fim_curso, :notas_usuario, :senha)";
- 
+
             $stmt = $conn->prepare($sql);
- 
             $hash = password_hash($senha, PASSWORD_BCRYPT);
- 
+
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':nome_social', $nome_social);
             $stmt->bindParam(':cpf', $cpf);
@@ -65,7 +63,7 @@ class UsuarioController {
             $stmt->bindParam(':data_fim_curso', $data_fim_curso);
             $stmt->bindParam(':notas_usuario', $notas_usuario);
             $stmt->bindParam(':senha', $hash);
- 
+
             $result = $stmt->execute();
             
             if ($result) {
@@ -79,28 +77,27 @@ class UsuarioController {
             return ['success' => false, 'message' => 'Erro interno do servidor'];
         }
     }
- 
+
     public function validarLogin($email, $senha) {
         try {
             $conn = $this->db->Connect();
- 
-            // SELECT incluindo verificação de usuário ativo
-            $sql = "SELECT id_usuario AS id, nome, email, senha, categoria, ativo 
+
+            // Inclui foto_perfil no SELECT
+            $sql = "SELECT id_usuario AS id, nome, email, senha, categoria, foto_perfil, ativo 
                     FROM usuarios 
                     WHERE email = :email AND ativo = 1 
                     LIMIT 1";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':email', $email);
             $stmt->execute();
- 
+
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
- 
+
             if ($usuario && isset($usuario['senha']) && password_verify($senha, $usuario['senha'])) {
-                // Remove senha do array retornado
-                unset($usuario['senha']);
-                return $usuario; // contém id, nome, email, categoria, ativo
+                unset($usuario['senha']); // não manter senha
+                return $usuario; // retorna id, nome, email, categoria, foto_perfil, ativo
             }
- 
+
             return false;
         } catch (PDOException $e) {
             error_log("Erro ao validar login: " . $e->getMessage());
@@ -118,7 +115,7 @@ class UsuarioController {
             
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($usuario) {
-                unset($usuario['senha']); // Never return password
+                unset($usuario['senha']);
             }
             return $usuario;
         } catch (PDOException $e) {
@@ -126,7 +123,7 @@ class UsuarioController {
             return false;
         }
     }
- 
+
     private function emailJaExiste($email) {
         try {
             $conn = $this->db->Connect();
@@ -140,7 +137,7 @@ class UsuarioController {
             return false;
         }
     }
- 
+
     private function cpfJaExiste($cpf) {
         try {
             $conn = $this->db->Connect();
