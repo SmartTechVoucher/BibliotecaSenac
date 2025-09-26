@@ -13,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
  * Resolve a URL da imagem do usuário:
  * - se $foto é vazio -> retorna empty string
  * - se começa com "http" ou "/" -> retorna tal qual (URL absoluta/absoluta do servidor)
- * - caso contrário -> assume que é um filename e monta $URLBASE/public/uploads/usuarios/{filename}
+ * - caso contrário -> assume que é um filename e monta $URLBASE/uploads/perfil/{filename}
  */
 function resolverUrlFotoUsuario(?string $foto): string {
     global $URLBASE;
@@ -27,8 +27,14 @@ function resolverUrlFotoUsuario(?string $foto): string {
         return $foto;
     }
 
-    // Caso padrão: filename salvo no banco -> pasta de uploads
-    return rtrim($URLBASE, '/') . '/public/uploads/usuarios/' . rawurlencode($foto);
+    // CORREÇÃO: Estrutura correta na raiz do projeto
+    $urlFoto = rtrim($URLBASE, '/') . '/uploads/perfil/' . rawurlencode($foto);
+    
+    // DEBUG: Log para verificar o que está sendo gerado
+    error_log("FOTO DEBUG - Nome arquivo: " . $foto);
+    error_log("FOTO DEBUG - URL gerada: " . $urlFoto);
+    
+    return $urlFoto;
 }
 
 // Compatibilidade: se a página já setou essas variáveis, usa; senão busca na sessão
@@ -108,7 +114,8 @@ $iconePadrao = rtrim($URLBASE, '/') . '/public/assets/icons/Icon perfil.png';
                     <img src="<?php echo htmlspecialchars($iconePadrao); ?>" alt="Ícone padrão" class="icone-perfil">
                 <?php endif; ?>
 
-                </span class="nome-usuario">Olá, <?php echo htmlspecialchars($nomeUsuario); ?></span>
+                <!-- CORREÇÃO: Havia um erro de sintaxe aqui -->
+                <span class="nome-usuario">Olá, <?php echo htmlspecialchars($nomeUsuario); ?></span>
 
                 <div class="menu-dropdown" id="menuPerfil">
                     <a href="<?php echo htmlspecialchars($URLBASE); ?>/src/views/usuario/minha-conta-usuario.php">
