@@ -87,7 +87,8 @@ $result = $conn->query($sql);
     }
     ?>
 
-    <div class="pagination-controls">
+ 
+<div class="pagination-controls">
         <button id="prevBtn" onclick="paginaAnterior()">Anterior</button>
         <span id="pageInfo" class="pagination-info"></span>
         <button id="nextBtn" onclick="proximaPagina()">Próximo</button>
@@ -103,7 +104,6 @@ $result = $conn->query($sql);
 
  </body>
 </html>
-
 
 
    
