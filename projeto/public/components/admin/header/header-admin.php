@@ -10,7 +10,7 @@ require "../../../config/constantes.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cabecalho</title>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/header-admin.css">
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/modal.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
 </head>
 <body>
 
@@ -38,13 +38,13 @@ require "../../../config/constantes.php";
                     <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeLivros.php">Cadastrar Livros</a>
                     </li>
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php">Lista de Livros Cadastrados</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php">Livros Cadastrados</a>
                 </li>
                 <li>
                     <a href="<?php echo $URLBASE ?>/src/views/admin/cadastro-usuarios.php">Cadastrar Usuários</a>
                 </li>
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php">Lista de Usuários Cadastrados</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php">Usuários Cadastrados</a>
                 </li>
                 <li>
                     <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeRelatorios.php">Relatórios</a>

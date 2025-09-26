@@ -14,19 +14,19 @@ class Database
             );
 
             $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-            echo "Deu certo";
             return $conn;
 
-        } catch (\PDOException $th) {
-            
-            echo "Erro: ".$th->getMessage();
+        } catch (PDOException $th) {
+            error_log("Erro de conexão DB: " . $th->getMessage());
+            return null;
         }
         
     }
 
 }
 
-$db = new Database();
-$db->Connect();
+ // Não conectar automaticamente para produção
+?>
 

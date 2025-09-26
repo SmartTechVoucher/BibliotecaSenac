@@ -1,5 +1,14 @@
 <?php
 require_once __DIR__ . '/../../../config/constantes.php';
+require_once __DIR__ . '/../../model/usuario/LivroModel.php';
+$livro_model = new LivroModel();
+
+$autores = $livro_model->getOpcoesSelect('autores');
+$editoras = $livro_model->getOpcoesSelect('unidades');  
+$idiomas = $livro_model->getOpcoesSelect('idiomas');
+$categorias = $livro_model->getOpcoesSelect('categorias');
+$areas = $livro_model->getOpcoesSelect('areas');
+$documentos = $livro_model->getOpcoesSelect('documentos');
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +21,7 @@ require_once __DIR__ . '/../../../config/constantes.php';
 
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
-    <link rel="stylesheet" href="../../../public/css/admin/telaCadastroLivros.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/telaCadastroLivros.css">
     <?php include "../../../public/components/admin/input/input-admin.php"; ?>
     <?php include "../../../public/components/admin/button/button-admin.php"; ?>
     <?php require_once __DIR__ . '/../../../public/components/admin/select/input-select.php'; ?>
@@ -38,7 +47,7 @@ require_once __DIR__ . '/../../../config/constantes.php';
     include "../../../public/components/admin/header/header-admin.php";
     ?>
     <div class="container-main">
-        <form id="cadastro-form" action="#" method="post">
+        <form id="cadastro-form" action="<?php echo $URLBASE ?>/router.php?acao=cadastrarLivro" method="post" enctype="multipart/form-data">
 
             <fieldset class="form-section">
                 <legend>Cadastro de livro</legend>
@@ -49,58 +58,24 @@ require_once __DIR__ . '/../../../config/constantes.php';
                         InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
                         ?>
                     </div>
+                    
+                    <!-- Campo para número de páginas (obrigatório no schema de livros) -->
+                    <div class="form-grupo">
+                        <label for="numero-paginas">Número de Páginas</label>
+                        <?php InputAdmin(largura: 100, name: "numero-paginas", id: "numero-paginas", tipo: "number", required: true) ?>
+                    </div>
 
                     <div class="form-grupo">
                         <?php
-                        $autoresMock = [
-                            ['id' => 1, 'nome' => 'Machado de Assis'],
-                            ['id' => 2, 'nome' => 'Clarice Lispector'],
-                            ['id' => 3, 'nome' => 'Graciliano Ramos'],
-                            ['id' => 4, 'nome' => 'Carlos Drummond de Andrade'],
-                            ['id' => 5, 'nome' => 'José Saramago'],
-                            ['id' => 6, 'nome' => 'Fernando Pessoa'],
-                            ['id' => 7, 'nome' => 'J.R.R. Tolkien'],
-                            ['id' => 8, 'nome' => 'George Orwell'],
-                            ['id' => 9, 'nome' => 'Gabriel García Márquez'],
-                            ['id' => 10, 'nome' => 'Stephen King'],
-                            ['id' => 11, 'nome' => 'Agatha Christie'],
-                            ['id' => 12, 'nome' => 'Isaac Asimov'],
-                            ['id' => 13, 'nome' => 'Virginia Woolf'],
-                            ['id' => 14, 'nome' => 'H.P. Lovecraft'],
-                            ['id' => 15, 'nome' => 'Albert Camus'],
-                            ['id' => 16, 'nome' => 'J.K. Rowling'],
-                            ['id' => 17, 'nome' => 'Jane Austen'],
-                            ['id' => 18, 'nome' => 'C.S. Lewis'],
-                        ];
-
-                        renderSelectModal('autor', 'Autor', $autoresMock);
+                        renderSelectModal('autor', 'Autor', $autores);
                         ?>
 
-                        </select>
                     </div>
                     <div class="form-grupo">
 
                         <?php
 
-                        $editorasMock = [
-                            ['id' => 1, 'nome' => 'Companhia das Letras'],
-                            ['id' => 2, 'nome' => 'Editora Rocco'],
-                            ['id' => 3, 'nome' => 'Editora Record'],
-                            ['id' => 4, 'nome' => 'Penguin Random House'],
-                            ['id' => 5, 'nome' => 'Grupo Editorial Pensamento'],
-                            ['id' => 6, 'nome' => 'Intrínseca'],
-                            ['id' => 7, 'nome' => 'Globo Livros'],
-                            ['id' => 8, 'nome' => 'Editora Martins Fontes'],
-                            ['id' => 9, 'nome' => 'HarperCollins Brasil'],
-                            ['id' => 10, 'nome' => 'Saraiva'],
-                            ['id' => 11, 'nome' => 'Editora 34'],
-                            ['id' => 12, 'nome' => 'Zahar'],
-                            ['id' => 13, 'nome' => 'Editora Aleph'],
-                            ['id' => 14, 'nome' => 'Cengage Learning'],
-                            ['id' => 15, 'nome' => 'Manole']
-                        ];
-
-                        renderSelectModal('editora', 'Editora', $editorasMock);
+                        renderSelectModal('editora', 'Editora', $editoras);
                         ?>
                     </div>
 
@@ -119,44 +94,14 @@ require_once __DIR__ . '/../../../config/constantes.php';
                         <?php
 
 
-                        $idiomasMock = [
-                            ['id' => 1, 'nome' => 'Português'],
-                            ['id' => 2, 'nome' => 'Inglês'],
-                            ['id' => 3, 'nome' => 'Espanhol'],
-                            ['id' => 4, 'nome' => 'Francês'],
-                            ['id' => 5, 'nome' => 'Alemão'],
-                            ['id' => 6, 'nome' => 'Italiano'],
-                            ['id' => 7, 'nome' => 'Japonês'],
-                            ['id' => 8, 'nome' => 'Chinês'],
-                            ['id' => 9, 'nome' => 'Russo'],
-                            ['id' => 10, 'nome' => 'Árabe'],
-                        ];
-
-                        renderSelectModal('idioma', 'Idioma', $idiomasMock);
+                        renderSelectModal('idioma', 'Idioma', $idiomas);
                         ?>
                     </div>
                     <div class="form-grupo">
                         <?php
 
 
-                        $categoriasMock = [
-                            ['id' => 1, 'nome' => 'Ficção'],
-                            ['id' => 2, 'nome' => 'Não-ficção'],
-                            ['id' => 3, 'nome' => 'Romance'],
-                            ['id' => 4, 'nome' => 'Suspense'],
-                            ['id' => 5, 'nome' => 'Fantasia'],
-                            ['id' => 6, 'nome' => 'Ficção Científica'],
-                            ['id' => 7, 'nome' => 'Biografia'],
-                            ['id' => 8, 'nome' => 'Autoajuda'],
-                            ['id' => 9, 'nome' => 'História'],
-                            ['id' => 10, 'nome' => 'Culinária'],
-                            ['id' => 11, 'nome' => 'Infantil'],
-                            ['id' => 12, 'nome' => 'Poesia'],
-                            ['id' => 13, 'nome' => 'Aventura'],
-                            ['id' => 14, 'nome' => 'Humor'],
-                        ];
-
-                        renderSelectModal('categoria', 'Categoria', $categoriasMock);
+                        renderSelectModal('categoria', 'Categoria', $categorias);
                         ?>
 
                     </div>
@@ -166,20 +111,7 @@ require_once __DIR__ . '/../../../config/constantes.php';
                         <?php
 
 
-                        $areasMock = [
-                            ['id' => 1, 'nome' => 'Ciências Exatas'],
-                            ['id' => 2, 'nome' => 'Ciências Biológicas'],
-                            ['id' => 3, 'nome' => 'Ciências Humanas'],
-                            ['id' => 4, 'nome' => 'Ciências Sociais Aplicadas'],
-                            ['id' => 5, 'nome' => 'Engenharias'],
-                            ['id' => 6, 'nome' => 'Saúde'],
-                            ['id' => 7, 'nome' => 'Linguística, Letras e Artes'],
-                            ['id' => 8, 'nome' => 'Agricultura e Meio Ambiente'],
-                            ['id' => 9, 'nome' => 'Arquitetura e Urbanismo'],
-                            ['id' => 10, 'nome' => 'Computação e Informática'],
-                        ];
-
-                        renderSelectModal('area', 'Área', $areasMock);
+                        renderSelectModal('area', 'Área', $areas);
                         ?>
 
                     </div>
@@ -194,6 +126,9 @@ require_once __DIR__ . '/../../../config/constantes.php';
                         <?php
                         InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
                         ?>
+    <div id="preview-container" style="margin-top: 10px;">
+        <img id="preview-capa" src="" alt="Pré-visualização da capa" style="max-width: 200px; max-height: 300px; display: none; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
                     </div>
                 </div>
                 <div class="form-coluna">
@@ -207,12 +142,7 @@ require_once __DIR__ . '/../../../config/constantes.php';
                     </div>
                     <div class="form-grupo">
                         <label for="tipo-documento">Tipo de documento</label>
-                        <select id="tipo-documento" name="tipo-documento" class="input-admin" required>
-                            <option value="">Selecione</option>
-                            <option value="tipo-documento-livro">Livro</option>
-                            <option value="tipo-documento-ebook">eBook</option>
-                            <option value="tipo-documento-revista">Revista</option>
-                        </select>
+                        <?php renderSelectModal('tipo-documento', 'Tipo de documento', $documentos); ?>
                     </div>
                 </div>
 
@@ -233,13 +163,37 @@ require_once __DIR__ . '/../../../config/constantes.php';
     </div>
 
 
-    </div>
-
     <?php
     include "../../../public/components/admin/footer/footer-admin.php";
     ?>
-    <script src="../../../public/js/admin/telaDeCadastroDeLivros.js"></script>
+    <script src="<?php echo $URLBASE ?>/public/js/admin/telaDeCadastroDeLivros.js"></script>
 
 </body>
+    <!-- Modal de confirmação de cadastro de livro -->
+    <div id="success-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Livro Registrado com Sucesso!</h2>
+            <p id="success-message"></p>
+            <div class="modal-buttons">
+                <button class="btn-cancelar" onclick="closeSuccessModal()">Continuar Cadastrando</button>
+                <button class="btn-salvar" onclick="goToBooksList()">Ver Lista de Livros</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function showSuccessModal(message) {
+        document.getElementById('success-message').textContent = message;
+        document.getElementById('success-modal').style.display = 'flex';
+    }
+
+    function closeSuccessModal() {
+        document.getElementById('success-modal').style.display = 'none';
+    }
+
+    function goToBooksList() {
+        window.location.href = '<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php';
+    }
+    </script>
 
 </html>
