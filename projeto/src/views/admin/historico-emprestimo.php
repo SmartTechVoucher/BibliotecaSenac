@@ -46,20 +46,20 @@ $result = $conn->query($sql);
     <div class="main-container">
         <h2>Histórico de Empréstimos</h2>   
         <div class="filter-options">
-            <span>Filtrar por Status:</span>
-            <label>
-                <input type="radio" name="statusFilter" value="Todos" checked onchange="aplicarFiltroEPaginacao()"> Todos
-            </label>
-            <label>
-                <input type="radio" name="statusFilter" value="Finalizado" onchange="aplicarFiltroEPaginacao()"> Finalizado
-            </label>
-            <label>
-                <input type="radio" name="statusFilter" value="Atrasado" onchange="aplicarFiltroEPaginacao()"> Atrasado
-            </label>
-            <label>
-                <input type="radio" name="statusFilter" value="Em andamento" onchange="aplicarFiltroEPaginacao()"> Em andamento
-            </label>
-        </div>
+    <span>Filtrar por Status:</span>
+    <label>
+        <input type="radio" name="statusFilter" value="Todos" checked> Todos
+    </label>
+    <label>
+        <input type="radio" name="statusFilter" value="Finalizado"> Finalizado
+    </label>
+    <label>
+        <input type="radio" name="statusFilter" value="Atrasado"> Atrasado
+    </label>
+    <label>
+        <input type="radio" name="statusFilter" value="Em andamento"> Em andamento
+    </label>
+</div>
             <table>
                 <thead>
                 <tr>

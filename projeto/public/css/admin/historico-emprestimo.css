@@ -161,34 +161,76 @@ table {
     color: #555;
 }
 
-.main-container{
+.main-container {
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
     background: #fbfaff;
     padding: 20px;
     width: 90%;
-    border-radius: 5px;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-top: 5%;
+    max-width: 1000px;
+    border-radius: 8px;
+    margin: 40px auto;
 }
-.main-container h2{
+
+.main-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.filter-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.filter-options input[type="radio"] {
+    margin-right: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto;
+}
+
+thead th {
+    background-color: #7a7e83;
+    color: white;
+    padding: 12px;
     text-align: center;
 }
 
-th:first-child {
-    border-top-left-radius: 10px; }
-th:last-child {
-    border-top-right-radius: 10px; 
-}
-tbody{
+tbody td {
     background: #e0e0e0;
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #d6d6d6;
+}
+
+th:first-child {
+    border-top-left-radius: 10px;
+}
+
+th:last-child {
+    border-top-right-radius: 10px;
 }
 
 tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
 }
 tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 10px; 
+    border-bottom-right-radius: 10px;
 }
 
 th, td {
@@ -198,15 +240,7 @@ th, td {
     height: 50px; 
     vertical-align: middle; 
 }
-.lulusantos{
-    background-color: #f1f1f1;
-    max-width: 800px;
-    margin: 0 auto;
-    background: #e6e6fa;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+
 
 body {
     margin: 0;
