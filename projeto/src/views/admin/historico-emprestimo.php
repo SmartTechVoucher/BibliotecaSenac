@@ -1,18 +1,41 @@
 <?php
-    require "../../../config/constantes.php"
-?>
-<?php
+require "../../../config/constantes.php";
 include 'conexao.php';
 
-// Verifica se veio algum filtro (GET)
-$filtro = isset($_GET['status']) ? $_GET['status'] : 'Todos';
+// Captura os filtros da URL
+$status    = $_GET['status']    ?? 'Todos';
+$exemplar  = $_GET['exemplar']  ?? '';
+$leitor    = $_GET['leitor']    ?? '';
+$data      = $_GET['data']      ?? '';
+$prazo     = $_GET['prazo']     ?? '';
+$devolucao = $_GET['devolucao'] ?? '';
 
-// Query base
-$sql = "SELECT * FROM emprestimos";
 
-// Se tiver filtro aplica
-if ($filtro != 'Todos') {
-    $sql .= " WHERE status = '$filtro'";
+$sql = "SELECT * FROM emprestimos WHERE 1=1";
+
+
+if ($status != 'Todos') {
+    $sql .= " AND status = '$status'";
+}
+
+if (!empty($exemplar)) {
+    $sql .= " AND exemplar = '$exemplar'";
+}
+
+if (!empty($leitor)) {
+    $sql .= " AND leitor LIKE '%$leitor%'";
+}
+
+if (!empty($data)) {
+    $sql .= " AND data = '$data'";
+}
+
+if (!empty($prazo)) {
+    $sql .= " AND prazo = '$prazo'";
+}
+
+if (!empty($devolucao)) {
+    $sql .= " AND devolucao = '$devolucao'";
 }
 
 $result = $conn->query($sql);

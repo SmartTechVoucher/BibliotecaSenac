@@ -313,6 +313,23 @@ body {
     color: var(--branco);
 }
 
+/* Faz o body ocupar a tela toda */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* O conteúdo principal expande pra empurrar o rodapé */
+.main-container {
+    flex: 1;
+}
+
+/* Garante que o rodapé grude no final */
+.rodape {
+    margin-top: auto;
+}
+
 /*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*//*Evento*/
 
 @media(max-width:1024px){
@@ -508,7 +525,6 @@ body {
         height: 252px;
     }
 
+
+
 }
-
-
-
