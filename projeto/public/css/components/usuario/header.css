@@ -158,6 +158,20 @@
 .icone-perfil:not([src]) {
     display: none;
 }
+
+/* ÍCONE SVG DO BOTÃO ENTRAR */
+.button-entrar .icone-perfil {
+    width: 28px;
+    height: 28px;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.button-entrar .icone-perfil:hover {
+    transform: none;
+    box-shadow: none;
+}
  
 .icsenac{
     margin-left: 50px;
