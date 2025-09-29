@@ -7,7 +7,7 @@ $result = $conn->query($sql);
 $dado = $result->fetch_assoc();
 ?>
 
-<h2>Detalhes do Empréstimo</h2>
+                    <h2>Detalhes</h2>
 <p><strong>Exemplar:</strong> <?= $dado['exemplar'] ?></p>
 <p><strong>Leitor:</strong> <?= $dado['leitor'] ?></p>
 <p><strong>Status:</strong> <?= $dado['status'] ?></p>
