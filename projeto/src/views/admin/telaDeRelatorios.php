@@ -38,10 +38,11 @@
     ?>
 
     <div class="container-main">
-        <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data" name="cadastrarRelatorios">
+        <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
             <fieldset class="form-section">
                 <legend> <img src="../../../public/assets/icons/relatorio.png" alt="">Gerar relatórios</legend>
                 <!-- ideia -->
+                <!-- <p>Configure os parâmetros para gerar seu relatório personalizado</p> -->
 
                 <div class="form-row">
 
