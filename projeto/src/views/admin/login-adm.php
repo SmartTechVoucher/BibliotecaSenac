@@ -41,7 +41,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
             <div class="container-form">
                 
-                <form action="../../../router.php?acao=validarLogin" method="POST" class="card-login" id="card-login">
+                <form action="../../../router.php?acao=loginAdmin" method="POST" class="card-login" id="card-login" name="dadosLoginAdm">
                     <div class="titles-form">
                         <h2>Acesso Administrativo</h2>
                         <p>Entre com suas credenciais</p>
@@ -85,11 +85,27 @@ require(__DIR__ . '/../../../config/constantes.php');
             </div>
 
 
+            <?php if (isset($_SESSION['toast'])): ?>
+            <div id="toast" class="toast <?= $_SESSION['toast']['tipo'] ?>">
+                <?= $_SESSION['toast']['mensagem'] ?>
+            </div>
+            <?php unset($_SESSION['toast']); ?>
+            <?php endif; ?>
         </section>
         <section class="tela_animacao">
             <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="">
         </section>
     </div>
+    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
+    <script>
+        const toast = document.getElementById('toast');
+        if (toast) {
+            setTimeout(() => {
+                toast.style.display = 'block';
+                setTimeout(() => toast.remove(), 5000);
+            }, 100);
+        }
+    </script>
 
     <script src="../../../public/js/admin/login-adm.js"></script>
 
