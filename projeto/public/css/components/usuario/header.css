@@ -135,11 +135,28 @@
     color: var(--cor-texto);
 }
 
+/* ÍCONES DE PERFIL - ESTILOS ATUALIZADOS */
 .icone-perfil {
     width: 35px;
     height: 35px;
-    margin: 5px 0px 0px 0px;
-    border-radius: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cor-texto);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.icone-perfil:hover {
+    border-color: var(--laranja-padrao);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Para garantir que imagens quebradas não apareçam */
+.icone-perfil[src=""], 
+.icone-perfil:not([src]) {
+    display: none;
 }
  
 .icsenac{
@@ -418,4 +435,4 @@ width: 100%;
     margin: 0;
     font-size: 18px;
     font-weight: 700;
-} 
+}
