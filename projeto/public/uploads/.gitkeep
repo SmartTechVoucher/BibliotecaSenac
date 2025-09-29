@@ -1,0 +1,5 @@
+# Este arquivo garante que a pasta uploads seja preservada pelo Git
+# e não seja perdida quando o repositório for clonado ou reiniciado.
+#
+# As imagens enviadas pelos usuários ficam nesta pasta e devem persistir
+# entre sessões do XAMPP/MySQL.
