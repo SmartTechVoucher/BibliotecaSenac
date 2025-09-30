@@ -16,7 +16,7 @@ require(__DIR__ . '/../../../config/constantes.php');
     <link rel="stylesheet" href="../../../public/css/components/usuario/header.css">
     <link rel="stylesheet" href="../../../public/css/components/usuario/footer.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -54,7 +54,7 @@ require(__DIR__ . '/../../../config/constantes.php');
                     <h1 class="welcome-title">Bem-vindo de volta, Marlon!</h1>
                     <p class="welcome-description">Explore nossa vasta coleção de livros.</p>
                     
-                    <div class="regular" style="display: flex; align-items:center;" justiz>
+                    <div class="regular">
                     <p>Situação:</p><button class="welcome-status">Regular</button>
                     </div>
                     
