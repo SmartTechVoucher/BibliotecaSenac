@@ -1,4 +1,6 @@
 <?php
+
+require_once "../../../config/auth-check.php";
 // cadastro-usuarios.php
 require_once "../../../config/constantes.php";
 
@@ -7,7 +9,7 @@ $toastData = null;
 if (isset($_SESSION['toast'])) {
     $toastData = [
         'mensagem' => $_SESSION['toast']['mensagem'],
-        'tipo' => $_SESSION['toast']['tipo']
+        'tipo' => $_SESSION['toast']['tipo'],
     ];
     unset($_SESSION['toast']);
 }
