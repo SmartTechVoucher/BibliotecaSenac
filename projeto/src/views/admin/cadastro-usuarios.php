@@ -6,7 +6,7 @@ require_once "../../../config/constantes.php";
 $toastData = null;
 if (isset($_SESSION['toast'])) {
     $toastData = [
-        'mensagem' => 'Bem-vindo ao Painel Administrativo!',
+        'mensagem' => $_SESSION['toast']['mensagem'],
         'tipo' => $_SESSION['toast']['tipo']
     ];
     unset($_SESSION['toast']);
@@ -89,13 +89,13 @@ if (isset($_SESSION['toast'])) {
           </div>
           <div class="form-row">
             <div class="form-grupo">
-              <label for="telefone">Telefone</label>
+              <label for="telefone">Telefone *</label>
               <?php
               InputAdmin(largura: 100, placeholder: "(99) 99999-9999", name: "telefone", id: "telefone", tipo: "tel")
               ?>
             </div>
             <div class="form-grupo">
-              <label for="endereco">Endereço Completo</label>
+              <label for="endereco">Endereço Completo *</label>
               <?php
               InputAdmin(largura: 100, placeholder: "Ex: Rua das Flores, 123, Centro", name: "endereco", id: "endereco", tipo: "text");
               ?>
@@ -109,7 +109,7 @@ if (isset($_SESSION['toast'])) {
               ?>
             </div>
             <div class="form-grupo">
-              <label for="genero">Gênero</label>
+              <label for="genero">Gênero *</label>
               <select id="genero" name="genero" class="select-padrao">
                 <option value="">Selecione</option>
                 <option value="masculino">Masculino</option>
@@ -125,7 +125,7 @@ if (isset($_SESSION['toast'])) {
           <legend>Informações Acadêmicas</legend>
           <div class="form-row">
             <div class="form-grupo">
-              <label for="matricula">Nº de Matrícula</label>
+              <label for="matricula">Nº de Matrícula *</label>
               <?php
               InputAdmin(largura: 100, name: "matricula", id: "matricula", tipo: "text")
               ?>
@@ -151,19 +151,19 @@ if (isset($_SESSION['toast'])) {
           </div>
           <div class="form-row">
             <div class="form-grupo">
-              <label for="curso">Curso</label>
+              <label for="curso">Curso *</label>
               <?php
               InputAdmin(largura: 100, name: "curso", id: "curso", tipo: "text")
               ?>
             </div>
             <div class="form-grupo">
-              <label for="turma">Turma</label>
+              <label for="turma">Turma *</label>
               <?php
               InputAdmin(largura: 100, name: "turma", id: "turma", tipo: "text")
               ?>
             </div>
             <div class="form-grupo">
-              <label for="data_fim_curso">Data de Término do Curso</label>
+              <label for="data_fim_curso">Data de Término do Curso *</label>
               <?php
               InputAdmin(largura: 100, name: "data_fim_curso", id: "data_fim_curso", tipo: "date")
               ?>
