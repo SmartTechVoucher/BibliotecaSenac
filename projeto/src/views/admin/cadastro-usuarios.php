@@ -58,7 +58,7 @@ if (isset($_SESSION['toast'])) {
           <div id="foto-perfil-container">
             <img id="foto-perfil" src="https://placehold.co/150x150/f0f0f0/888888?text=Sua+Foto" alt="">
             <?php
-            InputAdmin(largura: 15, name: "foto-usuario", id: "foto-usuario", tipo: "file", accept: "image/*");
+            InputAdmin(largura: 57, name: "foto-usuario", id: "foto-usuario", tipo: "file", accept: "image/*");
             ?>
           </div>
           <div class="form-row"> 
