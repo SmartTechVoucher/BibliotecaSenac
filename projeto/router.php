@@ -52,8 +52,6 @@ switch ($acao) {
             $_SESSION['usuario_nome'] = $usuario['nome'];
             $_SESSION['usuario_email'] = $usuario['email'];
             $_SESSION['usuario_categoria'] = $usuario['categoria'];
-        
-            // CORREÇÃO: Adicionar a foto do usuário na sessão
             $_SESSION['usuario_foto'] = $usuario['foto_perfil'] ?? '';
 
             $_SESSION['toast'] = ['tipo' => 'success', 'mensagem' => 'Login realizado com sucesso!'];
@@ -73,10 +71,9 @@ switch ($acao) {
         }
         break;
 
-        // E no logout, adicione a limpeza da foto:
     case 'logout':
         unset($_SESSION['usuario_id'], $_SESSION['usuario_nome'], $_SESSION['usuario_email'], 
-        $_SESSION['usuario_categoria'], $_SESSION['usuario_foto']); // Adicionar usuario_foto aqui
+        $_SESSION['usuario_categoria'], $_SESSION['usuario_foto']);
         $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Logout realizado com sucesso!'];
         session_regenerate_id(true);
         header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
@@ -128,11 +125,16 @@ switch ($acao) {
 
     case 'auxEntity':
         if (!isAdminLoggedIn()) {
+            ob_clean();
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
             exit;
         }
-        require_once __DIR__ . "/../src/controller/admin/AuxEntityController.php";
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/AuxEntityController.php";
         $tipo = $_GET['tipo'] ?? null;
         if (!$tipo) {
             echo json_encode(['sucesso' => false, 'mensagem' => 'Tipo não especificado.']);
@@ -144,21 +146,32 @@ switch ($acao) {
 
     case 'cadastrarLivro':
         if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
             exit;
         }
-        require_once __DIR__ . "/../src/controller/admin/CadastrarLivroController.php";
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
         $cadastrarLivroController = new CadastrarLivroController();
-        $sucesso = $cadastrarLivroController->cadastrar();
-        echo json_encode(['sucesso' => $sucesso]);
+        $cadastrarLivroController->cadastrar();
         exit;
 
     case 'atualizarEstoque':
         if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
             exit;
         }
-        require_once __DIR__ . "/../src/controller/admin/AtualizarEstoqueController.php";
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
         $controller = new AtualizarEstoqueController();
         $resultado = $controller->atualizarEstoque();
         echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
