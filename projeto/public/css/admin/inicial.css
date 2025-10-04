@@ -1,0 +1,227 @@
+/* =======================
+   Variáveis Globais
+======================= */
+:root {
+    --azulCabecalho: #001E3E;
+    --branco: #ffffff;
+    --fundoPadrao: #EDEDED;
+    --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+    --textoSecundario: #6c757d;
+    --borderRadius: 8px;
+    --boxShadow: 0 4px 6px rgba(0,0,0,0.1);
+    --gap: 20px;
+}
+
+/* =======================
+   Reset Básico
+======================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: var(--fontes);
+}
+
+body {
+    background-color: var(--fundoPadrao);
+    color: #212529;
+}
+
+/* =======================
+   Container Principal
+======================= */
+.container-main {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+/* =======================
+   Cabeçalho
+======================= */
+.container-main h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--azulCabecalho);
+}
+
+.container-main p {
+    margin-top: 5px;
+    font-size: 0.95rem;
+    color: var(--textoSecundario);
+}
+
+/* =======================
+   Grid de Cards
+======================= */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--gap);
+    margin-bottom: 30px;
+}
+
+.card {
+    background: var(--branco);
+    border-radius: var(--borderRadius);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--boxShadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.card .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.card .info .title {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.card .info .value {
+    margin-top: 5px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.card .icon {
+    font-size: 1.8rem;
+}
+
+/* =======================
+   Grid Secundário (Atividades e Top Livros)
+======================= */
+.secondary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--gap);
+}
+
+/* Cards Internos (Lista) */
+.list-card {
+    background: var(--branco);
+    border-radius: var(--borderRadius);
+    padding: 20px;
+    box-shadow: var(--boxShadow);
+}
+
+.list-card h3 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+/* Item da Lista */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ced4da;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-item .details {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item .details .action,
+.list-item .details .book {
+    font-weight: 500;
+}
+
+.list-item .details .book {
+    color: var(--textoSecundario);
+    font-size: 0.9rem;
+}
+
+.list-item .time,
+.list-item .count {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--textoSecundario);
+}
+
+/* Container para alinhar os botões lado a lado */
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* Estilo base para todos os botões */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--fontes);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 9999px; /* completamente arredondado */
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border: 1px solid transparent;
+    text-decoration: none;
+}
+
+/* Ícone dentro do botão */
+.btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Botão Primário (azul sólido) */
+.btn-primary {
+    background-color: #2563eb; /* azul vibrante */
+    color: #fff;
+    border-color: #2563eb;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+/* Botão Secundário (borda + fundo branco) */
+.btn-secondary {
+    background-color: #fff;
+    color: #1f2937;
+    border: 1px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+    background-color: #f3f4f6;
+    border-color: #cbd5e1;
+}
+
+/* Para remover outline feio no clique */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+
+
+
+
+/* =======================
+   Responsividade
+======================= */
+@media (max-width: 768px) {
+    .cards-grid,
+    .secondary-grid {
+        grid-template-columns: 1fr;
+    }
+}

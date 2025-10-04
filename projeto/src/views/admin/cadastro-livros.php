@@ -1,7 +1,7 @@
 <?php
-$titulo = 'Empréstimo de Livros';
-$cssPagina = '/public/css/admin/emprestimo.css';
-$conteudo = __DIR__ . '/pages/emprestimo-content.php'; // caminho do conteúdo
+$titulo = 'cadastro de Livros';
+$cssPagina = '/public/css/admin/cadastro-livros.css';
+$conteudo = __DIR__ . '/pages/cadastro-livros-content.php'; // caminho do conteúdo
 $modalPagina = [
     'id' => 'confirmModal',
     'titulo' => 'Confirmação',
