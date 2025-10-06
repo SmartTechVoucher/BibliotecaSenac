@@ -163,7 +163,7 @@ class CadastrarLivroController {
                 throw new Exception('Erro ao salvar no banco de dados. Verifique ISBN único.');
             }
 
-            $mensagem_sucesso = "Livro '{$dados['titulo']}' cadastrado com sucesso! (ID: $id_livro)";
+            $mensagem_sucesso = "Livro '{$dados['titulo']}' cadastrado com sucesso!";
             
             if ($isAjax) {
                 echo json_encode([
