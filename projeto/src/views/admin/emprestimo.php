@@ -91,7 +91,7 @@ require "../../../config/constantes.php"
 
                 </form>
                 <?php
-                // lista mock só pra apresentar na daily
+                
                 $livros = [
                     [
                         'id' => 1,
