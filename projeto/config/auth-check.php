@@ -8,6 +8,7 @@ ini_set('session.cookie_httponly', 1);
 if (session_status() === PHP_SESSION_NONE) session_start();
 
 require_once __DIR__ . '/constantes.php';
+require_once(__DIR__ . '/../src/controller/usuario/usuario-controller.php');
 
 /**
  * Verifica se o usuário está logado.
@@ -62,7 +63,19 @@ function protegerPagina(?array $categoriasPermitidas = null): void {
  * @return array|null
  */
 function obterUsuarioLogado(): ?array {
-    if (usuarioEstaLogado()) {
+    if (!usuarioEstaLogado()) {
+        return null;
+    }
+
+    // Recupera o ID salvo na sessão
+    $usuarioId = $_SESSION['usuario_id'];
+
+    // Busca os dados completos no banco
+    $usuarioController = new UsuarioController();
+    $usuario = $usuarioController->obterUsuarioPorId($usuarioId);
+
+    // Se por algum motivo não achar no banco, retorna apenas o básico
+    if (!$usuario) {
         return [
             'id' => $_SESSION['usuario_id'],
             'nome' => $_SESSION['usuario_nome'],
@@ -70,5 +83,6 @@ function obterUsuarioLogado(): ?array {
             'categoria' => $_SESSION['usuario_categoria'] ?? null
         ];
     }
-    return null;
+
+    return $usuario;
 }

@@ -1,21 +1,46 @@
 <?php
 require(__DIR__ . '/../../../config/constantes.php');
 require_once(__DIR__ . '/../../../config/auth-check.php');
-protegerPagina(); // Garante que só usuários logados acessem
+protegerPagina();
 
 $usuario = obterUsuarioLogado();
 
-// Valores com fallback seguro
+// Debug temporário - veja o que está vindo do banco
+// error_log("Dados do usuário: " . json_encode($usuario));
+
+// IMPORTANTE: Use os nomes corretos das colunas do banco
 $nome = htmlspecialchars($usuario['nome'] ?? '—');
-$id = htmlspecialchars($usuario['id'] ?? '—');
+$id = htmlspecialchars($usuario['id_usuario'] ?? $usuario['id'] ?? '—'); // Tenta ambos
 $email = htmlspecialchars($usuario['email'] ?? '—');
-$dataNascimento = !empty($usuario['data_nascimento']) 
-    ? date('d/m/Y', strtotime($usuario['data_nascimento'])) 
-    : '—';
-$nomeSocial = htmlspecialchars($usuario['nome_social'] ?? '');
-$criadoEm = !empty($usuario['criado_em']) 
-    ? date('d/m/Y H:i', strtotime($usuario['criado_em'])) 
-    : '—';
+
+// Data de nascimento
+$dataNascimento = '—';
+if (!empty($usuario['data_nascimento'])) {
+    $dataNascimento = date('d/m/Y', strtotime($usuario['data_nascimento']));
+}
+
+// Nome social (apelido)
+$nomeSocial = htmlspecialchars($usuario['nome_social'] ?? $usuario['apelido'] ?? '');
+
+// Criado em - tenta 'created_at' ou 'criado_em'
+$criadoEm = '—';
+if (!empty($usuario['data_criacao'])) {
+    $criadoEm = date('d/m/Y', strtotime($usuario['data_criacao']));
+} elseif (!empty($usuario['data_atualizacao'])) {
+    $criadoEm = date('d/m/Y', strtotime($usuario['data_atualizacao']));
+}
+
+
+// Situação
+$situacao = htmlspecialchars($usuario['situacao'] ?? 'Regular');
+$situacaoClass = match(strtolower($situacao)) {
+    'ativo', 'regular' => 'status-regular',
+    'irregular', 'bloqueado' => 'status-irregular',
+    'suspenso' => 'status-suspenso',
+    default => 'status-regular'
+};
+
+ 
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +48,7 @@ $criadoEm = !empty($usuario['criado_em'])
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perfil do Usuário</title>
+  <title>Perfil de <?= $nome ?></title>
 
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/minha-conta-usuario.css">
   <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
@@ -41,8 +66,8 @@ $criadoEm = !empty($usuario['criado_em'])
   <main class="perfil-container2">
     <div class="perfil-card">
       <div class="perfil-header">
-        <h1><?= $nome ?> (<?= $id ?>)</h1>
-        <p class="situacao">Situação: <span class="status-regular">Regular</span></p>
+        <h1><?= $nome ?></h1>
+        <p class="situacao">Situação: <span class="<?= $situacaoClass ?>"><?= $situacao ?></span></p>
       </div>
 
       <div class="perfil-content">
@@ -59,12 +84,13 @@ $criadoEm = !empty($usuario['criado_em'])
 
           <div class="campo-apelido">
             <label>Nome Social:</label>
-            <input type="text" value="<?= !empty($nomeSocial) ? $nomeSocial : '—' ?>" class="input-field" readonly>
+            <input type="text" value="<?php echo !empty($usuario['nome_social']) ? htmlspecialchars($usuario['nome_social']) : '—'; ?>" class="input-field" readonly>
           </div>
+
 
           <div class="campo-botao">
             <label>&nbsp;</label>
-            <button class="btn-editar" type="button">Editar nome social</button>
+            <button class="btn-editar" id="btn-editar-nome-social" type="button">Editar nome social</button>
           </div>
         </div>
 
@@ -93,6 +119,8 @@ $criadoEm = !empty($usuario['criado_em'])
   </main>
 
   <?php include "../../../public/components/usuario/footer/footer.php"; ?>
+  
+  <script>const URLBASE = '<?php echo $URLBASE; ?>';</script>
   <script src="<?php echo $URLBASE ?>/public/js/usuario/editar-apelido.js"></script>
   <script src="<?php echo $URLBASE ?>/public/js/components/header.js"></script>
 </body>

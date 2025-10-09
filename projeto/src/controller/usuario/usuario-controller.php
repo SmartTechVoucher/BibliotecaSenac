@@ -82,7 +82,6 @@ class UsuarioController {
         try {
             $conn = $this->db->Connect();
 
-            // Inclui foto_perfil no SELECT
             $sql = "SELECT id_usuario AS id, nome, email, senha, categoria, foto_perfil, ativo 
                     FROM usuarios 
                     WHERE email = :email AND ativo = 1 
@@ -94,8 +93,8 @@ class UsuarioController {
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($usuario && isset($usuario['senha']) && password_verify($senha, $usuario['senha'])) {
-                unset($usuario['senha']); // não manter senha
-                return $usuario; // retorna id, nome, email, categoria, foto_perfil, ativo
+                unset($usuario['senha']);
+                return $usuario;
             }
 
             return false;
@@ -108,21 +107,189 @@ class UsuarioController {
     public function obterUsuarioPorId($id) {
         try {
             $conn = $this->db->Connect();
-            $sql = "SELECT * FROM usuarios WHERE id_usuario = :id AND ativo = 1 LIMIT 1";
+            
+            // Usa os nomes reais das colunas conforme o phpMyAdmin
+            $sql = "SELECT 
+                        id_usuario,
+                        nome,
+                        nome_social,
+                        cpf,
+                        email,
+                        data_nascimento,
+                        telefone,
+                        endereco,
+                        genero,
+                        foto_perfil,
+                        numero_matricula,
+                        categoria,
+                        unidade_senac,
+                        curso,
+                        turma,
+                        data_fim_curso,
+                        notas_usuario,
+                        ativo,
+                        data_criacao,
+                        data_atualizacao
+                    FROM usuarios 
+                    WHERE id_usuario = :id AND ativo = 1 
+                    LIMIT 1";
+                    
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
             
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            
             if ($usuario) {
+                // Remove senha por segurança (só pra garantir)
                 unset($usuario['senha']);
             }
+            
             return $usuario;
+            
         } catch (PDOException $e) {
             error_log("Erro ao obter usuário: " . $e->getMessage());
             return false;
         }
+}
+
+
+    /**
+     * =====================================================
+     * MÉTODOS PARA PERFIL DO USUÁRIO
+     * =====================================================
+     */
+
+    /**
+     * Atualiza o apelido do usuário
+     * @param int $id_usuario
+     * @param string $apelido
+     * @return bool
+     */
+    public function atualizarApelido($id_usuario, $apelido) {
+        try {
+            $conn = $this->db->Connect();
+            
+            $sql = "UPDATE usuarios 
+                    SET apelido = :apelido, 
+                        updated_at = NOW() 
+                    WHERE id_usuario = :id AND ativo = 1";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':apelido', $apelido, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id_usuario, PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            error_log("Erro ao atualizar apelido: " . $e->getMessage());
+            return false;
+        }
     }
+
+    /**
+     * Atualiza o nome social do usuário
+     * @param int $id_usuario
+     * @param string $nome_social
+     * @return bool
+     */
+    public function atualizarNomeSocial($id_usuario, $nome_social) {
+        try {
+            $conn = $this->db->Connect();
+            
+            $sql = "UPDATE usuarios 
+                    SET nome_social = :nome_social, 
+                        updated_at = NOW() 
+                    WHERE id_usuario = :id AND ativo = 1";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':nome_social', $nome_social, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id_usuario, PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            error_log("Erro ao atualizar nome social: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Atualiza a foto de perfil do usuário
+     * @param int $id_usuario
+     * @param string $caminho_foto
+     * @return bool
+     */
+    public function atualizarFotoPerfil($id_usuario, $caminho_foto) {
+        try {
+            $conn = $this->db->Connect();
+            
+            $sql = "UPDATE usuarios 
+                    SET foto_perfil = :foto, 
+                        updated_at = NOW() 
+                    WHERE id_usuario = :id AND ativo = 1";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':foto', $caminho_foto, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id_usuario, PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            error_log("Erro ao atualizar foto de perfil: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Atualiza dados pessoais do usuário (telefone, endereço)
+     * @param int $id_usuario
+     * @param array $dados
+     * @return bool
+     */
+    public function atualizarDadosPessoais($id_usuario, $dados) {
+        try {
+            $conn = $this->db->Connect();
+            
+            $campos_permitidos = ['telefone', 'endereco'];
+            $set_clausulas = [];
+            $parametros = [':id' => $id_usuario];
+
+            foreach ($campos_permitidos as $campo) {
+                if (isset($dados[$campo])) {
+                    $set_clausulas[] = "$campo = :$campo";
+                    $parametros[":$campo"] = $dados[$campo];
+                }
+            }
+
+            if (empty($set_clausulas)) {
+                return false;
+            }
+
+            $sql = "UPDATE usuarios 
+                    SET " . implode(', ', $set_clausulas) . ", 
+                        updated_at = NOW() 
+                    WHERE id_usuario = :id AND ativo = 1";
+
+            $stmt = $conn->prepare($sql);
+            
+            foreach ($parametros as $param => $valor) {
+                $stmt->bindValue($param, $valor);
+            }
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            error_log("Erro ao atualizar dados pessoais: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * =====================================================
+     * MÉTODOS PRIVADOS DE VALIDAÇÃO
+     * =====================================================
+     */
 
     private function emailJaExiste($email) {
         try {

@@ -3,11 +3,11 @@
         const campoApelido = document.querySelector('.campo-apelido .input-field');
         const btnEditar = document.querySelector('.btn-editar');
         
-        // Carregar apelido salvo do localStorage
         const apelidoSalvo = localStorage.getItem('usuario_apelido');
-        if (apelidoSalvo) {
+        if (apelidoSalvo && campoApelido.value === '—') {
             campoApelido.value = apelidoSalvo;
         }
+
         
         // Variável para controlar o estado de edição
         let editando = false;
