@@ -144,7 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
                     exit;
                 }
-            }
+        }   
             break;
 
         case 'atualizarEstoque':
