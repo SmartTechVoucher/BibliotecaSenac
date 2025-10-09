@@ -1,19 +1,26 @@
 <?php
-include 'conexao.php';
+include __DIR__ . '/conexao.php'; 
 
-// Verifica se veio algum filtro (GET)
+
 $filtro = isset($_GET['status']) ? $_GET['status'] : 'Todos';
 
-// Query base
+
 $sql = "SELECT * FROM emprestimos";
 
-// Se tiver filtro aplica
+
 if ($filtro != 'Todos') {
     $sql .= " WHERE status = '$filtro'";
 }
 
 $result = $conn->query($sql);
+
+if(!$result){
+    die("Erro na consulta: " . $conn->error);
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
