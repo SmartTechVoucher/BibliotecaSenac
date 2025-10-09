@@ -13,14 +13,13 @@
 * {
     margin: 0;
     padding: 0;
-   
 }
  
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden
+    overflow-x: hidden;
 }
  
 .conteiner{
@@ -40,7 +39,7 @@ body {
 .onda-inferior svg {
     display: block;
     width: 100%;
-    height: 80px; /* ajuste conforme o visual desejado */
+    height: 80px;
 }
 
 /* Mobile: só mostra o botão e o menu lateral */
@@ -63,13 +62,11 @@ body {
 }
  
 .geralinfo{
-    
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 .info {
@@ -80,9 +77,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    box-shadow:  0 12px 0 var(--azulClaro),        
-    6px 12px 2px var(--azulClaro),
-    -6px 12px 2px var(--azulClaro);  
+    box-shadow: 0 12px 0 var(--azulClaro),        
+                6px 12px 2px var(--azulClaro),
+                -6px 12px 2px var(--azulClaro);  
     border-bottom-left-radius: 70% 40%;
     border-bottom-right-radius: 70% 40%;
     padding-bottom: 5%;
@@ -94,8 +91,8 @@ body {
     max-width: 450px;
     width: 100%;   
     margin-left: 1%;      
-    margin-right: 0;
-    margin-top: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
     object-fit: contain;
     height: auto;
 }
@@ -110,7 +107,6 @@ body {
     width: 100%;
     height: 200px;
     padding: 15px 20px 20px 20px;
-
 }
 
 .letras {
@@ -120,35 +116,35 @@ body {
     flex-direction: column;
     max-width: 660px;
     width: 100%;
-
 }
  
 .letras1{
     max-width: 660px;
     font-size: clamp(30px, 6vw, 60px);
-    font-family: "roboto";
+    font-family: "Roboto", sans-serif;
     color: var(--cor-texto);
     white-space: nowrap;
     border-right: 10px solid var(--cor-texto);
-    width: 20.2ch;  
-    animation: marca 2.2s step-end forwards , write 1s steps(18, end);
-
+    width: 30ch; /* Aumentado de 20.2ch para 30ch */
+    padding-right: 22%; /* Adiciona espaço extra */
+    animation: marca 2.2s step-end forwards, write 1s steps(28, end);
+    overflow: hidden;
 }
  
 .letras2{
     max-width: 660px;
     font-size: clamp(30px, 6vw, 60px);
-    font-family: "roboto";
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
     color: var(--laranja-padrao);
     white-space: nowrap;
     border-right: 10px solid var(--cor-texto);
-    width: 20.2ch;
+    width: 22ch; /* Aumentado de 20.2ch para 22ch */
+    padding-right: 10px; /* Adiciona espaço extra */
     overflow: hidden;
     opacity: 0;
     animation: aparecer 0s 3.2s forwards, marca 2.2s step-end forwards, write 1s steps(18, end);
     animation-delay: 1s;
-   
 }
  
 .frase{
@@ -156,12 +152,12 @@ body {
     text-align: center;
     align-self: center;
     color: var(--cor-texto);
-    font-family:  'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 200;
     font-style: italic;
     font-size: 20px;
     opacity: 0;
-    animation: aparecer 3s ease-in-out 1s forwards ;
+    animation: aparecer 3s ease-in-out 1s forwards;
 }
  
 .partecima{
@@ -184,9 +180,7 @@ body {
 .bolha{
     z-index: 0;
     height: 40vw;
-   
 }
- 
  
 .barrapesquisa{
     position: relative;
@@ -213,7 +207,6 @@ body {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 5px 0px 5px 15px;  
-    
 }
 
 .pesquisa::placeholder {
@@ -223,12 +216,12 @@ body {
 .pesquisa:focus::placeholder {
     opacity: 0;
     transition: opacity 0.1s ease;
-  }
+}
 
 .pesquisa:focus {
     border-style: solid;
     border-width: 2px 0 0 2px;
-    border-color:var(--laranja-padrao);
+    border-color: var(--laranja-padrao);
     border-bottom-left-radius: 0;
     box-shadow: none;
 }
@@ -261,12 +254,12 @@ body {
 
 .listagem-item {
     font-size: 20px;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins', sans-serif;
     list-style: none;
     padding: 10px 15px;
     cursor: pointer;
     transition: background 0.2s;
-  }
+}
   
 .listagem-item:hover {
     background-color: #dadada;
@@ -275,7 +268,7 @@ body {
 .botaops{
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    cursor:pointer;
+    cursor: pointer;
     border: transparent;
     background-color: var(--laranja-padrao);
     color: var(--branco);
@@ -295,7 +288,6 @@ body {
     border-bottom-right-radius: 0px;
 }
 
-
 .botaops img {
     width: 30px;
     height: auto;
@@ -306,11 +298,9 @@ body {
 .gen{
     display: flex;
     justify-content: center;
-    
     height: auto;
     width: 100%;
     margin-top: 5%;
-    
 }
 
 .gen-title {
@@ -331,7 +321,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1 1 300px;       /* tenta 300px no desktop */
+    flex: 1 1 300px;
     max-width: 400px; 
     height: 100%;
     gap: 10%;
@@ -372,13 +362,13 @@ body {
     align-items: center;
     background-color: var(--azul-tela-inicial);
     width: 140px;
-    height:140px;
+    height: 140px;
     border-radius: 50%;
 }
+
 .icon_livros:hover {
     background-color: var(--laranja-padrao);
 }
- 
  
 .sup{
     z-index: 2;
@@ -421,28 +411,25 @@ body {
     position: relative;
     background-color: var(--azul-tela-inicial);
     width: 100%;
-    min-height: auto; /* ou auto, se quiser que a página cresça conforme o conteúdo */
+    min-height: auto;
 }
 
 .estante {
     position: relative;
-    width: 100%;     
-    max-width: 3000px;
+    width: 100%;
+    max-width: 1300px;
+    aspect-ratio: 3/2;
+    background-color: var(--branco);
+    border-radius: 20px;
     margin: 0 auto;
-  }
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
   
 .estanteimg {
     width: 100%;
-    height: auto;
-    display: block;
-}
-
-.estanteimg{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
-    width: 100vw;
     height: auto;
     display: block;
 }
@@ -455,13 +442,14 @@ body {
     width: 250px;
     height: 340px;
 }
+
 .menu-dropdown {
     display: none;
     position: absolute;
     top: 100%;
     right: 0;
     background-color: var(--azul-tela-inicial);
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
     color: var(--branco);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -506,16 +494,15 @@ body {
     align-items: center;
     text-align: center;
     font-size: 59%;
-    color: #fdfdfd; /* Cor do texto, ajuste conforme necessário */
-    margin-top: 5px; /* Espaçamento entre a imagem e o texto */
-    position: relative; /* IMPORTANTE: Para o posicionamento absoluto do dropdown */
+    color: #fdfdfd;
+    margin-top: 5px;
+    position: relative;
 }
 
 .iconepessoa p {
-    margin: 5px 0 0; /* Espaço entre a imagem e o texto */
+    margin: 5px 0 0;
     font-weight: bold;
 }
-
 
 .nome-usuario {
     display: inline-block;
@@ -526,51 +513,25 @@ body {
     white-space: nowrap;
 }
 
-
 .perfil-lateral-2 {
     position: absolute;
     bottom: 120px !important;
 }
 
-
-/* Faz aparecer com opacidade */
-@keyframes aparecerUsuario {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Escreve letra por letra */
-@keyframes escreverUsuario {
-    from {
-        width: 0;
-    }
-    to {
-        width: var(--char-ch);
-    }
-}
-@keyframes esconderCursor {
-    to {
-        border-right: none;
-    }
-}
-
-
-/*IMPORTAÇÕES*/
+/* ANIMAÇÕES */
  
 @keyframes marca{
     50%{
-        border-right-color:transparent;
+        border-right-color: transparent;
     }
     100%{
         border-right-color: transparent;
     }
 }
  
- 
 @keyframes write{
     0%{
-        width:0;
+        width: 0;
     }
 }
  
@@ -580,14 +541,105 @@ body {
     }
 }
 
-/* testes */
+@keyframes aparecerUsuario {
+    to {
+        opacity: 1;
+    }
+}
 
+@keyframes escreverUsuario {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--char-ch);
+    }
+}
+
+@keyframes esconderCursor {
+    to {
+        border-right: none;
+    }
+}
+
+/* PRATELEIRAS */
+
+.prateleira {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 12px;
+    background-color: #f0f0f0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-50%) perspective(300px) rotateX(5deg);
+    border-radius: 2px;
+}
+
+.livros {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 3rem;
+    z-index: 2;
+    gap: 5rem;
+}
+
+.primeiraFileira {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 22%;
+    flex-wrap: wrap;
+}
+
+.segundaFileira {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 28%;
+}
+
+.primeiraFileira,
+.segundaFileira {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1400px) {
+    .card-livro {
+        width: 230px;
+        height: 330px;
+    }
+}
+  
+@media (max-width: 1200px) {
+    .card-livro {
+        width: 220px;
+        height: 320px;
+    }
+}
+  
+@media (max-width: 992px) {
+    .livros {
+        width: 90%;
+    }
+}
 
 @media (max-width: 768px) {
     .conteiner {
         overflow-y: auto;
     }
-
 
     .icsenac {
         width: 30px;
@@ -619,15 +671,10 @@ body {
 
     .cbmenu-icon {
         display: block;
-        
     }
 
     .cabecalho {
         justify-content: space-between;
-    }
-
-     #botao-entrar {
-        display: none;
     }
 
     .entrar-mobile {
@@ -677,11 +724,13 @@ body {
 
     .letras1 {
         max-width: 325px;
-    }
-    .letras2 {
-        max-width: 325px;
+        width: 100%; /* Ocupa toda a largura disponível no mobile */
     }
     
+    .letras2 {
+        max-width: 325px;
+        width: 100%;
+    }
 
     .geralinfo {
         display: flex;
@@ -709,8 +758,7 @@ body {
     .gencard {
         margin: 10px;
         width: 100%;
-
-        flex: 0 0 calc(50% - 20px); /* 2 por linha */
+        flex: 0 0 calc(50% - 20px);
         max-width: calc(50% - 20px);
     }
     
@@ -726,7 +774,7 @@ body {
         margin: 0 auto;
     }
 
-    .icon_livros  {
+    .icon_livros {
         width: 80px;
         height: 80px;
     }
@@ -754,19 +802,32 @@ body {
     .genicon5 {
         width: 40px;
         height: auto;    
-}
-}
-
-@media (max-width: 250px) {
-    .gencard {
-      flex: 0 0 100%;
-      max-width: 100%;
     }
-  }
+
+    .card-livro {
+        width: 200px;
+        height: 300px;
+    }
+}
+  
+@media (max-width: 576px) {
+    .card-livro {
+        width: 180px;
+        height: 280px;
+    }
+}
+  
+@media (max-width: 420px) {
+    .card-livro {
+        width: 160px;
+        height: 250px;
+    }
+}
 
 @media (max-width: 350px) {
-    .letras1,.letras2 {
+    .letras1, .letras2 {
         font-size: 25px;
+        width: 100%; /* Largura total */
     }
 
     .letras {
@@ -777,7 +838,13 @@ body {
         font-size: 7px;
     }
 }
-
+  
+@media (max-width: 320px) {
+    .card-livro {
+        width: 140px;
+        height: 220px;
+    }
+}
 
 @media (max-width: 300px) {
     .letras {
@@ -785,135 +852,15 @@ body {
     }
 
     .letras1, .letras2 {
-    white-space: normal;    /* permite quebra */
-    width: 100%;
-    text-align: center;        /* libera a largura */
-
-    
+        white-space: normal;
+        width: 100%;
+        text-align: center;
     }
 }
 
-/* TESTE SANDUICHE */
-@media (max-width: 768px) {
-    
-    /* .menu-sanduiche {
-        display: block;
-    } */
-}
-
-.estante {
-  position: relative;
-  width: 100%;
-  max-width: 1300px;
-  aspect-ratio: 3/2; /* proporção responsiva aproximada */
-  background-color: var(--branco);
-  border-radius: 20px;
-  margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;
-  margin-top: 10%;
-  margin-bottom: 10%;
-}
-
-/* prateleira central */
-.prateleira {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  height: 12px;
-  background-color: #f0f0f0;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-  transform: translateY(-50%) perspective(300px) rotateX(5deg);
-  border-radius: 2px;
-}
-
-
-
-.livros {
-    width: 100%; /* ou 100% se quiser largura total */
-    margin: 0 auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 3rem;
-    z-index: 2;
-    gap: 5rem;
-}
-
-.primeiraFileira {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 22%;
-  flex-wrap: wrap;
-}
-
-.segundaFileira {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 28%;
-}
-
-.primeiraFileira,
-.segundaFileira {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin: 0; /* importante */
-}
-
-@media (max-width: 1400px) {
-    .card-livro {
-      width: 230px;
-      height: 330px;
+@media (max-width: 250px) {
+    .gencard {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
-  }
-  
-  @media (max-width: 1200px) {
-    .card-livro {
-      width: 220px;
-      height: 320px;
-    }
-  }
-  
-  @media (max-width: 992px) {
-    .livros {
-      width: 90%;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .card-livro {
-      width: 200px;
-      height: 300px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .card-livro {
-      width: 180px;
-      height: 280px;
-    }
-  }
-  
-  @media (max-width: 420px) {
-    .card-livro {
-      width: 160px;
-      height: 250px;
-    }
-  }
-  
-  @media (max-width: 320px) {
-    .card-livro {
-      width: 140px;
-      height: 220px;
-    }
-  }
-
- 
+}

@@ -33,11 +33,17 @@ if (isset($_SESSION['toast'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo à Biblioteca SENAC HUB ACADEMY!</title>
 
+    <!-- Preconnect para melhorar carregamento das fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fontes com display=swap para evitar FOUT -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/tela-inicial.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -71,7 +77,10 @@ if (isset($_SESSION['toast'])) {
             </div>
 
             <form class="barrapesquisa">
-                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> <button type="button" class="botaops" id="lupaId" onclick="focusInput()" tabindex="0"><img src="<?php echo $URLBASE ?>/public/assets/icons/lupa.svg" alt="Buscar"></button>
+                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> 
+                <button type="button" class="botaops" id="lupaId" onclick="focusInput()" tabindex="0">
+                    <img src="<?php echo $URLBASE ?>/public/assets/icons/lupa.svg" alt="Buscar">
+                </button>
                 <div class="listagem">
                     <ul></ul>
                 </div>
@@ -167,6 +176,6 @@ if (isset($_SESSION['toast'])) {
         });
     </script>
     <?php endif; ?>
-
+    
 </body>
 </html>

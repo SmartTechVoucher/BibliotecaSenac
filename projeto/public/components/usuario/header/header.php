@@ -114,9 +114,6 @@ $iconePadrao = rtrim($URLBASE, '/') . '/public/assets/icons/Icon perfil.png';
                     <img src="<?php echo htmlspecialchars($iconePadrao); ?>" alt="Ícone padrão" class="icone-perfil">
                 <?php endif; ?>
 
-                <!-- CORREÇÃO: Havia um erro de sintaxe aqui -->
-                <span class="nome-usuario">Olá, <?php echo htmlspecialchars($nomeUsuario); ?></span>
-
                 <div class="menu-dropdown" id="menuPerfil">
                     <a href="<?php echo htmlspecialchars($URLBASE); ?>/src/views/usuario/minha-conta-usuario.php">
                         <img src="<?php echo htmlspecialchars($URLBASE); ?>/public/assets/icons/Perfil2.png" alt="" class="perfil-header-inicial"> Meu Perfil

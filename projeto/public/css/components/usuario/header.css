@@ -137,8 +137,8 @@
 
 /* ÍCONES DE PERFIL - ESTILOS ATUALIZADOS */
 .icone-perfil {
-    width: 35px;
-    height: 35px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--cor-texto);
