@@ -161,33 +161,6 @@ class UsuarioController {
      */
 
     /**
-     * Atualiza o apelido do usuário
-     * @param int $id_usuario
-     * @param string $apelido
-     * @return bool
-     */
-    public function atualizarApelido($id_usuario, $apelido) {
-        try {
-            $conn = $this->db->Connect();
-            
-            $sql = "UPDATE usuarios 
-                    SET apelido = :apelido, 
-                        updated_at = NOW() 
-                    WHERE id_usuario = :id AND ativo = 1";
-
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':apelido', $apelido, PDO::PARAM_STR);
-            $stmt->bindParam(':id', $id_usuario, PDO::PARAM_INT);
-
-            return $stmt->execute();
-
-        } catch (PDOException $e) {
-            error_log("Erro ao atualizar apelido: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    /**
      * Atualiza o nome social do usuário
      * @param int $id_usuario
      * @param string $nome_social
@@ -199,7 +172,7 @@ class UsuarioController {
             
             $sql = "UPDATE usuarios 
                     SET nome_social = :nome_social, 
-                        updated_at = NOW() 
+                        data_atualizacao = NOW() 
                     WHERE id_usuario = :id AND ativo = 1";
 
             $stmt = $conn->prepare($sql);
@@ -226,7 +199,7 @@ class UsuarioController {
             
             $sql = "UPDATE usuarios 
                     SET foto_perfil = :foto, 
-                        updated_at = NOW() 
+                        data_atualizacao = NOW() 
                     WHERE id_usuario = :id AND ativo = 1";
 
             $stmt = $conn->prepare($sql);
@@ -268,7 +241,7 @@ class UsuarioController {
 
             $sql = "UPDATE usuarios 
                     SET " . implode(', ', $set_clausulas) . ", 
-                        updated_at = NOW() 
+                        data_atualizacao = NOW() 
                     WHERE id_usuario = :id AND ativo = 1";
 
             $stmt = $conn->prepare($sql);

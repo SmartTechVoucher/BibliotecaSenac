@@ -180,4 +180,51 @@ switch ($acao) {
     default:
         header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;
-}
+
+    // Adicione este case no switch do router.php, logo após o case 'atualizarEstoque':
+
+    case 'atualizarNomeSocial':
+        if (!isset($_SESSION['usuario_id'])) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Não autenticado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        try {
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                throw new Exception('Método inválido.');
+            }
+
+            $nomeSocial = trim($_POST['nome_social'] ?? '');
+
+            // Nome social pode ser vazio (é opcional)
+            if (strlen($nomeSocial) > 50) {
+                throw new Exception('Nome social muito longo (máximo 50 caracteres).');
+            }
+
+            $id_usuario = $_SESSION['usuario_id'];
+            $sucesso = $usuarioController->atualizarNomeSocial($id_usuario, $nomeSocial);
+
+            if ($sucesso) {
+                echo json_encode([
+                    'sucesso' => true,
+                    'mensagem' => 'Nome social atualizado com sucesso!',
+                    'nome_social' => $nomeSocial
+                ], JSON_UNESCAPED_UNICODE);
+            } else {
+                throw new Exception('Erro ao atualizar nome social no banco de dados.');
+            }
+
+        } catch (Exception $e) {
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => $e->getMessage()
+            ], JSON_UNESCAPED_UNICODE);
+        }
+        
+        exit;
+    }
