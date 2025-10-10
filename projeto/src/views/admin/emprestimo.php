@@ -61,7 +61,7 @@ require "../../../config/constantes.php"
                             ['id' => 17, 'nome' => 'Laura Dias', 'email' => 'laura.dias@email.com', 'matricula' => '2023017', 'acesso' => 'regular', 'telefone' => '67981234583'],
                             ['id' => 18, 'nome' => 'Felipe Castro', 'email' => 'felipe.castro@email.com', 'matricula' => '2023018', 'acesso' => 'regular', 'telefone' => '67981234584'],
                         ];
-                        //     renderSelectModal(name:"nome-usuario", label:"Nome do usuário", items:$usuariosMock)
+                       
                         InputAdmin(largura: 100, placeholder: "Nome completo do usuário", id: "nome-usuario", name: "nome-usuario")
                         ?>
                     </div>

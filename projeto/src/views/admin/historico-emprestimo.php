@@ -42,7 +42,6 @@ if(!$result){
     </head>
 
  <body>
-    <!--Cabeçalho--> <!--Cabeçalho--> <!--Cabeçalho-->   
     <?php   
         include "../../../public/components/admin/header/header-admin.php";
     ?>

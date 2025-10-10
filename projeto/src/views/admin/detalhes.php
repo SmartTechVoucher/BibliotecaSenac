@@ -1,7 +1,7 @@
 <?php
 include 'conexao.php';
 
-$id = $_GET['id']; // pega o id do empréstimo na URL
+$id = $_GET['id']; 
 $sql = "SELECT * FROM emprestimos WHERE id = $id";
 $result = $conn->query($sql);
 $dado = $result->fetch_assoc();
