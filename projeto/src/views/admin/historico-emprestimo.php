@@ -26,7 +26,7 @@ if(!$result){
 <head>
   <meta charset="UTF-8">
   <title>Histórico de Empréstimos</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href=".css">
 </head>
 <body>
   <h2>Histórico de Empréstimos</h2>
