@@ -461,6 +461,84 @@ class LivroModel {
     }
 
     /**
+ * Busca livros ALEATÓRIOS para exibição na página inicial
+ * @param int $limit Limite de livros a retornar
+ * @return array Array de livros aleatórios
+ */
+    public function getLivrosAleatorios($limit = 9) {
+        global $URLBASE;
+        
+        try {
+            $sql = "SELECT 
+                        l.id_livro,
+                        l.titulo,
+                        l.isbn,
+                        l.data_publicacao,
+                        l.numero_paginas,
+                        l.descricao,
+                        l.foto,
+                        l.notas,
+                        l.resumo_livro,
+                        l.id_autor,
+                        l.id_categoria,
+                        a.nome AS autor,
+                        c.nome AS categoria,
+                        i.nome AS idioma,
+                        u.nome AS editora,
+                        ar.nome AS area,
+                        d.nome AS tipo_documento
+                    FROM livros l
+                    LEFT JOIN autores a ON l.id_autor = a.id_autor
+                    LEFT JOIN categorias c ON l.id_categoria = c.id_categoria
+                    LEFT JOIN idiomas i ON l.id_idioma = i.id_idioma
+                    LEFT JOIN unidades u ON l.id_unidade = u.id_unidade
+                    LEFT JOIN areas ar ON l.id_area = ar.id_area
+                    LEFT JOIN documentos d ON l.id_documento = d.id_documento
+                    ORDER BY RAND()
+                    LIMIT :limit";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($livros as &$livro) {
+                $livro['status'] = 'Disponível';
+
+                if (!empty($livro['foto'])) {
+                    $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
+                    $livro['imagem'] = $URLBASE . '/public/uploads/' . $foto_limpa;
+                } else {
+                    $livro['imagem'] = $URLBASE . '/public/assets/images/livro-default.png';
+                }
+
+                if (empty($livro['descricao']) && !empty($livro['resumo_livro'])) {
+                    $livro['descricao'] = $livro['resumo_livro'];
+                }
+
+                if (empty($livro['descricao'])) {
+                    $livro['descricao'] = 'Descrição não disponível.';
+                }
+
+                if (strlen($livro['descricao']) > 150) {
+                    $livro['descricao'] = substr($livro['descricao'], 0, 150) . '...';
+                }
+
+                $livro['autor'] = $livro['autor'] ?? 'Autor desconhecido';
+                $livro['categoria'] = $livro['categoria'] ?? 'Sem categoria';
+                $livro['editora'] = $livro['editora'] ?? 'Editora não informada';
+            }
+
+            return $livros;
+
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar livros aleatórios: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
      * Busca livros por categoria
      * @param string $categoria Nome da categoria
      * @param int $limit Limite de resultados

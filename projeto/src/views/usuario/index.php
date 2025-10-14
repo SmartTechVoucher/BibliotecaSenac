@@ -15,7 +15,7 @@ $emailUsuario = $usuario['email'] ?? '';
 $model = new LivroModel();
 
 // Buscar livros reais do banco de dados
-$livros = $model->getLivros(12, 0); // 12 livros para preencher as 2 fileiras
+$livros = $model->getLivrosAleatorios(9); // 9 livros para preencher as 2 fileiras
 
 // Capturar dados do toast
 $toastData = null;
@@ -131,7 +131,7 @@ if (isset($_SESSION['toast'])) {
 
         <div class="container-estante">
             <div class="sup">
-                <h1 class="title">Livros Disponíveis</h1>
+                <h1 class="title">Livros</h1>
             </div>
             <div class="estante">
                 <div class="livros">
