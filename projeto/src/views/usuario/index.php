@@ -2,7 +2,7 @@
 // index.php
 require __DIR__ . '/../../../config/constantes.php';
 require __DIR__ . '/../../../config/auth-check.php';
-include_once __DIR__ . '/../../../src/model/usuario/livro-model.php';
+require_once __DIR__ . '/../../../src/model/usuario/LivroModel.php';
 
 // Usar a função de verificação de login do auth-check.php
 $usuario = obterUsuarioLogado();
@@ -13,7 +13,9 @@ $nomeUsuario = $usuario['nome'] ?? '';
 $emailUsuario = $usuario['email'] ?? '';
 
 $model = new LivroModel();
-$livros = $model->getLivrosMock();
+
+// Buscar livros reais do banco de dados
+$livros = $model->getLivros(12, 0); // 12 livros para preencher as 2 fileiras
 
 // Capturar dados do toast
 $toastData = null;
@@ -33,11 +35,9 @@ if (isset($_SESSION['toast'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo à Biblioteca SENAC HUB ACADEMY!</title>
 
-    <!-- Preconnect para melhorar carregamento das fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Fontes com display=swap para evitar FOUT -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -76,9 +76,9 @@ if (isset($_SESSION['toast'])) {
                 </div>
             </div>
 
-            <form class="barrapesquisa">
+            <form class="barrapesquisa" onsubmit="return false;">
                 <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> 
-                <button type="button" class="botaops" id="lupaId" onclick="focusInput()" tabindex="0">
+                <button type="button" class="botaops" id="lupaId" tabindex="0">
                     <img src="<?php echo $URLBASE ?>/public/assets/icons/lupa.svg" alt="Buscar">
                 </button>
                 <div class="listagem">
@@ -131,32 +131,44 @@ if (isset($_SESSION['toast'])) {
 
         <div class="container-estante">
             <div class="sup">
-                <h1 class="title">Livros</h1>
+                <h1 class="title">Livros Disponíveis</h1>
             </div>
             <div class="estante">
                 <div class="livros">
+                    <!-- Primeira Fileira (4 livros) -->
                     <div class="primeiraFileira">
                         <?php
-                        for ($i = 3; $i < 7 && $i < count($livros); $i++):
-                            $livro = $livros[$i];
+                        if (!empty($livros)) {
+                            for ($i = 0; $i < 4 && $i < count($livros); $i++):
+                                $livro = $livros[$i];
                         ?>
-                            <div class="livroEstante1">
-                                <?php include "../../../public/components/usuario/card/card2.php"; ?>
-                            </div>
-                        <?php endfor; ?>
+                                <div class="livroEstante1">
+                                    <?php include "../../../public/components/usuario/card/card2.php"; ?>
+                                </div>
+                        <?php 
+                            endfor;
+                        } else {
+                            echo '<p style="color: #666; text-align: center; width: 100%; padding: 20px;">Nenhum livro cadastrado no momento.</p>';
+                        }
+                        ?>
                     </div>
 
                     <div class="prateleira"></div>
 
+                    <!-- Segunda Fileira (5 livros) -->
                     <div class="segundaFileira">
                         <?php
-                        for ($i = 3; $i < 8 && $i < count($livros); $i++):
-                            $livro = $livros[$i];
+                        if (!empty($livros)) {
+                            for ($i = 4; $i < 9 && $i < count($livros); $i++):
+                                $livro = $livros[$i];
                         ?>
-                            <div class="livroEstante1">
-                                <?php include "../../../public/components/usuario/card/card2.php"; ?>
-                            </div>
-                        <?php endfor; ?>
+                                <div class="livroEstante1">
+                                    <?php include "../../../public/components/usuario/card/card2.php"; ?>
+                                </div>
+                        <?php 
+                            endfor;
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -165,6 +177,9 @@ if (isset($_SESSION['toast'])) {
         <?php include "../../../public/components/usuario/footer/footer.php"; ?>
     </div>
 
+    <script>
+        const URLBASE = '<?php echo $URLBASE; ?>';
+    </script>
     <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
     <script src="<?php echo $URLBASE ?>/public/js/usuario/tela-inicial.js" defer></script>
     <script src="<?php echo $URLBASE ?>/public/js/components/header.js" defer></script>
