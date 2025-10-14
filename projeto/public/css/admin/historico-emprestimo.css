@@ -12,7 +12,6 @@
     --apontador: pointer;
     --cinza: #D9D9D9;
 }
-
 main{
     display: flex;
     justify-content: center;
@@ -21,7 +20,6 @@ main{
     gap: 0px;
 
 }
-
 .container {
     width: 50%;
     padding: 40px;
@@ -32,25 +30,20 @@ main{
     border-radius: 0px 8px 8px 8px;
     box-shadow: 0px 7px 8px rgba(0,0,0,0.1);
 }
-
-
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
-
 th, td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
-
 th {
     background-color: #7a7e83;
     color: white;
 }
-
 tr:hover {
     background-color: #f1f1f1;
 }
@@ -58,7 +51,6 @@ tr:hover {
 *{
     box-sizing: border-box;
 }
-
 .modal {
     display: none;
     position: fixed;
@@ -70,7 +62,6 @@ tr:hover {
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
 }
-
 .modal-content {
     background-color: #a39797;
     margin: 15% auto;
@@ -80,25 +71,21 @@ tr:hover {
     max-width: 400px;
     border-radius: 8px;
 }
-
 .close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
-
 .close:hover, .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
-
 .botoesFiltro{
     display: flex;
     width: 52.1%;
 }
-
 button {
     background-color: #b4b8bd;
     color: white;
@@ -111,8 +98,6 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
-
 table {
     width: 90%;
     border-collapse: collapse;
@@ -122,13 +107,11 @@ table {
     border: 2px solid #d3cdcd;
     overflow: hidden;
 }
-
 .filter-options{
     display:flex;
     gap: 15px;
     margin-top: 10px;
 }
-
 .pagination-controls {
             margin-top: 20px;
             text-align: center;
@@ -160,7 +143,6 @@ table {
     font-size: 0.9em;
     color: #555;
 }
-
 .main-container{
     box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
     background: #fbfaff;
@@ -190,7 +172,6 @@ tbody tr:last-child td:first-child {
 tbody tr:last-child td:last-child {
     border-bottom-right-radius: 10px; 
 }
-
 th, td {
     border: 1px solid #000;
     padding: 12px 16px; 
@@ -209,30 +190,24 @@ th, td {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
 body {
     margin: 0;
     background-color: var(--fundoPadrao);
     font-family: var(--fontes);
 }
-
 .conteiner3 {
     display: flex;
     justify-content: space-between;
 }
-
-
 .inferiorDireito{
     display: flex;
     justify-content: end;
     margin-top:5%;
 }
-
 .inferiorDireito .inferior{
     width: 100px;
     height: 100px;
 }
-
 .rodape{
     background-color: var(--azulCabecalho);
     height: 240px;
@@ -246,7 +221,6 @@ body {
     text-align: center;
    
 }
-
 .menu{
     width: 366px;
     height: 370px;
@@ -258,7 +232,6 @@ body {
     cursor: pointer;  
       
 }
-
 .menu a {
     text-decoration: none;
     color: var(--branco);
@@ -269,8 +242,6 @@ body {
         display: none;
     }
 }
-
-
 @media(min-width:375px){
 
     .tabela{
@@ -302,7 +273,6 @@ body {
     }
 
 }
-
 @media(min-width:414px){
 
     .minhaConta{
@@ -310,7 +280,6 @@ body {
         left: 72.5%;
     }
 }
-
 @media(min-width:500px){
 
     .minhaConta{
@@ -318,7 +287,6 @@ body {
         left: 77.2%;
     }
 }
-
 @media(min-width:600px){
 
     .minhaConta{
@@ -326,7 +294,6 @@ body {
         left: 81%;
     }
 }
-
 @media(min-width:768px){
 
     .minhaConta{
@@ -340,7 +307,6 @@ body {
     }
 
 }
-
 @media(min-width:820px){
 
     .minhaConta{
@@ -354,7 +320,6 @@ body {
     }
 
 }
-
 @media(min-width:912px){
 
     .minhaConta{
@@ -372,7 +337,6 @@ body {
     }
 
 }
-
 @media(min-width:1024px){
  
 
@@ -391,7 +355,6 @@ body {
     }
 
 }
-
 @media(min-width:1124px){
 
     .minhaConta{
@@ -409,7 +372,6 @@ body {
     }
 
 }
-
 @media(min-width:1280px){
 
     .minhaConta{
@@ -423,7 +385,6 @@ body {
     }
 
 }
-
 @media(min-width:1358px){
 
     .minhaConta{
@@ -432,7 +393,6 @@ body {
     }
 
 }
-
 @media(min-width:1912px){
 
     .minhaConta{

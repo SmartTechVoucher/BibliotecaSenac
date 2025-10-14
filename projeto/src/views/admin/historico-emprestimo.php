@@ -86,25 +86,26 @@ if(!$result){
 
     </div>     
 
-    <?php
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>
-                    <td>{$row['status']}</td>
-                    <td>{$row['exemplar']}</td>
-                    <td>{$row['leitor']}</td>
-                    <td>" . date('d/m/Y', strtotime($row['data'])) . "</td>
-                    <td>" . date('d/m/Y', strtotime($row['prazo'])) . "</td>
-                    <td>{$row['devolucao']}</td>
-                  </tr>";
-        }
-    } else {
-        echo "
-        <tr>
-        <td colspan='6'>Nenhum empréstimo encontrado</td>
-        </tr>";
+    <tbody>
+<?php
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>{$row['status']}</td>
+                <td>{$row['exemplar']}</td>
+                <td>{$row['leitor']}</td>
+                <td>" . date('d/m/Y', strtotime($row['data'])) . "</td>
+                <td>" . date('d/m/Y', strtotime($row['prazo'])) . "</td>
+                <td>{$row['devolucao']}</td>
+              </tr>";
     }
-    ?>
+} else {
+    echo "<tr class='linha-vazia'>
+            <td colspan='6'>Nenhum empréstimo encontrado</td>
+          </tr>";
+}
+?>
+</tbody>
  <?php
     include "../../../public/components/admin/footer/footer-admin.php";
     ?>
