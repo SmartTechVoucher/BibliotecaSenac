@@ -33,7 +33,6 @@ body {
 .container-main {
     width: 90%;
     max-width: 1200px;
-    margin: 40px auto;
 }
 
 /* =======================
@@ -154,10 +153,10 @@ body {
     color: var(--textoSecundario);
 }
 
-/* Container para alinhar os botões lado a lado */
-.button-group {
+.dashboard-actions {
     display: flex;
-    gap: 10px;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 /* Estilo base para todos os botões */
@@ -168,7 +167,7 @@ body {
     font-family: var(--fontes);
     font-size: 0.95rem;
     font-weight: 500;
-    border-radius: 9999px; /* completamente arredondado */
+    border-radius: 10px; /* completamente arredondado */
     padding: 8px 16px;
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
@@ -212,7 +211,10 @@ body {
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
 }
 
-
+.icon-dashboard {
+    width: 1rem;
+    height: 1rem;
+}
 
 
 

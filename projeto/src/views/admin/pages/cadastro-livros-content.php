@@ -14,24 +14,25 @@ $areas = $livro_model->getOpcoesSelect('areas');
 $documentos = $livro_model->getOpcoesSelect('documentos');
 ?>
 
-<div class="container-main">
-    <form id="cadastro-form" action="<?php echo $URLBASE ?>/router.php?acao=cadastrarLivro" method="post" enctype="multipart/form-data">
 
-        <fieldset class="form-section">
-            <legend>Cadastro de livro</legend>
+    <form id="cadastro-form" action="<?php echo $URLBASE ?>/router.php?acao=cadastrarLivro" method="post" enctype="multipart/form-data">
             <div class="form-coluna">
-                <div class="form-grupo">
-                    <label for="titulo-livro">Titulo</label>
-                    <?php
-                    InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
-                    ?>
-                </div>
+                <div class="form-row">
+                    <div class="form-grupo">
+                        <label for="titulo-livro">Titulo</label>
+                        <?php
+                        InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
+                        ?>
+                    </div>
+                
 
                 <!-- Campo para número de páginas (obrigatório no schema de livros) -->
-                <div class="form-grupo">
-                    <label for="numero-paginas">Número de Páginas</label>
-                    <?php InputAdmin(largura: 100, name: "numero-paginas", id: "numero-paginas", tipo: "number", required: true) ?>
+                    <div class="form-grupo">
+                        <label for="numero-paginas">Número de Páginas</label>
+                        <?php InputAdmin(largura: 100, name: "numero-paginas", id: "numero-paginas", tipo: "number", required: true) ?>
+                    </div>
                 </div>
+                
 
                 <div class="form-grupo">
                     <?php
@@ -109,22 +110,17 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
                     <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
                 </div>
                 <div class="form-grupo">
-                    <label for="tipo-documento">Tipo de documento</label>
                     <?php renderSelectModal('tipo-documento', 'Tipo de documento', $documentos); ?>
                 </div>
             </div>
 
 
-
-
-
-        </fieldset>
-        <div class="botao-container">
+        <!-- <div class="botao-container">
             <?php
             botao(texto: "Registrar", tipo: "submit");
             botao(texto: "Cancelar", tipo: "reset", cor: "#d00");
             ?>
-        </div>
+        </div> -->
 
 
     </form>

@@ -1,9 +1,4 @@
-
-
 <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data" name="cadastrarRelatorios">
-    <fieldset class="form-section">
-        <legend> <img src="<?php echo $URLBASE ?>/public/assets/icons/relatorio.png" alt="">Gerar relatórios</legend>
-
         <div class="form-row">
 
             <div class="form-grupo">

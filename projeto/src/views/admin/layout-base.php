@@ -28,9 +28,19 @@ require __DIR__ . '/../../../config/constantes.php';
 
     <!-- Conteúdo principal -->
     <main class="main-content">
-        <?php include $conteudo; ?>
-    </main>
-
+    <div class="container-main">
+        <fieldset class="form-section">
+            <legend><?= htmlspecialchars($fieldsetTitulo ?? 'Titulo não encontrado') ?></legend>
+            <?php 
+            if (!empty($conteudo) && file_exists($conteudo)) {
+                include $conteudo;
+            } else {
+                echo "<p style='color:red; text-align:center;'>Erro: conteúdo não encontrado.</p>";
+            }
+            ?>
+        </fieldset>
+    </div>
+</main>
     <!-- Modal de confirmação (se houver) -->
     <?php
     if(!empty($modalPagina)) {

@@ -2,7 +2,7 @@
 <aside class="sidebar">
     <!-- Logo -->
     <div class="sidebar-logo">
-        <img src="<?php echo $URLBASE ?>/public/assets/img/LogoHub_academy.png" alt="Logo HUB Academy">
+        <img src="<?php echo $URLBASE ?>/public/assets/icons/logo-hub-academy.png" alt="Logo HUB Academy">
         <h3>HUB ACADEMY</h3>
         <span class="subtitle">Biblioteca</span>
     </div>
@@ -22,7 +22,7 @@
             </li>
             <li>
                 <a href="<?php echo $URLBASE ?>/src/views/admin/livros-cadastrados.php">
-                    <img src="<?php echo $URLBASE ?>/public/assets/icons/livros.png" alt="Livros Cadastrados" class="icon"> Livros Cadastrados
+                    <img src="<?php echo $URLBASE ?>/public/assets/icons/livros.png" alt="Livros Cadastrados" class="icon"> Livros
                 </a>
             </li>
             <li>
@@ -32,7 +32,7 @@
             </li>
             <li>
                 <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php">
-                    <img src="<?php echo $URLBASE ?>/public/assets/icons/usuarios.png" alt="Usuários Cadastrados" class="icon"> Usuários Cadastrados
+                    <img src="<?php echo $URLBASE ?>/public/assets/icons/usuarios.png" alt="Usuários Cadastrados" class="icon"> Usuários
                 </a>
             </li>
             <li>

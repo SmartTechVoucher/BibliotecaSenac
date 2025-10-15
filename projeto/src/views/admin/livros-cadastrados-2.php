@@ -1,8 +1,7 @@
 <?php
-$titulo = 'cadastro de Livros';
-$cssPagina = '/public/css/admin/cadastro-livros.css';
-$conteudo = __DIR__ . '/pages/cadastro-livros-content.php'; // caminho do conteúdo
-$fieldsetTitulo = "Cadastro de livro";
+$titulo = 'Relatórios';
+$cssPagina = '/public/css/admin/relatorios.css';
+$conteudo = __DIR__ . '/pages/livros-cadastrados-teste.php'; // caminho do conteúdo
 $modalPagina = [
     'id' => 'confirmModal',
     'titulo' => 'Confirmação',

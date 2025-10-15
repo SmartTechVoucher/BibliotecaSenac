@@ -1,5 +1,5 @@
 <?php
-$titulo = 'Ususarios Cadastrados';
+$titulo = 'Usuários';
 $cssPagina = '/public/css/admin/usuarios-cadastrados.css';
 $conteudo = __DIR__ . '/pages/usuarios-cadastrados-content.php'; // caminho do conteúdo
 $modalPagina = [

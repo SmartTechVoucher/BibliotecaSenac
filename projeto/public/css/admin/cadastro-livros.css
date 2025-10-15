@@ -65,6 +65,12 @@ body{
   width: 100%;
 }
 
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
 /* Label styling */
 .form-section label {
   font-weight: 500;
