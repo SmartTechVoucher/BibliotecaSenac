@@ -41,7 +41,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 
             <div class="container-form">
                 
-                <form action="../../../router.php?acao=loginAdmin" method="POST" class="card-login" id="card-login" name="dadosLoginAdm">
+                <form action="../../../router.php?acao=loginAdmin" method="POST" class="card-login" id="card-login">
                     <div class="titles-form">
                         <h2>Acesso Administrativo</h2>
                         <p>Entre com suas credenciais</p>
