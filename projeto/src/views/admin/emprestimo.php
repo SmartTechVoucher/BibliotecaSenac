@@ -1,5 +1,134 @@
-<?php
-require "../../../config/constantes.php"
+<script src="<?php echo $URLBASE ?>/public/js/admin/emprestimo.js"></script>
+    <script>
+        // Busca de leitores com autocomplete
+        const inputUsuario = document.getElementById('nome-usuario');
+        const sugestoesDiv = document.getElementById('sugestoes-usuarios');
+        const leitorIdInput = document.getElementById('leitor-id');
+        const cardUsuario = document.getElementById('card-usuario');
+        
+        let timeoutId;
+
+        inputUsuario.addEventListener('input', function() {
+            clearTimeout(timeoutId);
+            const query = this.value.trim();
+            
+            if (query.length < 2) {
+                sugestoesDiv.style.display = 'none';
+                return;
+            }
+            
+            timeoutId = setTimeout(() => {
+                fetch(`../../../src/controller/buscar-usuarios.php?q=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length > 0) {
+                            sugestoesDiv.innerHTML = data.map(user => 
+                                `<div class="sugestao-item" data-id="${user.id}" data-nome="${user.nome}" 
+                                 data-email="${user.email}" data-matricula="${user.matricula}" 
+                                 data-telefone="${user.telefone}" data-acesso="${user.acesso}">
+                                    <strong>${user.nome}</strong> - ${user.matricula}
+                                </div>`
+                            ).join('');
+                            sugestoesDiv.style.display = 'block';
+                            
+                            // Adicionar eventos de clique
+                            document.querySelectorAll('.sugestao-item').forEach(item => {
+                                item.addEventListener('click', function() {
+                                    selecionarUsuario(this);
+                                });
+                            });
+                        } else {
+                            sugestoesDiv.innerHTML = '<div class="sugestao-item">Nenhum leitor encontrado</div>';
+                            sugestoesDiv.style.display = 'block';
+                        }
+                    })
+                    .catch(error => console.error('Erro:', error));
+            }, 300);
+        });
+
+        function selecionarUsuario(element) {
+            const id = element.getAttribute('data-id');
+            const nome = element.getAttribute('data-nome');
+            const email = element.getAttribute('data-email');
+            const matricula = element.getAttribute('data-matricula');
+            const telefone = element.getAttribute('data-telefone');
+            const acesso = element.getAttribute('data-acesso');
+            
+            inputUsuario.value = nome;
+            leitorIdInput.value = id;
+            sugestoesDiv.style.display = 'none';
+            
+            // Preencher card do leitor
+            document.getElementById('display-nome').textContent = nome;
+            document.getElementById('display-matricula').textContent = matricula;
+            document.getElementById('display-email').textContent = email;
+            document.getElementById('display-telefone').textContent = telefone;
+            document.getElementById('display-acesso').textContent = acesso;
+            cardUsuario.style.display = 'block';
+            
+            // Carregar empréstimos do leitor
+            carregarEmprestimos(id);
+        }
+
+        function carregarEmprestimos(leitorId) {
+            fetch(`../../../src/controller/buscar-emprestimos.php?leitor_id=${leitorId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('tabela-emprestimos-body');
+                    
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px;">Nenhum empréstimo encontrado para este leitor</td></tr>';
+                        return;
+                    }
+                    
+                    tbody.innerHTML = data.map(emp => {
+                        const statusClass = emp.status === 'devolvido' ? 'status-devolvido' : 'status-ativo';
+                        const botoesAcao = emp.status !== 'devolvido' ? 
+                            `<button class="btn-renovar" onclick="renovarEmprestimo(${emp.id})">
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Renovar.png" alt="">Renovar
+                            </button>
+                            <button class="btn-devolver" onclick="devolverLivro(${emp.id})">
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Devolver.png" alt="">Devolver
+                            </button>` : '';
+                        
+                        return `
+                            <tr id="livro-${emp.id}">
+                                <td><img src="${emp.foto}" alt="Capa do livro ${emp.titulo}" class="livro-imagem"></td>
+                                <td>${emp.titulo}</td>
+                                <td>${emp.codigo}</td>
+                                <td><span class="${statusClass}">${emp.status.charAt(0).toUpperCase() + emp.status.slice(1)}</span></td>
+                                <td class="botoes-acao">
+                                    <button class="btn-abrir-mais" onclick="toggleDetalhes(${emp.id})">Abrir Mais</button>
+                                    ${botoesAcao}
+                                </td>
+                            </tr>
+                            <tr id="detalhes-livro-${emp.id}" class="info-detalhes">
+                                <td colspan="5">
+                                    <p><strong>Data de Empréstimo:</strong> ${formatarData(emp.data_emprestimo)}</p>
+                                    <p><strong>Prazo para Devolução:</strong> ${formatarData(emp.prazo_devolucao)}</p>
+                                    <p><strong>Data de Devolução:</strong> ${emp.data_devolucao ? formatarData(emp.data_devolucao) : 'N/A'}</p>
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+                })
+                .catch(error => console.error('Erro:', error));
+        }
+
+        function formatarData(dataString) {
+            const data = new Date(dataString);
+            return data.toLocaleDateString('pt-BR');
+        }
+
+        // Fechar sugestões ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.form-row')) {
+                sugestoesDiv.style.display = 'none';
+            }
+        });
+    </script><?php
+require "../../../config/constantes.php";
+require_once "conexao.php";
 ?>
 
 <!DOCTYPE html>
@@ -31,50 +160,33 @@ require "../../../config/constantes.php"
 
     <main>
         <div class="container-main">
-            <fieldset class="form-section"><legend>
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/emprestimo-icon.png" id="fieldset-icon" alt="">
-                        Cadastro de emprestimo
-                    </legend>
+            <fieldset class="form-section">
+                <legend>
+                    <img src="<?php echo $URLBASE ?>/public/assets/icons/emprestimo-icon.png" id="fieldset-icon" alt="">
+                    Cadastro de emprestimo
+                </legend>
                 <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
 
                     
                     <div class="form-row">
-                        <label for="nome-usuario">Nome do usuário</label>
+                        <label for="nome-usuario">Nome do Leitor</label>
                         <?php
-                        $usuariosMock = [
-                            ['id' => 1, 'nome' => 'José da Silva', 'email' => 'jose.silva@email.com', 'matricula' => '2023001', 'acesso' => 'regular', 'telefone' => '67981234567'],
-                            ['id' => 2, 'nome' => 'Ana Maria Santos', 'email' => 'ana.santos@email.com', 'matricula' => '2023002', 'acesso' => 'regular', 'telefone' => '67981234568'],
-                            ['id' => 3, 'nome' => 'Pedro Oliveira', 'email' => 'pedro.oliveira@email.com', 'matricula' => '2023003', 'acesso' => 'bloqueado', 'telefone' => '67981234569'],
-                            ['id' => 4, 'nome' => 'Fernanda Costa', 'email' => 'fernanda.costa@email.com', 'matricula' => '2023004', 'acesso' => 'regular', 'telefone' => '67981234570'],
-                            ['id' => 5, 'nome' => 'Lucas Pereira', 'email' => 'lucas.pereira@email.com', 'matricula' => '2023005', 'acesso' => 'regular', 'telefone' => '67981234571'],
-                            ['id' => 6, 'nome' => 'Mariana Almeida', 'email' => 'mariana.almeida@email.com', 'matricula' => '2023006', 'acesso' => 'regular', 'telefone' => '67981234572'],
-                            ['id' => 7, 'nome' => 'Rafaela Martins', 'email' => 'rafaela.martins@email.com', 'matricula' => '2023007', 'acesso' => 'regular', 'telefone' => '67981234573'],
-                            ['id' => 8, 'nome' => 'Guilherme Souza', 'email' => 'guilherme.souza@email.com', 'matricula' => '2023008', 'acesso' => 'regular', 'telefone' => '67981234574'],
-                            ['id' => 9, 'nome' => 'Beatriz Ferreira', 'email' => 'beatriz.ferreira@email.com', 'matricula' => '2023009', 'acesso' => 'bloqueado', 'telefone' => '67981234575'],
-                            ['id' => 10, 'nome' => 'Gabriel Rodrigues', 'email' => 'gabriel.rodrigues@email.com', 'matricula' => '2023010', 'acesso' => 'regular', 'telefone' => '67981234576'],
-                            ['id' => 11, 'nome' => 'Juliana Gomes', 'email' => 'juliana.gomes@email.com', 'matricula' => '2023011', 'acesso' => 'regular', 'telefone' => '67981234577'],
-                            ['id' => 12, 'nome' => 'Daniel Barbosa', 'email' => 'daniel.barbosa@email.com', 'matricula' => '2023012', 'acesso' => 'regular', 'telefone' => '67981234578'],
-                            ['id' => 13, 'nome' => 'Carolina Lima', 'email' => 'carolina.lima@email.com', 'matricula' => '2023013', 'acesso' => 'regular', 'telefone' => '67981234579'],
-                            ['id' => 14, 'nome' => 'Thiago Fernandes', 'email' => 'thiago.fernandes@email.com', 'matricula' => '2023014', 'acesso' => 'regular', 'telefone' => '67981234580'],
-                            ['id' => 15, 'nome' => 'Isabela Rocha', 'email' => 'isabela.rocha@email.com', 'matricula' => '2023015', 'acesso' => 'regular', 'telefone' => '67981234581'],
-                            ['id' => 16, 'nome' => 'Artur Nunes', 'email' => 'artur.nunes@email.com', 'matricula' => '2023016', 'acesso' => 'bloqueado', 'telefone' => '67981234582'],
-                            ['id' => 17, 'nome' => 'Laura Dias', 'email' => 'laura.dias@email.com', 'matricula' => '2023017', 'acesso' => 'regular', 'telefone' => '67981234583'],
-                            ['id' => 18, 'nome' => 'Felipe Castro', 'email' => 'felipe.castro@email.com', 'matricula' => '2023018', 'acesso' => 'regular', 'telefone' => '67981234584'],
-                        ];
-                       
-                        InputAdmin(largura: 100, placeholder: "Nome completo do usuário", id: "nome-usuario", name: "nome-usuario")
+                        InputAdmin(largura: 100, placeholder: "Digite para buscar leitor", id: "nome-usuario", name: "nome-usuario")
                         ?>
+                        <input type="hidden" id="leitor-id" name="leitor-id">
+                        <div id="sugestoes-usuarios" class="sugestoes-lista" style="display: none;"></div>
                     </div>
+
                     <div class="form-row">
-                        <fieldset id="card-usuario" class="form-section">
-                            <legend>Dados do Usuário</legend>
+                        <fieldset id="card-usuario" class="form-section" style="display: none;">
+                            <legend>Dados do Leitor</legend>
                             <img src="<?php echo $URLBASE ?>/public/assets/img/NullUser.jpg" class="user-photo" alt="">
                             <div class="user-info">
-                                <h2 class="user-name"><?php echo $usuariosMock[0]["nome"] ?></h2>
-                                <p class="user-detail">Matrícula: <?php echo $usuariosMock[0]["matricula"] ?></p>
-                                <p class="user-detail">Email: <?php echo $usuariosMock[0]["email"] ?></p>
-                                <p class="user-detail">Telefone: <?php echo $usuariosMock[0]["telefone"] ?></p>
-                                <p class="user-detail">Telefone: <?php echo $usuariosMock[0]["acesso"] ?></p>
+                                <h2 class="user-name" id="display-nome"></h2>
+                                <p class="user-detail">Matrícula: <span id="display-matricula"></span></p>
+                                <p class="user-detail">Email: <span id="display-email"></span></p>
+                                <p class="user-detail">Telefone: <span id="display-telefone"></span></p>
+                                <p class="user-detail">Status: <span id="display-acesso"></span></p>
                             </div>
                         </fieldset>
                     </div>
@@ -86,41 +198,29 @@ require "../../../config/constantes.php"
                         ?>
                     </div>
 
-
-
-
                 </form>
-                <?php
                 
-                $livros = [
-                    [
-                        'id' => 1,
-                        'titulo' => 'Dom Casmurro',
-                        'codigo' => 'LIV-001',
-                        'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
-                        'data_emprestimo' => '10/09/2025',
-                        'prazo_devolucao' => '24/09/2025',
-                        'data_devolucao' => 'N/A'
-                    ],
-                    [
-                        'id' => 2,
-                        'titulo' => 'O Pequeno Príncipe',
-                        'codigo' => 'LIV-002',
-                        'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
-                        'data_emprestimo' => '05/09/2025',
-                        'prazo_devolucao' => '19/09/2025',
-                        'data_devolucao' => 'N/A'
-                    ],
-                    [
-                        'id' => 3,
-                        'titulo' => '1984',
-                        'codigo' => 'LIV-003',
-                        'foto' => '/BibliotecaSenac/projeto/public/assets/img/livroCapa.jpg',
-                        'data_emprestimo' => '01/09/2025',
-                        'prazo_devolucao' => '15/09/2025',
-                        'data_devolucao' => '15/09/2025'
-                    ]
-                ];
+                <?php
+                // Buscar empréstimos do leitor selecionado (se houver)
+                $emprestimos = [];
+                if (isset($_GET['leitor_id']) && !empty($_GET['leitor_id'])) {
+                    $leitor_id = intval($_GET['leitor_id']);
+                    
+                    $sql = "SELECT e.*, l.titulo, l.codigo, l.foto 
+                            FROM emprestimos e 
+                            INNER JOIN livros l ON e.livro_id = l.id 
+                            WHERE e.leitor_id = ? 
+                            ORDER BY e.data_emprestimo DESC";
+                    
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("i", $leitor_id);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    
+                    while ($row = $result->fetch_assoc()) {
+                        $emprestimos[] = $row;
+                    }
+                }
                 ?>
 
                 <div class="tabela-livro">
@@ -130,32 +230,52 @@ require "../../../config/constantes.php"
                                 <th>Foto</th>
                                 <th>Título</th>
                                 <th>Código</th>
+                                <th>Status</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php foreach ($livros as $livro): ?>
-                                <tr id="livro-<?= $livro['id']; ?>">
-                                    <td><img src="<?= $livro['foto']; ?>" alt="Capa do livro <?= $livro['titulo']; ?>" class="livro-imagem"></td>
-                                    <td><?= $livro['titulo']; ?></td>
-                                    <td><?= $livro['codigo']; ?></td>
-                                    
-                                    <td class="botoes-acao">
-                                        <button class="btn-abrir-mais" onclick="toggleDetalhes(<?= $livro['id']; ?>)">Abrir Mais</button>
-                                        <button class="btn-renovar"><img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Renovar.png" alt="">Renovar</button>
-                                        <button class="btn-devolver"><img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Devolver.png" alt="">Devolver</button>
-                                    </td>
-
-                                </tr>
-
-                                <tr id="detalhes-livro-<?= $livro['id']; ?>" class="info-detalhes">
-                                    <td colspan="4">
-                                        <p><strong>Data de Empréstimo:</strong> <?= $livro['data_emprestimo']; ?></p>
-                                        <p><strong>Prazo para Devolução:</strong> <?= $livro['prazo_devolucao']; ?></p>
-                                        <p><strong>Data de Devolução:</strong> <?= $livro['data_devolucao']; ?></p>
+                        <tbody id="tabela-emprestimos-body">
+                            <?php if (empty($emprestimos)): ?>
+                                <tr>
+                                    <td colspan="5" style="text-align: center; padding: 20px;">
+                                        Selecione um leitor para ver seus empréstimos
                                     </td>
                                 </tr>
-                            <?php endforeach; ?>
+                            <?php else: ?>
+                                <?php foreach ($emprestimos as $emp): ?>
+                                    <tr id="livro-<?= $emp['id']; ?>">
+                                        <td><img src="<?= $emp['foto'] ?? $URLBASE . '/public/assets/img/livroCapa.jpg'; ?>" alt="Capa do livro <?= $emp['titulo']; ?>" class="livro-imagem"></td>
+                                        <td><?= $emp['titulo']; ?></td>
+                                        <td><?= $emp['codigo']; ?></td>
+                                        <td>
+                                            <?php 
+                                            $status = $emp['status'] ?? 'ativo';
+                                            $status_class = $status == 'devolvido' ? 'status-devolvido' : 'status-ativo';
+                                            echo "<span class='$status_class'>" . ucfirst($status) . "</span>";
+                                            ?>
+                                        </td>
+                                        <td class="botoes-acao">
+                                            <button class="btn-abrir-mais" onclick="toggleDetalhes(<?= $emp['id']; ?>)">Abrir Mais</button>
+                                            <?php if ($status != 'devolvido'): ?>
+                                                <button class="btn-renovar" onclick="renovarEmprestimo(<?= $emp['id']; ?>)">
+                                                    <img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Renovar.png" alt="">Renovar
+                                                </button>
+                                                <button class="btn-devolver" onclick="devolverLivro(<?= $emp['id']; ?>)">
+                                                    <img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Devolver.png" alt="">Devolver
+                                                </button>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+
+                                    <tr id="detalhes-livro-<?= $emp['id']; ?>" class="info-detalhes">
+                                        <td colspan="5">
+                                            <p><strong>Data de Empréstimo:</strong> <?= date('d/m/Y', strtotime($emp['data_emprestimo'])); ?></p>
+                                            <p><strong>Prazo para Devolução:</strong> <?= date('d/m/Y', strtotime($emp['prazo_devolucao'])); ?></p>
+                                            <p><strong>Data de Devolução:</strong> <?= $emp['data_devolucao'] ? date('d/m/Y', strtotime($emp['data_devolucao'])) : 'N/A'; ?></p>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -164,13 +284,139 @@ require "../../../config/constantes.php"
 
     </main>
     
-    <script src="<?php echo $URLBASE ?>/public/js/admin/emprestimo.js">
+    <script src="<?php echo $URLBASE ?>/public/js/admin/emprestimo.js"></script>
+    <script>
+        // Busca de usuários com autocomplete
+        const inputUsuario = document.getElementById('nome-usuario');
+        const sugestoesDiv = document.getElementById('sugestoes-usuarios');
+        const usuarioIdInput = document.getElementById('usuario-id');
+        const cardUsuario = document.getElementById('card-usuario');
+        
+        let timeoutId;
 
+        inputUsuario.addEventListener('input', function() {
+            clearTimeout(timeoutId);
+            const query = this.value.trim();
+            
+            if (query.length < 2) {
+                sugestoesDiv.style.display = 'none';
+                return;
+            }
+            
+            timeoutId = setTimeout(() => {
+                fetch(`../../../src/controller/buscar-usuarios.php?q=${encodeURIComponent(query)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length > 0) {
+                            sugestoesDiv.innerHTML = data.map(user => 
+                                `<div class="sugestao-item" data-id="${user.id}" data-nome="${user.nome}" 
+                                 data-email="${user.email}" data-matricula="${user.matricula}" 
+                                 data-telefone="${user.telefone}" data-acesso="${user.acesso}">
+                                    <strong>${user.nome}</strong> - ${user.matricula}
+                                </div>`
+                            ).join('');
+                            sugestoesDiv.style.display = 'block';
+                            
+                            // Adicionar eventos de clique
+                            document.querySelectorAll('.sugestao-item').forEach(item => {
+                                item.addEventListener('click', function() {
+                                    selecionarUsuario(this);
+                                });
+                            });
+                        } else {
+                            sugestoesDiv.innerHTML = '<div class="sugestao-item">Nenhum usuário encontrado</div>';
+                            sugestoesDiv.style.display = 'block';
+                        }
+                    })
+                    .catch(error => console.error('Erro:', error));
+            }, 300);
+        });
+
+        function selecionarUsuario(element) {
+            const id = element.getAttribute('data-id');
+            const nome = element.getAttribute('data-nome');
+            const email = element.getAttribute('data-email');
+            const matricula = element.getAttribute('data-matricula');
+            const telefone = element.getAttribute('data-telefone');
+            const acesso = element.getAttribute('data-acesso');
+            
+            inputUsuario.value = nome;
+            usuarioIdInput.value = id;
+            sugestoesDiv.style.display = 'none';
+            
+            // Preencher card do usuário
+            document.getElementById('display-nome').textContent = nome;
+            document.getElementById('display-matricula').textContent = matricula;
+            document.getElementById('display-email').textContent = email;
+            document.getElementById('display-telefone').textContent = telefone;
+            document.getElementById('display-acesso').textContent = acesso;
+            cardUsuario.style.display = 'block';
+            
+            // Carregar empréstimos do usuário
+            carregarEmprestimos(id);
+        }
+
+        function carregarEmprestimos(usuarioId) {
+            fetch(`../../../src/controller/buscar-emprestimos.php?usuario_id=${usuarioId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('tabela-emprestimos-body');
+                    
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 20px;">Nenhum empréstimo encontrado para este usuário</td></tr>';
+                        return;
+                    }
+                    
+                    tbody.innerHTML = data.map(emp => {
+                        const statusClass = emp.status === 'devolvido' ? 'status-devolvido' : 'status-ativo';
+                        const botoesAcao = emp.status !== 'devolvido' ? 
+                            `<button class="btn-renovar" onclick="renovarEmprestimo(${emp.id})">
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Renovar.png" alt="">Renovar
+                            </button>
+                            <button class="btn-devolver" onclick="devolverLivro(${emp.id})">
+                                <img src="<?php echo $URLBASE ?>/public/assets/icons/Icone_Devolver.png" alt="">Devolver
+                            </button>` : '';
+                        
+                        return `
+                            <tr id="livro-${emp.id}">
+                                <td><img src="${emp.foto}" alt="Capa do livro ${emp.titulo}" class="livro-imagem"></td>
+                                <td>${emp.titulo}</td>
+                                <td>${emp.codigo}</td>
+                                <td><span class="${statusClass}">${emp.status.charAt(0).toUpperCase() + emp.status.slice(1)}</span></td>
+                                <td class="botoes-acao">
+                                    <button class="btn-abrir-mais" onclick="toggleDetalhes(${emp.id})">Abrir Mais</button>
+                                    ${botoesAcao}
+                                </td>
+                            </tr>
+                            <tr id="detalhes-livro-${emp.id}" class="info-detalhes">
+                                <td colspan="5">
+                                    <p><strong>Data de Empréstimo:</strong> ${formatarData(emp.data_emprestimo)}</p>
+                                    <p><strong>Prazo para Devolução:</strong> ${formatarData(emp.prazo_devolucao)}</p>
+                                    <p><strong>Data de Devolução:</strong> ${emp.data_devolucao ? formatarData(emp.data_devolucao) : 'N/A'}</p>
+                                </td>
+                            </tr>
+                        `;
+                    }).join('');
+                })
+                .catch(error => console.error('Erro:', error));
+        }
+
+        function formatarData(dataString) {
+            const data = new Date(dataString);
+            return data.toLocaleDateString('pt-BR');
+        }
+
+        // Fechar sugestões ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.form-row')) {
+                sugestoesDiv.style.display = 'none';
+            }
+        });
     </script>
+    
     <?php
     include "../../../public/components/admin/footer/footer-admin.php";
     ?>
-
 
 </body>
 
