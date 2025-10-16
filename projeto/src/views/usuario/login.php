@@ -1,114 +1,106 @@
 <?php
-require(__DIR__ . '/../../../config/constantes.php');
-session_start();
+// login.php
+require_once __DIR__ . '/../../../config/constantes.php';
+require_once __DIR__ . '/../../../config/auth-check.php';
+
+// Capturar dados do toast ANTES de redirecionar
+$toastData = null;
+if (isset($_SESSION['toast'])) {
+    $toastData = [
+        'mensagem' => $_SESSION['toast']['mensagem'],
+        'tipo' => $_SESSION['toast']['tipo']
+    ];
+    unset($_SESSION['toast']);
+}
+
+// Se já está logado, redireciona para a página principal
+if (usuarioEstaLogado()) {
+    header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/login.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/login.css" />
 </head>
-
 <body>
-  <div class="container">
-    <section class="login">
-      <!-- gradiente animado -->
-      <div class="gradiente"></div>
+    <div class="container">
+        <section class="login">
+            <div class="gradiente"></div>
+            <div class="quadrados">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
 
-      <!-- bolhas -->
-      <div class="quadrados">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
+            <form action="<?php echo $URLBASE ?>/router.php?acao=validarLogin" method="POST">
+                <img src="<?php echo $URLBASE ?>/public/assets/img/LogoHub_academy.png" alt="logo-login" class="logo-hub" />
+                <p id="subtitulo" class="titulo-login"></p>
 
-      <!-- form -->
-      <form action="../../../router.php?acao=validarLogin" method="POST">
-        <img src="../../../public/assets/img/LogoHub_academy.png" alt="logo-login" class="logo-hub" />
-        <p id="subtitulo" class="titulo-login"></p>
+                <div class="login-campos">
+                    <div class="campo-usuario">
+                        <label for="campo_login"><img src="<?php echo $URLBASE ?>/public/assets/icons/perfil.png" alt=""> Email</label>
+                        <input type="email" name="email" id="campo_login" placeholder="Digite seu email" />
+                    </div>
+                    <div class="campo-senha">
+                        <label for="campo_senha"><img src="<?php echo $URLBASE ?>/public/assets/icons/cadeado-senha.png" alt=""> Senha</label>
+                        <input type="password" name="senha" id="campo_senha" placeholder="Digite sua senha" />
+                        <span class="toggle-senha" onclick="mostrarSenha()"><img src="<?php echo $URLBASE ?>/public/assets/icons/ocultar-2.png" alt="" class="ocultar-senha"></span>
+                    </div>
+                </div>
 
-        <div class="login-campos">
-          <div class="campo-usuario">
-            <label for="campo_login"><img src="../../../public/assets/icons/perfil.png" alt=""> Usuário</label>
-            <input type="text" name="nome" id="campo_login" placeholder="Usuário" required />
-          </div>
-          <div class="campo-senha">
-            <label for="campo_senha"><img src="../../../public/assets/icons/cadeado-senha.png" alt="" class="cadeado-senha"> Senha</label>
-            <input type="password" name="senha" id="campo_senha" placeholder="Senha" required />
-            <span class="toggle-senha" onclick="mostrarSenha()"><img src="../../../public/assets/icons/ocultar-2.png" alt="" class="ocultar-senha"></span>
-          </div>
-        </div>
+                <div class="check-entrar">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="lembrar" name="lembrar" />
+                        <label for="lembrar">Lembrar senha</label>
+                    </div>
+                    <a href="<?php echo $URLBASE ?>/src/views/usuario/recuperar-senha.php">Recuperar Senha</a>
+                </div>
 
-        <div class="check-entrar">
-          <div class="checkbox-container">
-            <input type="checkbox" id="lembrar" />
-            <label for="lembrar">Lembrar senha</label>
-          </div>
-          <a href="../../views/usuario/recuperar-senha.php">Recuperar Senha</a>
-        </div>
+                <button type="submit">ENTRAR</button>
+            </form>
+        </section>
+    </div>
 
-        <button type="submit">ENTRAR</button>
-      </form>
-    </section>
+    <script src="<?php echo $URLBASE ?>/public/js/components/toast.js"></script>
 
-    <!-- <section class="tela_animacao">
-      <img src="<?php echo $URLBASE ?>/public/assets/img/gif_login.gif" alt="animação login" />
-    </section> -->
-  </div>
+    <?php if ($toastData) : ?>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                mostrarToast("<?php echo addslashes($toastData['mensagem']); ?>", "<?php echo $toastData['tipo']; ?>");
+            });
+        </script>
+    <?php endif; ?>
 
-  <?php
-  if (isset($_SESSION['toast'])) {
-    include_once __DIR__ . '/../../../../public/components/toast/toast.php';
-    unset($_SESSION['toast']);
-  }
-  ?>
-
-  <script>
-    function mostrarSenha() {
-      const campo = document.getElementById("campo_senha");
-      campo.type = campo.type === "password" ? "text" : "password";
-    }
-
-    // texto digitando
-    const texto = ["Hub Academy", "Conectando você ao futuro"];
-    const el = document.getElementById("subtitulo");
-    let linha = 0,
-      i = 0;
-
-    function digitar() {
-      if (linha < texto.length) {
-        if (i < texto[linha].length) {
-          el.innerHTML += texto[linha][i];
-          i++;
-          setTimeout(digitar, 80);
-        } else {
-          linha++;
-          i = 0;
-          if (linha < texto.length) {
-            el.innerHTML += "<br>";
-            setTimeout(digitar, 500);
-          } else {
-            // Depois de terminar de digitar, inicia animação das reticências
-            animarReticencias();
-          }
+    <script>
+        function mostrarSenha() {
+            const campo = document.getElementById("campo_senha");
+            campo.type = campo.type === "password" ? "text" : "password";
         }
-      }
-    }
 
-    let reticenciasCount = 0;
-    const maxReticencias = 3;
+        const texto = ["Hub Academy", "Conectando você ao futuro"];
+        const el = document.getElementById("subtitulo");
+        let linha = 0,
+            i = 0;
 
-    function animarReticencias() {
-      reticenciasCount = (reticenciasCount + 1) % (maxReticencias + 1);
-      el.innerHTML = texto[0] + "<br>" + texto[1] + ".".repeat(reticenciasCount);
-      setTimeout(animarReticencias, 500);
-    }
-
-    digitar();
-  </script>
+        function digitar() {
+            if (linha < texto.length) {
+                if (i < texto[linha].length) {
+                    el.innerHTML += texto[linha][i++];
+                    setTimeout(digitar, 80);
+                } else {
+                    linha++;
+                    i = 0;
+                    if (linha < texto.length) {
+                        el.innerHTML += "<br>";
+                        setTimeout(digitar, 500);
+                    }
+                }
+            }
+        }
+        digitar();
+    </script>
 </body>
-
 </html>

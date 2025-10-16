@@ -16,18 +16,22 @@ class CadastrarLivroController {
 
     /**
      * Processa o cadastro de um novo livro a partir do form POST.
-     * Valida dados, faz upload real de capa,
+     * Valida dados, faz upload real de capa.
      * @return bool True se cadastrado com sucesso, false caso contrário
      */
     public function cadastrar() {
         $isAjax = isset($_POST['ajax']) && $_POST['ajax'] == '1';
+        
+        if ($isAjax) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+        }
         
         try {
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 throw new Exception('Método inválido. Use POST para cadastro.');
             }
 
-            // Coleta dados do form
             $dados = [
                 'titulo' => trim($_POST['titulo-livro'] ?? ''),
                 'id_autor' => (int) ($_POST['autor'] ?? 0),
@@ -37,7 +41,7 @@ class CadastrarLivroController {
                 'numero_paginas' => (int) ($_POST['numero-paginas'] ?? 0),
                 'descricao' => trim($_POST['resumo-livro'] ?? ''),
                 'id_unidade' => (int) ($_POST['editora'] ?? 0),
-                'foto' => 'uploads/default-capa.jpg',  // Default
+                'foto' => 'uploads/default-capa.jpg',
                 'notas' => trim($_POST['notas-livro'] ?? ''),
                 'resumo_livro' => trim($_POST['resumo-livro'] ?? ''),
                 'id_documento' => (int) ($_POST['tipo-documento'] ?? 1),
@@ -45,157 +49,163 @@ class CadastrarLivroController {
                 'id_area' => (int) ($_POST['area'] ?? 1)
             ];
 
-            if (isset($_FILES['capa-livro'])) {
+            // Processar upload de capa
+            if (isset($_FILES['capa-livro']) && $_FILES['capa-livro']['error'] !== UPLOAD_ERR_NO_FILE) {
                 $file = $_FILES['capa-livro'];
                 $error_code = $file['error'];
-                $tmp_name = $file['tmp_name'];
-                $size = $file['size'];
                 
-                error_log("Upload debug: error_code=$error_code | tmp_name='$tmp_name' | size=$size | name='{$file['name']}'");
+                error_log("Upload iniciado: error_code=$error_code | size={$file['size']} | name={$file['name']}");
                 
                 if ($error_code !== UPLOAD_ERR_OK) {
-                    $erros = [
-                        UPLOAD_ERR_INI_SIZE => 'Arquivo muito grande (php.ini upload_max_filesize)',
-                        UPLOAD_ERR_FORM_SIZE => 'Arquivo muito grande (MAX_FILE_SIZE no form)',
-                        UPLOAD_ERR_PARTIAL => 'Upload incompleto',
-                        UPLOAD_ERR_NO_FILE => 'Nenhum arquivo enviado',
+                    $mensagens_erro = [
+                        UPLOAD_ERR_INI_SIZE => 'Arquivo excede upload_max_filesize do php.ini',
+                        UPLOAD_ERR_FORM_SIZE => 'Arquivo excede MAX_FILE_SIZE do formulário',
+                        UPLOAD_ERR_PARTIAL => 'Upload parcial do arquivo',
                         UPLOAD_ERR_NO_TMP_DIR => 'Pasta temporária não existe',
-                        UPLOAD_ERR_CANT_WRITE => 'Falha ao escrever arquivo no disco',
-                        UPLOAD_ERR_EXTENSION => 'Extensão PHP parou o upload'
+                        UPLOAD_ERR_CANT_WRITE => 'Falha ao escrever no disco',
+                        UPLOAD_ERR_EXTENSION => 'Extensão PHP bloqueou o upload'
                     ];
-                    $msg = $erros[$error_code] ?? 'Erro desconhecido no upload';
-                    error_log("Erro upload (code $error_code): $msg");
-                    throw new Exception("Falha no upload: $msg. Verifique configurações PHP (upload_max_filesize=2M, post_max_size=8M).");
+                    
+                    $msg = $mensagens_erro[$error_code] ?? 'Erro desconhecido no upload';
+                    error_log("Erro upload: $msg (code $error_code)");
+                    throw new Exception("Falha no upload: $msg");
                 }
                 
-                if ($size == 0 || empty($tmp_name)) {
-                    error_log("Arquivo vazio ou tmp_name vazio");
-                    throw new Exception('Arquivo vazio ou não enviado corretamente.');
+                if ($file['size'] == 0 || empty($file['tmp_name'])) {
+                    throw new Exception('Arquivo vazio ou inválido.');
                 }
                 
                 $upload_dir = __DIR__ . '/../../../public/uploads/';
                 if (!is_dir($upload_dir)) {
                     if (!mkdir($upload_dir, 0755, true)) {
-                        error_log("Falha ao criar $upload_dir");
+                        error_log("Falha ao criar diretório: $upload_dir");
                         throw new Exception('Erro ao criar pasta uploads/. Verifique permissões.');
                     }
-                    // Garante permissões adequadas (chmod não funciona bem no Windows)
-                    error_log("Pasta uploads/ criada: $upload_dir");
+                    error_log("Diretório criado: $upload_dir");
                 }
 
-                // Verifica se pasta é gravável
                 if (!is_writable($upload_dir)) {
-                    error_log("Pasta $upload_dir não é gravável");
-                    throw new Exception('Pasta uploads/ não tem permissão de escrita. No Windows/XAMPP: clique direito > Propriedades > Segurança > Editar > dar controle total para Everyone.');
+                    error_log("Diretório não gravável: $upload_dir");
+                    throw new Exception('Pasta uploads/ sem permissão de escrita. Configure permissões adequadas.');
                 }
 
-                // Verifica se existe arquivo .gitkeep para garantir que a pasta seja rastreada
-                $gitkeep_file = $upload_dir . '.gitkeep';
-                if (!file_exists($gitkeep_file)) {
-                    file_put_contents($gitkeep_file, '');
-                    error_log("Arquivo .gitkeep criado em uploads/");
+                $gitkeep = $upload_dir . '.gitkeep';
+                if (!file_exists($gitkeep)) {
+                    file_put_contents($gitkeep, '');
                 }
                 
                 $extensao = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-                if (!in_array($extensao, ['jpg', 'jpeg', 'png', 'gif'])) {
-                    throw new Exception('Tipo de arquivo inválido para capa. Use JPG, PNG ou GIF.');
+                $extensoes_permitidas = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                
+                if (!in_array($extensao, $extensoes_permitidas)) {
+                    throw new Exception('Formato inválido. Use: JPG, PNG, GIF ou WebP.');
                 }
                 
-                $nome_arquivo = 'capa_' . time() . '_' . rand(1000, 9999) . '.' . $extensao; // Evita colisão
-                $caminho_arquivo = $upload_dir . $nome_arquivo;
+                $nome_arquivo = 'capa_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $extensao;
+                $caminho_completo = $upload_dir . $nome_arquivo;
                 
-                error_log("Tentando move_uploaded_file: tmp='$tmp_name' -> destino='$caminho_arquivo'");
+                error_log("Movendo arquivo: {$file['tmp_name']} -> $caminho_completo");
                 
-                $move_success = move_uploaded_file($tmp_name, $caminho_arquivo);
-                error_log("move_uploaded_file retornou: " . ($move_success ? 'true' : 'false'));
-                
-                if (!$move_success) {
-                    $last_error = error_get_last();
-                    error_log("Erro após move: " . print_r($last_error, true));
-                    throw new Exception('Falha no move_uploaded_file. Verifique permissões da pasta uploads/ e antivírus (pode bloquear).');
+                if (!move_uploaded_file($file['tmp_name'], $caminho_completo)) {
+                    $ultimo_erro = error_get_last();
+                    error_log("Falha no move_uploaded_file: " . json_encode($ultimo_erro));
+                    throw new Exception('Falha ao salvar arquivo. Verifique permissões e antivírus.');
                 }
                 
-                // Verificação final do arquivo
-                if (!file_exists($caminho_arquivo)) {
-                    error_log("Arquivo não existe após move: $caminho_arquivo");
-                    throw new Exception('Arquivo não foi criado após upload. Verifique permissões e espaço em disco.');
-                }
-                
-                $file_size = filesize($caminho_arquivo);
-                if ($file_size == 0) {
-                    unlink($caminho_arquivo); // Remove arquivo vazio
-                    error_log("Arquivo criado mas vazio: $file_size bytes");
-                    throw new Exception('Arquivo criado mas vazio. Verifique permissões de escrita.');
+                if (!file_exists($caminho_completo) || filesize($caminho_completo) == 0) {
+                    if (file_exists($caminho_completo)) {
+                        unlink($caminho_completo);
+                    }
+                    throw new Exception('Arquivo não foi salvo corretamente.');
                 }
                 
                 $dados['foto'] = 'uploads/' . $nome_arquivo;
-                error_log("Upload sucesso: $caminho_arquivo ($file_size bytes)");
-            } else {
-                error_log("Nenhum arquivo capa-livro enviado ou erro desconhecido");
-                $dados['foto'] = 'uploads/default-capa.jpg';
+                error_log("Upload concluído: $caminho_completo (" . filesize($caminho_completo) . " bytes)");
             }
 
-            // Validações básicas
-            if (empty($dados['titulo']) || empty($dados['isbn'])) {
-                throw new Exception('Título e ISBN são obrigatórios.');
+            // Validações
+            if (empty($dados['titulo'])) {
+                throw new Exception('O título é obrigatório.');
             }
-            if ($dados['id_autor'] <= 0 || $dados['id_categoria'] <= 0 || $dados['numero_paginas'] <= 0 ||
-                $dados['id_unidade'] <= 0 || $dados['id_idioma'] <= 0 || $dados['id_area'] <= 0 || $dados['id_documento'] <= 0) {
-                throw new Exception('Selecione todos os campos obrigatórios: autor, editora, idioma, categoria, área, tipo de documento.');
+            
+            if (empty($dados['isbn'])) {
+                throw new Exception('O ISBN é obrigatório.');
             }
+            
+            $campos_obrigatorios = [
+                'id_autor' => 'Autor',
+                'id_unidade' => 'Editora',
+                'id_idioma' => 'Idioma',
+                'id_categoria' => 'Categoria',
+                'id_area' => 'Área',
+                'id_documento' => 'Tipo de documento'
+            ];
+            
+            foreach ($campos_obrigatorios as $campo => $nome) {
+                if ($dados[$campo] <= 0) {
+                    throw new Exception("Selecione um(a) $nome válido(a).");
+                }
+            }
+            
             if ($dados['numero_paginas'] < 1 || $dados['numero_paginas'] > 99999) {
-                throw new Exception('Número de páginas deve ser entre 1 e 99999.');
+                throw new Exception('Número de páginas deve estar entre 1 e 99999.');
             }
-            // Validação flexível para ISBN-13: aceita 13 dígitos com ou sem hífens
-            $isbnClean = preg_replace('/[-\s]/', '', $dados['isbn']);
-            if (!preg_match('/^\d{13}$/', $isbnClean)) {
-                throw new Exception('ISBN deve ter 13 dígitos (com ou sem hífens, ex: 9798330313518 ou 979-8-3303-1351-8).');
+            
+            $isbn_limpo = preg_replace('/[^0-9]/', '', $dados['isbn']);
+            if (!preg_match('/^\d{10}$|^\d{13}$/', $isbn_limpo)) {
+                throw new Exception('ISBN deve ter 10 ou 13 dígitos.');
             }
 
-            // Chama model para cadastrar
+            // Cadastrar no banco
             $id_livro = $this->livro_model->cadastrarLivro($dados);
 
-            if ($id_livro) {
-                $successMsg = "Livro '{$dados['titulo']}' cadastrado com sucesso! ID: $id_livro";
-                if ($isAjax) {
-                    echo json_encode([
-                        'sucesso' => true,
-                        'mensagem' => $successMsg,
-                        'id' => $id_livro
-                    ]);
-                } else {
-                    session_start();
-                    $_SESSION['toast'] = [
-                        'mensagem' => $successMsg,
-                        'tipo' => 'success'
-                    ];
-                    header("Location: ./src/views/admin/telaDosLivrosCadastrados.php");
-                    exit;
-                }
-                return true;
+            if (!$id_livro) {
+                throw new Exception('Erro ao salvar no banco de dados. Verifique ISBN único.');
+            }
+
+            $mensagem_sucesso = "Livro '{$dados['titulo']}' cadastrado com sucesso!";
+            
+            if ($isAjax) {
+                echo json_encode([
+                    'sucesso' => true,
+                    'mensagem' => $mensagem_sucesso,
+                    'id' => $id_livro
+                ], JSON_UNESCAPED_UNICODE);
+                exit;
             } else {
-                throw new Exception('Erro ao salvar no banco de dados. Verifique ISBN único e IDs válidos.');
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $_SESSION['toast'] = [
+                    'mensagem' => $mensagem_sucesso,
+                    'tipo' => 'success'
+                ];
+                header("Location: ./src/views/admin/telaDosLivrosCadastrados.php");
+                exit;
             }
 
         } catch (Exception $e) {
-            error_log('CadastrarLivroController error: ' . $e->getMessage() . ' | Dados: ' . json_encode($dados ?? []));
-            $errorMsg = $e->getMessage();
+            error_log("CadastrarLivroController - Erro: {$e->getMessage()}");
+            
+            $mensagem_erro = $e->getMessage();
+            
             if ($isAjax) {
                 echo json_encode([
                     'sucesso' => false,
-                    'mensagem' => $errorMsg
-                ]);
+                    'mensagem' => $mensagem_erro
+                ], JSON_UNESCAPED_UNICODE);
+                exit;
             } else {
-                session_start();
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
                 $_SESSION['toast'] = [
-                    'mensagem' => $errorMsg,
+                    'mensagem' => $mensagem_erro,
                     'tipo' => 'error'
                 ];
                 header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
                 exit;
             }
-            return false;
         }
     }
 }
-?>

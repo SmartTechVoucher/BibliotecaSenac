@@ -38,13 +38,13 @@ require "../../../config/constantes.php";
                     <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeCadastroDeLivros.php">Cadastrar Livros</a>
                     </li>
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php">Livros Cadastrados</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/telaDosLivrosCadastrados.php">Lista de Livros Cadastrados</a>
                 </li>
                 <li>
                     <a href="<?php echo $URLBASE ?>/src/views/admin/cadastro-usuarios.php">Cadastrar Usuários</a>
                 </li>
                 <li>
-                    <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php">Usuários Cadastrados</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/admin/usuarios-cadastrados.php">Lista de Usuários Cadastrados</a>
                 </li>
                 <li>
                     <a href="<?php echo $URLBASE ?>/src/views/admin/telaDeRelatorios.php">Relatórios</a>

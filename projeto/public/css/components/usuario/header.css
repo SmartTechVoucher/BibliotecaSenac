@@ -33,10 +33,10 @@
 }
 
 .cbmenu-icon {
-    position: fixed; /* fixa na tela */
-    top: 18px;       /* ajuste a posição vertical */
-    left: 40px;      /* ajuste a posição horizontal */
-    background-color: transparent !important; /* força transparência */
+    position: fixed;
+    top: 18px;
+    left: 40px;
+    background-color: transparent !important;
     border: none;
     outline: none;        
     padding: 0;
@@ -56,8 +56,8 @@
     color: var(--laranja-padrao);
 }
 
-.icsenac{
-    margin-left: 40px;
+.icsenac {
+    margin-left: 50px;
     width: 45px;
     height: auto;
 }
@@ -73,7 +73,7 @@
 .cbquite nav ul li {
     color: var(--cor-texto);
     cursor: pointer;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 500;
 }
 
@@ -83,16 +83,14 @@
     align-items: center;
     flex-direction: row;
     gap: 1rem;
-    
 }
 
-.navbar-desktop-top li a{
+.navbar-desktop-top li a {
     text-decoration: none;
     position: relative;
     cursor: pointer;
-    padding:  10px 10px 8px 0px;;
+    padding: 10px 10px 8px 0px;
     color: var(--cor-texto);
-    /* text-transform: uppercase; */
     transition: color 0.3s ease;
 }
 
@@ -107,7 +105,7 @@
     transition: width 0.3s ease;
 }
 
-.navbar-deskto-2 li a:hover {
+.navbar-desktop-top li a:hover {
     color: var(--laranja-padrao);
 }
 
@@ -119,6 +117,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 8px;
 }
 
 .entrar-mobile {
@@ -128,6 +127,22 @@
     text-align: center;
 }
 
+/* PERFIL LOGADO */
+.perfil-logado {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.perfil-logado:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 .perfil-logado span {
     font-size: 15px;
     font-family: "Roboto", sans-serif;
@@ -135,19 +150,45 @@
     color: var(--cor-texto);
 }
 
+/* ÍCONES DE PERFIL - ESTILOS ATUALIZADOS */
 .icone-perfil {
-    width: 35px;
-    height: 35px;
-    margin: 5px 0px 0px 0px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cor-texto);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
- 
-.icsenac{
-    margin-left: 50px;
-    width: 45px;
-    height: auto;
+
+.icone-perfil:hover {
+    border-color: var(--laranja-padrao);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
- 
-.icperfil{
+
+/* Para garantir que imagens quebradas não apareçam */
+.icone-perfil[src=""], 
+.icone-perfil:not([src]) {
+    display: none;
+}
+
+/* ÍCONE SVG DO BOTÃO ENTRAR */
+.button-entrar .icone-perfil {
+    width: 28px;
+    height: 28px;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.button-entrar .icone-perfil:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.icperfil {
     cursor: pointer;
     height: 100px;
     margin-top: 16px;
@@ -160,53 +201,75 @@
 .nome-usuario {
     display: inline-block;
     margin-left: 10px;
-    font-size: 30px;
+    font-size: 16px;
     font-family: "Roboto", sans-serif;
     color: var(--cor-texto);
-    border-right: 3px solid var(--cor-texto);
     white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    opacity: 0;
-    animation:
-        aparecerUsuario 0s 1.5s forwards,
-        escreverUsuario steps(var(--char-count), end) 2s 1.5s forwards,
-        esconderCursor 0s 3.6s forwards;
 }
 
+/* MENU DROPDOWN */
 .menu-dropdown {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 10px);
     right: 0;
     background-color: #003162;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
     color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 999;
-    min-width: 160px;
+    min-width: 200px;
+    overflow: hidden;
+}
+
+.menu-dropdown.show {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .menu-dropdown a {
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
+    gap: 12px;
+    padding: 12px 15px;
     text-decoration: none;
     color: white;
     font-weight: 500;
-    border-bottom: 1px solid #82828261;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(130, 130, 130, 0.38);
+    transition: background-color 0.2s ease;
+}
+
+.menu-dropdown a:last-child {
+    border-bottom: none;
 }
 
 .menu-dropdown a:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
+.menu-dropdown a img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
 
+/* BOTÃO ENTRAR */
 .button-entrar {
-    padding: 4px 12px 2px 12px;
+    padding: 14px 25px 15px 30px;
     height: auto;
     margin-right: 2%;
     border-radius: 1rem;
@@ -225,7 +288,7 @@
     transition: background-color 0.3s ease;
 }
 
-.button-entrar:hover{
+.button-entrar:hover {
     background-color: var(--cor-texto);
     color: #002043;
     transition: 0.1s;
@@ -246,57 +309,14 @@
 }
 
 /* SIDEBAR */
-
 .menu-lateral {
     position: fixed;
     top: 0;
-    left: -340px; /* começa fora da tela */
+    left: -340px;
     width: 300px;
-    height: 100vh; /* ocupa 100% da tela */
+    height: 100vh;
     background: var(--azul-tela-inicial);
-    box-shadow: 2px 0 8px rgba(0,0,0,0.3);
-    transition: left 0.3s ease;
-    padding: 5% 0px 0px 1%;
-    z-index: 3000;  
-    color: var(--cor-texto);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-    z-index: 2500;
-    display:none;
-    opacity: 0;
-}
-
-.overlay.ativo {
-    display: block; 
-    opacity: 1;
-}
-
-
-
-.cabecalho nav {
-    font-family: "Poppins",sans-serif;
-}
-
-
-.menu-lateral {
-    position: fixed;
-    top: 0;
-    left: -340px; /* começa fora da tela */
-    width: 300px;
-    height: 100vh; /* ocupa 100% da tela */
-    background: var(--azul-tela-inicial);
-    box-shadow: 2px 0 8px rgba(0,0,0,0.3);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
     transition: left 0.3s ease;
     padding: 5% 0px 0px 2%;
     z-index: 3000;  
@@ -307,10 +327,30 @@
     align-items: flex-start;
 }
 
-
-
 .menu-lateral.ativo {
     left: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2500;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.ativo {
+    display: block; 
+    opacity: 1;
+}
+
+.cabecalho nav {
+    font-family: "Poppins", sans-serif;
 }
 
 #menu-lateral ul {
@@ -329,34 +369,33 @@
 
 .menu-sanduiche .navbar-desktop {
     display: flex;
-    flex-direction: column; /* itens empilhados */
-    align-items: flex-start; /* alinha todos à esquerda */
-    gap: 10px; /* distância entre os itens, opcional */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
     padding: 0;
     margin: 0;
     list-style: none;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .menu-sanduiche .navbar-desktop li {
-    display: flex; /* para alinhar a imagem + link na mesma linha */
-    align-items: center; /* centraliza verticalmente imagem + texto */
-    gap: 10px; /* espaço entre imagem e texto */
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .menu-sanduiche .navbar-desktop li a {
     text-align: left;
 }
 
-.navbar-desktop li a{
+.navbar-desktop li a {
     text-decoration: none;
     position: relative;
     cursor: pointer;
-    padding:  10px 10px 8px 0px;;
+    padding: 10px 10px 8px 0px;
     color: var(--cor-texto);
-    /* text-transform: uppercase; */
     transition: color 0.3s ease;
-  }
+}
   
 .navbar-desktop li a::after {
     content: '';
@@ -370,17 +409,11 @@
 }
 
 .navbar-desktop li a:hover {
-color: var(--laranja-padrao);
+    color: var(--laranja-padrao);
 }
 
 .navbar-desktop li a:hover::after {
-width: 100%;
-}
-
-.menu-li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    width: 100%;
 }
 
 .perfil-lateral-2 {
@@ -400,7 +433,7 @@ width: 100%;
 }
 
 .perfil-lateral {
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
     position: absolute;
     top: 0px;
     left: 65px;
@@ -414,8 +447,25 @@ width: 100%;
     font-weight: 600;
     color: var(--laranja-padrao);
 } 
+
 .perfil-lateral .hub {
     margin: 0;
     font-size: 18px;
     font-weight: 700;
-} 
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .nome-usuario {
+        font-size: 14px;
+    }
+    
+    .icone-perfil {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .menu-dropdown {
+        min-width: 180px;
+    }
+}

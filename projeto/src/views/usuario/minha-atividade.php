@@ -1,5 +1,7 @@
 <?php
 require(__DIR__ . '/../../../config/constantes.php');
+require_once(__DIR__ . '/../../../config/auth-check.php');
+protegerPagina(); // Apenas usuários logados podem acessar
 
 
 ?>

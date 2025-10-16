@@ -53,7 +53,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
                 <legend>Cadastro de livro</legend>
                 <div class="form-coluna">
                     <div class="form-grupo">
-                        <label for="titulo-livro">Titulo</label>
+                        <label for="titulo-livro">Titulo *</label>
                         <?php
                         InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
                         ?>
@@ -61,7 +61,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
                     
                     <!-- Campo para número de páginas (obrigatório no schema de livros) -->
                     <div class="form-grupo">
-                        <label for="numero-paginas">Número de Páginas</label>
+                        <label for="numero-paginas">Número de Páginas *</label>
                         <?php InputAdmin(largura: 100, name: "numero-paginas", id: "numero-paginas", tipo: "number", required: true) ?>
                     </div>
 
@@ -85,7 +85,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
                 </div>
                 <div class="form-coluna">
                     <div class="form-grupo">
-                        <label for="isbn-livro">ISBN</label>
+                        <label for="isbn-livro">ISBN *</label>
                         <?php
                         InputAdmin(largura: 100, name: "isbn-livro", id: "isbn-livro", required: true)
                         ?>
@@ -116,32 +116,32 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
 
                     </div>
                     <div class="form-grupo">
-                        <label for="publicacao-livro">Ano</label>
+                        <label for="publicacao-livro">Ano *</label>
                         <?php
                         InputAdmin(largura: 100, name: "publicacao-livro", id: "publicacao-livro", tipo: "date")
                         ?>
                     </div>
                     <div class="form-grupo">
-                        <label for="capa-livro">Capa</label>
+                        <label for="capa-livro">Capa *</label>
                         <?php
                         InputAdmin(largura: 100, name: "capa-livro", id: "capa-livro", tipo: "file")
                         ?>
-    <div id="preview-container" style="margin-top: 10px;">
-        <img id="preview-capa" src="" alt="Pré-visualização da capa" style="max-width: 200px; max-height: 300px; display: none; border: 1px solid #ddd; border-radius: 5px;">
-    </div>
+                    <div id="preview-container" style="margin-top: 10px;">
+                        <img id="preview-capa" src="" alt="Pré-visualização da capa" style="max-width: 200px; max-height: 300px; display: none; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
                     </div>
                 </div>
                 <div class="form-coluna">
                     <div class="form-grupo">
-                        <label for="resumo-livro">Resumo</label>
+                        <label for="resumo-livro">Resumo *</label>
                         <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-grupo">
-                        <label for="notas-livro">Notas</label>
+                        <label for="notas-livro">Notas *</label>
                         <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-grupo">
-                        <label for="tipo-documento">Tipo de documento</label>
+                        <label for="tipo-documento">Tipo de documento *</label>
                         <?php renderSelectModal('tipo-documento', 'Tipo de documento', $documentos); ?>
                     </div>
                 </div>
