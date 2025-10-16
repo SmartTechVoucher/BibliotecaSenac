@@ -1,20 +1,15 @@
 <?php
-// router.php centralizado
-
 require_once __DIR__ . '/config/constantes.php';
 
-// Segurança de sessão
 ini_set('session.cookie_lifetime', 0);
 ini_set('session.use_only_cookies', 1);
 ini_set('session.cookie_httponly', 1);
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-// Controllers principais
 require_once __DIR__ . '/src/controller/usuario/usuario-controller.php';
 require_once __DIR__ . '/src/controller/usuario/login-controller.php';
 require_once __DIR__ . '/src/controller/admin/AdminController.php';
 
-// Função helper para verificar auth admin
 function isAdminLoggedIn() {
     return isset($_SESSION['admin']) && !empty($_SESSION['admin']) && isset($_SESSION['admin']['id']);
 }
@@ -28,7 +23,7 @@ $acao = $_GET["acao"];
 $usuarioController = new UsuarioController();
 
 switch ($acao) {
-    // ====== USUÁRIO ======
+
     case 'validarLogin':
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
@@ -79,8 +74,6 @@ switch ($acao) {
         header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;
         break;
-
-    // ====== ADMIN ======
 
     case 'criarUsuario':
         if (!isAdminLoggedIn()) {

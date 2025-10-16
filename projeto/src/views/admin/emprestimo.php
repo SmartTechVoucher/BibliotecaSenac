@@ -1,6 +1,5 @@
 <script src="<?php echo $URLBASE ?>/public/js/admin/emprestimo.js"></script>
     <script>
-        // Busca de leitores com autocomplete
         const inputUsuario = document.getElementById('nome-usuario');
         const sugestoesDiv = document.getElementById('sugestoes-usuarios');
         const leitorIdInput = document.getElementById('leitor-id');
@@ -31,7 +30,6 @@
                             ).join('');
                             sugestoesDiv.style.display = 'block';
                             
-                            // Adicionar eventos de clique
                             document.querySelectorAll('.sugestao-item').forEach(item => {
                                 item.addEventListener('click', function() {
                                     selecionarUsuario(this);
@@ -58,7 +56,6 @@
             leitorIdInput.value = id;
             sugestoesDiv.style.display = 'none';
             
-            // Preencher card do leitor
             document.getElementById('display-nome').textContent = nome;
             document.getElementById('display-matricula').textContent = matricula;
             document.getElementById('display-email').textContent = email;
@@ -66,7 +63,6 @@
             document.getElementById('display-acesso').textContent = acesso;
             cardUsuario.style.display = 'block';
             
-            // Carregar empréstimos do leitor
             carregarEmprestimos(id);
         }
 
@@ -119,8 +115,7 @@
             const data = new Date(dataString);
             return data.toLocaleDateString('pt-BR');
         }
-
-        // Fechar sugestões ao clicar fora
+        
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.form-row')) {
                 sugestoesDiv.style.display = 'none';
@@ -129,10 +124,10 @@
     </script><?php
 require "../../../config/constantes.php";
 require_once "conexao.php";
-?>
+?>  
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -157,7 +152,7 @@ require_once "conexao.php";
     <?php
     include "../../../public/components/admin/header/header-admin.php"
     ?>
-
+      
     <main>
         <div class="container-main">
             <fieldset class="form-section">
@@ -201,7 +196,7 @@ require_once "conexao.php";
                 </form>
                 
                 <?php
-                // Buscar empréstimos do leitor selecionado (se houver)
+                
                 $emprestimos = [];
                 if (isset($_GET['leitor_id']) && !empty($_GET['leitor_id'])) {
                     $leitor_id = intval($_GET['leitor_id']);
@@ -222,7 +217,7 @@ require_once "conexao.php";
                     }
                 }
                 ?>
-
+                          
                 <div class="tabela-livro">
                     <table class="tabela-emprestimos">
                         <thead>
@@ -286,7 +281,6 @@ require_once "conexao.php";
     
     <script src="<?php echo $URLBASE ?>/public/js/admin/emprestimo.js"></script>
     <script>
-        // Busca de usuários com autocomplete
         const inputUsuario = document.getElementById('nome-usuario');
         const sugestoesDiv = document.getElementById('sugestoes-usuarios');
         const usuarioIdInput = document.getElementById('usuario-id');
@@ -317,7 +311,6 @@ require_once "conexao.php";
                             ).join('');
                             sugestoesDiv.style.display = 'block';
                             
-                            // Adicionar eventos de clique
                             document.querySelectorAll('.sugestao-item').forEach(item => {
                                 item.addEventListener('click', function() {
                                     selecionarUsuario(this);
@@ -344,7 +337,6 @@ require_once "conexao.php";
             usuarioIdInput.value = id;
             sugestoesDiv.style.display = 'none';
             
-            // Preencher card do usuário
             document.getElementById('display-nome').textContent = nome;
             document.getElementById('display-matricula').textContent = matricula;
             document.getElementById('display-email').textContent = email;
@@ -352,7 +344,6 @@ require_once "conexao.php";
             document.getElementById('display-acesso').textContent = acesso;
             cardUsuario.style.display = 'block';
             
-            // Carregar empréstimos do usuário
             carregarEmprestimos(id);
         }
 
@@ -406,7 +397,6 @@ require_once "conexao.php";
             return data.toLocaleDateString('pt-BR');
         }
 
-        // Fechar sugestões ao clicar fora
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.form-row')) {
                 sugestoesDiv.style.display = 'none';
@@ -419,5 +409,4 @@ require_once "conexao.php";
     ?>
 
 </body>
-
 </html>
