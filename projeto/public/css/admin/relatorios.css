@@ -12,21 +12,13 @@
     --apontador: pointer;
     --cinza: #D9D9D9;
     --bordaBaixaCabeçalho: #769FCD;
-   
+    --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
 }
+
 * {
     box-sizing: border-box;
 }
-.container-main {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 30px 40px;
-    position: relative;
-    background: #fbfaff;
-    border-radius: 8px;
-    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
-}
+
 #cadastro-form legend {
     font-size: 1.3rem;
     font-weight: 500;

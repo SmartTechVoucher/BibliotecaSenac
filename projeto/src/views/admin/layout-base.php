@@ -1,4 +1,6 @@
 <?php
+
+require_once __DIR__ . '/../../../config/auth-check.php';
 require __DIR__ . '/../../../config/constantes.php';
 
 ?>
@@ -10,7 +12,7 @@ require __DIR__ . '/../../../config/constantes.php';
     <title><?php echo $titulo ?? 'Biblioteca'; ?></title>
 
     <!-- CSS global -->
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/global.css">
+    
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/sidebar.css">
 

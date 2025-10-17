@@ -1,5 +1,15 @@
+
+:root {
+    --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: var(--fontes);
+}
+
 body {
-    font-family: Arial, sans-serif;
+    
     background-color: #b7b7bb;
     margin: 20px;
 }
@@ -11,9 +21,7 @@ main{
     gap: 0px;
 
 }
-*{
-    box-sizing: border-box;
-}
+
 
 .pagination-controls {
             display: flex;

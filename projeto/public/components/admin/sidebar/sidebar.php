@@ -1,17 +1,6 @@
-<!-- SIDEBAR FIXA -->
-<aside class="sidebar">
-    <!-- Logo -->
-    <div class="sidebar-logo">
-        <img src="<?php echo $URLBASE ?>/public/assets/icons/logo-hub-academy.png" alt="Logo HUB Academy">
-        <h3>HUB ACADEMY</h3>
-        <span class="subtitle">Biblioteca</span>
-    </div>
 
-    <!-- Navegação -->
-    <nav class="sidebar-nav">
-        <ul>
             <li>
-                <a href="<?php echo $URLBASE ?>/src/views/admin/inicial.php" class="active">
+                <a href="<?php echo $URLBASE ?>/src/views/admin/inicial.php" >
                     <img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt="Início" class="icon"> Início
                 </a>
             </li>
@@ -55,9 +44,10 @@
 
     <!-- Perfil -->
     <div class="sidebar-profile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-round-icon lucide-circle-user-round"><path d="M18 20a6 6 0 0 0-12 0"/><circle cx="12" cy="10" r="4"/><circle cx="12" cy="12" r="10"/></svg>
         <p>Bem-vindo, <strong>Luciano</strong></p>
-        <a href="<?php echo $URLBASE ?>/src/views/admin/minha-conta.php">⚙️ Perfil</a>
-        <a href="#" onclick="confirmarSaida(event)" class="logout">🚪 Sair</a>
+        <!-- <a href="<?php echo $URLBASE ?>/src/views/admin/minha-conta.php">⚙️ Perfil</a>
+        <a href="#" onclick="confirmarSaida(event)" class="logout">🚪 Sair</a> -->
     </div>
 </aside>
 
