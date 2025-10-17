@@ -3,12 +3,14 @@
   --cor-texto:#ffffff;
   --laranja: #f68b1f;
   --cinza-label: #555555;
+  --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: var(--fontes);
 }
 
 body{

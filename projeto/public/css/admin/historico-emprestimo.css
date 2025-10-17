@@ -11,6 +11,7 @@
     --vermelho: red;
     --apontador: pointer;
     --cinza: #D9D9D9;
+    --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
 }
 
 main{

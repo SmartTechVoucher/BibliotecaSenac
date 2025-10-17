@@ -1,40 +1,28 @@
 :root{
-
-    --azulCabecalho: #001E3E;
-    --fontes: 'Poppins', 'Roboto', 'Montaga';
-    --branco: white;
-    --fundoPadrao: #EDEDED;
-    --posicao: relative;
-    --posicaoAbsoluta: absolute;
-    --corFormulario: #E5E4E4;
-    --corBotao: #004A90;
-    --vermelho: red;
-    --apontador: pointer;
-    --bordaBaixaCabeçalho: #769FCD;
-   
+  --azulCabecalho: #001E3E;
+  --fontes: 'Poppins', 'Roboto', 'Montaga';
+  --branco: white;
+  --fundoPadrao: #EDEDED;
+  --posicao: relative;
+  --posicaoAbsoluta: absolute;
+  --corFormulario: #E5E4E4;
+  --corBotao: #004A90;
+  --vermelho: red;
+  --apontador: pointer;
+  --bordaBaixaCabeçalho: #769FCD;
+  --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
 }
 
 /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
 *{
-    box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: var(--fontes);
 }
 
 
 body{
     margin: 0;
     background-color: var(--fundoPadrao);
-}
-
-
-.container-main {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 30px 40px;
-  position: relative;
-  background: #fbfaff;
-  border-radius: 8px;
-  box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
 }
 
 #cadastro-form legend {
