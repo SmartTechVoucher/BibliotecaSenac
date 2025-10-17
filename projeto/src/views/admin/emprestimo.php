@@ -1,5 +1,41 @@
 <?php
-require "../../../config/constantes.php"
+require "../../../config/constantes.php";
+// require_once "../../../controller/admin/EmprestimosController.php";
+require_once __DIR__ . '/../../controller/admin/EmprestimosController.php';
+
+$controller = new EmprestimosController();
+$mensagem = "";
+$usuarioEncontrado = null;
+$livrosDisponiveis = [];
+
+// Buscar usuário
+if (isset($_POST['buscar_usuario'])) {
+    $busca = trim($_POST['busca_usuario']);
+    $usuarioEncontrado = $controller->buscarUsuario($busca);
+    if (!$usuarioEncontrado) {
+        $mensagem = "Usuário não encontrado.";
+    } else {
+        $livrosDisponiveis = $controller->listarLivrosDisponiveis();
+    }
+}
+
+// Registrar empréstimo
+if (isset($_POST['registrar_emprestimo'])) {
+    $resultado = $controller->registrarEmprestimo($_POST['id_usuario'], $_POST['id_livro']);
+    $mensagem = $resultado['mensagem'];
+}
+
+if (isset($_POST['renovar'])) {
+    $resultado = $controller->renovarEmprestimo($_POST['id_movimentacao']);
+    $mensagem = $resultado['mensagem'];
+}
+
+// 📦 Devolver livro
+if (isset($_POST['devolver'])) {
+    $resultado = $controller->devolverLivro($_POST['id_movimentacao']);
+    $mensagem = $resultado['mensagem'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -31,39 +67,52 @@ require "../../../config/constantes.php"
 
     <main>
         <div class="container-main">
-            <fieldset class="form-section"><legend>
-                        <img src="<?php echo $URLBASE ?>/public/assets/icons/emprestimo-icon.png" id="fieldset-icon" alt="">
-                        Cadastro de emprestimo
-                    </legend>
+            <fieldset class="form-section">
+                <legend>
+                    <img src="<?php echo $URLBASE ?>/public/assets/icons/emprestimo-icon.png" id="fieldset-icon" alt="">
+                    Cadastro de emprestimo
+                </legend>
+                <?php if ($mensagem): ?>
+                    <p style="color: darkblue; font-weight: bold;"><?= $mensagem ?></p>
+                <?php endif; ?>
+
+                <form method="POST" style="margin-bottom: 20px;">
+                    <label>Buscar usuário (nome ou CPF):</label>
+                    <input type="text" name="busca_usuario" placeholder="Digite o nome ou CPF" required>
+                    <button type="submit" name="buscar_usuario">Buscar</button>
+                </form>
+
+                <?php if ($usuarioEncontrado): ?>
+                    <fieldset class="form-section">
+                        <legend>Usuário encontrado</legend>
+                        <p><strong>Nome:</strong> <?= htmlspecialchars($usuarioEncontrado['nome']) ?></p>
+                        <p><strong>Email:</strong> <?= htmlspecialchars($usuarioEncontrado['email']) ?></p>
+                        <p><strong>CPF:</strong> <?= htmlspecialchars($usuarioEncontrado['cpf']) ?></p>
+                        <p><strong>Categoria:</strong> <?= htmlspecialchars($usuarioEncontrado['categoria']) ?></p>
+
+                        <form method="POST">
+                            <input type="hidden" name="id_usuario" value="<?= $usuarioEncontrado['id_usuario'] ?>">
+                            <label>Selecione um livro disponível:</label>
+                            <select name="id_livro" required>
+                                <option value="">-- Escolha um livro --</option>
+                                <?php foreach ($livrosDisponiveis as $livro): ?>
+                                    <option value="<?= $livro['id_livro'] ?>">
+                                        <?= $livro['titulo'] ?> (<?= $livro['autor'] ?>)
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                            <br><br>
+                            <button type="submit" name="registrar_emprestimo">Registrar Empréstimo</button>
+                        </form>
+                    </fieldset>
+                <?php endif; ?>
+
                 <form id="cadastro-form" action="#" method="post" enctype="multipart/form-data">
 
-                    
-                    <div class="form-row">
+
+                    <!-- <div class="form-row">
                         <label for="nome-usuario">Nome do usuário</label>
-                        <?php
-                        $usuariosMock = [
-                            ['id' => 1, 'nome' => 'José da Silva', 'email' => 'jose.silva@email.com', 'matricula' => '2023001', 'acesso' => 'regular', 'telefone' => '67981234567'],
-                            ['id' => 2, 'nome' => 'Ana Maria Santos', 'email' => 'ana.santos@email.com', 'matricula' => '2023002', 'acesso' => 'regular', 'telefone' => '67981234568'],
-                            ['id' => 3, 'nome' => 'Pedro Oliveira', 'email' => 'pedro.oliveira@email.com', 'matricula' => '2023003', 'acesso' => 'bloqueado', 'telefone' => '67981234569'],
-                            ['id' => 4, 'nome' => 'Fernanda Costa', 'email' => 'fernanda.costa@email.com', 'matricula' => '2023004', 'acesso' => 'regular', 'telefone' => '67981234570'],
-                            ['id' => 5, 'nome' => 'Lucas Pereira', 'email' => 'lucas.pereira@email.com', 'matricula' => '2023005', 'acesso' => 'regular', 'telefone' => '67981234571'],
-                            ['id' => 6, 'nome' => 'Mariana Almeida', 'email' => 'mariana.almeida@email.com', 'matricula' => '2023006', 'acesso' => 'regular', 'telefone' => '67981234572'],
-                            ['id' => 7, 'nome' => 'Rafaela Martins', 'email' => 'rafaela.martins@email.com', 'matricula' => '2023007', 'acesso' => 'regular', 'telefone' => '67981234573'],
-                            ['id' => 8, 'nome' => 'Guilherme Souza', 'email' => 'guilherme.souza@email.com', 'matricula' => '2023008', 'acesso' => 'regular', 'telefone' => '67981234574'],
-                            ['id' => 9, 'nome' => 'Beatriz Ferreira', 'email' => 'beatriz.ferreira@email.com', 'matricula' => '2023009', 'acesso' => 'bloqueado', 'telefone' => '67981234575'],
-                            ['id' => 10, 'nome' => 'Gabriel Rodrigues', 'email' => 'gabriel.rodrigues@email.com', 'matricula' => '2023010', 'acesso' => 'regular', 'telefone' => '67981234576'],
-                            ['id' => 11, 'nome' => 'Juliana Gomes', 'email' => 'juliana.gomes@email.com', 'matricula' => '2023011', 'acesso' => 'regular', 'telefone' => '67981234577'],
-                            ['id' => 12, 'nome' => 'Daniel Barbosa', 'email' => 'daniel.barbosa@email.com', 'matricula' => '2023012', 'acesso' => 'regular', 'telefone' => '67981234578'],
-                            ['id' => 13, 'nome' => 'Carolina Lima', 'email' => 'carolina.lima@email.com', 'matricula' => '2023013', 'acesso' => 'regular', 'telefone' => '67981234579'],
-                            ['id' => 14, 'nome' => 'Thiago Fernandes', 'email' => 'thiago.fernandes@email.com', 'matricula' => '2023014', 'acesso' => 'regular', 'telefone' => '67981234580'],
-                            ['id' => 15, 'nome' => 'Isabela Rocha', 'email' => 'isabela.rocha@email.com', 'matricula' => '2023015', 'acesso' => 'regular', 'telefone' => '67981234581'],
-                            ['id' => 16, 'nome' => 'Artur Nunes', 'email' => 'artur.nunes@email.com', 'matricula' => '2023016', 'acesso' => 'bloqueado', 'telefone' => '67981234582'],
-                            ['id' => 17, 'nome' => 'Laura Dias', 'email' => 'laura.dias@email.com', 'matricula' => '2023017', 'acesso' => 'regular', 'telefone' => '67981234583'],
-                            ['id' => 18, 'nome' => 'Felipe Castro', 'email' => 'felipe.castro@email.com', 'matricula' => '2023018', 'acesso' => 'regular', 'telefone' => '67981234584'],
-                        ];
-                        //     renderSelectModal(name:"nome-usuario", label:"Nome do usuário", items:$usuariosMock)
-                        InputAdmin(largura: 100, placeholder: "Nome completo do usuário", id: "nome-usuario", name: "nome-usuario")
-                        ?>
+                        
                     </div>
                     <div class="form-row">
                         <fieldset id="card-usuario" class="form-section">
@@ -77,7 +126,7 @@ require "../../../config/constantes.php"
                                 <p class="user-detail">Telefone: <?php echo $usuariosMock[0]["acesso"] ?></p>
                             </div>
                         </fieldset>
-                    </div>
+                    </div> -->
 
                     <div class="form-row">
                         <label for="livro-codigo">Livro código</label>
@@ -122,8 +171,47 @@ require "../../../config/constantes.php"
                     ]
                 ];
                 ?>
+                <?php if ($usuarioEncontrado): ?>
+                    <?php
+                    $emprestimos = $controller->listarEmprestimosUsuario($usuarioEncontrado['id_usuario']);
+                    ?>
+                    <?php if ($emprestimos && count($emprestimos) > 0): ?>
+                        <h3>📚 Empréstimos Ativos do Usuário</h3>
+                        <table border="1" cellpadding="6" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Data Empréstimo</th>
+                                    <th>Devolução Prevista</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($emprestimos as $emp): ?>
+                                    <tr>
+                                        <td><?= htmlspecialchars($emp['titulo']) ?></td>
+                                        <td><?= date('d/m/Y', strtotime($emp['data_movimentacao'])) ?></td>
+                                        <td><?= date('d/m/Y', strtotime($emp['data_prevista_devolucao'])) ?></td>
+                                        <td>
+                                            <form method="POST" style="display:inline;">
+                                                <input type="hidden" name="id_movimentacao" value="<?= $emp['id_movimentacao'] ?>">
+                                                <button type="submit" name="renovar">Renovar +3 dias</button>
+                                            </form>
+                                            <form method="POST" style="display:inline;">
+                                                <input type="hidden" name="id_movimentacao" value="<?= $emp['id_movimentacao'] ?>">
+                                                <button type="submit" name="devolver">Devolver</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    <?php else: ?>
+                        <p>Nenhum empréstimo ativo para este usuário.</p>
+                    <?php endif; ?>
+                <?php endif; ?>
 
-                <div class="tabela-livro">
+                <!-- <div class="tabela-livro">
                     <table class="tabela-emprestimos">
                         <thead>
                             <tr>
@@ -158,12 +246,12 @@ require "../../../config/constantes.php"
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                </div>
+                </div> -->
             </fieldset>
         </div>
 
     </main>
-    
+
     <script src="<?php echo $URLBASE ?>/public/js/admin/emprestimo.js">
 
     </script>
