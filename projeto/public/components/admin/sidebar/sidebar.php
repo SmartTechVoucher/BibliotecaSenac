@@ -1,17 +1,6 @@
-<!-- SIDEBAR FIXA -->
-<aside class="sidebar">
-    <!-- Logo -->
-    <div class="sidebar-logo">
-        <img src="<?php echo $URLBASE ?>/public/assets/icons/logo-hub-academy.png" alt="Logo HUB Academy">
-        <h3>HUB ACADEMY</h3>
-        <span class="subtitle">Biblioteca</span>
-    </div>
 
-    <!-- Navegação -->
-    <nav class="sidebar-nav">
-        <ul>
             <li>
-                <a href="<?php echo $URLBASE ?>/src/views/admin/inicial.php" class="active">
+                <a href="<?php echo $URLBASE ?>/src/views/admin/inicial.php" >
                     <img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt="Início" class="icon"> Início
                 </a>
             </li>
