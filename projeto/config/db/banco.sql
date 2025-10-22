@@ -69,7 +69,7 @@ CREATE TABLE usuarios (
     genero ENUM('Masculino', 'Feminino', 'Não binario', 'Outros', 'Não informar') NULL,
     foto_perfil VARCHAR(255) NULL, 
     numero_matricula VARCHAR(50) NULL,
-    categoria ENUM('Aluno', 'Professor', 'Funcionário') NOT NULL,
+    categoria ENUM('Aluno', 'Docente', 'Bibliotecario') NOT NULL,
     unidade_senac ENUM('Senac Hub Academy', 'Senac Dourados', 'Senac Três Lagoas') NOT NULL,
     curso VARCHAR(100) NULL,
     turma VARCHAR(50) NULL,
@@ -168,8 +168,8 @@ INSERT INTO idiomas (nome) VALUES
 INSERT INTO areas (nome) VALUES 
 ('Ciências Exatas'), ('Ciências Biológicas'), ('Ciências Humanas'), ('Ciências Sociais Aplicadas'), ('Engenharias'), ('Saúde'), ('Linguística, Letras e Artes'), ('Agricultura e Meio Ambiente'), ('Arquitetura e Urbanismo'), ('Computação e Informática');
 
-INSERT INTO categorias_usuario (nome) VALUES 
-('Aluno'), ('Professor'), ('Funcionário');
+INSERT INTO categorias_usuario (nome) VALUES
+('Aluno'), ('Docente'), ('Bibliotecario');
 
 INSERT INTO cursos (nome) VALUES 
 ('Informática'), ('Administração'), ('Enfermagem'), ('Design');
@@ -177,11 +177,11 @@ INSERT INTO cursos (nome) VALUES
 -- usuários de teste (td criado por ia slk vo escrever td isso nao)
 INSERT INTO usuarios (nome, nome_social, cpf, email, data_nascimento, telefone, endereco, genero, foto_perfil, numero_matricula, categoria, unidade_senac, curso, turma, data_fim_curso, notas_usuario, senha, ativo) VALUES
 ('João Silva', '', '123.456.789-01', 'joao.silva@email.com', '1990-05-15', '(11) 98765-4321', 'Rua das Flores, 123, São Paulo - SP', 'Masculino', '', '20240001', 'Aluno', 'Senac Hub Academy', 'Informática', 'INF01', '2024-12-31', 'Aluno regular', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
-('Maria Santos', 'Mari', '987.654.321-02', 'maria.santos@email.com', '1985-08-22', '(11) 99876-5432', 'Av. Paulista, 456, São Paulo - SP', 'Feminino', '', '20240002', 'Professor', 'Senac Hub Academy', 'Administração', 'ADM01', NULL, 'Professora de administração', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
+('Maria Santos', 'Mari', '987.654.321-02', 'maria.santos@email.com', '1985-08-22', '(11) 99876-5432', 'Av. Paulista, 456, São Paulo - SP', 'Feminino', '', '20240002', 'Docente', 'Senac Hub Academy', 'Administração', 'ADM01', NULL, 'Docente de administração', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
 ('Carlos Oliveira', '', '456.789.123-03', 'carlos.oliveira@email.com', '1992-03-10', '(11) 98765-1234', 'Rua Augusta, 789, São Paulo - SP', 'Masculino', '', '20240003', 'Aluno', 'Senac Hub Academy', 'Enfermagem', 'ENF01', '2025-06-30', 'Aluno dedicado', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
-('Ana Costa', '', '321.654.987-04', 'ana.costa@email.com', '1988-11-30', '(11) 99654-3210', 'Rua da Consolação, 321, São Paulo - SP', 'Feminino', '', '20240004', 'Funcionário', 'Senac Hub Academy', NULL, NULL, NULL, 'Bibliotecária responsável', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
+('Ana Costa', '', '321.654.987-04', 'ana.costa@email.com', '1988-11-30', '(11) 99654-3210', 'Rua da Consolação, 321, São Paulo - SP', 'Feminino', '', '20240004', 'Bibliotecario', 'Senac Hub Academy', NULL, NULL, NULL, 'Bibliotecária responsável', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
 ('Pedro Lima', '', '654.321.987-05', 'pedro.lima@email.com', '1995-01-25', '(11) 98765-6789', 'Rua Oscar Freire, 654, São Paulo - SP', 'Masculino', '', '20240005', 'Aluno', 'Senac Dourados', 'Design', 'DES01', '2024-11-30', 'Aluno de design gráfico', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0),
-('Lucia Ferreira', '', '789.123.456-06', 'lucia.ferreira@email.com', '1980-07-12', '(11) 99876-9876', 'Rua Haddock Lobo, 789, São Paulo - SP', 'Feminino', '', '20240006', 'Professor', 'Senac Dourados', 'Enfermagem', 'ENF02', NULL, 'Especialista em enfermagem', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0)
+('Lucia Ferreira', '', '789.123.456-06', 'lucia.ferreira@email.com', '1980-07-12', '(11) 99876-9876', 'Rua Haddock Lobo, 789, São Paulo - SP', 'Feminino', '', '20240006', 'Docente', 'Senac Dourados', 'Enfermagem', 'ENF02', NULL, 'Especialista em enfermagem', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0)
 ON DUPLICATE KEY UPDATE nome = VALUES(nome);
 
 -- Admin de teste (senha 'admin2020')
