@@ -728,9 +728,118 @@ class LivroModel {
     }
 
     /**
-     * ATUALIZADO - getLivrosMock agora retorna livros reais
-     * @return array Lista de livros
+    * Busca livros para autocomplete/sugestão em AJAX
+    * @param string $termo Termo de busca (opcional)
+    * @param int|null $id_categoria ID da categoria (opcional)
+    * @param int $limit Limite de resultados
+    * @return array
+    */
+    public function buscarLivrosAjax($termo = '', $id_categoria = null, $limit = 10) {
+        global $URLBASE;
+
+        try {
+            $sql = "SELECT
+                        l.id_livro,
+                        l.titulo,
+                        l.foto,
+                        l.descricao,
+                        l.resumo_livro,
+                        a.nome AS autor,
+                        c.nome AS categoria_nome,
+                        l.id_categoria
+                    FROM livros l
+                    LEFT JOIN autores a ON l.id_autor = a.id_autor
+                    LEFT JOIN categorias c ON l.id_categoria = c.id_categoria
+                    WHERE 1=1";
+
+            $params = [];
+            $conditions = [];
+
+            if (!empty($termo)) {
+                $conditions[] = "(l.titulo LIKE :termo OR a.nome LIKE :termo OR l.isbn LIKE :termo)";
+                $params[':termo'] = '%' . $termo . '%';
+            }
+
+            if ($id_categoria > 0) {
+                $conditions[] = "l.id_categoria = :id_categoria";
+                $params[':id_categoria'] = $id_categoria;
+            }
+
+            if (!empty($conditions)) {
+                $sql .= " AND (" . implode(" OR ", $conditions) . ")";
+            }
+
+            $sql .= " ORDER BY l.titulo LIMIT :limit";
+
+            $stmt = $this->conn->prepare($sql);
+
+            foreach ($params as $key => $value) {
+                if ($key === ':termo') {
+                    $stmt->bindValue($key, $value, PDO::PARAM_STR);
+                } else {
+                    $stmt->bindValue($key, $value, PDO::PARAM_INT);
+                }
+            }
+
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($livros as &$livro) {
+                if (!empty($livro['foto'])) {
+                    $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
+                    $livro['imagem'] = $URLBASE . '/public/uploads/' . $foto_limpa;
+                } else {
+                    $livro['imagem'] = $URLBASE . '/public/assets/images/livro-default.png';
+                }
+
+                if (empty($livro['descricao']) && !empty($livro['resumo_livro'])) {
+                    $livro['descricao'] = $livro['resumo_livro'];
+                }
+
+                $livro['autor'] = $livro['autor'] ?? 'Autor desconhecido';
+                $livro['categoria_nome'] = $livro['categoria_nome'] ?? 'Sem categoria';
+
+                // Limitar descrição para exibição
+                if (strlen($livro['descricao']) > 100) {
+                    $livro['descricao'] = substr($livro['descricao'], 0, 100) . '...';
+                }
+            }
+
+            return $livros;
+
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar livros AJAX: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+     * Busca categorias para o dropdown de filtros
+     * @return array
      */
+    public function getCategoriasParaDropdown() {
+        try {
+            $sql = "SELECT id_categoria as id, nome FROM categorias ORDER BY nome";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $categorias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Log para debug
+            error_log("Categorias carregadas: " . count($categorias) . " categorias encontradas");
+
+            return $categorias;
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar categorias: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    /**
+    * ATUALIZADO - getLivrosMock agora retorna livros reais
+    * @return array Lista de livros
+    */
     public function getLivrosMock() {
         return $this->getLivros(12, 0);
     }

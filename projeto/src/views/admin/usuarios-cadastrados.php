@@ -39,8 +39,8 @@ require_once "../../../config/constantes.php";
     <title>Gerenciamento de Usuários</title>
     <div class="container-main">
       <div class="botoesFiltro">
-        <button id="" class="bloqueadosBotao tab-link active" onclick="abrirTab(event, 'regulares')">Regulares</button>
-        <button id="" class="bloqueadosBotao tab-link" onclick="abrirTab(event, 'bloqueados')">Bloqueados</button>
+        <button class="bloqueadosBotao tab-link active" onclick="abrirTab(event)">Regulares</button>
+        <button class="bloqueadosBotao tab-link" onclick="abrirTab(event)">Bloqueados</button>
       </div>
 
       <div class="container">
@@ -246,7 +246,35 @@ require_once "../../../config/constantes.php";
         </div>
       </div>
 
-      <script src="/BibliotecaSenac/projeto/public/js/admin/usuarios-cadastrados.js"></script>
+      <script>
+        // Tornar URLBASE disponível para o JavaScript
+        const URLBASE = "<?php echo $URLBASE ?>";
+
+
+        // Função global abrirTab para ser chamada pelo HTML
+        function abrirTab(event) {
+            console.log('Abrindo tab:', event.target.textContent.trim());
+            if (window.gerenciadorUsuarios) {
+                window.gerenciadorUsuarios.abrirTab(event);
+            }
+        }
+
+        // Função global para fechar modal
+        function fecharModal() {
+            if (window.gerenciadorUsuarios) {
+                window.gerenciadorUsuarios.fecharModal();
+            }
+        }
+
+        // Função global para editar usuário (cancelar)
+        function editUserCancel() {
+            if (window.gerenciadorUsuarios) {
+                window.gerenciadorUsuarios.alternarEdicao();
+            }
+        }
+
+      </script>
+      <script src="<?php echo $URLBASE ?>/public/js/admin/usuarios-cadastrados-v2.js"></script>
   </main>
   <!-- footer  -->
   <?php

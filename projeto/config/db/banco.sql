@@ -55,12 +55,11 @@ CREATE TABLE cursos (
 CREATE TABLE categorias_usuario (
     id_categoria_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(50) NOT NULL UNIQUE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(100) NOT NULL,
-    nome_social VARCHAR(100) NULL,
     nome_social VARCHAR(100) NULL,
     cpf VARCHAR(14) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -70,7 +69,7 @@ CREATE TABLE usuarios (
     genero ENUM('Masculino', 'Feminino', 'Não binario', 'Outros', 'Não informar') NULL,
     foto_perfil VARCHAR(255) NULL, 
     numero_matricula VARCHAR(50) NULL,
-    categoria ENUM('Aluno', 'Docente', 'Bibliotecario') NOT NULL,
+    categoria ENUM('Aluno', 'Professor', 'Funcionário') NOT NULL,
     unidade_senac ENUM('Senac Hub Academy', 'Senac Dourados', 'Senac Três Lagoas') NOT NULL,
     curso VARCHAR(100) NULL,
     turma VARCHAR(50) NULL,
@@ -81,7 +80,6 @@ CREATE TABLE usuarios (
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ativo BOOLEAN DEFAULT TRUE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 
 CREATE TABLE livros (
     id_livro INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -176,7 +174,17 @@ INSERT INTO categorias_usuario (nome) VALUES
 INSERT INTO cursos (nome) VALUES 
 ('Informática'), ('Administração'), ('Enfermagem'), ('Design');
 
+-- usuários de teste (td criado por ia slk vo escrever td isso nao)
+INSERT INTO usuarios (nome, nome_social, cpf, email, data_nascimento, telefone, endereco, genero, foto_perfil, numero_matricula, categoria, unidade_senac, curso, turma, data_fim_curso, notas_usuario, senha, ativo) VALUES
+('João Silva', '', '123.456.789-01', 'joao.silva@email.com', '1990-05-15', '(11) 98765-4321', 'Rua das Flores, 123, São Paulo - SP', 'Masculino', '', '20240001', 'Aluno', 'Senac Hub Academy', 'Informática', 'INF01', '2024-12-31', 'Aluno regular', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
+('Maria Santos', 'Mari', '987.654.321-02', 'maria.santos@email.com', '1985-08-22', '(11) 99876-5432', 'Av. Paulista, 456, São Paulo - SP', 'Feminino', '', '20240002', 'Professor', 'Senac Hub Academy', 'Administração', 'ADM01', NULL, 'Professora de administração', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
+('Carlos Oliveira', '', '456.789.123-03', 'carlos.oliveira@email.com', '1992-03-10', '(11) 98765-1234', 'Rua Augusta, 789, São Paulo - SP', 'Masculino', '', '20240003', 'Aluno', 'Senac Hub Academy', 'Enfermagem', 'ENF01', '2025-06-30', 'Aluno dedicado', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
+('Ana Costa', '', '321.654.987-04', 'ana.costa@email.com', '1988-11-30', '(11) 99654-3210', 'Rua da Consolação, 321, São Paulo - SP', 'Feminino', '', '20240004', 'Funcionário', 'Senac Hub Academy', NULL, NULL, NULL, 'Bibliotecária responsável', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1),
+('Pedro Lima', '', '654.321.987-05', 'pedro.lima@email.com', '1995-01-25', '(11) 98765-6789', 'Rua Oscar Freire, 654, São Paulo - SP', 'Masculino', '', '20240005', 'Aluno', 'Senac Dourados', 'Design', 'DES01', '2024-11-30', 'Aluno de design gráfico', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0),
+('Lucia Ferreira', '', '789.123.456-06', 'lucia.ferreira@email.com', '1980-07-12', '(11) 99876-9876', 'Rua Haddock Lobo, 789, São Paulo - SP', 'Feminino', '', '20240006', 'Professor', 'Senac Dourados', 'Enfermagem', 'ENF02', NULL, 'Especialista em enfermagem', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 0)
+ON DUPLICATE KEY UPDATE nome = VALUES(nome);
+
 -- Admin de teste (senha 'admin2020')
-INSERT INTO adminstrador (nome, cpf, email, senha, data_nascimento, telefone, rua, bairro, genero) VALUES 
+INSERT INTO adminstrador (nome, cpf, email, senha, data_nascimento, telefone, rua, bairro, genero) VALUES
 ('Admin Principal', '123.456.789-10', 'admin@biblioteca.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '1980-01-01', '(11) 99999-9999', 'Rua Admin 123', 'Centro', 'Masculino')
 ON DUPLICATE KEY UPDATE senha = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';

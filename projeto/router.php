@@ -1,4 +1,11 @@
 <?php
+// Arquivo de teste para verificar se o PHP está funcionando
+if (isset($_GET['acao']) && $_GET['acao'] === 'teste_json') {
+    header('Content-Type: application/json');
+    echo '{"teste": "OK", "mensagem": "PHP funcionando", "acao": "' . $_GET['acao'] . '"}';
+    exit;
+}
+
 require_once __DIR__ . '/config/constantes.php';
 
 ini_set('session.cookie_lifetime', 0);
@@ -136,6 +143,7 @@ switch ($acao) {
         $auxController = new AuxEntityController($tipo);
         $auxController->handle();
         exit;
+        break;
 
     case 'cadastrarLivro':
         if (!isAdminLoggedIn()) {
@@ -148,30 +156,30 @@ switch ($acao) {
         ob_clean();
         header('Content-Type: application/json; charset=utf-8');
         
-        require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
-        $cadastrarLivroController = new CadastrarLivroController();
-        $cadastrarLivroController->cadastrar();
-        exit;
-
-            } catch (Exception $e) {
-                error_log('Router cadastrarLivro error: ' . $e->getMessage());
-                if ($isAjax) {
-                    echo json_encode([
-                        'sucesso' => false,
-                        'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
-                    ]);
-                    exit;
-                } else {
-                    session_start();
-                    $_SESSION['toast'] = [
-                        'mensagem' => 'Erro interno no servidor.',
-                        'tipo' => 'error'
-                    ];
-                    header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
-                    exit;
-                }
+        try {
+            require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
+            $cadastrarLivroController = new CadastrarLivroController();
+            $cadastrarLivroController->cadastrar();
+            exit;
+        } catch (Exception $e) {
+            error_log('Router cadastrarLivro error: ' . $e->getMessage());
+            if ($isAjax) {
+                echo json_encode([
+                    'sucesso' => false,
+                    'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
+                ]);
+                exit;
+            } else {
+                session_start();
+                $_SESSION['toast'] = [
+                    'mensagem' => 'Erro interno no servidor.',
+                    'tipo' => 'error'
+                ];
+                header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
+                exit;
             }
-            break;
+        }
+        break;
 
         case 'atualizarEstoque':
             if (!isAdminLoggedIn()) {
@@ -182,18 +190,29 @@ switch ($acao) {
                 ]);
                 exit;
             }
-
+    
             header('Content-Type: application/json; charset=utf-8');
-
+    
             try {
                 require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
                 $controller = new AtualizarEstoqueController();
                 $resultado = $controller->atualizarEstoque();
-
+    
                 echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
                 exit;
+            } catch (Exception $e) {
+                error_log('Router atualizarEstoque error: ' . $e->getMessage());
+                echo json_encode([
+                    'sucesso' => false,
+                    'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
+                ], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+            break;
 
-    default:
+
+
+   default:
         header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;
 
@@ -241,6 +260,7 @@ switch ($acao) {
                 'mensagem' => $e->getMessage()
             ], JSON_UNESCAPED_UNICODE);
         }
-        
+
         exit;
+        break;
     }

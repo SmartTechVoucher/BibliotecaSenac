@@ -37,11 +37,11 @@ class UsuarioController {
             }
 
             $sql = "INSERT INTO usuarios (nome, nome_social, cpf, email, data_nascimento, telefone, endereco,
-                    genero, foto_perfil, numero_matricula, categoria, unidade_senac, curso, turma, 
-                    data_fim_curso, notas_usuario, senha)
+                    genero, foto_perfil, numero_matricula, categoria, unidade_senac, curso, turma,
+                    data_fim_curso, notas_usuario, senha, ativo)
                     VALUES (:nome, :nome_social, :cpf, :email, :data_nascimento, :telefone, :endereco,
                     :genero, :foto_perfil, :numero_matricula, :categoria, :unidade_senac, :curso, :turma,
-                    :data_fim_curso, :notas_usuario, :senha)";
+                    :data_fim_curso, :notas_usuario, :senha, 1)";
 
             $stmt = $conn->prepare($sql);
             $hash = password_hash($senha, PASSWORD_BCRYPT);
@@ -109,7 +109,7 @@ class UsuarioController {
             $conn = $this->db->Connect();
             
             // Usa os nomes reais das colunas conforme o phpMyAdmin
-            $sql = "SELECT 
+            $sql = "SELECT
                         id_usuario,
                         nome,
                         nome_social,
@@ -130,8 +130,8 @@ class UsuarioController {
                         ativo,
                         data_criacao,
                         data_atualizacao
-                    FROM usuarios 
-                    WHERE id_usuario = :id AND ativo = 1 
+                    FROM usuarios
+                    WHERE id_usuario = :id
                     LIMIT 1";
                     
             $stmt = $conn->prepare($sql);
