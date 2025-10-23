@@ -297,6 +297,179 @@ class UsuarioModel {
     }
 
     /**
+     * Busca um usuário por email
+     * @param string $email
+     * @return array|false
+     */
+    public function buscarUsuarioPorEmail($email) {
+        try {
+            $sql = "SELECT id_usuario, email FROM usuarios WHERE email = :email";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar usuário por email {$email}: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Busca um usuário por CPF
+     * @param string $cpf
+     * @return array|false
+     */
+    public function buscarUsuarioPorCPF($cpf) {
+        try {
+            $sql = "SELECT id_usuario, cpf FROM usuarios WHERE cpf = :cpf";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar usuário por CPF {$cpf}: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Valida CPF
+     * @param string $cpf
+     * @return bool
+     */
+    public function validarCPF($cpf) {
+        // Remove caracteres não numéricos
+        $cpf = preg_replace('/[^\d]/', '', $cpf);
+
+        // Verifica se tem 11 dígitos
+        if (strlen($cpf) !== 11) {
+            return false;
+        }
+
+        // Verifica se todos os dígitos são iguais
+        if (preg_match('/^(\d)\1+$/', $cpf)) {
+            return false;
+        }
+
+        // Calcula dígitos verificadores
+        $soma = 0;
+        for ($i = 0; $i < 9; $i++) {
+            $soma += (int)$cpf[$i] * (10 - $i);
+        }
+
+        $resto = ($soma * 10) % 11;
+        if ($resto === 10 || $resto === 11) {
+            $resto = 0;
+        }
+        if ($resto !== (int)$cpf[9]) {
+            return false;
+        }
+
+        $soma = 0;
+        for ($i = 0; $i < 10; $i++) {
+            $soma += (int)$cpf[$i] * (11 - $i);
+        }
+
+        $resto = ($soma * 10) % 11;
+        if ($resto === 10 || $resto === 11) {
+            $resto = 0;
+        }
+
+        return $resto === (int)$cpf[10];
+    }
+
+
+    /**
+     * Atualiza dados de um usuário
+     * @param int $id_usuario ID do usuário
+     * @param array $dados Dados a serem atualizados
+     * @return bool
+     */
+    public function atualizarUsuario($id_usuario, $dados) {
+        try {
+            $campos = [];
+            $params = [];
+
+            // Campos que podem ser atualizados com seus tipos
+            $camposPermitidos = [
+                'nome' => PDO::PARAM_STR,
+                'nome_social' => PDO::PARAM_STR,
+                'email' => PDO::PARAM_STR,
+                'data_nascimento' => PDO::PARAM_STR,
+                'telefone' => PDO::PARAM_STR,
+                'endereco' => PDO::PARAM_STR,
+                'genero' => PDO::PARAM_STR,
+                'numero_matricula' => PDO::PARAM_STR,
+                'categoria' => PDO::PARAM_STR,
+                'unidade_senac' => PDO::PARAM_STR,
+                'curso' => PDO::PARAM_STR,
+                'turma' => PDO::PARAM_STR,
+                'data_fim_curso' => PDO::PARAM_STR,
+                'notas_usuario' => PDO::PARAM_STR
+            ];
+
+            foreach ($dados as $campo => $valor) {
+                // Só adiciona se o campo for permitido e o valor não for vazio
+                if (isset($camposPermitidos[$campo]) && $valor !== '') {
+                    $campos[] = "{$campo} = :{$campo}";
+                    $params[":{$campo}"] = [
+                        'valor' => $valor,
+                        'tipo' => $camposPermitidos[$campo]
+                    ];
+                }
+            }
+
+            if (empty($campos)) {
+                error_log("Nenhum campo válido para atualizar no usuário ID {$id_usuario}");
+                return false;
+            }
+
+            // Adicionar campo de atualização
+            $campos[] = "data_atualizacao = NOW()";
+            $params[':id_usuario'] = [
+                'valor' => $id_usuario,
+                'tipo' => PDO::PARAM_INT
+            ];
+
+            $sql = "UPDATE usuarios SET " . implode(', ', $campos) . " WHERE id_usuario = :id_usuario";
+
+            error_log("SQL Query: {$sql}");
+            error_log("Parâmetros: " . json_encode($params));
+
+            $stmt = $this->conn->prepare($sql);
+
+            // Bind dos parâmetros com tipos corretos
+            foreach ($params as $key => $param) {
+                $stmt->bindValue($key, $param['valor'], $param['tipo']);
+            }
+
+            $stmt->execute();
+
+            $linhasAfetadas = $stmt->rowCount();
+            error_log("Linhas afetadas: {$linhasAfetadas}");
+
+            if ($linhasAfetadas > 0) {
+                error_log("Usuário ID {$id_usuario} atualizado com sucesso");
+                return true;
+            }
+
+            error_log("Nenhuma linha afetada ao atualizar usuário ID {$id_usuario}");
+            return false;
+
+        } catch (PDOException $e) {
+            error_log("Erro ao atualizar usuário {$id_usuario}: " . $e->getMessage());
+            error_log("SQL State: " . $e->getCode());
+            return false;
+        }
+    }
+
+    /**
      * Obtém estatísticas dos usuários
      * @return array
      */

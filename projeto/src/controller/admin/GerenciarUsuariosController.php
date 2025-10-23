@@ -55,6 +55,7 @@ try {
             ]);
             break;
 
+        case 'bloquearUsuario':
         case 'bloquear_usuario':
             $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
 
@@ -70,6 +71,7 @@ try {
             ]);
             break;
 
+        case 'desbloquearUsuario':
         case 'desbloquear_usuario':
             $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
 
@@ -98,6 +100,98 @@ try {
                 'sucesso' => $usuario !== false,
                 'usuario' => $usuario ?: null,
                 'mensagem' => $usuario ? 'Usuário encontrado' : 'Usuário não encontrado'
+            ]);
+            break;
+
+        case 'atualizar_usuario':
+            $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
+
+            error_log("=== INICIANDO ATUALIZAÇÃO DE USUÁRIO ===");
+            error_log("ID do usuário: {$id_usuario}");
+
+            if ($id_usuario <= 0) {
+                error_log("ERRO: ID de usuário inválido");
+                throw new Exception('ID de usuário inválido');
+            }
+
+            // Coletar dados do formulário
+            $dados = [
+                'nome' => $_POST['nome'] ?? '',
+                'nome_social' => $_POST['nome_social'] ?? '',
+                'email' => $_POST['email'] ?? '',
+                'data_nascimento' => $_POST['data_nascimento'] ?? '',
+                'telefone' => $_POST['telefone'] ?? '',
+                'endereco' => $_POST['endereco'] ?? '',
+                'genero' => $_POST['genero'] ?? '',
+                'numero_matricula' => $_POST['numero_matricula'] ?? '',
+                'categoria' => $_POST['categoria'] ?? '',
+                'unidade_senac' => $_POST['unidade_senac'] ?? '',
+                'curso' => $_POST['curso'] ?? '',
+                'turma' => $_POST['turma'] ?? '',
+                'data_fim_curso' => $_POST['data_fim_curso'] ?? '',
+                'notas_usuario' => $_POST['notas_usuario'] ?? ''
+            ];
+
+            error_log("Dados recebidos para atualização:");
+            foreach ($dados as $campo => $valor) {
+                error_log("  {$campo}: '{$valor}'");
+            }
+
+            // Validar campos obrigatórios
+            if (empty($dados['nome'])) {
+                throw new Exception('Nome é obrigatório');
+            }
+
+            if (empty($dados['email'])) {
+                throw new Exception('Email é obrigatório');
+            }
+
+            if (empty($dados['data_nascimento'])) {
+                throw new Exception('Data de nascimento é obrigatória');
+            }
+
+            // Validar formato da data de nascimento
+            $dataNascimento = DateTime::createFromFormat('Y-m-d', $dados['data_nascimento']);
+            if (!$dataNascimento || $dataNascimento->format('Y-m-d') !== $dados['data_nascimento']) {
+                throw new Exception('Data de nascimento inválida');
+            }
+
+            if (empty($dados['categoria'])) {
+                throw new Exception('Categoria é obrigatória');
+            }
+
+            if (empty($dados['unidade_senac'])) {
+                throw new Exception('Unidade Senac é obrigatória');
+            }
+
+            // Validar formato do email
+            if (!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) {
+                throw new Exception('Email inválido');
+            }
+
+            // Verificar se o email já existe para outro usuário
+            $usuarioExistente = $usuarioModel->buscarUsuarioPorEmail($dados['email']);
+            if ($usuarioExistente && $usuarioExistente['id_usuario'] != $id_usuario) {
+                throw new Exception('Email já está em uso por outro usuário');
+            }
+
+            // Verificar se o CPF já existe para outro usuário (se fornecido)
+            if (!empty($dados['cpf'])) {
+                if (!$usuarioModel->validarCPF($dados['cpf'])) {
+                    throw new Exception('CPF inválido');
+                }
+
+                $usuarioPorCPF = $usuarioModel->buscarUsuarioPorCPF($dados['cpf']);
+                if ($usuarioPorCPF && $usuarioPorCPF['id_usuario'] != $id_usuario) {
+                    throw new Exception('CPF já está em uso por outro usuário');
+                }
+            }
+
+            $sucesso = $usuarioModel->atualizarUsuario($id_usuario, $dados);
+
+            echo json_encode([
+                'sucesso' => $sucesso,
+                'mensagem' => $sucesso ? 'Usuário atualizado com sucesso' : 'Erro ao atualizar usuário'
             ]);
             break;
 

@@ -96,6 +96,30 @@ require_once "../../../config/constantes.php";
 
 
 
+      <!-- Modal de confirmação de salvamento -->
+      <div id="confirmModalSalvar" class="modal">
+        <div class="modal-content">
+          <div class="confirm-content">
+            <div class="confirm-icon">✓</div>
+            <h3>Dados salvos com sucesso!</h3>
+            <p>As alterações foram salvas no banco de dados.</p>
+            <button onclick="fecharModalConfirmacao()" class="btn-confirm-ok">OK</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal de erro -->
+      <div id="errorModalSalvar" class="modal">
+        <div class="modal-content">
+          <div class="error-content">
+            <div class="error-icon">⚠</div>
+            <h3>Erro ao salvar dados</h3>
+            <p id="errorMessage">Ocorreu um erro ao salvar as alterações.</p>
+            <button onclick="fecharModalErro()" class="btn-error-ok">OK</button>
+          </div>
+        </div>
+      </div>
+
       <div id="userModal" class="modal"> <!-- janela que contém dados do usuario -->
         <div class="modal-content">
           <h3>Dados do Usuário</h3>
@@ -106,9 +130,11 @@ require_once "../../../config/constantes.php";
               <div id="dados-texto"><label for="">Nome social:</label for=""> <input readonly class="inputs-editaveis" id="userNameSocial"></input></div>
               <div id="dados-texto"><label for="">Nascimento:</label for=""> <input type="date" readonly class="inputs-editaveis" id="userNascimento"></input></div>
               <div id="dados-texto"><label for="">Sexo:</label for=""> <select disabled id="userSexo">
-                  <option value="masculino">Masculino</option>
-                  <option value="feminino">Feminino</option>
-                  <option value="outro">Outro</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                  <option value="Não binario">Não binário</option>
+                  <option value="Outros">Outros</option>
+                  <option value="Não informar">Não informar</option>
                 </select></div>
               <div id="dados-texto"><label for="">CPF:</label for=""> <input readonly class="inputs-editaveis" id="userCPF"></input></div>
             </div>
@@ -221,6 +247,28 @@ require_once "../../../config/constantes.php";
           </div>
 
           <div class="details-section">
+            <h4>Dados Complementares</h4>
+            <div class="dados-texto-container">
+              <div id="dados-texto">
+                <label for="userCurso">Curso:</label>
+                <input readonly class="inputs-editaveis" id="userCurso" value="">
+              </div>
+              <div id="dados-texto">
+                <label for="userTurma">Turma:</label>
+                <input readonly class="inputs-editaveis" id="userTurma" value="">
+              </div>
+              <div id="dados-texto">
+                <label for="userDataFimCurso">Fim do Curso:</label>
+                <input type="date" readonly class="inputs-editaveis" id="userDataFimCurso" value="">
+              </div>
+              <div id="dados-texto">
+                <label for="userNotas">Observações:</label>
+                <textarea readonly class="inputs-editaveis" id="userNotas" rows="3" value=""></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="details-section">
             <h4>Endereço</h4>
             <div class="dados-texto-container">
               <div id="dados-texto">
@@ -234,21 +282,58 @@ require_once "../../../config/constantes.php";
             </div>
           </div>
           <div class="modal-buttons">
-            <button id="botao-bloquear" value="1">Bloquear usuário</button>
+            <button id="botao-bloquear" type="button" value="1">Bloquear usuário</button>
             <div id="edicao-usuario">
-              <button id="botao-edicao" value="true">Editar dados</button>
-              <button id="cancelar-edicao" onclick="editUserCancel()">Cancelar edição</button>
+              <button id="botao-edicao" type="button" value="true">Editar dados</button>
+              <button id="cancelar-edicao" type="button" onclick="editUserCancel()">Cancelar edição</button>
             </div>
 
-            <button onclick="fecharModal()">Fechar</button>
+            <button type="button" onclick="fecharModal()">Fechar</button>
           </div>
 
         </div>
       </div>
 
       <script>
+        // Desabilitar modal de navegação IMEDIATAMENTE e PERMANENTEMENTE
+        (function() {
+            // Desabilitar completamente
+            window.onbeforeunload = null;
+            delete window.onbeforeunload;
+
+            // Sobrescrever a propriedade
+            Object.defineProperty(window, 'onbeforeunload', {
+                set: function() { return null; },
+                get: function() { return null; },
+                configurable: false
+            });
+
+            // Capturar qualquer tentativa de beforeunload
+            window.addEventListener('beforeunload', function(e) {
+                e.preventDefault();
+                e.returnValue = undefined;
+                return undefined;
+            }, true);
+        })();
+
         // Tornar URLBASE disponível para o JavaScript
         const URLBASE = "<?php echo $URLBASE ?>";
+        console.log('URLBASE definida na página:', URLBASE);
+
+        // Função para verificar se o botão funciona
+        function testarBotao() {
+            console.log('🎯 === BOTÃO TESTE CLICADO ===');
+            console.log('URLBASE disponível:', URLBASE);
+            console.log('Tentando chamar alternarEdicao...');
+
+            if (window.gerenciadorUsuarios) {
+                console.log('✅ GerenciadorUsuarios existe, chamando alternarEdicao...');
+                window.gerenciadorUsuarios.alternarEdicao();
+            } else {
+                console.error('❌ GerenciadorUsuarios não encontrado!');
+                alert('Erro: Sistema não inicializado');
+            }
+        }
 
 
         // Função global abrirTab para ser chamada pelo HTML

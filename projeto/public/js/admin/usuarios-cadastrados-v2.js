@@ -1,7 +1,3 @@
-/**
- * Sistema de Gerenciamento de Usuários - Versão com Banco de Dados
- * Funcionalidades: Listagem, busca, paginação, bloqueio/desbloqueio
- */
 
 class GerenciadorUsuarios {
     constructor() {
@@ -23,6 +19,15 @@ class GerenciadorUsuarios {
     }
 
     configurarEventListeners() {
+        // Prevenir comportamento padrão nos modais
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('#confirmModalSalvar') || e.target.closest('#errorModalSalvar')) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            }
+        });
+
         // Tabs
         const tabs = document.querySelectorAll('.tab-link');
         tabs.forEach(tab => {
@@ -44,14 +49,28 @@ class GerenciadorUsuarios {
         // Botão de bloquear/desbloquear
         const botaoBloquear = document.getElementById('botao-bloquear');
         if (botaoBloquear) {
-            botaoBloquear.addEventListener('click', () => this.alternarBloqueio());
+            botaoBloquear.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.alternarBloqueio();
+            });
         }
 
         // Botão de edição
-        const botaoEdicao = document.getElementById('botao-edicao');
-        if (botaoEdicao) {
-            botaoEdicao.addEventListener('click', () => this.alternarEdicao());
-        }
+         const botaoEdicao = document.getElementById('botao-edicao');
+         if (botaoEdicao) {
+             botaoEdicao.addEventListener('click', (e) => {
+                 e.preventDefault();
+                 e.stopPropagation();
+                 this.alternarEdicao();
+             });
+         }
+
+        // Botão cancelar edição
+         const botaoCancelar = document.getElementById('cancelar-edicao');
+
+        // Modal
+        const modal = document.getElementById('userModal');
     }
 
     async carregarUsuariosRegulares() {
@@ -65,6 +84,12 @@ class GerenciadorUsuarios {
             });
 
             const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php?${params}`);
+
+            if (!response.ok) {
+                throw new Error('Erro na resposta do servidor');
+            }
+
+            const data = await response.json();
 
             if (data.sucesso) {
                 this.dadosRegulares = {
@@ -95,6 +120,12 @@ class GerenciadorUsuarios {
             });
 
             const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php?${params}`);
+
+            if (!response.ok) {
+                throw new Error('Erro na resposta do servidor');
+            }
+
+            const data = await response.json();
 
             if (data.sucesso) {
                 this.dadosBloqueados = {
@@ -196,6 +227,45 @@ class GerenciadorUsuarios {
         return nome.length > 30 ? nome.substring(0, 30) + '...' : nome;
     }
 
+    validarCPF(cpf) {
+        // Remove caracteres não numéricos
+        cpf = cpf.replace(/[^\d]/g, '');
+
+        // Verifica se tem 11 dígitos
+        if (cpf.length !== 11) return false;
+
+        // Verifica se todos os dígitos são iguais
+        if (/^(\d)\1+$/.test(cpf)) return false;
+
+        // Calcula dígitos verificadores
+        let soma = 0;
+        for (let i = 0; i < 9; i++) {
+            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        }
+
+        let resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+        if (resto !== parseInt(cpf.charAt(9))) return false;
+
+        soma = 0;
+        for (let i = 0; i < 10; i++) {
+            soma += parseInt(cpf.charAt(i)) * (11 - i);
+        }
+
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) resto = 0;
+
+        return resto === parseInt(cpf.charAt(10));
+    }
+
+    validarTelefone(telefone) {
+        // Remove caracteres não numéricos
+        telefone = telefone.replace(/[^\d]/g, '');
+
+        // Deve ter entre 10 e 11 dígitos (com ou sem DDD)
+        return telefone.length >= 10 && telefone.length <= 11;
+    }
+
     async mostrarDetalhesUsuario(idUsuario) {
         try {
             const params = new URLSearchParams({
@@ -249,6 +319,12 @@ class GerenciadorUsuarios {
         // Outros dados
         document.getElementById('userProfissao').value = usuario.categoria || '';
         document.getElementById('userEndResidencial').value = usuario.endereco || '';
+
+        // Dados complementares
+        document.getElementById('userCurso').value = usuario.curso || '';
+        document.getElementById('userTurma').value = usuario.turma || '';
+        document.getElementById('userDataFimCurso').value = usuario.data_fim_curso || '';
+        document.getElementById('userNotas').value = usuario.notas_usuario || '';
 
         // Configurar botão de bloqueio
         const botaoBloquear = document.getElementById('botao-bloquear');
@@ -311,27 +387,167 @@ class GerenciadorUsuarios {
         }
     }
 
-    alternarEdicao() {
+    async alternarEdicao() {
         const todosInputs = document.querySelectorAll('.inputs-editaveis');
+        const selects = document.querySelectorAll('select');
         const botaoEdicao = document.getElementById('botao-edicao');
+        const botaoCancelar = document.getElementById('cancelar-edicao');
         const isReadOnly = todosInputs[0] && todosInputs[0].hasAttribute('readonly');
-
-        todosInputs.forEach(input => {
-            if (isReadOnly) {
-                input.removeAttribute('readonly');
-            } else {
-                input.setAttribute('readonly', 'true');
-            }
-        });
+        console.log('🔄 === ALTERNANDO EDIÇÃO ===');
+        console.log('Estado dos inputs:', isReadOnly ? 'Somente leitura' : 'Editável');
+        console.log('Texto do botão:', botaoEdicao ? botaoEdicao.textContent : 'Botão não encontrado');
 
         if (isReadOnly) {
+            // Entrar no modo de edição
+            todosInputs.forEach(input => {
+                input.removeAttribute('readonly');
+            });
+            selects.forEach(select => {
+                select.removeAttribute('disabled');
+            });
+
             botaoEdicao.textContent = 'Salvar dados';
+            botaoCancelar.style.display = 'inline-block';
             if (todosInputs.length > 0) {
                 todosInputs[0].focus();
             }
         } else {
-            botaoEdicao.textContent = 'Editar dados';
-            // Aqui você poderia implementar o salvamento dos dados editados
+            // Salvar dados
+            console.log('💾 === INICIANDO SALVAMENTO DE DADOS ===');
+            await this.salvarDadosEditados();
+        }
+    }
+
+    async salvarDadosEditados() {
+        console.log('🔥 === INICIANDO SALVAMENTO ===');
+        console.log('Usuário selecionado:', this.usuarioSelecionado);
+
+        if (!this.usuarioSelecionado) {
+            console.error('❌ Nenhum usuário selecionado');
+            this.mostrarModalErro('Nenhum usuário selecionado');
+            return;
+        }
+
+        console.log('✅ Usuário selecionado encontrado, continuando...');
+
+        try {
+            // Coletar dados do formulário com verificação de existência
+            const getValue = (id) => {
+                const element = document.getElementById(id);
+                return element ? element.value : '';
+            };
+
+            const dadosFormulario = {
+                nome: getValue('userName'),
+                nome_social: getValue('userNameSocial'),
+                email: getValue('userEmail'),
+                data_nascimento: getValue('userNascimento'),
+                telefone: getValue('userCelular'),
+                endereco: getValue('userEndResidencial'),
+                genero: getValue('userSexo'),
+                numero_matricula: getValue('userRegistration'),
+                categoria: getValue('userProfissao'),
+                unidade_senac: getValue('userUnidade'),
+                curso: getValue('userCurso'),
+                turma: getValue('userTurma'),
+                data_fim_curso: getValue('userDataFimCurso'),
+                notas_usuario: getValue('userNotas')
+            };
+
+            // Validar dados obrigatórios
+            if (!dadosFormulario.nome || !dadosFormulario.email) {
+                this.mostrarMensagemErro('Nome e email são obrigatórios');
+                return;
+            }
+
+            // Validar email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(dadosFormulario.email)) {
+                this.mostrarMensagemErro('Email inválido');
+                return;
+            }
+
+            // Validar CPF se fornecido
+            if (dadosFormulario.cpf && !this.validarCPF(dadosFormulario.cpf)) {
+                this.mostrarMensagemErro('CPF inválido');
+                return;
+            }
+
+            // Validar telefone se fornecido
+            if (dadosFormulario.telefone && !this.validarTelefone(dadosFormulario.telefone)) {
+                this.mostrarMensagemErro('Telefone inválido');
+                return;
+            }
+
+            const params = new URLSearchParams({
+                ajax: '1',
+                acao: 'atualizar_usuario',
+                id_usuario: this.usuarioSelecionado.id_usuario,
+                ...dadosFormulario
+            });
+
+            const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php`, {
+                method: 'POST',
+                body: params,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status} - ${response.statusText}`);
+            }
+
+            const responseText = await response.text();
+            const data = JSON.parse(responseText);
+
+            if (data.sucesso) {
+                // Mostrar modal de confirmação
+                this.mostrarModalConfirmacao(data.mensagem);
+
+                // Recarregar dados do usuário após 1.5 segundos para dar tempo do usuário ver a confirmação
+                setTimeout(async () => {
+                    await this.mostrarDetalhesUsuario(this.usuarioSelecionado.id_usuario);
+
+                    // Recarregar listas
+                    this.carregarUsuariosRegulares();
+                    this.carregarUsuariosBloqueados();
+
+                    // Voltar para modo somente leitura
+                    this.cancelarEdicao();
+                }, 1500);
+
+            } else {
+                console.error('Erro do servidor:', data.erro);
+                this.mostrarModalErro(data.erro || 'Erro ao atualizar usuário');
+            }
+        } catch (error) {
+            console.error('Erro ao salvar dados:', error);
+            this.mostrarMensagemErro('Erro de conexão. Tente novamente.');
+        }
+        console.log('=== FIM DO SALVAMENTO ===');
+    }
+
+    cancelarEdicao() {
+        const todosInputs = document.querySelectorAll('.inputs-editaveis');
+        const selects = document.querySelectorAll('select');
+        const botaoEdicao = document.getElementById('botao-edicao');
+        const botaoCancelar = document.getElementById('cancelar-edicao');
+
+        // Voltar para modo somente leitura
+        todosInputs.forEach(input => {
+            input.setAttribute('readonly', 'true');
+        });
+        selects.forEach(select => {
+            select.setAttribute('disabled', 'true');
+        });
+
+        botaoEdicao.textContent = 'Editar dados';
+        botaoCancelar.style.display = 'none';
+
+        // Recarregar dados originais para desfazer alterações não salvas
+        if (this.usuarioSelecionado) {
+            this.preencherModalDetalhes(this.usuarioSelecionado);
         }
     }
 
@@ -408,6 +624,29 @@ class GerenciadorUsuarios {
             sucessoDiv.style.display = 'none';
         }, 3000);
     }
+
+    mostrarModalConfirmacao(mensagem = 'Dados salvos com sucesso!') {
+        console.log('✅ Mostrando modal de confirmação:', mensagem);
+        const modal = document.getElementById('confirmModalSalvar');
+        if (modal) {
+            modal.style.display = 'flex';
+        } else {
+            console.error('❌ Modal de confirmação não encontrado');
+        }
+    }
+
+    mostrarModalErro(mensagem = 'Erro ao salvar dados') {
+        console.log('❌ Mostrando modal de erro:', mensagem);
+        const modal = document.getElementById('errorModalSalvar');
+        const messageElement = document.getElementById('errorMessage');
+
+        if (modal && messageElement) {
+            messageElement.textContent = mensagem;
+            modal.style.display = 'flex';
+        } else {
+            console.error('❌ Modal de erro não encontrado');
+        }
+    }
 }
 
 // Funções globais para serem chamadas pelo HTML
@@ -422,6 +661,23 @@ function trocarParaPaginaDosBloqueados(direction) {
         window.gerenciadorUsuarios.mudarPagina(direction, 'bloqueados');
     }
 }
+
+// Funções globais para modais de confirmação
+function fecharModalConfirmacao() {
+    const modal = document.getElementById('confirmModalSalvar');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+function fecharModalErro() {
+    const modal = document.getElementById('errorModalSalvar');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// Verificar se a classe foi definida
 
 // Inicializar quando DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {

@@ -47,13 +47,11 @@ function handleClickForaMenu(event) {
  
 function confirmarSaida(event) {
     event.preventDefault();
-    showModal(
-        'confirmModal',
-        'Você tem certeza que deseja sair?',
-        function () {
-            window.location.href = baseUrl + '/index.php';
-        }
-    );
+    // Desabilitar modal de navegação completamente
+    console.log('Tentativa de saída detectada - NAVEGAÇÃO DIRETA');
+    // Navegar diretamente sem modal
+    window.location.href = baseUrl + '/index.php';
+    return false;
 }
  
 function showModal(modalId, mensagem, onConfirm) {
@@ -80,5 +78,11 @@ function showModal(modalId, mensagem, onConfirm) {
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) modal.style.display = 'none';
+}
+
+// Desabilitar função showModal completamente
+function showModal(modalId, mensagem, onConfirm) {
+    console.log('Tentativa de showModal bloqueada:', modalId, mensagem);
+    return false;
 }
  
