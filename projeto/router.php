@@ -181,6 +181,64 @@ switch ($acao) {
         header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;
 
+    // ADICIONE ESTES CASES NO SEU router.php, DEPOIS do case 'atualizarEstoque':
+
+    case 'editarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/EditarLivroController.php";
+        $controller = new EditarLivroController();
+        $controller->editar();
+        exit;
+
+    case 'buscarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/EditarLivroController.php";
+        $id_livro = (int) ($_GET['id_livro'] ?? 0);
+        
+        if ($id_livro <= 0) {
+            echo json_encode(['sucesso' => false, 'mensagem' => 'ID inválido.']);
+            exit;
+        }
+        
+        $controller = new EditarLivroController();
+        $resultado = $controller->buscarLivro($id_livro);
+        echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+        exit;
+
+    case 'deletarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/DeletarLivroController.php";
+        $controller = new DeletarLivroController();
+        $controller->deletar();
+        exit;
+
     // Adicione este case no switch do router.php, logo após o case 'atualizarEstoque':
 
     case 'atualizarNomeSocial':

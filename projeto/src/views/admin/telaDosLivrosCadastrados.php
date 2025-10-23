@@ -48,6 +48,8 @@
             --fundoPadrao: #EDEDED;
             --verde: #28a745;
             --azul: #007bff;
+            --amarelo: #ffc107;
+            --vermelho: #dc3545;
             --cinza: #6c757d;
         }
 
@@ -61,7 +63,6 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* ========== CONTAINER PRINCIPAL ========== */
         .container-main {
             box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
             background: #fbfaff;
@@ -78,7 +79,6 @@
             font-size: 28px;
         }
 
-        /* ========== FORMULÁRIO DE BUSCA ========== */
         .form-busca {
             margin-bottom: 20px;
         }
@@ -126,7 +126,6 @@
             filter: brightness(0) invert(1);
         }
 
-        /* ========== FILTROS AVANÇADOS ========== */
         .filtros-avancados {
             display: flex;
             gap: 10px;
@@ -181,7 +180,6 @@
             background: #c82333;
         }
 
-        /* ========== INFO RESULTADOS ========== */
         #livros-por-aparecer {
             font-size: 16px;
             text-align: center;
@@ -211,7 +209,6 @@
             font-weight: 600;
         }
 
-        /* ========== CARD LIVROS ========== */
         .livro-container {
             background-color: white;
             width: 100%;
@@ -281,25 +278,47 @@
 
         .livro-acoes {
             margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .btn-editar-estoque {
-            background: var(--verde);
+        .btn-acao {
             color: white;
             border: none;
             padding: 8px 16px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 14px;
-            transition: background 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
+        }
+
+        .btn-editar-estoque {
+            background: var(--verde);
         }
 
         .btn-editar-estoque:hover {
             background: #218838;
         }
 
-        /* ========== PAGINAÇÃO ========== */
+        .btn-editar-livro {
+            background: var(--amarelo);
+            color: #212529;
+        }
+
+        .btn-editar-livro:hover {
+            background: #e0a800;
+        }
+
+        .btn-deletar {
+            background: var(--vermelho);
+        }
+
+        .btn-deletar:hover {
+            background: #c82333;
+        }
+
         .paginacao {
             display: flex;
             justify-content: center;
@@ -341,8 +360,7 @@
             font-weight: 500;
         }
 
-        /* ========== MODAL ========== */
-        .modal-estoque {
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -355,18 +373,18 @@
             z-index: 1000;
         }
 
-        .modal-estoque-content {
+        .modal-content {
             background: white;
             padding: 25px;
             border-radius: 10px;
             width: 90%;
-            max-width: 600px;
+            max-width: 700px;
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .modal-estoque-header {
+        .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -375,7 +393,7 @@
             padding-bottom: 15px;
         }
 
-        .modal-estoque-header h3 {
+        .modal-header h3 {
             margin: 0;
             color: var(--azulCabecalho);
             font-size: 20px;
@@ -415,16 +433,21 @@
             font-size: 14px;
         }
 
-        .form-group input {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 10px;
             border: 1px solid #ced4da;
             border-radius: 5px;
             font-size: 14px;
             transition: border-color 0.3s;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .form-group input:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--azul);
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
@@ -435,7 +458,12 @@
             color: #6c757d;
         }
 
-        .modal-estoque-actions {
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .modal-actions {
             display: flex;
             justify-content: flex-end;
             gap: 10px;
@@ -475,7 +503,6 @@
             background: #0056b3;
         }
 
-        /* ========== RESPONSIVO ========== */
         @media (max-width: 768px) {
             .container-main {
                 width: 95%;
@@ -513,26 +540,8 @@
                 flex-direction: column;
             }
 
-            .info-paginacao {
-                width: 100%;
-                text-align: center;
-                margin: 10px 0 0 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            #livro-titulo {
-                font-size: 16px;
-            }
-
-            .btn-editar-estoque {
-                font-size: 12px;
-                padding: 6px 12px;
-            }
-
-            .modal-estoque-content {
-                padding: 15px;
-                width: 95%;
+            .livro-acoes {
+                justify-content: center;
             }
         }
     </style>
@@ -628,7 +637,7 @@
                     </div>
                     
                     <div class="livro-acoes">
-                        <button class="btn-editar-estoque" 
+                        <button class="btn-acao btn-editar-estoque" 
                                 onclick="abrirModalEstoque(
                                     <?php echo $livro['id_livro']; ?>, 
                                     '<?php echo addslashes($livro['titulo']); ?>', 
@@ -638,6 +647,16 @@
                                     <?php echo $livro['reservas']; ?>
                                 )">
                             ✏️ Editar Estoque
+                        </button>
+                        
+                        <button class="btn-acao btn-editar-livro" 
+                                onclick="abrirModalEditarLivro(<?php echo $livro['id_livro']; ?>)">
+                            📝 Editar Livro
+                        </button>
+                        
+                        <button class="btn-acao btn-deletar" 
+                                onclick="confirmarDeletar(<?php echo $livro['id_livro']; ?>, '<?php echo addslashes($livro['titulo']); ?>')">
+                            🗑️ Deletar
                         </button>
                     </div>
                 </div>
@@ -687,10 +706,10 @@
 <!-- RODAPÉ -->
 <?php include "../../../public/components/admin/footer/footer-admin.php"; ?>
 
-<!-- MODAL -->
-<div id="modal-estoque" class="modal-estoque" style="display: none;">
-    <div class="modal-estoque-content">
-        <div class="modal-estoque-header">
+<!-- MODAL EDITAR ESTOQUE -->
+<div id="modal-estoque" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
             <h3>Editar Estoque do Livro</h3>
             <span class="close-modal" onclick="fecharModalEstoque()">&times;</span>
         </div>
@@ -724,7 +743,7 @@
                 </div>
             </div>
 
-            <div class="modal-estoque-actions">
+            <div class="modal-actions">
                 <button type="button" class="btn-cancelar" onclick="fecharModalEstoque()">Cancelar</button>
                 <button type="submit" class="btn-salvar">Salvar Alterações</button>
             </div>
@@ -732,8 +751,109 @@
     </div>
 </div>
 
+<!-- MODAL EDITAR LIVRO -->
+<div id="modal-editar-livro" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Editar Dados do Livro</h3>
+            <span class="close-modal" onclick="fecharModalEditarLivro()">&times;</span>
+        </div>
+        <form id="form-editar-livro" method="POST" action="../../../router.php?acao=editarLivro" enctype="multipart/form-data">
+            <input type="hidden" id="edit-id-livro" name="id_livro">
+            <input type="hidden" name="ajax" value="1">
+
+            <div class="form-group">
+                <label for="edit-titulo">Título:</label>
+                <input type="text" id="edit-titulo" name="titulo-livro" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-autor">Autor:</label>
+                    <select id="edit-autor" name="autor" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-isbn">ISBN:</label>
+                    <input type="text" id="edit-isbn" name="isbn-livro" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-categoria">Categoria:</label>
+                    <select id="edit-categoria" name="categoria" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-paginas">Páginas:</label>
+                    <input type="number" id="edit-paginas" name="numero-paginas" min="1" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-editora">Editora:</label>
+                    <select id="edit-editora" name="editora" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-idioma">Idioma:</label>
+                    <select id="edit-idioma" name="idioma" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-area">Área:</label>
+                    <select id="edit-area" name="area" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-documento">Tipo:</label>
+                    <select id="edit-documento" name="tipo-documento" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-publicacao">Data de Publicação:</label>
+                <input type="date" id="edit-publicacao" name="publicacao-livro">
+            </div>
+
+            <div class="form-group">
+                <label for="edit-resumo">Descrição:</label>
+                <textarea id="edit-resumo" name="resumo-livro"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-notas">Notas:</label>
+                <textarea id="edit-notas" name="notas-livro"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-capa">Nova Capa (opcional):</label>
+                <input type="file" id="edit-capa" name="capa-livro" accept="image/*">
+                <small style="color: #6c757d;">Deixe em branco para manter a capa atual</small>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-cancelar" onclick="fecharModalEditarLivro()">Cancelar</button>
+                <button type="submit" class="btn-salvar">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script>
-// Opções dos filtros
+// Opções dos filtros e formulários
 const opcoesFiltro = <?php echo json_encode([
     'area' => $areas,
     'idioma' => $idiomas,
@@ -771,9 +891,7 @@ function atualizarFiltroValor() {
     });
 }
 
-// Modal
-let currentLivroId = null;
-
+// ========== MODAL EDITAR ESTOQUE ==========
 function abrirModalEstoque(id, titulo, total, disponiveis, emprestados, reservas) {
     document.getElementById('estoque-id-livro').value = id;
     document.getElementById('estoque-titulo').value = titulo;
@@ -782,12 +900,10 @@ function abrirModalEstoque(id, titulo, total, disponiveis, emprestados, reservas
     document.getElementById('estoque-emprestados').value = emprestados;
     document.getElementById('estoque-reservas').value = reservas;
     document.getElementById('modal-estoque').style.display = 'flex';
-    currentLivroId = id;
 }
 
 function fecharModalEstoque() {
     document.getElementById('modal-estoque').style.display = 'none';
-    currentLivroId = null;
 }
 
 document.getElementById('modal-estoque').addEventListener('click', function(e) {
@@ -818,6 +934,171 @@ document.getElementById('form-estoque').addEventListener('submit', async functio
         alert('Erro de conexão: ' + error.message);
     }
 });
+
+// ========== MODAL EDITAR LIVRO ==========
+function popularSelects() {
+    // Popular autor
+    const autorSelect = document.getElementById('edit-autor');
+    autorSelect.innerHTML = '<option value="">Selecione o autor</option>';
+    opcoesFiltro.autor.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item.nome;
+        autorSelect.appendChild(option);
+    });
+
+    // Popular categoria
+    const categoriaSelect = document.getElementById('edit-categoria');
+    categoriaSelect.innerHTML = '<option value="">Selecione a categoria</option>';
+    opcoesFiltro.categoria.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item.nome;
+        categoriaSelect.appendChild(option);
+    });
+
+    // Popular editora
+    const editoraSelect = document.getElementById('edit-editora');
+    editoraSelect.innerHTML = '<option value="">Selecione a editora</option>';
+    opcoesFiltro.editora.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item.nome;
+        editoraSelect.appendChild(option);
+    });
+
+    // Popular idioma
+    const idiomaSelect = document.getElementById('edit-idioma');
+    idiomaSelect.innerHTML = '<option value="">Selecione o idioma</option>';
+    opcoesFiltro.idioma.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item.nome;
+        idiomaSelect.appendChild(option);
+    });
+
+    // Popular área
+    const areaSelect = document.getElementById('edit-area');
+    areaSelect.innerHTML = '<option value="">Selecione a área</option>';
+    opcoesFiltro.area.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item.nome;
+        areaSelect.appendChild(option);
+    });
+
+    // Popular tipo documento
+    const documentoSelect = document.getElementById('edit-documento');
+    documentoSelect.innerHTML = '<option value="">Selecione o tipo</option>';
+    opcoesFiltro.documento.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item.id;
+        option.textContent = item.nome;
+        documentoSelect.appendChild(option);
+    });
+}
+
+async function abrirModalEditarLivro(id) {
+    try {
+        // Buscar dados do livro
+        const response = await fetch(`../../../router.php?acao=buscarLivro&id_livro=${id}`);
+        const result = await response.json();
+        
+        if (!result.sucesso) {
+            alert('Erro ao buscar dados do livro: ' + result.mensagem);
+            return;
+        }
+        
+        const livro = result.livro;
+        
+        // Popular selects
+        popularSelects();
+        
+        // Preencher formulário
+        document.getElementById('edit-id-livro').value = livro.id_livro;
+        document.getElementById('edit-titulo').value = livro.titulo;
+        document.getElementById('edit-autor').value = livro.id_autor;
+        document.getElementById('edit-isbn').value = livro.isbn;
+        document.getElementById('edit-categoria').value = livro.id_categoria;
+        document.getElementById('edit-paginas').value = livro.numero_paginas;
+        document.getElementById('edit-editora').value = livro.id_unidade;
+        document.getElementById('edit-idioma').value = livro.id_idioma;
+        document.getElementById('edit-area').value = livro.id_area;
+        document.getElementById('edit-documento').value = livro.id_documento;
+        document.getElementById('edit-publicacao').value = livro.data_publicacao || '';
+        document.getElementById('edit-resumo').value = livro.descricao || '';
+        document.getElementById('edit-notas').value = livro.notas || '';
+        
+        // Abrir modal
+        document.getElementById('modal-editar-livro').style.display = 'flex';
+        
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao carregar dados do livro: ' + error.message);
+    }
+}
+
+function fecharModalEditarLivro() {
+    document.getElementById('modal-editar-livro').style.display = 'none';
+}
+
+document.getElementById('modal-editar-livro').addEventListener('click', function(e) {
+    if (e.target === this) fecharModalEditarLivro();
+});
+
+document.getElementById('form-editar-livro').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch(this.action, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.sucesso) {
+            alert(result.mensagem || 'Livro atualizado com sucesso!');
+            fecharModalEditarLivro();
+            window.location.reload();
+        } else {
+            alert('Erro: ' + (result.mensagem || 'Erro ao atualizar livro.'));
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro de conexão: ' + error.message);
+    }
+});
+
+// ========== DELETAR LIVRO ==========
+async function confirmarDeletar(id, titulo) {
+    if (!confirm(`Tem certeza que deseja DELETAR o livro "${titulo}"?\n\nEsta ação não pode ser desfeita!`)) {
+        return;
+    }
+    
+    try {
+        const formData = new FormData();
+        formData.append('id_livro', id);
+        
+        const response = await fetch('../../../router.php?acao=deletarLivro', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.sucesso) {
+            alert(result.mensagem || 'Livro deletado com sucesso!');
+            window.location.reload();
+        } else {
+            alert('Erro: ' + (result.mensagem || 'Erro ao deletar livro.'));
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro de conexão: ' + error.message);
+    }
+}
 
 // Inicializa
 document.addEventListener('DOMContentLoaded', atualizarFiltroValor);

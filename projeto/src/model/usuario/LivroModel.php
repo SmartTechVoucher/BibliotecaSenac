@@ -734,4 +734,112 @@ class LivroModel {
     public function getLivrosMock() {
         return $this->getLivros(12, 0);
     }
+
+    // ADICIONE ESTES MÉTODOS NO FINAL DO SEU LivroModel.php (antes do último "}")
+
+    /**
+     * Atualiza dados de um livro existente
+     * @param array $dados Dados do livro incluindo id_livro
+     * @return bool True se sucesso, false se erro
+     */
+    public function atualizarLivro($dados) {
+        try {
+            // Validações básicas
+            if (empty($dados['id_livro']) || empty($dados['titulo']) || empty($dados['isbn'])) {
+                throw new Exception('ID, Título e ISBN são obrigatórios.');
+            }
+
+            // Valida FKs
+            $this->validarFk('autores', 'id_autor', $dados['id_autor'], 'Autor inválido.');
+            $this->validarFk('categorias', 'id_categoria', $dados['id_categoria'], 'Categoria inválida.');
+            $this->validarFk('unidades', 'id_unidade', $dados['id_unidade'], 'Editora inválida.');
+            $this->validarFk('idiomas', 'id_idioma', $dados['id_idioma'], 'Idioma inválido.');
+            $this->validarFk('areas', 'id_area', $dados['id_area'], 'Área inválida.');
+            $this->validarFk('documentos', 'id_documento', $dados['id_documento'], 'Tipo de documento inválido.');
+
+            // Verifica se ISBN já existe EM OUTRO livro
+            $sql_check = "SELECT id_livro FROM livros WHERE isbn = :isbn AND id_livro != :id_livro";
+            $stmt_check = $this->conn->prepare($sql_check);
+            $stmt_check->bindParam(':isbn', $dados['isbn']);
+            $stmt_check->bindParam(':id_livro', $dados['id_livro'], PDO::PARAM_INT);
+            $stmt_check->execute();
+            if ($stmt_check->rowCount() > 0) {
+                throw new Exception('ISBN já cadastrado em outro livro.');
+            }
+
+            // Atualiza o livro
+            $sql = "UPDATE livros SET 
+                        titulo = :titulo,
+                        id_autor = :id_autor,
+                        isbn = :isbn,
+                        data_publicacao = :data_publicacao,
+                        id_categoria = :id_categoria,
+                        numero_paginas = :numero_paginas,
+                        descricao = :descricao,
+                        id_unidade = :id_unidade,
+                        foto = :foto,
+                        notas = :notas,
+                        resumo_livro = :resumo_livro,
+                        id_documento = :id_documento,
+                        id_idioma = :id_idioma,
+                        id_area = :id_area
+                    WHERE id_livro = :id_livro";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_livro', $dados['id_livro'], PDO::PARAM_INT);
+            $stmt->bindParam(':titulo', $dados['titulo']);
+            $stmt->bindParam(':id_autor', $dados['id_autor'], PDO::PARAM_INT);
+            $stmt->bindParam(':isbn', $dados['isbn']);
+            $stmt->bindParam(':data_publicacao', $dados['data_publicacao']);
+            $stmt->bindParam(':id_categoria', $dados['id_categoria'], PDO::PARAM_INT);
+            $stmt->bindParam(':numero_paginas', $dados['numero_paginas'], PDO::PARAM_INT);
+            $stmt->bindParam(':descricao', $dados['descricao']);
+            $stmt->bindParam(':id_unidade', $dados['id_unidade'], PDO::PARAM_INT);
+            $stmt->bindParam(':foto', $dados['foto']);
+            $stmt->bindParam(':notas', $dados['notas']);
+            $stmt->bindParam(':resumo_livro', $dados['resumo_livro']);
+            $stmt->bindParam(':id_documento', $dados['id_documento'], PDO::PARAM_INT);
+            $stmt->bindParam(':id_idioma', $dados['id_idioma'], PDO::PARAM_INT);
+            $stmt->bindParam(':id_area', $dados['id_area'], PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            error_log("Erro ao atualizar livro (PDO): " . $e->getMessage());
+            return false;
+        } catch (Exception $e) {
+            error_log("Erro de validação ao atualizar livro: " . $e->getMessage());
+            throw $e;
+        }
+    }
+
+    /**
+     * Deleta um livro do banco de dados
+     * @param int $id_livro ID do livro a deletar
+     * @return bool True se sucesso, false se erro
+     */
+    public function deletarLivro($id_livro) {
+        try {
+            if ($id_livro <= 0) {
+                throw new Exception('ID do livro inválido.');
+            }
+
+            // O CASCADE no banco deleta automaticamente:
+            // - exemplares
+            // - favoritos
+            // - movimentacoes (se configurado)
+            $sql = "DELETE FROM livros WHERE id_livro = :id_livro";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+            error_log("Erro ao deletar livro (PDO): " . $e->getMessage());
+            return false;
+        } catch (Exception $e) {
+            error_log("Erro ao deletar livro: " . $e->getMessage());
+            return false;
+        }
+    }
 }
