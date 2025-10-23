@@ -39,9 +39,18 @@ class AtualizarEstoqueController {
                 throw new Exception('Os valores não podem ser negativos.');
             }
 
-            $soma_calculada = $disponiveis + $emprestados + $reservas;
-            if ($soma_calculada !== $total_exemplares) {
-                throw new Exception("Inconsistência nos valores: Total ($total_exemplares) deve ser igual à soma de Disponíveis + Emprestados + Reservas ($soma_calculada).");
+            // CORREÇÃO: Reservas NÃO ocupam exemplares físicos (são fila de espera)
+            // Apenas Disponíveis + Emprestados = Total de exemplares físicos
+            $soma_exemplares_fisicos = $disponiveis + $emprestados;
+            
+            if ($soma_exemplares_fisicos !== $total_exemplares) {
+                throw new Exception("Inconsistência nos valores: Total ($total_exemplares) deve ser igual à soma de Disponíveis + Emprestados ($soma_exemplares_fisicos). Reservas não ocupam exemplares físicos.");
+            }
+
+            // Validação lógica: Se tem exemplares disponíveis, não deveria ter reservas
+            if ($disponiveis > 0 && $reservas > 0) {
+                // Apenas um aviso no log, não bloqueia a operação
+                error_log("AVISO: Livro ID $id_livro tem $disponiveis disponíveis mas $reservas reservas. Normalmente reservas só existem quando disponíveis = 0.");
             }
 
             $livros = $this->livro_model->getTodosLivros();
@@ -58,9 +67,18 @@ class AtualizarEstoqueController {
             }
 
             $emprestimos_ativos = $this->verificarEmprestimosAtivos($id_livro);
+            
+            // Não pode reduzir exemplares se houver mais empréstimos ativos do que o total
             if ($emprestimos_ativos > $total_exemplares) {
                 throw new Exception("Não é possível reduzir o total de exemplares para $total_exemplares pois há $emprestimos_ativos empréstimos ativos.");
             }
+
+            // Validação: emprestados informado deve bater com empréstimos reais
+            //if ($emprestados !== $emprestimos_ativos) {
+               // error_log("AVISO: Emprestados informado ($emprestados) diferente dos empréstimos ativos no sistema ($emprestimos_ativos). Ajustando automaticamente.");
+                //$emprestados = $emprestimos_ativos;
+                //$disponiveis = $total_exemplares - $emprestados;
+            //}
 
             $atualizado = $this->exemplares_model->atualizarEstoque($id_livro, $total_exemplares, $disponiveis, $emprestados, $reservas);
 
@@ -103,7 +121,7 @@ class AtualizarEstoqueController {
 
     private function logAtualizacaoEstoque($id_livro, $total_exemplares, $disponiveis, $emprestados, $reservas) {
         $log_message = sprintf(
-            "[%s] Estoque atualizado - Livro ID: %d | Total: %d | Disponíveis: %d | Emprestados: %d | Reservas: %d | IP: %s",
+            "[%s] Estoque atualizado - Livro ID: %d | Total: %d | Disponíveis: %d | Emprestados: %d | Reservas (fila): %d | IP: %s",
             date('Y-m-d H:i:s'),
             $id_livro,
             $total_exemplares,

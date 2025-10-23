@@ -32,13 +32,22 @@ class ExemplaresModel {
         }
     }
 
-    private function criarEstoqueInicial($id_livro) {
+    /**
+     * Cria um registro inicial de estoque para um livro.
+     * CORRIGIDO: Agora é público para ser usado no cadastro de livros.
+     * 
+     * @param int $id_livro ID do livro
+     * @return array Dados do estoque criado ou array vazio em caso de erro
+     */
+    public function criarEstoqueInicial($id_livro) {
         try {
             $sql = "INSERT INTO exemplares (id_livro, total_exemplares, disponiveis, emprestados, reservas)
                     VALUES (:id_livro, 1, 1, 0, 0)";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
             $stmt->execute();
+
+            error_log("Estoque inicial criado com sucesso para livro ID: $id_livro");
 
             return [
                 'id_livro' => $id_livro,
