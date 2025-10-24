@@ -304,7 +304,7 @@
 
         .btn-editar-livro {
             background: var(--amarelo);
-            color: #212529;
+            color: #fbfbfbff;
         }
 
         .btn-editar-livro:hover {
