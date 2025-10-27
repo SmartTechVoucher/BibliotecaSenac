@@ -124,7 +124,7 @@ if (isset($_SESSION['toast'])) {
                     <div class="icon_livros">
                         <img src="<?php echo $URLBASE ?>/public/assets/icons/Geography.png" alt="" class="genicon5" id="comunicacao">
                     </div>
-                    <h2 class="gentitle">Comunicação</h2>
+                    <h2 class="gentitle">Viagem</h2>
                 </div>
             </div>
         </div>
