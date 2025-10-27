@@ -134,15 +134,15 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
                 <div class="form-coluna">
                     <div class="form-grupo">
                         <label for="resumo-livro">Resumo *</label>
-                        <textarea name="resumo-livro" id="resumo-livro" cols="30" rows="10"></textarea>
+                        <textarea name="resumo-livro" id="resumo-livro" label="Digite um resumo do livro" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-grupo">
                         <label for="notas-livro">Notas *</label>
-                        <textarea name="notas-livro" id="notas-livro" cols="30" rows="10"></textarea>
+                        <textarea name="notas-livro" id="notas-livro" label="Digite suas notas sobre o livro" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-grupo">
                         <label for="tipo-documento">Tipo de documento *</label>
-                        <?php renderSelectModal('tipo-documento', 'd', $documentos); ?>
+                        <?php renderSelectModal('tipo-documento', '', $documentos); ?>
                     </div>
                 </div>
 

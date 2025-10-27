@@ -169,7 +169,7 @@ function renderSelectModal($name, $label, $items = [])
     </style>    
     <label for="<?= $name ?>"><?= $label ?></label>
     <div class="input-container">
-        <input type="text" id="<?= $name ?>" data-tipo="<?= getTipo($name) ?>" placeholder="Digite <?= strtolower($label) ?>">
+        <input type="text" id="<?= $name ?>" data-tipo="<?= getTipo($name) ?>" placeholder="Digite um tipo de documento <?= strtolower($label) ?>">
         <ul id="<?= $name ?>_dropdown" class="dropdown" style="display:none;"></ul>
     </div>
     <input type="hidden" name="<?= $name ?>" id="hidden-<?= $name ?>" value="">
