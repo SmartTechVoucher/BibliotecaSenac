@@ -74,7 +74,7 @@ $senacTLG = [
                 <div class="livroInfo">
                     <div class="livroTitulo">
                         <h1><?php echo $livro["titulo"] ?></h1>
-                        <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: 9788536512259</p>
+                        <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: 9788536512259</p>
                     </div>
                     <div class="review">
                         <img src="<?php echo $URLBASE ?>/public/assets/icons/estrelas3.png" alt="">
@@ -92,7 +92,6 @@ $senacTLG = [
                         </div>
                     </div>
                     <!-- botao de reservar -->
-
 
                     <p id="livroDescricao"><?php echo $livro["desc"] ?></p>
 
@@ -166,9 +165,7 @@ $senacTLG = [
                 <div class="gridB"><?php echo $senacDOU["exemplarEmprestados"] ?></div>
                 <div class="gridB"><?php echo $senacDOU["exemplarReservas"] ?></div>
             </div>
-
-
-            <!-- Senac de Três LAgoas -->
+ <!-- Senac de Três LAgoas -->
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
                 <div class="gridA"><b>Exemplares</b></div>
@@ -182,10 +179,6 @@ $senacTLG = [
                 <div class="gridB"><?php echo $senacTLG["exemplarEmprestados"] ?></div>
                 <div class="gridB"><?php echo $senacTLG["exemplarReservas"] ?></div>
             </div>
-
-
-
-
 
 
         </div>
@@ -235,7 +228,7 @@ $senacTLG = [
                 </div>
                 <p id="commentUserinfo">Feito em: 25/02/2023</p>
 
-                <p id="commentConteudo">O Simpósio do Barreado é uma obra-prima que transcende as páginas e mergulha o leitor nas tradições e sabores do litoral paranaense. Dante Mendonça habilmente entrelaça história, ficção e humor enquanto desvenda a intrigante origem do Barreado. As aquarelas do autor enriquecem a experiência, transportando-nos para as pitorescas paisagens costeiras. Uma leitura essencial para os amantes da gastronomia e da cultura regional. 👏🎨</p>
+                <p id="commentConteudo">O Simpósio do Barreado é uma obra-prima que transcende as páginas e mergulha o leitor nas tradições e sabores do litoral paranaense. Dante Mendonça habilmente entrelaça história, ficção e humor enquanto desvenda a intrigante origem do Barreado. As aquarelas do autor enriquecem a experiência, transportando-nos para as pitorescas paisagens costeiras. Uma leitura essencial para os amantes da gastronomia e da cultura regional. 👏🎨</p>
             </div>
             <div class="comment_2">
                 <div class="commentName">
