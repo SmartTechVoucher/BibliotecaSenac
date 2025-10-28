@@ -365,6 +365,7 @@ body {
     width: 140px;
     height: 140px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .icon_livros:hover {

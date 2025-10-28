@@ -16,10 +16,18 @@ $total_livros = $paginacao['total_livros'];
 $filtro_area = $dados['filtro_area'];
 $filtro_categoria = $dados['filtro_categoria'];
 $filtro_unidade = $dados['filtro_unidade'];
+$filtro_idioma = $dados['filtro_idioma'];
+$filtro_ano = $dados['filtro_ano'];
+$filtro_autor = $dados['filtro_autor'];
+$filtro_documento = $dados['filtro_documento'];
 
 $areas = $dados['areas'];
 $categorias = $dados['categorias'];
 $unidades = $dados['unidades'];
+$idiomas = $dados['idiomas'];
+$anos = $dados['anos'];
+$autores = $dados['autores'];
+$documentos = $dados['documentos'];
 $destaques = $dados['destaques'];
 
 // Dividir livros por categoria (4 livros por categoria)
@@ -54,7 +62,7 @@ $livros_por_categoria = array_chunk($livros, 4);
         <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
 
         <div class="content-wrapper">
-            <!-- SIDEBAR COM FILTROS DINÂMICOS -->
+            <!-- SIDEBAR COM TODOS OS FILTROS DINÂMICOS -->
             <div class="sidebar">
                 <form method="GET" action="" id="form-filtros">
                     <!-- Filtro de Área -->
@@ -83,7 +91,7 @@ $livros_por_categoria = array_chunk($livros, 4);
                         </select>
                     </div>
 
-                    <!-- Filtro de Unidade -->
+                    <!-- Filtro de Editora -->
                     <div class="filter-group">
                         <label for="unidade">Editora</label>
                         <select id="unidade" name="unidade" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
@@ -96,8 +104,60 @@ $livros_por_categoria = array_chunk($livros, 4);
                         </select>
                     </div>
 
+                    <!-- Filtro de Idioma -->
+                    <div class="filter-group">
+                        <label for="idioma">Idioma</label>
+                        <select id="idioma" name="idioma" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($idiomas as $idioma): ?>
+                                <option value="<?php echo $idioma['id']; ?>" <?php echo $filtro_idioma == $idioma['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($idioma['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Ano de Publicação -->
+                    <div class="filter-group">
+                        <label for="ano">Ano de Publicação</label>
+                        <select id="ano" name="ano" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($anos as $ano): ?>
+                                <option value="<?php echo $ano['id']; ?>" <?php echo $filtro_ano == $ano['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($ano['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Autor -->
+                    <div class="filter-group">
+                        <label for="autor">Autor</label>
+                        <select id="autor" name="autor" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($autores as $autor): ?>
+                                <option value="<?php echo $autor['id']; ?>" <?php echo $filtro_autor == $autor['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($autor['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Tipo de Documento -->
+                    <div class="filter-group">
+                        <label for="documento">Tipo de Documento</label>
+                        <select id="documento" name="documento" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($documentos as $documento): ?>
+                                <option value="<?php echo $documento['id']; ?>" <?php echo $filtro_documento == $documento['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($documento['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
                     <!-- Botão para limpar filtros -->
-                    <?php if (!empty($filtro_area) || !empty($filtro_categoria) || !empty($filtro_unidade)): ?>
+                    <?php if (!empty($filtro_area) || !empty($filtro_categoria) || !empty($filtro_unidade) || !empty($filtro_idioma) || !empty($filtro_ano) || !empty($filtro_autor) || !empty($filtro_documento)): ?>
                         <div class="filter-group">
                             <button type="button" class="btn-limpar-filtros" onclick="window.location.href='?'">
                                 <i class="fas fa-times-circle"></i> Limpar Filtros
@@ -123,28 +183,14 @@ $livros_por_categoria = array_chunk($livros, 4);
                         <p>Tente ajustar os filtros ou <a href="?">ver todos os livros</a>.</p>
                     </div>
                 <?php else: ?>
-                    <!-- Categorias com livros -->
-                    <?php
-                    $categorias_nomes = ['Tecnologia', 'Saúde', 'Gestão'];
-                    $categoria_index = 0;
-                    
-                    foreach ($livros_por_categoria as $grupo_livros):
-                        $nome_categoria = $categorias_nomes[$categoria_index] ?? 'Outros';
-                        $categoria_index++;
-                    ?>
-                        <div class="category-section">
-                            <div class="category-header">
-                                <h2><?php echo $nome_categoria; ?></h2>
+                    <!-- GRADE ÚNICA DE LIVROS (sem títulos de categoria) -->
+                    <div class="books-grid">
+                        <?php foreach ($livros as $livro): ?>
+                            <div class="livroEstante1">
+                                <?php include "../../../public/components/usuario/card/card2.php"; ?>
                             </div>
-                            <div class="books-grid">
-                                <?php foreach ($grupo_livros as $livro): ?>
-                                    <div class="livroEstante1">
-                                        <?php include "../../../public/components/usuario/card/card2.php"; ?>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
 
                     <!-- PAGINAÇÃO -->
                     <?php if ($total_paginas > 1): ?>
@@ -247,7 +293,7 @@ $livros_por_categoria = array_chunk($livros, 4);
                 }
             });
             
-            const offset = -currentIndex * (220); // 200px width + 20px gap
+            const offset = -currentIndex * (220);
             track.style.transform = `translateX(${offset}px)`;
         }
 
