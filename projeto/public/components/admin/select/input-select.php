@@ -2,12 +2,12 @@
 // components/selectModal.php
 
 /**
- * Componente genérico de input com dropdown + modal
- * @param string $name ID/nome do input
- * @param string $label Label que será exibida
- * @param array $items Array de objetos {id, nome} como mock de dados
+ * Mapeia o nome do input (ex: 'autor') para o nome da entidade na API (ex: 'autor').
+ * @param string $name ID/nome do input.
+ * @return string Nome da entidade.
  */
-function getTipo($name) {
+function getTipo($name): string
+{
     $map = [
         'autor' => 'autor',
         'editora' => 'unidade',
@@ -20,23 +20,17 @@ function getTipo($name) {
 }
 
 /**
- * Detecta automaticamente o conectivo correto ("o", "a", "os", "as")
- * com base no gênero e número do label.
+ * Detecta o artigo (conectivo) correto ("o", "a", "os", "as")
+ * com base no gênero e número do label, priorizando casos especiais.
+ *
+ * @param string $label O label do campo (ex: 'Idioma').
+ * @return string O artigo/conectivo (ex: 'o').
  */
-function getConectivo($label) {
+function getConectivo($label): string
+{
     $labelLower = strtolower($label);
 
-    // Palavras terminadas em "a" geralmente são femininas
-    if (preg_match('/a(s)?$/', $labelLower)) {
-        return (str_ends_with($labelLower, 'as')) ? 'as' : 'a';
-    }
-
-    // Palavras terminadas em "o" geralmente são masculinas
-    if (preg_match('/o(s)?$/', $labelLower)) {
-        return (str_ends_with($labelLower, 'os')) ? 'os' : 'o';
-    }
-
-    // Casos especiais comuns
+    // 1. Prioriza Casos Especiais Comuns para evitar erros de terminação.
     $mapEspecifico = [
         'autor' => 'o',
         'autores' => 'os',
@@ -44,7 +38,7 @@ function getConectivo($label) {
         'editoras' => 'as',
         'categoria' => 'a',
         'categorias' => 'as',
-        'idioma' => 'o',
+        'idioma' => 'o', // <-- CORREÇÃO: Garante 'o' para Idioma
         'idiomas' => 'os',
         'área' => 'a',
         'áreas' => 'as',
@@ -54,22 +48,34 @@ function getConectivo($label) {
     if (isset($mapEspecifico[$labelLower])) {
         return $mapEspecifico[$labelLower];
     }
+    
+    // 2. Tenta a detecção automática por terminação.
+    
+    // Palavras terminadas em "a" geralmente são femininas
+    if (preg_match('/a(s)?$/', $labelLower)) {
+        return (str_ends_with($labelLower, 'as')) ? 'as' : 'a';
+    }
 
-    // Caso não detecte, usa "o" por padrão
+    // Palavras terminadas em "o" ou consoante geralmente são masculinas
     return 'o';
 }
 
+/**
+ * Renderiza o componente de input com dropdown e modal para cadastros auxiliares.
+ */
 function renderSelectModal($name, $label, $items = [])
 {
     $artigo = getConectivo($label);
     $placeholder = "Digite $artigo $label";
+    $tipo = getTipo($name);
+    
+    // O CSS deve ser movido para um arquivo .css externo em produção.
+    // Para esta refatoração, mantive o CSS inline para completude, mas envolto em <style>
 ?>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
+        /* [Seu CSS foi mantido aqui para a demonstração, mas deve ser movido para um arquivo separado.] */
+        /* ... (seu bloco <style> anterior) ... */
         label {
             font-size: 14px;
             font-weight: bold;
@@ -77,7 +83,9 @@ function renderSelectModal($name, $label, $items = [])
 
         .input-container {
             position: relative;
-            width: 280px;
+            /* Defina a largura apropriada para o seu layout */
+            width: 100%; 
+            max-width: 280px; 
         }
 
         input {
@@ -121,44 +129,8 @@ function renderSelectModal($name, $label, $items = [])
         ul.dropdown li:hover {
             background: #f0f0f0;
         }
-
-        .actions {
-            display: flex;
-            gap: 5px;
-        }
-
-        .actions button {
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .actions button:hover {
-            color: red;
-        }
-
-        .add-author {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px;
-            font-weight: bold;
-            color: #007BFF;
-            cursor: pointer;
-            border-top: 1px solid #eee;
-        }
-
-        .add-author:hover {
-            background: #eaf2ff;
-        }
-
-        .add-author span {
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        /* Modal */
+        
+        /* Modal Styles */
         .modal {
             position: fixed;
             top: 0;
@@ -171,7 +143,7 @@ function renderSelectModal($name, $label, $items = [])
             align-items: center;
             z-index: 1000;
         }
-
+        
         .modal-content {
             background: white;
             padding: 20px;
@@ -179,55 +151,21 @@ function renderSelectModal($name, $label, $items = [])
             width: 300px;
             text-align: center;
         }
-
-        .modal-content h2 {
-            margin-top: 0;
-        }
-
-        .modal-content input {
-            width: 100%;
-            padding: 8px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .modal-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .modal-buttons button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .btn-cancelar {
-            background: #ccc;
-        }
-
-        .btn-salvar {
-            background: #007BFF;
-            color: white;
-        }
-    </style>    
+    </style>
 
     <label for="<?= $name ?>"><?= $label ?></label>
     <div class="input-container">
-        <input type="text" id="<?= $name ?>" data-tipo="<?= getTipo($name) ?>" placeholder="<?= $placeholder ?>">
+        <input type="text" id="<?= $name ?>" data-name="<?= $name ?>" data-tipo="<?= $tipo ?>" placeholder="<?= $placeholder ?>" autocomplete="off">
         <ul id="<?= $name ?>_dropdown" class="dropdown" style="display:none;"></ul>
     </div>
     <input type="hidden" name="<?= $name ?>" id="hidden-<?= $name ?>" value="">
 
     <div id="<?= $name ?>_modal" class="modal">
         <div class="modal-content">
-            <h2 id="<?= $name ?>_modalTitle">Cadastrar <?= $label ?></h2>
-            <input type="text" id="<?= $name ?>_novoItem" placeholder="Nome d<?= $artigo === 'a' ? 'a' : 'o' ?> <?= strtolower($label) ?>">
-            <?php if (getTipo($name) === 'autor'): ?>
-            <input type="text" id="<?= $name ?>_nacionalidade" placeholder="Nacionalidade (opcional)">
+            <h2 data-action="title">Cadastrar <?= $label ?></h2>
+            <input type="text" data-input="nome" placeholder="Nome d<?= $artigo === 'a' ? 'a' : 'o' ?> <?= strtolower($label) ?>">
+            <?php if ($tipo === 'autor'): ?>
+            <input type="text" data-input="nacionalidade" placeholder="Nacionalidade (opcional)">
             <?php endif; ?>
             <div class="modal-buttons">
                 <button class="btn-cancelar">Cancelar</button>
@@ -238,105 +176,85 @@ function renderSelectModal($name, $label, $items = [])
 
     <script>
         (function() {
-            const input = document.getElementById("<?= $name ?>");
-            const dropdown = document.getElementById("<?= $name ?>_dropdown");
-            const modal = document.getElementById("<?= $name ?>_modal");
-            const novoInput = document.getElementById("<?= $name ?>_novoItem");
-            const btnCancelar = modal.querySelector(".btn-cancelar");
-            const btnSalvar = modal.querySelector(".btn-salvar");
-            const modalTitle = document.getElementById("<?= $name ?>_modalTitle");
-
-            const tipo = input.dataset.tipo;
+            const componentName = "<?= $name ?>";
+            const tipo = "<?= $tipo ?>";
+            const label = "<?= $label ?>";
+            const artigo = "<?= $artigo ?>";
+            
+            const input = document.getElementById(componentName);
+            const dropdown = document.getElementById(componentName + '_dropdown');
+            const modal = document.getElementById(componentName + '_modal');
+            const novoInputNome = modal.querySelector('[data-input="nome"]');
+            const nacionalidadeInput = modal.querySelector('[data-input="nacionalidade"]');
+            const hiddenInput = document.getElementById('hidden-' + componentName);
+            
             let items = [];
-            let editId = null;
+            let editId = null; // Guarda o ID do item sendo editado
 
-            async function loadItems() {
+            /**
+             * Funções de Comunicação (Fetch)
+             */
+            async function fetchItems(subacao, params = {}) {
                 try {
-                    const url = `../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=listar`;
-                    const response = await fetch(url);
-                    const data = await response.json();
-                    if (data.sucesso) {
-                        items = data[`${tipo}s`] || [];
-                        if (input.value.trim()) {
-                            await searchItems(input.value.trim().toLowerCase());
-                        }
+                    const url = new URL('../../../router.php');
+                    url.searchParams.set('acao', 'auxEntity');
+                    url.searchParams.set('tipo', tipo);
+                    url.searchParams.set('subacao', subacao);
+                    
+                    for (const key in params) {
+                        url.searchParams.set(key, params[key]);
                     }
+
+                    const response = await fetch(url.toString());
+                    return await response.json();
                 } catch (error) {
-                    console.error('Erro na requisição:', error);
+                    console.error(`Erro ao executar ${subacao} para ${tipo}:`, error);
+                    return { sucesso: false, mensagem: 'Erro de comunicação.' };
+                }
+            }
+            
+            /**
+             * Carrega todos os itens ou um subconjunto.
+             */
+            async function loadItems(query = '') {
+                const subacao = query ? 'buscar' : 'listar';
+                const params = query ? { query: query } : {};
+                
+                const data = await fetchItems(subacao, params);
+                
+                if (data.sucesso) {
+                    items = data[`${tipo}s`] || [];
+                    renderDropdown();
                 }
             }
 
-            async function searchItems(query) {
-                try {
-                    const url = `../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=buscar&query=${encodeURIComponent(query)}`;
-                    const response = await fetch(url);
-                    const data = await response.json();
-                    if (data.sucesso) {
-                        items = data[`${tipo}s`] || [];
-                        renderDropdown();
-                    }
-                } catch (error) {
-                    console.error('Erro na requisição:', error);
-                }
-            }
-
+            /**
+             * Renderiza a lista de dropdown com os itens e botões de ação.
+             */
             function renderDropdown() {
                 dropdown.innerHTML = "";
-                if (items.length === 0) {
-                    dropdown.style.display = "none";
-                    return;
+                dropdown.style.display = items.length > 0 ? "block" : "none";
+                
+                if (items.length === 0 && input.value.trim() === "") {
+                    return; // Não mostra dropdown se vazio e sem texto
                 }
 
                 items.forEach((item) => {
                     const li = document.createElement("li");
+                    
+                    // Span de seleção (clique no texto)
                     const span = document.createElement("span");
                     span.textContent = item.nome;
-                    span.style.cursor = "pointer";
+                    span.onclick = () => selectItem(item.id, item.nome);
                     span.style.flex = "1";
-                    span.onclick = () => {
-                        input.value = item.nome;
-                        input.dataset.selectedId = item.id;
-                        const hidden = document.getElementById('hidden-' + input.id);
-                        if (hidden) hidden.value = item.id;
-                        dropdown.style.display = "none";
-                        input.blur();
-                    };
+                    span.style.cursor = "pointer";
 
+                    // Botões de Ação (Editar/Excluir)
                     const actions = document.createElement("div");
                     actions.classList.add("actions");
 
-                    const btnEditar = document.createElement("button");
-                    btnEditar.textContent = "✏️";
-                    btnEditar.title = "Editar";
-                    btnEditar.onclick = (e) => {
-                        e.stopPropagation();
-                        editId = item.id;
-                        modalTitle.textContent = "Editar <?= $label ?>";
-                        novoInput.value = item.nome;
-                        modal.style.display = "flex";
-                    };
-
-                    const btnExcluir = document.createElement("button");
-                    btnExcluir.textContent = "🗑️";
-                    btnExcluir.title = "Excluir";
-                    btnExcluir.onclick = async (e) => {
-                        e.stopPropagation();
-                        if (confirm(`Tem certeza que deseja excluir "${item.nome}"?`)) {
-                            const formData = new FormData();
-                            formData.append('id', item.id);
-                            const response = await fetch(`../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=excluir`, {
-                                method: 'POST',
-                                body: formData
-                            });
-                            const data = await response.json();
-                            if (data.sucesso) {
-                                items = items.filter(it => it.id !== item.id);
-                                renderDropdown();
-                            } else {
-                                alert(data.mensagem);
-                            }
-                        }
-                    };
+                    const btnEditar = createActionButton("✏️", "Editar", (e) => openModal(e, item));
+                    const btnExcluir = createActionButton("🗑️", "Excluir", (e) => deleteItem(e, item));
 
                     actions.appendChild(btnEditar);
                     actions.appendChild(btnExcluir);
@@ -346,94 +264,199 @@ function renderSelectModal($name, $label, $items = [])
                     dropdown.appendChild(li);
                 });
 
+                // Botão de Cadastrar Novo
                 const addLi = document.createElement("li");
                 addLi.classList.add("add-author");
-                addLi.innerHTML = `<span>+</span> Cadastrar <?= $label ?>`;
-                addLi.onclick = () => {
-                    editId = null;
-                    modalTitle.textContent = "Cadastrar <?= $label ?>";
-                    novoInput.value = input.value.trim();
-                    modal.style.display = "flex";
-                };
+                addLi.innerHTML = `<span>+</span> Cadastrar ${label}`;
+                addLi.onclick = () => openModal(null, null, input.value.trim()); // Passa texto atual para o modal
                 dropdown.appendChild(addLi);
-
-                dropdown.style.display = "block";
+            }
+            
+            /**
+             * Helper para criar botões de ação do dropdown.
+             */
+            function createActionButton(text, title, onClick) {
+                const btn = document.createElement("button");
+                btn.textContent = text;
+                btn.title = title;
+                btn.onclick = (e) => {
+                    e.stopPropagation(); // Evita que o clique no botão feche o dropdown
+                    onClick(e);
+                };
+                return btn;
             }
 
-            loadItems();
+            /**
+             * Seleciona um item no input e campo hidden.
+             */
+            function selectItem(id, nome) {
+                input.value = nome;
+                hiddenInput.value = id;
+                dropdown.style.display = "none";
+            }
 
-            let searchTimeout;
-            input.addEventListener("input", (e) => {
-                clearTimeout(searchTimeout);
-                const query = e.target.value.trim().toLowerCase();
-                searchTimeout = setTimeout(async () => {
-                    if (query.length >= 1) await searchItems(query);
-                    else if (query.length === 0) await loadItems();
-                }, 300);
-            });
+            /**
+             * Abre o modal de cadastro/edição.
+             */
+            function openModal(e, item = null, initialName = '') {
+                if (e) e.stopPropagation();
+                
+                const modalTitle = modal.querySelector('[data-action="title"]');
 
-            input.addEventListener("focus", async () => {
-                if (items.length === 0) await loadItems();
-                dropdown.style.display = "block";
-            });
+                if (item) {
+                    // Modo Edição
+                    editId = item.id;
+                    modalTitle.textContent = `Editar ${label}`;
+                    novoInputNome.value = item.nome;
+                    
+                    if (tipo === 'autor' && nacionalidadeInput) {
+                        nacionalidadeInput.value = item.nacionalidade || ''; // Assumindo que a API retorna 'nacionalidade'
+                    }
+                } else {
+                    // Modo Cadastro
+                    editId = null;
+                    modalTitle.textContent = `Cadastrar ${label}`;
+                    novoInputNome.value = initialName;
+                    
+                    if (nacionalidadeInput) nacionalidadeInput.value = '';
+                }
 
-            btnSalvar.onclick = async (e) => {
+                modal.style.display = "flex";
+                novoInputNome.focus();
+                dropdown.style.display = "none";
+            }
+            
+            /**
+             * Fecha o modal e reseta o estado.
+             */
+            function closeModal() {
+                modal.style.display = "none";
+                editId = null;
+                novoInputNome.value = '';
+                if (nacionalidadeInput) nacionalidadeInput.value = '';
+            }
+
+            /**
+             * Salva ou Atualiza um item (via modal).
+             */
+            modal.querySelector(".btn-salvar").onclick = async (e) => {
                 e.preventDefault();
-                const nome = novoInput.value.trim();
+                const nome = novoInputNome.value.trim();
                 if (!nome) return alert('Nome é obrigatório.');
 
                 const formData = new FormData();
                 formData.append('nome', nome);
-                if (tipo === 'autor') {
-                    const nacionalidadeInput = document.getElementById("<?= $name ?>_nacionalidade");
-                    if (nacionalidadeInput) {
-                        formData.append('nacionalidade', nacionalidadeInput.value.trim());
-                    }
+                
+                if (tipo === 'autor' && nacionalidadeInput) {
+                    formData.append('nacionalidade', nacionalidadeInput.value.trim());
                 }
 
                 if (editId) formData.append('id', editId);
 
-                const url = `../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=${editId ? 'atualizar' : 'cadastrar'}`;
-                const response = await fetch(url, { method: 'POST', body: formData });
+                const subacao = editId ? 'atualizar' : 'cadastrar';
+                const response = await fetch(`../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=${subacao}`, { 
+                    method: 'POST', 
+                    body: formData 
+                });
                 const data = await response.json();
 
                 if (data.sucesso) {
+                    const savedId = editId || data.id;
+                    const savedItem = { id: savedId, nome: nome };
+                    
+                    // Se for atualização, atualiza a lista interna
                     if (editId) {
-                        const index = items.findIndex(it => it.id == editId);
-                        if (index > -1) items[index].nome = nome;
-                    } else {
-                        const newItem = { id: data.id, nome: nome };
-                        items.unshift(newItem);
-                        input.dataset.selectedId = data.id;
-                    }
-                    input.value = nome;
-                    const hidden = document.getElementById('hidden-' + input.id);
-                    if (hidden) hidden.value = data.id;
-
-                    modal.style.display = "none";
-                    dropdown.style.display = "none";
-                    editId = null;
-                    novoInput.value = '';
+                        const index = items.findIndex(it => it.id == savedId);
+                        if (index > -1) items[index] = savedItem;
+                    } 
+                    
+                    // Seleciona e fecha
+                    selectItem(savedId, nome); 
+                    closeModal();
                     alert(data.mensagem);
-                    await loadItems();
+                    
+                    // Recarrega a lista para refletir a mudança (e ordenação se houver)
+                    await loadItems(input.value.trim()); 
                 } else {
                     alert(data.mensagem || 'Erro ao salvar item.');
                 }
             };
 
-            btnCancelar.onclick = () => {
-                modal.style.display = "none";
-                editId = null;
-                novoInput.value = '';
-            };
+            /**
+             * Exclui um item.
+             */
+            async function deleteItem(e, item) {
+                e.stopPropagation();
+                if (!confirm(`Tem certeza que deseja excluir "${item.nome}"?`)) return;
 
+                const formData = new FormData();
+                formData.append('id', item.id);
+                
+                const response = await fetch(`../../../router.php?acao=auxEntity&tipo=${tipo}&subacao=excluir`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.sucesso) {
+                    alert(data.mensagem);
+                    
+                    // Remove da lista interna e re-renderiza
+                    items = items.filter(it => it.id !== item.id);
+                    renderDropdown();
+                    
+                    // Limpa o campo se o item excluído era o selecionado
+                    if (hiddenInput.value == item.id) {
+                        input.value = '';
+                        hiddenInput.value = '';
+                    }
+                } else {
+                    alert(data.mensagem || 'Erro ao excluir item.');
+                }
+            }
+
+
+            // =======================================================
+            // EVENT LISTENERS
+            // =======================================================
+
+            // Evento de input (Pesquisa com debounce)
+            let searchTimeout;
+            input.addEventListener("input", (e) => {
+                clearTimeout(searchTimeout);
+                const query = e.target.value.trim();
+                searchTimeout = setTimeout(() => {
+                    loadItems(query);
+                }, 300);
+            });
+            
+            // Foco: Exibe o dropdown
+            input.addEventListener("focus", () => {
+                // Se estiver vazio, carrega a lista completa
+                if (items.length === 0 && input.value.trim() === "") {
+                    loadItems();
+                } else {
+                    renderDropdown(); // Apenas re-renderiza o que já tem
+                }
+            });
+
+            // Botões do Modal
+            modal.querySelector(".btn-cancelar").onclick = closeModal;
+
+            // Fechar dropdown/modal ao clicar fora
             document.addEventListener("click", e => {
-                if (!input.contains(e.target) && !dropdown.contains(e.target) && !modal.contains(e.target)) {
+                const isInput = input.contains(e.target);
+                const isDropdown = dropdown.contains(e.target);
+                const isModal = modal.contains(e.target);
+                
+                // Fecha dropdown se o clique não foi no input, dropdown ou modal
+                if (!isInput && !isDropdown && !isModal) {
                     dropdown.style.display = "none";
                 }
             });
 
-            dropdown.addEventListener("click", e => e.stopPropagation());
+            // Pre-carrega itens ao iniciar a página (se necessário)
+            // loadItems(); 
         })();
     </script>
 

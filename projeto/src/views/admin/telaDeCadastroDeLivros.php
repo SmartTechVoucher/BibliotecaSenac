@@ -94,7 +94,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
                         <?php
 
 
-                        renderSelectModal('idioma', 'Idioma', $idiomas);
+                        renderSelectModal('idioma ', 'Idioma', $idiomas);
                         ?>
                     </div>
                     <div class="form-grupo">

@@ -264,7 +264,7 @@ class FiltroLivrosController {
 
     private function buscarDestaques() {
         try {
-            return $this->livro_model->getLivrosAleatorios(9);
+            return $this->livro_model->getLivrosAleatorios(18);
         } catch (Exception $e) {
             error_log("Erro ao buscar destaques: " . $e->getMessage());
             return [];
