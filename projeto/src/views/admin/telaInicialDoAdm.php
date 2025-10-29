@@ -19,7 +19,7 @@ if (!isset($_SESSION['toast'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela inicial do adm</title>
     <?php
-    require_once "../../../config/constantes.php";
+
   ?>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/admin/footer-admin.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">

@@ -142,7 +142,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
                     </div>
                     <div class="form-grupo">
                         <label for="tipo-documento">Tipo de documento *</label>
-                        <?php renderSelectModal('tipo-documento', 'Tipo de documento', $documentos); ?>
+                        <?php renderSelectModal('tipo-documento', 'd', $documentos); ?>
                     </div>
                 </div>
 

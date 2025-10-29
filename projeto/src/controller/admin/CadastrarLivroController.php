@@ -3,15 +3,19 @@
  * Controller para cadastro de livros no painel admin.
  * Processa form de cadastro, valida e insere usando LivroModel com PDO.
  * Inclui upload real de foto para pasta public/uploads/.
+ * CORRIGIDO: Agora cria registro na tabela exemplares automaticamente.
  */
 
 require_once __DIR__ . '/../../model/usuario/LivroModel.php';
+require_once __DIR__ . '/../../model/admin/ExemplaresModel.php';
 
 class CadastrarLivroController {
     private $livro_model;
+    private $exemplares_model;
 
     public function __construct() {
         $this->livro_model = new LivroModel();
+        $this->exemplares_model = new ExemplaresModel();
     }
 
     /**
@@ -161,6 +165,23 @@ class CadastrarLivroController {
 
             if (!$id_livro) {
                 throw new Exception('Erro ao salvar no banco de dados. Verifique ISBN único.');
+            }
+
+            // ============================================
+            // CORREÇÃO: Criar registro inicial na tabela exemplares
+            // ============================================
+            try {
+                $exemplar_criado = $this->exemplares_model->criarEstoqueInicial($id_livro);
+                
+                if (empty($exemplar_criado)) {
+                    error_log("AVISO: Não foi possível criar registro de exemplar para o livro ID $id_livro");
+                    // Não lançar exceção aqui para não impedir o cadastro do livro
+                } else {
+                    error_log("Estoque inicial criado: Livro ID $id_livro - 1 exemplar disponível");
+                }
+            } catch (Exception $e) {
+                error_log("ERRO ao criar exemplar inicial: " . $e->getMessage());
+                // Continua mesmo com erro, pois o livro já foi cadastrado
             }
 
             $mensagem_sucesso = "Livro '{$dados['titulo']}' cadastrado com sucesso!";

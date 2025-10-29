@@ -116,3 +116,203 @@ document.addEventListener('DOMContentLoaded', function () {
         conteinerDeRevisoes.insertBefore(novoComentario, conteinerDeRevisoes.firstChild);
     });
 });
+let avaliacaoSelecionada = 0;
+
+// Função para alternar exemplares
+function alternarExemplar() {
+    const container = document.getElementById('containerExemplarOpen');
+    const botao = document.getElementById('abrirExemplares');
+    
+    if (container.style.display === 'none' || container.style.display === '') {
+        container.style.display = 'block';
+    } else {
+        container.style.display = 'none';
+    }
+}
+
+// Sistema de avaliação por estrelas
+document.addEventListener('DOMContentLoaded', function() {
+    const estrelas = document.querySelectorAll('.estrela-input');
+    const ratingValue = document.getElementById('rating-value');
+    
+    estrelas.forEach((estrela, index) => {
+        // Hover effect
+        estrela.addEventListener('mouseenter', function() {
+            highlightStars(index + 1);
+        });
+        
+        // Click para selecionar
+        estrela.addEventListener('click', function() {
+            avaliacaoSelecionada = parseInt(this.getAttribute('data-value'));
+            ratingValue.value = avaliacaoSelecionada;
+            highlightStars(avaliacaoSelecionada);
+        });
+    });
+    
+    // Remove highlight quando sai do mouse
+    document.querySelector('.inputRating').addEventListener('mouseleave', function() {
+        highlightStars(avaliacaoSelecionada);
+    });
+    
+    // Carregar comentários ao iniciar
+    carregarComentarios();
+    
+    // Event listener para enviar comentário
+    document.getElementById('comentario-botao').addEventListener('click', enviarComentario);
+});
+
+// Função para destacar estrelas
+function highlightStars(count) {
+    const estrelas = document.querySelectorAll('.estrela-input');
+    estrelas.forEach((estrela, index) => {
+        if (index < count) {
+            estrela.style.opacity = '1';
+            estrela.style.filter = 'brightness(1.2)';
+        } else {
+            estrela.style.opacity = '0.5';
+            estrela.style.filter = 'brightness(0.8)';
+        }
+    });
+}
+
+// Função para enviar comentário
+async function enviarComentario() {
+    const comentarioInput = document.getElementById('comentario-input');
+    const ratingValue = document.getElementById('rating-value');
+    const livroId = document.getElementById('livro-id');
+    const botao = document.getElementById('comentario-botao');
+    
+    const comentario = comentarioInput.value.trim();
+    const avaliacao = parseInt(ratingValue.value);
+    
+    // Validações
+    if (avaliacao === 0) {
+        alert('Por favor, selecione uma avaliação (estrelas)');
+        return;
+    }
+    
+    if (comentario === '') {
+        alert('Por favor, escreva um comentário');
+        return;
+    }
+    
+    // Desabilita o botão durante o envio
+    botao.disabled = true;
+    botao.textContent = 'Enviando...';
+    
+    try {
+        const formData = new FormData();
+        formData.append('livro_id', livroId.value);
+        formData.append('comentario', comentario);
+        formData.append('avaliacao', avaliacao);
+        
+        const response = await fetch(`${URLBASE}/app/backend/comentarios/salvar_comentario.php`, {
+            method: 'POST',
+            body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            alert(data.message);
+            
+            // Limpa o formulário
+            comentarioInput.value = '';
+            ratingValue.value = '0';
+            avaliacaoSelecionada = 0;
+            highlightStars(0);
+            
+            // Recarrega os comentários
+            carregarComentarios();
+        } else {
+            alert(data.message);
+        }
+    } catch (error) {
+        console.error('Erro ao enviar comentário:', error);
+        alert('Erro ao enviar comentário. Tente novamente.');
+    } finally {
+        // Reabilita o botão
+        botao.disabled = false;
+        botao.textContent = 'Enviar';
+    }
+}
+
+// Função para carregar comentários
+async function carregarComentarios() {
+    try {
+        const response = await fetch(`${URLBASE}/app/backend/comentarios/buscar_comentarios.php?livro_id=${LIVRO_ID}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            // Atualiza a contagem e média de reviews
+            atualizarReviewStats(data.stats);
+            
+            // Renderiza os comentários
+            renderizarComentarios(data.comentarios);
+        }
+    } catch (error) {
+        console.error('Erro ao carregar comentários:', error);
+    }
+}
+
+// Função para atualizar estatísticas de reviews
+function atualizarReviewStats(stats) {
+    const reviewCount = document.getElementById('reviewCount');
+    const reviewStars = document.getElementById('reviewStars');
+    
+    if (reviewCount) {
+        reviewCount.textContent = `${stats.total} reviews`;
+    }
+    
+    if (reviewStars && stats.media > 0) {
+        const mediaArredondada = Math.round(stats.media);
+        reviewStars.src = `${URLBASE}/public/assets/icons/estrelas${mediaArredondada}.png`;
+    }
+}
+
+// Função para renderizar comentários
+function renderizarComentarios(comentarios) {
+    const container = document.getElementById('reviewsContainer');
+    container.innerHTML = '';
+    
+    comentarios.forEach(comentario => {
+        const comentarioDiv = criarElementoComentario(comentario);
+        container.appendChild(comentarioDiv);
+    });
+}
+
+// Função para criar elemento de comentário
+function criarElementoComentario(comentario) {
+    const div = document.createElement('div');
+    div.className = 'comment_2';
+    
+    div.innerHTML = `
+        <div class="commentName">
+            <div class="estrela-placeholder-container">
+                <img class="estrela-placeholder" src="${URLBASE}/public/assets/icons/estrelas${comentario.avaliacao}.png" alt="">
+            </div>
+            <h3 class="commentTitulo">${escapeHtml(comentario.nome_usuario)}</h3>
+        </div>
+        <p class="commentUserinfo">Feito em: ${comentario.data_formatada}</p>
+        <p class="commentConteudo">${escapeHtml(comentario.comentario)}</p>
+    `;
+    
+    return div;
+}
+
+// Função para escapar HTML (segurança)
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+// Função de reserva (mantida do código original)
+function reservaConcluida() {
+    alert('Reserva concluída com sucesso!');
+}

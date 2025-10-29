@@ -1,14 +1,5 @@
 <?php
-
-$livro = [
-    "titulo" => "Simpósio do Barreado",
-    "img" => "../../../public/assets/img/Simposio.png",
-    "desc" => "O livro, o autor aborda a pergunta chave: \"Afinal, o barreado nasceu em Paranaguá, Antonina ou Morretes?\". Esta pergunta é a razão do \"Simpósio do Barreado\". O livro mostra as origens e a receita do mais tradicional prato culinário do Paraná. Realizado ficticiamente em Porto de Cima, o simpósio reuniu especialistas de ontem e de hoje, daqui e de muitos lugares, em acaloradas discussões que naturalmente, terminaram em confraternização em volta da mesa. O barreado tem indicação geográfica (IG) na categoria \"indicação de procedência\" desde 2022 e é"
-];
-
-
 require_once "../../../config/constantes.php";
-
 $livro = [
     "titulo" => "Simpósio do Barreado",
     "img" => "../../../public/assets/img/Simposio.png",
@@ -31,10 +22,10 @@ $senacDOU = [
 ];
 $senacTLG = [
     "unidade" => "SenacHub-TLG",
-    "exemplarQntd" => "1",
-    "exemplarDisponiveis" => "0",
-    "exemplarEmprestados" => "1",
-    "exemplarReservas" => "2"
+    "exemplarQntd" => "3",
+    "exemplarDisponiveis" => "4",
+    "exemplarEmprestados" => "6",
+    "exemplarReservas" => "7"
 ];
 
 ?>
@@ -74,7 +65,7 @@ $senacTLG = [
                 <div class="livroInfo">
                     <div class="livroTitulo">
                         <h1><?php echo $livro["titulo"] ?></h1>
-                        <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: 9788536512259</p>
+                        <p id="livroIsbn">(Livro-618.92 T157e, Cód. 13.418), ISBN: 9788536512259</p>
                     </div>
                     <div class="review">
                         <img src="<?php echo $URLBASE ?>/public/assets/icons/estrelas3.png" alt="">
@@ -127,18 +118,18 @@ $senacTLG = [
                
             </div>
 
-            <!-- info_2 -->
+            
 
         </div>
 
-        <!-- exemplares -->
+        
         <div class="containerExemplar">
             <p>Exemplares</p>
             <img src="<?php echo $URLBASE ?>/public/assets/icons/Plus Math.png" alt="" id="abrirExemplares" onclick="alternarExemplar()">
         </div>
 
         <div id="containerExemplarOpen">
-            <!-- Senac Hub Academy -->
+           
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
                 <div class="gridA"><b>Exemplares</b></div>
@@ -152,7 +143,7 @@ $senacTLG = [
                 <div class="gridB"><?php echo $senacCG["exemplarEmprestados"] ?></div>
                 <div class="gridB"><?php echo $senacCG["exemplarReservas"] ?></div>
             </div>
-            <!-- Senac De Dourados -->
+           
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
                 <div class="gridA"><b>Exemplares</b></div>
@@ -182,11 +173,6 @@ $senacTLG = [
                 <div class="gridB"><?php echo $senacTLG["exemplarEmprestados"] ?></div>
                 <div class="gridB"><?php echo $senacTLG["exemplarReservas"] ?></div>
             </div>
-
-
-
-
-
 
         </div>
 
@@ -235,7 +221,7 @@ $senacTLG = [
                 </div>
                 <p id="commentUserinfo">Feito em: 25/02/2023</p>
 
-                <p id="commentConteudo">O Simpósio do Barreado é uma obra-prima que transcende as páginas e mergulha o leitor nas tradições e sabores do litoral paranaense. Dante Mendonça habilmente entrelaça história, ficção e humor enquanto desvenda a intrigante origem do Barreado. As aquarelas do autor enriquecem a experiência, transportando-nos para as pitorescas paisagens costeiras. Uma leitura essencial para os amantes da gastronomia e da cultura regional. 👏🎨</p>
+                <p id="commentConteudo">O Simpósio do Barreado é uma obra-prima que transcende as páginas e mergulha o leitor nas tradições e sabores do litoral paranaense. Dante Mendonça habilmente entrelaça história, ficção e humor enquanto desvenda a intrigante origem do Barreado. As aquarelas do autor enriquecem a experiência, transportando-nos para as pitorescas paisagens costeiras. Uma leitura essencial para os amantes da gastronomia e da cultura regional. 👏🎨</p>
             </div>
             <div class="comment_2">
                 <div class="commentName">
