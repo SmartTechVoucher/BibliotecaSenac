@@ -43,7 +43,7 @@ header {
 }
  
 /* MENU HAMBURGER - VERSÃO CORRIGIDA */
-nav {
+header nav {
     display: none;
     position: absolute;
     /* Largura fixa em pixels ao invés de porcentagem */
@@ -61,22 +61,22 @@ nav {
 }
  
 /* Lista de navegação */
-nav ul {
+header nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
  
-nav ul li {
+header nav ul li {
     padding: 0; /* Remove o padding do li */
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
  
-nav ul li:last-child {
+header nav ul li:last-child {
     border-bottom: none;
 }
  
-nav ul li a {
+header nav ul li a {
     display: flex;
     align-items: center;
     gap: 10px; /* Gap fixo em pixels */
@@ -88,18 +88,18 @@ nav ul li a {
     font-size: 14px; /* Tamanho fixo */
 }
  
-nav ul li a:hover {
+header nav ul li a:hover {
     background-color: rgba(255,255,255,0.1);
 }
  
-nav ul li a img {
+header nav ul li a img {
     width: 18px; /* Tamanho fixo para os ícones */
     height: 18px;
     flex-shrink: 0; /* Evita que a imagem encolha */
 }
  
 /* Exibir menu quando ativado */
-nav.show {
+header nav.show {
     display: block;
 }
  
@@ -237,7 +237,7 @@ nav ul li a:visited,
         padding: 10px 14px;
     }
  
-    nav ul li a {
+    header nav ul li a {
         font-size: 13px;
         padding: 10px 14px;
     }
@@ -260,7 +260,7 @@ nav ul li a:visited,
     }
  
     /* Dropdown responsivo para tablets - menu hamburger */
-    nav {
+    header nav {
         min-width: 178px;
     }
 }
@@ -332,19 +332,19 @@ nav ul li a:visited,
     }
  
     /* Menu hamburger */
-    nav {
+    header nav {
         min-width: 160px;
         max-width: calc(100vw - 20px);
         left: 10px;
     }
  
-    nav ul li a {
+    header nav ul li a {
         font-size: 12px;
         padding: 8px 12px;
         gap: 8px;
     }
  
-    nav ul li a img {
+    header nav ul li a img {
         width: 16px;
         height: 16px;
     }
