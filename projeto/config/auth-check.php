@@ -1,11 +1,4 @@
 <?php
-
-// Define um local alternativo para salvar as sessões
-$sessionDir = __DIR__ . '/../../sessao_temp';
-if (!is_dir($sessionDir)) {
-    mkdir($sessionDir, 0777, true);
-}
-session_save_path($sessionDir);
 // auth-check.php (config/auth-check.php)
 
 // Segurança de sessão
