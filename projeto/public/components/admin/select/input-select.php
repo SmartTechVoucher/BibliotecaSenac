@@ -19,15 +19,11 @@ function getTipo($name) {
     return $map[$name] ?? $name;
 }
 
-function renderSelectModal($name, $label, $items = [])
+function renderSelectModal($name, $placeholder, $label, $items = [])
 {
 ?>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
         label {
             font-size: 14px;
             font-weight: bold;
@@ -35,7 +31,7 @@ function renderSelectModal($name, $label, $items = [])
 
         .input-container {
             position: relative;
-            width: 280px;
+            width: 100%;
         }
 
         input {
@@ -169,7 +165,7 @@ function renderSelectModal($name, $label, $items = [])
     </style>    
     <label for="<?= $name ?>"><?= $label ?></label>
     <div class="input-container">
-        <input type="text" id="<?= $name ?>" data-tipo="<?= getTipo($name) ?>" placeholder="Digite <?= strtolower($label) ?>">
+        <input type="text" id="<?= $name ?>" data-tipo="<?= getTipo($name) ?>" placeholder="<?= $placeholder ?>">
         <ul id="<?= $name ?>_dropdown" class="dropdown" style="display:none;"></ul>
     </div>
     <input type="hidden" name="<?= $name ?>" id="hidden-<?= $name ?>" value="">
@@ -177,7 +173,7 @@ function renderSelectModal($name, $label, $items = [])
     <div id="<?= $name ?>_modal" class="modal">
         <div class="modal-content">
             <h2 id="<?= $name ?>_modalTitle">Cadastrar <?= $label ?></h2>
-            <input type="text" id="<?= $name ?>_novoItem" placeholder="Nome do <?= strtolower($label) ?>">
+            <input type="text" id="<?= $name ?>_novoItem" placeholder="<?= $placeholder ?>">
             <?php if (getTipo($name) === 'autor'): ?>
             <input type="text" id="<?= $name ?>_nacionalidade" placeholder="Nacionalidade (opcional)">
             <?php endif; ?>

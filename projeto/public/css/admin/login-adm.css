@@ -2,8 +2,9 @@
   --azul-padrao: #003162;
   --cor-texto:#ffffff;
   --laranja: #f68b1f;
-  --cinza-label: #555555;
+  --cor-label: #555;
   --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+  --cor-label: #555;
 }
 
 *{
@@ -58,7 +59,7 @@ form h2 {
 form p {
     font-size: 14px;
     font-family: sans-serif;
-    color: var(--cinza-label);
+    color: var(--cor-label);
 }
 
 .titles-form {
@@ -98,7 +99,7 @@ form p {
 .label-bemvindo {
     font-family: sans-serif;
     font-size: 14px;
-    color: var(--cinza-label);
+    color: var(--cor-label);
 }
 
 .text-library-orange {
