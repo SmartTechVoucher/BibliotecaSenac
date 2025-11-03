@@ -1,18 +1,7 @@
 <?php
-function botao($texto, $tipo = "", $cor = "#004A90", $tamanho = "16px", $onclick = "") {
-    $buttonHTML = "<button type=\"$tipo\" style='
-        background-color: {$cor};
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        font-size: {$tamanho};
-        border-radius: 5px;
-        cursor: pointer;'
-        onclick=\"$onclick\"
-    >{$texto}</button>";
+function botao($texto, $tipo = "button", $classe = "btn-primary", $onclick = "") {
+    // $classe pode ser "btn-primary", "cancel-button" ou qualquer outra que você definir no CSS
+    $buttonHTML = "<button type=\"$tipo\" class=\"$classe\" onclick=\"$onclick\">$texto</button>";
     echo $buttonHTML;
 }
- 
 ?>
- 
- 
