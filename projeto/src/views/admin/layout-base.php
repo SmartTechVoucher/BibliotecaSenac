@@ -42,16 +42,24 @@ require __DIR__ . '/../../../config/constantes.php';
     <!-- Conteúdo principal -->
     <main class="main-content">
         <div class="container-main">
+            <?php
+    if (!empty($conteudo) && file_exists($conteudo)) {
+        // Se for a tela de cadastro de usuários, inclui direto
+        if (($titulo ?? '') === 'Cadastro de Usuários') {
+            include $conteudo;
+        } else {
+            // Layout padrão com fieldset
+            ?>
             <fieldset class="form-section">
-                <legend><?= htmlspecialchars($titulo ?? 'Titulo não encontrado') ?></legend>
-                <?php
-                if (!empty($conteudo) && file_exists($conteudo)) {
-                    include $conteudo;
-                } else {
-                    echo "<p style='color:red; text-align:center;'>Erro: conteúdo não encontrado.</p>";
-                }
-                ?>
+                <legend><?= htmlspecialchars($titulo ?? 'Título não encontrado') ?></legend>
+                <?php include $conteudo; ?>
             </fieldset>
+            <?php
+        }
+    } else {
+        echo "<p style='color:red; text-align:center;'>Erro: conteúdo não encontrado.</p>";
+    }
+    ?>
         </div>
     </main>
     <!-- Modal de confirmação (se houver) -->

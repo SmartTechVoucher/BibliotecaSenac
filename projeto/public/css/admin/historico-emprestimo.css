@@ -12,10 +12,8 @@
     --apontador: pointer;
     --cinza: #D9D9D9;
     --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+    --cor-label: #555;
 }
-
-
-
 
 table {
     width: 100%;
@@ -132,7 +130,7 @@ table {
 .pagination-info {
     margin-top: 10px;
     font-size: 0.9em;
-    color: #555;
+    color: var(--cor-label);
 }
 
 .main-container{
