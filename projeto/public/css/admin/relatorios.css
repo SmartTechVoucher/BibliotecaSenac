@@ -1,5 +1,4 @@
 :root{
-
     --azulCabecalho: #001E3E;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
@@ -13,6 +12,7 @@
     --cinza: #D9D9D9;
     --bordaBaixaCabeçalho: #769FCD;
     --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+    --cor-label: #555;
 }
 
 * {
@@ -52,7 +52,7 @@ label {
     display: block;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: #555;
+    color: var(--cor-label);
     display: flex;
     align-items: center;
     gap: .5rem;
