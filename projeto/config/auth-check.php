@@ -1,4 +1,11 @@
 <?php
+
+
+// debug rápido: mostra qual arquivo/linha já enviou saída
+if (headers_sent($file, $line)) {
+    die("Headers já enviados em $file na linha $line\n");
+}
+
 // auth-check.php (config/auth-check.php)
 
 // Segurança de sessão
