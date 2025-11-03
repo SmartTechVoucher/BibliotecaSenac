@@ -1,118 +1,125 @@
-let exemplarFechado = true
-function alternarExemplar(){
-    const containerExemplarAberto = document.getElementById('containerExemplarOpen');
-    const botaoExemplar = document.getElementById('abrirExemplares');
-    if (exemplarFechado){
-        botaoExemplar.src = "/BibliotecaSenac/projeto/public/assets/icons/Minus Math.png"
-        containerExemplarAberto.style.display ="block";
-        exemplarFechado = false;
-    }
-        
-    else{
-        botaoExemplar.src = "/BibliotecaSenac/projeto/public/assets/icons/Plus Math.png"
-        containerExemplarAberto.style.display = "none";
-        exemplarFechado = true;
-    }
-}
-
-function reservaConcluida(){
-    const botaoReserva = document.getElementById('botaoReserva');
-    const estadoAtual = botaoReserva.getAttribute('data-status');
-    if (estadoAtual == "livre"){
-        botaoReserva.setAttribute('data-status', 'reservado');
-        botaoReserva.textContent = "Livro Reservado"
-        botaoReserva.style.background = "#F68B1F";
-    }
-    else{
-        const confirmarCancelamento = window.confirm("Você realmente quer cancelar a reserva?");
-        if(confirmarCancelamento){
-            botaoReserva.setAttribute('data-status', 'livre');
-            botaoReserva.textContent = "Reservar"
-            botaoReserva.style.background = "#004A90";
-        }
-    }
-        
-
-}
-
 document.addEventListener('DOMContentLoaded', function () {
-    const estrelas = document.querySelectorAll('.estrela-input');
-    const valorDeRanqueamento = document.getElementById('rating-value');
-    let rankAtual = 0;
+  const cloneBtn = document.getElementById('comentario-botao');
+  const conteinerDeRevisoes = document.getElementById('reviewsContainer');
 
-    
-    function atualizarEstrelas(avaliacao) {
-        estrelas.forEach(estrela => {
-            if (estrela.dataset.value <= avaliacao) {
-                estrela.classList.add('active');
-            } else {
-                estrela.classList.remove('active');
-            }
-        });
+  // envia o comentário
+  cloneBtn.addEventListener('click', async function () {
+    const comentario = document.getElementById('comentario-input').value;
+    const avaliacao = document.getElementById('rating-value').value;
+    const idLivro = document.getElementById('idLivro').value; // input hidden no HTML
+    const idUsuario = 1; // depois substitui pelo id do usuário logado
+
+    const response = await fetch('comentarios.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id_usuario: idUsuario,
+        id_livro: idLivro,
+        comentario: comentario,
+        avaliacao: avaliacao,
+      }),
+    });
+
+    const result = await response.json();
+    if (result.sucesso) {
+      alert('Comentário enviado!');
+      location.reload();
+    } else {
+      alert('Erro ao enviar: ' + (result.erro || 'desconhecido'));
     }
-
-    estrelas.forEach(estrela => {
-        
-        estrela.addEventListener('mouseover', () => {
-            
-            atualizarEstrelas(estrela.dataset.value);
-        });
-
-        estrela.addEventListener('mouseout', () => {
-            
-            atualizarEstrelas(rankAtual);
-        });
-
-        
-        estrela.addEventListener('click', () => {
-            // Define a classificação ao clicar
-            rankAtual = estrela.dataset.value;
-            valorDeRanqueamento.value = rankAtual; 
-            atualizarEstrelas(rankAtual); 
-
-            console.log(`Avaliação modificada para: ${rankAtual}`); 
-        });
-    });
-
-    
-    const form = document.getElementById('commentForm');
-    form.addEventListener('reset', () => {
-        rankAtual = 0;
-        valorDeRanqueamento.value = 0;
-        atualizarEstrelas(rankAtual);
-    });
+  });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const cloneBtn = document.getElementById('comentario-botao'); 
-    const conteinerDeRevisoes = document.getElementById('reviewsContainer');
+// carrega comentários existentes
+window.addEventListener('DOMContentLoaded', async () => {
+  const idLivro = document.getElementById('idLivro').value;
+  const conteinerDeRevisoes = document.getElementById('reviewsContainer');
 
-    cloneBtn.addEventListener('click', function () {
-        const nomeDeUsuario = "Cristiano Ronaldo";
-        const comentario = document.getElementById('comentario-input').value;
-        const avaliacao = document.getElementById('rating-value').value;
-        console.log(avaliacao)
-        // clonar o template
-        const template = document.getElementById('commentTemplate');
-        const novoComentario = template.cloneNode(true);
-        novoComentario.style.display = 'block'; 
-        novoComentario.id = ''; 
+  const response = await fetch(`comentarios.php?id_livro=${idLivro}`);
+  const comentarios = await response.json();
 
-    
-        novoComentario.querySelector('.commentTitulo').textContent = nomeDeUsuario;
-        novoComentario.querySelector('.commentConteudo').textContent = comentario;
+  comentarios.forEach((c) => {
+    const template = document.getElementById('commentTemplate');
+    const novo = template.cloneNode(true);
+    novo.style.display = 'block';
+    novo.id = '';
 
-        // pega a data atual
-        const hoje = new Date();
-        const dataFormatada = hoje.toLocaleDateString('pt-BR');
-        novoComentario.querySelector('.commentUserinfo').textContent = `Feito em: ${dataFormatada}`;
+    novo.querySelector('.commentTitulo').textContent = c.nome;
+    novo.querySelector('.commentConteudo').textContent = c.comentario;
+    novo.querySelector('.commentUserinfo').textContent =
+      `Feito em: ${new Date(c.data_comentario).toLocaleDateString('pt-BR')}`;
+    novo.querySelector('.estrela-placeholder').src =
+      `../../../../projeto/public/assets/icons/estrelas${c.avaliacao}.png`;
 
-        // escolhe uma das 4 variacao de img de acordo com a nota do usuário
-        const estrelas =  novoComentario.querySelector('.estrela-placeholder');
-        estrelas.src = `../../../../projeto/public/assets/icons/estrelas${avaliacao}.png`; 
-        console.log(estrelas.src)
+    conteinerDeRevisoes.appendChild(novo);
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+  const cloneBtn = document.getElementById('comentario-botao');
+  if (!cloneBtn) return; // previne erro se o botão não existir
+  cloneBtn.addEventListener('click', async function () {
+    const comentario = document.getElementById('comentario-input').value;
+    const avaliacao = document.getElementById('rating-value').value;
+    const idLivroEl = document.getElementById('idLivro');
+    if (!idLivroEl) { alert('Falta input hidden #idLivro no HTML'); return; }
+    const idLivro = idLivroEl.value;
+    const idUsuario = 1; // ajustar depois para usuário logado
 
-        // Adicionar no container
-        conteinerDeRevisoes.insertBefore(novoComentario, conteinerDeRevisoes.firstChild);
+    try {
+      const response = await fetch('comentarios.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id_usuario: idUsuario, id_livro: idLivro, comentario, avaliacao })
+      });
+      const result = await response.json();
+      if (result.sucesso) {
+        alert('Comentário enviado!');
+        location.reload();
+      } else {
+        alert('Erro ao enviar: ' + (result.erro || 'desconhecido'));
+      }
+    } catch (err) {
+      alert('Erro de rede: ' + err.message);
+      console.error(err);
+    }
+  });
+});
+
+// carrega comentários existentes
+window.addEventListener('DOMContentLoaded', async () => {
+  const idLivroEl = document.getElementById('idLivro');
+  if (!idLivroEl) return;
+  const idLivro = idLivroEl.value;
+  const conteinerDeRevisoes = document.getElementById('reviewsContainer');
+  if (!conteinerDeRevisoes) return;
+
+  try {
+    const response = await fetch(`comentarios.php?id_livro=${encodeURIComponent(idLivro)}`);
+    if (!response.ok) {
+      console.error('Fetch GET status', response.status, await response.text());
+      return;
+    }
+    const comentarios = await response.json();
+    comentarios.forEach(c => {
+      const template = document.getElementById('commentTemplate');
+      if (!template) return;
+      const novo = template.cloneNode(true);
+      novo.style.display = 'block';
+      novo.id = '';
+
+      const titulo = novo.querySelector('.commentTitulo');
+      const conteudo = novo.querySelector('.commentConteudo');
+      const userinfo = novo.querySelector('.commentUserinfo');
+      const starImg = novo.querySelector('.estrela-placeholder');
+
+      if (titulo) titulo.textContent = c.nome || 'Usuário';
+      if (conteudo) conteudo.textContent = c.comentario;
+      if (userinfo) userinfo.textContent = `Feito em: ${new Date(c.data_comentario).toLocaleDateString('pt-BR')}`;
+      if (starImg) starImg.src = `../../../../projeto/public/assets/icons/estrelas${c.avaliacao}.png`;
+
+      conteinerDeRevisoes.appendChild(novo);
     });
+  } catch (err) {
+    console.error('Erro carregando comentários', err);
+  }
+});
 });
