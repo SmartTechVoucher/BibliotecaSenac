@@ -1,7 +1,7 @@
 <?php
-$titulo = 'Minha Conta';
-$cssPagina = '/public/css/admin/minha-conta.css';
-$conteudo = __DIR__ . '/pages/minha-conta-content.php'; // caminho do conteúdo
+$titulo = 'Relatórios';
+$cssPagina = '/public/css/admin/relatorios.css';
+$conteudo = __DIR__ . '/pages/livros-cadastrados-teste.php'; // caminho do conteúdo
 $modalPagina = [
     'id' => 'confirmModal',
     'titulo' => 'Confirmação',

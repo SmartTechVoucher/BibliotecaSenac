@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+  --azulCabecalho: #001E3E;
+  --fontes: 'Poppins', 'Roboto', 'Montserrat', sans-serif;
+  --branco: white;
+  --fundoPadrao: #EDEDED;
+  --posicao: relative;
+  --posicaoAbsoluta: absolute;
+  --corFormulario: #E5E4E4;
+  --corBotao: #004A90;
+  --vermelho: red;
+  --apontador: pointer;
+  --bordaBaixaCabeçalho: #769FCD;
+}
 
 /*DESIGN DO SELECT PADRAO*/
 .select-padrao {
@@ -12,14 +27,39 @@
     width: 100%;
 }
 
-
 .select-padrao:disabled {
     background-color: #e6e6e6;
 }
-
 
 .select-padrao:focus {
     border-color: dodgerblue; 
     box-shadow: 0 0 5px dodgerblue; 
     transform: scale(1.02); 
+}
+
+.botao-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.botao-container button {
+    max-width: 650px;
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #004A90;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
 }
