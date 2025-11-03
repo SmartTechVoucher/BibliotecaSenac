@@ -61,7 +61,6 @@ CREATE TABLE usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(100) NOT NULL,
     nome_social VARCHAR(100) NULL,
-    nome_social VARCHAR(100) NULL,
     cpf VARCHAR(14) NOT NULL UNIQUE,
     email VARCHAR(100) NOT NULL UNIQUE,
     data_nascimento DATE NOT NULL,

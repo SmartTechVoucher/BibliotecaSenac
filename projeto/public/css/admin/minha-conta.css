@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
 }
 
 html, body {
@@ -7,6 +8,7 @@ html, body {
   margin: 0;
   padding: 0;
   padding-top: 67px; /* mantém espaço pro header fixo */
+  font-family: var(--fontes);
 }
 
 /* Container geral */
