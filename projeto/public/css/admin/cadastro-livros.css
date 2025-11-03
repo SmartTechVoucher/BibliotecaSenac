@@ -7,22 +7,9 @@
   --posicaoAbsoluta: absolute;
   --corFormulario: #E5E4E4;
   --corBotao: #004A90;
-  --vermelho: red;
   --apontador: pointer;
   --bordaBaixaCabeçalho: #769FCD;
   --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
-}
-
-/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
-*{
-  box-sizing: border-box;
-  font-family: var(--fontes);
-}
-
-
-body{
-    margin: 0;
-    background-color: var(--fundoPadrao);
 }
 
 #cadastro-form legend {
@@ -66,9 +53,6 @@ body{
   font-size: 0.9rem;
 }
 
-
-
-
 textarea {
   resize: vertical;
   min-height: 100px;
@@ -81,9 +65,6 @@ textarea {
   transition: all 0.1s ease-in-out;
   padding: 1%;
 }
-
-
-
 
 
 ::placeholder {

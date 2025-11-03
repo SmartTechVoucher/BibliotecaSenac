@@ -1,17 +1,5 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #EDEDED;
-}
-
-
 a {
     text-decoration: none
-}
-
-* {
-    box-sizing: border-box;
-    font-family: var(--fontes);
 }
 
 #cadastro-form legend {

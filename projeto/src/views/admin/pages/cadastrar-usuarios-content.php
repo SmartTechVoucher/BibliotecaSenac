@@ -166,8 +166,8 @@ if (isset($_SESSION['toast'])) {
   </fieldset>
 
   <div class="botao-container">
-    <button type="submit">Salvar Usuário</button>
     <button type="button" class="botao-cancelar">Cancelar</button>
+    <button type="submit">Salvar Usuário</button>
   </div>
 </form>
 

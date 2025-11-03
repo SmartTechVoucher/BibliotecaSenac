@@ -1,5 +1,4 @@
 :root{
-
     --azulCabecalho: #001E3E;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
@@ -13,8 +12,8 @@
     --cinza: #D9D9D9;
     --bordaBaixaCabeçalho: #769FCD;
     --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
-   
 }
+
 * {
     box-sizing: border-box;
     font-family: var(--fontes);
@@ -75,6 +74,7 @@ label {
 }
 
 .botao-container button {
+        width: 100%;
         padding: 12px 24px;
         font-size: 1rem;
         font-weight: 500;
@@ -84,23 +84,23 @@ label {
         transition: background-color 0.3s ease;
     }
     
-    button[type="submit"] {
-        background-color: #004A90;
-        color: white;
-    }
-    
-    button[type="submit"]:hover {
-        background-color: #0056b3;
-    }
-    
-    .cancel-button {
-        background-color: #900000;
-        color: white;
-    }
-    
-    .cancel-button:hover {
-        background-color: #5a6268;
-    }
+button[type="submit"] {
+    background-color: #004A90;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.cancel-button {
+    background-color: #900000;
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
 
 
 

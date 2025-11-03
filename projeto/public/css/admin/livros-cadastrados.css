@@ -1,369 +1,487 @@
-:root{
-
+:root {
     --azulCabecalho: #001E3E;
-    --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
-    --corInput: #f1eeee;
     --fundoPadrao: #EDEDED;
-    --posicao: relative;
-    --posicaoAbsoluta: absolute;
-    --apontador: pointer;  
-    --bordaBaixaCabeçalho: #769FCD; 
-    --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+    --verde: #28a745;
+    --azul: #007bff;
+    --amarelo: #ffc107;
+    --vermelho: #dc3545;
+    --cinza: #6c757d;
 }
 
-/*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ /*Cabeçalho*/ 
-
-*{
+* {
     box-sizing: border-box;
-    font-family: var(--fontes);
-}
-body{
-    margin: 0;
-    background-color: var(--fundoPadrao);
 }
 
-/*Define o ícone com o cursor apontador*/ /*Define o ícone com o cursor apontador*/
-
-.conteiner #iconeComandante{
-    cursor: var(--apontador);
+#livro-titulomaster {
+    text-align: center;
+    color: var(--azulCabecalho);
+    margin-bottom: 30px;
+    font-size: 28px;
 }
 
-/*Define o ícone com o cursor apontador*/
-
-/*Controla a div que aparece ao se clicar em ícone*/ /*Controla a div que aparece ao se clicar em ícone*/
-
-.minhaConta{
-    display: none;
-    position: var(--posicaoAbsoluta);
-    top: 17%; left: 91.6%;
-    color: var(--branco);
-    background-color: var(--azulCabecalho);
-    width: 138px;
-    cursor: var(--apontador);
+.form-busca {
+    margin-bottom: 20px;
 }
 
-.minhaConta a{
-    text-decoration: none;
-    color: var(--branco);
-}
-
-/*Controla a div que aparece ao se clicar em ícone*//*Controla a div que aparece ao se clicar em ícone*/
-
-/*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ /*Corpo*/ 
-
-.conteiner2{
+.controle {
     display: flex;
-    justify-content: space-between;
-   
+    gap: 10px;
+    margin-bottom: 15px;
+    align-items: center;
 }
 
-.conteiner2 .esquerdo, .conteiner2 .direito{
-    width: 100px;
-    height: 100px;
-}
-
-/*Parte do input*//*Parte do input*//*Parte do input*//*Parte do input*/
-
-.conteiner3{
-    display: flex;
-    justify-content: space-between;
-}
-
-.controle{
-    display: flex;
-    margin-top: 2%;
-    margin-left: 1%;
-}
-
-.busca{
+.busca {
     background-color: #ffffff;
     width: 100%;
     border-radius: 23px;
-    height: 30px;
+    height: 40px;
     border: 1px solid #ababab;
-    padding: 5px;
+    padding: 5px 15px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
 }
 
-/*Parte do input*//*Parte do input*//*Parte do input*//*Parte do input*/
+.busca:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
 
-.botao{
+.botao {
     border: none;
-    cursor: var(--apontador);
+    background: var(--azul);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
-#livros-por-aparecer{
-    font-size: 20px;
+.botao:hover {
+    background: #0056b3;
+}
+
+.botao img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.filtros-avancados {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.label-filtro {
+    font-weight: 600;
+    color: var(--azulCabecalho);
+    font-size: 14px;
+}
+
+.select-filtro {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    max-width: 150px;
+    transition: border-color 0.3s;
+}
+
+.select-filtro:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.select-filtro:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-limpar-filtro {
+    background: #dc3545;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.3s;
+}
+
+.btn-limpar-filtro:hover {
+    background: #c82333;
+}
+
+#livros-por-aparecer {
+    font-size: 16px;
     text-align: center;
-    margin-top: 2%;
+    margin: 20px 0;
+    color: #495057;
 }
 
+.filtro-ativo {
+    color: var(--azul);
+    font-weight: 600;
+    font-size: 14px;
+}
 
-
-/* cardizinho dos livros */
-#livro-titulomaster{
+.sem-resultados {
     text-align: center;
+    padding: 40px;
+    color: #6c757d;
 }
 
-.livro-container{
-    background-color: rgb(255, 255, 255);
-    width: 90%;
-    height: 214px;
+.sem-resultados p {
+    margin: 10px 0;
+}
+
+.sem-resultados a {
+    color: var(--azul);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.livro-container {
+    background-color: white;
+    width: 100%;
     display: flex;
     padding: 20px;
     align-items: center;
-    margin: auto;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dee2e6;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.livro-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#livro-img {
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
     border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    border: 1px solid #ababab;
+    border: 1px solid #dee2e6;
+    flex-shrink: 0;
 }
-#livro-img{
-    width:10%;
-    height: 170px;
-}
-#livro-titulo{
-    height: fit-content;
-    margin: 0;
-    font-size: large;
-    margin-bottom: 10px;
-}
-.livro-informacoes{
-    margin-left: 50px;
+
+.livro-informacoes {
+    margin-left: 25px;
     display: flex;
     flex-direction: column;
-    width: 70%;
-    margin-right: 9%;
+    flex: 1;
+    gap: 10px;
 }
-#livro-exemplares{
-    margin-top: 40px;
-    background-color: #EDEDEE;
-    padding: 5px;
-    width: 100%;
-    height: 50px;
+
+#livro-titulo {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--azulCabecalho);
+    margin: 0;
+}
+
+.livro-isbn {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+#livro-exemplares {
+    background-color: #f8f9fa;
+    padding: 12px;
     display: flex;
     justify-content: space-around;
-    flex-direction: row;
     border-radius: 5px;
-    align-items: center ;
+    gap: 15px;
+    flex-wrap: wrap;
+    border: 1px solid #dee2e6;
 }
 
-/*Parte inferior do corpo*/
-
-
-@media(max-width:1024px){
-    
-    .titulo, .Libro, .todos, .copyright, .logoSenacHub{
-        display: none;
-    }
-
+#livro-exemplares span {
+    font-size: 14px;
+    color: #495057;
 }
 
-@media(min-width:375px){
-
-    .conteiner3 .esquerdo, .direito{
-        width: 100px;
-        height: 100px;
-    }
-
-    #logo-senac{
-       padding: 0;
-       margin: 0;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 63.3%;
-    }
-
-    .livro-informacoes{
-        font-size: 10px;
-    }
-
-    #livro-pontos{
-        width: 10px;
-        height: 10px;
-    }
-
-    #livro-img{
-        height: 100px;
-    }
-
+#livro-exemplares b {
+    color: var(--azulCabecalho);
 }
 
-@media(min-width:414px){
-
-    .controle{
-        margin-top: 5%;
-    }
-
-    .inferior{
-        margin-top: 43.8%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/
-   
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 66.6%; top: 12%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/   
+.livro-acoes {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-@media(min-width:500px){
-
- /*Menus invisíveis que aparecem somente através de interação*/
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 72.3%; top: 12%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/   
+.btn-acao {
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+    font-weight: 500;
 }
 
-@media(min-width:600px){
-
- #livro-titulomaster{
-    margin-top: 2%;
- }   
-
- /*Menus invisíveis que aparecem somente através de interação*/
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 77%; top: 12%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/   
+.btn-editar-estoque {
+    background: var(--verde);
 }
 
-@media(min-width: 768px){
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 82%; top: 12%;
-    }
+.btn-editar-estoque:hover {
+    background: #218838;
 }
 
-@media(min-width: 820px){
+.btn-editar-livro {
+    background: var(--amarelo);
+    color: #fbfbfbff;
+}
 
- .livro-informacoes{
+.btn-editar-livro:hover {
+    background: #e0a800;
+}
+
+.btn-deletar {
+    background: var(--vermelho);
+}
+
+.btn-deletar:hover {
+    background: #c82333;
+}
+
+.paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #dee2e6;
+}
+
+.btn-pagina {
+    padding: 8px 14px;
+    text-decoration: none;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    color: #495057;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.btn-pagina:hover {
+    background: #f8f9fa;
+    border-color: var(--azul);
+    color: var(--azul);
+}
+
+.btn-pagina.ativo {
+    background: var(--azul);
+    color: white;
+    border-color: var(--azul);
+    font-weight: 600;
+}
+
+.info-paginacao {
+    margin-left: 15px;
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 15px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--azulCabecalho);
     font-size: 20px;
- }   
-    
- /*Menus invisíveis que aparecem somente através de interação*/
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 82.8%; top: 12%;
-    }
-
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 12%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/   
-   
-    .inferior{
-        margin-top: 51.8%;
-    }
 }
 
-@media (min-width:912px){
-   
- /*Menus invisíveis que aparecem somente através de interação*/ 
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        left: 84.9%; top: 10%;
-    }
-
- /*Menus invisíveis que aparecem somente através de interação*/ 
-
- .inferior{
-    margin-top: 71%;
- }
+.close-modal {
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s;
 }
 
-@media (min-width: 1024px) {
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 10%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 10%; left: 86.3%;
-    }
-
-    .inferior{
-        margin-top: 57.7%;
-    }
+.close-modal:hover {
+    color: #000;
 }
 
-@media (min-width: 1124px) {
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 10%; left: 87.7%;
-    }
-
-    .logoSenacHub{
-        width: 140px;
-        height: 100px;
-    }
-
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
 }
 
-@media(min-width:1280px){
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 15%;
-    }
-
-    .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 16%; left: 89.2%;
-    }
+.form-row .form-group {
+    flex: 1;
 }
 
-@media(min-width:1358px){
-    
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 18%;
-    }
-
-  
+.form-group {
+    margin-bottom: 15px;
 }
 
-@media(min-width:1912px){
-   
-   .minhaConta{
-        position: var(--posicaoAbsoluta);
-        top: 13%; left: 92.7%;
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--azulCabecalho);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.form-group input[readonly] {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #dee2e6;
+}
+
+.btn-cancelar {
+    background: var(--cinza);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-cancelar:hover {
+    background: #5a6268;
+}
+
+.btn-salvar {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-salvar:hover {
+    background: #0056b3;
+}
+
+@media (max-width: 768px) {
+    .container-main {
+        width: 95%;
+        padding: 15px;
     }
 
-    .menu{
-        position: var(--posicaoAbsoluta);
-        top: 13%;
+    .livro-container {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .logoSenacHub{
-        width: 250px;
-        height: 120px;
+    #livro-img {
+        margin-bottom: 15px;
     }
 
+    .livro-informacoes {
+        margin-left: 0;
+    }
+
+    #livro-exemplares {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .filtros-avancados {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .select-filtro {
+        width: 100%;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .livro-acoes {
+        justify-content: center;
+    }
 }

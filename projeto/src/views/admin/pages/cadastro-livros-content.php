@@ -19,7 +19,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
             <div class="form-coluna">
                 <div class="form-row">
                     <div class="form-grupo">
-                        <label for="titulo-livro">Titulo</label>
+                        <label for="titulo-livro">Titulo *</label>
                         <?php
                         InputAdmin(largura: 100, name: "titulo-livro", id: "titulo-livro", required: true)
                         ?>
@@ -28,7 +28,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
 
                 <!-- Campo para número de páginas (obrigatório no schema de livros) -->
                     <div class="form-grupo">
-                        <label for="numero-paginas">Número de Páginas</label>
+                        <label for="numero-paginas">Número de Páginas *</label>
                         <?php InputAdmin(largura: 100, name: "numero-paginas", id: "numero-paginas", tipo: "number", required: true) ?>
                     </div>
                 </div>
@@ -41,9 +41,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
 
                 </div>
                 <div class="form-grupo">
-
                     <?php
-
                     renderSelectModal('editora', 'Editora', $editoras);
                     ?>
                 </div>
@@ -54,35 +52,27 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
             </div>
             <div class="form-coluna">
                 <div class="form-grupo">
-                    <label for="isbn-livro">ISBN</label>
+                    <label for="isbn-livro">ISBN *</label>
                     <?php
                     InputAdmin(largura: 100, name: "isbn-livro", id: "isbn-livro", required: true)
                     ?>
                 </div>
                 <div class="form-grupo">
                     <?php
-
-
                     renderSelectModal('idioma', 'Idioma', $idiomas);
                     ?>
                 </div>
                 <div class="form-grupo">
                     <?php
-
-
                     renderSelectModal('categoria', 'Categoria', $categorias);
                     ?>
-
                 </div>
             </div>
             <div class="form-coluna">
                 <div class="form-grupo">
                     <?php
-
-
                     renderSelectModal('area', 'Área', $areas);
                     ?>
-
                 </div>
                 <div class="form-grupo">
                     <label for="publicacao-livro">Ano</label>
@@ -115,12 +105,14 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
             </div>
 
 
-        <!-- <div class="botao-container">
+        <div class="botao-container">
             <?php
-            botao(texto: "Registrar", tipo: "submit");
-            botao(texto: "Cancelar", tipo: "reset", cor: "#d00");
+            botao("Cancelar", "reset", "cancel-button"); // botão vermelho
+            botao("Registrar", "submit", "btn-primary"); // botão azul
             ?>
-        </div> -->
+        </div>  
+
+
 
 
     </form>
@@ -149,6 +141,6 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
     }
 
     function goToBooksList() {
-        window.location.href = '<?php echo $URLBASE ?>/src/views/admin/livros-cadastrados.php.php';
+        window.location.href = '<?php echo $URLBASE ?>/src/views/admin/livros-cadastrados.php';
     }
 </script>

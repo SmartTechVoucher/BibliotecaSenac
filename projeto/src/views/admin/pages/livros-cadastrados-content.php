@@ -1,44 +1,70 @@
 <?php
-require "../../../config/constantes.php";
-require_once __DIR__ . '/../../../../src/controller/admin/ListarLivrosController.php';
+   require "../../../config/constantes.php";
+   
+   require_once __DIR__ . '/../../../controller/admin/ListarLivrosController.php';
+   
+   $controller = new ListarLivrosController();
+   $dados = $controller->prepararDadosView();
+   
+   // Dados dos livros e paginação
+   $livros = $dados['livros'];
+   $busca_atual = $dados['busca_atual'];
+   $paginacao = $dados['paginacao'];
+   $pagina_atual = $paginacao['pagina_atual'];
+   $total_paginas = $paginacao['total_paginas'];
+   $total_livros = $paginacao['total_livros'];
+   
+   // Filtros avançados
+   $filtro_tipo = $dados['filtro_tipo'] ?? '';
+   $filtro_valor = $dados['filtro_valor'] ?? '';
+   
+   // Opções para os selects
+   $areas = $dados['areas'] ?? [];
+   $idiomas = $dados['idiomas'] ?? [];
+   $anos = $dados['anos'] ?? [];
+   $autores = $dados['autores'] ?? [];
+   $categorias = $dados['categorias'] ?? [];
+   $editoras = $dados['editoras'] ?? [];
+   $documentos = $dados['documentos'] ?? [];
+?>  
 
-$controller = new ListarLivrosController();
-$dados = $controller->prepararDadosView();
-$livros = $dados['livros'];
-$unidades = $dados['unidades'];
-$busca_atual = $dados['busca_atual'];
-$unidade_selecionada = $dados['unidade_selecionada'];
-$paginacao = $dados['paginacao'];
-$pagina_atual = $paginacao['pagina_atual'];
-$total_paginas = $paginacao['total_paginas'];
-$total_livros = $paginacao['total_livros'];
-?>
-
-
-<h2 id="livro-titulomaster">Listagem de livros cadastrados</h2>
 <form method="GET" action="">
-
     <div class="controle">
-        <input type="text" name="busca" class="busca" placeholder="Pesquise por título ou ISBN do livro" value="<?php echo htmlspecialchars($busca_atual); ?>">
+            <input type="text" 
+                   name="busca" 
+                   class="busca" 
+                   placeholder="Pesquise por título ou ISBN do livro" 
+                   value="<?php echo htmlspecialchars($busca_atual); ?>">
 
-        <button type="submit" class="botao">
-            <img src="../../../public/assets/icons/Buscar.png" alt="Imagem de lupa">
-        </button>
-
-        <div class="controle2">
-            <label class="unidade">Unidade:</label>
-            <select name="unidade" id="">
-                <option value="">Selecione</option>
-                <?php foreach ($unidades as $unidade): ?>
-                    <option value="<?php echo $unidade['id']; ?>" <?php echo ($unidade_selecionada == $unidade['id']) ? 'selected' : ''; ?>>
-                        <?php echo htmlspecialchars($unidade['nome']); ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
+            <button type="submit" class="botao">
+                <img src="../../../public/assets/icons/Buscar.png" alt="Buscar">
+            </button>
         </div>
+   <!-- FILTROS AVANÇADOS -->
+        <div class="filtros-avancados">
+            <label class="label-filtro">Filtrar por:</label>
+            
+            <select name="filtro_tipo" id="filtro-tipo" class="select-filtro" onchange="atualizarFiltroValor()">
+                <option value="">Todos os livros</option>
+                <option value="area" <?php echo $filtro_tipo === 'area' ? 'selected' : ''; ?>>Área</option>
+                <option value="idioma" <?php echo $filtro_tipo === 'idioma' ? 'selected' : ''; ?>>Idioma</option>
+                <option value="ano" <?php echo $filtro_tipo === 'ano' ? 'selected' : ''; ?>>Ano de Publicação</option>
+                <option value="autor" <?php echo $filtro_tipo === 'autor' ? 'selected' : ''; ?>>Autor</option>
+                <option value="categoria" <?php echo $filtro_tipo === 'categoria' ? 'selected' : ''; ?>>Categoria</option>
+                <option value="editora" <?php echo $filtro_tipo === 'editora' ? 'selected' : ''; ?>>Editora</option>
+                <option value="documento" <?php echo $filtro_tipo === 'documento' ? 'selected' : ''; ?>>Tipo de Documento</option>
+            </select>
 
-    </div>
+            <select name="filtro_valor" id="filtro-valor" class="select-filtro">
+                <option value="">Selecione...</option>
+            </select>
 
+            <?php if (!empty($filtro_tipo) && !empty($filtro_valor)): ?>
+                <a href="?busca=<?php echo urlencode($busca_atual); ?>" class="btn-limpar-filtro" title="Limpar filtro">
+                    ✖ Limpar
+                </a>
+            <?php endif; ?>
+        </div>
 </form>
 
 <p id="livros-por-aparecer">Mostrando <?php echo count($livros); ?> de <?php echo number_format($total_livros); ?> livros encontrados</p>
@@ -63,20 +89,40 @@ $total_livros = $paginacao['total_livros'];
                 style="width: 120px; height: 160px; object-fit: cover; border-radius: 8px; border: 1px solid #ddd;"
                 loading="lazy">
             <div class="livro-informacoes">
-                <span id="livro-titulo"><?php echo htmlspecialchars($livro['titulo']); ?></span>
-                <span>ISBN: <a href=""><?php echo htmlspecialchars($livro['isbn']); ?></a></span>
-                <div id="livro-exemplares">
-                    <span>Total de exemplares: <?php echo $livro['total_exemplares']; ?></span>
-                    <span>Disponíveis: <b><?php echo $livro['disponiveis']; ?></b></span>
-                    <span>Emprestados: <b><?php echo $livro['emprestados']; ?></b></span>
-                    <span>Reservas: <b><?php echo $livro['reservas']; ?></b></span>
+                    <span id="livro-titulo"><?php echo htmlspecialchars($livro['titulo']); ?></span>
+                    <span class="livro-isbn">ISBN: <?php echo htmlspecialchars($livro['isbn']); ?></span>
+                    
+                    <div id="livro-exemplares">
+                        <span>Total: <?php echo $livro['total_exemplares']; ?></span>
+                        <span>Disponíveis: <b><?php echo $livro['disponiveis']; ?></b></span>
+                        <span>Emprestados: <b><?php echo $livro['emprestados']; ?></b></span>
+                        <span>Reservas: <b><?php echo $livro['reservas']; ?></b></span>
+                    </div>
+                    
+                    <div class="livro-acoes">
+                        <button class="btn-acao btn-editar-estoque" 
+                                onclick="abrirModalEstoque(
+                                    <?php echo $livro['id_livro']; ?>, 
+                                    '<?php echo addslashes($livro['titulo']); ?>', 
+                                    <?php echo $livro['total_exemplares']; ?>, 
+                                    <?php echo $livro['disponiveis']; ?>, 
+                                    <?php echo $livro['emprestados']; ?>, 
+                                    <?php echo $livro['reservas']; ?>
+                                )">
+                            ✏️ Editar Estoque
+                        </button>
+                        
+                        <button class="btn-acao btn-editar-livro" 
+                                onclick="abrirModalEditarLivro(<?php echo $livro['id_livro']; ?>)">
+                            📝 Editar Livro
+                        </button>
+                        
+                        <button class="btn-acao btn-deletar" 
+                                onclick="confirmarDeletar(<?php echo $livro['id_livro']; ?>, '<?php echo addslashes($livro['titulo']); ?>')">
+                            🗑️ Deletar
+                        </button>
+                    </div>
                 </div>
-                <div class="livro-acoes">
-                    <button class="btn-editar-estoque" onclick="abrirModalEstoque(<?php echo $livro['id_livro']; ?>, '<?php echo addslashes($livro['titulo']); ?>', <?php echo $livro['total_exemplares']; ?>, <?php echo $livro['disponiveis']; ?>, <?php echo $livro['emprestados']; ?>, <?php echo $livro['reservas']; ?>)">
-                        ✏️ Editar Estoque
-                    </button>
-                </div>
-            </div>
             <!-- <img id="livro-pontos" src="<?php echo $URLBASE ?>/public/assets/icons/pontinhos.png" alt=""> -->
         </div>
     <?php endforeach; ?>
@@ -149,14 +195,14 @@ $total_livros = $paginacao['total_livros'];
 </div>
 
 <!-- Modal para editar estoque -->
-<div id="modal-estoque" class="modal-estoque" style="display: none;">
-    <div class="modal-estoque-content">
-        <div class="modal-estoque-header">
+<div id="modal-estoque" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
             <h3>Editar Estoque do Livro</h3>
             <span class="close-modal" onclick="fecharModalEstoque()">&times;</span>
         </div>
         <form id="form-estoque" method="POST" action="../../../router.php?acao=atualizarEstoque">
-            <input type="hidden" id="estoque-id-livro" name="id_livro" value="">
+            <input type="hidden" id="estoque-id-livro" name="id_livro">
 
             <div class="form-group">
                 <label for="estoque-titulo">Título do Livro:</label>
@@ -185,211 +231,181 @@ $total_livros = $paginacao['total_livros'];
                 </div>
             </div>
 
-            <div class="modal-estoque-actions">
+            <div class="modal-actions">
                 <button type="button" class="btn-cancelar" onclick="fecharModalEstoque()">Cancelar</button>
                 <button type="submit" class="btn-salvar">Salvar Alterações</button>
             </div>
         </form>
     </div>
+</div>
 
+    <div id="modal-editar-livro" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Editar Dados do Livro</h3>
+            <span class="close-modal" onclick="fecharModalEditarLivro()">&times;</span>
+        </div>
+        <form id="form-editar-livro" method="POST" action="../../../router.php?acao=editarLivro" enctype="multipart/form-data">
+            <input type="hidden" id="edit-id-livro" name="id_livro">
+            <input type="hidden" name="ajax" value="1">
 
-    <style>
-        .modal-estoque {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+            <div class="form-group">
+                <label for="edit-titulo">Título:</label>
+                <input type="text" id="edit-titulo" name="titulo-livro" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-autor">Autor:</label>
+                    <select id="edit-autor" name="autor" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-isbn">ISBN:</label>
+                    <input type="text" id="edit-isbn" name="isbn-livro" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-categoria">Categoria:</label>
+                    <select id="edit-categoria" name="categoria" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-paginas">Páginas:</label>
+                    <input type="number" id="edit-paginas" name="numero-paginas" min="1" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-editora">Editora:</label>
+                    <select id="edit-editora" name="editora" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-idioma">Idioma:</label>
+                    <select id="edit-idioma" name="idioma" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="edit-area">Área:</label>
+                    <select id="edit-area" name="area" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-documento">Tipo:</label>
+                    <select id="edit-documento" name="tipo-documento" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-publicacao">Data de Publicação:</label>
+                <input type="date" id="edit-publicacao" name="publicacao-livro">
+            </div>
+
+            <div class="form-group">
+                <label for="edit-resumo">Descrição:</label>
+                <textarea id="edit-resumo" name="resumo-livro"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-notas">Notas:</label>
+                <textarea id="edit-notas" name="notas-livro"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="edit-capa">Nova Capa (opcional):</label>
+                <input type="file" id="edit-capa" name="capa-livro" accept="image/*">
+                <small style="color: #6c757d;">Deixe em branco para manter a capa atual</small>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="btn-cancelar" onclick="fecharModalEditarLivro()">Cancelar</button>
+                <button type="submit" class="btn-salvar">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const opcoesFiltro = <?php echo json_encode([
+        'area' => $areas,
+        'idioma' => $idiomas,
+        'ano' => $anos,
+        'autor' => $autores,
+        'categoria' => $categorias,
+        'editora' => $editoras,
+        'documento' => $documentos
+    ], JSON_UNESCAPED_UNICODE); ?>;
+
+    let currentLivroId = null;
+
+    function abrirModalEstoque(id, titulo, total, disponiveis, emprestados, reservas) {
+        document.getElementById('estoque-id-livro').value = id;
+        document.getElementById('estoque-titulo').value = titulo;
+        document.getElementById('estoque-total').value = total;
+        document.getElementById('estoque-disponiveis').value = disponiveis;
+        document.getElementById('estoque-emprestados').value = emprestados;
+        document.getElementById('estoque-reservas').value = reservas;
+
+        document.getElementById('modal-estoque').style.display = 'flex';
+        currentLivroId = id;
+    }
+
+    function fecharModalEstoque() {
+        document.getElementById('modal-estoque').style.display = 'none';
+        currentLivroId = null;
+    }
+
+    // Fechar modal ao clicar fora
+    document.getElementById('modal-estoque').addEventListener('click', function(e) {
+        if (e.target === this) {
+            fecharModalEstoque();
         }
+    });
 
-        .modal-estoque-content {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 600px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
+    // Submit do formulário via AJAX
+    document.getElementById('form-estoque').addEventListener('submit', async function(e) {
+        e.preventDefault();
 
-        .modal-estoque-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
+        const formData = new FormData(this);
+        console.log('Enviando dados do formulário:', Object.fromEntries(formData));
 
-        .modal-estoque-header h3 {
-            margin: 0;
-            color: #333;
-        }
+        try {
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData
+            });
 
-        .close-modal {
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #aaa;
-        }
+            console.log('Status da resposta:', response.status);
+            const result = await response.json();
+            console.log('Resultado da resposta:', result);
 
-        .close-modal:hover {
-            color: #000;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 15px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        .form-group input[readonly] {
-            background-color: #f5f5f5;
-            color: #666;
-        }
-
-        .modal-estoque-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .btn-cancelar {
-            background: #6c757d;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn-cancelar:hover {
-            background: #5a6268;
-        }
-
-        .btn-salvar {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn-salvar:hover {
-            background: #0056b3;
-        }
-
-        .livro-acoes {
-            margin-top: 10px;
-        }
-
-        .btn-editar-estoque {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            transition: background 0.3s;
-        }
-
-        .btn-editar-estoque:hover {
-            background: #218838;
-        }
-    </style>
-
-    <script>
-        let currentLivroId = null;
-
-        function abrirModalEstoque(id, titulo, total, disponiveis, emprestados, reservas) {
-            document.getElementById('estoque-id-livro').value = id;
-            document.getElementById('estoque-titulo').value = titulo;
-            document.getElementById('estoque-total').value = total;
-            document.getElementById('estoque-disponiveis').value = disponiveis;
-            document.getElementById('estoque-emprestados').value = emprestados;
-            document.getElementById('estoque-reservas').value = reservas;
-
-            document.getElementById('modal-estoque').style.display = 'flex';
-            currentLivroId = id;
-        }
-
-        function fecharModalEstoque() {
-            document.getElementById('modal-estoque').style.display = 'none';
-            currentLivroId = null;
-        }
-
-        // Fechar modal ao clicar fora
-        document.getElementById('modal-estoque').addEventListener('click', function(e) {
-            if (e.target === this) {
+            if (result.sucesso) {
+                alert(result.mensagem || 'Estoque atualizado com sucesso!');
                 fecharModalEstoque();
+                // Recarregar a página para mostrar os novos valores
+                window.location.reload();
+            } else {
+                alert('Erro: ' + (result.mensagem || 'Erro ao atualizar estoque.'));
             }
-        });
+        } catch (error) {
+            console.error('Erro completo:', error);
+            alert('Erro de conexão: ' + error.message);
+        }
+    });
+</script>
 
-        // Submit do formulário via AJAX
-        document.getElementById('form-estoque').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            console.log('Enviando dados do formulário:', Object.fromEntries(formData));
-
-            try {
-                const response = await fetch(this.action, {
-                    method: 'POST',
-                    body: formData
-                });
-
-                console.log('Status da resposta:', response.status);
-                const result = await response.json();
-                console.log('Resultado da resposta:', result);
-
-                if (result.sucesso) {
-                    alert(result.mensagem || 'Estoque atualizado com sucesso!');
-                    fecharModalEstoque();
-                    // Recarregar a página para mostrar os novos valores
-                    window.location.reload();
-                } else {
-                    alert('Erro: ' + (result.mensagem || 'Erro ao atualizar estoque.'));
-                }
-            } catch (error) {
-                console.error('Erro completo:', error);
-                alert('Erro de conexão: ' + error.message);
-            }
-        });
-    </script>
-
-    <script src="../../../public/js/admin/telaDosLivrosCadastrados.js"></script>
+<script src="<?php echo $URLBASE ?>/public/js/admin/telaDosLivrosCadastrados.js"></script>

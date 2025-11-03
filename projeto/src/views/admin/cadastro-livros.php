@@ -2,7 +2,7 @@
 $titulo = 'cadastro de Livros';
 $cssPagina = '/public/css/admin/cadastro-livros.css';
 $conteudo = __DIR__ . '/pages/cadastro-livros-content.php'; // caminho do conteúdo
-$fieldsetTitulo = "Cadastro de livro";
+$Titulo = "Cadastro de livro";
 $modalPagina = [
     'id' => 'confirmModal',
     'titulo' => 'Confirmação',

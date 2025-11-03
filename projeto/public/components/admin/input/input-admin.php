@@ -1,4 +1,3 @@
-<body>
 <?php
 function InputAdmin(
     $largura,
@@ -19,12 +18,6 @@ function InputAdmin(
     if (!$css_adicionado) {
         $css = '
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
 .input-admin-wrapper {
     display: flex;
@@ -118,5 +111,4 @@ function InputAdmin(
     echo '</div>';
 }
 ?>
-</body>
-</html>
+

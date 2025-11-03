@@ -23,7 +23,7 @@ $topBooks = [
 
 
 <div class="dashboard-actions">
-    <button class="btn btn-primary" onclick="window.location.href='<?php echo $URLBASE ?>/src/views/admin/emprestimogit .php'">
+    <button class="btn btn-primary" onclick="window.location.href='<?php echo $URLBASE ?>/src/views/admin/emprestimo.php'">
         <span class="icon">＋</span>
         Novo Empréstimo
     </button>
