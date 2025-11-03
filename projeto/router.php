@@ -115,7 +115,7 @@ switch ($acao) {
         $resultado = $adminController->login($email, $senha);
 
         if ($resultado) {
-            header("Location: " . $URLBASE . "/src/views/admin/inicial.php");
+            header("Location: " . $URLBASE . "/src/views/admin/index.php");
             exit;
         } else {
             header("Location: " . $URLBASE . "/src/views/admin/login-adm.php");

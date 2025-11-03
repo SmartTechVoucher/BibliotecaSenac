@@ -17,7 +17,7 @@
     <nav class="sidebar-nav">
         <ul>
             <li>
-                <a href="<?php echo $URLBASE ?>/src/views/admin/inicial.php">
+                <a href="<?php echo $URLBASE ?>/src/views/admin/index.php">
                     <img src="<?php echo $URLBASE ?>/public/assets/icons/home.png" alt="Início" class="icon"> Início
                 </a>
             </li>
