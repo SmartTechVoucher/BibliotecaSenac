@@ -5,8 +5,6 @@ require_once(__DIR__ . '/../../../src/model/usuario/livro-model.php');
 
 $model = new LivroModel();
 $livros = $model->getLivrosMock();
-
-// Garante que todos os campos esperados existem
 function obterLivroOuPadrao($livros, $index)
 {
     return $livros[$index] ?? [
