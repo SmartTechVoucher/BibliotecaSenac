@@ -96,7 +96,7 @@ function carregarComentarios() {
             return response.json();
         })
         .then(data => {
-            console.log('Comentários recebidos:', data);
+            console.log('Dados recebidos:', data);
             
             if (data.erro) {
                 console.error('Erro ao carregar comentários:', data.erro);
@@ -107,21 +107,27 @@ function carregarComentarios() {
             const container = document.getElementById('reviewsContainer');
             container.innerHTML = '';
             
-            if (!Array.isArray(data) || data.length === 0) {
+            // Novo formato: data.comentarios e data.estatisticas
+            const comentarios = data.comentarios || [];
+            const stats = data.estatisticas || { total_avaliacoes: 0, media_estrelas: 0 };
+            
+            if (comentarios.length === 0) {
                 mostrarMensagemContainer('Nenhum comentário ainda. Seja o primeiro a avaliar!');
                 atualizarMediaAvaliacoes(0, 0);
                 return;
             }
             
-            // Calcular média de avaliações
-            let somaAvaliacoes = 0;
-            data.forEach(comentario => {
+            // Adicionar cada comentário na tela
+            comentarios.forEach(comentario => {
                 adicionarComentarioNaTela(comentario);
-                somaAvaliacoes += parseInt(comentario.avaliacao) || 0;
             });
             
-            const mediaAvaliacoes = Math.round(somaAvaliacoes / data.length);
-            atualizarMediaAvaliacoes(mediaAvaliacoes, data.length);
+            // Atualizar média com dados do backend
+            atualizarMediaAvaliacoes(stats.media_estrelas, stats.total_avaliacoes);
+            
+            // Log das estatísticas
+            console.log(`Média: ${stats.media_estrelas} estrelas | Total: ${stats.total_avaliacoes} avaliações`);
+            console.log('Distribuição:', stats.distribuicao);
         })
         .catch(error => {
             console.error('Erro na requisição:', error);

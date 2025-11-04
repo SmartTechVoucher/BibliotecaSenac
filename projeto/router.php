@@ -153,7 +153,7 @@ switch ($acao) {
         $cadastrarLivroController->cadastrar();
         exit;
 
-            } catch (Exception $e) {
+            } catch(Exception $e) {
                 error_log('Router cadastrarLivro error: ' . $e->getMessage());
                 if ($isAjax) {
                     echo json_encode([

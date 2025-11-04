@@ -27,7 +27,6 @@ class ComentariosController {
             $raw = file_get_contents('php://input');
             $data = json_decode($raw, true);
 
-            // Log para debug
             error_log("Dados recebidos para criar comentário: " . print_r($data, true));
 
             if (!$data) {
@@ -67,6 +66,28 @@ class ComentariosController {
                 return;
             }
 
+            // Verificar se usuário existe
+            $checkUser = $this->conn->prepare("SELECT id_usuario FROM usuarios WHERE id_usuario = ?");
+            $checkUser->bind_param('i', $id_usuario);
+            $checkUser->execute();
+            if ($checkUser->get_result()->num_rows === 0) {
+                $this->responderErro('Usuário não encontrado');
+                $checkUser->close();
+                return;
+            }
+            $checkUser->close();
+
+            // Verificar se livro existe
+            $checkBook = $this->conn->prepare("SELECT id_livro FROM livros WHERE id_livro = ?");
+            $checkBook->bind_param('i', $id_livro);
+            $checkBook->execute();
+            if ($checkBook->get_result()->num_rows === 0) {
+                $this->responderErro('Livro não encontrado');
+                $checkBook->close();
+                return;
+            }
+            $checkBook->close();
+
             // Inserir no banco
             $sql = "INSERT INTO comentarios (id_usuario, id_livro, comentario, avaliacao, data_comentario) 
                     VALUES (?, ?, ?, ?, NOW())";
@@ -82,10 +103,25 @@ class ComentariosController {
             $stmt->bind_param('iisi', $id_usuario, $id_livro, $comentario, $avaliacao);
             
             if ($stmt->execute()) {
+                // Buscar nova média após inserir
+                $mediaQuery = $this->conn->prepare(
+                    "SELECT 
+                        COUNT(*) as total_avaliacoes,
+                        ROUND(AVG(avaliacao)) as media_estrelas
+                    FROM comentarios 
+                    WHERE id_livro = ?"
+                );
+                $mediaQuery->bind_param('i', $id_livro);
+                $mediaQuery->execute();
+                $mediaResult = $mediaQuery->get_result()->fetch_assoc();
+                $mediaQuery->close();
+
                 $this->responderSucesso([
                     'sucesso' => true,
                     'mensagem' => 'Comentário adicionado com sucesso',
-                    'id_comentario' => $stmt->insert_id
+                    'id_comentario' => $stmt->insert_id,
+                    'media_estrelas' => intval($mediaResult['media_estrelas']),
+                    'total_avaliacoes' => intval($mediaResult['total_avaliacoes'])
                 ]);
             } else {
                 error_log('Erro ao executar: ' . $stmt->error);
@@ -114,6 +150,7 @@ class ComentariosController {
                 return;
             }
 
+            // Buscar comentários com informações do usuário
             $sql = "SELECT 
                         c.id_comentario, 
                         c.id_usuario, 
@@ -150,8 +187,41 @@ class ComentariosController {
                 $rows[] = $r;
             }
             
-            $this->responderSucesso($rows);
             $stmt->close();
+
+            // Calcular estatísticas de avaliação
+            $statsQuery = $this->conn->prepare(
+                "SELECT 
+                    COUNT(*) as total_avaliacoes,
+                    ROUND(AVG(avaliacao)) as media_estrelas,
+                    ROUND(AVG(avaliacao), 2) as media_exata,
+                    SUM(CASE WHEN avaliacao = 1 THEN 1 ELSE 0 END) as total_1_estrela,
+                    SUM(CASE WHEN avaliacao = 2 THEN 1 ELSE 0 END) as total_2_estrelas,
+                    SUM(CASE WHEN avaliacao = 3 THEN 1 ELSE 0 END) as total_3_estrelas,
+                    SUM(CASE WHEN avaliacao = 4 THEN 1 ELSE 0 END) as total_4_estrelas
+                FROM comentarios 
+                WHERE id_livro = ?"
+            );
+            $statsQuery->bind_param('i', $id_livro);
+            $statsQuery->execute();
+            $stats = $statsQuery->get_result()->fetch_assoc();
+            $statsQuery->close();
+
+            // Retornar comentários + estatísticas
+            $this->responderSucesso([
+                'comentarios' => $rows,
+                'estatisticas' => [
+                    'total_avaliacoes' => intval($stats['total_avaliacoes']),
+                    'media_estrelas' => intval($stats['media_estrelas']) ?: 0,
+                    'media_exata' => floatval($stats['media_exata']) ?: 0,
+                    'distribuicao' => [
+                        1 => intval($stats['total_1_estrela']),
+                        2 => intval($stats['total_2_estrelas']),
+                        3 => intval($stats['total_3_estrelas']),
+                        4 => intval($stats['total_4_estrelas'])
+                    ]
+                ]
+            ]);
 
         } catch (Exception $e) {
             error_log('Exceção em listarComentarios: ' . $e->getMessage());
