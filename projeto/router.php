@@ -1,15 +1,20 @@
 <?php
+// router.php centralizado
+
 require_once __DIR__ . '/config/constantes.php';
 
+// Segurança de sessão
 ini_set('session.cookie_lifetime', 0);
 ini_set('session.use_only_cookies', 1);
 ini_set('session.cookie_httponly', 1);
 if (session_status() === PHP_SESSION_NONE) session_start();
 
+// Controllers principais
 require_once __DIR__ . '/src/controller/usuario/usuario-controller.php';
 require_once __DIR__ . '/src/controller/usuario/login-controller.php';
 require_once __DIR__ . '/src/controller/admin/AdminController.php';
 
+// Função helper para verificar auth admin
 function isAdminLoggedIn() {
     return isset($_SESSION['admin']) && !empty($_SESSION['admin']) && isset($_SESSION['admin']['id']);
 }
@@ -23,7 +28,7 @@ $acao = $_GET["acao"];
 $usuarioController = new UsuarioController();
 
 switch ($acao) {
-
+    // ====== USUÁRIO ======
     case 'validarLogin':
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
@@ -75,6 +80,8 @@ switch ($acao) {
         exit;
         break;
 
+    // ====== ADMIN ======
+
     case 'criarUsuario':
         if (!isAdminLoggedIn()) {
             $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Acesso negado!'];
@@ -108,7 +115,7 @@ switch ($acao) {
         $resultado = $adminController->login($email, $senha);
 
         if ($resultado) {
-            header("Location: " . $URLBASE . "/src/views/admin/telaInicialDoAdm.php");
+            header("Location: " . $URLBASE . "/src/views/admin/index.php");
             exit;
         } else {
             header("Location: " . $URLBASE . "/src/views/admin/login-adm.php");
@@ -163,6 +170,7 @@ switch ($acao) {
 
     case 'atualizarEstoque':
         if (!isAdminLoggedIn()) {
+<<<<<<< HEAD
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode([
                 'sucesso' => false,
@@ -177,6 +185,22 @@ switch ($acao) {
             require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
             $controller = new AtualizarEstoqueController();
             $resultado = $controller->atualizarEstoque();
+=======
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
+        $controller = new AtualizarEstoqueController();
+        $resultado = $controller->atualizarEstoque();
+        echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+        exit;
+>>>>>>> 03b43cd68fc781cc5bc4da7b5f50b2decb2537b2
 
             echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
         } catch(Exception $e) {
@@ -188,6 +212,69 @@ switch ($acao) {
         }
         exit;
 
+<<<<<<< HEAD
+=======
+    // ADICIONE ESTES CASES NO SEU router.php, DEPOIS do case 'atualizarEstoque':
+
+    case 'editarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/EditarLivroController.php";
+        $controller = new EditarLivroController();
+        $controller->editar();
+        exit;
+
+    case 'buscarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/EditarLivroController.php";
+        $id_livro = (int) ($_GET['id_livro'] ?? 0);
+        
+        if ($id_livro <= 0) {
+            echo json_encode(['sucesso' => false, 'mensagem' => 'ID inválido.']);
+            exit;
+        }
+        
+        $controller = new EditarLivroController();
+        $resultado = $controller->buscarLivro($id_livro);
+        echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+        exit;
+
+    case 'deletarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/DeletarLivroController.php";
+        $controller = new DeletarLivroController();
+        $controller->deletar();
+        exit;
+
+    // Adicione este case no switch do router.php, logo após o case 'atualizarEstoque':
+
+>>>>>>> 03b43cd68fc781cc5bc4da7b5f50b2decb2537b2
     case 'atualizarNomeSocial':
         if (!isset($_SESSION['usuario_id'])) {
             ob_clean();
