@@ -148,56 +148,45 @@ switch ($acao) {
         ob_clean();
         header('Content-Type: application/json; charset=utf-8');
         
-        require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
-        $cadastrarLivroController = new CadastrarLivroController();
-        $cadastrarLivroController->cadastrar();
+        try {
+            require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
+            $cadastrarLivroController = new CadastrarLivroController();
+            $cadastrarLivroController->cadastrar();
+        } catch(Exception $e) {
+            error_log('Router cadastrarLivro error: ' . $e->getMessage());
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
+            ], JSON_UNESCAPED_UNICODE);
+        }
         exit;
 
-            } catch(Exception $e) {
-                error_log('Router cadastrarLivro error: ' . $e->getMessage());
-                if ($isAjax) {
-                    echo json_encode([
-                        'sucesso' => false,
-                        'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
-                    ]);
-                    exit;
-                } else {
-                    session_start();
-                    $_SESSION['toast'] = [
-                        'mensagem' => 'Erro interno no servidor.',
-                        'tipo' => 'error'
-                    ];
-                    header("Location: ./src/views/admin/telaDeCadastroDeLivros.php");
-                    exit;
-                }
-            }
-            break;
-
-        case 'atualizarEstoque':
-            if (!isAdminLoggedIn()) {
-                header('Content-Type: application/json; charset=utf-8');
-                echo json_encode([
-                    'sucesso' => false,
-                    'mensagem' => 'Acesso negado. Faça login como administrador.'
-                ]);
-                exit;
-            }
-
+    case 'atualizarEstoque':
+        if (!isAdminLoggedIn()) {
             header('Content-Type: application/json; charset=utf-8');
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => 'Acesso negado. Faça login como administrador.'
+            ]);
+            exit;
+        }
 
-            try {
-                require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
-                $controller = new AtualizarEstoqueController();
-                $resultado = $controller->atualizarEstoque();
+        header('Content-Type: application/json; charset=utf-8');
 
-                echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
-                exit;
+        try {
+            require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
+            $controller = new AtualizarEstoqueController();
+            $resultado = $controller->atualizarEstoque();
 
-    default:
-        header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
+            echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+        } catch(Exception $e) {
+            error_log('Router atualizarEstoque error: ' . $e->getMessage());
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
+            ], JSON_UNESCAPED_UNICODE);
+        }
         exit;
-
-    // Adicione este case no switch do router.php, logo após o case 'atualizarEstoque':
 
     case 'atualizarNomeSocial':
         if (!isset($_SESSION['usuario_id'])) {
@@ -243,4 +232,8 @@ switch ($acao) {
         }
         
         exit;
-    }
+    default:
+        header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
+        exit;
+}
+?>
