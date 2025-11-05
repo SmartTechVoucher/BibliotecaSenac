@@ -36,7 +36,7 @@ if (usuarioEstaLogado()) {
             </div>
 
             <form action="<?php echo $URLBASE ?>/router.php?acao=validarLogin" method="POST">
-                <img src="<?php echo $URLBASE ?>/public/assets/img/LogoHub_academy.png" alt="logo-login" class="logo-hub" />
+                <img src="<?php echo $URLBASE ?>/public/assets/icons/logo-hub-academy.png" alt="logo-login" class="logo-hub" />
                 <p id="subtitulo" class="titulo-login"></p>
 
                 <div class="login-campos">
