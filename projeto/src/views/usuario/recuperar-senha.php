@@ -32,7 +32,7 @@
 
                     <button type="submit">Enviar</button>
 
-                    <a href="../usuario/teste-login.php">Voltar</a>
+                    <a href="<?php echo $URLBASE ?>/src/views/usuario/login.php">Voltar</a>
                 </form>
 
             </section>
