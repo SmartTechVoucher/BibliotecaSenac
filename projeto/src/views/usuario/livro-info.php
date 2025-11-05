@@ -6,32 +6,24 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// ============================================
-// PEGAR ID DO LIVRO DA URL
-// ============================================
+// Pega o ID do livro da URL (ou usa 1 como padrão)
 $id_livro = isset($_GET['id_livro']) ? intval($_GET['id_livro']) : 1;
 
-// ============================================
-// PEGAR DADOS DO USUÁRIO LOGADO
-// ============================================
+// Pega informações do usuário logado
 $id_usuario = isset($_SESSION['usuario_id']) ? intval($_SESSION['usuario_id']) : 0;
 $nome_usuario = isset($_SESSION['usuario_nome']) ? $_SESSION['usuario_nome'] : 'Visitante';
 $usuario_logado = $id_usuario > 0;
 
-// ============================================
-// DADOS DO LIVRO (temporário - depois buscar do banco)
-// ============================================
+// Dados do livro (temporário - depois buscar do banco)
 $livro = [
     "id" => $id_livro,
     "titulo" => "Simpósio do Barreado",
     "img" => $URLBASE . "/public/assets/img/Simposio.png",
-    "desc" => "O livro, o autor aborda a pergunta chave: \"Afinal, o barreado nasceu em Paranaguá, Antonina ou Morretes?\". Esta pergunta é a razão do \"Simpósio do Barreado\". O livro mostra as origens e a receita do mais tradicional prato culinário do Paraná.",
-    "autor" => "Dante Mendonça",
+    "desc" => "O livro, o autor aborda a pergunta chave: \"Afinal, o barreado nasceu em Paranaguá, Antonina ou Morretes?\". Esta pergunta é a razão do \"Simpósio do Barreado\". O livro mostra as origens e a receita do mais tradicional prato culinário do Paraná. Realizado ficticiamente em Porto de Cima, o simpósio reuniu especialistas de ontem e de hoje, daqui e de muitos lugares, em acaloradas discussões que naturalmente, terminaram em confraternização em volta da mesa.",
+    "autor" => "Fulano",
     "publicacao" => "Belo Horizonte: do autor, 2024",
     "paginas" => "243",
-    "isbn" => "9788536512259",
-    "nome_categoria" => "Culinária",
-    "nome_area" => "História"
+    "isbn" => "9788536512259"
 ];
 
 $senacCG = [
@@ -55,12 +47,10 @@ $senacTLG = [
     "exemplarEmprestados" => "1",
     "exemplarReservas" => "2"
 ];
-
-$disponivel = true; // Temporário
-$exemplares = true; // Temporário
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,21 +63,13 @@ $exemplares = true; // Temporário
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
 
-    <!-- ============================================ -->
-    <!-- VARIÁVEIS JAVASCRIPT (ESSENCIAL!) -->
-    <!-- ============================================ -->
+    <!-- Variáveis JavaScript -->
     <script>
         const URLBASE = "<?php echo $URLBASE; ?>";
         const ID_LIVRO = <?php echo $id_livro; ?>;
         const ID_USUARIO = <?php echo $id_usuario; ?>;
         const NOME_USUARIO = "<?php echo addslashes($nome_usuario); ?>";
         const USUARIO_LOGADO = <?php echo $usuario_logado ? 'true' : 'false'; ?>;
-        
-        console.log('Configurações carregadas:');
-        console.log('- URLBASE:', URLBASE);
-        console.log('- ID_LIVRO:', ID_LIVRO);
-        console.log('- ID_USUARIO:', ID_USUARIO);
-        console.log('- USUARIO_LOGADO:', USUARIO_LOGADO);
     </script>
 </head>
 
@@ -95,7 +77,7 @@ $exemplares = true; // Temporário
     <!-- header  -->
     <?php include "../../../public/components/usuario/header/header.php"; ?>
 
-    <!-- Conteúdo Principal -->
+    <!-- conteudo da pagina -->
     <div class="containerConteudo">
         <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
         
@@ -104,13 +86,11 @@ $exemplares = true; // Temporário
             <img id="livroFoto" src="<?php echo $livro["img"]; ?>" alt="Capa do livro">
             <div class="info_1">
                 <div class="livroInfo">
-                    <!-- Título e ISBN -->
                     <div class="livroTitulo">
                         <h1><?php echo htmlspecialchars($livro["titulo"]); ?></h1>
                         <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: <?php echo $livro["isbn"]; ?></p>
                     </div>
                     
-                    <!-- Avaliação média (atualizada pelo JS) -->
                     <div class="review">
                         <img id="avaliacaoMediaImg" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas3.png" alt="Avaliação média">
                         <p><span id="totalReviews">0</span> avaliações</p>
@@ -120,22 +100,20 @@ $exemplares = true; // Temporário
                         <h3>Tags:</h3>
                         <div class="tags2">
                             <div class="tag_icone">
-                                <p><?php echo htmlspecialchars($livro['nome_categoria']); ?></p>
+                                <p>Culinária</p>
                             </div>
                             <div class="tag_icone">
-                                <p><?php echo htmlspecialchars($livro['nome_area']); ?></p>
+                                <p>História</p>
                             </div>
                         </div>
                     </div>
 
                     <p id="livroDescricao"><?php echo htmlspecialchars($livro["desc"]); ?></p>
 
-                    <!-- Botão de Reservar -->
+                    <!-- botao de reservar -->
                     <div class="livroReservar">
-                        <p><?php echo $disponivel ? 'Disponível' : 'Indisponível'; ?></p>
-                        <button id="botaoReserva" onclick="reservaConcluida()" data-status="livre">
-                            Reservar
-                        </button>
+                        <p>Disponível</p>
+                        <button id="botaoReserva" onclick="reservaConcluida()" data-status="livre">Reservar</button>
                     </div>
 
                     <div class="info_2">
@@ -144,13 +122,11 @@ $exemplares = true; // Temporário
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/User.png" alt="">
                             <p><?php echo htmlspecialchars($livro["autor"]); ?></p>
                         </div>
-                        
                         <div class="publicacao">
                             <h3>Publicação:</h3>
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/Geography.png" alt="">
                             <p><?php echo htmlspecialchars($livro["publicacao"]); ?></p>
                         </div>
-                        
                         <div class="paginas">
                             <h3>Páginas:</h3>
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/Read.png" alt="">
@@ -161,20 +137,17 @@ $exemplares = true; // Temporário
             </div>
         </div>
 
-        <!-- Exemplares -->
+        <!-- exemplares -->
         <div class="containerExemplar">
             <p>Exemplares</p>
-            <img src="<?php echo $URLBASE ?>/public/assets/icons/Plus Math.png" 
-                 alt="Expandir" 
-                 id="abrirExemplares" 
-                 onclick="alternarExemplar()">
+            <img src="<?php echo $URLBASE ?>/public/assets/icons/Plus Math.png" alt="" id="abrirExemplares" onclick="alternarExemplar()">
         </div>
 
-        <div id="containerExemplarOpen" style="display: none;">
+        <div id="containerExemplarOpen">
             <!-- Senac Hub Academy -->
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
-                <div class="gridA"><b>Total</b></div>
+                <div class="gridA"><b>Exemplares</b></div>
                 <div class="gridA"><b>Disponível</b></div>
                 <div class="gridA"><b>Emprestados</b></div>
                 <div class="gridA"><b>Reservados</b></div>
@@ -185,11 +158,11 @@ $exemplares = true; // Temporário
                 <div class="gridB"><?php echo $senacCG["exemplarEmprestados"] ?></div>
                 <div class="gridB"><?php echo $senacCG["exemplarReservas"] ?></div>
             </div>
-            
+
             <!-- Senac De Dourados -->
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
-                <div class="gridA"><b>Total</b></div>
+                <div class="gridA"><b>Exemplares</b></div>
                 <div class="gridA"><b>Disponível</b></div>
                 <div class="gridA"><b>Emprestados</b></div>
                 <div class="gridA"><b>Reservados</b></div>
@@ -200,11 +173,11 @@ $exemplares = true; // Temporário
                 <div class="gridB"><?php echo $senacDOU["exemplarEmprestados"] ?></div>
                 <div class="gridB"><?php echo $senacDOU["exemplarReservas"] ?></div>
             </div>
-            
+
             <!-- Senac de Três Lagoas -->
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
-                <div class="gridA"><b>Total</b></div>
+                <div class="gridA"><b>Exemplares</b></div>
                 <div class="gridA"><b>Disponível</b></div>
                 <div class="gridA"><b>Emprestados</b></div>
                 <div class="gridA"><b>Reservados</b></div>
@@ -217,7 +190,7 @@ $exemplares = true; // Temporário
             </div>
         </div>
 
-        <!-- Sistema de Comentários -->
+        <!-- comentarios -->
         <div class="containerComentarios">
             <div class="comment_1">
                 <p>Comentários</p>
@@ -225,7 +198,7 @@ $exemplares = true; // Temporário
             </div>
 
             <?php if ($usuario_logado): ?>
-                <!-- Formulário de comentário (só aparece se logado) -->
+                <!-- Formulário de comentário (só aparece se estiver logado) -->
                 <form id="commentForm">
                     <div class="inputRating">
                         <img class="estrela-input" src="<?php echo $URLBASE ?>/public/assets/icons/livro-info-estrela.png" alt="" data-value="1">
@@ -259,7 +232,7 @@ $exemplares = true; // Temporário
                 <p class="commentConteudo">Comentário do usuário aqui...</p>
             </div>
 
-            <!-- Container onde os comentários serão carregados -->
+            <!-- Container onde os comentários do backend serão carregados -->
             <div id="reviewsContainer">
                 <p style="text-align: center; color: #666; padding: 20px;">Carregando comentários...</p>
             </div>
@@ -270,4 +243,5 @@ $exemplares = true; // Temporário
 
     <script src="<?php echo $URLBASE ?>/public/js/usuario/livro-info.js"></script>
 </body>
+
 </html>
