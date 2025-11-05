@@ -1,5 +1,4 @@
 :root{
-
     --azulCabecalho: #001E3E;
     --fontes: 'Poppins', 'Roboto', 'Montaga';
     --branco: white;
@@ -12,21 +11,14 @@
     --apontador: pointer;
     --cinza: #D9D9D9;
     --bordaBaixaCabeçalho: #769FCD;
-   
+    --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+    --cor-label: #555;
 }
+
 * {
     box-sizing: border-box;
 }
-.container-main {
-    width: 70%;
-    padding: 40px;
-    position: relative;
-    margin: auto;
-    background: #fbfaff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
-}
+
 #cadastro-form legend {
     font-size: 1.3rem;
     font-weight: 500;
@@ -60,7 +52,7 @@ label {
     display: block;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: #555;
+    color: var(--cor-label);
     display: flex;
     align-items: center;
     gap: .5rem;

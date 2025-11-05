@@ -1,32 +1,22 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #EDEDED;
+:root{
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --corFormulario: #E5E4E4;
+    --corBotao: #004A90;
+    --vermelho: red;
+    --apontador: pointer;
+    --cinza: #D9D9D9;
+    --bordaBaixaCabeçalho: #769FCD;
+    --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+    --cor-label: #555;
 }
-
 
 a {
     text-decoration: none
-}
-
-* {
-    font-family: var(--fontes);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-/* main */
-.container-main {
-    width: 70%;
-    padding: 40px;
-    position: relative;
-    margin: auto;
-    background: #fbfaff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
 }
 
 #cadastro-form legend {
@@ -50,111 +40,261 @@ a {
     width: 24px;
 }
 
-/* o cardzinho lá que mostra os dados do usuario */
-.user-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+ #searchBox {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+#barra-pesquisa{
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     
 }
 
-.user-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #3498db;
-}
+#results {
+    top: 100%;       
+    margin-top: 4px;  
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    position: absolute;}
 
-#card-usuario {
-    display: flex;
-    align-items: center;
-    width: 40%;
-    padding: 20px;
-    gap: 30px;
+ .user-item {
+        padding: 5px;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+    }
+
+    .user-item:hover {
+        background: #f0f0f0;
+    }
+    .user-subinfo {
+        font-size: 0.9rem;
+        color: #666;
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    /* Card do usuário */
+    #userCard {
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        max-width: 400px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 20px;
+        transition: 0.3s;
+    }
+
+    #userCard h3 {
+        margin: 10px 0 5px 0;
+    }
+
+    #userCard p {
+        margin: 4px 0;
+        color: #555;
+    }
+
+    #placeholder {
+        color: #999;
+        font-style: italic;
+        margin-top: 20px;
+    }
+    #loanSection{
+        margin-top: 40px;
+        margin: auto;
+    }
+    #isbnInput{
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+    #loanSection button {
+      
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    #confirmLoanBtn{
+        color: white;
+        background-color: #004A90;
+    }
+    #cancelLoanBtn{
+        background-color: #F0F0F0;
+        color: black;
+    }
+        
+    #loanTableContainer {
+    margin-top: 25px;
+    width: 100%;
     margin: auto;
 }
 
-/* Tabela que mostra os livros emprestimo  */
-.tabela-emprestimos {
+/* A tabela em si */
+.loan-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+    border-collapse: collapse; /* Remove espaço entre células */
+    margin-top: 15px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden; /* Garante que o border-radius funcione */
 }
 
-.tabela-emprestimos th, 
-.tabela-emprestimos td {
+/* Células do Cabeçalho (th) e do Corpo (td) */
+.loan-table th,
+.loan-table td {
     padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Cabeçalho da Tabela */
+.loan-table th {
+    background-color: #f7f9fc; /* Um cinza/azul bem claro */
+    font-weight: 600;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Linhas do Corpo da Tabela */
+.loan-table tbody tr {
+    background-color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+/* Efeito de hover nas linhas */
+.loan-table tbody tr:hover {
+    background-color: #fdfdfd;
+}
+
+/* Remove a borda da última linha */
+.loan-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Centraliza a coluna de Ações */
+.loan-table th:last-child,
+.loan-table td:last-child {
     text-align: center;
-    border-bottom: 1px solid #ddd;
 }
 
-.tabela-emprestimos th {
-    background-color: #f2f2f2;
-    color: #555;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+/* ==============================================
+   ESTILOS DOS BOTÕES DE AÇÃO (Renovar/Devolver)
+   ============================================== */
 
-.tabela-emprestimos tr:hover {
-    background-color: #f9f9f9;
-}
-
-.info-detalhes {
-    display: none;
-    background-color: #fafafa;
-    border-left: 3px solid #007bff;
-}
-
-.info-detalhes td {
-    padding: 15px;
-    font-style: italic;
-    color: #666;
-}
-
-.botoes-acao button {
-    padding: 8px 12px;
-    margin-left: 5px;
+.btn-acao {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0 3px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    color: white;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
+    transition: all 0.2s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
-.btn-abrir-mais {
-    background-color: #007bff;
-    color: #fff;
+.btn-acao:hover {
+    transform: translateY(-1px); /* Leve pulo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.btn-abrir-mais:hover {
-    background-color: #0056b3;
-}
-
+/* Botão Renovar (Azul) */
 .btn-renovar {
-    background-color: #28a745;
-    color: #fff;
+    background-color: #007bff;
 }
 
 .btn-renovar:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
+/* Botão Devolver (Verde) */
 .btn-devolver {
-    background-color: #dc3545;
-    color: #fff;
+    background-color: #28a745;
 }
 
 .btn-devolver:hover {
-    background-color: #c82333;
-}
-.btn-renovar img, .btn-devolver img {
-    width: 15px;
+    background-color: #218838;
 }
 
-.livro-imagem {
-    width: 70px;
-    height: auto;
-    display: block;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+/* ==============================================
+   MENSAGENS DE FEEDBACK (BÔNUS)
+   ============================================== */
+
+#loanMessage {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+#loanMessage p {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+/* O JS adiciona <p style="color: green;">... */
+#loanMessage p[style*="green"] {
+    background-color: #e6f7ec;
+    border-color: #b7e1c7;
+    color: #0f5132 !important; /* Sobrescreve o inline style */
+}
+
+/* O JS adiciona <p style="color: red;">... */
+#loanMessage p[style*="red"] {
+    background-color: #fdeeee;
+    border-color: #f5c6cb;
+    color: #721c24 !important; /* Sobrescreve o inline style */
+}
+#loanPaginationContainer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+
+.pagination {
+    display: inline-block;
+    background-color: transparent !important;
+    
+
+}
+
+.pagination a {
+    float: left;
+    text-decoration: none;
+    transition: background-color .3s;
+    margin: 0 4px;
+    font-size: 0.9rem;
+      padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #333;
+            background: white;
+            transition: background 0.2s ease;
+}
+
+/* Link da página ativa (selecionada) */
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+/* Efeito de hover nos links (exceto no ativo) */
+.pagination a:hover:not(.active) {
+    background-color: #f0f0f0;
 }

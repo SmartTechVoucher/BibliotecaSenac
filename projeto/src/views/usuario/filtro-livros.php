@@ -39,7 +39,7 @@ function obterLivroOuPadrao($livros, $index)
     <link rel="stylesheet" href="../../../public/css/components/usuario/card2.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/header.css">
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/footer.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/footer.css">
 </head>
 
 <body>

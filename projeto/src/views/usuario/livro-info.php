@@ -1,5 +1,6 @@
 <?php
 require_once "../../../config/constantes.php";
+<<<<<<< HEAD
 
 // Inicia sessão se não estiver iniciada
 if (session_status() === PHP_SESSION_NONE) {
@@ -21,6 +22,8 @@ $usuario_logado = $id_usuario > 0;
 // ============================================
 // DADOS DO LIVRO (temporário - depois buscar do banco)
 // ============================================
+=======
+>>>>>>> Dev
 $livro = [
     "id" => $id_livro,
     "titulo" => "Simpósio do Barreado",
@@ -50,10 +53,10 @@ $senacDOU = [
 ];
 $senacTLG = [
     "unidade" => "SenacHub-TLG",
-    "exemplarQntd" => "1",
-    "exemplarDisponiveis" => "0",
-    "exemplarEmprestados" => "1",
-    "exemplarReservas" => "2"
+    "exemplarQntd" => "3",
+    "exemplarDisponiveis" => "4",
+    "exemplarEmprestados" => "6",
+    "exemplarReservas" => "7"
 ];
 
 $disponivel = true; // Temporário
@@ -106,8 +109,13 @@ $exemplares = true; // Temporário
                 <div class="livroInfo">
                     <!-- Título e ISBN -->
                     <div class="livroTitulo">
+<<<<<<< HEAD
                         <h1><?php echo htmlspecialchars($livro["titulo"]); ?></h1>
                         <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: <?php echo $livro["isbn"]; ?></p>
+=======
+                        <h1><?php echo $livro["titulo"] ?></h1>
+                        <p id="livroIsbn">(Livro-618.92 T157e, Cód. 13.418), ISBN: 9788536512259</p>
+>>>>>>> Dev
                     </div>
                     
                     <!-- Avaliação média (atualizada pelo JS) -->
@@ -159,9 +167,18 @@ $exemplares = true; // Temporário
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
 
         <!-- Exemplares -->
+=======
+
+            
+
+        </div>
+
+        
+>>>>>>> Dev
         <div class="containerExemplar">
             <p>Exemplares</p>
             <img src="<?php echo $URLBASE ?>/public/assets/icons/Plus Math.png" 
@@ -170,8 +187,13 @@ $exemplares = true; // Temporário
                  onclick="alternarExemplar()">
         </div>
 
+<<<<<<< HEAD
         <div id="containerExemplarOpen" style="display: none;">
             <!-- Senac Hub Academy -->
+=======
+        <div id="containerExemplarOpen">
+           
+>>>>>>> Dev
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
                 <div class="gridA"><b>Total</b></div>
@@ -185,8 +207,12 @@ $exemplares = true; // Temporário
                 <div class="gridB"><?php echo $senacCG["exemplarEmprestados"] ?></div>
                 <div class="gridB"><?php echo $senacCG["exemplarReservas"] ?></div>
             </div>
+<<<<<<< HEAD
             
             <!-- Senac De Dourados -->
+=======
+           
+>>>>>>> Dev
             <div class="containerGrid">
                 <div class="gridA"><u><b>Unidade</b></u></div>
                 <div class="gridA"><b>Total</b></div>
@@ -215,6 +241,10 @@ $exemplares = true; // Temporário
                 <div class="gridB"><?php echo $senacTLG["exemplarEmprestados"] ?></div>
                 <div class="gridB"><?php echo $senacTLG["exemplarReservas"] ?></div>
             </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Dev
         </div>
 
         <!-- Sistema de Comentários -->
@@ -261,7 +291,62 @@ $exemplares = true; // Temporário
 
             <!-- Container onde os comentários serão carregados -->
             <div id="reviewsContainer">
+<<<<<<< HEAD
                 <p style="text-align: center; color: #666; padding: 20px;">Carregando comentários...</p>
+=======
+
+            </div>
+            <div class="comment_2" id="comment_2id">
+                <div class="commentName">
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas4.png" alt="">
+                    </div>
+
+                    <h3 id="commentTitulo">Neymar JR</h3>
+                </div>
+                <p id="commentUserinfo">Feito em: 25/02/2023</p>
+
+                <p id="commentConteudo">O Simpósio do Barreado é uma obra-prima que transcende as páginas e mergulha o leitor nas tradições e sabores do litoral paranaense. Dante Mendonça habilmente entrelaça história, ficção e humor enquanto desvenda a intrigante origem do Barreado. As aquarelas do autor enriquecem a experiência, transportando-nos para as pitorescas paisagens costeiras. Uma leitura essencial para os amantes da gastronomia e da cultura regional. 👏🎨</p>
+            </div>
+            <div class="comment_2">
+                <div class="commentName">
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas4.png" alt="">
+
+                    </div>
+
+                    <h3 id="commentTitulo">Rodrigo Fato</h3>
+                </div>
+                <p id="commentUserinfo">Feito em: 10/02/2023</p>
+                <p id="commentConteudo">achei massa 👍</p>
+            </div>
+            <div class="comment_2">
+                <div class="commentName">
+
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas4.png" alt="">
+                    </div>
+
+                    <h3 id="commentTitulo">Matheus</h3>
+                </div>
+                <p id="commentUserinfo">Feito em: 01/02/2023</p>
+
+                <p id="commentConteudo">achei interessante a maneira q o livro retrata os fatos</p>
+            </div>
+            <div class="comment_2">
+                <div class="commentName">
+
+                    <div class="estrela-placeholder-container">
+                        <img class="estrela-placeholder" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas4.png" alt="">
+
+                    </div>
+
+                    <h3 id="commentTitulo">Andrey Hipolito</h3>
+                </div>
+                <p id="commentUserinfo">Feito em: 16/11/2022</p>
+
+                <p id="commentConteudo">a nao sei oq q nao sei oq lá</p>
+>>>>>>> Dev
             </div>
         </div>
     </div>
