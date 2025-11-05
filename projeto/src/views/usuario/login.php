@@ -26,6 +26,8 @@ if (usuarioEstaLogado()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/login.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class="container">
@@ -76,31 +78,52 @@ if (usuarioEstaLogado()) {
 
     <script>
         function mostrarSenha() {
-            const campo = document.getElementById("campo_senha");
-            campo.type = campo.type === "password" ? "text" : "password";
-        }
+      const campo = document.getElementById("campo_senha");
+      const ocultar = document.getElementsByClassName("ocultar-senha")[0];
+      campo.type = campo.type === "password" ? "text" : "password";
+      if (campo.type === "password") {
+        ocultar.src = "../../../public/assets/icons/ocultar-fechado.png"
+      } else {
+        ocultar.src = "../../../public/assets/icons/ocultar.png"
+      }
+    }
 
-        const texto = ["Hub Academy", "Conectando você ao futuro"];
-        const el = document.getElementById("subtitulo");
-        let linha = 0,
-            i = 0;
+    // texto digitando
+    const texto = ["Hub Academy", "Conectando você ao futuro"];
+    const el = document.getElementById("subtitulo");
+    let linha = 0,
+      i = 0;
 
-        function digitar() {
-            if (linha < texto.length) {
-                if (i < texto[linha].length) {
-                    el.innerHTML += texto[linha][i++];
-                    setTimeout(digitar, 80);
-                } else {
-                    linha++;
-                    i = 0;
-                    if (linha < texto.length) {
-                        el.innerHTML += "<br>";
-                        setTimeout(digitar, 500);
-                    }
-                }
-            }
+    function digitar() {
+      if (linha < texto.length) {
+        if (i < texto[linha].length) {
+          el.innerHTML += texto[linha][i];
+          i++;
+          setTimeout(digitar, 80);
+        } else {
+          linha++;
+          i = 0;
+          if (linha < texto.length) {
+            el.innerHTML += "<br>";
+            setTimeout(digitar, 500);
+          } else {
+            // Depois de terminar de digitar, inicia animação das reticências
+            animarReticencias();
+          }
         }
-        digitar();
+      }
+    }
+
+    let reticenciasCount = 0;
+    const maxReticencias = 3;
+
+    function animarReticencias() {
+      reticenciasCount = (reticenciasCount + 1) % (maxReticencias + 1);
+      el.innerHTML = texto[0] + "<br>" + texto[1] + ".".repeat(reticenciasCount);
+      setTimeout(animarReticencias, 500);
+    }
+
+    digitar();
     </script>
 </body>
 </html>
