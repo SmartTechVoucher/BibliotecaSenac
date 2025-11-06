@@ -8,7 +8,7 @@ require(__DIR__ . '/../../../config/constantes.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Redefinir Senha</title>
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/login-adm.css">
 </head>
 
@@ -35,61 +35,45 @@ require(__DIR__ . '/../../../config/constantes.php');
                         </p>
                     </div>
                 </div>
-
-
             </div>
 
             <div class="container-form">
-                
-                <form action="../../../router.php?acao=loginAdmin" method="POST" class="card-login" id="card-login">
+                <form action="../../../router.php?acao=resetarSenha" method="POST" class="card-login">
                     <div class="titles-form">
-                        <h2>Acesso Administrativo</h2>
-                        <p>Entre com suas credenciais</p>
+                        <h2>Redefinir Senha</h2>
+                        <p>Crie uma nova senha para sua conta</p>
                     </div>
 
+                    <input type="hidden" name="token" value="<?php echo htmlspecialchars($_GET['token'] ?? ''); ?>">
+
                     <div class="input-1">
-                        <label for="campo_login">Usuário</label>
-                        <input type="text" name="nome" id="campo_login" placeholder="Digite seu usuário">
+                        <label for="nova_senha">Nova Senha</label>
+                        <input type="password" name="nova_senha" id="nova_senha" placeholder="Digite sua nova senha" required>
                     </div>
 
                     <div class="input-2">
-                        <label for="campo_senha">Senha</label>
-                        <input type="password" name="senha" id="campo_senha" placeholder="Digite sua senha">
+                        <label for="confirmar_senha">Confirmar Senha</label>
+                        <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Confirme sua nova senha" required>
                     </div>
 
-                    <button type="submit">Entrar no Sistema</button>
+                    <button type="submit">Redefinir Senha</button>
                     <div class="text-center">
-                        <a href="#" id="link-recuperar">Esqueceu sua Senha ?</a>
-                    </div>
-                </form>
-
-                <form action="../../../router.php?acao=recuperarSenha" method="POST" class="card-recuperar-senha hidden" id="card-recuperar" novalidate>
-                    <div class="titles-form">
-                        <h2>Recuperar Senha</h2>
-                        <p>Digite seu email para receber as instruções</p>
-                    </div>
-
-                    <div class="input-1">
-                        <label for="campo_email">Email</label>
-                        <input type="email" name="email" id="campo_email" placeholder="Digite seu email">
-                    </div>
-
-                    <button type="submit" id="btn-enviar">Enviar instruções</button>
-                    <div class="text-center">
-                        <a href="#" id="link-voltar">
-                            <img src="<?php echo $URLBASE ?>/public/assets/icons/voltar-admin.png" alt="" class="icon-voltar">
-                            Voltar ao login
-                        </a>
+                        <a href="login-adm.php">Voltar ao login</a>
                     </div>
                 </form>
             </div>
 
-
             <?php if (isset($_SESSION['toast'])): ?>
-            <div id="toast" class="toast <?= $_SESSION['toast']['tipo'] ?>">
+            <div id="toast" class="toast <?= $_SESSION['toast']['tipo'] ?> hidden">
                 <?= $_SESSION['toast']['mensagem'] ?>
             </div>
             <?php unset($_SESSION['toast']); ?>
+            <?php endif; ?>
+
+            <?php if (isset($_GET['token']) && !empty($_GET['token'])): ?>
+            <div class="alert alert-info" style="background: #d1ecf1; color: #0c5460; padding: 12px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #bee5eb;">
+                <strong>Instruções:</strong> Digite sua nova senha abaixo. Certifique-se de escolher uma senha forte com pelo menos 6 caracteres.
+            </div>
             <?php endif; ?>
         </section>
         <section class="tela_animacao">
@@ -101,14 +85,11 @@ require(__DIR__ . '/../../../config/constantes.php');
         const toast = document.getElementById('toast');
         if (toast) {
             setTimeout(() => {
-                toast.style.display = 'block';
+                toast.classList.remove('hidden');
                 setTimeout(() => toast.remove(), 5000);
             }, 100);
         }
     </script>
-
-    <script src="../../../public/js/admin/login-adm.js"></script>
-
 </body>
 
 </html>

@@ -123,6 +123,50 @@ switch ($acao) {
         }
         break;
 
+    case 'recuperarSenha':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');
+            exit;
+        }
+
+        $adminController = new AdminController();
+        $email = $_POST["email"] ?? '';
+        $resultado = $adminController->recuperarSenha($email);
+
+        $_SESSION['toast'] = [
+            'tipo' => $resultado['success'] ? 'success' : 'erro',
+            'mensagem' => $resultado['message']
+        ];
+
+        header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');
+        exit;
+        break;
+
+    case 'resetarSenha':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . $URLBASE . '/src/views/admin/resetar-senha.php?token=' . ($_GET['token'] ?? ''));
+            exit;
+        }
+
+        $adminController = new AdminController();
+        $token = $_POST["token"] ?? '';
+        $nova_senha = $_POST["nova_senha"] ?? '';
+        $confirmar_senha = $_POST["confirmar_senha"] ?? '';
+        $resultado = $adminController->resetarSenha($token, $nova_senha, $confirmar_senha);
+
+        $_SESSION['toast'] = [
+            'tipo' => $resultado['success'] ? 'success' : 'erro',
+            'mensagem' => $resultado['message']
+        ];
+
+        if ($resultado['success']) {
+            header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');
+        } else {
+            header('Location: ' . $URLBASE . '/src/views/admin/resetar-senha.php?token=' . $token);
+        }
+        exit;
+        break;
+
     case 'auxEntity':
         if (!isAdminLoggedIn()) {
             ob_clean();

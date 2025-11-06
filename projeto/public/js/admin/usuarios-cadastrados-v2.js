@@ -19,7 +19,6 @@ class GerenciadorUsuarios {
     }
 
     configurarEventListeners() {
-        // Prevenir comportamento padrão nos modais
         document.addEventListener('click', (e) => {
             if (e.target.closest('#confirmModalSalvar') || e.target.closest('#errorModalSalvar')) {
                 e.preventDefault();
@@ -28,13 +27,11 @@ class GerenciadorUsuarios {
             }
         });
 
-        // Tabs
         const tabs = document.querySelectorAll('.tab-link');
         tabs.forEach(tab => {
             tab.addEventListener('click', (e) => this.abrirTab(e));
         });
 
-        // Busca
         const campoBusca = document.querySelector('input[type="text"]');
         if (campoBusca) {
             campoBusca.addEventListener('input', (e) => {
@@ -46,7 +43,6 @@ class GerenciadorUsuarios {
             });
         }
 
-        // Botão de bloquear/desbloquear
         const botaoBloquear = document.getElementById('botao-bloquear');
         if (botaoBloquear) {
             botaoBloquear.addEventListener('click', (e) => {
@@ -56,7 +52,6 @@ class GerenciadorUsuarios {
             });
         }
 
-        // Botão de edição
          const botaoEdicao = document.getElementById('botao-edicao');
          if (botaoEdicao) {
              botaoEdicao.addEventListener('click', (e) => {
@@ -66,10 +61,8 @@ class GerenciadorUsuarios {
              });
          }
 
-        // Botão cancelar edição
          const botaoCancelar = document.getElementById('cancelar-edicao');
 
-        // Modal
         const modal = document.getElementById('userModal');
     }
 
@@ -104,7 +97,7 @@ class GerenciadorUsuarios {
                 this.mostrarMensagemErro(data.erro || 'Erro ao carregar usuários');
             }
         } catch (error) {
-            console.error('Erro ao fazer busca AJAX:', error);
+            console.error('Erro ao fazer busca:', error);
             this.mostrarMensagemErro('Erro de conexão. Tente novamente.');
         }
     }
@@ -139,7 +132,7 @@ class GerenciadorUsuarios {
                 console.error('Erro ao carregar usuários bloqueados:', data.erro);
             }
         } catch (error) {
-            console.error('Erro ao fazer busca AJAX:', error);
+            console.error('Erro ao fazer busca:', error);
         }
     }
 
@@ -172,11 +165,9 @@ class GerenciadorUsuarios {
             tabelaBody.appendChild(tr);
         });
 
-        // Configurar paginação
         if (botaoVoltar) botaoVoltar.disabled = this.paginaAtualRegulares === 1;
         if (botaoAvancar) botaoAvancar.disabled = this.paginaAtualRegulares >= this.dadosRegulares.total_paginas;
 
-        // Atualizar contador
         this.atualizarContador('regulares', this.dadosRegulares.total);
     }
 
@@ -209,16 +200,13 @@ class GerenciadorUsuarios {
             tabelaBody.appendChild(tr);
         });
 
-        // Configurar paginação
         if (botaoVoltar) botaoVoltar.disabled = this.paginaAtualBloqueados === 1;
         if (botaoAvancar) botaoAvancar.disabled = this.paginaAtualBloqueados >= this.dadosBloqueados.total_paginas;
 
-        // Atualizar contador
         this.atualizarContador('bloqueados', this.dadosBloqueados.total);
     }
 
     atualizarContador(tipo, total) {
-        // Você pode adicionar um contador visual se desejar
         console.log(`Total de usuários ${tipo}: ${total}`);
     }
 
@@ -228,16 +216,12 @@ class GerenciadorUsuarios {
     }
 
     validarCPF(cpf) {
-        // Remove caracteres não numéricos
         cpf = cpf.replace(/[^\d]/g, '');
 
-        // Verifica se tem 11 dígitos
         if (cpf.length !== 11) return false;
 
-        // Verifica se todos os dígitos são iguais
         if (/^(\d)\1+$/.test(cpf)) return false;
 
-        // Calcula dígitos verificadores
         let soma = 0;
         for (let i = 0; i < 9; i++) {
             soma += parseInt(cpf.charAt(i)) * (10 - i);
@@ -259,10 +243,8 @@ class GerenciadorUsuarios {
     }
 
     validarTelefone(telefone) {
-        // Remove caracteres não numéricos
         telefone = telefone.replace(/[^\d]/g, '');
 
-        // Deve ter entre 10 e 11 dígitos (com ou sem DDD)
         return telefone.length >= 10 && telefone.length <= 11;
     }
 
@@ -326,7 +308,6 @@ class GerenciadorUsuarios {
         document.getElementById('userDataFimCurso').value = usuario.data_fim_curso || '';
         document.getElementById('userNotas').value = usuario.notas_usuario || '';
 
-        // Configurar botão de bloqueio
         const botaoBloquear = document.getElementById('botao-bloquear');
         if (botaoBloquear) {
             botaoBloquear.textContent = usuario.ativo ? 'Bloquear usuário' : 'Desbloquear usuário';
@@ -369,11 +350,9 @@ class GerenciadorUsuarios {
             if (data.sucesso) {
                 this.mostrarMensagemSucesso(data.mensagem);
 
-                // Recarregar dados
                 this.carregarUsuariosRegulares();
                 this.carregarUsuariosBloqueados();
 
-                // Fechar modal após 1 segundo
                 setTimeout(() => {
                     this.fecharModal();
                 }, 1000);
@@ -398,7 +377,6 @@ class GerenciadorUsuarios {
         console.log('Texto do botão:', botaoEdicao ? botaoEdicao.textContent : 'Botão não encontrado');
 
         if (isReadOnly) {
-            // Entrar no modo de edição
             todosInputs.forEach(input => {
                 input.removeAttribute('readonly');
             });
@@ -412,26 +390,24 @@ class GerenciadorUsuarios {
                 todosInputs[0].focus();
             }
         } else {
-            // Salvar dados
-            console.log('💾 === INICIANDO SALVAMENTO DE DADOS ===');
+            console.log('wow teste');
             await this.salvarDadosEditados();
         }
     }
 
     async salvarDadosEditados() {
-        console.log('🔥 === INICIANDO SALVAMENTO ===');
+        console.log('teste salvando bglh');
         console.log('Usuário selecionado:', this.usuarioSelecionado);
 
         if (!this.usuarioSelecionado) {
-            console.error('❌ Nenhum usuário selecionado');
+            console.error('Nenhum usuário selecionado');
             this.mostrarModalErro('Nenhum usuário selecionado');
             return;
         }
 
-        console.log('✅ Usuário selecionado encontrado, continuando...');
+        console.log('Usuário selecionado encontrado.');
 
         try {
-            // Coletar dados do formulário com verificação de existência
             const getValue = (id) => {
                 const element = document.getElementById(id);
                 return element ? element.value : '';
@@ -454,26 +430,22 @@ class GerenciadorUsuarios {
                 notas_usuario: getValue('userNotas')
             };
 
-            // Validar dados obrigatórios
             if (!dadosFormulario.nome || !dadosFormulario.email) {
                 this.mostrarMensagemErro('Nome e email são obrigatórios');
                 return;
             }
 
-            // Validar email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(dadosFormulario.email)) {
                 this.mostrarMensagemErro('Email inválido');
                 return;
             }
 
-            // Validar CPF se fornecido
             if (dadosFormulario.cpf && !this.validarCPF(dadosFormulario.cpf)) {
                 this.mostrarMensagemErro('CPF inválido');
                 return;
             }
 
-            // Validar telefone se fornecido
             if (dadosFormulario.telefone && !this.validarTelefone(dadosFormulario.telefone)) {
                 this.mostrarMensagemErro('Telefone inválido');
                 return;
@@ -502,18 +474,14 @@ class GerenciadorUsuarios {
             const data = JSON.parse(responseText);
 
             if (data.sucesso) {
-                // Mostrar modal de confirmação
                 this.mostrarModalConfirmacao(data.mensagem);
 
-                // Recarregar dados do usuário após 1.5 segundos para dar tempo do usuário ver a confirmação
                 setTimeout(async () => {
                     await this.mostrarDetalhesUsuario(this.usuarioSelecionado.id_usuario);
 
-                    // Recarregar listas
                     this.carregarUsuariosRegulares();
                     this.carregarUsuariosBloqueados();
 
-                    // Voltar para modo somente leitura
                     this.cancelarEdicao();
                 }, 1500);
 
@@ -525,7 +493,7 @@ class GerenciadorUsuarios {
             console.error('Erro ao salvar dados:', error);
             this.mostrarMensagemErro('Erro de conexão. Tente novamente.');
         }
-        console.log('=== FIM DO SALVAMENTO ===');
+        console.log('fim do teste');
     }
 
     cancelarEdicao() {
@@ -534,7 +502,6 @@ class GerenciadorUsuarios {
         const botaoEdicao = document.getElementById('botao-edicao');
         const botaoCancelar = document.getElementById('cancelar-edicao');
 
-        // Voltar para modo somente leitura
         todosInputs.forEach(input => {
             input.setAttribute('readonly', 'true');
         });
@@ -545,7 +512,6 @@ class GerenciadorUsuarios {
         botaoEdicao.textContent = 'Editar dados';
         botaoCancelar.style.display = 'none';
 
-        // Recarregar dados originais para desfazer alterações não salvas
         if (this.usuarioSelecionado) {
             this.preencherModalDetalhes(this.usuarioSelecionado);
         }
@@ -554,13 +520,11 @@ class GerenciadorUsuarios {
     abrirTab(event) {
         const tabName = event.target.textContent.toLowerCase().trim();
 
-        // Atualizar classes dos botões
         document.querySelectorAll('.tab-link').forEach(tab => {
             tab.classList.remove('active');
         });
         event.target.classList.add('active');
 
-        // Mostrar/esconder conteúdo das tabs
         document.querySelectorAll('.tab-content').forEach(tab => {
             tab.style.display = 'none';
         });
@@ -588,7 +552,6 @@ class GerenciadorUsuarios {
     }
 
     mostrarMensagemErro(mensagem) {
-        // Criar elemento de mensagem de erro se não existir
         let erroDiv = document.querySelector('.erro-mensagem');
         if (!erroDiv) {
             erroDiv = document.createElement('div');
@@ -600,14 +563,12 @@ class GerenciadorUsuarios {
         erroDiv.textContent = mensagem;
         erroDiv.style.display = 'block';
 
-        // Esconder após 5 segundos
         setTimeout(() => {
             erroDiv.style.display = 'none';
         }, 5000);
     }
 
     mostrarMensagemSucesso(mensagem) {
-        // Criar elemento de mensagem de sucesso se não existir
         let sucessoDiv = document.querySelector('.sucesso-mensagem');
         if (!sucessoDiv) {
             sucessoDiv = document.createElement('div');
@@ -619,24 +580,23 @@ class GerenciadorUsuarios {
         sucessoDiv.textContent = mensagem;
         sucessoDiv.style.display = 'block';
 
-        // Esconder após 3 segundos
         setTimeout(() => {
             sucessoDiv.style.display = 'none';
         }, 3000);
     }
 
     mostrarModalConfirmacao(mensagem = 'Dados salvos com sucesso!') {
-        console.log('✅ Mostrando modal de confirmação:', mensagem);
+        console.log('modal de confirmação:', mensagem);
         const modal = document.getElementById('confirmModalSalvar');
         if (modal) {
             modal.style.display = 'flex';
         } else {
-            console.error('❌ Modal de confirmação não encontrado');
+            console.error('modal de confirmação não encontrado (alg corrige)');
         }
     }
 
     mostrarModalErro(mensagem = 'Erro ao salvar dados') {
-        console.log('❌ Mostrando modal de erro:', mensagem);
+        console.log('mostrando modal de erro:', mensagem);
         const modal = document.getElementById('errorModalSalvar');
         const messageElement = document.getElementById('errorMessage');
 
@@ -644,12 +604,11 @@ class GerenciadorUsuarios {
             messageElement.textContent = mensagem;
             modal.style.display = 'flex';
         } else {
-            console.error('❌ Modal de erro não encontrado');
+            console.error('modal de erro não encontrado');
         }
     }
 }
 
-// Funções globais para serem chamadas pelo HTML
 function mudarPagina(direction) {
     if (window.gerenciadorUsuarios) {
         window.gerenciadorUsuarios.mudarPagina(direction, 'regulares');
@@ -662,7 +621,6 @@ function trocarParaPaginaDosBloqueados(direction) {
     }
 }
 
-// Funções globais para modais de confirmação
 function fecharModalConfirmacao() {
     const modal = document.getElementById('confirmModalSalvar');
     if (modal) {
@@ -677,9 +635,7 @@ function fecharModalErro() {
     }
 }
 
-// Verificar se a classe foi definida
 
-// Inicializar quando DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {
     window.gerenciadorUsuarios = new GerenciadorUsuarios();
 });

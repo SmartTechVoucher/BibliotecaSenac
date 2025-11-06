@@ -136,7 +136,9 @@ CREATE TABLE adminstrador (
     telefone VARCHAR(20) NOT NULL,
     rua VARCHAR(100) NOT NULL,
     bairro VARCHAR(100) NOT NULL,
-    genero VARCHAR(100)
+    genero VARCHAR(100),
+    reset_token VARCHAR(255) NULL,
+    reset_expiry DATETIME NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE exemplares (

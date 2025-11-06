@@ -10,4 +10,4 @@ $modalPagina = [
 ];
 
 // Inclui o layout-base (que já inclui sidebar, main-content e modal)
-include __DIR__ . './layout-base.php';
+include __DIR__ . '/layout-base.php';

@@ -1,0 +1,21 @@
+{
+    "name": "biblioteca-senac/biblioteca-senac",
+    "description": "Sistema de Biblioteca SENAC Hub Academy",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "phpmailer/phpmailer": "^6.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "BibliotecaSenac\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "prefer-stable": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
