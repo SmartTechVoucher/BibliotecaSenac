@@ -21,7 +21,7 @@ require __DIR__ . '/../../../config/constantes.php';
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-dQOfrh0xHgRewl6EExmCQdwbbq1ElM3xkAq6UjXoEoX/Zm8E0o6/v6uIhW7wz5ztk6V+dAsUpVWkm/4wFbdEYg=="
+
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
