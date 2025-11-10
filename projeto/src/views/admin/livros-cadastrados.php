@@ -8,6 +8,6 @@ $modalPagina = [
     'titulo' => 'Confirmação',
     'mensagem' => 'Você tem certeza que deseja sair?'
 ];
-// Incluir o layout base
+
 include __DIR__ . '/layout-base.php';
 

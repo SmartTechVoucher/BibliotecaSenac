@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once "../../../config/auth-check.php";
 
 require_once __DIR__ . '/../../../../config/constantes.php';
