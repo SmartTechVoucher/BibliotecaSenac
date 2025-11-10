@@ -1,7 +1,7 @@
 <?php
 // Salvar em: src/controller/usuario/ComentariosController.php
 
-require_once __DIR__ . '/../../../config/conexao.php';
+require_once __DIR__ . '/../../config/conexao.php';
 
 class ComentariosController {
     private $conn;
