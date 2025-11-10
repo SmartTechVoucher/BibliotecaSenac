@@ -155,37 +155,13 @@ switch ($acao) {
         ob_clean();
         header('Content-Type: application/json; charset=utf-8');
         
-        try {
-            require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
-            $cadastrarLivroController = new CadastrarLivroController();
-            $cadastrarLivroController->cadastrar();
-        } catch(Exception $e) {
-            error_log('Router cadastrarLivro error: ' . $e->getMessage());
-            echo json_encode([
-                'sucesso' => false,
-                'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
-            ], JSON_UNESCAPED_UNICODE);
-        }
+        require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
+        $cadastrarLivroController = new CadastrarLivroController();
+        $cadastrarLivroController->cadastrar();
         exit;
 
     case 'atualizarEstoque':
         if (!isAdminLoggedIn()) {
-<<<<<<< HEAD
-            header('Content-Type: application/json; charset=utf-8');
-            echo json_encode([
-                'sucesso' => false,
-                'mensagem' => 'Acesso negado. Faça login como administrador.'
-            ]);
-            exit;
-        }
-
-        header('Content-Type: application/json; charset=utf-8');
-
-        try {
-            require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
-            $controller = new AtualizarEstoqueController();
-            $resultado = $controller->atualizarEstoque();
-=======
             ob_clean();
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
@@ -200,76 +176,9 @@ switch ($acao) {
         $resultado = $controller->atualizarEstoque();
         echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
         exit;
->>>>>>> 03b43cd68fc781cc5bc4da7b5f50b2decb2537b2
 
-            echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
-        } catch(Exception $e) {
-            error_log('Router atualizarEstoque error: ' . $e->getMessage());
-            echo json_encode([
-                'sucesso' => false,
-                'mensagem' => 'Erro interno no servidor: ' . $e->getMessage()
-            ], JSON_UNESCAPED_UNICODE);
-        }
-        exit;
-
-<<<<<<< HEAD
-=======
-    // ADICIONE ESTES CASES NO SEU router.php, DEPOIS do case 'atualizarEstoque':
-
-    case 'editarLivro':
-        if (!isAdminLoggedIn()) {
-            ob_clean();
-            header('Content-Type: application/json; charset=utf-8');
-            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
-            exit;
-        }
-        
-        ob_clean();
-        header('Content-Type: application/json; charset=utf-8');
-        
-        require_once __DIR__ . "/src/controller/admin/EditarLivroController.php";
-        $controller = new EditarLivroController();
-        $controller->editar();
-        exit;
-
-    case 'buscarLivro':
-        if (!isAdminLoggedIn()) {
-            ob_clean();
-            header('Content-Type: application/json; charset=utf-8');
-            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
-            exit;
-        }
-        
-        ob_clean();
-        header('Content-Type: application/json; charset=utf-8');
-        
-        require_once __DIR__ . "/src/controller/admin/EditarLivroController.php";
-        $id_livro = (int) ($_GET['id_livro'] ?? 0);
-        
-        if ($id_livro <= 0) {
-            echo json_encode(['sucesso' => false, 'mensagem' => 'ID inválido.']);
-            exit;
-        }
-        
-        $controller = new EditarLivroController();
-        $resultado = $controller->buscarLivro($id_livro);
-        echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
-        exit;
-
-    case 'deletarLivro':
-        if (!isAdminLoggedIn()) {
-            ob_clean();
-            header('Content-Type: application/json; charset=utf-8');
-            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
-            exit;
-        }
-        
-        ob_clean();
-        header('Content-Type: application/json; charset=utf-8');
-        
-        require_once __DIR__ . "/src/controller/admin/DeletarLivroController.php";
-        $controller = new DeletarLivroController();
-        $controller->deletar();
+    default:
+        header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;
 
     // ADICIONE ESTES CASES NO SEU router.php, DEPOIS do case 'atualizarEstoque':
@@ -332,7 +241,6 @@ switch ($acao) {
 
     // Adicione este case no switch do router.php, logo após o case 'atualizarEstoque':
 
->>>>>>> 03b43cd68fc781cc5bc4da7b5f50b2decb2537b2
     case 'atualizarNomeSocial':
         if (!isset($_SESSION['usuario_id'])) {
             ob_clean();
@@ -377,8 +285,4 @@ switch ($acao) {
         }
         
         exit;
-    default:
-        header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
-        exit;
-}
-?>
+    }
