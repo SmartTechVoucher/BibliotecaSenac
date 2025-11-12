@@ -6,20 +6,40 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'teste_json') {
     exit;
 }
 
+// router.php centralizado
+
+// ----------------------------------------------------
+// INCLUSÕES E CONFIGURAÇÕES
+// ----------------------------------------------------
+
+// Garante que o diretório base está correto
 require_once __DIR__ . '/config/constantes.php';
 
+// Segurança de sessão
 ini_set('session.cookie_lifetime', 0);
 ini_set('session.use_only_cookies', 1);
 ini_set('session.cookie_httponly', 1);
 if (session_status() === PHP_SESSION_NONE) session_start();
 
-require_once __DIR__ . '/src/controller/usuario/usuario-controller.php';
-require_once __DIR__ . '/src/controller/usuario/login-controller.php';
+// Controllers principais
+require_once __DIR__ . '/src/controller/usuario/usuario-controller.php'; // UsuarioController
+require_once __DIR__ . '/src/controller/usuario/login-controller.php';   // LoginController
 require_once __DIR__ . '/src/controller/admin/AdminController.php';
 
+// 🚨 INCLUSÃO DO CONTROLLER DE COMENTÁRIOS (CAMINHO BASEADO NA SUA ESTRUTURA)
+// Note que a classe será instanciada como ComentariosController (no plural)
+require_once __DIR__ . '/src/views/usuario/ComentariosController.php'; 
+
+
+// Função helper para verificar auth admin
 function isAdminLoggedIn() {
     return isset($_SESSION['admin']) && !empty($_SESSION['admin']) && isset($_SESSION['admin']['id']);
 }
+
+
+// ----------------------------------------------------
+// PROCESSAMENTO DA AÇÃO
+// ----------------------------------------------------
 
 if (!isset($_GET["acao"])) {
     header("Location: " . $URLBASE . "/src/views/usuario/index.php");
@@ -27,11 +47,14 @@ if (!isset($_GET["acao"])) {
 }
 
 $acao = $_GET["acao"];
-$usuarioController = new UsuarioController();
+// Instancia o controller principal de usuário para ações gerais
+$usuarioController = new UsuarioController(); 
 
 switch ($acao) {
-
+    // ====== USUÁRIO E AUTENTICAÇÃO ======
+    
     case 'validarLogin':
+        // ... (seu código de validarLogin)
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
             exit;
@@ -74,6 +97,7 @@ switch ($acao) {
         break;
 
     case 'logout':
+        // ... (seu código de logout)
         unset($_SESSION['usuario_id'], $_SESSION['usuario_nome'], $_SESSION['usuario_email'], 
         $_SESSION['usuario_categoria'], $_SESSION['usuario_foto']);
         $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Logout realizado com sucesso!'];
@@ -82,7 +106,111 @@ switch ($acao) {
         exit;
         break;
 
+    case 'atualizarNomeSocial':
+        if (!isset($_SESSION['usuario_id'])) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Não autenticado.'], JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        try {
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                throw new Exception('Método inválido.');
+            }
+            
+            // 🚨 CORREÇÃO: Lendo dados JSON do body (como o JavaScript envia)
+            $input = json_decode(file_get_contents('php://input'), true);
+            $nomeSocial = trim($input['nome_social'] ?? '');
+
+            if (strlen($nomeSocial) > 50) {
+                throw new Exception('Nome social muito longo (máximo 50 caracteres).');
+            }
+
+            $id_usuario = $_SESSION['usuario_id'];
+            $sucesso = $usuarioController->atualizarNomeSocial($id_usuario, $nomeSocial);
+
+            if ($sucesso) {
+                echo json_encode([
+                    'sucesso' => true,
+                    'mensagem' => 'Nome social atualizado com sucesso!',
+                    'nome_social' => $nomeSocial
+                ], JSON_UNESCAPED_UNICODE);
+            } else {
+                throw new Exception('Erro ao atualizar nome social no banco de dados.');
+            }
+
+        } catch (Exception $e) {
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => $e->getMessage()
+            ], JSON_UNESCAPED_UNICODE);
+        }
+        
+        exit;
+        break;
+
+    // ----------------------------------------------------
+    // ⭐️ AÇÃO DE COMENTÁRIOS E AVALIAÇÕES (RESOLVE O PROBLEMA PRINCIPAL) ⭐️
+    // ----------------------------------------------------
+    case 'comentarios':
+        // Prepara a resposta para JSON
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        // 🚨 Instancia o Controller (certifique-se que o nome da classe é ComentariosController)
+        $controller = new ComentariosController();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // 1. CARREGAR COMENTÁRIOS (GET)
+            $id_livro = (int) ($_GET['id_livro'] ?? 0);
+            
+            if ($id_livro <= 0) {
+                echo json_encode(['sucesso' => false, 'erro' => 'ID do livro inválido.'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+
+            // Chama o método do Controller. Espera um array: ['comentarios' => [...], 'estatisticas' => {...}]
+            $resultado = $controller->getComentariosPorLivro($id_livro);
+            echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+            
+        } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // 2. ENVIAR COMENTÁRIO (POST)
+            
+            if (!isset($_SESSION['usuario_id'])) {
+                echo json_encode(['sucesso' => false, 'erro' => 'Você precisa estar logado para comentar.'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+
+            // Lê o JSON enviado pelo JavaScript
+            $dados = json_decode(file_get_contents('php://input'), true);
+
+            // Adiciona o ID do usuário da sessão para segurança
+            $dados['id_usuario'] = $_SESSION['usuario_id'];
+
+            if (empty($dados) || !isset($dados['id_livro'], $dados['comentario'], $dados['avaliacao'])) {
+                echo json_encode(['sucesso' => false, 'erro' => 'Dados de comentário incompletos.'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+
+            // Chama o método do Controller. Espera um array: ['sucesso' => true/false, 'mensagem' => '...']
+            $resultado = $controller->adicionarComentario($dados);
+            echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+
+        } else {
+            // Método não permitido
+            echo json_encode(['sucesso' => false, 'erro' => 'Método não permitido para esta ação.'], JSON_UNESCAPED_UNICODE);
+        }
+        exit;
+        break;
+
+    // ====== ADMIN ======
+    
     case 'criarUsuario':
+        // ... (seu código existente)
         if (!isAdminLoggedIn()) {
             $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Acesso negado!'];
             header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');
@@ -104,6 +232,7 @@ switch ($acao) {
         break;
 
     case 'loginAdmin':
+        // ... (seu código existente)
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');
             exit;
@@ -167,7 +296,9 @@ switch ($acao) {
         exit;
         break;
 
+    
     case 'auxEntity':
+    // ... (seu código existente)
         if (!isAdminLoggedIn()) {
             ob_clean();
             header('Content-Type: application/json; charset=utf-8');
@@ -189,7 +320,9 @@ switch ($acao) {
         exit;
         break;
 
+        
     case 'cadastrarLivro':
+    // ... (seu código existente)
         if (!isAdminLoggedIn()) {
             ob_clean();
             header('Content-Type: application/json; charset=utf-8');
@@ -258,11 +391,31 @@ switch ($acao) {
 
    default:
         header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
+        require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
+        $cadastrarLivroController = new CadastrarLivroController();
+        $cadastrarLivroController->cadastrar();
         exit;
 
-    // ADICIONE ESTES CASES NO SEU router.php, DEPOIS do case 'atualizarEstoque':
+    case 'atualizarEstoque':
+    // ... (seu código existente)
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
+        $controller = new AtualizarEstoqueController();
+        $resultado = $controller->atualizarEstoque();
+        echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+        exit;
 
     case 'editarLivro':
+    // ... (seu código existente)
         if (!isAdminLoggedIn()) {
             ob_clean();
             header('Content-Type: application/json; charset=utf-8');
@@ -279,6 +432,7 @@ switch ($acao) {
         exit;
 
     case 'buscarLivro':
+    // ... (seu código existente)
         if (!isAdminLoggedIn()) {
             ob_clean();
             header('Content-Type: application/json; charset=utf-8');
@@ -303,6 +457,7 @@ switch ($acao) {
         exit;
 
     case 'deletarLivro':
+    // ... (seu código existente)
         if (!isAdminLoggedIn()) {
             ob_clean();
             header('Content-Type: application/json; charset=utf-8');
@@ -363,6 +518,13 @@ switch ($acao) {
             ], JSON_UNESCAPED_UNICODE);
         }
 
+    
+    // ----------------------------------------------------
+    // ⚠️ DEFAULT (SÓ REDIRECIONA QUANDO NENHUMA ROTA É ENCONTRADA)
+    // ----------------------------------------------------
+    default:
+        header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
         exit;
         break;
     }
+}

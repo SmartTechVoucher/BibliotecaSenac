@@ -1,5 +1,6 @@
 :root {
     --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+    --cor-label: #555;
 }
 
 *{

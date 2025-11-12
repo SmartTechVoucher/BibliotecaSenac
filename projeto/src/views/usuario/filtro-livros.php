@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <?php
 session_start();
 require(__DIR__ . '/../../../config/constantes.php');
@@ -5,8 +7,6 @@ require_once(__DIR__ . '/../../../src/model/usuario/livro-model.php');
 
 $model = new LivroModel();
 $livros = $model->getLivrosMock();
-
-// Garante que todos os campos esperados existem
 function obterLivroOuPadrao($livros, $index)
 {
     return $livros[$index] ?? [
@@ -152,3 +152,4 @@ function obterLivroOuPadrao($livros, $index)
 </body>
 
 </html>
+>>>>>>> 03b43cd68fc781cc5bc4da7b5f50b2decb2537b2
