@@ -1,13 +1,14 @@
 <?php
-// Salvar em: src/controller/usuario/ComentariosController.php
+// src/controller/usuario/ComentariosController.php
 
-require_once __DIR__ . '/../../config/conexao.php';
+require_once __DIR__ . '/../../../config/database.php';
 
 class ComentariosController {
     private $conn;
 
     public function __construct() {
-        $this->conn = Conexao::getConnection();
+        $db = new Database();
+        $this->conn = $db->Connect();
     }
 
     public function handle() {
@@ -68,25 +69,19 @@ class ComentariosController {
 
             // Verificar se usuário existe
             $checkUser = $this->conn->prepare("SELECT id_usuario FROM usuarios WHERE id_usuario = ?");
-            $checkUser->bind_param('i', $id_usuario);
-            $checkUser->execute();
-            if ($checkUser->get_result()->num_rows === 0) {
+            $checkUser->execute([$id_usuario]);
+            if ($checkUser->rowCount() === 0) {
                 $this->responderErro('Usuário não encontrado');
-                $checkUser->close();
                 return;
             }
-            $checkUser->close();
 
             // Verificar se livro existe
             $checkBook = $this->conn->prepare("SELECT id_livro FROM livros WHERE id_livro = ?");
-            $checkBook->bind_param('i', $id_livro);
-            $checkBook->execute();
-            if ($checkBook->get_result()->num_rows === 0) {
+            $checkBook->execute([$id_livro]);
+            if ($checkBook->rowCount() === 0) {
                 $this->responderErro('Livro não encontrado');
-                $checkBook->close();
                 return;
             }
-            $checkBook->close();
 
             // Inserir no banco
             $sql = "INSERT INTO comentarios (id_usuario, id_livro, comentario, avaliacao, data_comentario) 
@@ -95,14 +90,14 @@ class ComentariosController {
             $stmt = $this->conn->prepare($sql);
             
             if (!$stmt) {
-                error_log('Erro no prepare: ' . $this->conn->error);
-                $this->responderErro('Erro ao preparar consulta: ' . $this->conn->error);
+                error_log('Erro no prepare: ' . print_r($this->conn->errorInfo(), true));
+                $this->responderErro('Erro ao preparar consulta');
                 return;
             }
 
-            $stmt->bind_param('iisi', $id_usuario, $id_livro, $comentario, $avaliacao);
-            
-            if ($stmt->execute()) {
+            if ($stmt->execute([$id_usuario, $id_livro, $comentario, $avaliacao])) {
+                $id_comentario = $this->conn->lastInsertId();
+                
                 // Buscar nova média após inserir
                 $mediaQuery = $this->conn->prepare(
                     "SELECT 
@@ -111,24 +106,20 @@ class ComentariosController {
                     FROM comentarios 
                     WHERE id_livro = ?"
                 );
-                $mediaQuery->bind_param('i', $id_livro);
-                $mediaQuery->execute();
-                $mediaResult = $mediaQuery->get_result()->fetch_assoc();
-                $mediaQuery->close();
+                $mediaQuery->execute([$id_livro]);
+                $mediaResult = $mediaQuery->fetch();
 
                 $this->responderSucesso([
                     'sucesso' => true,
                     'mensagem' => 'Comentário adicionado com sucesso',
-                    'id_comentario' => $stmt->insert_id,
+                    'id_comentario' => $id_comentario,
                     'media_estrelas' => intval($mediaResult['media_estrelas']),
                     'total_avaliacoes' => intval($mediaResult['total_avaliacoes'])
                 ]);
             } else {
-                error_log('Erro ao executar: ' . $stmt->error);
-                $this->responderErro('Erro ao salvar comentário: ' . $stmt->error);
+                error_log('Erro ao executar: ' . print_r($stmt->errorInfo(), true));
+                $this->responderErro('Erro ao salvar comentário');
             }
-            
-            $stmt->close();
 
         } catch (Exception $e) {
             error_log('Exceção em criarComentario: ' . $e->getMessage());
@@ -158,7 +149,8 @@ class ComentariosController {
                         c.comentario, 
                         c.avaliacao, 
                         c.data_comentario,
-                        u.nome
+                        DATE_FORMAT(c.data_comentario, '%d/%m/%Y') as data_formatada,
+                        u.nome as nome_usuario
                     FROM comentarios c
                     LEFT JOIN usuarios u ON c.id_usuario = u.id_usuario
                     WHERE c.id_livro = ?
@@ -167,27 +159,18 @@ class ComentariosController {
             $stmt = $this->conn->prepare($sql);
             
             if (!$stmt) {
-                error_log('Erro no prepare: ' . $this->conn->error);
-                $this->responderErro('Erro ao preparar consulta: ' . $this->conn->error);
+                error_log('Erro no prepare: ' . print_r($this->conn->errorInfo(), true));
+                $this->responderErro('Erro ao preparar consulta');
                 return;
             }
 
-            $stmt->bind_param('i', $id_livro);
-            
-            if (!$stmt->execute()) {
-                error_log('Erro ao executar: ' . $stmt->error);
-                $this->responderErro('Erro ao buscar comentários: ' . $stmt->error);
+            if (!$stmt->execute([$id_livro])) {
+                error_log('Erro ao executar: ' . print_r($stmt->errorInfo(), true));
+                $this->responderErro('Erro ao buscar comentários');
                 return;
             }
 
-            $res = $stmt->get_result();
-            $rows = [];
-            
-            while ($r = $res->fetch_assoc()) {
-                $rows[] = $r;
-            }
-            
-            $stmt->close();
+            $comentarios = $stmt->fetchAll();
 
             // Calcular estatísticas de avaliação
             $statsQuery = $this->conn->prepare(
@@ -202,16 +185,14 @@ class ComentariosController {
                 FROM comentarios 
                 WHERE id_livro = ?"
             );
-            $statsQuery->bind_param('i', $id_livro);
-            $statsQuery->execute();
-            $stats = $statsQuery->get_result()->fetch_assoc();
-            $statsQuery->close();
+            $statsQuery->execute([$id_livro]);
+            $stats = $statsQuery->fetch();
 
             // Retornar comentários + estatísticas
             $this->responderSucesso([
-                'comentarios' => $rows,
+                'comentarios' => $comentarios,
                 'estatisticas' => [
-                    'total_avaliacoes' => intval($stats['total_avaliacoes']),
+                    'total_avaliacoes' => intval($stats['total_avaliacoes']) ?: 0,
                     'media_estrelas' => intval($stats['media_estrelas']) ?: 0,
                     'media_exata' => floatval($stats['media_exata']) ?: 0,
                     'distribuicao' => [
@@ -230,11 +211,15 @@ class ComentariosController {
     }
 
     private function responderSucesso($data) {
+        header('Content-Type: application/json; charset=utf-8');
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
+        exit;
     }
 
     private function responderErro($mensagem) {
+        header('Content-Type: application/json; charset=utf-8');
         echo json_encode(['erro' => $mensagem], JSON_UNESCAPED_UNICODE);
+        exit;
     }
 }
 ?>
