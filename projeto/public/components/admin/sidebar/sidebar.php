@@ -1,12 +1,11 @@
+<button class="menu-toggle" type="button" onclick="toggleSidebar()" aria-label="Abrir menu">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+</button>
 <!-- SIDEBAR FIXA -->
 <aside class="sidebar" id="sidebar">
     <!-- Logo -->
     <div class="sidebar-logo">
         <!-- botão sanduíche (chama toggleSidebar) -->
-        <button class="menu-toggle" type="button" onclick="toggleSidebar()" aria-label="Abrir menu">
-            <i class="fa-solid fa-bars" aria-hidden="true"></i>
-        </button>
-
         <div class="perfil-lateral">
             <h2 class="hub">HUB ACADEMY</h2>
             <h2 class="biblioteca">Biblioteca</h2>
