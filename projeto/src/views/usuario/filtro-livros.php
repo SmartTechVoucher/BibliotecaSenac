@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 <?php
 session_start();
 require(__DIR__ . '/../../../config/constantes.php');
@@ -48,7 +47,7 @@ function obterLivroOuPadrao($livros, $index)
     <div class="container">
         <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
 
-        <div class="content-wrapper">
+        <div class="content-wrapper">  
             <div class="sidebar">
                 <!-- Filtros -->
                 <div class="filter-group">
@@ -152,4 +151,4 @@ function obterLivroOuPadrao($livros, $index)
 </body>
 
 </html>
->>>>>>> 03b43cd68fc781cc5bc4da7b5f50b2decb2537b2
+
