@@ -1,0 +1,250 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --azul-padrao: #001E3E;
+    --cor-texto: #FFFFFF;
+}
+
+html, body {
+    height: 100%;      /* altura total da tela */
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* organiza em coluna */
+    min-height: 100vh;      /* ocupa a tela inteira */
+}
+
+main {
+    flex: 1; /* faz o conteúdo crescer e empurrar o footer para baixo */
+}
+
+footer {
+    width: 100%;
+    height: 130px;
+
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    overflow: hidden;
+
+    background-color: var(--azul-padrao);
+    font-family: 'Poppins', serif;
+    color: var(--cor-texto);
+    margin-top: 8%;
+}
+
+
+/*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*/
+
+.inferiorDireito{
+    display: flex;
+    justify-content: end;
+    margin-top: 5%;
+}
+
+/*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*//*Controle do ícone inferior do footer*/
+
+footer img {
+    max-height: 100%;        
+    object-fit: contain;
+    margin: 0;                
+    padding: 0;
+}
+
+.livro-brilhante {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 50%;
+    order: 1;
+}
+
+footer > *:not(.livro-brilhante){
+    order: 1;
+}
+
+.livro-brilhante img {
+    width: 60%;
+    
+
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 30%),
+                        linear-gradient(to right, transparent 0%, black 20%),
+                        linear-gradient(to left, transparent 0%, black 20%);
+    -webkit-mask-composite: destination-in;
+    mask-image: linear-gradient(to top, transparent 0%, black 30%),
+                linear-gradient(to right, transparent 0%, black 20%),
+                linear-gradient(to left, transparent 0%, black 20%);
+    mask-composite: intersect;
+}
+
+.livro-brilhante p {
+    padding-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.logo-senac img {
+    width: 300px;
+    height: 60px;
+    padding-left: 118px;
+    margin-right: 100px;
+}
+
+.textos {
+    padding: 15px;
+    font-size: 12px;
+    gap: 50px;
+    display: flex;
+}
+
+.logo-senac2 img {
+    width: 50px;
+    height: 50px;
+}
+
+.link-desenvolvedores {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-desenvolvedores:hover {
+    color: #F68B1F;
+}
+
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        height: auto;
+        padding-top: 20px;
+    }
+
+    .textos {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centraliza a div .textos no footer */
+        gap: 20px;
+        padding: 0 20px;
+        margin-top: 5%;
+    }
+
+    .textos > div {
+        text-align: center; /* Alinha o conteúdo de cada bloco à esquerda */
+        width: 100%;      /* Faz ocupar toda a largura disponível */
+        max-width: 300px; /* Limita a largura pra não ficar esticado demais */
+    }
+    .logo-senac {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo-senac img {
+        width: 180px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .redes {
+        align-items: center;
+    }
+
+    .social-icons ul {
+        justify-content: center;
+    }
+
+    .livro-brilhante {
+        display: flex !important;
+        order: 2;
+        margin-top: 15px;
+    }
+
+    .livro-brilhante img {
+        width: 50%;
+    }
+
+    .livro-brilhante p {
+        font-size: 9px;
+        padding-bottom: 10px;
+    }
+
+    .livro-brilhante img {
+        width: 60%;
+    
+        -webkit-mask-image:
+            linear-gradient(to top, transparent 0%, black 40%), /* topo reforçado */
+            linear-gradient(to bottom, transparent 0%, black 80%), /* base visível */
+            linear-gradient(to right, transparent 0%, black 20%),
+            linear-gradient(to left, transparent 0%, black 20%);
+        -webkit-mask-composite: destination-in;
+        
+        mask-image:
+            linear-gradient(to top, transparent 0%, black 40%),
+            linear-gradient(to bottom, transparent 0%, black 80%),
+            linear-gradient(to right, transparent 0%, black 20%),
+            linear-gradient(to left, transparent 0%, black 20%);
+        mask-composite: intersect;
+    }
+    
+}
+
+@media (max-width: 1300px) {
+    footer {
+        height: 120px; /* importante: deixa o footer crescer */
+    }
+
+    .livro-brilhante {
+        
+        display: none;
+    }
+
+    footer > *:not(.livro-brilhante) {
+        order: 1;
+        width: 100%;
+    }
+
+    /* Ajustes específicos para os elementos ocuparem o espaço */
+    .logo-senac {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .logo-senac img {
+        padding-left: 0; /* remove o padding que centraliza no desktop */
+        margin-right: 0;
+        width: 250px; /* ajusta o tamanho se necessário */
+    }
+
+
+    /* Ajusta o tamanho da imagem do livro no mobile */
+    .livro-brilhante img {
+        width: 40%; /* menor no mobile */
+    }
+
+    .livro-brilhante p {
+        font-size: 9px; /* ajusta texto se necessário */
+    }
+
+    .inferiorDireito .inferior{
+        width: 100px;
+        height: 100px;
+    }
+
+}
+
+@media(min-width:1124px){
+    .conteiner3 .esquerdo, .direito{
+        height: 150px;
+    }
+
+}

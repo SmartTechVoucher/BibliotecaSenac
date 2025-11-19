@@ -1,3 +1,2 @@
 <?php
 $URLBASE = "/BibliotecaSenac/projeto";
-?>

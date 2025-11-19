@@ -1,0 +1,104 @@
+:root{
+    --brancoAzulado: aliceblue;
+    --verde: rgba(2, 255, 19, 0.5);
+}
+
+body {
+    font-family: 'Bai Jamjuree', sans-serif;
+    background-color: rgb(15, 15, 15);
+}
+
+#main-devs {
+    width: 90%;
+    margin: auto;
+}
+
+.cards-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.logo_dev h1 {
+    font-weight: 700;
+    background-color: rgb(121, 178, 44);
+    color: var(--brancoAzulado);
+    font-size: 50px;
+    text-align: center;
+}
+
+.logo_dev p {
+    font-size: 50px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--brancoAzulado);
+}
+
+.card_dev {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    gap: 20px;
+    border: 3px solid rgba(170, 254, 175, 0.5);
+    border-radius: 20px;
+    padding: 15px;
+    background-color: rgba(0, 255, 17, 0.1);
+    box-shadow: 0 10px 10px var(--verde);
+    animation: ondas 2s linear infinite;
+    transition: 0.3s linear;
+}
+
+.card_dev:hover {
+    scale: 1.1;
+}
+
+.card_dev img {
+    border-radius: 10px;
+}
+
+.card_dev .texto {
+    text-align: center;
+    color: var(--brancoAzulado);
+}
+
+.card_dev .redes {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+
+.card_dev .redes a {
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.card_dev .redes img {
+    width: 100%;
+    height: auto;
+    transition: 0.2s linear;
+    filter: drop-shadow(0 0 5px #40C057);
+    border-radius: 8px;
+}
+
+.card_dev .redes img:hover {
+    scale: 1.2;
+}
+
+@keyframes ondas {
+    0% {
+        box-shadow: 0 10px 10px var(--verde);
+    }
+
+    50% {
+        box-shadow: 0px 10px 20px rgba(94, 246, 104, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 10px 10px var(--verde);
+    }
+}

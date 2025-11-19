@@ -1,0 +1,412 @@
+:root {
+  --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+  --cor-de-fundo: #f4f6fb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--fontes);
+}
+
+body {
+  min-height: 100vh;
+  background: var(--cor-de-fundo);
+}
+
+/* Sidebar fixa */
+.sidebar {
+  width: 240px;
+  background: #00264d;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+
+  padding: 1.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.sidebar-logo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sidebar-logo img {
+  width: 80px;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-logo h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.sidebar-logo .subtitle {
+  font-size: 0.9rem;
+  color: #ff6600;
+}
+
+/* Navegação */
+.sidebar-nav ul {
+  list-style: none;
+}
+
+.sidebar-nav ul li {
+  margin-bottom: 1rem;
+}
+
+.sidebar-nav ul li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+  gap: 1rem;
+}
+
+.sidebar-nav ul li a i {
+  margin-right: 0.6rem;
+}
+
+.sidebar-nav ul li a:hover,
+.sidebar-nav ul li a.active {
+  background: #0057d9;
+  color: #fff;
+}
+
+/* Perfil */
+.sidebar-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* border-top: 1px solid rgba(255, 255, 255, 0.15); */
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: #ffffff11;
+  border-radius: 0.75rem;
+  gap: 0.75rem;
+  margin-top: 20%;
+}
+
+.sidebar-profile p {
+  text-wrap: nowrap;
+}
+/* .sidebar-profile p {
+  margin-bottom: 0.5rem;
+} */
+
+.sidebar-profile a {
+  display: block;
+  text-decoration: none;
+  color: #cfd9e8;
+  margin: 0.3rem 0;
+  transition: color 0.2s;
+}
+
+.sidebar-profile a:hover {
+  color: #ff6600;
+}
+
+.sidebar-profile .logout {
+  color: #ff4b4b;
+  font-weight: bold;
+}
+
+/* Conteúdo */
+.main-content {
+  margin-left: 240px;
+  /* largura da sidebar */
+  padding: 2rem;
+  min-height: 100vh;
+  overflow-x: auto;
+  /* evita quebrar com tabelas largas */
+}
+
+.container-main {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 40px;
+  position: relative;
+  background: #fbfaff;
+  border-radius: 8px;
+  box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 0 0.5rem;
+}
+
+.form-section {
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.perfil-lateral{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  max-width: 200px;
+  margin-left: 3rem;
+}
+
+.perfil-lateral .hub{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.perfil-lateral .biblioteca{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ff6600;
+}
+/* Links da sidebar */
+.sidebar-nav ul li a {
+  text-wrap: nowrap;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  gap: 1rem;
+  position: relative;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* Hover moderno */
+.sidebar-nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  /* leve brilho sobre o fundo */
+}
+
+/* Link ativo */
+.sidebar-nav ul li a.active {
+  background: rgba(255, 102, 0, 0.15);
+  /* fundo sutil */
+  font-weight: 500;
+}
+
+/* Barra lateral animada */
+.sidebar-nav ul li a.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 4px;
+  height: calc(100% - 16px);
+  /* deixa um espaçamento top/bottom */
+  background: #ff6600;
+  border-radius: 4px;
+  transition: all 0.25s ease;
+}
+
+/* Transição geral para hover e ativo */
+.sidebar-nav ul li a::before {
+  transition: all 0.25s ease;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* espaço entre botão e texto */
+    justify-content: flex-start; /* botão à esquerda, texto ao lado */
+}
+
+.menu-toggle {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: #00264d;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 5px;
+  transition: color 0.2s;
+}
+
+.menu-toggle:hover {
+    color: #ff6600;
+}
+
+.sidebar-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.sidebar-login .btn-entrar {
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    background-color: #0057d9;
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5rem;
+}
+
+.sidebar-login .btn-entrar:hover {
+    background-color: #ff6600;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 230px;
+  }
+
+  .main-content {
+    margin-left: 200px;
+    padding: 1rem;
+  }
+}
+
+/* @media (max-width: 768px) { .sidebar { width: 200px; transform: translateX(-100%); transition: transform 0.3s ease; } .sidebar.open { transform: translateX(0); } .main-content { margin-left: 0; } } */
+/* Botão sanduíche */
+/* .menu-toggle {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1100;
+  background: #ff00ae;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menu-toggle:hover {
+  background: #0057d9;
+} */
+
+/* Sidebar deslizante padrão (desktop e mobile) */
+.sidebar {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  position: fixed;
+  /* já estava */
+}
+
+/* Overlay quando o menu abre */
+body.menu-open::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 900;
+}
+
+.cbmenu-icon {
+  font-size: 25px;
+  color: var(--cor-texto);
+}
+
+
+
+/* Responsividade: mobile */
+@media (max-width: 1024px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 30px;
+  left: 15px;
+  background: #00264d;
+  color: #fff;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  z-index: 1100; /* acima da sidebar */
+  transition: background 0.2s;
+}
+
+.menu-toggle:hover {
+  background: #004080;
+}
+
+/* === RESPONSIVIDADE === */
+@media (min-width: 1025px) {
+  .menu-toggle {
+    display: none; /* esconde o botão no desktop */
+  }
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  /* Escurece o fundo quando a sidebar abre */
+  body.menu-open::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+  }
+}

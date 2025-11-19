@@ -1,0 +1,471 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+:root {
+    --azul-tela-inicial: #003162;
+    --cor-texto: #ffffff;
+    --laranja-padrao: #F68B1F;
+}
+
+.cabecalho {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--azul-tela-inicial);
+    padding: 10px 10px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--cor-texto);
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+}
+
+.cbleft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 2%;
+}
+
+.cbmenu-icon {
+    position: fixed;
+    top: 18px;
+    left: 40px;
+    background-color: transparent !important;
+    border: none;
+    outline: none;        
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 4000 !important;
+}
+
+.cbmenu-icon i {
+    font-size: 30px;
+    color: var(--cor-texto);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cbmenu-icon i:hover {
+    color: var(--laranja-padrao);
+}
+
+.icsenac {
+    margin-left: 50px;
+    width: 45px;
+    height: auto;
+}
+
+.cbquite nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.cbquite nav ul li {
+    color: var(--cor-texto);
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+.navbar-desktop-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.navbar-desktop-top li a {
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 10px 8px 0px;
+    color: var(--cor-texto);
+    transition: color 0.3s ease;
+}
+
+.navbar-desktop-top li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--laranja-padrao);
+    transition: width 0.3s ease;
+}
+
+.navbar-desktop-top li a:hover {
+    color: var(--laranja-padrao);
+}
+
+.navbar-desktop-top li a:hover::after {
+    width: 100%;
+}
+
+.menu-li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.entrar-mobile {
+    display: none; 
+    margin-top: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+/* PERFIL LOGADO */
+.perfil-logado {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.perfil-logado:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.perfil-logado span {
+    font-size: 15px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    color: var(--cor-texto);
+}
+
+/* ÍCONES DE PERFIL - ESTILOS ATUALIZADOS */
+.icone-perfil {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--cor-texto);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.icone-perfil:hover {
+    border-color: var(--laranja-padrao);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Para garantir que imagens quebradas não apareçam */
+.icone-perfil[src=""], 
+.icone-perfil:not([src]) {
+    display: none;
+}
+
+/* ÍCONE SVG DO BOTÃO ENTRAR */
+.button-entrar .icone-perfil {
+    width: 28px;
+    height: 28px;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.button-entrar .icone-perfil:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.icperfil {
+    cursor: pointer;
+    height: 100px;
+    margin-top: 16px;
+    margin-right: 50px;
+    filter: brightness(80%);
+    width: 74px;
+    height: 70px;
+}
+
+.nome-usuario {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    color: var(--cor-texto);
+    white-space: nowrap;
+}
+
+/* MENU DROPDOWN */
+.menu-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #003162;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    min-width: 200px;
+    overflow: hidden;
+}
+
+.menu-dropdown.show {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-dropdown a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(130, 130, 130, 0.38);
+    transition: background-color 0.2s ease;
+}
+
+.menu-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.menu-dropdown a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.menu-dropdown a img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+/* BOTÃO ENTRAR */
+.button-entrar {
+    padding: 14px 25px 15px 30px;
+    height: auto;
+    margin-right: 2%;
+    border-radius: 1rem;
+    border: none;
+    color: var(--cor-texto);
+    cursor: pointer;
+    background-color: var(--laranja-padrao);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.button-entrar:hover {
+    background-color: var(--cor-texto);
+    color: #002043;
+    transition: 0.1s;
+}
+
+.button-entrar:hover svg path {
+    fill: #002043;
+}
+    
+.button-entrar svg path {
+    transition: fill 0.1s;
+}
+
+.button-entrar span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* SIDEBAR */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -340px;
+    width: 300px;
+    height: 100vh;
+    background: var(--azul-tela-inicial);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease;
+    padding: 5% 0px 0px 2%;
+    z-index: 3000;  
+    color: var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.menu-lateral.ativo {
+    left: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2500;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.ativo {
+    display: block; 
+    opacity: 1;
+}
+
+.cabecalho nav {
+    font-family: "Poppins", sans-serif;
+}
+
+#menu-lateral ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menu-lateral ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#menu-lateral.active {
+    display: block;
+}
+
+.menu-sanduiche .navbar-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: "Poppins", sans-serif;
+}
+
+.menu-sanduiche .navbar-desktop li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-sanduiche .navbar-desktop li a {
+    text-align: left;
+}
+
+.navbar-desktop li a {
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    padding: 10px 10px 8px 0px;
+    color: var(--cor-texto);
+    transition: color 0.3s ease;
+}
+  
+.navbar-desktop li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--laranja-padrao);
+    transition: width 0.3s ease;
+}
+
+.navbar-desktop li a:hover {
+    color: var(--laranja-padrao);
+}
+
+.navbar-desktop li a:hover::after {
+    width: 100%;
+}
+
+.perfil-lateral-2 {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+  
+.perfil-lateral-2 a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--cor-texto);
+}
+
+.perfil-lateral {
+    font-family: "Poppins", sans-serif;
+    position: absolute;
+    top: 0px;
+    left: 65px;
+    color: hsl(0, 0%, 100%);
+    padding: 8px 20px 20px 20px;
+}
+  
+.perfil-lateral .biblioteca {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--laranja-padrao);
+} 
+
+.perfil-lateral .hub {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .nome-usuario {
+        font-size: 14px;
+    }
+    
+    .icone-perfil {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .menu-dropdown {
+        min-width: 180px;
+    }
+}

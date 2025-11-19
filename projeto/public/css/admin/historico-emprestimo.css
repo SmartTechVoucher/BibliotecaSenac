@@ -1,0 +1,438 @@
+:root {
+    --azulCabecalho: #001E3E;
+    --fontes: 'Poppins', 'Roboto', 'Montaga';
+    --branco: white;
+    --fonte_rodape: 14px;
+    --fundoPadrao: #EDEDED;
+    --posicao: relative;
+    --posicaoAbsoluta: absolute;
+    --corFormulario: #E5E4E4;
+    --corBotao: #004A90;
+    --vermelho: red;
+    --apontador: pointer;
+    --cinza: #D9D9D9;
+    --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+    --cor-label: #555;
+}
+<<<<<<< HEAD
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0px;
+
+}
+.container {
+    width: 50%;
+    padding: 40px;
+    position: relative;
+    margin: auto;
+    background: #e6e6fa;
+    padding: 20px;
+    border-radius: 0px 8px 8px 8px;
+    box-shadow: 0px 7px 8px rgba(0,0,0,0.1);
+}
+=======
+
+>>>>>>> Dev
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #7a7e83;
+    color: white;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+*{
+    box-sizing: border-box;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    background-color: #a39797;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.botoesFiltro{
+    display: flex;
+    width: 52.1%;
+}
+<<<<<<< HEAD
+button {
+    background-color: #b4b8bd;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+=======
+
+>>>>>>> Dev
+button:hover {
+    background-color: #0056b3;
+}
+table {
+    width: 90%;
+    border-collapse: collapse;
+    border-radius: 10px; 
+    margin: auto;
+    font-size: 18px;
+    border: 2px solid #d3cdcd;
+    overflow: hidden;
+}
+.filter-options{
+    display:flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+.pagination-controls {
+            margin-top: 20px;
+            text-align: center;
+}
+
+.pagination-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.pagination-controls button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: var(--cor-label);
+}
+.main-container{
+    box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.1);
+    background: #fbfaff;
+    padding: 20px;
+    width: 90%;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 5%;
+}
+.main-container h2{
+    text-align: center;
+}
+
+th:first-child {
+    border-top-left-radius: 10px; }
+th:last-child {
+    border-top-right-radius: 10px; 
+}
+tbody{
+    background: #e0e0e0;
+}
+
+tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; 
+}
+tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; 
+}
+th, td {
+    border: 1px solid #000;
+    padding: 12px 16px; 
+    text-align: center;
+    height: 50px; 
+    vertical-align: middle; 
+    align-items: center;
+    justify-items: center;
+}
+.lulusantos{
+    background-color: #f1f1f1;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #e6e6fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+<<<<<<< HEAD
+body {
+    margin: 0;
+    background-color: var(--fundoPadrao);
+    font-family: var(--fontes);
+}
+=======
+
+>>>>>>> Dev
+.conteiner3 {
+    display: flex;
+    justify-content: space-between;
+}
+<<<<<<< HEAD
+=======
+
+>>>>>>> Dev
+.inferiorDireito{
+    display: flex;
+    justify-content: end;
+    margin-top:5%;
+}
+.inferiorDireito .inferior{
+    width: 100px;
+    height: 100px;
+}
+<<<<<<< HEAD
+.rodape{
+    background-color: var(--azulCabecalho);
+    height: 240px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 10px;
+    text-align: center;
+   
+}
+=======
+
+>>>>>>> Dev
+.menu{
+    width: 366px;
+    height: 370px;
+    background-color: var(--azulCabecalho);
+    color: var(--branco);
+    font-family: var(--fontes);
+    font-size: 33px;
+    display: none;
+    cursor: pointer;  
+      
+}
+.menu a {
+    text-decoration: none;
+    color: var(--branco);
+}
+@media(max-width:1024px){
+
+    .Libro, .copyright, .todos, .titulo{
+        display: none;
+    }
+}
+@media(min-width:375px){
+
+    .tabela{
+        overflow-x: auto;
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 15%;
+    }
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 69.5%;
+    }
+
+    .main-container{
+        overflow-x: scroll;
+    }
+
+    .conteiner3 .esquerdo, .direito, .inferior .inferiorDireito{
+        width: 100px;
+        height: 100px;
+    }
+
+    #logo-senac{
+        margin: 0px;
+        padding: 0px;
+    }
+
+}
+@media(min-width:414px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 72.5%;
+    }
+}
+@media(min-width:500px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 77.2%;
+    }
+}
+@media(min-width:600px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 81%;
+    }
+}
+@media(min-width:768px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 85.2%; top: 11%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
+}
+@media(min-width:820px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 85.8%; top: 11%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+}
+@media(min-width:912px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 87.5%; top: 10%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+    .inferior{
+        margin-top: 17%;
+    }
+
+}
+@media(min-width:1024px){
+ 
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 88.6%; top: 10%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+    .inferior{
+        margin-top: 17%;
+    }
+
+}
+@media(min-width:1124px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 89.9%; top: 10%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 10%;
+    }
+
+    .inferior{
+        margin-top: 17%;
+    }
+
+}
+@media(min-width:1280px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.1%; top: 14%
+    }
+
+    .menu{
+        position: var(--posicaoAbsoluta);
+        top: 13%;
+    }
+
+}
+@media(min-width:1358px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 91.6%; top: 14%
+    }
+
+}
+@media(min-width:1912px){
+
+    .minhaConta{
+        position: var(--posicaoAbsoluta);
+        left: 94%; top: 14%
+    }
+
+    .conteiner3 .esquerdo, .direito, .inferior .inferiorDireito{
+        width: 150px;
+        height: 150px;
+    }
+
+    #logo-senac{
+        height: 100px;
+    }
+
+    .Libro{
+        height: 252px;
+    }
+
+}

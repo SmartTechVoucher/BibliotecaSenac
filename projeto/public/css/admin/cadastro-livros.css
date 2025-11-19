@@ -1,0 +1,104 @@
+:root {
+  --azulCabecalho: #001E3E;
+  --fontes: 'Poppins', 'Roboto', 'Montaga', sans-serif;
+  --branco: #ffffff;
+  --fundoPadrao: #EDEDED;
+  --posicao: relative;
+  --posicaoAbsoluta: absolute;
+  --corFormulario: #E5E4E4;
+  --corBotao: #004A90;
+  --apontador: pointer;
+  --bordaBaixaCabecalho: #769FCD;
+  --cor-label: #555;
+}
+
+/* ==========================
+   FORMULÁRIO
+========================== */
+#cadastro-form legend {
+  font-size: 1.3rem;
+  font-weight: 500;
+  padding: 0 0.5rem;
+}
+
+/* Container principal da seção do formulário */
+.form-section {
+  border: 1px solid #ced4da;
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: var(--branco);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Cada "coluna" ocupa o máximo possível */
+.form-coluna {
+  flex: 1 1 0;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Grupo individual (label + input/textarea/select) */
+.form-grupo {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+  width: 100%;
+}
+
+/* Labels */
+.form-section label {
+  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--cor-label);
+}
+
+/* Inputs, selects e textareas */
+.form-section input,
+.form-section select,
+.form-section textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #495057;
+  transition: all 0.15s ease-in-out;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 200px;
+  height: 250px;
+  resize: vertical;
+  width: 100%;
+}
+
+/* Placeholder */
+::placeholder {
+  color: #a0a0a0;
+  opacity: 1;
+}
+
+/* Container dos botões */
+.botao-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 1rem;
+}

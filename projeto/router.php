@@ -1,36 +1,328 @@
 <?php
-require_once __DIR__ . "../../projeto/src/controller/usuario/loginController.php";
-$loginController = new LoginController();
+<?php
+// No início do arquivo
+require_once __DIR__ . '/config/paths.php';
+require_once DATABASE_PATH;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ini_set('session.cookie_lifetime', 0);
+ini_set('session.use_only_cookies', 1);
+ini_set('session.cookie_httponly', 1);
+if (session_status() === PHP_SESSION_NONE) session_start();
+
+require_once __DIR__ . '/src/controller/usuario/usuario-controller.php';  // UsuarioController
+require_once __DIR__ . '/src/controller/usuario/login-controller.php';    // LoginController
+require_once __DIR__ . '/src/controller/admin/AdminController.php';
+
+
+require_once __DIR__ . '/src/controller/usuario/ComentariosController.php';
+
+
+function isAdminLoggedIn() {
+    return isset($_SESSION['admin']) && !empty($_SESSION['admin']) && isset($_SESSION['admin']['id']);
+}
+
+if (!isset($_GET["acao"])) {
+    header("Location: " . $URLBASE . "/src/views/usuario/index.php");
+    exit;
+}
+$acao = $_GET["acao"];
+
+$usuarioController = new UsuarioController(); 
+
+switch ($acao) {
     
-    if (!isset($_GET["acao"])) {
-        echo "Erro: Nenhuma ação especificada.";
-        exit;
-    }
+    case 'validarLogin':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+            exit;
+        }
 
-    switch ($_GET["acao"]) {
-        case 'validarLogin':
-            $nome = $_POST["nome"] ?? '';
-            $senha = $_POST["senha"] ?? '';
-            $resultado = $loginController->ValidarLogin($nome, $senha);
-            if ($resultado) {
-                echo "funcionou";
-                header("Location: ./src/views/usuario/pagina_de_sucesso.php");
-                exit;
+        $email = trim($_POST['email'] ?? '');
+        $senha = $_POST['senha'] ?? '';
+
+        if (empty($email) || empty($senha)) {
+            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Email e senha são obrigatórios!'];
+            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+            exit;
+        }
+
+        $usuario = $usuarioController->validarLogin($email, $senha);
+
+        if ($usuario) {
+            session_regenerate_id(true);
+            $_SESSION['usuario_id'] = $usuario['id'];
+            $_SESSION['usuario_nome'] = $usuario['nome'];
+            $_SESSION['usuario_email'] = $usuario['email'];
+            $_SESSION['usuario_categoria'] = $usuario['categoria'];
+            $_SESSION['usuario_foto'] = $usuario['foto_perfil'] ?? '';
+
+            $_SESSION['toast'] = ['tipo' => 'success', 'mensagem' => 'Login realizado com sucesso!'];
+
+            $redirecionarPara = $URLBASE . '/src/views/usuario/index.php';
+            if (isset($_SESSION['redirect_after_login'])) {
+                $redirecionarPara = $_SESSION['redirect_after_login'];
+                unset($_SESSION['redirect_after_login']);
+            }
+
+            header('Location: ' . $redirecionarPara);
+            exit;
+        } else {
+            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Email ou senha incorretos, ou conta inativa!'];
+            header('Location: ' . $URLBASE . '/src/views/usuario/login.php');
+            exit;
+        }
+        break;
+
+    case 'logout':
+        unset($_SESSION['usuario_id'], $_SESSION['usuario_nome'], $_SESSION['usuario_email'], 
+        $_SESSION['usuario_categoria'], $_SESSION['usuario_foto']);
+        $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Logout realizado com sucesso!'];
+        session_regenerate_id(true);
+        header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
+        exit;
+        break;
+
+    case 'atualizarNomeSocial':
+        if (!isset($_SESSION['usuario_id'])) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Não autenticado.'], JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        try {
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+                throw new Exception('Método inválido.');
+            }
+            
+            $input = json_decode(file_get_contents('php://input'), true);
+            $nomeSocial = trim($input['nome_social'] ?? '');
+
+            if (strlen($nomeSocial) > 50) {
+                throw new Exception('Nome social muito longo (máximo 50 caracteres).');
+            }
+
+            $id_usuario = $_SESSION['usuario_id'];
+            $sucesso = $usuarioController->atualizarNomeSocial($id_usuario, $nomeSocial);
+
+            if ($sucesso) {
+                echo json_encode([
+                    'sucesso' => true,
+                    'mensagem' => 'Nome social atualizado com sucesso!',
+                    'nome_social' => $nomeSocial
+                ], JSON_UNESCAPED_UNICODE);
             } else {
-                echo "deu ruim";
-                header("Location: ./src/views/usuario/login.php?error=1");
+                throw new Exception('Erro ao atualizar nome social no banco de dados.');
+            }
+
+        } catch (Exception $e) {
+            echo json_encode([
+                'sucesso' => false,
+                'mensagem' => $e->getMessage()
+            ], JSON_UNESCAPED_UNICODE);
+        }
+        
+        exit;
+        break;
+    case 'comentarios':
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        $controller = new ComentariosController();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            $id_livro = (int) ($_GET['id_livro'] ?? 0);
+            
+            if ($id_livro <= 0) {
+                echo json_encode(['sucesso' => false, 'erro' => 'ID do livro inválido.'], JSON_UNESCAPED_UNICODE);
                 exit;
             }
-            break;
-        
-        default:
-            echo "Erro: Ação não reconhecida.";
-            exit;
-    }
 
-    // switch($_GET['acao']) {
-    //     case ''
-    // }
+            $resultado = $controller->getComentariosPorLivro($id_livro);
+            echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+            
+        } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            
+            if (!isset($_SESSION['usuario_id'])) {
+                echo json_encode(['sucesso' => false, 'erro' => 'Você precisa estar logado para comentar.'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+
+            $dados = json_decode(file_get_contents('php://input'), true);
+
+            $dados['id_usuario'] = $_SESSION['usuario_id'];
+
+            if (empty($dados) || !isset($dados['id_livro'], $dados['comentario'], $dados['avaliacao'])) {
+                echo json_encode(['sucesso' => false, 'erro' => 'Dados de comentário incompletos.'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+
+            $resultado = $controller->adicionarComentario($dados);
+            echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+
+        } else {
+            echo json_encode(['sucesso' => false, 'erro' => 'Método não permitido para esta ação.'], JSON_UNESCAPED_UNICODE);
+        }
+        exit;
+        break;
+
+    
+    case 'criarUsuario':
+        if (!isAdminLoggedIn()) {
+            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Acesso negado!'];
+            header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');
+            exit;
+        }
+
+        require_once __DIR__ . '/src/controller/admin/CadastrarUsuarioController.php';
+        
+        $controller = new CadastrarUsuarioController();
+        $resultado = $controller->cadastrar();
+
+        $_SESSION['toast'] = [
+            'tipo' => $resultado['success'] ? 'success' : 'erro',
+            'mensagem' => $resultado['message']
+        ];
+
+        header('Location: ' . $URLBASE . '/src/views/admin/cadastro-usuarios.php');
+        exit;
+        break;
+
+    case 'loginAdmin':
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');
+            exit;
+        }
+
+        $adminController = new AdminController();
+        $email = $_POST["nome"] ?? '';
+        $senha = $_POST["senha"] ?? '';
+        $resultado = $adminController->login($email, $senha);
+
+        if ($resultado) {
+            header("Location: " . $URLBASE . "/src/views/admin/index.php");
+            exit;
+        } else {
+            $_SESSION['toast'] = ['tipo' => 'erro', 'mensagem' => 'Email ou senha incorretos!'];
+            header("Location: " . $URLBASE . "/src/views/admin/login-adm.php");
+            exit;
+        }
+        break;
+    
+    case 'auxEntity':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/AuxEntityController.php";
+        $tipo = $_GET['tipo'] ?? null;
+        if (!$tipo) {
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Tipo não especificado.']);
+            exit;
+        }
+        $auxController = new AuxEntityController($tipo);
+        $auxController->handle();
+        exit;
+        
+    case 'cadastrarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/CadastrarLivroController.php";
+        $cadastrarLivroController = new CadastrarLivroController();
+        $cadastrarLivroController->cadastrar();
+        exit;
+
+    case 'atualizarEstoque':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/AtualizarEstoqueController.php";
+        $controller = new AtualizarEstoqueController();
+        $resultado = $controller->atualizarEstoque();
+        echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+        exit;
+
+    case 'editarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/EditarLivroController.php";
+        $controller = new EditarLivroController();
+        $controller->editar();
+        exit;
+
+    case 'buscarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/EditarLivroController.php";
+        $id_livro = (int) ($_GET['id_livro'] ?? 0);
+        
+        if ($id_livro <= 0) {
+            echo json_encode(['sucesso' => false, 'mensagem' => 'ID inválido.']);
+            exit;
+        }
+        
+        $controller = new EditarLivroController();
+        $resultado = $controller->buscarLivro($id_livro);
+        echo json_encode($resultado, JSON_UNESCAPED_UNICODE);
+        exit;
+
+    case 'deletarLivro':
+        if (!isAdminLoggedIn()) {
+            ob_clean();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(['sucesso' => false, 'mensagem' => 'Acesso negado.']);
+            exit;
+        }
+        
+        ob_clean();
+        header('Content-Type: application/json; charset=utf-8');
+        
+        require_once __DIR__ . "/src/controller/admin/DeletarLivroController.php";
+        $controller = new DeletarLivroController();
+        $controller->deletar();
+        exit;
+    
+    default:
+        header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
+        exit;
 }
