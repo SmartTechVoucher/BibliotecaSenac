@@ -1,258 +1,249 @@
-let exemplarFechado = true;
+// public/js/usuario/livro-info.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializa com exemplares fechados
+    const containerExemplar = document.getElementById('containerExemplarOpen');
+    if (containerExemplar) {
+        containerExemplar.style.display = 'none';
+    }
+    
+    carregarDadosLivro();
+});
+
+/**
+ * Carrega todos os dados do livro via AJAX
+ */
+async function carregarDadosLivro() {
+    try {
+        const response = await fetch(`${URLBASE}/router.php?acao=buscarLivroDetalhes&id=${ID_LIVRO}`);
+        const data = await response.json();
+
+        if (!data.sucesso) {
+            mostrarErro(data.mensagem || 'Erro ao carregar livro: Dados de retorno inválidos.');
+            return;
+        }
+
+        // Preenche os dados na página
+        preencherDadosLivro(data.livro);
+        preencherExemplares(data.exemplares);
+        preencherBotaoAcao(data.disponibilidade);
+        preencherAvaliacoes(data.avaliacoes);
+
+    } catch (error) {
+        console.error('Erro ao carregar livro (Fetch Error):', error);
+        mostrarErro('Erro de conexão ao carregar informações do livro.');
+    }
+}
+
+/**
+ * Preenche dados básicos do livro
+ */
+function preencherDadosLivro(livro) {
+    // Título da página
+    if (livro.titulo && document.getElementById('pageTitle')) {
+        document.getElementById('pageTitle').textContent = `${livro.titulo} - Biblioteca SENAC`;
+    }
+
+    // Preenche campos, verificando se o elemento existe
+    if (document.getElementById('livroTitulo')) {
+        document.getElementById('livroTitulo').textContent = livro.titulo || 'Título não informado';
+    }
+    if (document.getElementById('livroIsbn')) {
+        document.getElementById('livroIsbn').textContent = `ISBN: ${livro.isbn || 'Não informado'}`;
+    }
+    
+    // LINHA CRÍTICA: REMOVIDO O FALLBACK. 
+    // AGORA SÓ USA O QUE VEM DA API.
+    if (document.getElementById('livroFoto')) {
+        document.getElementById('livroFoto').src = livro.foto; 
+    }
+    
+    if (document.getElementById('livroDescricao')) {
+        document.getElementById('livroDescricao').textContent = livro.descricao || livro.resumo || 'Sem descrição disponível';
+    }
+    if (document.getElementById('livroAutor')) {
+        document.getElementById('livroAutor').textContent = livro.autor || 'Autor desconhecido';
+    }
+    if (document.getElementById('livroPublicacao')) {
+        document.getElementById('livroPublicacao').textContent = livro.editora 
+            ? `${livro.editora}, ${livro.data_publicacao || ''}` 
+            : 'Não informado';
+    }
+    if (document.getElementById('livroPaginas')) {
+        document.getElementById('livroPaginas').textContent = livro.numero_paginas || 'Não informado';
+    }
+}
+
+/**
+ * Preenche tabela de exemplares
+ */
+function preencherExemplares(exemplares) {
+    const container = document.getElementById('containerExemplarOpen');
+    if (!container) return; 
+
+    container.innerHTML = '';
+
+    if (!exemplares || exemplares.length === 0) {
+        container.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">Nenhum exemplar cadastrado</p>';
+        return;
+    }
+
+    // Cria os cabeçalhos da tabela uma vez
+    const headerGrid = `
+        <div class="containerGrid">
+            <div class="gridA"><u><b>Unidade</b></u></div>
+            <div class="gridA"><b>Exemplares</b></div>
+            <div class="gridA"><b>Disponível</b></div>
+            <div class="gridA"><b>Emprestados</b></div>
+            <div class="gridA"><b>Reservados</b></div>
+        </div>
+    `;
+    container.innerHTML += headerGrid;
+
+    // Adiciona as linhas de dados
+    exemplares.forEach(ex => {
+        const grid = document.createElement('div');
+        grid.className = 'containerGrid';
+        grid.innerHTML = `
+            <div class="gridB">${ex.unidade || 'N/A'}</div>
+            <div class="gridB">${ex.quantidade_total || 0}</div>
+            <div class="gridB">${ex.quantidade_disponivel || 0}</div>
+            <div class="gridB">${ex.quantidade_emprestada || 0}</div>
+            <div class="gridB">${ex.quantidade_reservada || 0}</div>
+        `;
+        container.appendChild(grid);
+    });
+}
+
+/**
+ * Define o botão de ação (Reservar ou Solicitar Empréstimo)
+ */
+function preencherBotaoAcao(disponibilidade) {
+    const statusEl = document.getElementById('statusDisponibilidade');
+    const botaoEl = document.getElementById('botaoAcao');
+
+    if (!statusEl || !botaoEl) return; 
+
+    botaoEl.onclick = null;
+    botaoEl.disabled = false;
+    
+    if (disponibilidade.total_disponivel > 0) {
+        statusEl.textContent = 'Disponível';
+        statusEl.style.color = '#28a745';
+        
+        botaoEl.textContent = 'Solicitar Empréstimo';
+        botaoEl.className = 'btn-disponivel';
+        botaoEl.onclick = solicitarEmprestimo;
+        
+    } else if (disponibilidade.total_exemplares > 0) {
+        statusEl.textContent = 'Indisponível';
+        statusEl.style.color = '#dc3545';
+        
+        botaoEl.textContent = 'Entrar na Fila de Reserva';
+        botaoEl.className = 'btn-indisponivel';
+        botaoEl.onclick = entrarNaFila;
+        
+    } else {
+        statusEl.textContent = 'Sem exemplares';
+        statusEl.style.color = '#666';
+        
+        botaoEl.textContent = 'Indisponível';
+        botaoEl.disabled = true;
+        botaoEl.className = 'btn-disabled';
+    }
+}
+
+/**
+ * Preenche seção de avaliações
+ */
+function preencherAvaliacoes(avaliacoes) {
+    const container = document.getElementById('reviewsContainer');
+    const totalReviewsEl = document.getElementById('totalReviews');
+
+    if (!container) return; 
+    
+    if (totalReviewsEl) {
+        totalReviewsEl.textContent = avaliacoes ? avaliacoes.length : 0;
+    }
+    
+    if (!avaliacoes || avaliacoes.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Nenhum comentário ainda. Seja o primeiro!</p>';
+        return;
+    }
+
+    container.innerHTML = '';
+    avaliacoes.forEach(av => {
+        const commentDiv = document.createElement('div');
+        commentDiv.className = 'comment_2';
+        commentDiv.innerHTML = `
+            <div class="commentName">
+                <div class="estrela-placeholder-container">
+                    <img class="estrela-placeholder" src="${URLBASE}/public/assets/icons/estrelas${av.nota || 1}.png" alt="Avaliação ${av.nota} estrelas">
+                </div>
+                <h3 class="commentTitulo">${av.usuario_nome || 'Usuário Anônimo'}</h3>
+            </div>
+            <p class="commentUserinfo">Feito em: ${formatarData(av.data_avaliacao)}</p>
+            <p class="commentConteudo">${av.comentario || 'Sem comentário.'}</p>
+        `;
+        container.appendChild(commentDiv);
+    });
+}
+
+function solicitarEmprestimo() {
+    if (!USUARIO_LOGADO) {
+        alert('Você precisa estar logado para solicitar empréstimo!');
+        window.location.href = `${URLBASE}/src/views/usuario/login.php`;
+        return;
+    }
+    alert('Funcionalidade em desenvolvimento: Solicitar Empréstimo');
+}
+
+function entrarNaFila() {
+    if (!USUARIO_LOGADO) {
+        alert('Você precisa estar logado para entrar na fila!');
+        window.location.href = `${URLBASE}/src/views/usuario/login.php`;
+        return;
+    }
+    alert('Funcionalidade em desenvolvimento: Fila de Reserva');
+}
 
 function alternarExemplar() {
-    const containerExemplarAberto = document.getElementById('containerExemplarOpen');
-    const botaoExemplar = document.getElementById('abrirExemplares');
-    if (exemplarFechado) {
-        botaoExemplar.src = URLBASE + "/public/assets/icons/Minus Math.png";
-        containerExemplarAberto.style.display = "block";
-        exemplarFechado = false;
+    const container = document.getElementById('containerExemplarOpen');
+    const icone = document.getElementById('abrirExemplares');
+    
+    if (!container || !icone) return;
+
+    if (container.style.display === 'none' || container.style.display === '') {
+        container.style.display = 'block';
+        icone.style.transform = 'rotate(45deg)';
     } else {
-        botaoExemplar.src = URLBASE + "/public/assets/icons/Plus Math.png";
-        containerExemplarAberto.style.display = "none";
-        exemplarFechado = true;
+        container.style.display = 'none';
+        icone.style.transform = 'rotate(0deg)';
     }
 }
 
-function reservaConcluida() {
-    const botaoReserva = document.getElementById('botaoReserva');
-    const estadoAtual = botaoReserva.getAttribute('data-status');
-    if (estadoAtual == "livre") {
-        botaoReserva.setAttribute('data-status', 'reservado');
-        botaoReserva.textContent = "Livro Reservado";
-        botaoReserva.style.background = "#F68B1F";
+function formatarData(dataString) {
+    if (!dataString) return 'Data desconhecida';
+    const data = new Date(dataString.replace(/-/g, '/')); 
+    
+    if (isNaN(data.getTime())) return 'Data inválida';
+
+    return data.toLocaleDateString('pt-BR');
+}
+
+function mostrarErro(mensagem) {
+    const container = document.querySelector('.containerConteudo');
+    if (container) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px; min-height: 50vh;">
+                <p style="color: #dc3545; font-size: 1.2rem; margin-bottom: 20px;">Ops! Algo deu errado ao carregar:</p>
+                <p style="color: #6c757d; margin-bottom: 30px;">${mensagem}</p>
+                <button onclick="window.history.back()" style="padding: 10px 20px; background: #004A90; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    Voltar
+                </button>
+            </div>
+        `;
     } else {
-        const confirmarCancelamento = window.confirm("Você realmente quer cancelar a reserva?");
-        if (confirmarCancelamento) {
-            botaoReserva.setAttribute('data-status', 'livre');
-            botaoReserva.textContent = "Reservar";
-            botaoReserva.style.background = "#004A90";
-        }
+        alert(`Erro: ${mensagem}`);
     }
 }
-
-// Sistema de avaliação por estrelas
-document.addEventListener('DOMContentLoaded', function () {
-    const estrelas = document.querySelectorAll('.estrela-input');
-    const valorDeRanqueamento = document.getElementById('rating-value');
-
-    if (!estrelas.length || !valorDeRanqueamento) {
-        console.log('Formulário de avaliação não encontrado (usuário não logado)');
-        return;
-    }
-
-    let rankAtual = 0;
-
-    function atualizarEstrelas(avaliacao) {
-        estrelas.forEach(estrela => {
-            if (estrela.dataset.value <= avaliacao) {
-                estrela.classList.add('active');
-            } else {
-                estrela.classList.remove('active');
-            }
-        });
-    }
-
-    estrelas.forEach(estrela => {
-        estrela.addEventListener('mouseover', () => {
-            atualizarEstrelas(estrela.dataset.value);
-        });
-
-        estrela.addEventListener('mouseout', () => {
-            atualizarEstrelas(rankAtual);
-        });
-
-        estrela.addEventListener('click', () => {
-            rankAtual = estrela.dataset.value;
-            valorDeRanqueamento.value = rankAtual;
-            atualizarEstrelas(rankAtual);
-        });
-    });
-
-    const form = document.getElementById('commentForm');
-    if (form) {
-        form.addEventListener('reset', () => {
-            rankAtual = 0;
-            valorDeRanqueamento.value = 0;
-            atualizarEstrelas(rankAtual);
-        });
-    }
-});
-
-// Carregar comentários ao abrir a página
-document.addEventListener('DOMContentLoaded', function () {
-    carregarComentarios();
-});
-
-// Função para carregar comentários do backend
-function carregarComentarios() {
-    const url = `${URLBASE}/router.php?acao=comentarios&id_livro=${ID_LIVRO}`;
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro na resposta do servidor: ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Dados recebidos:', data);
-
-            if (data.erro) {
-                console.error('Erro ao carregar comentários:', data.erro);
-                mostrarMensagemContainer('Erro ao carregar comentários.');
-                return;
-            }
-
-            const container = document.getElementById('reviewsContainer');
-            container.innerHTML = '';
-
-            const comentarios = data.comentarios || [];
-            const stats = data.estatisticas || { total_avaliacoes: 0, media_estrelas: 0 };
-
-            if (comentarios.length === 0) {
-                mostrarMensagemContainer('Nenhum comentário ainda. Seja o primeiro a avaliar!');
-                atualizarMediaAvaliacoes(0, 0);
-                return;
-            }
-
-            comentarios.forEach(comentario => {
-                adicionarComentarioNaTela(comentario);
-            });
-
-            atualizarMediaAvaliacoes(stats.media_estrelas, stats.total_avaliacoes);
-            console.log(`Média: ${stats.media_estrelas} estrelas | Total: ${stats.total_avaliacoes} avaliações`);
-            console.log('Distribuição:', stats.distribuicao);
-        })
-        .catch(error => {
-            console.error('Erro na requisição:', error);
-            mostrarMensagemContainer('Erro ao carregar comentários. Tente novamente mais tarde.');
-        });
-}
-
-function mostrarMensagemContainer(mensagem) {
-    const container = document.getElementById('reviewsContainer');
-    container.innerHTML = `<p style="text-align: center; color: #666; padding: 20px;">${mensagem}</p>`;
-}
-
-function atualizarMediaAvaliacoes(media, total) {
-    const imgMedia = document.getElementById('avaliacaoMediaImg');
-    const totalSpan = document.getElementById('totalReviews');
-
-    if (imgMedia && media > 0) {
-        imgMedia.src = `${URLBASE}/public/assets/icons/estrelas${media}.png`;
-    }
-
-    if (totalSpan) {
-        totalSpan.textContent = total;
-    }
-}
-
-// Função para adicionar comentário na tela
-function adicionarComentarioNaTela(comentario) {
-    const template = document.getElementById('commentTemplate');
-    const novoComentario = template.cloneNode(true);
-    novoComentario.style.display = 'block';
-    novoComentario.id = '';
-
-    novoComentario.querySelector('.commentTitulo').textContent = comentario.nome || 'Usuário';
-    novoComentario.querySelector('.commentConteudo').textContent = comentario.comentario;
-
-    let dataFormatada;
-    if (comentario.data_comentario) {
-        const data = new Date(comentario.data_comentario);
-        dataFormatada = data.toLocaleDateString('pt-BR');
-    } else {
-        dataFormatada = new Date().toLocaleDateString('pt-BR');
-    }
-    novoComentario.querySelector('.commentUserinfo').textContent = `Feito em: ${dataFormatada}`;
-
-    const estrelas = novoComentario.querySelector('.estrela-placeholder');
-    const avaliacaoNum = parseInt(comentario.avaliacao) || 1;
-    estrelas.src = `${URLBASE}/public/assets/icons/estrelas${avaliacaoNum}.png`;
-
-    const container = document.getElementById('reviewsContainer');
-    container.appendChild(novoComentario);
-}
-
-// Enviar novo comentário
-document.addEventListener('DOMContentLoaded', function () {
-    const btnEnviar = document.getElementById('comentario-botao');
-
-    if (!btnEnviar) {
-        console.log('Botão de enviar não encontrado (usuário não logado)');
-        return;
-    }
-
-    btnEnviar.addEventListener('click', function () {
-        if (!USUARIO_LOGADO) {
-            alert('Você precisa estar logado para comentar!');
-            window.location.href = `${URLBASE}/src/views/usuario/login.php`;
-            return;
-        }
-
-        const comentarioInput = document.getElementById('comentario-input');
-        const avaliacaoInput = document.getElementById('rating-value');
-
-        const comentario = comentarioInput.value.trim();
-        const avaliacao = parseInt(avaliacaoInput.value);
-
-        if (comentario === '') {
-            alert('Por favor, escreva um comentário!');
-            comentarioInput.focus();
-            return;
-        }
-
-        if (avaliacao === 0 || isNaN(avaliacao)) {
-            alert('Por favor, selecione uma avaliação (clique nas estrelas)!');
-            return;
-        }
-
-        const dados = {
-            id_usuario: ID_USUARIO,
-            id_livro: ID_LIVRO,
-            comentario: comentario,
-            avaliacao: avaliacao
-        };
-
-        console.log('Enviando comentário:', dados);
-
-        btnEnviar.disabled = true;
-        btnEnviar.textContent = 'Enviando...';
-
-        fetch(`${URLBASE}/router.php?acao=comentarios`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dados)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Erro na resposta do servidor: ' + response.status);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Resposta do servidor:', data);
-
-                if (data.sucesso) {
-                    alert('Comentário enviado com sucesso!');
-                    comentarioInput.value = '';
-                    avaliacaoInput.value = '0';
-                    document.querySelectorAll('.estrela-input').forEach(e => e.classList.remove('active'));
-                    carregarComentarios();
-                } else {
-                    alert('Erro ao enviar comentário: ' + (data.erro || data.mensagem || 'Erro desconhecido'));
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Erro ao enviar comentário. Verifique sua conexão e tente novamente.');
-            })
-            .finally(() => {
-                btnEnviar.disabled = false;
-                btnEnviar.textContent = 'Enviar';
-            });
-    });
-});
