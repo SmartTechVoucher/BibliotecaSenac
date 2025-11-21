@@ -231,14 +231,9 @@ case 'buscarLivroDetalhes':
     header('Content-Type: application/json; charset=utf-8');
 
     require_once __DIR__ . '/src/controller/usuario/LivroController.php';
-    $ctrl = new LivroController();
-
-    // Aceita tanto id quanto id_livro
-    $_GET['id'] = $_GET['id'] ?? ($_GET['id_livro'] ?? null);
-
-    $ctrl->buscarDetalhes($id);
+    $livroController = new LivroController();
+    $livroController->buscarDetalhes();  // ✅ SEM parâmetro
     exit;
-
 
 // ==========================
 // NOME SOCIAL

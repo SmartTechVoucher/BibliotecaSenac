@@ -11,8 +11,13 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Pega o ID do livro da URL (ou usa 1 como padrão)
-$id_livro = isset($_GET['id_livro']) ? intval($_GET['id_livro']) : 1;
+$id_livro = isset($_GET['id']) ? intval($_GET['id']) : (isset($_GET['id_livro']) ? intval($_GET['id_livro']) : 0);
+
+// Se não houver ID, redireciona
+if ($id_livro <= 0) {
+    header('Location: ' . $URLBASE . '/src/views/usuario/index.php');
+    exit;
+}
 
 // Pega informações do usuário logado
 $id_usuario = isset($_SESSION['usuario_id']) ? intval($_SESSION['usuario_id']) : 0;

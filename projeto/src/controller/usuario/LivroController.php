@@ -14,11 +14,12 @@ class LivroController {
      * Retorna detalhes completos de um livro em JSON
      * Usado pela página livro-info.php
      */
-    public function buscarDetalhes($id) {
+    public function buscarDetalhes() {  // ✅ Removido o parâmetro desnecessário
         header('Content-Type: application/json; charset=utf-8');
         
         try {
-            $id_livro = isset($_GET['id']) ? intval($_GET['id']) : 0;
+            // Aceita tanto 'id' quanto 'id_livro'
+            $id_livro = isset($_GET['id']) ? intval($_GET['id']) : (isset($_GET['id_livro']) ? intval($_GET['id_livro']) : 0);
             
             if ($id_livro <= 0) {
                 echo json_encode([
