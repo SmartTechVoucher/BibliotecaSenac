@@ -269,6 +269,79 @@ case 'atualizarNomeSocial':
     exit;
 
 // ==========================
+// EMPRÉSTIMOS E RESERVAS
+// ==========================
+
+case 'solicitarEmprestimo':
+    if (!isset($_SESSION['usuario_id'])) {
+        ob_clean();
+        echo json_encode(['sucesso' => false, 'mensagem' => 'Não autenticado.']);
+        exit;
+    }
+
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/EmprestimoController.php';  // ✅ USUARIO, não admin!
+    $emprestimoController = new EmprestimoController();
+    $emprestimoController->solicitarEmprestimo();
+    exit;
+
+case 'entrarNaFila':
+    if (!isset($_SESSION['usuario_id'])) {
+        ob_clean();
+        echo json_encode(['sucesso' => false, 'mensagem' => 'Não autenticado.']);
+        exit;
+    }
+
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/EmprestimoController.php';
+    $emprestimoController = new EmprestimoController();
+    $emprestimoController->entrarNaFila();
+    exit;
+
+case 'cancelarReserva':
+    if (!isset($_SESSION['usuario_id'])) {
+        ob_clean();
+        echo json_encode(['sucesso' => false, 'mensagem' => 'Não autenticado.']);
+        exit;
+    }
+
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/EmprestimoController.php';
+    $emprestimoController = new EmprestimoController();
+    $emprestimoController->cancelarReserva();
+    exit;
+
+case 'meusEmprestimos':
+    if (!isset($_SESSION['usuario_id'])) {
+        ob_clean();
+        echo json_encode(['sucesso' => false, 'mensagem' => 'Não autenticado.']);
+        exit;
+    }
+
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/EmprestimoController.php';
+    $emprestimoController = new EmprestimoController();
+    $emprestimoController->meusEmprestimos();
+    exit;
+
+case 'verificarPosicaoFila':
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/EmprestimoController.php';
+    $emprestimoController = new EmprestimoController();
+    $emprestimoController->verificarPosicaoFila();
+    exit;
+
+// ==========================
 // DEFAULT — SEMPRE NO FINAL
 // ==========================
 

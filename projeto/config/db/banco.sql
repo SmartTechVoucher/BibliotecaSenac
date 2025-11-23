@@ -150,6 +150,34 @@ CREATE TABLE exemplares (
     FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Execute este SQL no seu banco:
+
+CREATE TABLE IF NOT EXISTS fila_reservas (
+    id_fila INT PRIMARY KEY AUTO_INCREMENT,
+    id_livro INT NOT NULL,
+    id_usuario INT NOT NULL,
+    data_entrada_fila DATETIME DEFAULT CURRENT_TIMESTAMP,
+    posicao INT NOT NULL,
+    status ENUM('AGUARDANDO', 'NOTIFICADO', 'CANCELADO', 'CONVERTIDO') DEFAULT 'AGUARDANDO',
+    data_notificacao DATETIME NULL,
+    data_limite_retirada DATETIME NULL,
+    observacoes TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    INDEX idx_livro_status (id_livro, status),
+    INDEX idx_usuario (id_usuario)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Atualizar tabela movimentacoes para adicionar novos status:
+ALTER TABLE movimentacoes 
+MODIFY COLUMN status ENUM('Pendente', 'Emprestado', 'Devolvido', 'Cancelado', 'Atrasado') DEFAULT 'Pendente';
+
+-- Adicionar coluna para prazo de retirada (se não existir):
+ALTER TABLE movimentacoes 
+ADD COLUMN IF NOT EXISTS data_limite_retirada DATETIME NULL AFTER data_movimentacao;
+
 -- Dados de teste para FKs (autores, categorias, etc.)
 INSERT INTO categorias (nome) VALUES    
 ('Ficção'), ('Não-ficção'), ('Romance'), ('Suspense'), ('Fantasia'), ('Ficção Científica'), ('Biografia'), ('Autoajuda'), ('História'), ('Culinária'), ('Infantil'), ('Poesia'), ('Aventura'), ('Humor');
