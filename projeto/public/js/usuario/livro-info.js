@@ -185,7 +185,7 @@ function preencherBotaoAcao(disponibilidade) {
         
         // Hover effect
         botaoEl.onmouseenter = function() {
-            this.style.backgroundColor = '#e07b00';
+            this.style.backgroundColor = '#FF8C00';
             this.style.transform = 'scale(1.05)';
         };
         botaoEl.onmouseleave = function() {
@@ -199,8 +199,8 @@ function preencherBotaoAcao(disponibilidade) {
         statusEl.style.color = '#dc3545';
         
         botaoEl.textContent = 'Entrar na Fila';
-        botaoEl.style.backgroundColor = '#ffc107'; // Amarelo
-        botaoEl.style.color = '#000';
+        botaoEl.style.backgroundColor = '#003162'; // Amarelo
+        botaoEl.style.color = '#ffffffff';
         botaoEl.style.border = 'none';
         botaoEl.style.padding = '12px 40px';
         botaoEl.style.borderRadius = '10px';
@@ -211,11 +211,11 @@ function preencherBotaoAcao(disponibilidade) {
         botaoEl.onclick = entrarNaFila;
         
         botaoEl.onmouseenter = function() {
-            this.style.backgroundColor = '#e0a800';
+            this.style.backgroundColor = '#FF8C00';
             this.style.transform = 'scale(1.05)';
         };
         botaoEl.onmouseleave = function() {
-            this.style.backgroundColor = '#ffc107';
+            this.style.backgroundColor = '#FF8C00';
             this.style.transform = 'scale(1)';
         };
         
