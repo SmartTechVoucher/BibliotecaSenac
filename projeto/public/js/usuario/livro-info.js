@@ -172,7 +172,7 @@ function preencherBotaoAcao(disponibilidade) {
         statusEl.style.color = '#28a745';
         
         botaoEl.textContent = 'Reservar';
-        botaoEl.style.backgroundColor = '#FF8C00'; // Laranja igual sua imagem
+        botaoEl.style.backgroundColor = 'rgb(0, 49, 98)'; // Laranja igual sua imagem
         botaoEl.style.color = 'white';
         botaoEl.style.border = 'none';
         botaoEl.style.padding = '12px 40px';
