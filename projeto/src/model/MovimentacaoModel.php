@@ -28,8 +28,6 @@ class MovimentacaoModel {
                 throw new Exception('Livro indisponível no momento.');
             }
 
-            // No método criarEmprestimo(), SUBSTITUA a verificação:
-
             // 2. Verifica se usuário já tem empréstimo PENDENTE ou ATIVO deste livro
             $sql_check = "SELECT COUNT(*) FROM movimentacoes 
                         WHERE id_usuario = :id_usuario 
@@ -44,6 +42,7 @@ class MovimentacaoModel {
             if ($stmt_check->fetchColumn() > 0) {
                 throw new Exception('Você já possui um empréstimo ativo deste livro.');
             }
+
             // 3. Cria o empréstimo com status PENDENTE
             $data_limite_retirada = date('Y-m-d H:i:s', strtotime('+48 hours'));
             
@@ -85,6 +84,63 @@ class MovimentacaoModel {
             return [
                 'sucesso' => false,
                 'mensagem' => $e->getMessage()
+            ];
+        }
+    }
+
+    /**
+     * NOVO: Confirma o empréstimo e inicia a contagem de 7 dias para devolução
+     */
+    public function confirmarEmprestimo($id_movimentacao) {
+        try {
+            $this->conn->beginTransaction();
+
+            // 1. Busca o empréstimo
+            $sql_select = "SELECT * FROM movimentacoes WHERE id_movimentacao = :id";
+            $stmt_select = $this->conn->prepare($sql_select);
+            $stmt_select->execute([':id' => $id_movimentacao]);
+            $emprestimo = $stmt_select->fetch(PDO::FETCH_ASSOC);
+
+            if (!$emprestimo) {
+                throw new Exception('Empréstimo não encontrado.');
+            }
+
+            // 2. Verifica se está pendente
+            if ($emprestimo['status'] !== 'Pendente') {
+                throw new Exception('Este empréstimo já foi confirmado ou não está pendente.');
+            }
+
+            // 3. Calcula prazo de devolução (7 dias a partir de AGORA)
+            $data_prevista_devolucao = date('Y-m-d', strtotime('+7 days'));
+
+            // 4. Atualiza o empréstimo
+            $sql_update = "UPDATE movimentacoes 
+                          SET status = 'Emprestado',
+                              data_prevista_devolucao = :data_prevista,
+                              data_limite_retirada = NULL
+                          WHERE id_movimentacao = :id";
+            
+            $stmt_update = $this->conn->prepare($sql_update);
+            $stmt_update->execute([
+                ':data_prevista' => $data_prevista_devolucao,
+                ':id' => $id_movimentacao
+            ]);
+
+            $this->conn->commit();
+
+            return [
+                'success' => true,
+                'message' => 'Empréstimo confirmado! Prazo de devolução: 7 dias.',
+                'data_prevista_devolucao' => $data_prevista_devolucao
+            ];
+
+        } catch (Exception $e) {
+            if ($this->conn->inTransaction()) {
+                $this->conn->rollBack();
+            }
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
             ];
         }
     }

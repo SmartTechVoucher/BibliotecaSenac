@@ -1,14 +1,12 @@
 <?php
 require "../../../config/constantes.php";
 
-
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <main>
-
                 <!-- Barra de pesquisa -->
                 <div id="barra-pesquisa">
                     <label for="searchBox">Pesquisar usuário:</label>

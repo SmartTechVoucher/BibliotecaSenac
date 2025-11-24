@@ -341,6 +341,20 @@ case 'verificarPosicaoFila':
     $emprestimoController->verificarPosicaoFila();
     exit;
 
+case 'confirmarEmprestimo':
+    if (!isAdminLoggedIn()) {
+        ob_clean();
+        echo json_encode(['success' => false, 'message' => 'Acesso negado.']);
+        exit;
+    }
+
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/admin/ConfirmarEmprestimoController.php';
+    $confirmarController = new ConfirmarEmprestimoController();
+    $confirmarController->confirmar();
+    exit;
 // ==========================
 // DEFAULT — SEMPRE NO FINAL
 // ==========================

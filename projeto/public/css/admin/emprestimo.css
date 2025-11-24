@@ -230,6 +230,22 @@ a {
     background-color: #218838;
 }
 
+/* Botão Confirmar (Verde) - Adicione ao seu arquivo CSS */
+.btn-confirmar {
+    background-color: #28a745;
+}
+
+.btn-confirmar:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajuste para quando houver múltiplos botões na mesma célula */
+.loan-table td button {
+    margin: 2px;
+}
+
 /* ==============================================
    MENSAGENS DE FEEDBACK (BÔNUS)
    ============================================== */
