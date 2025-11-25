@@ -207,3 +207,8 @@ INSERT INTO cursos (nome) VALUES
 INSERT INTO adminstrador (nome, cpf, email, senha, data_nascimento, telefone, rua, bairro, genero) VALUES 
 ('Admin Principal', '123.456.789-10', 'admin@biblioteca.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', '1980-01-01', '(11) 99999-9999', 'Rua Admin 123', 'Centro', 'Masculino')
 ON DUPLICATE KEY UPDATE senha = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+
+
+
+-- MUDANÇAS NA TABELA PARA DAR CERTO AS MUDANÇAS DO FLUXO DE EMPRESTIMO/RESERVA
+
