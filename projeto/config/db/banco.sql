@@ -126,6 +126,67 @@ CREATE TABLE livros (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ============================================
+-- TABELA DE AVALIAÇÕES/COMENTÁRIOS
+-- ============================================
+
+CREATE TABLE avaliacoes (
+    id_avaliacao INT PRIMARY KEY AUTO_INCREMENT,
+    id_livro INT NOT NULL,
+    id_usuario INT NOT NULL,
+    estrelas INT NOT NULL CHECK (estrelas BETWEEN 1 AND 5),
+    comentario TEXT NULL,
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_livro) REFERENCES livros(id_livro) ON DELETE CASCADE,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+    UNIQUE KEY unique_user_book (id_usuario, id_livro),
+    INDEX idx_livro (id_livro),
+    INDEX idx_usuario (id_usuario)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+COMMENT='Avaliações e comentários dos usuários sobre os livros';
+
+-- ============================================
+-- VIEW PARA ESTATÍSTICAS DE AVALIAÇÕES
+-- ============================================
+
+CREATE OR REPLACE VIEW vw_estatisticas_avaliacoes AS
+SELECT 
+    l.id_livro,
+    l.titulo,
+    COUNT(a.id_avaliacao) as total_avaliacoes,
+    COALESCE(AVG(a.estrelas), 0) as media_estrelas,
+    COALESCE(ROUND(AVG(a.estrelas), 1), 0) as media_arredondada,
+    SUM(CASE WHEN a.estrelas = 5 THEN 1 ELSE 0 END) as cinco_estrelas,
+    SUM(CASE WHEN a.estrelas = 4 THEN 1 ELSE 0 END) as quatro_estrelas,
+    SUM(CASE WHEN a.estrelas = 3 THEN 1 ELSE 0 END) as tres_estrelas,
+    SUM(CASE WHEN a.estrelas = 2 THEN 1 ELSE 0 END) as duas_estrelas,
+    SUM(CASE WHEN a.estrelas = 1 THEN 1 ELSE 0 END) as uma_estrela
+FROM livros l
+LEFT JOIN avaliacoes a ON l.id_livro = a.id_livro
+GROUP BY l.id_livro, l.titulo;
+
+-- ============================================
+-- QUERIES ÚTEIS
+-- ============================================
+
+-- Ver todas as avaliações de um livro:
+-- SELECT a.*, u.nome as nome_usuario, u.foto_perfil
+-- FROM avaliacoes a
+-- JOIN usuarios u ON a.id_usuario = u.id_usuario
+-- WHERE a.id_livro = 1
+-- ORDER BY a.data_criacao DESC;
+
+-- Ver estatísticas de um livro:
+-- SELECT * FROM vw_estatisticas_avaliacoes WHERE id_livro = 1;
+
+-- Ver avaliações de um usuário:
+-- SELECT a.*, l.titulo, l.foto
+-- FROM avaliacoes a
+-- JOIN livros l ON a.id_livro = l.id_livro
+-- WHERE a.id_usuario = 1
+-- ORDER BY a.data_criacao DESC;
+
+-- ============================================
 -- TABELA DE EXEMPLARES (ESTOQUE)
 -- ============================================
 

@@ -114,16 +114,6 @@ $usuario_logado = $id_usuario > 0;
             </div>
         </div>
 
-        <!-- Seção de Exemplares -->
-        <div class="containerExemplar">
-            <p>Exemplares</p>
-            <img src="<?php echo $URLBASE ?>/public/assets/icons/Plus Math.png" alt="Expandir" id="abrirExemplares" onclick="alternarExemplar()" style="cursor: pointer;">
-        </div>
-
-        <div id="containerExemplarOpen" style="display: none;">
-            <p style="text-align: center; padding: 20px; color: #666;">Carregando informações de exemplares...</p>
-        </div>
-
         <!-- Seção de Comentários -->
         <div class="containerComentarios">
             <div class="comment_1">

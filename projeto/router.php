@@ -355,6 +355,60 @@ case 'confirmarEmprestimo':
     $confirmarController = new ConfirmarEmprestimoController();
     $confirmarController->confirmar();
     exit;
+
+// ==========================
+// AVALIAÇÕES/COMENTÁRIOS
+// Adicione ANTES do 'default' no router.php
+// ==========================
+
+case 'salvarAvaliacao':
+    if (!isset($_SESSION['usuario_id'])) {
+        ob_clean();
+        echo json_encode(['success' => false, 'message' => 'Não autenticado.']);
+        exit;
+    }
+
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/AvaliacaoController.php';
+    $avaliacaoController = new AvaliacaoController();
+    $avaliacaoController->salvar();
+    exit;
+
+case 'listarAvaliacoes':
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/AvaliacaoController.php';
+    $avaliacaoController = new AvaliacaoController();
+    $avaliacaoController->listar();
+    exit;
+
+case 'minhaAvaliacao':
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/AvaliacaoController.php';
+    $avaliacaoController = new AvaliacaoController();
+    $avaliacaoController->minhaAvaliacao();
+    exit;
+
+case 'deletarAvaliacao':
+    if (!isset($_SESSION['usuario_id'])) {
+        ob_clean();
+        echo json_encode(['success' => false, 'message' => 'Não autenticado.']);
+        exit;
+    }
+
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/usuario/AvaliacaoController.php';
+    $avaliacaoController = new AvaliacaoController();
+    $avaliacaoController->deletar();
+    exit;
+
 // ==========================
 // DEFAULT — SEMPRE NO FINAL
 // ==========================
