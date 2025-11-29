@@ -79,20 +79,23 @@ body{
 .livroTitulo h1{
     font-size: 170%;
     margin-bottom: 0px;
+    width: 66%;
 }
 
 #livroIsbn{
     font-size: 81%;
     color: rgb(100, 100, 100);
+    width: 32%;
 }
 
 #livroDescricao{
-    margin-bottom: 0%;
+    margin-bottom: 6%;
     margin-top: 2%;
 }
 
 .livroReservar{
     margin: 3% 0 0 0;
+    margin-bottom: 7%;
 }
 
 /* botao de reserva */
@@ -137,6 +140,7 @@ body{
     flex-direction: row;
     margin: 4% 0 0%;
     font-size: 80%;
+    width: 168%;
 }
 
 .info_2 img{
@@ -147,6 +151,7 @@ body{
     display: flex;
     align-items: center;
     gap: 1%;
+    height: 21%
 }
 
 .autor, .paginas, .publicacao{

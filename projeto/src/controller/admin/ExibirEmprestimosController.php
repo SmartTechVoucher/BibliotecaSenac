@@ -53,7 +53,7 @@ try {
     if ($total_itens == 0) {
         echo json_encode([
             'success' => true,
-            'tabela_html' => '<h4>Histórico de Empréstimos</h4><p>Este usuário não possui empréstimos ativos ou histórico.</p>',
+            'tabela_html' => '<h4>Histórico de Emprtimos</h4><p>Este usuário não possui empréstimos ativos ou histórico.</p>',
             'paginacao_html' => ''
         ]);
         exit;
