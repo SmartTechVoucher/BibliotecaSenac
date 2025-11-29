@@ -1,6 +1,6 @@
 // Variável global para guardar o ID do usuário
 let usuarioSelecionadoId = null;
-// (NOVO) Variável global para guardar a página atual
+// Variável global para guardar a página atual
 let paginaAtualEmprestimos = 1;
 
 // --- Funções da Barra de Busca ---
@@ -21,7 +21,7 @@ function buscarUsuarios(query) {
 function mostrarUsuario(id) {
     // 1. Guarda o ID globalmente
     usuarioSelecionadoId = id;
-    // (NOVO) Reseta a página para 1 ao selecionar novo usuário
+    // Reseta a página para 1 ao selecionar novo usuário
     paginaAtualEmprestimos = 1; 
 
     // 2. Busca e exibe o Card do Usuário
@@ -34,8 +34,8 @@ function mostrarUsuario(id) {
         })
         .catch(err => console.error(err));
 
-    // 3. (ATUALIZADO) Busca e exibe a Tabela (página 1)
-    carregarTabelaEmprestimos(id, 1); // <-- Envia a página 1
+    // 3. Busca e exibe a Tabela (página 1)
+    carregarTabelaEmprestimos(id, 1);
 
     // 4. Ativa os botões de empréstimo
     document.getElementById("isbnInput").disabled = false;
@@ -44,28 +44,26 @@ function mostrarUsuario(id) {
     document.getElementById("loanMessage").innerHTML = "";
 }
 
-// --- (ATUALIZADO) Funções de Empréstimo ---
+// --- Funções de Empréstimo ---
 
 /**
  * Busca a tabela de empréstimos PAGINADA de um usuário no backend.
  */
 function carregarTabelaEmprestimos(idUsuario, pagina) {
-    // (NOVO) Guarda a página que está sendo carregada
-    if (pagina) { // Garante que a página só é atualizada se for fornecida
+    // Guarda a página que está sendo carregada
+    if (pagina) {
         paginaAtualEmprestimos = pagina; 
     }
 
     const tableContainer = document.getElementById("loanTableContainer");
-    const paginationContainer = document.getElementById("loanPaginationContainer"); // (NOVO)
+    const paginationContainer = document.getElementById("loanPaginationContainer");
     
-    tableContainer.innerHTML = "<p>Carregando empréstimos...</p>"; // Feedback
-    paginationContainer.innerHTML = ""; // Limpa paginação antiga
+    tableContainer.innerHTML = "<p>Carregando empréstimos...</p>";
+    paginationContainer.innerHTML = "";
 
-    // (ATUALIZADO) Adiciona o parâmetro '&page=' ao fetch
     fetch(`/BibliotecaSenac/projeto/src/controller/admin/ExibirEmprestimosController.php?id=${idUsuario}&page=${pagina}`)
-        .then(response => response.json()) // (ATUALIZADO) Espera JSON
+        .then(response => response.json())
         .then(data => {
-            // (ATUALIZADO) Processa a resposta JSON
             if (data.success) {
                 tableContainer.innerHTML = data.tabela_html;
                 paginationContainer.innerHTML = data.paginacao_html;
@@ -90,17 +88,15 @@ function registrarEmprestimo() {
         messageDiv.innerHTML = "<p style='color: red;'>Erro: Nenhum usuário selecionado.</p>";
         return;
     }
-    if (isbn.length < 10) { // Validação simples de ISBN
+    if (isbn.length < 10) {
         messageDiv.innerHTML = "<p style='color: red;'>Erro: ISBN inválido.</p>";
         return;
     }
 
-    // Prepara os dados para enviar via POST
     const formData = new FormData();
     formData.append('id_usuario', usuarioSelecionadoId);
     formData.append('isbn', isbn);
 
-    // Feedback de carregamento
     messageDiv.innerHTML = "<p>Registrando...</p>";
     document.getElementById("confirmLoanBtn").disabled = true;
 
@@ -108,14 +104,11 @@ function registrarEmprestimo() {
         method: "POST",
         body: formData
     })
-    .then(response => response.json()) // Esperamos uma resposta JSON
+    .then(response => response.json())
     .then(data => {
         if (data.success) {
             messageDiv.innerHTML = `<p style='color: green;'>${data.message}</p>`;
-            // Limpa o input e atualiza a tabela
             document.getElementById("isbnInput").value = "";
-            
-            // (ATUALIZADO) Recarrega a página 1
             carregarTabelaEmprestimos(usuarioSelecionadoId, 1); 
         } else {
             messageDiv.innerHTML = `<p style='color: red;'>${data.message}</p>`;
@@ -126,24 +119,43 @@ function registrarEmprestimo() {
         console.error(err);
     })
     .finally(() => {
-        // Reativa o botão
         document.getElementById("confirmLoanBtn").disabled = false;
     });
 }
 
-// --- Event Listeners ---
- 
-// Adiciona os eventos aos botões quando a página carregar
-document.addEventListener("DOMContentLoaded", () => {
-    // Botão Confirmar
-    document.getElementById("confirmLoanBtn").addEventListener("click", registrarEmprestimo);
+/**
+ * NOVO: Confirma um empréstimo pendente e inicia a contagem de 48h
+ */
+function confirmarEmprestimo(idMovimentacao) {
+    if (!confirm("Confirmar a retirada deste livro? O prazo de 48 horas para devolução será iniciado.")) {
+        return;
+    }
 
-    // Botão Cancelar
-    document.getElementById("cancelLoanBtn").addEventListener("click", () => {
-        document.getElementById("isbnInput").value = "";
-        document.getElementById("loanMessage").innerHTML = "";
+    const formData = new FormData();
+    formData.append('id_movimentacao', idMovimentacao);
+    
+    const messageDiv = document.getElementById("loanMessage");
+    messageDiv.innerHTML = "<p>Confirmando empréstimo...</p>";
+
+    fetch("/BibliotecaSenac/projeto/router.php?acao=confirmarEmprestimo", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            messageDiv.innerHTML = `<p style='color: green;'>${data.message}</p>`;
+            // Recarrega a tabela na página atual
+            carregarTabelaEmprestimos(usuarioSelecionadoId, paginaAtualEmprestimos); 
+        } else {
+            messageDiv.innerHTML = `<p style='color: red;'>${data.message}</p>`;
+        }
+    })
+    .catch(err => {
+        messageDiv.innerHTML = "<p style='color: red;'>Erro ao confirmar empréstimo.</p>";
+        console.error(err);
     });
-});
+}
 
 /**
  * Envia uma requisição para renovar um empréstimo.
@@ -167,7 +179,6 @@ function renovarEmprestimo(idMovimentacao) {
     .then(data => {
         if (data.success) {
             messageDiv.innerHTML = `<p style='color: green;'>${data.message}</p>`;
-            // (ATUALIZADO) Recarrega a PÁGINA ATUAL
             carregarTabelaEmprestimos(usuarioSelecionadoId, paginaAtualEmprestimos); 
         } else {
             messageDiv.innerHTML = `<p style='color: red;'>${data.message}</p>`;
@@ -189,7 +200,7 @@ function devolverEmprestimo(idMovimentacao, idLivro) {
     
     const formData = new FormData();
     formData.append('id_movimentacao', idMovimentacao);
-    formData.append('id_livro', idLivro); // Precisamos do ID do livro para atualizar o estoque
+    formData.append('id_livro', idLivro);
 
     const messageDiv = document.getElementById("loanMessage");
     messageDiv.innerHTML = "<p>Processando devolução...</p>";
@@ -202,7 +213,6 @@ function devolverEmprestimo(idMovimentacao, idLivro) {
     .then(data => {
         if (data.success) {
             messageDiv.innerHTML = `<p style='color: green;'>${data.message}</p>`;
-            // (ATUALIZADO) Recarrega a PÁGINA ATUAL
             carregarTabelaEmprestimos(usuarioSelecionadoId, paginaAtualEmprestimos); 
         } else {
             messageDiv.innerHTML = `<p style='color: red;'>${data.message}</p>`;
@@ -213,3 +223,16 @@ function devolverEmprestimo(idMovimentacao, idLivro) {
         console.error(err);
     });
 }
+
+// --- Event Listeners ---
+ 
+document.addEventListener("DOMContentLoaded", () => {
+    // Botão Confirmar
+    document.getElementById("confirmLoanBtn").addEventListener("click", registrarEmprestimo);
+
+    // Botão Cancelar
+    document.getElementById("cancelLoanBtn").addEventListener("click", () => {
+        document.getElementById("isbnInput").value = "";
+        document.getElementById("loanMessage").innerHTML = "";
+    });
+});

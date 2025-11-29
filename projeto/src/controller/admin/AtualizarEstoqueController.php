@@ -56,11 +56,12 @@ class AtualizarEstoqueController {
             $livros = $this->livro_model->getTodosLivros();
             $livro_existe = false;
             foreach ($livros as $livro) {
-                if ($livro['id_livro'] === $id_livro) {
+                if ((int)$livro['id_livro'] === $id_livro) {
                     $livro_existe = true;
                     break;
                 }
             }
+
 
             if (!$livro_existe) {
                 throw new Exception('Livro não encontrado.');

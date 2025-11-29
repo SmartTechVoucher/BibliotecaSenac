@@ -73,6 +73,7 @@ body{
     display: flex;
     align-items: center;
     gap: 2%;
+    height: 13%
 }
 
 .livroTitulo h1{
@@ -168,8 +169,8 @@ body{
     background-color: #F2F1F9;
     border: 2px solid #5691EA;
     border-radius: 65px;
-    width: 100px;
-    height: 40px;
+    width: 61%;
+    height: 43px;
     padding: 3px;
     align-content: center;
 }
@@ -449,6 +450,8 @@ a{
 
     color: rgb(14, 13, 13);
 }
+
+
 
 /* MEDIA QUERIES */
 @media (max-width: 935px){
