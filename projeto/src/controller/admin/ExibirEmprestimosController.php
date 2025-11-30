@@ -2,10 +2,12 @@
 /**
  * Controller responsável por buscar e exibir a tabela de empréstimos 
  * de um usuário de forma PAGINADA.
- * * Recebe:
+ * 
+ * Recebe:
  * - $_GET['id'] (ID do usuário)
  * - $_GET['page'] (Número da página, opcional, default=1)
- * * Retorna:
+ * 
+ * Retorna:
  * - JSON com { success: true, tabela_html: "...", paginacao_html: "..." }
  */
 
@@ -14,7 +16,7 @@ require_once __DIR__ . '/../../../config/db/database.php';
 header('Content-Type: application/json');
 
 // --- Configuração da Paginação ---
-$itens_por_pagina = 5; // Defina quantos empréstimos por página
+$itens_por_pagina = 5; // Quantos empréstimos por página
 
 // --- Conexão ao DB ---
 date_default_timezone_set('America/Campo_Grande');
@@ -50,7 +52,7 @@ try {
     if ($total_itens == 0) {
         echo json_encode([
             'success' => true,
-            'tabela_html' => '<h4>Histórico de Empréstimos</h4><p>Este usuário não possui empréstimos ativos ou histórico.</p>',
+            'tabela_html' => '<h4>Histórico de Emprtimos</h4><p>Este usuário não possui empréstimos ativos ou histórico.</p>',
             'paginacao_html' => ''
         ]);
         exit;
@@ -61,13 +63,19 @@ try {
     // --- Query 2: Buscar os itens da PÁGINA ATUAL ---
     $sql = "SELECT 
                 m.id_movimentacao, m.id_livro, l.titulo, l.isbn, 
-                m.data_movimentacao, m.data_prevista_devolucao, 
-                m.data_real_devolucao, m.status
+                m.data_movimentacao, m.data_limite_retirada,
+                m.data_prevista_devolucao, m.data_real_devolucao, m.status
             FROM movimentacoes m
             JOIN livros l ON m.id_livro = l.id_livro
             WHERE m.id_usuario = :id
-            ORDER BY m.status ASC, m.data_movimentacao DESC
-            LIMIT :limit OFFSET :offset"; // <-- Paginação aqui
+            ORDER BY 
+                CASE 
+                    WHEN m.status = 'Pendente' THEN 1
+                    WHEN m.status = 'Emprestado' THEN 2
+                    ELSE 3
+                END,
+                m.data_movimentacao DESC
+            LIMIT :limit OFFSET :offset";
             
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':id', $idUsuario, PDO::PARAM_INT);
@@ -81,35 +89,59 @@ try {
     $html_tabela .= "<table class='loan-table'>";
     $html_tabela .= "<thead>
             <tr>
-                <th>Título</th><th>ISBN</th><th>Data Empréstimo</th>
-                <th>Prazo Devolução</th><th>Data Devolvido</th>
-                <th>Status</th><th>Ações</th>
+                <th>Título</th>
+                <th>ISBN</th>
+                <th>Data Empréstimo</th>
+                <th>Prazo Devolução</th>
+                <th>Data Devolvido</th>
+                <th>Status</th>
+                <th>Ações</th>
             </tr>
           </thead>";
     $html_tabela .= "<tbody>";
 
     foreach ($emprestimos as $emp) {
         $dataEmp = new DateTime($emp['data_movimentacao']);
-        $dataPrazo = new DateTime($emp['data_prevista_devolucao']);
+        
+        // Define o prazo de devolução baseado no status
+        $dataPrazo = '---';
+        if ($emp['status'] == 'Pendente' && $emp['data_limite_retirada']) {
+            // Para pendentes, mostra o prazo de retirada (48h)
+            $dataPrazo = (new DateTime($emp['data_limite_retirada']))->format('d/m/Y H:i');
+        } elseif ($emp['data_prevista_devolucao']) {
+            // Para emprestados, mostra o prazo de devolução
+            $dataPrazo = (new DateTime($emp['data_prevista_devolucao']))->format('d/m/Y');
+        }
+        
         $dataDev = $emp['data_real_devolucao'] ? (new DateTime($emp['data_real_devolucao']))->format('d/m/Y') : '---';
 
         $html_tabela .= "<tr>
                 <td>" . htmlspecialchars($emp['titulo']) . "</td>
                 <td>" . htmlspecialchars($emp['isbn']) . "</td>
                 <td>" . $dataEmp->format('d/m/Y H:i') . "</td>
-                <td>" . $dataPrazo->format('d/m/Y') . "</td>
+                <td>" . $dataPrazo . "</td>
                 <td>" . $dataDev . "</td>
                 <td>" . htmlspecialchars($emp['status']) . "</td>
                 <td>";
         
-        if ($emp['status'] == 'Emprestado') {
-            $id_mov = $emp['id_movimentacao'];
-            $id_livro = $emp['id_livro'];
+        // Ações baseadas no status
+        $id_mov = $emp['id_movimentacao'];
+        $id_livro = $emp['id_livro'];
+        
+        if ($emp['status'] == 'Pendente') {
+            // Botão para CONFIRMAR o empréstimo (inicia as 48h de devolução)
+            $html_tabela .= "<button class='btn-acao btn-confirmar' style='background-color: #28a745;' onclick='confirmarEmprestimo($id_mov)'>Confirmar</button>";
+            
+        } elseif ($emp['status'] == 'Emprestado') {
+            // Botões para RENOVAR e DEVOLVER
             $html_tabela .= "<button class='btn-acao btn-renovar' onclick='renovarEmprestimo($id_mov)'>Renovar</button>";
             $html_tabela .= "<button class='btn-acao btn-devolver' onclick='devolverEmprestimo($id_mov, $id_livro)'>Devolver</button>";
+            
         } else {
+            // Para status 'Devolvido' ou 'Cancelado'
             $html_tabela .= "---";
         }
+        
         $html_tabela .= "</td></tr>";
     }
     $html_tabela .= "</tbody></table>";
