@@ -323,6 +323,7 @@ $usuario_logado = $id_usuario > 0;
                     </div>
 
                     <!-- Descrição -->
+                     <p><strong>Resumo:</strong></p>
                     <p id="livroDescricao">Carregando descrição...</p>
 
                     <!-- Botão de Reservar -->

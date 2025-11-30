@@ -409,6 +409,28 @@ case 'deletarAvaliacao':
     $avaliacaoController->deletar();
     exit;
 
+case 'historicoEmprestimos':
+    if (!isAdminLoggedIn()) {
+        ob_clean();
+        echo json_encode(['success' => false, 'message' => 'Acesso negado.']);
+        exit;
+    }
+
+    ob_clean();
+    header('Content-Type: application/json; charset=utf-8');
+
+    require_once __DIR__ . '/src/controller/admin/HistoricoEmprestimosController.php';
+    $historicoController = new HistoricoEmprestimosController();
+    
+    $acao = $_GET['acao'] ?? 'listar';
+    if ($acao === 'listar') {
+        $historicoController->listar();
+    } elseif ($acao === 'estatisticas') {
+        $historicoController->estatisticas();
+    }
+    exit;
+    
+
 // ==========================
 // DEFAULT — SEMPRE NO FINAL
 // ==========================

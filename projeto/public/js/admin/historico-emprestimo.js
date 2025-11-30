@@ -1,154 +1,247 @@
-const emprestimos = [
-    { status: 'Finalizado', exemplar: '402864', leitor: 'Hugo Vitor', data: '23/04/2024', prazo: '26/04/2024', devolucao: '25/04/2024' },
-    { status: 'Finalizado', exemplar: '785930', leitor: 'Gabriel Linos', data: '30/04/2024', prazo: '06/05/2024', devolucao: '05/05/2024' },
-    { status: 'Atrasado', exemplar: '944512', leitor: 'Lulu Oliveira', data: '04/05/2024', prazo: '05/05/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '402864', leitor: 'Tomás Chell', data: '04/05/2024', prazo: '05/05/2024', devolucao: '05/05/2024' },
-    { status: 'Finalizado', exemplar: '789360', leitor: 'Vitória Pacheco', data: '12/05/2024', prazo: '14/05/2024', devolucao: '13/05/2024' },
-    { status: 'Finalizado', exemplar: '762910', leitor: 'Davi Matos', data: '15/05/2024', prazo: '17/05/2024', devolucao: '17/05/2024' },
-    { status: 'Atrasado', exemplar: '666834', leitor: 'Walter Branco', data: '20/05/2024', prazo: '22/05/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '402864', leitor: 'Jéssica Lourdes', data: '20/05/2024', prazo: '20/05/2024', devolucao: '21/05/2024' },
-    { status: 'Em andamento', exemplar: '762910', leitor: 'Carlos Dalva', data: '25/05/2024', prazo: '27/05/2024', devolucao: '28/07/2024' },
-    { status: 'Finalizado', exemplar: '112233', leitor: 'Ana Clara', data: '01/06/2024', prazo: '05/06/2024', devolucao: '04/06/2024' },
-    { status: 'Em andamento', exemplar: '445566', leitor: 'Bruno Costa', data: '03/06/2024', prazo: '10/06/2024', devolucao: 'Em demanda' },
-    { status: 'Atrasado', exemplar: '778899', leitor: 'Carla Dias', data: '05/06/2024', prazo: '08/06/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '990011', leitor: 'Daniel Lima', data: '07/06/2024', prazo: '11/06/2024', devolucao: '10/06/2024' },
-    { status: 'Em andamento', exemplar: '223344', leitor: 'Eduarda Silva', data: '10/06/2024', prazo: '15/06/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '556677', leitor: 'Felipe Rocha', data: '12/06/2024', prazo: '16/06/2024', devolucao: '16/06/2024' },
-    { status: 'Atrasado', exemplar: '889900', leitor: 'Giovana Santos', data: '14/06/2024', prazo: '17/06/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '101122', leitor: 'Heloísa Mello', data: '16/06/2024', prazo: '20/06/2024', devolucao: '19/06/2024' },
-    { status: 'Em andamento', exemplar: '334455', leitor: 'Igor Fernandes', data: '18/06/2024', prazo: '24/06/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '667788', leitor: 'Julia Pereira', data: '20/06/2024', prazo: '25/06/2024', devolucao: '24/06/2024' },
-    { status: 'Atrasado', exemplar: '990001', leitor: 'Kevin Borges', data: '22/06/2024', prazo: '26/06/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '012345', leitor: 'Larissa Nunes', data: '24/06/2024', prazo: '28/06/2024', devolucao: '27/06/2024' },
-    { status: 'Em andamento', exemplar: '678901', leitor: 'Marcelo Pires', data: '26/06/2024', prazo: '02/07/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '234567', leitor: 'Natália Costa', data: '28/06/2024', prazo: '03/07/2024', devolucao: '03/07/2024' },
-    { status: 'Atrasado', exemplar: '890123', leitor: 'Otávio Martins', data: '30/06/2024', prazo: '03/07/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '456789', leitor: 'Paula Gomes', data: '02/07/2024', prazo: '07/07/2024', devolucao: '06/07/2024' },
-    { status: 'Em andamento', exemplar: '010101', leitor: 'Ricardo Alves', data: '04/07/2024', prazo: '10/07/2024', devolucao: 'Em demanda' },
-    { status: 'Finalizado', exemplar: '121212', leitor: 'Sofia Ribeiro', data: '06/07/2024', prazo: '11/07/2024', devolucao: '11/07/2024' },
-    { status: 'Atrasado', exemplar: '343434', leitor: 'Thiago Mendes', data: '08/07/2024', prazo: '11/07/2024', devolucao: 'Em demanda' },
-    { status: 'Em andamento', exemplar: '565656', leitor: 'Ursula Castro', data: '10/07/2024', prazo: '15/07/2024', devolucao: 'Em demanda' }
-];
-        const TabelaDeUsuario = document.getElementById('userTable'); 
-        const botaoAnterior = document.getElementById('prevBtn');
-        const proximoBotao = document.getElementById('nextBtn');
-        const informacoesDaPagina = document.getElementById('pageInfo');
+// ============================================
+// HISTÓRICO DE EMPRÉSTIMOS - SISTEMA COMPLETO
+// ============================================
 
-        const itens_por_pagina = 5;
-        let paginaAtual = 1;
-        let dadoAtualFiltrado = []; 
+let paginaAtual = 1;
+let statusFiltro = 'Todos';
+const itensPorPagina = 5;
 
-        // Function to render the table with the data for the current page
-        function renderizarTabelaDePaginas() {
-            const indiceInicial = (paginaAtual - 1) * itens_por_pagina;
-            const indiceFinal = indiceInicial + itens_por_pagina;
-            const itensEmTela = dadoAtualFiltrado.slice(indiceInicial, indiceFinal);
+// ============================================
+// INICIALIZAÇÃO
+// ============================================
 
-            TabelaDeUsuario.innerHTML = itensEmTela.map(user => `
-                <tr>
-                    <td>${user.status}</td>
-                    <td>${user.exemplar}</td>
-                    <td>${user.leitor}</td>
-                    <td>${user.data}</td>
-                    <td>${user.prazo}</td>
-                    <td>${user.devolucao}</td>
-                </tr>
-            `).join('');
+document.addEventListener('DOMContentLoaded', () => {
+    carregarEstatisticas();
+    carregarEmprestimos();
+    inicializarFiltros();
+    inicializarBotoesPaginacao();
+});
 
-            atualizarControlesDePaginacao();
-        }
+// ============================================
+// ESTATÍSTICAS
+// ============================================
 
+async function carregarEstatisticas() {
+    try {
+        const response = await fetch(`${URLBASE}/src/controller/admin/HistoricoEmprestimosController.php?acao=estatisticas`);
+        const data = await response.json();
         
-        function atualizarControlesDePaginacao() {
-            const paginasTotais = Math.ceil(dadoAtualFiltrado.length / itens_por_pagina);
-
-            botaoAnterior.disabled = (paginaAtual === 1);
-            proximoBotao.disabled = (paginaAtual === paginasTotais || paginasTotais === 0);
-
-            informacoesDaPagina.textContent = `Página ${paginaAtual} de ${paginasTotais || 1}`; 
+        if (data.success && data.estatisticas) {
+            mostrarEstatisticas(data.estatisticas);
         }
+    } catch (error) {
+        console.error('Erro ao carregar estatísticas:', error);
+    }
+}
 
-        function paginaAnterior() {
+function mostrarEstatisticas(stats) {
+    const container = document.getElementById('estatisticas-container');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="stat-card stat-total">
+            <div class="stat-content">
+                <div class="stat-number">${stats.total || 0}</div>
+                <div class="stat-label">Total de Empréstimos</div>
+            </div>
+        </div>
+        
+        <div class="stat-card stat-andamento">
+            <div class="stat-content">
+                <div class="stat-number">${stats.em_andamento || 0}</div>
+                <div class="stat-label">Em Andamento</div>
+            </div>
+        </div>
+        
+        <div class="stat-card stat-finalizado">
+            <div class="stat-content">
+                <div class="stat-number">${stats.finalizados || 0}</div>
+                <div class="stat-label">Finalizados</div>
+            </div>
+        </div>
+        
+        <div class="stat-card stat-atrasado">
+            <div class="stat-content">
+                <div class="stat-number">${stats.atrasados || 0}</div>
+                <div class="stat-label">Atrasados</div>
+            </div>
+        </div>
+    `;
+}
+
+// ============================================
+// CARREGAR EMPRÉSTIMOS
+// ============================================
+
+async function carregarEmprestimos() {
+    try {
+        const url = `${URLBASE}/src/controller/admin/HistoricoEmprestimosController.php?acao=listar&status=${encodeURIComponent(statusFiltro)}&pagina=${paginaAtual}&limite=${itensPorPagina}`;
+        
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        if (data.success) {
+            renderizarTabela(data.emprestimos);
+            atualizarPaginacao(data.paginacao);
+        } else {
+            mostrarErroTabela(data.message || 'Erro ao carregar empréstimos.');
+        }
+        
+    } catch (error) {
+        console.error('Erro ao carregar empréstimos:', error);
+        mostrarErroTabela('Erro de conexão ao carregar empréstimos.');
+    }
+}
+
+// ============================================
+// RENDERIZAR TABELA
+// ============================================
+
+function renderizarTabela(emprestimos) {
+    const tbody = document.getElementById('userTable');
+    if (!tbody) return;
+    
+    if (!emprestimos || emprestimos.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="empty-row">
+                    <div style="padding: 40px; text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 15px;">📭</div>
+                        <p style="color: #666; font-size: 1.1rem; margin: 0;">
+                            Nenhum empréstimo encontrado
+                        </p>
+                        <p style="color: #999; font-size: 0.9rem; margin-top: 10px;">
+                            Tente ajustar os filtros ou verifique mais tarde
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    tbody.innerHTML = emprestimos.map(emp => `
+        <tr class="table-row">
+            <td>
+                <span class="badge ${emp.classe_css}">
+                    ${getStatusIcon(emp.status)} ${emp.status}
+                </span>
+            </td>
+            <td class="isbn-cell">${emp.exemplar}</td>
+            <td class="leitor-cell">${emp.leitor}</td>
+            <td>${emp.data}</td>
+            <td>${emp.prazo}</td>
+            <td class="${emp.devolucao === 'Em andamento' ? 'andamento-text' : ''}">${emp.devolucao}</td>
+        </tr>
+    `).join('');
+}
+
+function getStatusIcon(status) {
+    const icons = {
+        'Finalizado': '',
+        'Em andamento': '',
+        'Atrasado': '',
+        'Cancelado': ''
+    };
+    return icons[status] || '';
+}
+
+function mostrarErroTabela(mensagem) {
+    const tbody = document.getElementById('userTable');
+    if (!tbody) return;
+    
+    tbody.innerHTML = `
+        <tr>
+            <td colspan="6" class="error-row">
+                <div style="padding: 30px; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 15px;">❌</div>
+                    <p style="color: #dc3545; font-size: 1.1rem; margin: 0;">${mensagem}</p>
+                    <button onclick="carregarEmprestimos()" style="margin-top: 20px; padding: 10px 20px; background: #004A90; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        Tentar Novamente
+                    </button>
+                </div>
+            </td>
+        </tr>
+    `;
+}
+
+// ============================================
+// PAGINAÇÃO
+// ============================================
+
+function atualizarPaginacao(paginacao) {
+    const btnAnterior = document.getElementById('prevBtn');
+    const btnProximo = document.getElementById('nextBtn');
+    const infoPage = document.getElementById('pageInfo');
+    
+    if (!btnAnterior || !btnProximo || !infoPage) return;
+    
+    const { pagina_atual, total_paginas, total_registros } = paginacao;
+    
+    // Atualiza botões
+    btnAnterior.disabled = (pagina_atual === 1);
+    btnProximo.disabled = (pagina_atual >= total_paginas || total_paginas === 0);
+    
+    // Atualiza info
+    if (total_paginas === 0) {
+        infoPage.textContent = 'Nenhum registro';
+    } else {
+        const inicio = ((pagina_atual - 1) * itensPorPagina) + 1;
+        const fim = Math.min(pagina_atual * itensPorPagina, total_registros);
+        infoPage.textContent = `Exibindo ${inicio}-${fim} de ${total_registros} registros (Página ${pagina_atual}/${total_paginas})`;
+    }
+}
+
+function inicializarBotoesPaginacao() {
+    const btnAnterior = document.getElementById('prevBtn');
+    const btnProximo = document.getElementById('nextBtn');
+    
+    if (btnAnterior) {
+        btnAnterior.addEventListener('click', () => {
             if (paginaAtual > 1) {
                 paginaAtual--;
-                renderizarTabelaDePaginas();
+                carregarEmprestimos();
             }
-        }
-
-        function proximaPagina() {
-            const paginasTotais = Math.ceil(dadoAtualFiltrado.length / itens_por_pagina);
-            if (paginaAtual < paginasTotais) {
-                paginaAtual++;
-                renderizarTabelaDePaginas();
-            }
-        }
-
-        function aplicarFiltroEPaginacao() {
-            const statusSelecionado = document.querySelector('input[name="statusFilter"]:checked').value;
-            
-            if (statusSelecionado === 'Todos') {
-                dadoAtualFiltrado = emprestimos;
-            } else {
-                dadoAtualFiltrado = emprestimos.filter(emprestimo => emprestimo.status === statusSelecionado);
-            }
-            
-            paginaAtual = 1; 
-            renderizarTabelaDePaginas();
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            aplicarFiltroEPaginacao();
         });
-           
-// let botao = document.getElementsByClassName("hamburguer")
-// let menu = document.getElementById("menu")
-// let corpo = document.getElementsByTagName("body")
-     
-// let menuAberto = false
-     
-// botao[0].addEventListener("click", function(){
-         
-//Chamar o menu para o botão e definir sua posição com position 
-//absolute para aparecer abaixo do menu. Linhas 15 e 16
-     
-// menu.style.position="absolute" 
-// menu.style.bottom="50px" 
-     
-//   if(menuAberto==false){
-//     menuAberto=true
-//     menu.style.display="block"
-//    }
-     
-//   else{
-//     menuAberto=false
-//     menu.style.display="none"
-//   }
-     
-// })
-     
-//Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone.
-     
-// let icone = document.getElementById("iconeComandante")
-// let minhaConta = document.getElementsByClassName("minhaConta")[0]
-     
-// let menuAberto2 = false
-     
-// icone.addEventListener("click", function(){
-     
-//   if(menuAberto2==false){
-//     menuAberto2=true
-//     minhaConta.style.display="block"
-//    }
-     
-//   else{
-//     menuAberto2=false
-//     minhaConta.style.display="none"
-//   }
-     
-// })
-     
-//Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone. //Mostrar as opções do ícone.
-     
+    }
+    
+    if (btnProximo) {
+        btnProximo.addEventListener('click', () => {
+            paginaAtual++;
+            carregarEmprestimos();
+        });
+    }
+}
 
+// ============================================
+// FILTROS
+// ============================================
 
+function inicializarFiltros() {
+    const filtros = document.querySelectorAll('input[name="statusFilter"]');
+    
+    filtros.forEach(filtro => {
+        filtro.addEventListener('change', (e) => {
+            statusFiltro = e.target.value;
+            paginaAtual = 1; // Reset para primeira página
+            carregarEmprestimos();
+            carregarEstatisticas(); // Atualiza estatísticas também
+        });
+    });
+}
 
+// ============================================
+// FUNÇÕES AUXILIARES
+// ============================================
+
+function formatarData(dataString) {
+    if (!dataString) return '---';
+    const data = new Date(dataString);
+    return data.toLocaleDateString('pt-BR');
+}
+
+// Auto-refresh a cada 30 segundos (opcional)
+// setInterval(() => {
+//     carregarEmprestimos();
+//     carregarEstatisticas();
+// }, 30000);
