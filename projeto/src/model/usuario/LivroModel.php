@@ -27,6 +27,7 @@ class LivroModel {
 
     /**
      * Busca livros por termo e, opcionalmente, por ID de categoria.
+     * Inclui a lógica de estoque para determinar o status "Disponível"/"Indisponível".
      */
     public function buscarLivrosAjax($termo = '', $id_categoria = null, $limit = 10) {
         global $URLBASE; 
@@ -66,10 +67,23 @@ class LivroModel {
 
             $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // Lógica de formatação
+            // Lógica de formatação (CORRIGIDA COM VERIFICAÇÃO DE ESTOQUE)
             foreach ($livros as &$livro) {
-                $livro['status'] = 'Disponível';
+                
+                // 1. BUSCAR O ESTOQUE
+                $estoque = $this->getEstoqueByLivro($livro['id_livro']);
+                $disponiveis = $estoque['disponiveis'] ?? 0;
 
+                // 2. DETERMINAR O STATUS COM BASE NO ESTOQUE
+                if ($disponiveis > 0) {
+                    $livro['status'] = 'Disponível';
+                    $livro['disponibilidade_class'] = 'disponivel'; // Para estilização no front-end
+                } else {
+                    $livro['status'] = 'Indisponível';
+                    $livro['disponibilidade_class'] = 'indisponivel'; // Para estilização no front-end
+                }
+
+                // Formatação da imagem e descrição
                 if (!empty($livro['foto'])) {
                     $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
                     $livro['imagem'] = ($GLOBALS['URLBASE'] ?? '') . '/public/uploads/' . $foto_limpa;
@@ -199,6 +213,9 @@ class LivroModel {
         }
     }
 
+    /**
+     * Obtém os dados de estoque da tabela 'exemplares'. Se não existir, cria um registro inicial.
+     */
     public function getEstoqueByLivro($id_livro) {
         try {
             $sql = "SELECT * FROM exemplares WHERE id_livro = :id_livro";
@@ -463,7 +480,11 @@ class LivroModel {
             $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($livros as &$livro) {
-                $livro['status'] = 'Disponível';
+                // ESTOQUE: Não é necessário para essa função, mantendo o status padrão ou ajustando
+                $estoque = $this->getEstoqueByLivro($livro['id_livro']);
+                $disponiveis = $estoque['disponiveis'] ?? 0;
+                $livro['status'] = ($disponiveis > 0) ? 'Disponível' : 'Indisponível';
+                // FIM ESTOQUE
 
                 if (!empty($livro['foto'])) {
                     $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
@@ -536,7 +557,11 @@ class LivroModel {
             $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($livros as &$livro) {
-                $livro['status'] = 'Disponível';
+                 // ESTOQUE: Não é necessário para essa função, mantendo o status padrão ou ajustando
+                $estoque = $this->getEstoqueByLivro($livro['id_livro']);
+                $disponiveis = $estoque['disponiveis'] ?? 0;
+                $livro['status'] = ($disponiveis > 0) ? 'Disponível' : 'Indisponível';
+                // FIM ESTOQUE
 
                 if (!empty($livro['foto'])) {
                     $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
@@ -597,7 +622,11 @@ class LivroModel {
             $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($livros as &$livro) {
-                $livro['status'] = 'Disponível';
+                // ESTOQUE: Não é necessário para essa função, mantendo o status padrão ou ajustando
+                $estoque = $this->getEstoqueByLivro($livro['id_livro']);
+                $disponiveis = $estoque['disponiveis'] ?? 0;
+                $livro['status'] = ($disponiveis > 0) ? 'Disponível' : 'Indisponível';
+                // FIM ESTOQUE
 
                 if (!empty($livro['foto'])) {
                     $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
@@ -654,7 +683,11 @@ class LivroModel {
             $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($livros as &$livro) {
-                $livro['status'] = 'Disponível';
+                // ESTOQUE: Não é necessário para essa função, mantendo o status padrão ou ajustando
+                $estoque = $this->getEstoqueByLivro($livro['id_livro']);
+                $disponiveis = $estoque['disponiveis'] ?? 0;
+                $livro['status'] = ($disponiveis > 0) ? 'Disponível' : 'Indisponível';
+                // FIM ESTOQUE
 
                 if (!empty($livro['foto'])) {
                     $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
@@ -707,7 +740,11 @@ class LivroModel {
             $livro = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($livro) {
-                $livro['status'] = 'Disponível';
+                // ESTOQUE: Não é necessário para essa função, mantendo o status padrão ou ajustando
+                $estoque = $this->getEstoqueByLivro($livro['id_livro']);
+                $disponiveis = $estoque['disponiveis'] ?? 0;
+                $livro['status'] = ($disponiveis > 0) ? 'Disponível' : 'Indisponível';
+                // FIM ESTOQUE
 
                 if (!empty($livro['foto'])) {
                     $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
