@@ -3,22 +3,6 @@ session_start();
 require(__DIR__ . '/../../../config/constantes.php');
 require_once(__DIR__ . '/../../../src/controller/usuario/FiltroLivrosController.php');
 
-
-$model = new LivroModel();
-$livros = $model->getLivrosMock();
-function obterLivroOuPadrao($livros, $index)
-{
-    return $livros[$index] ?? [
-        'id' => 0,
-        'titulo' => 'O guia do mochileiro das galáxias',
-        'autor' => 'Douglas Adams',
-        'imagem' => 'https://i.pinimg.com/736x/a7/b2/0f/a7b20fc61df85a13f6ddcd365854966d.jpg',
-        'status' => 'disponível',
-        'area' => 'Ficção',
-        'descricao' => 'Livro padrão inserido quando não há mais resultados.',
-    ];
-}
-
 $controller = new FiltroLivrosController();
 $dados = $controller->prepararDadosView();
 
@@ -337,4 +321,3 @@ $livros_por_categoria = array_chunk($livros, 4);
 </body>
 
 </html>
->>>>>>> 03b43cd68fc781cc5bc4da7b5f50b2decb2537b2

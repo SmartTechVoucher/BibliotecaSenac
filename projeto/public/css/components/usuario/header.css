@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
 }
 
 :root {
@@ -396,7 +395,7 @@
     color: var(--cor-texto);
     transition: color 0.3s ease;
 }
-  
+
 .navbar-desktop li a::after {
     content: '';
     position: absolute;
@@ -422,7 +421,7 @@
     width: 100%;
     text-align: center;
 }
-  
+
 .perfil-lateral-2 a {
     display: flex;
     align-items: center;
@@ -440,7 +439,7 @@
     color: hsl(0, 0%, 100%);
     padding: 8px 20px 20px 20px;
 }
-  
+
 .perfil-lateral .biblioteca {
     margin: 0;
     font-size: 18px;

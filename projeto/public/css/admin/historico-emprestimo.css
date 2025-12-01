@@ -17,61 +17,6 @@
     --border-radius: 10px;
 }
 
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 0px;
-
-}
-.container {
-    width: 50%;
-    padding: 40px;
-    position: relative;
-    margin: auto;
-    background: #e6e6fa;
-    padding: 20px;
-    border-radius: 0px 8px 8px 8px;
-    box-shadow: 0px 7px 8px rgba(0,0,0,0.1);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-th {
-    background-color: #7a7e83;
-    color: white;
-}
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-*{
-    box-sizing: border-box;
-}
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-}
-.modal-content {
-    background-color: #a39797;
-    margin: 15% auto;
-
 * {
     margin: 0;
     padding: 0;
@@ -82,7 +27,6 @@ body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
->>>>>>> 52fa5209008e315c536f0cceb1f64c0a570a97a7
     padding: 20px;
 }
 
@@ -456,42 +400,6 @@ body {
     border-radius: 4px;
 }
 
-.inferiorDireito{
-    display: flex;
-    justify-content: end;
-    margin-top:5%;
-}
-.inferiorDireito .inferior{
-    width: 100px;
-    height: 100px;
-}
-
-.menu{
-    width: 366px;
-    height: 370px;
-    background-color: var(--azulCabecalho);
-    color: var(--branco);
-    font-family: var(--fontes);
-    font-size: 33px;
-    display: none;
-    cursor: pointer;  
-      
-}
-.menu a {
-    text-decoration: none;
-    color: var(--branco);
-}
-@media(max-width:1024px){
-
-    .Libro, .copyright, .todos, .titulo{
-        display: none;
-    }
-}
-@media(min-width:375px){
-
-    .tabela{
-        overflow-x: auto;
-
 @keyframes loading {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
@@ -510,7 +418,6 @@ body {
 @media (max-width: 768px) {
     .main-container {
         padding: 20px;
->>>>>>> 52fa5209008e315c536f0cceb1f64c0a570a97a7
     }
     
     .header-section h1 {

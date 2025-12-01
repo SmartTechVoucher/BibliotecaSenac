@@ -806,4 +806,4 @@ async function entrarNaFila() {
     }
 }
 
-// Fim do script unificado.
+// Fim do script unificado.**

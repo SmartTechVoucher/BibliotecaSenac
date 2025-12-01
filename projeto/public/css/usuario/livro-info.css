@@ -42,6 +42,7 @@ body{
     padding: 40px;
     flex-direction: row;
     box-shadow: 0 2px 4px var(--cinza);
+    margin-top: 100px;
 }
 
 .livroInfo img{

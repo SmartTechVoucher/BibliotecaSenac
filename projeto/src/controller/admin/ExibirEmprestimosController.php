@@ -12,6 +12,7 @@
  */
 
 require_once __DIR__ . '/../../../config/db/database.php';
+
 // Define que a resposta será JSON
 header('Content-Type: application/json');
 

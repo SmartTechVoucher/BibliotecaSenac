@@ -33,6 +33,7 @@ $usuario_logado = $id_usuario > 0;
     <title id="pageTitle">Carregando... - Biblioteca SENAC</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/usuario/livro-info.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/usuario/modal.css">
     <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/components/voltar.css">
@@ -302,31 +303,31 @@ $usuario_logado = $id_usuario > 0;
         <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
         
         <div class="containerInfo">
-            <!-- info_1 -->
-            <img id="livroFoto" src="<?php echo $livro["img"]; ?>" alt="Capa do livro">
+            <!-- Foto do livro -->
+            <img id="livroFoto" src="" alt="Capa do livro" style="max-width: 350px;">
+            
             <div class="info_1">
                 <div class="livroInfo">
                     <!-- Título e ISBN -->
                     <div class="livroTitulo">
-                        <h1><?php echo htmlspecialchars($livro["titulo"]); ?></h1>
-                        <p id="livroIsbn">(Livro - 618.92 T157e, Cód. 13.418), ISBN: <?php echo $livro["isbn"]; ?></p>
+                        <h1 id="livroTitulo">Carregando...</h1> 
+                        <p id="livroIsbn">ISBN: Carregando...</p>
                     </div>
                     
-                    <div class="review">
-                        <img id="avaliacaoMediaImg" src="<?php echo $URLBASE ?>/public/assets/icons/estrelas3.png" alt="Avaliação média">
-                        <p><span id="totalReviews">0</span> avaliações</p>
-                    </div>
                     
-                    <div class="tags">
+                    <!-- Tags (categoria) -->
+                    <div class="tags" style="display: none;">
                         <h3>Tags:</h3>
                         <div class="tags2">
                             <!-- Será preenchido pelo JavaScript -->
                         </div>
                     </div>
 
-                    <p id="livroDescricao"><?php echo htmlspecialchars($livro["desc"]); ?></p>
+                    <!-- Descrição -->
+                     <p><strong>Resumo:</strong></p>
+                    <p id="livroDescricao">Carregando descrição...</p>
 
-                    <!-- botao de reservar -->
+                    <!-- Botão de Reservar -->
                     <div class="livroReservar">
                         <p id="statusDisponibilidade">Carregando...</p>
                         <button id="botaoAcao" disabled>Carregando...</button>
@@ -420,6 +421,7 @@ $usuario_logado = $id_usuario > 0;
 
     <!-- JavaScript -->
     <script src="<?php echo $URLBASE ?>/public/js/usuario/livro-info.js"></script>
+    <script src="<?php echo $URLBASE ?>/public/js/components/header.js"></script>
 </body>
 
 </html>
