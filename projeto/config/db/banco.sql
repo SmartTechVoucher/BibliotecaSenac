@@ -572,38 +572,3 @@ CREATE INDEX IF NOT EXISTS idx_movimentacoes_usuario_status ON movimentacoes(id_
 CREATE INDEX IF NOT EXISTS idx_movimentacoes_livro_status ON movimentacoes(id_livro, status);
 CREATE INDEX IF NOT EXISTS idx_fila_livro_posicao ON fila_reservas(id_livro, posicao);
 
--- ============================================
--- QUERIES ÚTEIS PARA MONITORAMENTO
--- ============================================
-
--- Ver status do sistema:
--- SELECT * FROM vw_dashboard_emprestimos;
-
--- Ver livros em quarentena:
--- SELECT l.titulo, e.em_quarentena, fr.data_disponivel_retirada
--- FROM exemplares e
--- JOIN livros l ON e.id_livro = l.id_livro
--- LEFT JOIN fila_reservas fr ON l.id_livro = fr.id_livro
--- WHERE e.em_quarentena > 0 AND fr.status = 'NOTIFICADO';
-
--- Ver usuários com empréstimos atrasados:
--- SELECT u.nome, u.email, m.id_movimentacao, l.titulo, 
---        DATEDIFF(CURDATE(), m.data_prevista_devolucao) as dias_atraso
--- FROM movimentacoes m
--- JOIN usuarios u ON m.id_usuario = u.id_usuario
--- JOIN livros l ON m.id_livro = l.id_livro
--- WHERE m.status IN ('Atrasado', 'Emprestado')
--- AND m.data_prevista_devolucao < CURDATE();
-
--- Ver fila de reservas com estimativas:
--- SELECT u.nome, l.titulo, fr.posicao, fr.data_estimada_disponibilidade,
---        DATEDIFF(fr.data_estimada_disponibilidade, CURDATE()) as dias_restantes
--- FROM fila_reservas fr
--- JOIN usuarios u ON fr.id_usuario = u.id_usuario
--- JOIN livros l ON fr.id_livro = l.id_livro
--- WHERE fr.status = 'AGUARDANDO'
--- ORDER BY l.titulo, fr.posicao;
-
--- ============================================
--- FIM DO SCRIPT
--- ============================================

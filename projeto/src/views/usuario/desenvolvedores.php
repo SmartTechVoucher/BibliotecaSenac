@@ -75,7 +75,7 @@ $alunos = [
     <section>
         <div class="logo_dev">
             <p>DESENVOLVEDORES</p>
-            <h1>DE SISTEMA</h1>
+            <h1>D0 SISTEMA</h1>
         </div>
     </section>
 
