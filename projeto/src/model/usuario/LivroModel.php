@@ -1,4 +1,5 @@
 <?php
+// /src/model/usuario/LivroModel.php
 
 require_once __DIR__ . '/../../../config/db/database.php';
 
@@ -13,8 +14,95 @@ class LivroModel {
         }
     }
 
+    // ====================================================================
+    // MÉTODOS DE BUSCA AJAX PARA TELA INICIAL
+    // ====================================================================
+
+    /**
+     * Retorna a lista de categorias formatada para um dropdown.
+     */
+    public function getCategoriasParaDropdown() {
+        return $this->getOpcoesSelect('categoria');
+    }
+
+    /**
+     * Busca livros por termo e, opcionalmente, por ID de categoria.
+     */
+    public function buscarLivrosAjax($termo = '', $id_categoria = null, $limit = 10) {
+        global $URLBASE; 
+        
+        try {
+            $termo_busca = "%{$termo}%";
+            $sql = "SELECT 
+                        l.id_livro,
+                        l.titulo,
+                        l.foto,
+                        l.descricao,
+                        l.resumo_livro,
+                        a.nome AS autor
+                    FROM livros l
+                    LEFT JOIN autores a ON l.id_autor = a.id_autor
+                    WHERE (l.titulo LIKE :termo 
+                        OR a.nome LIKE :termo
+                        OR l.isbn LIKE :termo)";
+            
+            $params = [':termo' => $termo_busca];
+
+            if ($id_categoria > 0) {
+                $sql .= " AND l.id_categoria = :id_categoria";
+                $params[':id_categoria'] = $id_categoria;
+            }
+
+            $sql .= " ORDER BY l.titulo LIMIT :limit";
+
+            $stmt = $this->conn->prepare($sql);
+
+            // Bind dos parâmetros
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
+            }
+            $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $livros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Lógica de formatação
+            foreach ($livros as &$livro) {
+                $livro['status'] = 'Disponível';
+
+                if (!empty($livro['foto'])) {
+                    $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
+                    $livro['imagem'] = ($GLOBALS['URLBASE'] ?? '') . '/public/uploads/' . $foto_limpa;
+                } else {
+                    $livro['imagem'] = '';
+                }
+                
+                if (empty($livro['descricao']) && !empty($livro['resumo_livro'])) {
+                    $livro['descricao'] = $livro['resumo_livro'];
+                }
+                
+                if (empty($livro['descricao'])) {
+                    $livro['descricao'] = 'Descrição não disponível.';
+                }
+                
+                if (strlen($livro['descricao']) > 150) {
+                    $livro['descricao'] = substr($livro['descricao'], 0, 150) . '...';
+                }
+                
+                $livro['autor'] = $livro['autor'] ?? 'Autor desconhecido';
+            }
+
+            return $livros;
+
+        } catch (PDOException $e) {
+            error_log("Erro ao buscar livros AJAX: " . $e->getMessage());
+            return [];
+        }
+    }
+
+
     // ==========================================
-    // SEUS MÉTODOS EXISTENTES (mantidos intactos)
+    // MÉTODOS AUXILIARES E CRUD
     // ==========================================
 
     public function cadastrarLivro($dados) {
@@ -111,6 +199,66 @@ class LivroModel {
         }
     }
 
+    public function getEstoqueByLivro($id_livro) {
+        try {
+            $sql = "SELECT * FROM exemplares WHERE id_livro = :id_livro";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$resultado) {
+                return $this->criarEstoqueInicial($id_livro);
+            }
+
+            return $resultado;
+        } catch (PDOException $e) {
+            error_log("Erro ao obter estoque do livro $id_livro: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    private function criarEstoqueInicial($id_livro) {
+        try {
+            // Verifica se o livro existe antes de criar o estoque
+            $check_sql = "SELECT id_livro FROM livros WHERE id_livro = :id_livro";
+            $check_stmt = $this->conn->prepare($check_sql);
+            $check_stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
+            $check_stmt->execute();
+
+            if ($check_stmt->rowCount() == 0) {
+                 return [
+                    'id_livro' => $id_livro,
+                    'total_exemplares' => 0,
+                    'disponiveis' => 0,
+                    'emprestados' => 0,
+                    'reservas' => 0,
+                    'data_atualizacao' => date('Y-m-d H:i:s')
+                ];
+            }
+
+
+            $sql = "INSERT INTO exemplares (id_livro, total_exemplares, disponiveis, emprestados, reservas)
+                    VALUES (:id_livro, 1, 1, 0, 0)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return [
+                'id_livro' => $id_livro,
+                'total_exemplares' => 1,
+                'disponiveis' => 1,
+                'emprestados' => 0,
+                'reservas' => 0,
+                'data_atualizacao' => date('Y-m-d H:i:s')
+            ];
+        } catch (PDOException $e) {
+            error_log("Erro ao criar estoque inicial para livro $id_livro: " . $e->getMessage());
+            return [];
+        }
+    }
+    
     public function getTodosLivros() {
         try {
             $sql = "SELECT l.*, a.nome as autor_nome, c.nome as categoria_nome, u.nome as unidade_nome, i.nome as idioma_nome, d.nome as documento_nome, ar.nome as area_nome 
@@ -178,12 +326,12 @@ class LivroModel {
             $offset = ($pagina - 1) * $limite;
 
             $sql = "SELECT l.*,
-                           a.nome as autor_nome,
-                           c.nome as categoria_nome,
-                           u.nome as unidade_nome,
-                           i.nome as idioma_nome,
-                           d.nome as documento_nome,
-                           ar.nome as area_nome
+                            a.nome as autor_nome,
+                            c.nome as categoria_nome,
+                            u.nome as unidade_nome,
+                            i.nome as idioma_nome,
+                            d.nome as documento_nome,
+                            ar.nome as area_nome
                     FROM livros l
                     LEFT JOIN autores a ON l.id_autor = a.id_autor
                     LEFT JOIN categorias c ON l.id_categoria = c.id_categoria
@@ -252,47 +400,6 @@ class LivroModel {
         }
     }
 
-    public function getEstoqueByLivro($id_livro) {
-        try {
-            $sql = "SELECT * FROM exemplares WHERE id_livro = :id_livro";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
-            $stmt->execute();
-
-            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if (!$resultado) {
-                return $this->criarEstoqueInicial($id_livro);
-            }
-
-            return $resultado;
-        } catch (PDOException $e) {
-            error_log("Erro ao obter estoque do livro $id_livro: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    private function criarEstoqueInicial($id_livro) {
-        try {
-            $sql = "INSERT INTO exemplares (id_livro, total_exemplares, disponiveis, emprestados, reservas)
-                    VALUES (:id_livro, 1, 1, 0, 0)";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
-            $stmt->execute();
-
-            return [
-                'id_livro' => $id_livro,
-                'total_exemplares' => 1,
-                'disponiveis' => 1,
-                'emprestados' => 0,
-                'reservas' => 0,
-                'data_atualizacao' => date('Y-m-d H:i:s')
-            ];
-        } catch (PDOException $e) {
-            error_log("Erro ao criar estoque inicial para livro $id_livro: " . $e->getMessage());
-            return [];
-        }
-    }
 
     public function getTotalExemplares($id_livro) {
         $estoque = $this->getEstoqueByLivro($id_livro);
@@ -534,8 +641,8 @@ class LivroModel {
                     FROM livros l
                     LEFT JOIN autores a ON l.id_autor = a.id_autor
                     WHERE l.titulo LIKE :termo 
-                       OR a.nome LIKE :termo
-                       OR l.isbn LIKE :termo
+                        OR a.nome LIKE :termo
+                        OR l.isbn LIKE :termo
                     ORDER BY l.titulo
                     LIMIT :limit";
 
@@ -658,21 +765,21 @@ class LivroModel {
             }
 
             $sql = "UPDATE livros SET 
-                        titulo = :titulo,
-                        id_autor = :id_autor,
-                        isbn = :isbn,
-                        data_publicacao = :data_publicacao,
-                        id_categoria = :id_categoria,
-                        numero_paginas = :numero_paginas,
-                        descricao = :descricao,
-                        id_unidade = :id_unidade,
-                        foto = :foto,
-                        notas = :notas,
-                        resumo_livro = :resumo_livro,
-                        id_documento = :id_documento,
-                        id_idioma = :id_idioma,
-                        id_area = :id_area
-                    WHERE id_livro = :id_livro";
+                         titulo = :titulo,
+                         id_autor = :id_autor,
+                         isbn = :isbn,
+                         data_publicacao = :data_publicacao,
+                         id_categoria = :id_categoria,
+                         numero_paginas = :numero_paginas,
+                         descricao = :descricao,
+                         id_unidade = :id_unidade,
+                         foto = :foto,
+                         notas = :notas,
+                         resumo_livro = :resumo_livro,
+                         id_documento = :id_documento,
+                         id_idioma = :id_idioma,
+                         id_area = :id_area
+                     WHERE id_livro = :id_livro";
             
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_livro', $dados['id_livro'], PDO::PARAM_INT);
@@ -724,12 +831,12 @@ class LivroModel {
     }
 
     // ==========================================
-    // NOVOS MÉTODOS PARA LIVRO-INFO.PHP
+    // MÉTODOS PARA LIVRO-INFO.PHP
     // ==========================================
 
     /**
      * Busca detalhes COMPLETOS de um livro para página livro-info
-     * Retorna: dados do livro + exemplares + disponibilidade
+     * Retorna: dados do livro + disponibilidade de exemplares (para o LivroController)
      */
     public function getLivroDetalhes($id_livro) {
         global $URLBASE;
@@ -768,7 +875,7 @@ class LivroModel {
             // Formata a foto
             if (!empty($livro['foto'])) {
                 $foto_limpa = str_replace(['uploads/', 'public/'], '', $livro['foto']);
-                $livro['foto_url'] = $URLBASE . '/public/uploads/' . $foto_limpa;
+                $livro['foto_url'] = ($GLOBALS['URLBASE'] ?? '') . '/public/uploads/' . $foto_limpa;
             } else {
                 $livro['foto_url'] = '';
             }
@@ -776,132 +883,48 @@ class LivroModel {
             // Busca dados de estoque da tabela exemplares
             $estoque = $this->getEstoqueByLivro($id_livro);
             
+            // Adiciona as chaves de estoque ao array do livro (necessário para o LivroController)
             if ($estoque) {
-                $livro['total_exemplares'] = $estoque['total_exemplares'];
-                $livro['total_disponivel'] = $estoque['disponiveis'];
-                $livro['total_emprestados'] = $estoque['emprestados'];
-                $livro['total_reservados'] = $estoque['reservas'];
+                $livro['total_exemplares'] = $estoque['total_exemplares'] ?? 0;
+                $livro['total_disponivel'] = $estoque['disponiveis'] ?? 0;
+                $livro['total_emprestados'] = $estoque['emprestados'] ?? 0;
+                $livro['total_reservados'] = $estoque['reservas'] ?? 0;
             } else {
-                // Se não existir, cria automaticamente
-                $livro['total_exemplares'] = 0;
-                $livro['total_disponivel'] = 0;
-                $livro['total_emprestados'] = 0;
-                $livro['total_reservados'] = 0;
+                 $livro['total_exemplares'] = 0;
+                 $livro['total_disponivel'] = 0;
+                 $livro['total_emprestados'] = 0;
+                 $livro['total_reservados'] = 0;
             }
-
-            // Define disponibilidade geral
-            $livro['disponibilidade_geral'] = $livro['total_disponivel'] > 0 ? 'disponivel' : 'indisponivel';
-
-            // Busca exemplares por unidade (múltiplas unidades se existir)
-            $livro['exemplares'] = $this->getExemplaresPorUnidade($id_livro);
-
+            
             return $livro;
-
+            
         } catch (PDOException $e) {
             error_log("Erro ao buscar detalhes do livro: " . $e->getMessage());
             return null;
         }
     }
-
+    
     /**
-     * Busca exemplares agrupados por unidade
-     * Como você tem tabela 'exemplares' separada, vamos usar ela
-     */
-    private function getExemplaresPorUnidade($id_livro) {
-        try {
-            // Busca da tabela exemplares (que tem os dados de estoque)
-            $sql = "SELECT 
-                        u.sigla as unidade,
-                        u.nome as unidade_nome,
-                        e.total_exemplares as quantidade_total,
-                        e.disponiveis as quantidade_disponivel,
-                        e.emprestados as quantidade_emprestada,
-                        e.reservas as quantidade_reservada
-                    FROM exemplares e
-                    INNER JOIN livros l ON e.id_livro = l.id_livro
-                    LEFT JOIN unidades u ON l.id_unidade = u.id_unidade
-                    WHERE e.id_livro = :id_livro";
-            
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
-            $stmt->execute();
-            
-            $exemplares = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            // Se não houver exemplares cadastrados, retorna array vazio
-            if (empty($exemplares)) {
-                return [];
-            }
-
-            return $exemplares;
-
-        } catch (PDOException $e) {
-            error_log("Erro ao buscar exemplares por unidade: " . $e->getMessage());
-            return [];
-        }
-    }
-
-    /**
-     * Busca avaliações/comentários de um livro
-     * NOTA: Você precisará criar esta tabela no futuro
+     * Busca todas as avaliações e comentários para um livro.
      */
     public function getAvaliacoesLivro($id_livro) {
         try {
-            // Por enquanto retorna array vazio
-            // Quando criar a tabela 'avaliacoes', descomente o código abaixo
-            return [];
-            
-            /* CÓDIGO PARA QUANDO CRIAR A TABELA:
-            
             $sql = "SELECT 
-                        a.id_avaliacao,
-                        a.comentario,
-                        a.nota,
-                        a.data_avaliacao,
-                        u.nome as usuario_nome
-                    FROM avaliacoes a
-                    INNER JOIN usuarios u ON a.id_usuario = u.id
-                    WHERE a.id_livro = :id_livro
-                    ORDER BY a.data_avaliacao DESC";
+                        av.*, 
+                        u.nome as nome_usuario
+                    FROM avaliacoes av
+                    JOIN usuarios u ON av.id_usuario = u.id_usuario
+                    WHERE av.id_livro = :id_livro
+                    ORDER BY av.data_avaliacao DESC";
             
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
             $stmt->execute();
             
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-            */
-
         } catch (PDOException $e) {
-            error_log("Erro ao buscar avaliações: " . $e->getMessage());
+            error_log("Erro ao buscar avaliações do livro $id_livro: " . $e->getMessage());
             return [];
         }
     }
-
-    /**
-     * Adiciona uma avaliação/comentário (para futuro)
-     */
-    public function adicionarAvaliacao($id_livro, $id_usuario, $comentario, $nota) {
-        try {
-            // Implementar quando criar a tabela avaliacoes
-            return false;
-            
-            /* CÓDIGO PARA QUANDO CRIAR A TABELA:
-            
-            $sql = "INSERT INTO avaliacoes (id_livro, id_usuario, comentario, nota, data_avaliacao) 
-                    VALUES (:id_livro, :id_usuario, :comentario, :nota, NOW())";
-            
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
-            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-            $stmt->bindParam(':comentario', $comentario);
-            $stmt->bindParam(':nota', $nota, PDO::PARAM_INT);
-            
-            return $stmt->execute();
-            */
-
-        } catch (PDOException $e) {
-            error_log("Erro ao adicionar avaliação: " . $e->getMessage());
-            return false;
-        }
-    }
-}
+} 

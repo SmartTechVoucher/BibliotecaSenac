@@ -1,6 +1,7 @@
 <?php
 // src/controller/usuario/LivroController.php
 
+require_once __DIR__ . '/../../../config/constantes.php'; // Incluir constantes para garantir URLBASE
 require_once __DIR__ . '/../../model/usuario/LivroModel.php';
 
 class LivroController {
@@ -14,7 +15,11 @@ class LivroController {
      * Retorna detalhes completos de um livro em JSON
      * Usado pela página livro-info.php
      */
-    public function buscarDetalhes() {  // ✅ Removido o parâmetro desnecessário
+    public function buscarDetalhes() {
+        // *** LIMPEZA CRÍTICA: Previne o erro "<br /> is not valid JSON" ***
+        if (ob_get_length() > 0) {
+            ob_clean(); 
+        }
         header('Content-Type: application/json; charset=utf-8');
         
         try {
@@ -22,6 +27,7 @@ class LivroController {
             $id_livro = isset($_GET['id']) ? intval($_GET['id']) : (isset($_GET['id_livro']) ? intval($_GET['id_livro']) : 0);
             
             if ($id_livro <= 0) {
+                http_response_code(400);
                 echo json_encode([
                     'sucesso' => false,
                     'mensagem' => 'ID do livro inválido'
@@ -32,6 +38,7 @@ class LivroController {
             $livro = $this->model->getLivroDetalhes($id_livro);
 
             if (!$livro) {
+                http_response_code(404);
                 echo json_encode([
                     'sucesso' => false,
                     'mensagem' => 'Livro não encontrado'
@@ -39,7 +46,10 @@ class LivroController {
                 return;
             }
 
-            // Formata os dados para o frontend
+            // Busca as avaliações (Novo método no Model)
+            $avaliacoes = $this->model->getAvaliacoesLivro($id_livro);
+
+            // Formata os dados para o frontend, removendo as chaves inexistentes
             $response = [
                 'sucesso' => true,
                 'livro' => [
@@ -59,24 +69,24 @@ class LivroController {
                     'area' => $livro['area_nome'] ?? '',
                     'tipo_documento' => $livro['documento_nome'] ?? ''
                 ],
-                'exemplares' => $livro['exemplares'],
                 'disponibilidade' => [
-                    'geral' => $livro['disponibilidade_geral'],
-                    'total_exemplares' => $livro['total_exemplares'],
-                    'total_disponivel' => $livro['total_disponivel'],
-                    'total_emprestados' => $livro['total_emprestados'],
-                    'total_reservados' => $livro['total_reservados']
+                    // A chave 'geral' é deduzida pelo frontend se total_disponivel > 0
+                    'total_exemplares' => $livro['total_exemplares'] ?? 0,
+                    'total_disponivel' => $livro['total_disponivel'] ?? 0,
+                    'total_emprestados' => $livro['total_emprestados'] ?? 0,
+                    'total_reservados' => $livro['total_reservados'] ?? 0 
                 ],
-                'avaliacoes' => $this->model->getAvaliacoesLivro($id_livro)
+                'avaliacoes' => $avaliacoes
             ];
 
             echo json_encode($response, JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
             error_log("Erro no LivroController::buscarDetalhes: " . $e->getMessage());
+            http_response_code(500);
             echo json_encode([
                 'sucesso' => false,
-                'mensagem' => 'Erro ao buscar detalhes do livro'
+                'mensagem' => 'Erro interno ao buscar detalhes do livro'
             ], JSON_UNESCAPED_UNICODE);
         }
     }
@@ -85,6 +95,10 @@ class LivroController {
      * Busca livros para autocomplete (pesquisa)
      */
     public function buscarParaPesquisa() {
+        // *** LIMPEZA CRÍTICA: Previne o erro "<br /> is not valid JSON" ***
+        if (ob_get_length() > 0) {
+            ob_clean(); 
+        }
         header('Content-Type: application/json; charset=utf-8');
         
         try {
@@ -92,7 +106,8 @@ class LivroController {
             
             if (strlen($termo) < 2) {
                 echo json_encode([
-                    'sucesso' => false,
+                    'sucesso' => true, // Retorna sucesso, mas com lista vazia se for muito curto
+                    'livros' => [],
                     'mensagem' => 'Digite pelo menos 2 caracteres'
                 ], JSON_UNESCAPED_UNICODE);
                 return;
@@ -106,10 +121,11 @@ class LivroController {
             ], JSON_UNESCAPED_UNICODE);
 
         } catch (Exception $e) {
-            error_log("Erro ao buscar livros: " . $e->getMessage());
+            error_log("Erro no LivroController::buscarParaPesquisa: " . $e->getMessage());
+            http_response_code(500);
             echo json_encode([
                 'sucesso' => false,
-                'mensagem' => 'Erro ao buscar livros'
+                'mensagem' => 'Erro ao buscar livros para pesquisa'
             ], JSON_UNESCAPED_UNICODE);
         }
     }

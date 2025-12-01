@@ -1,97 +1,140 @@
+/**
+ * Variáveis Globais de Busca e Elementos
+ */
+const inputBusca = document.querySelector(".pesquisa");
+const listaBusca = document.querySelector(".listagem");
+const historicoUL = document.querySelector(".listagem ul");
+// Pega o elemento select, mesmo que ele seja criado dinamicamente
+let categoriaSelect = document.getElementById("categoria-select"); 
 
-console.log("JS carregado!");
+let timeoutBusca;
+let categoriasCarregadas = [];
+let clicandoExcluir = false; // Variável para controlar o evento blur/click
 
-function redirectToPage2() {
-    window.location.href = "../usuario/login.php";
-}
+/**
+ * URLs
+ * Assume-se que 'URLBASE' está definido no PHP/HTML (ex: <script>const URLBASE = '...';</script>)
+ */
+const ENDPOINT_BUSCA = `${URLBASE}/src/controller/usuario/busca-controller.php`;
 
-window.addEventListener("DOMContentLoaded", () => {
+/**
+ * --------------------------------
+ * 1. Inicialização da Página
+ * --------------------------------
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 1.1. Ajuste CSS (para o nome do usuário)
+    ajustarSpanNomeUsuario();
+
+    // 1.3. Inicializar eventos de busca e filtro
+    inicializarBuscaEventos();
+});
+
+
+function ajustarSpanNomeUsuario() {
     const span = document.querySelector('.nome-usuario');
     if (span) {
         const texto = span.dataset.nome || span.textContent;
         const chLength = texto.length;
+        // Estas propriedades CSS parecem ser usadas para animações de digitação (char-by-char)
         span.style.setProperty('--char-count', chLength);
         span.style.setProperty('--char-ch', `${chLength}ch`);
     }
+}
 
-    // Carregar categorias no dropdown
-    carregarCategorias();
+// ------------------------------------------------------------------
 
-    // Inicializar busca AJAX
-    inicializarBuscaAjax();
-});
+/**
+ * --------------------------------
+ * 2. Funções de Busca AJAX
+ * --------------------------------
+ */
 
-const input = document.querySelector(".pesquisa");
-const listagem = document.querySelector(".listagem");
-const historicoUL = document.querySelector(".listagem ul");
-const categoriaSelect = document.getElementById("categoria-select");
-
-let timeoutBusca;
-let categoriasCarregadas = [];
-let clicandoExcluir = false;
-
-input.addEventListener('focus', () => {
-    listagem.classList.add('visivel');
-});
-
-input.addEventListener('blur', () => {
-    setTimeout(() => {
-        if (!clicandoExcluir) {
-            listagem.classList.remove('visivel');
+function inicializarBuscaEventos() {
+    // Evento Foco/Blur (para mostrar/esconder a lista)
+    inputBusca.addEventListener('focus', () => {
+        listaBusca.classList.add('visivel');
+        // Se o input estiver vazio, mostre a mensagem padrão
+        if (inputBusca.value.trim() === '') {
+            mostrarMensagemNenhumResultado('');
         }
-        clicandoExcluir = false;
-    }, 150);
-});
+    });
 
-function inicializarBuscaAjax() {
-    // Busca em tempo real conforme usuário digita (AJAX Key Tracking)
-    input.addEventListener('input', function() {
-        const termo = this.value.trim();
-        const categoriaSelecionada = categoriaSelect ? categoriaSelect.value : '';
+    inputBusca.addEventListener('blur', () => {
+        // Delay para permitir o clique em um resultado antes de esconder
+        setTimeout(() => {
+            if (!clicandoExcluir) {
+                listaBusca.classList.remove('visivel');
+            }
+            clicandoExcluir = false;
+        }, 150);
+    });
 
-        // Mostra indicador de loading
-        listagem.classList.add('loading');
-
-        // Limpa timeout anterior
+    // Evento de Digitação (Input)
+    inputBusca.addEventListener('input', function() {
+        // Limpar timeout anterior (debounce)
         if (timeoutBusca) {
             clearTimeout(timeoutBusca);
         }
 
-        // Define novo timeout para buscar após 300ms (otimizado para key tracking)
+        const termo = this.value.trim();
+        listaBusca.classList.add('loading');
+        
+        // Se o termo estiver vazio, mostra mensagem padrão e limpa
+        if (termo.length === 0) {
+            listaBusca.classList.remove('loading');
+            mostrarMensagemNenhumResultado('');
+            return;
+        }
+
+        // Define novo timeout para buscar após 300ms
         timeoutBusca = setTimeout(() => {
+            // Re-checa o elemento select caso ele tenha sido criado dinamicamente
+            categoriaSelect = document.getElementById("categoria-select"); 
+            const categoriaSelecionada = categoriaSelect ? categoriaSelect.value : '';
             buscarLivrosAjax(termo, categoriaSelecionada);
         }, 300);
     });
 
-    // Busca também quando categoria é alterada
-    if (categoriaSelect) {
-        categoriaSelect.addEventListener('change', function() {
-            const termo = input.value.trim();
-            const categoriaSelecionada = this.value;
-
-            // Busca imediata quando categoria muda
-            buscarLivrosAjax(termo, categoriaSelecionada);
-        });
-    }
-
-    // Enter para buscar
-    input.addEventListener('keydown', e => {
+    // Evento de Tecla (Enter)
+    inputBusca.addEventListener('keydown', e => {
         if (e.key === 'Enter') {
             e.preventDefault();
-            const termo = input.value.trim();
-            const categoriaSelecionada = categoriaSelect ? categoriaSelect.value : '';
-
             if (timeoutBusca) {
                 clearTimeout(timeoutBusca);
             }
-
+            
+            categoriaSelect = document.getElementById("categoria-select");
+            const categoriaSelecionada = categoriaSelect ? categoriaSelect.value : '';
+            const termo = inputBusca.value.trim();
+            
+            // Busca e esconde a lista (comportamento de busca "definitiva")
             buscarLivrosAjax(termo, categoriaSelecionada);
-            listagem.classList.remove('visivel');
+            listaBusca.classList.remove('visivel'); 
         }
     });
+    
+    // Evento do Botão Lupa (se houver um ID, como você mencionou 'lupaId' no HTML)
+    const botaoLupa = document.getElementById('lupaId');
+    if (botaoLupa) {
+        botaoLupa.addEventListener('click', () => {
+            categoriaSelect = document.getElementById("categoria-select");
+            const categoriaSelecionada = categoriaSelect ? categoriaSelect.value : '';
+            const termo = inputBusca.value.trim();
+            buscarLivrosAjax(termo, categoriaSelecionada);
+            listaBusca.classList.remove('visivel'); 
+        });
+    }
 }
 
 async function buscarLivrosAjax(termo, categoria) {
+    if (termo.length < 2 && termo.length !== 0) {
+        mostrarMensagemErro('Digite pelo menos 2 caracteres para buscar');
+        listaBusca.classList.remove('loading');
+        return;
+    }
+    
     try {
         const params = new URLSearchParams({
             ajax: '1',
@@ -104,205 +147,83 @@ async function buscarLivrosAjax(termo, categoria) {
             params.append('categoria', categoria);
         }
 
-        const response = await fetch(`${URLBASE}/src/controller/usuario/busca-controller.php?${params}`);
+        const url = `${ENDPOINT_BUSCA}?${params}`;
+        
+        const response = await fetch(url, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
 
         if (!response.ok) {
             throw new Error(`Erro HTTP ${response.status}: ${response.statusText}`);
         }
 
-        const data = await response.json();
-
-        // Remove indicador de loading
-        listagem.classList.remove('loading');
+        // 🚨 NOVO TRATAMENTO DE JSON: Obtém o texto e tenta o parse
+        const responseText = await response.text(); 
+        let data;
+        
+        try {
+            data = JSON.parse(responseText);
+        } catch (e) {
+            console.error("Erro ao fazer parse do JSON. Resposta do servidor (Verifique o PHP!):", responseText);
+            throw new Error("A resposta do servidor não é JSON válida. (Erro de sintaxe PHP?)"); 
+        }
+        
+        listaBusca.classList.remove('loading');
 
         if (data.sucesso) {
             mostrarResultadosBusca(data.livros, termo);
-
-            // Log para debug (apenas em desenvolvimento)
-            if (data.livros.length > 0) {
-                console.log(`Encontrados ${data.livros.length} livros para "${termo}"`);
-            }
         } else {
             console.error('Erro na busca:', data.erro);
             mostrarMensagemErro(data.erro || 'Erro ao buscar livros');
         }
     } catch (error) {
-        console.error('Erro ao fazer busca AJAX:', error);
-        listagem.classList.remove('loading');
-        mostrarMensagemErro('Erro de conexão. Verifique sua internet e tente novamente.');
+        console.error('Erro de rede ou JSON inválido:', error);
+        listaBusca.classList.remove('loading');
+        // Mensagem genérica para erros de rede ou parsing
+        mostrarMensagemErro('Erro de conexão ou resposta inválida. Tente novamente.');
     }
 }
 
-function mostrarResultadosBusca(livros, termo) {
-    historicoUL.innerHTML = '';
-
-    if (livros.length === 0) {
-        mostrarMensagemNenhumResultado(termo);
-        return;
-    }
-
-    livros.forEach(livro => {
-        const li = document.createElement('li');
-        li.className = 'listagem-item livro-item';
-        li.style.display = 'flex';
-        li.style.alignItems = 'center';
-        li.style.padding = '8px 12px';
-        li.style.cursor = 'pointer';
-        li.style.borderBottom = '1px solid #eee';
-
-        const img = document.createElement('img');
-        img.src = livro.imagem;
-        img.alt = livro.titulo;
-        img.style.width = '40px';
-        img.style.height = '50px';
-        img.style.objectFit = 'cover';
-        img.style.marginRight = '12px';
-        img.style.borderRadius = '4px';
-
-        const divInfo = document.createElement('div');
-        divInfo.style.flex = '1';
-
-        const titulo = document.createElement('div');
-        titulo.className = 'titulo-livro-busca';
-        titulo.textContent = livro.titulo;
-        titulo.style.fontWeight = 'bold';
-        titulo.style.fontSize = '14px';
-        titulo.style.marginBottom = '2px';
-
-        const autor = document.createElement('div');
-        autor.className = 'autor-livro-busca';
-        autor.textContent = livro.autor;
-        autor.style.fontSize = '12px';
-        autor.style.color = '#666';
-
-        const categoria = document.createElement('div');
-        categoria.className = 'categoria-livro-busca';
-        categoria.textContent = livro.categoria_nome;
-        categoria.style.fontSize = '11px';
-        categoria.style.color = '#888';
-
-        divInfo.appendChild(titulo);
-        divInfo.appendChild(autor);
-        divInfo.appendChild(categoria);
-
-        li.appendChild(img);
-        li.appendChild(divInfo);
-
-        li.addEventListener('mousedown', () => {
-            input.value = livro.titulo;
-            listagem.classList.remove('visivel');
-
-            // Redirecionar para página do livro
-            window.location.href = `${URLBASE}/src/views/usuario/livro-info.php?id=${livro.id_livro}`;
-        });
-
-        historicoUL.appendChild(li);
-    });
-
-    listagem.classList.add('visivel');
-}
-
-function mostrarMensagemNenhumResultado(termo) {
-    historicoUL.innerHTML = '';
-
-    const li = document.createElement('li');
-    li.className = 'listagem-item nenhum-resultado';
-    li.style.padding = '16px';
-    li.style.textAlign = 'center';
-    li.style.color = '#666';
-    li.style.fontSize = '14px';
-
-    if (termo) {
-        li.textContent = `Nenhum livro encontrado para "${termo}"`;
-    } else {
-        li.textContent = 'Digite algo para buscar livros';
-    }
-
-    historicoUL.appendChild(li);
-    listagem.classList.add('visivel');
-}
-
-function mostrarMensagemErro(erro) {
-    historicoUL.innerHTML = '';
-
-    const li = document.createElement('li');
-    li.className = 'listagem-item erro-busca';
-    li.style.padding = '16px';
-    li.style.textAlign = 'center';
-    li.style.color = '#d32f2f';
-    li.style.fontSize = '14px';
-
-    li.textContent = erro;
-
-    historicoUL.appendChild(li);
-    listagem.classList.add('visivel');
-}
-
-async function carregarCategorias() {
-    try {
-        const response = await fetch(`${URLBASE}/src/controller/usuario/busca-controller.php?ajax=1&acao=get_categorias`);
-
-        if (!response.ok) {
-            throw new Error('Erro na resposta do servidor');
-        }
-
-        const data = await response.json();
-
-        if (data.sucesso) {
-            categoriasCarregadas = data.categorias;
-            criarDropdownCategorias(data.categorias);
-        } else {
-            console.error('Erro ao carregar categorias:', data.erro);
-        }
-    } catch (error) {
-        console.error('Erro ao carregar categorias:', error);
-    }
-}
+// ------------------------------------------------------------------
 
 function criarDropdownCategorias(categorias) {
-    // Verificar se o container já existe
     let filtrosContainer = document.getElementById('filtros-busca-container');
+    const barraPesquisa = document.querySelector('.barrapesquisa');
 
+    // Cria o container de filtros se não existir
     if (!filtrosContainer) {
         filtrosContainer = document.createElement('div');
         filtrosContainer.className = 'filtros-busca';
         filtrosContainer.id = 'filtros-busca-container';
-        filtrosContainer.style.display = 'flex';
-        filtrosContainer.style.alignItems = 'center';
-        filtrosContainer.style.gap = '12px';
-        filtrosContainer.style.marginTop = '10px';
-        filtrosContainer.style.padding = '10px';
-        filtrosContainer.style.backgroundColor = '#f8f9fa';
-        filtrosContainer.style.borderRadius = '8px';
-        filtrosContainer.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)';
-
-        // Inserir após da barra de pesquisa
-        const barraPesquisa = document.querySelector('.barrapesquisa');
+        filtrosContainer.style.cssText = 'display: flex; align-items: center; gap: 12px; margin-top: 10px; padding: 10px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+        
         if (barraPesquisa) {
-            barraPesquisa.parentNode.insertBefore(filtrosContainer, barraPesquisa.nextSibling);
+             barraPesquisa.parentNode.insertBefore(filtrosContainer, barraPesquisa.nextSibling);
         }
     }
-
-    // Criar label
-    const label = document.createElement('label');
-    label.textContent = 'Filtrar por categoria:';
-    label.style.fontSize = '14px';
-    label.style.fontWeight = '500';
-    label.style.color = '#333';
-    label.setAttribute('for', 'categoria-select');
-
-    // Criar select
-    const select = document.createElement('select');
-    select.id = 'categoria-select';
-    select.className = 'categoria-select';
-    select.style.flex = '1';
-    select.style.padding = '10px 12px';
-    select.style.border = '1px solid #ddd';
-    select.style.borderRadius = '6px';
-    select.style.fontSize = '14px';
-    select.style.backgroundColor = 'white';
-    select.style.cursor = 'pointer';
-    select.style.transition = 'border-color 0.2s ease';
+    
+    // Cria ou seleciona o elemento select
+    let select = document.getElementById('categoria-select');
+    if (!select) {
+        select = document.createElement('select');
+        select.id = 'categoria-select';
+        select.className = 'categoria-select';
+        
+        // Criar label e adicionar ao container
+        const label = document.createElement('label');
+        label.textContent = 'Filtrar por categoria:';
+        label.setAttribute('for', 'categoria-select');
+        label.style.cssText = 'font-size: 14px; font-weight: 500; color: #333;';
+        
+        filtrosContainer.innerHTML = ''; 
+        filtrosContainer.appendChild(label);
+        filtrosContainer.appendChild(select);
+    }
+    
+    // Limpar opções existentes
+    select.innerHTML = '';
 
     // Opção padrão
     const opcaoPadrao = document.createElement('option');
@@ -317,116 +238,171 @@ function criarDropdownCategorias(categorias) {
         opcao.textContent = categoria.nome;
         select.appendChild(opcao);
     });
-
-    // Limpar container e adicionar elementos
-    filtrosContainer.innerHTML = '';
-    filtrosContainer.appendChild(label);
-    filtrosContainer.appendChild(select);
+    
+    // Estilos do select
+    select.style.cssText = 'flex: 1; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background-color: white; cursor: pointer; transition: border-color 0.2s ease;';
 
     // Tornar container visível
     filtrosContainer.style.display = 'flex';
-
+    
     console.log(`Dropdown de categorias criado com ${categorias.length} categorias`);
 }
 
+// ------------------------------------------------------------------
 
-window.addEventListener("DOMContentLoaded", () => { })
+/**
+ * --------------------------------
+ * 4. Funções de Renderização de Resultados e Mensagens
+ * --------------------------------
+ */
 
-function toggleMenu() {
+function mostrarResultadosBusca(livros, termo) {
+    historicoUL.innerHTML = '';
+
+    if (livros.length === 0) {
+        mostrarMensagemNenhumResultado(termo);
+        return;
+    }
+
+    livros.forEach(livro => {
+        const li = document.createElement('li');
+        li.className = 'listagem-item livro-item';
+        li.style.cssText = 'display: flex; align-items: center; padding: 8px 12px; cursor: pointer; border-bottom: 1px solid #eee;';
+        
+        const img = document.createElement('img');
+        img.src = livro.imagem || `${URLBASE}/public/assets/images/placeholder.png`;
+        img.alt = livro.titulo;
+        img.style.cssText = 'width: 40px; height: 50px; object-fit: cover; margin-right: 12px; border-radius: 4px;';
+        
+        const divInfo = document.createElement('div');
+        divInfo.style.flex = '1';
+
+        const titulo = document.createElement('div');
+        titulo.className = 'titulo-livro-busca';
+        titulo.textContent = livro.titulo;
+        titulo.style.cssText = 'font-weight: bold; font-size: 14px; margin-bottom: 2px;';
+
+        const autor = document.createElement('div');
+        autor.className = 'autor-livro-busca';
+        autor.textContent = livro.autor || 'Autor Desconhecido';
+        autor.style.cssText = 'font-size: 12px; color: #666;';
+
+        const categoria = document.createElement('div');
+        categoria.className = 'categoria-livro-busca';
+        categoria.textContent = livro.categoria_nome || 'Sem Categoria';
+        categoria.style.cssText = 'font-size: 11px; color: #888;';
+
+        divInfo.appendChild(titulo);
+        divInfo.appendChild(autor);
+        divInfo.appendChild(categoria);
+
+        li.appendChild(img);
+        li.appendChild(divInfo);
+
+        li.addEventListener('mousedown', () => {
+            clicandoExcluir = true; 
+            inputBusca.value = livro.titulo;
+            listaBusca.classList.remove('visivel');
+
+            window.location.href = `${URLBASE}/src/views/usuario/livro-info.php?id=${livro.id_livro}`;
+        });
+
+        historicoUL.appendChild(li);
+    });
+
+    listaBusca.classList.add('visivel');
+}
+
+function mostrarMensagemNenhumResultado(termo) {
+    historicoUL.innerHTML = '';
+
+    const li = document.createElement('li');
+    li.className = 'listagem-item nenhum-resultado';
+    li.style.cssText = 'padding: 16px; text-align: center; color: #666; font-size: 14px;';
+
+    if (termo) {
+        li.textContent = `Nenhum livro encontrado para "${termo}"`;
+    } else {
+        li.textContent = 'Digite algo para buscar livros';
+    }
+
+    historicoUL.appendChild(li);
+    listaBusca.classList.add('visivel');
+}
+
+function mostrarMensagemErro(erro) {
+    historicoUL.innerHTML = '';
+
+    const li = document.createElement('li');
+    li.className = 'listagem-item erro-busca';
+    li.style.cssText = 'padding: 16px; text-align: center; color: #d32f2f; font-size: 14px;';
+
+    li.textContent = `🚨 ${erro}`;
+
+    historicoUL.appendChild(li);
+    listaBusca.classList.add('visivel');
+}
+
+// ------------------------------------------------------------------
+
+/**
+ * --------------------------------
+ * 5. Funções de Navegação e Menu (Componentes)
+ * --------------------------------
+ */
+
+function redirectToPage2() {
+    window.location.href = "../usuario/login.php";
+}
+
+function toggleMenuGeral() {
     const navMenu = document.getElementById("nav-menu");
     const isOpen = navMenu.style.display === "block";
 
     navMenu.style.display = isOpen ? "none" : "block";
 
-    // Se abrir, ativa escuta para cliques fora
     if (!isOpen) {
         document.addEventListener('click', handleClickForaMenuGeral);
+    } else {
+        document.removeEventListener('click', handleClickForaMenuGeral);
     }
 }
-
 
 function handleClickForaMenuGeral(event) {
     const menuGeral = document.getElementById("nav-menu");
     const iconeGeral = document.getElementById("menu-icone");
 
-    if (!menuGeral.contains(event.target) && !iconeGeral.contains(event.target)) {
+    if (menuGeral && iconeGeral && !menuGeral.contains(event.target) && !iconeGeral.contains(event.target)) {
         menuGeral.style.display = "none";
         document.removeEventListener('click', handleClickForaMenuGeral);
     }
 }
-
-
 
 function toggleMenuPerfil() {
     const navPerfil = document.getElementById("nav-menu-perfil");
     const isOpen = navPerfil.style.display === "block";
     navPerfil.style.display = isOpen ? "none" : "block";
 
-    // Se abrir, ativa escuta para cliques fora
     if (!isOpen) {
-        document.addEventListener('click', handleClickForaMenu);
+        document.addEventListener('click', handleClickForaMenuPerfil);
+    } else {
+        document.removeEventListener('click', handleClickForaMenuPerfil);
     }
 }
 
-function handleClickForaMenu(event) {
+function handleClickForaMenuPerfil(event) {
     const menu = document.getElementById("nav-menu-perfil");
     const icone = document.getElementById("icone-pessoa");
 
-    // Se o clique for fora do menu e fora do ícone, fecha o menu
-    if (!menu.contains(event.target) && !icone.contains(event.target)) {
+    if (menu && icone && !menu.contains(event.target) && !icone.contains(event.target)) {
         menu.style.display = "none";
-        document.removeEventListener('click', handleClickForaMenu); // remove listener
+        document.removeEventListener('click', handleClickForaMenuPerfil); 
     }
 }
 
-
 function confirmarSaida(event) {
     event.preventDefault();
-    showModal(
-        'confirmModal',
-        'Você tem certeza que deseja sair?',
-        function () {
-            window.location.href = baseUrl + '/index.php';
-        }
-    );
+    if (confirm('Você tem certeza que deseja sair?')) {
+         window.location.href = URLBASE + '/index.php'; 
+    }
 }
-
-function showModal(modalId, mensagem, onConfirm) {
-    const modal = document.getElementById(modalId);
-    const messageEl = document.getElementById(`${modalId}Message`);
-    const confirmBtn = document.getElementById(`${modalId}ConfirmBtn`);
-    const cancelBtn = document.getElementById(`${modalId}CancelBtn`);
-
-    if (messageEl) messageEl.textContent = mensagem;
-
-    const newConfirmBtn = confirmBtn.cloneNode(true);
-    confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
-
-    newConfirmBtn.addEventListener('click', () => {
-        closeModal(modalId);
-        if (onConfirm) onConfirm();
-    });
-
-    cancelBtn.addEventListener('click', () => closeModal(modalId));
-
-    modal.style.display = 'flex';
-}
-
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) modal.style.display = 'none';
-}
-
-function toggleMenu(event) {
-    event.stopPropagation(); // evita que o clique feche imediatamente
-    const menu = event.currentTarget.querySelector(".menu-dropdown");
-    const isVisible = menu.style.display === "block";
-    document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
-    menu.style.display = isVisible ? "none" : "block";
-}
-
-document.addEventListener("click", () => {
-    document.querySelectorAll(".menu-dropdown").forEach(m => m.style.display = "none");
-});
-
-

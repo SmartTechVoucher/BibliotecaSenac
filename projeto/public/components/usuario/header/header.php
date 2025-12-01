@@ -68,8 +68,8 @@
                         <a href="<?php echo htmlspecialchars($URLBASE); ?>/src/views/usuario/filtro-livros.php">Livros</a>
                     </li>
                     <li class="menu-li">
-                        <img src="<?php echo htmlspecialchars($URLBASE); ?>/public/assets/icons/livro-menu.png" alt="">
-                        <a href="<?php echo htmlspecialchars($URLBASE); ?>/src/views/usuario/filtro-livros.php">Livros</a>
+                        <img src="<?php echo htmlspecialchars($URLBASE); ?>/public/assets/icons/AreaDoLeitor.png" alt="">
+                        <a href="<?php echo htmlspecialchars($URLBASE); ?>/src/views/usuario/desenvolvedores.php">Desenvolvedores</a>
                     </li>
                 </ul>
 
