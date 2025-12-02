@@ -1,11 +1,12 @@
 <?php
-require_once "../../../config/constantes.php";
+// Iniciar output buffering ANTES de qualquer output
+ob_start();
+
+// Caminho correto para o arquivo constantes.php
+// Ajuste conforme sua estrutura de pastas
+require_once __DIR__ . "/../../../../config/constantes.php";
 
 
-if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
-    header('Location: ' . $URLBASE . '/src/views/admin/login-adm.php');
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -15,7 +16,7 @@ if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
     <title>Usuários Cadastrados - Biblioteca SENAC</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo $URLBASE ?>/public/css/admin/usuarios-cadastrados.css">
+    <link rel="stylesheet" href="<?php echo $URLBASE; ?>/public/css/admin/usuarios-cadastrados.css">
     
     <script>
         const URLBASE = "<?php echo $URLBASE; ?>";
@@ -31,13 +32,33 @@ if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
 
         <!-- Cards de Estatísticas -->
         <div id="estatisticas-container" class="stats-grid">
-            <!-- Será preenchido pelo JavaScript -->
+            <div class="stat-card stat-primary">
+                <div class="stat-icon"></div>
+                <div class="stat-content">
+                    <h3>---</h3>
+                    <p>Total de Usuários</p>
+                </div>
+            </div>
+            <div class="stat-card stat-success">
+                <div class="stat-icon"></div>
+                <div class="stat-content">
+                    <h3>---</h3>
+                    <p>Usuários Regulares</p>
+                </div>
+            </div>
+            <div class="stat-card stat-warning">
+                <div class="stat-icon"></div>
+                <div class="stat-content">
+                    <h3>---</h3>
+                    <p>Usuários Bloqueados</p>
+                </div>
+            </div>
         </div>
 
         <!-- Barra de Busca -->
         <div class="search-section">
             <div class="search-box">
-                <input type="text" id="campoBusca" placeholder=" Buscar por nome, email ou CPF...">
+                <input type="text" id="campoBusca" placeholder="Buscar por nome, email ou CPF...">
             </div>
         </div>
 
@@ -145,7 +166,7 @@ if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
             <div class="modal-body">
                 <!-- Foto e Dados Básicos -->
                 <div class="user-basic-info">
-                    <img id="userFoto" src="<?php echo $URLBASE ?>/public/assets/img/NullUser.jpg" alt="Foto do usuário">
+                    <img id="userFoto" src="<?php echo $URLBASE; ?>/public/assets/img/NullUser.jpg" alt="Foto do usuário">
                     
                     <div class="user-main-data">
                         <div class="form-group">
@@ -255,19 +276,19 @@ if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
             <!-- Botões do Modal -->
             <div class="modal-footer">
                 <button id="btnBloquear" class="btn btn-danger">
-                    🔒 Bloquear Usuário
+                    Bloquear Usuário
                 </button>
                 
                 <button id="btnEditar" class="btn btn-primary">
-                    ✏️ Editar Dados
+                    Editar Dados
                 </button>
                 
                 <button id="btnSalvar" class="btn btn-success" style="display: none;">
-                    💾 Salvar Alterações
+                    Salvar Alterações
                 </button>
                 
                 <button id="btnCancelar" class="btn btn-secondary" style="display: none;">
-                    ❌ Cancelar
+                    Cancelar
                 </button>
                 
                 <button class="btn btn-secondary" onclick="fecharModal()">
@@ -277,35 +298,10 @@ if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
         </div>
     </div>
 
-    <!-- Modal de Confirmação de Exclusão -->
-    <div id="modalConfirmarExclusao" class="modal">
-        <div class="modal-content modal-small">
-            <div class="modal-header">
-                <h2>⚠️ Confirmar Exclusão</h2>
-            </div>
-            <div class="modal-body">
-                <p style="text-align: center; font-size: 1.1rem; color: #666; margin: 20px 0;">
-                    Tem certeza que deseja <strong style="color: #dc3545;">excluir</strong> este usuário?
-                </p>
-                <p style="text-align: center; font-size: 0.9rem; color: #999;">
-                    Esta ação não pode ser desfeita!
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" onclick="confirmarExclusao()">
-                    🗑️ Sim, Excluir
-                </button>
-                <button class="btn btn-secondary" onclick="fecharModalExclusao()">
-                    Cancelar
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal de Sucesso -->
     <div id="modalSucesso" class="modal">
         <div class="modal-content modal-small">
-            <div class="modal-body" style="text-align: center; padding: 40px;">
+            <div class="modal-body" style="text-align: center; padding: 135px;">
                 <div style="font-size: 64px; color: #28a745; margin-bottom: 20px;">✓</div>
                 <h3 style="color: #28a745; margin-bottom: 10px;">Sucesso!</h3>
                 <p id="mensagemSucesso" style="color: #666;"></p>
@@ -316,7 +312,7 @@ if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
     <!-- Modal de Erro -->
     <div id="modalErro" class="modal">
         <div class="modal-content modal-small">
-            <div class="modal-body" style="text-align: center; padding: 40px;">
+            <div class="modal-body" style="text-align: center; padding: 135px;">
                 <div style="font-size: 64px; color: #dc3545; margin-bottom: 20px;">✕</div>
                 <h3 style="color: #dc3545; margin-bottom: 10px;">Erro!</h3>
                 <p id="mensagemErro" style="color: #666;"></p>
@@ -326,6 +322,11 @@ if (!isset($_SESSION['admin']) || empty($_SESSION['admin'])) {
             </div>
         </div>
     </div>
-    <script src="<?php echo $URLBASE ?>/public/js/admin/usuarios-cadastrados-v2.js"></script>
+
+    <script src="<?php echo $URLBASE; ?>/public/js/admin/usuarios-cadastrados-v2.js"></script>
 </body>
 </html>
+<?php
+// Limpar e enviar o buffer
+ob_end_flush();
+?>

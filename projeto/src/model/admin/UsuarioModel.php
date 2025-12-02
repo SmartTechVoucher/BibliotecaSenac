@@ -1,525 +1,324 @@
 <?php
 /**
+ * UsuarioModel.php (refatorado)
  * Model para operações relacionadas a usuários
- * Gerencia todas as operações de banco de dados relacionadas aos usuários
- * 
- * @package Model
- * @author Sistema Biblioteca SENAC
- * @version 2.0
+ *
+ * - Reinsere foto_perfil nas listagens
+ * - Bind seguro de parâmetros
+ * - Tratamento de erros com logs
  */
 
 require_once __DIR__ . '/../../../config/db/database.php';
 
 class UsuarioModel {
     private $conn;
-    private $table = 'usuarios';
+    private $table = "usuarios";
 
-    /**
-     * Construtor - Inicializa conexão com banco de dados
-     * @throws Exception Se falhar na conexão
-     */
     public function __construct() {
-        try {
-            $banco = new Database();
-            $this->conn = $banco->Connect();
-            
-            if (!$this->conn) {
-                throw new Exception('Falha na conexão com o banco de dados.');
-            }
-        } catch (Exception $e) {
-            error_log("Erro ao conectar ao banco: " . $e->getMessage());
-            throw $e;
+        $db = new Database();
+        $this->conn = $db->Connect();
+
+        // Segurança: certificar fetch assoc por padrão (opcional)
+        if ($this->conn) {
+            $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
     }
 
     /**
-     * Lista usuários regulares (ativos) com paginação
-     * 
-     * @param int $pagina Número da página (default 1)
-     * @param int $limite Itens por página (default 10)
-     * @param string $busca Termo de busca opcional
-     * @return array Array com usuários e informações de paginação
+     * Normaliza e valida parâmetros de paginação
      */
-    public function listarUsuariosRegulares($pagina = 1, $limite = 10, $busca = '') {
-        try {
-            $offset = ($pagina - 1) * $limite;
+    private function normalizePageLimit($pagina, $limite) {
+        $pagina = (int)$pagina;
+        $limite = (int)$limite;
+        if ($pagina < 1) $pagina = 1;
+        if ($limite < 1) $limite = 10;
+        $offset = ($pagina - 1) * $limite;
+        return [$pagina, $limite, $offset];
+    }
 
-            $sql = "SELECT
-                        u.id_usuario,
-                        u.nome,
-                        u.nome_social,
-                        u.cpf,
-                        u.email,
-                        u.data_nascimento,
-                        u.telefone,
-                        u.endereco,
-                        u.genero,
-                        u.foto_perfil,
-                        u.numero_matricula,
-                        u.categoria,
-                        u.unidade_senac,
-                        u.curso,
-                        u.turma,
-                        u.data_fim_curso,
-                        u.notas_usuario,
-                        u.data_criacao,
-                        u.data_atualizacao,
-                        u.ativo,
-                        c.nome as categoria_usuario_nome
-                    FROM {$this->table} u
-                    LEFT JOIN categorias_usuario c ON u.categoria = c.nome
-                    WHERE u.ativo = 1";
+    /**
+     * LISTAR USUÁRIOS REGULARES (ativo = 1)
+     */
+    public function listarUsuariosRegulares($pagina = 1, $limite = 10, $busca = "") {
+        try {
+            list($pagina, $limite, $offset) = $this->normalizePageLimit($pagina, $limite);
+
+            $sql = "SELECT 
+                        id_usuario,
+                        nome,
+                        nome_social,
+                        email,
+                        cpf,
+                        categoria,
+                        unidade_senac,
+                        numero_matricula,
+                        telefone,
+                        foto_perfil,
+                        ativo
+                    FROM {$this->table}
+                    WHERE ativo = 1";
 
             $params = [];
-            
             if (!empty($busca)) {
-                $sql .= " AND (u.nome LIKE :busca OR u.email LIKE :busca OR u.cpf LIKE :busca OR u.numero_matricula LIKE :busca)";
+                $sql .= " AND (
+                            nome LIKE :busca OR 
+                            email LIKE :busca OR
+                            cpf LIKE :busca OR
+                            numero_matricula LIKE :busca
+                        )";
                 $params[':busca'] = '%' . $busca . '%';
             }
 
-            $sql .= " ORDER BY u.nome ASC LIMIT :limite OFFSET :offset";
+            $sql .= " ORDER BY id_usuario DESC LIMIT :limite OFFSET :offset";
 
             $stmt = $this->conn->prepare($sql);
 
-            foreach ($params as $key => $value) {
-                $stmt->bindValue($key, $value, PDO::PARAM_STR);
+            // bind de parâmetros dinâmicos
+            foreach ($params as $k => $v) {
+                $stmt->bindValue($k, $v, PDO::PARAM_STR);
             }
-
             $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
             $stmt->execute();
+            $usuarios = $stmt->fetchAll();
 
-            $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $total = $this->contarUsuarios(true, $busca);
+            $total = $this->contarUsuariosRegulares($busca);
 
             return [
-                'usuarios' => $usuarios,
-                'total' => $total,
-                'pagina_atual' => $pagina,
-                'total_paginas' => ceil($total / $limite)
+                "usuarios" => $usuarios,
+                "total" => (int)$total,
+                "pagina_atual" => (int)$pagina,
+                "total_paginas" => ($limite > 0) ? (int)ceil($total / $limite) : 1
             ];
-
         } catch (PDOException $e) {
-            error_log("Erro ao listar usuários regulares: " . $e->getMessage());
-            return [
-                'usuarios' => [], 
-                'total' => 0, 
-                'pagina_atual' => 1, 
-                'total_paginas' => 0
-            ];
+            error_log("Erro listarUsuariosRegulares: " . $e->getMessage());
+            return ["usuarios" => [], "total" => 0, "pagina_atual" => 1, "total_paginas" => 1];
         }
     }
 
     /**
-     * Lista usuários bloqueados (inativos) com paginação
-     * 
-     * @param int $pagina Número da página (default 1)
-     * @param int $limite Itens por página (default 10)
-     * @param string $busca Termo de busca opcional
-     * @return array Array com usuários e informações de paginação
+     * CONTAR REGULARES
      */
-    public function listarUsuariosBloqueados($pagina = 1, $limite = 10, $busca = '') {
+    public function contarUsuariosRegulares($busca = "") {
         try {
-            $offset = ($pagina - 1) * $limite;
-
-            $sql = "SELECT
-                        u.id_usuario,
-                        u.nome,
-                        u.nome_social,
-                        u.cpf,
-                        u.email,
-                        u.data_nascimento,
-                        u.telefone,
-                        u.endereco,
-                        u.genero,
-                        u.foto_perfil,
-                        u.numero_matricula,
-                        u.categoria,
-                        u.unidade_senac,
-                        u.curso,
-                        u.turma,
-                        u.data_fim_curso,
-                        u.notas_usuario,
-                        u.data_criacao,
-                        u.data_atualizacao,
-                        u.ativo,
-                        c.nome as categoria_usuario_nome
-                    FROM {$this->table} u
-                    LEFT JOIN categorias_usuario c ON u.categoria = c.nome
-                    WHERE u.ativo = 0";
-
+            $sql = "SELECT COUNT(*) AS total FROM {$this->table} WHERE ativo = 1";
             $params = [];
-            
             if (!empty($busca)) {
-                $sql .= " AND (u.nome LIKE :busca OR u.email LIKE :busca OR u.cpf LIKE :busca OR u.numero_matricula LIKE :busca)";
-                $params[':busca'] = '%' . $busca . '%';
-            }
-
-            $sql .= " ORDER BY u.nome ASC LIMIT :limite OFFSET :offset";
-
-            $stmt = $this->conn->prepare($sql);
-
-            foreach ($params as $key => $value) {
-                $stmt->bindValue($key, $value, PDO::PARAM_STR);
-            }
-
-            $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-            $stmt->execute();
-
-            $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $total = $this->contarUsuarios(false, $busca);
-
-            return [
-                'usuarios' => $usuarios,
-                'total' => $total,
-                'pagina_atual' => $pagina,
-                'total_paginas' => ceil($total / $limite)
-            ];
-
-        } catch (PDOException $e) {
-            error_log("Erro ao listar usuários bloqueados: " . $e->getMessage());
-            return [
-                'usuarios' => [], 
-                'total' => 0, 
-                'pagina_atual' => 1, 
-                'total_paginas' => 0
-            ];
-        }
-    }
-
-    /**
-     * Conta total de usuários (ativos ou bloqueados)
-     * 
-     * @param bool $ativos True para contar ativos, false para bloqueados
-     * @param string $busca Termo de busca opcional
-     * @return int Total de usuários
-     */
-    private function contarUsuarios($ativos = true, $busca = '') {
-        try {
-            $statusAtivo = $ativos ? 1 : 0;
-            $sql = "SELECT COUNT(*) as total FROM {$this->table} WHERE ativo = :ativo";
-
-            $params = [':ativo' => $statusAtivo];
-
-            if (!empty($busca)) {
-                $sql .= " AND (nome LIKE :busca OR email LIKE :busca OR cpf LIKE :busca OR numero_matricula LIKE :busca)";
+                $sql .= " AND (
+                            nome LIKE :busca OR 
+                            email LIKE :busca OR
+                            cpf LIKE :busca OR
+                            numero_matricula LIKE :busca
+                        )";
                 $params[':busca'] = '%' . $busca . '%';
             }
 
             $stmt = $this->conn->prepare($sql);
-            
-            foreach ($params as $key => $value) {
-                if ($key === ':ativo') {
-                    $stmt->bindValue($key, $value, PDO::PARAM_INT);
-                } else {
-                    $stmt->bindValue($key, $value, PDO::PARAM_STR);
-                }
-            }
-
+            if (isset($params[':busca'])) $stmt->bindValue(':busca', $params[':busca'], PDO::PARAM_STR);
             $stmt->execute();
-            return (int) $stmt->fetchColumn();
-
+            $row = $stmt->fetch();
+            return (int)($row['total'] ?? 0);
         } catch (PDOException $e) {
-            error_log("Erro ao contar usuários: " . $e->getMessage());
+            error_log("Erro contarUsuariosRegulares: " . $e->getMessage());
             return 0;
         }
     }
 
     /**
-     * Busca um usuário específico por ID
-     * 
-     * @param int $id_usuario ID do usuário
-     * @return array|false Dados do usuário ou false se não encontrado
+     * LISTAR BLOQUEADOS (ativo = 0)
      */
-    public function buscarUsuarioPorId($id_usuario) {
+    public function listarUsuariosBloqueados($pagina = 1, $limite = 10, $busca = "") {
         try {
-            $sql = "SELECT
-                        u.*,
-                        c.nome as categoria_usuario_nome
-                    FROM {$this->table} u
-                    LEFT JOIN categorias_usuario c ON u.categoria = c.nome
-                    WHERE u.id_usuario = :id_usuario";
+            list($pagina, $limite, $offset) = $this->normalizePageLimit($pagina, $limite);
 
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-            $stmt->execute();
+            $sql = "SELECT 
+                        id_usuario,
+                        nome,
+                        nome_social,
+                        email,
+                        cpf,
+                        categoria,
+                        unidade_senac,
+                        numero_matricula,
+                        telefone,
+                        foto_perfil,
+                        ativo
+                    FROM {$this->table}
+                    WHERE ativo = 0";
 
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-
-        } catch (PDOException $e) {
-            error_log("Erro ao buscar usuário {$id_usuario}: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    /**
-     * Busca um usuário por email
-     * 
-     * @param string $email Email do usuário
-     * @return array|false Dados do usuário ou false se não encontrado
-     */
-    public function buscarUsuarioPorEmail($email) {
-        try {
-            $sql = "SELECT id_usuario, email, ativo FROM {$this->table} WHERE email = :email";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->execute();
-
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-
-        } catch (PDOException $e) {
-            error_log("Erro ao buscar usuário por email: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    /**
-     * Busca um usuário por CPF
-     * 
-     * @param string $cpf CPF do usuário
-     * @return array|false Dados do usuário ou false se não encontrado
-     */
-    public function buscarUsuarioPorCPF($cpf) {
-        try {
-            // Remove formatação do CPF
-            $cpf = preg_replace('/[^\d]/', '', $cpf);
-            
-            $sql = "SELECT id_usuario, cpf, ativo FROM {$this->table} WHERE cpf = :cpf";
-
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
-            $stmt->execute();
-
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-
-        } catch (PDOException $e) {
-            error_log("Erro ao buscar usuário por CPF: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    /**
-     * Atualiza dados de um usuário
-     * 
-     * @param int $id_usuario ID do usuário
-     * @param array $dados Dados a serem atualizados
-     * @return bool True se atualizado com sucesso, false caso contrário
-     */
-    public function atualizarUsuario($id_usuario, $dados) {
-        try {
-            $campos = [];
             $params = [];
-
-            // Campos que podem ser atualizados
-            $camposPermitidos = [
-                'nome' => PDO::PARAM_STR,
-                'nome_social' => PDO::PARAM_STR,
-                'email' => PDO::PARAM_STR,
-                'data_nascimento' => PDO::PARAM_STR,
-                'telefone' => PDO::PARAM_STR,
-                'endereco' => PDO::PARAM_STR,
-                'genero' => PDO::PARAM_STR,
-                'numero_matricula' => PDO::PARAM_STR,
-                'categoria' => PDO::PARAM_STR,
-                'unidade_senac' => PDO::PARAM_STR,
-                'curso' => PDO::PARAM_STR,
-                'turma' => PDO::PARAM_STR,
-                'data_fim_curso' => PDO::PARAM_STR,
-                'notas_usuario' => PDO::PARAM_STR
-            ];
-
-            foreach ($dados as $campo => $valor) {
-                if (isset($camposPermitidos[$campo]) && $valor !== '') {
-                    $campos[] = "{$campo} = :{$campo}";
-                    $params[":{$campo}"] = [
-                        'valor' => $valor,
-                        'tipo' => $camposPermitidos[$campo]
-                    ];
-                }
+            if (!empty($busca)) {
+                $sql .= " AND (
+                            nome LIKE :busca OR 
+                            email LIKE :busca OR
+                            cpf LIKE :busca OR
+                            numero_matricula LIKE :busca
+                        )";
+                $params[':busca'] = '%' . $busca . '%';
             }
 
-            if (empty($campos)) {
-                error_log("Nenhum campo válido para atualizar no usuário ID {$id_usuario}");
+            $sql .= " ORDER BY id_usuario DESC LIMIT :limite OFFSET :offset";
+
+            $stmt = $this->conn->prepare($sql);
+
+            if (isset($params[':busca'])) $stmt->bindValue(':busca', $params[':busca'], PDO::PARAM_STR);
+            $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+
+            $stmt->execute();
+            $usuarios = $stmt->fetchAll();
+
+            $total = $this->contarUsuariosBloqueados($busca);
+
+            return [
+                "usuarios" => $usuarios,
+                "total" => (int)$total,
+                "pagina_atual" => (int)$pagina,
+                "total_paginas" => ($limite > 0) ? (int)ceil($total / $limite) : 1
+            ];
+        } catch (PDOException $e) {
+            error_log("Erro listarUsuariosBloqueados: " . $e->getMessage());
+            return ["usuarios" => [], "total" => 0, "pagina_atual" => 1, "total_paginas" => 1];
+        }
+    }
+
+    /**
+     * CONTAR BLOQUEADOS
+     */
+    public function contarUsuariosBloqueados($busca = "") {
+        try {
+            $sql = "SELECT COUNT(*) AS total FROM {$this->table} WHERE ativo = 0";
+            $params = [];
+            if (!empty($busca)) {
+                $sql .= " AND (
+                            nome LIKE :busca OR 
+                            email LIKE :busca OR
+                            cpf LIKE :busca OR
+                            numero_matricula LIKE :busca
+                        )";
+                $params[':busca'] = '%' . $busca . '%';
+            }
+
+            $stmt = $this->conn->prepare($sql);
+            if (isset($params[':busca'])) $stmt->bindValue(':busca', $params[':busca'], PDO::PARAM_STR);
+            $stmt->execute();
+            $row = $stmt->fetch();
+            return (int)($row['total'] ?? 0);
+        } catch (PDOException $e) {
+            error_log("Erro contarUsuariosBloqueados: " . $e->getMessage());
+            return 0;
+        }
+    }
+
+    /**
+     * PEGAR USUÁRIO POR ID
+     */
+    public function buscarPorId($id) {
+        try {
+            $sql = "SELECT * FROM {$this->table} WHERE id_usuario = :id LIMIT 1";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
+            $stmt->execute();
+            $user = $stmt->fetch();
+            return $user ? $user : false;
+        } catch (PDOException $e) {
+            error_log("Erro buscarPorId ({$id}): " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * ALTERAR STATUS (bloquear/desbloquear)
+     */
+    public function alterarStatus($id, $status) {
+        try {
+            $sql = "UPDATE {$this->table} SET ativo = :status, data_atualizacao = NOW() WHERE id_usuario = :id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':status', (int)$status, PDO::PARAM_INT);
+            $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Erro alterarStatus ({$id}): " . $e->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * ATUALIZAR USUÁRIO
+     * Recebe array $dados com chaves correspondentes às colunas (nome, email, etc).
+     * Observação: validações devem ser feitas no controller antes de chamar este método.
+     */
+    public function atualizarUsuario($id, $dados) {
+        try {
+            // construir SET dinamicamente (apenas colunas passadas)
+            $setParts = [];
+            $params = [];
+            foreach ($dados as $col => $val) {
+                // evita sobrescrever coluna id_usuario
+                if ($col === 'id_usuario' || $col === 'id') continue;
+                $setParts[] = "{$col} = :{$col}";
+                $params[":{$col}"] = $val;
+            }
+
+            if (empty($setParts)) {
+                error_log("atualizarUsuario: nenhum campo para atualizar (id {$id})");
                 return false;
             }
 
-            // Adicionar timestamp de atualização
-            $campos[] = "data_atualizacao = NOW()";
-            $params[':id_usuario'] = [
-                'valor' => $id_usuario,
-                'tipo' => PDO::PARAM_INT
-            ];
-
-            $sql = "UPDATE {$this->table} SET " . implode(', ', $campos) . " WHERE id_usuario = :id_usuario";
-
+            $sql = "UPDATE {$this->table} SET " . implode(", ", $setParts) . ", data_atualizacao = NOW() WHERE id_usuario = :id";
             $stmt = $this->conn->prepare($sql);
 
-            // Bind dos parâmetros
-            foreach ($params as $key => $param) {
-                $stmt->bindValue($key, $param['valor'], $param['tipo']);
+            foreach ($params as $k => $v) {
+                $stmt->bindValue($k, $v);
             }
+            $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
 
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                error_log("Usuário ID {$id_usuario} atualizado com sucesso");
-                return true;
-            }
-
-            error_log("Nenhuma linha afetada ao atualizar usuário ID {$id_usuario}");
-            return false;
-
+            return $stmt->execute();
         } catch (PDOException $e) {
-            error_log("Erro ao atualizar usuário {$id_usuario}: " . $e->getMessage());
+            error_log("Erro atualizarUsuario ({$id}): " . $e->getMessage());
             return false;
         }
     }
 
     /**
-     * Bloqueia um usuário (define ativo = 0)
-     * 
-     * @param int $id_usuario ID do usuário
-     * @return bool True se bloqueado com sucesso, false caso contrário
-     */
-    public function bloquearUsuario($id_usuario) {
-        try {
-            $sql = "UPDATE {$this->table} 
-                    SET ativo = 0, data_atualizacao = NOW() 
-                    WHERE id_usuario = :id_usuario AND ativo = 1";
-            
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                error_log("Usuário ID {$id_usuario} bloqueado com sucesso");
-                return true;
-            }
-
-            return false;
-
-        } catch (PDOException $e) {
-            error_log("Erro ao bloquear usuário {$id_usuario}: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    /**
-     * Desbloqueia um usuário (define ativo = 1)
-     * 
-     * @param int $id_usuario ID do usuário
-     * @return bool True se desbloqueado com sucesso, false caso contrário
-     */
-    public function desbloquearUsuario($id_usuario) {
-        try {
-            $sql = "UPDATE {$this->table} 
-                    SET ativo = 1, data_atualizacao = NOW() 
-                    WHERE id_usuario = :id_usuario AND ativo = 0";
-            
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-            $stmt->execute();
-
-            if ($stmt->rowCount() > 0) {
-                error_log("Usuário ID {$id_usuario} desbloqueado com sucesso");
-                return true;
-            }
-
-            return false;
-
-        } catch (PDOException $e) {
-            error_log("Erro ao desbloquear usuário {$id_usuario}: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    /**
-     * Obtém estatísticas dos usuários
-     * 
-     * @return array Estatísticas (total_regulares, total_bloqueados, total_geral)
+     * 📊 ESTATÍSTICAS DE USUÁRIOS
      */
     public function getEstatisticasUsuarios() {
         try {
-            $sql = "SELECT
-                        COUNT(CASE WHEN ativo = 1 THEN 1 END) as total_regulares,
-                        COUNT(CASE WHEN ativo = 0 THEN 1 END) as total_bloqueados,
-                        COUNT(*) as total_geral
-                    FROM {$this->table}";
-
+            $sql = "
+                SELECT 
+                    COUNT(*) AS total,
+                    SUM(CASE WHEN ativo = 1 THEN 1 ELSE 0 END) AS ativos,
+                    SUM(CASE WHEN ativo = 0 THEN 1 ELSE 0 END) AS bloqueados
+                FROM {$this->table}
+            ";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
+            $d = $stmt->fetch();
 
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $total = (int)($d['total'] ?? 0);
+            $ativos = (int)($d['ativos'] ?? 0);
+            $bloqueados = (int)($d['bloqueados'] ?? 0);
 
-        } catch (PDOException $e) {
-            error_log("Erro ao obter estatísticas de usuários: " . $e->getMessage());
             return [
-                'total_regulares' => 0, 
-                'total_bloqueados' => 0, 
-                'total_geral' => 0
+                "total_geral" => $total,
+                "total_regulares" => $ativos,
+                "total_bloqueados" => $bloqueados,
+                "percentual_ativos" => $total > 0 ? round(($ativos / $total) * 100, 2) : 0,
+                "percentual_bloqueados" => $total > 0 ? round(($bloqueados / $total) * 100, 2) : 0
+            ];
+        } catch (PDOException $e) {
+            error_log("Erro getEstatisticasUsuarios: " . $e->getMessage());
+            return [
+                "total_geral" => 0,
+                "total_regulares" => 0,
+                "total_bloqueados" => 0,
+                "percentual_ativos" => 0,
+                "percentual_bloqueados" => 0
             ];
         }
-    }
-
-    /**
-     * Valida CPF
-     * 
-     * @param string $cpf CPF a ser validado
-     * @return bool True se válido, false caso contrário
-     */
-    public function validarCPF($cpf) {
-        // Remove caracteres não numéricos
-        $cpf = preg_replace('/[^\d]/', '', $cpf);
-
-        // Verifica se tem 11 dígitos
-        if (strlen($cpf) !== 11) {
-            return false;
-        }
-
-        // Verifica se todos os dígitos são iguais
-        if (preg_match('/^(\d)\1+$/', $cpf)) {
-            return false;
-        }
-
-        // Calcula primeiro dígito verificador
-        $soma = 0;
-        for ($i = 0; $i < 9; $i++) {
-            $soma += (int)$cpf[$i] * (10 - $i);
-        }
-
-        $resto = ($soma * 10) % 11;
-        if ($resto === 10 || $resto === 11) {
-            $resto = 0;
-        }
-        
-        if ($resto !== (int)$cpf[9]) {
-            return false;
-        }
-
-        // Calcula segundo dígito verificador
-        $soma = 0;
-        for ($i = 0; $i < 10; $i++) {
-            $soma += (int)$cpf[$i] * (11 - $i);
-        }
-
-        $resto = ($soma * 10) % 11;
-        if ($resto === 10 || $resto === 11) {
-            $resto = 0;
-        }
-
-        return $resto === (int)$cpf[10];
-    }
-
-    /**
-     * Valida formato de email
-     * 
-     * @param string $email Email a ser validado
-     * @return bool True se válido, false caso contrário
-     */
-    public function validarEmail($email) {
-        return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
     }
 }
 ?>

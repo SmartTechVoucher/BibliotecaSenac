@@ -123,12 +123,6 @@ body {
     line-height: 1;
 }
 
-.stat-content h3 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.25rem;
-}
 
 .stat-content p {
     font-size: 0.9rem;
@@ -338,7 +332,7 @@ body {
 }
 
 .btn-primary {
-    background: var(--primary-color);
+    background: #003162;
     color: white;
 }
 
@@ -349,7 +343,7 @@ body {
 }
 
 .btn-success {
-    background: var(--success-color);
+    background: #28a745;
     color: white;
 }
 
@@ -360,7 +354,7 @@ body {
 }
 
 .btn-danger {
-    background: var(--danger-color);
+    background: #dc2626;;
     color: white;
 }
 
@@ -371,7 +365,7 @@ body {
 }
 
 .btn-secondary {
-    background: var(--secondary-color);
+    background: #ffc107;
     color: white;
 }
 
@@ -388,7 +382,7 @@ body {
 }
 
 .btn-view {
-    background: var(--primary-color);
+    background: #003162;
     color: white;
     border: none;
     cursor: pointer;
@@ -473,7 +467,7 @@ body {
 }
 
 .modal-header {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    background: #003162;
     color: white;
     padding: var(--spacing-md) var(--spacing-lg);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -546,12 +540,13 @@ body {
 }
 
 .form-section h3 {
-    color: white;
+    color: #64748b;
     font-size: 1.2rem;
     margin-bottom: var(--spacing-md);
     padding-bottom: var(--spacing-xs);
     border-bottom: 2px solid var(--border-color);
 }
+
 
 .form-group {
     margin-bottom: var(--spacing-md);
