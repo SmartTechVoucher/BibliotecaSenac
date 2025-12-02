@@ -1,340 +1,394 @@
 <?php
 /**
- * Controller para gerenciar usuários (listar, bloquear, desbloquear)
+ * Controller para gerenciar usuários
+ * Processa todas as requisições AJAX relacionadas a usuários
+ * 
+ * @package Controller
+ * @author Sistema Biblioteca SENAC
+ * @version 2.0
  */
 
 require_once __DIR__ . '/../../../config/constantes.php';
 require_once __DIR__ . '/../../../config/auth-check.php';
 require_once __DIR__ . '/../../model/admin/UsuarioModel.php';
 
-header('Content-Type: application/json');
+// Define cabeçalho JSON para todas as respostas
+header('Content-Type: application/json; charset=utf-8');
 
-try {
-    if (!isAdminLoggedIn()) {
-        throw new Exception('Acesso não autorizado');
+/**
+ * Classe principal do controller
+ */
+class GerenciarUsuariosController {
+    private $usuarioModel;
+    private $response;
+
+    /**
+     * Construtor - Inicializa o model e estrutura de resposta
+     */
+    public function __construct() {
+        $this->usuarioModel = new UsuarioModel();
+        $this->response = [
+            'sucesso' => false,
+            'mensagem' => '',
+            'erro' => '',
+            'data' => null
+        ];
     }
 
-    $usuarioModel = new UsuarioModel();
+    /**
+     * Método principal - Processa requisições
+     */
+    public function processar() {
+        try {
+            // Verifica autenticação
+            if (!isAdminLoggedIn()) {
+                $this->enviarErro('Acesso não autorizado', 401);
+                return;
+            }
 
-    if (!isset($_GET['ajax']) && !isset($_POST['ajax'])) {
-        throw new Exception('Acesso não autorizado');
+            // Verifica se é requisição AJAX
+            if (!$this->isAjaxRequest()) {
+                $this->enviarErro('Acesso não autorizado', 403);
+                return;
+            }
+
+            // Obtém ação solicitada
+            $acao = $this->getAcao();
+
+            // Processa ação
+            switch ($acao) {
+                case 'listar_regulares':
+                    $this->listarUsuariosRegulares();
+                    break;
+
+                case 'listar_bloqueados':
+                    $this->listarUsuariosBloqueados();
+                    break;
+
+                case 'buscar_usuario':
+                    $this->buscarUsuario();
+                    break;
+
+                case 'atualizar_usuario':
+                    $this->atualizarUsuario();
+                    break;
+
+                case 'bloquearUsuario':
+                case 'bloquear_usuario':
+                    $this->bloquearUsuario();
+                    break;
+
+                case 'desbloquearUsuario':
+                case 'desbloquear_usuario':
+                    $this->desbloquearUsuario();
+                    break;
+
+                case 'estatisticas':
+                    $this->obterEstatisticas();
+                    break;
+
+                default:
+                    $this->enviarErro('Ação não reconhecida');
+            }
+
+        } catch (Exception $e) {
+            error_log("Erro no controller: " . $e->getMessage());
+            $this->enviarErro('Erro interno no servidor: ' . $e->getMessage(), 500);
+        }
     }
 
-    $acao = $_GET['acao'] ?? $_POST['acao'] ?? '';
+    /**
+     * Lista usuários regulares (ativos)
+     */
+    private function listarUsuariosRegulares() {
+        try {
+            $pagina = $this->getInt('pagina', 1);
+            $limite = $this->getInt('limite', 10);
+            $busca = $this->getString('busca', '');
 
-    switch ($acao) {
-        case 'listar_regulares':
-            $pagina = (int)($_GET['pagina'] ?? $_POST['pagina'] ?? 1);
-            $limite = (int)($_GET['limite'] ?? $_POST['limite'] ?? 10);
-            $busca = $_GET['busca'] ?? $_POST['busca'] ?? '';
+            $resultado = $this->usuarioModel->listarUsuariosRegulares($pagina, $limite, $busca);
 
-            $resultado = $usuarioModel->listarUsuariosRegulares($pagina, $limite, $busca);
-
-            echo json_encode([
-                'sucesso' => true,
+            $this->enviarSucesso([
                 'usuarios' => $resultado['usuarios'],
                 'total' => $resultado['total'],
                 'pagina_atual' => $resultado['pagina_atual'],
                 'total_paginas' => $resultado['total_paginas']
             ]);
-            break;
 
-        case 'listar_bloqueados':
-            $pagina = (int)($_GET['pagina'] ?? $_POST['pagina'] ?? 1);
-            $limite = (int)($_GET['limite'] ?? $_POST['limite'] ?? 10);
-            $busca = $_GET['busca'] ?? $_POST['busca'] ?? '';
+        } catch (Exception $e) {
+            $this->enviarErro('Erro ao listar usuários regulares: ' . $e->getMessage());
+        }
+    }
 
-            $resultado = $usuarioModel->listarUsuariosBloqueados($pagina, $limite, $busca);
+    /**
+     * Lista usuários bloqueados (inativos)
+     */
+    private function listarUsuariosBloqueados() {
+        try {
+            $pagina = $this->getInt('pagina', 1);
+            $limite = $this->getInt('limite', 10);
+            $busca = $this->getString('busca', '');
 
-            echo json_encode([
-                'sucesso' => true,
+            $resultado = $this->usuarioModel->listarUsuariosBloqueados($pagina, $limite, $busca);
+
+            $this->enviarSucesso([
                 'usuarios' => $resultado['usuarios'],
                 'total' => $resultado['total'],
                 'pagina_atual' => $resultado['pagina_atual'],
                 'total_paginas' => $resultado['total_paginas']
             ]);
-            break;
 
-        case 'bloquearUsuario':
-        case 'bloquear_usuario':
-            $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
+        } catch (Exception $e) {
+            $this->enviarErro('Erro ao listar usuários bloqueados: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Busca usuário por ID
+     */
+    private function buscarUsuario() {
+        try {
+            $id_usuario = $this->getInt('id_usuario');
 
             if ($id_usuario <= 0) {
-                throw new Exception('ID de usuário inválido');
+                $this->enviarErro('ID de usuário inválido');
+                return;
             }
 
-            $sucesso = $usuarioModel->bloquearUsuario($id_usuario);
+            $usuario = $this->usuarioModel->buscarUsuarioPorId($id_usuario);
 
-            echo json_encode([
-                'sucesso' => $sucesso,
-                'mensagem' => $sucesso ? 'Usuário bloqueado com sucesso' : 'Erro ao bloquear usuário'
-            ]);
-            break;
-
-        case 'desbloquearUsuario':
-        case 'desbloquear_usuario':
-            $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
-
-            if ($id_usuario <= 0) {
-                throw new Exception('ID de usuário inválido');
+            if ($usuario === false) {
+                $this->enviarErro('Usuário não encontrado');
+                return;
             }
 
-            $sucesso = $usuarioModel->desbloquearUsuario($id_usuario);
+            $this->enviarSucesso([
+                'usuario' => $usuario
+            ], 'Usuário encontrado com sucesso');
 
-            echo json_encode([
-                'sucesso' => $sucesso,
-                'mensagem' => $sucesso ? 'Usuário desbloqueado com sucesso' : 'Erro ao desbloquear usuário'
-            ]);
-            break;
+        } catch (Exception $e) {
+            $this->enviarErro('Erro ao buscar usuário: ' . $e->getMessage());
+        }
+    }
 
-        case 'buscar_usuario':
-            $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
-
-            if ($id_usuario <= 0) {
-                throw new Exception('ID de usuário inválido');
-            }
-
-            $usuario = $usuarioModel->buscarUsuarioPorId($id_usuario);
-
-            echo json_encode([
-                'sucesso' => $usuario !== false,
-                'usuario' => $usuario ?: null,
-                'mensagem' => $usuario ? 'Usuário encontrado' : 'Usuário não encontrado'
-            ]);
-            break;
-
-        case 'atualizar_usuario':
-            $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
-
-            error_log("=== INICIANDO ATUALIZAÇÃO DE USUÁRIO ===");
-            error_log("ID do usuário: {$id_usuario}");
+    /**
+     * Atualiza dados do usuário
+     */
+    private function atualizarUsuario() {
+        try {
+            $id_usuario = $this->getInt('id_usuario');
 
             if ($id_usuario <= 0) {
-                error_log("ERRO: ID de usuário inválido");
-                throw new Exception('ID de usuário inválido');
+                $this->enviarErro('ID de usuário inválido');
+                return;
             }
 
             // Coletar dados do formulário
             $dados = [
-                'nome' => $_POST['nome'] ?? '',
-                'nome_social' => $_POST['nome_social'] ?? '',
-                'email' => $_POST['email'] ?? '',
-                'data_nascimento' => $_POST['data_nascimento'] ?? '',
-                'telefone' => $_POST['telefone'] ?? '',
-                'endereco' => $_POST['endereco'] ?? '',
-                'genero' => $_POST['genero'] ?? '',
-                'numero_matricula' => $_POST['numero_matricula'] ?? '',
-                'categoria' => $_POST['categoria'] ?? '',
-                'unidade_senac' => $_POST['unidade_senac'] ?? '',
-                'curso' => $_POST['curso'] ?? '',
-                'turma' => $_POST['turma'] ?? '',
-                'data_fim_curso' => $_POST['data_fim_curso'] ?? '',
-                'notas_usuario' => $_POST['notas_usuario'] ?? ''
+                'nome' => $this->getString('nome'),
+                'nome_social' => $this->getString('nome_social'),
+                'email' => $this->getString('email'),
+                'data_nascimento' => $this->getString('data_nascimento'),
+                'telefone' => $this->getString('telefone'),
+                'endereco' => $this->getString('endereco'),
+                'genero' => $this->getString('genero'),
+                'numero_matricula' => $this->getString('numero_matricula'),
+                'categoria' => $this->getString('categoria'),
+                'unidade_senac' => $this->getString('unidade_senac'),
+                'curso' => $this->getString('curso'),
+                'turma' => $this->getString('turma'),
+                'data_fim_curso' => $this->getString('data_fim_curso'),
+                'notas_usuario' => $this->getString('notas_usuario')
             ];
 
-            error_log("Dados recebidos para atualização:");
-            foreach ($dados as $campo => $valor) {
-                error_log("  {$campo}: '{$valor}'");
-            }
-
-            // Validar campos obrigatórios
+            // Validações básicas
             if (empty($dados['nome'])) {
-                throw new Exception('Nome é obrigatório');
+                $this->enviarErro('Nome é obrigatório');
+                return;
             }
 
             if (empty($dados['email'])) {
-                throw new Exception('Email é obrigatório');
+                $this->enviarErro('Email é obrigatório');
+                return;
             }
 
-            if (empty($dados['data_nascimento'])) {
-                throw new Exception('Data de nascimento é obrigatória');
+            // Valida formato do email
+            if (!$this->usuarioModel->validarEmail($dados['email'])) {
+                $this->enviarErro('Email inválido');
+                return;
             }
 
-            // Validar formato da data de nascimento
-            $dataNascimento = DateTime::createFromFormat('Y-m-d', $dados['data_nascimento']);
-            if (!$dataNascimento || $dataNascimento->format('Y-m-d') !== $dados['data_nascimento']) {
-                throw new Exception('Data de nascimento inválida');
-            }
-
-            if (empty($dados['categoria'])) {
-                throw new Exception('Categoria é obrigatória');
-            }
-
-            if (empty($dados['unidade_senac'])) {
-                throw new Exception('Unidade Senac é obrigatória');
-            }
-
-            // Validar formato do email
-            if (!filter_var($dados['email'], FILTER_VALIDATE_EMAIL)) {
-                throw new Exception('Email inválido');
-            }
-
-            // Verificar se o email já existe para outro usuário
-            $usuarioExistente = $usuarioModel->buscarUsuarioPorEmail($dados['email']);
+            // Verifica se email já existe para outro usuário
+            $usuarioExistente = $this->usuarioModel->buscarUsuarioPorEmail($dados['email']);
             if ($usuarioExistente && $usuarioExistente['id_usuario'] != $id_usuario) {
-                throw new Exception('Email já está em uso por outro usuário');
+                $this->enviarErro('Email já está em uso por outro usuário');
+                return;
             }
 
-            // Verificar se o CPF já existe para outro usuário (se fornecido)
-            if (!empty($dados['cpf'])) {
-                if (!$usuarioModel->validarCPF($dados['cpf'])) {
-                    throw new Exception('CPF inválido');
-                }
-
-                $usuarioPorCPF = $usuarioModel->buscarUsuarioPorCPF($dados['cpf']);
-                if ($usuarioPorCPF && $usuarioPorCPF['id_usuario'] != $id_usuario) {
-                    throw new Exception('CPF já está em uso por outro usuário');
+            // Valida data de nascimento se fornecida
+            if (!empty($dados['data_nascimento'])) {
+                $dataNascimento = DateTime::createFromFormat('Y-m-d', $dados['data_nascimento']);
+                if (!$dataNascimento || $dataNascimento->format('Y-m-d') !== $dados['data_nascimento']) {
+                    $this->enviarErro('Data de nascimento inválida');
+                    return;
                 }
             }
 
-            $sucesso = $usuarioModel->atualizarUsuario($id_usuario, $dados);
+            // Atualiza usuário
+            $sucesso = $this->usuarioModel->atualizarUsuario($id_usuario, $dados);
 
-            echo json_encode([
-                'sucesso' => $sucesso,
-                'mensagem' => $sucesso ? 'Usuário atualizado com sucesso' : 'Erro ao atualizar usuário'
-            ]);
-            break;
+            if ($sucesso) {
+                $this->enviarSucesso(null, 'Usuário atualizado com sucesso');
+            } else {
+                $this->enviarErro('Erro ao atualizar usuário');
+            }
 
-        case 'estatisticas':
-            $estatisticas = $usuarioModel->getEstatisticasUsuarios();
-
-            echo json_encode([
-                'sucesso' => true,
-                'estatisticas' => $estatisticas
-            ]);
-            break;
-
-        default:
-            throw new Exception('Ação não reconhecida');
-    }
-
-} catch (Exception $e) {
-    echo json_encode([
-        'sucesso' => false,
-        'erro' => $e->getMessage()
-    ]);
-}
-
-/**
- * Classe para operações relacionadas a usuários
- * Mantém a compatibilidade com o código JavaScript existente
- */
-class GerenciarUsuariosController {
-
-    private $usuarioModel;
-
-    public function __construct() {
-        $this->usuarioModel = new UsuarioModel();
+        } catch (Exception $e) {
+            $this->enviarErro('Erro ao atualizar usuário: ' . $e->getMessage());
+        }
     }
 
     /**
-     * Método principal para processar requisições
+     * Bloqueia um usuário
      */
-    public function handle() {
-        $acao = $_GET['acao'] ?? $_POST['acao'] ?? '';
-
-        switch ($acao) {
-            case 'listar_regulares':
-                $this->listarUsuariosRegulares();
-                break;
-            case 'listar_bloqueados':
-                $this->listarUsuariosBloqueados();
-                break;
-            case 'buscar_usuario':
-                $this->buscarUsuario();
-                break;
-            case 'bloquear_usuario':
-                $this->bloquearUsuario();
-                break;
-            case 'desbloquear_usuario':
-                $this->desbloquearUsuario();
-                break;
-            default:
-                echo json_encode(['sucesso' => false, 'erro' => 'Ação não reconhecida']);
-        }
-    }
-
-    //* slk programar 2025 é só enfiar 5 case seguido
-
-    private function listarUsuariosRegulares() {
-        $pagina = (int)($_GET['pagina'] ?? 1);
-        $limite = (int)($_GET['limite'] ?? 10);
-        $busca = $_GET['busca'] ?? '';
-
-        $resultado = $this->usuarioModel->listarUsuariosRegulares($pagina, $limite, $busca);
-
-        echo json_encode([
-            'sucesso' => true,
-            'usuarios' => $resultado['usuarios'],
-            'total' => $resultado['total'],
-            'pagina_atual' => $resultado['pagina_atual'],
-            'total_paginas' => $resultado['total_paginas']
-        ]);
-    }
-
-    private function listarUsuariosBloqueados() {
-        $pagina = (int)($_GET['pagina'] ?? 1);
-        $limite = (int)($_GET['limite'] ?? 10);
-        $busca = $_GET['busca'] ?? '';
-
-        $resultado = $this->usuarioModel->listarUsuariosBloqueados($pagina, $limite, $busca);
-
-        echo json_encode([
-            'sucesso' => true,
-            'usuarios' => $resultado['usuarios'],
-            'total' => $resultado['total'],
-            'pagina_atual' => $resultado['pagina_atual'],
-            'total_paginas' => $resultado['total_paginas']
-        ]);
-    }
-
-    private function buscarUsuario() {
-        $id_usuario = (int)($_GET['id_usuario'] ?? 0);
-
-        if ($id_usuario <= 0) {
-            echo json_encode(['sucesso' => false, 'erro' => 'ID de usuário inválido']);
-            return;
-        }
-
-        $usuario = $this->usuarioModel->buscarUsuarioPorId($id_usuario);
-
-        echo json_encode([
-            'sucesso' => $usuario !== false,
-            'usuario' => $usuario ?: null,
-            'erro' => $usuario ? null : 'Usuário não encontrado'
-        ]);
-    }
-
     private function bloquearUsuario() {
-        $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
+        try {
+            $id_usuario = $this->getInt('id_usuario');
 
-        if ($id_usuario <= 0) {
-            echo json_encode(['sucesso' => false, 'erro' => 'ID de usuário inválido']);
-            return;
+            if ($id_usuario <= 0) {
+                $this->enviarErro('ID de usuário inválido');
+                return;
+            }
+
+            $sucesso = $this->usuarioModel->bloquearUsuario($id_usuario);
+
+            if ($sucesso) {
+                $this->enviarSucesso(null, 'Usuário bloqueado com sucesso');
+            } else {
+                $this->enviarErro('Erro ao bloquear usuário. Verifique se o usuário está ativo.');
+            }
+
+        } catch (Exception $e) {
+            $this->enviarErro('Erro ao bloquear usuário: ' . $e->getMessage());
         }
-
-        $sucesso = $this->usuarioModel->bloquearUsuario($id_usuario);
-
-        echo json_encode([
-            'sucesso' => $sucesso,
-            'mensagem' => $sucesso ? 'Usuário bloqueado com sucesso' : 'Erro ao bloquear usuário'
-        ]);
     }
 
+    /**
+     * Desbloqueia um usuário
+     */
     private function desbloquearUsuario() {
-        $id_usuario = (int)($_GET['id_usuario'] ?? $_POST['id_usuario'] ?? 0);
+        try {
+            $id_usuario = $this->getInt('id_usuario');
 
-        if ($id_usuario <= 0) {
-            echo json_encode(['sucesso' => false, 'erro' => 'ID de usuário inválido']);
-            return;
+            if ($id_usuario <= 0) {
+                $this->enviarErro('ID de usuário inválido');
+                return;
+            }
+
+            $sucesso = $this->usuarioModel->desbloquearUsuario($id_usuario);
+
+            if ($sucesso) {
+                $this->enviarSucesso(null, 'Usuário desbloqueado com sucesso');
+            } else {
+                $this->enviarErro('Erro ao desbloquear usuário. Verifique se o usuário está bloqueado.');
+            }
+
+        } catch (Exception $e) {
+            $this->enviarErro('Erro ao desbloquear usuário: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Obtém estatísticas dos usuários
+     */
+    private function obterEstatisticas() {
+        try {
+            $estatisticas = $this->usuarioModel->getEstatisticasUsuarios();
+
+            $this->enviarSucesso([
+                'estatisticas' => $estatisticas
+            ]);
+
+        } catch (Exception $e) {
+            $this->enviarErro('Erro ao obter estatísticas: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Helpers - Métodos auxiliares
+     */
+
+    /**
+     * Verifica se é requisição AJAX
+     */
+    private function isAjaxRequest() {
+        return isset($_GET['ajax']) || isset($_POST['ajax']);
+    }
+
+    /**
+     * Obtém ação da requisição
+     */
+    private function getAcao() {
+        return $_GET['acao'] ?? $_POST['acao'] ?? '';
+    }
+
+    /**
+     * Obtém valor inteiro da requisição
+     */
+    private function getInt($key, $default = 0) {
+        $value = $_GET[$key] ?? $_POST[$key] ?? $default;
+        return (int) filter_var($value, FILTER_SANITIZE_NUMBER_INT);
+    }
+
+    /**
+     * Obtém valor string da requisição
+     */
+    private function getString($key, $default = '') {
+        $value = $_GET[$key] ?? $_POST[$key] ?? $default;
+        return filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
+
+    /**
+     * Envia resposta de sucesso
+     */
+    private function enviarSucesso($data = null, $mensagem = '') {
+        $this->response['sucesso'] = true;
+        $this->response['mensagem'] = $mensagem;
+        
+        if ($data !== null) {
+            foreach ($data as $key => $value) {
+                $this->response[$key] = $value;
+            }
         }
 
-        $sucesso = $this->usuarioModel->desbloquearUsuario($id_usuario);
-
-        echo json_encode([
-            'sucesso' => $sucesso,
-            'mensagem' => $sucesso ? 'Usuário desbloqueado com sucesso' : 'Erro ao desbloquear usuário'
-        ]);
+        echo json_encode($this->response, JSON_UNESCAPED_UNICODE);
+        exit;
     }
+
+    /**
+     * Envia resposta de erro
+     */
+    private function enviarErro($erro, $httpCode = 400) {
+        http_response_code($httpCode);
+        
+        $this->response['sucesso'] = false;
+        $this->response['erro'] = $erro;
+
+        echo json_encode($this->response, JSON_UNESCAPED_UNICODE);
+        exit;
+    }
+}
+
+// Execução
+try {
+    $controller = new GerenciarUsuariosController();
+    $controller->processar();
+} catch (Exception $e) {
+    error_log("Erro fatal no controller: " . $e->getMessage());
+    http_response_code(500);
+    echo json_encode([
+        'sucesso' => false,
+        'erro' => 'Erro interno no servidor'
+    ], JSON_UNESCAPED_UNICODE);
 }
 ?>

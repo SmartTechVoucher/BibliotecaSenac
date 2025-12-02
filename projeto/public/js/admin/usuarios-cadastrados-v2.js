@@ -1,254 +1,349 @@
+/**
+ * Gerenciador de Usuários - Sistema Biblioteca SENAC
+ * Responsável por toda a lógica de interface e comunicação com o backend
+ */
 
 class GerenciadorUsuarios {
     constructor() {
-        this.paginaAtualRegulares = 1;
-        this.paginaAtualBloqueados = 1;
-        this.usuariosPorPagina = 10;
-        this.usuarioSelecionado = null;
-        this.buscaAtual = '';
-        this.dadosRegulares = { usuarios: [], total: 0, total_paginas: 0 };
-        this.dadosBloqueados = { usuarios: [], total: 0, total_paginas: 0 };
+        // Estado da aplicação
+        this.state = {
+            paginaRegulares: 1,
+            paginaBloqueados: 1,
+            itensPorPagina: 10,
+            termoBusca: '',
+            usuarioAtual: null,
+            modoEdicao: false,
+            abaSelecionada: 'regulares'
+        };
 
-        this.inicializar();
+        // Cache de dados
+        this.cache = {
+            regulares: { usuarios: [], total: 0, total_paginas: 0 },
+            bloqueados: { usuarios: [], total: 0, total_paginas: 0 },
+            estatisticas: null
+        };
+
+        this.init();
     }
 
-    inicializar() {
-        this.carregarUsuariosRegulares();
-        this.carregarUsuariosBloqueados();
-        this.configurarEventListeners();
+    /**
+     * Inicializa o gerenciador
+     */
+    async init() {
+        this.setupEventListeners();
+        await this.carregarEstatisticas();
+        await this.carregarDados();
     }
 
-    configurarEventListeners() {
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('#confirmModalSalvar') || e.target.closest('#errorModalSalvar')) {
-                e.preventDefault();
-                e.stopPropagation();
-                return false;
+    /**
+     * Configura todos os event listeners
+     */
+    setupEventListeners() {
+        // Busca
+        const campoBusca = document.getElementById('campoBusca');
+        if (campoBusca) {
+            campoBusca.addEventListener('input', this.debounce((e) => {
+                this.state.termoBusca = e.target.value;
+                this.state.paginaRegulares = 1;
+                this.state.paginaBloqueados = 1;
+                this.carregarDados();
+            }, 500));
+        }
+
+        // Abas
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.trocarAba(e.target.dataset.tab));
+        });
+
+        // Paginação Regulares
+        document.getElementById('btnAnteriorRegulares')?.addEventListener('click', () => {
+            if (this.state.paginaRegulares > 1) {
+                this.state.paginaRegulares--;
+                this.carregarUsuariosRegulares();
             }
         });
 
-        const tabs = document.querySelectorAll('.tab-link');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', (e) => this.abrirTab(e));
+        document.getElementById('btnProximoRegulares')?.addEventListener('click', () => {
+            if (this.state.paginaRegulares < this.cache.regulares.total_paginas) {
+                this.state.paginaRegulares++;
+                this.carregarUsuariosRegulares();
+            }
         });
 
-        const campoBusca = document.querySelector('input[type="text"]');
-        if (campoBusca) {
-            campoBusca.addEventListener('input', (e) => {
-                this.buscaAtual = e.target.value;
-                this.paginaAtualRegulares = 1;
-                this.paginaAtualBloqueados = 1;
-                this.carregarUsuariosRegulares();
+        // Paginação Bloqueados
+        document.getElementById('btnAnteriorBloqueados')?.addEventListener('click', () => {
+            if (this.state.paginaBloqueados > 1) {
+                this.state.paginaBloqueados--;
                 this.carregarUsuariosBloqueados();
-            });
-        }
+            }
+        });
 
-        const botaoBloquear = document.getElementById('botao-bloquear');
-        if (botaoBloquear) {
-            botaoBloquear.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.alternarBloqueio();
-            });
-        }
+        document.getElementById('btnProximoBloqueados')?.addEventListener('click', () => {
+            if (this.state.paginaBloqueados < this.cache.bloqueados.total_paginas) {
+                this.state.paginaBloqueados++;
+                this.carregarUsuariosBloqueados();
+            }
+        });
 
-         const botaoEdicao = document.getElementById('botao-edicao');
-         if (botaoEdicao) {
-             botaoEdicao.addEventListener('click', (e) => {
-                 e.preventDefault();
-                 e.stopPropagation();
-                 this.alternarEdicao();
-             });
-         }
+        // Modal - Botões
+        document.getElementById('btnBloquear')?.addEventListener('click', () => this.toggleBloqueio());
+        document.getElementById('btnEditar')?.addEventListener('click', () => this.habilitarEdicao());
+        document.getElementById('btnSalvar')?.addEventListener('click', () => this.salvarEdicao());
+        document.getElementById('btnCancelar')?.addEventListener('click', () => this.cancelarEdicao());
 
-         const botaoCancelar = document.getElementById('cancelar-edicao');
-
-        const modal = document.getElementById('userModal');
+        // Fechar modal ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                this.fecharModal();
+            }
+        });
     }
 
+    /**
+     * Carrega dados iniciais
+     */
+    async carregarDados() {
+        await Promise.all([
+            this.carregarUsuariosRegulares(),
+            this.carregarUsuariosBloqueados()
+        ]);
+    }
+
+    /**
+     * Carrega estatísticas
+     */
+    async carregarEstatisticas() {
+        try {
+            const params = new URLSearchParams({
+                ajax: '1',
+                acao: 'estatisticas'
+            });
+
+            const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php?${params}`);
+            const data = await this.handleResponse(response);
+
+            if (data.sucesso) {
+                this.cache.estatisticas = data.estatisticas;
+                this.renderizarEstatisticas();
+            }
+        } catch (error) {
+            console.error('Erro ao carregar estatísticas:', error);
+        }
+    }
+
+    /**
+     * Renderiza cards de estatísticas
+     */
+    renderizarEstatisticas() {
+        const container = document.getElementById('estatisticas-container');
+        if (!container || !this.cache.estatisticas) return;
+
+        const stats = this.cache.estatisticas;
+        container.innerHTML = `
+            <div class="stat-card stat-primary">
+                <div class="stat-icon"></div>
+                <div class="stat-content">
+                    <h3>${stats.total_geral || 0}</h3>
+                    <p>Total de Usuários</p>
+                </div>
+            </div>
+            <div class="stat-card stat-success">
+                <div class="stat-icon"></div>
+                <div class="stat-content">
+                    <h3>${stats.total_regulares || 0}</h3>
+                    <p>Usuários Regulares</p>
+                </div>
+            </div>
+            <div class="stat-card stat-warning">
+                <div class="stat-icon"></div>
+                <div class="stat-content">
+                    <h3>${stats.total_bloqueados || 0}</h3>
+                    <p>Usuários Bloqueados</p>
+                </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Carrega usuários regulares
+     */
     async carregarUsuariosRegulares() {
         try {
             const params = new URLSearchParams({
                 ajax: '1',
                 acao: 'listar_regulares',
-                pagina: this.paginaAtualRegulares,
-                limite: this.usuariosPorPagina,
-                busca: this.buscaAtual
+                pagina: this.state.paginaRegulares,
+                limite: this.state.itensPorPagina,
+                busca: this.state.termoBusca
             });
 
             const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php?${params}`);
-
-            if (!response.ok) {
-                throw new Error('Erro na resposta do servidor');
-            }
-
-            const data = await response.json();
+            const data = await this.handleResponse(response);
 
             if (data.sucesso) {
-                this.dadosRegulares = {
+                this.cache.regulares = {
                     usuarios: data.usuarios,
                     total: data.total,
                     pagina_atual: data.pagina_atual,
                     total_paginas: data.total_paginas
                 };
                 this.renderizarTabelaRegulares();
-            } else {
-                console.error('Erro ao carregar usuários regulares:', data.erro);
-                this.mostrarMensagemErro(data.erro || 'Erro ao carregar usuários');
             }
         } catch (error) {
-            console.error('Erro ao fazer busca:', error);
-            this.mostrarMensagemErro('Erro de conexão. Tente novamente.');
+            this.mostrarErro('Erro ao carregar usuários regulares');
+            console.error(error);
         }
     }
 
+    /**
+     * Carrega usuários bloqueados
+     */
     async carregarUsuariosBloqueados() {
         try {
             const params = new URLSearchParams({
                 ajax: '1',
                 acao: 'listar_bloqueados',
-                pagina: this.paginaAtualBloqueados,
-                limite: this.usuariosPorPagina,
-                busca: this.buscaAtual
+                pagina: this.state.paginaBloqueados,
+                limite: this.state.itensPorPagina,
+                busca: this.state.termoBusca
             });
 
             const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php?${params}`);
-
-            if (!response.ok) {
-                throw new Error('Erro na resposta do servidor');
-            }
-
-            const data = await response.json();
+            const data = await this.handleResponse(response);
 
             if (data.sucesso) {
-                this.dadosBloqueados = {
+                this.cache.bloqueados = {
                     usuarios: data.usuarios,
                     total: data.total,
                     pagina_atual: data.pagina_atual,
                     total_paginas: data.total_paginas
                 };
                 this.renderizarTabelaBloqueados();
-            } else {
-                console.error('Erro ao carregar usuários bloqueados:', data.erro);
             }
         } catch (error) {
-            console.error('Erro ao fazer busca:', error);
+            this.mostrarErro('Erro ao carregar usuários bloqueados');
+            console.error(error);
         }
     }
 
+    /**
+     * Renderiza tabela de usuários regulares
+     */
     renderizarTabelaRegulares() {
-        const tabelaBody = document.getElementById('userTable');
-        const botaoVoltar = document.getElementById('backButton');
-        const botaoAvancar = document.getElementById('forwardButton');
+        const tbody = document.getElementById('tabelaRegulares');
+        const btnAnterior = document.getElementById('btnAnteriorRegulares');
+        const btnProximo = document.getElementById('btnProximoRegulares');
+        const info = document.getElementById('infoRegulares');
 
-        if (!tabelaBody) return;
+        if (!tbody) return;
 
-        tabelaBody.innerHTML = '';
+        const { usuarios, total, pagina_atual, total_paginas } = this.cache.regulares;
 
-        if (this.dadosRegulares.usuarios.length === 0) {
-            tabelaBody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #666;">Nenhum usuário regular encontrado</td></tr>';
-            if (botaoVoltar) botaoVoltar.disabled = true;
-            if (botaoAvancar) botaoAvancar.disabled = true;
-            return;
+        if (usuarios.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="6" class="empty-state">
+                        <div class="empty-icon">🔍</div>
+                        <p>Nenhum usuário regular encontrado</p>
+                    </td>
+                </tr>
+            `;
+        } else {
+            tbody.innerHTML = usuarios.map(user => `
+                <tr class="table-row">
+                    <td>
+                        <div class="user-cell">
+                            <img src="${user.foto_perfil || URLBASE + '/public/assets/img/NullUser.jpg'}" 
+                                 alt="${user.nome}" 
+                                 class="user-avatar">
+                            <span>${this.truncateText(user.nome, 30)}</span>
+                        </div>
+                    </td>
+                    <td>${user.numero_matricula || 'N/A'}</td>
+                    <td>${user.unidade_senac || 'N/A'}</td>
+                    <td>${this.formatPhone(user.telefone)}</td>
+                    <td><span class="badge badge-success">Regular</span></td>
+                    <td>
+                        <button class="btn-action btn-view" onclick="gerenciadorUsuarios.abrirDetalhes(${user.id_usuario})">
+                            👁️ Ver Detalhes
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
         }
 
-        this.dadosRegulares.usuarios.forEach(usuario => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${this.formatarNome(usuario.nome)}</td>
-                <td>${usuario.numero_matricula || 'N/A'}</td>
-                <td>${usuario.unidade_senac || 'N/A'}</td>
-                <td>${usuario.telefone || 'N/A'}</td>
-                <td><span class="status-badge regular">Regular</span></td>
-                <td><button class="btn-detalhes" onclick="gerenciadorUsuarios.mostrarDetalhesUsuario(${usuario.id_usuario})">Detalhes</button></td>
-            `;
-            tabelaBody.appendChild(tr);
-        });
-
-        if (botaoVoltar) botaoVoltar.disabled = this.paginaAtualRegulares === 1;
-        if (botaoAvancar) botaoAvancar.disabled = this.paginaAtualRegulares >= this.dadosRegulares.total_paginas;
-
-        this.atualizarContador('regulares', this.dadosRegulares.total);
+        // Atualizar controles de paginação
+        if (btnAnterior) btnAnterior.disabled = pagina_atual === 1;
+        if (btnProximo) btnProximo.disabled = pagina_atual >= total_paginas;
+        
+        if (info) {
+            const inicio = (pagina_atual - 1) * this.state.itensPorPagina + 1;
+            const fim = Math.min(pagina_atual * this.state.itensPorPagina, total);
+            info.textContent = `Mostrando ${inicio}-${fim} de ${total} usuários`;
+        }
     }
 
+    /**
+     * Renderiza tabela de usuários bloqueados
+     */
     renderizarTabelaBloqueados() {
-        const tabelaBody = document.getElementById('blockedTable');
-        const botaoVoltar = document.getElementById('backBlockedButton');
-        const botaoAvancar = document.getElementById('forwardBlockedButton');
+        const tbody = document.getElementById('tabelaBloqueados');
+        const btnAnterior = document.getElementById('btnAnteriorBloqueados');
+        const btnProximo = document.getElementById('btnProximoBloqueados');
+        const info = document.getElementById('infoBloqueados');
 
-        if (!tabelaBody) return;
+        if (!tbody) return;
 
-        tabelaBody.innerHTML = '';
+        const { usuarios, total, pagina_atual, total_paginas } = this.cache.bloqueados;
 
-        if (this.dadosBloqueados.usuarios.length === 0) {
-            tabelaBody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: #666;">Nenhum usuário bloqueado encontrado</td></tr>';
-            if (botaoVoltar) botaoVoltar.disabled = true;
-            if (botaoAvancar) botaoAvancar.disabled = true;
-            return;
-        }
-
-        this.dadosBloqueados.usuarios.forEach(usuario => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${this.formatarNome(usuario.nome)}</td>
-                <td>${usuario.numero_matricula || 'N/A'}</td>
-                <td>${usuario.unidade_senac || 'N/A'}</td>
-                <td>${usuario.telefone || 'N/A'}</td>
-                <td><span class="status-badge bloqueado">Bloqueado</span></td>
-                <td><button class="btn-detalhes" onclick="gerenciadorUsuarios.mostrarDetalhesUsuario(${usuario.id_usuario})">Detalhes</button></td>
+        if (usuarios.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="6" class="empty-state">
+                        <div class="empty-icon">✅</div>
+                        <p>Nenhum usuário bloqueado</p>
+                    </td>
+                </tr>
             `;
-            tabelaBody.appendChild(tr);
-        });
-
-        if (botaoVoltar) botaoVoltar.disabled = this.paginaAtualBloqueados === 1;
-        if (botaoAvancar) botaoAvancar.disabled = this.paginaAtualBloqueados >= this.dadosBloqueados.total_paginas;
-
-        this.atualizarContador('bloqueados', this.dadosBloqueados.total);
-    }
-
-    atualizarContador(tipo, total) {
-        console.log(`Total de usuários ${tipo}: ${total}`);
-    }
-
-    formatarNome(nome) {
-        if (!nome) return 'N/A';
-        return nome.length > 30 ? nome.substring(0, 30) + '...' : nome;
-    }
-
-    validarCPF(cpf) {
-        cpf = cpf.replace(/[^\d]/g, '');
-
-        if (cpf.length !== 11) return false;
-
-        if (/^(\d)\1+$/.test(cpf)) return false;
-
-        let soma = 0;
-        for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        } else {
+            tbody.innerHTML = usuarios.map(user => `
+                <tr class="table-row">
+                    <td>
+                        <div class="user-cell">
+                            <img src="${user.foto_perfil || URLBASE + '/public/assets/img/NullUser.jpg'}" 
+                                 alt="${user.nome}" 
+                                 class="user-avatar">
+                            <span>${this.truncateText(user.nome, 30)}</span>
+                        </div>
+                    </td>
+                    <td>${user.numero_matricula || 'N/A'}</td>
+                    <td>${user.unidade_senac || 'N/A'}</td>
+                    <td>${this.formatPhone(user.telefone)}</td>
+                    <td><span class="badge badge-danger">Bloqueado</span></td>
+                    <td>
+                        <button class="btn-action btn-view" onclick="gerenciadorUsuarios.abrirDetalhes(${user.id_usuario})">
+                            👁️ Ver Detalhes
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
         }
 
-        let resto = (soma * 10) % 11;
-        if (resto === 10 || resto === 11) resto = 0;
-        if (resto !== parseInt(cpf.charAt(9))) return false;
-
-        soma = 0;
-        for (let i = 0; i < 10; i++) {
-            soma += parseInt(cpf.charAt(i)) * (11 - i);
+        // Atualizar controles de paginação
+        if (btnAnterior) btnAnterior.disabled = pagina_atual === 1;
+        if (btnProximo) btnProximo.disabled = pagina_atual >= total_paginas;
+        
+        if (info) {
+            const inicio = (pagina_atual - 1) * this.state.itensPorPagina + 1;
+            const fim = Math.min(pagina_atual * this.state.itensPorPagina, total);
+            info.textContent = `Mostrando ${inicio}-${fim} de ${total} usuários`;
         }
-
-        resto = (soma * 10) % 11;
-        if (resto === 10 || resto === 11) resto = 0;
-
-        return resto === parseInt(cpf.charAt(10));
     }
 
-    validarTelefone(telefone) {
-        telefone = telefone.replace(/[^\d]/g, '');
-
-        return telefone.length >= 10 && telefone.length <= 11;
-    }
-
-    async mostrarDetalhesUsuario(idUsuario) {
+    /**
+     * Abre modal com detalhes do usuário
+     */
+    async abrirDetalhes(idUsuario) {
         try {
             const params = new URLSearchParams({
                 ajax: '1',
@@ -256,84 +351,130 @@ class GerenciadorUsuarios {
                 id_usuario: idUsuario
             });
 
-            console.log('Fazendo requisição:', `${URLBASE}/src/controller/admin/GerenciarUsuariosController.php?${params}`);
             const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php?${params}`);
-
-            if (!response.ok) {
-                console.error('Erro HTTP:', response.status, response.statusText);
-                throw new Error('Erro na resposta do servidor');
-            }
-
-            const responseText = await response.text();
-            console.log('Resposta do servidor:', responseText);
-
-            const data = JSON.parse(responseText);
+            const data = await this.handleResponse(response);
 
             if (data.sucesso && data.usuario) {
-                this.preencherModalDetalhes(data.usuario);
-                document.getElementById('userModal').style.display = 'flex';
+                this.state.usuarioAtual = data.usuario;
+                this.preencherModal(data.usuario);
+                document.getElementById('modalUsuario').style.display = 'flex';
             } else {
-                this.mostrarMensagemErro(data.erro || 'Erro ao carregar dados do usuário');
+                this.mostrarErro(data.erro || 'Usuário não encontrado');
             }
         } catch (error) {
-            console.error('Erro ao buscar detalhes do usuário:', error);
-            this.mostrarMensagemErro('Erro ao carregar dados do usuário');
+            this.mostrarErro('Erro ao carregar dados do usuário');
+            console.error(error);
         }
     }
 
-    preencherModalDetalhes(usuario) {
+    /**
+     * Preenche o modal com dados do usuário
+     */
+    preencherModal(usuario) {
+        // Foto
+        document.getElementById('userFoto').src = usuario.foto_perfil || URLBASE + '/public/assets/img/NullUser.jpg';
+
         // Dados pessoais
         document.getElementById('userName').value = usuario.nome || '';
-        document.getElementById('userNameSocial').value = usuario.nome_social || '';
+        document.getElementById('userNomeSocial').value = usuario.nome_social || '';
+        document.getElementById('userCPF').value = this.formatCPF(usuario.cpf) || '';
         document.getElementById('userNascimento').value = usuario.data_nascimento || '';
-        document.getElementById('userSexo').value = usuario.genero || '';
-        document.getElementById('userCPF').value = usuario.cpf || '';
+        document.getElementById('userGenero').value = usuario.genero || '';
 
-        // Dados de matrícula
-        document.getElementById('userRegistration').value = usuario.numero_matricula || '';
+        // Matrícula
+        document.getElementById('userMatricula').value = usuario.numero_matricula || '';
         document.getElementById('userUnidade').value = usuario.unidade_senac || '';
-        document.getElementById('userStatus').value = usuario.ativo ? 'Regular' : 'Bloqueado';
+        document.getElementById('userCategoria').value = usuario.categoria || '';
 
-        // Dados de contato
+        // Contato
         document.getElementById('userEmail').value = usuario.email || '';
-        document.getElementById('userCelular').value = usuario.telefone || '';
+        document.getElementById('userTelefone').value = this.formatPhone(usuario.telefone) || '';
+        document.getElementById('userEndereco').value = usuario.endereco || '';
 
-        // Outros dados
-        document.getElementById('userProfissao').value = usuario.categoria || '';
-        document.getElementById('userEndResidencial').value = usuario.endereco || '';
-
-        // Dados complementares
+        // Acadêmicos
         document.getElementById('userCurso').value = usuario.curso || '';
         document.getElementById('userTurma').value = usuario.turma || '';
         document.getElementById('userDataFimCurso').value = usuario.data_fim_curso || '';
         document.getElementById('userNotas').value = usuario.notas_usuario || '';
 
-        const botaoBloquear = document.getElementById('botao-bloquear');
-        if (botaoBloquear) {
-            botaoBloquear.textContent = usuario.ativo ? 'Bloquear usuário' : 'Desbloquear usuário';
+        // Atualizar botão de bloqueio
+        const btnBloquear = document.getElementById('btnBloquear');
+        if (btnBloquear) {
+            btnBloquear.textContent = usuario.ativo ? '🔒 Bloquear Usuário' : '🔓 Desbloquear Usuário';
+            btnBloquear.className = usuario.ativo ? 'btn btn-danger' : 'btn btn-success';
         }
-
-        this.usuarioSelecionado = usuario;
     }
 
-    async alternarBloqueio() {
-        if (!this.usuarioSelecionado) {
-            this.mostrarMensagemErro('Nenhum usuário selecionado');
+    /**
+     * Habilita edição dos campos
+     */
+    habilitarEdicao() {
+        this.state.modoEdicao = true;
+
+        // Campos editáveis
+        const campos = [
+            'userName', 'userNomeSocial', 'userNascimento', 'userGenero',
+            'userEmail', 'userTelefone', 'userEndereco',
+            'userCurso', 'userTurma', 'userDataFimCurso', 'userNotas'
+        ];
+
+        campos.forEach(id => {
+            const campo = document.getElementById(id);
+            if (campo) {
+                campo.removeAttribute('readonly');
+                if (campo.tagName === 'SELECT') {
+                    campo.removeAttribute('disabled');
+                }
+            }
+        });
+
+        // Trocar botões
+        document.getElementById('btnEditar').style.display = 'none';
+        document.getElementById('btnSalvar').style.display = 'inline-block';
+        document.getElementById('btnCancelar').style.display = 'inline-block';
+    }
+
+    /**
+     * Salva edição do usuário
+     */
+    async salvarEdicao() {
+        if (!this.state.usuarioAtual) {
+            this.mostrarErro('Nenhum usuário selecionado');
             return;
         }
 
-        const acao = this.usuarioSelecionado.ativo ? 'bloquear_usuario' : 'desbloquear_usuario';
-
         try {
-            const acaoMap = {
-                'bloquear_usuario': 'bloquearUsuario',
-                'desbloquear_usuario': 'desbloquearUsuario'
+            // Coletar dados
+            const dados = {
+                nome: document.getElementById('userName').value,
+                nome_social: document.getElementById('userNomeSocial').value,
+                email: document.getElementById('userEmail').value,
+                data_nascimento: document.getElementById('userNascimento').value,
+                telefone: document.getElementById('userTelefone').value.replace(/\D/g, ''),
+                endereco: document.getElementById('userEndereco').value,
+                genero: document.getElementById('userGenero').value,
+                curso: document.getElementById('userCurso').value,
+                turma: document.getElementById('userTurma').value,
+                data_fim_curso: document.getElementById('userDataFimCurso').value,
+                notas_usuario: document.getElementById('userNotas').value
             };
+
+            // Validações
+            if (!dados.nome || !dados.email) {
+                this.mostrarErro('Nome e email são obrigatórios');
+                return;
+            }
+
+            if (!this.validarEmail(dados.email)) {
+                this.mostrarErro('Email inválido');
+                return;
+            }
 
             const params = new URLSearchParams({
                 ajax: '1',
-                acao: acaoMap[acao] || acao,
-                id_usuario: this.usuarioSelecionado.id_usuario
+                acao: 'atualizar_usuario',
+                id_usuario: this.state.usuarioAtual.id_usuario,
+                ...dados
             });
 
             const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php`, {
@@ -341,301 +482,209 @@ class GerenciadorUsuarios {
                 body: params
             });
 
-            if (!response.ok) {
-                throw new Error('Erro na resposta do servidor');
-            }
-
-            const data = await response.json();
+            const data = await this.handleResponse(response);
 
             if (data.sucesso) {
-                this.mostrarMensagemSucesso(data.mensagem);
-
-                this.carregarUsuariosRegulares();
-                this.carregarUsuariosBloqueados();
-
-                setTimeout(() => {
-                    this.fecharModal();
-                }, 1000);
-
+                this.mostrarSucesso(data.mensagem);
+                this.cancelarEdicao();
+                await this.abrirDetalhes(this.state.usuarioAtual.id_usuario);
+                await this.carregarDados();
+                await this.carregarEstatisticas();
             } else {
-                this.mostrarMensagemErro(data.erro || 'Erro ao alterar status do usuário');
+                this.mostrarErro(data.erro || 'Erro ao atualizar usuário');
             }
         } catch (error) {
-            console.error('Erro ao alterar bloqueio:', error);
-            this.mostrarMensagemErro('Erro de conexão. Tente novamente.');
+            this.mostrarErro('Erro ao salvar alterações');
+            console.error(error);
         }
     }
 
-    async alternarEdicao() {
-        const todosInputs = document.querySelectorAll('.inputs-editaveis');
-        const selects = document.querySelectorAll('select');
-        const botaoEdicao = document.getElementById('botao-edicao');
-        const botaoCancelar = document.getElementById('cancelar-edicao');
-        const isReadOnly = todosInputs[0] && todosInputs[0].hasAttribute('readonly');
-        console.log('🔄 === ALTERNANDO EDIÇÃO ===');
-        console.log('Estado dos inputs:', isReadOnly ? 'Somente leitura' : 'Editável');
-        console.log('Texto do botão:', botaoEdicao ? botaoEdicao.textContent : 'Botão não encontrado');
+    /**
+     * Cancela edição
+     */
+    cancelarEdicao() {
+        this.state.modoEdicao = false;
 
-        if (isReadOnly) {
-            todosInputs.forEach(input => {
-                input.removeAttribute('readonly');
-            });
-            selects.forEach(select => {
-                select.removeAttribute('disabled');
-            });
+        // Desabilitar campos
+        const campos = [
+            'userName', 'userNomeSocial', 'userNascimento', 'userGenero',
+            'userEmail', 'userTelefone', 'userEndereco',
+            'userCurso', 'userTurma', 'userDataFimCurso', 'userNotas'
+        ];
 
-            botaoEdicao.textContent = 'Salvar dados';
-            botaoCancelar.style.display = 'inline-block';
-            if (todosInputs.length > 0) {
-                todosInputs[0].focus();
+        campos.forEach(id => {
+            const campo = document.getElementById(id);
+            if (campo) {
+                campo.setAttribute('readonly', 'readonly');
+                if (campo.tagName === 'SELECT') {
+                    campo.setAttribute('disabled', 'disabled');
+                }
             }
-        } else {
-            console.log('wow teste');
-            await this.salvarDadosEditados();
+        });
+
+        // Trocar botões
+        document.getElementById('btnEditar').style.display = 'inline-block';
+        document.getElementById('btnSalvar').style.display = 'none';
+        document.getElementById('btnCancelar').style.display = 'none';
+
+        // Restaurar dados originais
+        if (this.state.usuarioAtual) {
+            this.preencherModal(this.state.usuarioAtual);
         }
     }
 
-    async salvarDadosEditados() {
-        console.log('teste salvando bglh');
-        console.log('Usuário selecionado:', this.usuarioSelecionado);
-
-        if (!this.usuarioSelecionado) {
-            console.error('Nenhum usuário selecionado');
-            this.mostrarModalErro('Nenhum usuário selecionado');
+    /**
+     * Toggle bloqueio/desbloqueio
+     */
+    async toggleBloqueio() {
+        if (!this.state.usuarioAtual) {
+            this.mostrarErro('Nenhum usuário selecionado');
             return;
         }
 
-        console.log('Usuário selecionado encontrado.');
+        const acao = this.state.usuarioAtual.ativo ? 'bloquearUsuario' : 'desbloquearUsuario';
+        const mensagemConfirmacao = this.state.usuarioAtual.ativo 
+            ? 'Deseja realmente bloquear este usuário?' 
+            : 'Deseja realmente desbloquear este usuário?';
+
+        if (!confirm(mensagemConfirmacao)) return;
 
         try {
-            const getValue = (id) => {
-                const element = document.getElementById(id);
-                return element ? element.value : '';
-            };
-
-            const dadosFormulario = {
-                nome: getValue('userName'),
-                nome_social: getValue('userNameSocial'),
-                email: getValue('userEmail'),
-                data_nascimento: getValue('userNascimento'),
-                telefone: getValue('userCelular'),
-                endereco: getValue('userEndResidencial'),
-                genero: getValue('userSexo'),
-                numero_matricula: getValue('userRegistration'),
-                categoria: getValue('userProfissao'),
-                unidade_senac: getValue('userUnidade'),
-                curso: getValue('userCurso'),
-                turma: getValue('userTurma'),
-                data_fim_curso: getValue('userDataFimCurso'),
-                notas_usuario: getValue('userNotas')
-            };
-
-            if (!dadosFormulario.nome || !dadosFormulario.email) {
-                this.mostrarMensagemErro('Nome e email são obrigatórios');
-                return;
-            }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(dadosFormulario.email)) {
-                this.mostrarMensagemErro('Email inválido');
-                return;
-            }
-
-            if (dadosFormulario.cpf && !this.validarCPF(dadosFormulario.cpf)) {
-                this.mostrarMensagemErro('CPF inválido');
-                return;
-            }
-
-            if (dadosFormulario.telefone && !this.validarTelefone(dadosFormulario.telefone)) {
-                this.mostrarMensagemErro('Telefone inválido');
-                return;
-            }
-
             const params = new URLSearchParams({
                 ajax: '1',
-                acao: 'atualizar_usuario',
-                id_usuario: this.usuarioSelecionado.id_usuario,
-                ...dadosFormulario
+                acao: acao,
+                id_usuario: this.state.usuarioAtual.id_usuario
             });
 
             const response = await fetch(`${URLBASE}/src/controller/admin/GerenciarUsuariosController.php`, {
                 method: 'POST',
-                body: params,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                }
+                body: params
             });
 
-            if (!response.ok) {
-                throw new Error(`Erro HTTP: ${response.status} - ${response.statusText}`);
-            }
-
-            const responseText = await response.text();
-            const data = JSON.parse(responseText);
+            const data = await this.handleResponse(response);
 
             if (data.sucesso) {
-                this.mostrarModalConfirmacao(data.mensagem);
-
-                setTimeout(async () => {
-                    await this.mostrarDetalhesUsuario(this.usuarioSelecionado.id_usuario);
-
-                    this.carregarUsuariosRegulares();
-                    this.carregarUsuariosBloqueados();
-
-                    this.cancelarEdicao();
-                }, 1500);
-
+                this.mostrarSucesso(data.mensagem);
+                this.fecharModal();
+                await this.carregarDados();
+                await this.carregarEstatisticas();
             } else {
-                console.error('Erro do servidor:', data.erro);
-                this.mostrarModalErro(data.erro || 'Erro ao atualizar usuário');
+                this.mostrarErro(data.erro || 'Erro ao alterar status');
             }
         } catch (error) {
-            console.error('Erro ao salvar dados:', error);
-            this.mostrarMensagemErro('Erro de conexão. Tente novamente.');
-        }
-        console.log('fim do teste');
-    }
-
-    cancelarEdicao() {
-        const todosInputs = document.querySelectorAll('.inputs-editaveis');
-        const selects = document.querySelectorAll('select');
-        const botaoEdicao = document.getElementById('botao-edicao');
-        const botaoCancelar = document.getElementById('cancelar-edicao');
-
-        todosInputs.forEach(input => {
-            input.setAttribute('readonly', 'true');
-        });
-        selects.forEach(select => {
-            select.setAttribute('disabled', 'true');
-        });
-
-        botaoEdicao.textContent = 'Editar dados';
-        botaoCancelar.style.display = 'none';
-
-        if (this.usuarioSelecionado) {
-            this.preencherModalDetalhes(this.usuarioSelecionado);
+            this.mostrarErro('Erro ao alterar status do usuário');
+            console.error(error);
         }
     }
 
-    abrirTab(event) {
-        const tabName = event.target.textContent.toLowerCase().trim();
+    /**
+     * Troca de aba
+     */
+    trocarAba(aba) {
+        this.state.abaSelecionada = aba;
 
-        document.querySelectorAll('.tab-link').forEach(tab => {
-            tab.classList.remove('active');
+        // Atualizar botões
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.tab === aba);
         });
-        event.target.classList.add('active');
 
-        document.querySelectorAll('.tab-content').forEach(tab => {
-            tab.style.display = 'none';
+        // Atualizar conteúdo
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.toggle('active', content.id === `tab-${aba}`);
         });
-
-        if (tabName === 'regulares') {
-            document.getElementById('regulares').style.display = 'block';
-        } else if (tabName === 'bloqueados') {
-            document.getElementById('bloqueados').style.display = 'block';
-        }
     }
 
-    mudarPagina(direction, tipo) {
-        if (tipo === 'regulares') {
-            this.paginaAtualRegulares += direction;
-            this.carregarUsuariosRegulares();
-        } else if (tipo === 'bloqueados') {
-            this.paginaAtualBloqueados += direction;
-            this.carregarUsuariosBloqueados();
-        }
-    }
-
+    /**
+     * Fecha modal
+     */
     fecharModal() {
-        document.getElementById('userModal').style.display = 'none';
-        this.usuarioSelecionado = null;
+        document.getElementById('modalUsuario').style.display = 'none';
+        this.state.usuarioAtual = null;
+        this.state.modoEdicao = false;
+        this.cancelarEdicao();
     }
 
-    mostrarMensagemErro(mensagem) {
-        let erroDiv = document.querySelector('.erro-mensagem');
-        if (!erroDiv) {
-            erroDiv = document.createElement('div');
-            erroDiv.className = 'erro-mensagem';
-            erroDiv.style.cssText = 'background: #ffebee; color: #c62828; padding: 10px; margin: 10px 0; border-radius: 4px; font-weight: 500;';
-            document.querySelector('.container').prepend(erroDiv);
+    /**
+     * Tratamento de resposta HTTP
+     */
+    async handleResponse(response) {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        return await response.json();
+    }
 
-        erroDiv.textContent = mensagem;
-        erroDiv.style.display = 'block';
+    /**
+     * Utilities
+     */
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
 
+    truncateText(text, maxLength) {
+        if (!text) return 'N/A';
+        return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+    }
+
+    formatCPF(cpf) {
+        if (!cpf) return '';
+        cpf = cpf.replace(/\D/g, '');
+        return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    }
+
+    formatPhone(phone) {
+        if (!phone) return 'N/A';
+        phone = phone.replace(/\D/g, '');
+        if (phone.length === 11) {
+            return phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        } else if (phone.length === 10) {
+            return phone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+        }
+        return phone;
+    }
+
+    validarEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    /**
+     * Mensagens de feedback
+     */
+    mostrarSucesso(mensagem) {
+        document.getElementById('mensagemSucesso').textContent = mensagem;
+        document.getElementById('modalSucesso').style.display = 'flex';
         setTimeout(() => {
-            erroDiv.style.display = 'none';
-        }, 5000);
+            document.getElementById('modalSucesso').style.display = 'none';
+        }, 2000);
     }
 
-    mostrarMensagemSucesso(mensagem) {
-        let sucessoDiv = document.querySelector('.sucesso-mensagem');
-        if (!sucessoDiv) {
-            sucessoDiv = document.createElement('div');
-            sucessoDiv.className = 'sucesso-mensagem';
-            sucessoDiv.style.cssText = 'background: #e8f5e8; color: #2e7d32; padding: 10px; margin: 10px 0; border-radius: 4px; font-weight: 500;';
-            document.querySelector('.container').prepend(sucessoDiv);
-        }
-
-        sucessoDiv.textContent = mensagem;
-        sucessoDiv.style.display = 'block';
-
-        setTimeout(() => {
-            sucessoDiv.style.display = 'none';
-        }, 3000);
-    }
-
-    mostrarModalConfirmacao(mensagem = 'Dados salvos com sucesso!') {
-        console.log('modal de confirmação:', mensagem);
-        const modal = document.getElementById('confirmModalSalvar');
-        if (modal) {
-            modal.style.display = 'flex';
-        } else {
-            console.error('modal de confirmação não encontrado (alg corrige)');
-        }
-    }
-
-    mostrarModalErro(mensagem = 'Erro ao salvar dados') {
-        console.log('mostrando modal de erro:', mensagem);
-        const modal = document.getElementById('errorModalSalvar');
-        const messageElement = document.getElementById('errorMessage');
-
-        if (modal && messageElement) {
-            messageElement.textContent = mensagem;
-            modal.style.display = 'flex';
-        } else {
-            console.error('modal de erro não encontrado');
-        }
+    mostrarErro(mensagem) {
+        document.getElementById('mensagemErro').textContent = mensagem;
+        document.getElementById('modalErro').style.display = 'flex';
     }
 }
 
-function mudarPagina(direction) {
-    if (window.gerenciadorUsuarios) {
-        window.gerenciadorUsuarios.mudarPagina(direction, 'regulares');
-    }
-}
-
-function trocarParaPaginaDosBloqueados(direction) {
-    if (window.gerenciadorUsuarios) {
-        window.gerenciadorUsuarios.mudarPagina(direction, 'bloqueados');
-    }
-}
-
-function fecharModalConfirmacao() {
-    const modal = document.getElementById('confirmModalSalvar');
-    if (modal) {
-        modal.style.display = 'none';
-    }
-}
-
+// Funções globais para fechar modais
 function fecharModalErro() {
-    const modal = document.getElementById('errorModalSalvar');
-    if (modal) {
-        modal.style.display = 'none';
+    document.getElementById('modalErro').style.display = 'none';
+}
+
+function fecharModal() {
+    if (window.gerenciadorUsuarios) {
+        window.gerenciadorUsuarios.fecharModal();
     }
 }
 
-
+// Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     window.gerenciadorUsuarios = new GerenciadorUsuarios();
 });
