@@ -2,7 +2,7 @@
 $alunos = [
     [
         'nome' => 'Gabriel Arruda',
-        'funcao' => 'Back-End Developer',
+        'funcao' => 'O que pagar mais   ',
         'imagem' => '../../../public/assets/img/Gabriel.jpg',
         'linkedin' => 'https://www.linkedin.com/feed/?trk=joogle',
         'github' => 'https://github.com/Gantt-sucessor',
@@ -10,7 +10,7 @@ $alunos = [
     [
         'nome' => 'Marlon Oliveira',
         'funcao' => 'Full-Stack Developer',
-        'imagem' => 'https://www.example.com/maria.jpg',
+        'imagem' => '../../../public/assets/img/NullUser.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
@@ -31,28 +31,28 @@ $alunos = [
     [
         'nome' => 'Vitor Araujo',
         'funcao' => 'Back-End Developer',
-        'imagem' => 'https://www.example.com/maria.jpg',
+        'imagem' => '../../../public/assets/img/NullUser.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
     [
         'nome' => 'Matheus Serpa',
         'funcao' => 'UX Designer',
-        'imagem' => 'https://www.example.com/maria.jpg',
+        'imagem' => '../../../public/assets/img/NullUser.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
     [
         'nome' => 'Gabriel Augusto',
         'funcao' => 'Back-End Developer',
-        'imagem' => 'https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg',
+        'imagem' => '../../../public/assets/img/NullUser.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
     [
         'nome' => 'Gustavo Víctor',
-        'funcao' => '"Front-End Developer"',
-        'imagem' => 'https://as2.ftcdn.net/v2/jpg/05/89/93/27/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N.jpg',
+        'funcao' => 'Front-End Developer',
+        'imagem' => '../../../public/assets/img/NullUser.jpg',
         'linkedin' => 'https://www.linkedin.com/in/mariasilva',
         'github' => 'https://github.com/mariasilva',
     ],
@@ -75,7 +75,7 @@ $alunos = [
     <section>
         <div class="logo_dev">
             <p>DESENVOLVEDORES</p>
-            <h1>DE SISTEMA</h1>
+            <h1>D0 SISTEMA</h1>
         </div>
     </section>
 

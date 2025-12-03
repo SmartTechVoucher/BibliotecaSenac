@@ -101,11 +101,7 @@ require "../../../config/constantes.php";
         <img src="<?php echo $URLBASE ?>/public/assets/img/Superior direito.svg" alt="Superior direito" class="direito">
     </div>
 
-    <!-- Modal de confirmação -->
-    <?php
-        require_once __DIR__ . '/../../../components/usuario/modal/modal.php';
-        echo renderModal('confirmModal', 'Confirmação', 'Você tem certeza que deseja sair?');
-    ?>
+    <!-- Modal removido completamente -->
     <!-- JS -->
     <script src="<?php echo $URLBASE ?>/public/js/components/header-admin.js"></script>
 </body>

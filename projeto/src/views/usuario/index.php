@@ -77,7 +77,7 @@ if (isset($_SESSION['toast'])) {
             </div>
 
             <form class="barrapesquisa" onsubmit="return false;">
-                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off"> 
+                <input type="text" class="pesquisa" placeholder="Pesquise por um livro" id="campo-input" autocomplete="off">
                 <button type="button" class="botaops" id="lupaId" tabindex="0">
                     <img src="<?php echo $URLBASE ?>/public/assets/icons/lupa.svg" alt="Buscar">
                 </button>
@@ -85,6 +85,14 @@ if (isset($_SESSION['toast'])) {
                     <ul></ul>
                 </div>
             </form>
+
+            <!-- Container para filtros de busca -->
+            <div class="filtros-busca" id="filtros-busca-container" style="display: none;">
+                <label for="categoria-select">Categoria:</label>
+                <select id="categoria-select" class="categoria-select">
+                    <option value="">Todas as categorias</option>
+                </select>
+            </div>
         </div>
 
         <div class="generos-livros">

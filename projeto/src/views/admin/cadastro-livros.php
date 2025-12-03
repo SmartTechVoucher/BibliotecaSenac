@@ -1,8 +1,7 @@
 <?php
-$titulo = 'cadastro de Livros';
+$titulo = 'Cadastro de Livros';
 $cssPagina = '/public/css/admin/cadastro-livros.css';
 $conteudo = __DIR__ . '/pages/cadastro-livros-content.php'; // caminho do conteúdo
-$Titulo = "Cadastro de livro";
 $modalPagina = [
     'id' => 'confirmModal',
     'titulo' => 'Confirmação',

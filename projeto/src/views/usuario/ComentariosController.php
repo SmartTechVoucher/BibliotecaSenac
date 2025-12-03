@@ -1,13 +1,15 @@
 <?php
 // Salvar em: src/controller/usuario/ComentariosController.php
 
-require_once __DIR__ . '/../../../config/conexao.php';
+use Dba\Connection;
+
+require_once __DIR__ . '/../../../config/db/database.php';
 
 class ComentariosController {
     private $conn;
 
     public function __construct() {
-        $this->conn = Conexao::getConnection();
+        $this->conn = Connection::getConnection();
     }
 
     public function handle() {

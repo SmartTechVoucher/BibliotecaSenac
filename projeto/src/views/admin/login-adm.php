@@ -63,7 +63,7 @@ require(__DIR__ . '/../../../config/constantes.php');
                     </div>
                 </form>
 
-                <form action="../../../router.php?acao=recuperarSenha" method="POST" class="card-recuperar-senha hidden" id="card-recuperar">
+                <form action="../../../router.php?acao=recuperarSenha" method="POST" class="card-recuperar-senha hidden" id="card-recuperar" novalidate>
                     <div class="titles-form">
                         <h2>Recuperar Senha</h2>
                         <p>Digite seu email para receber as instruções</p>
@@ -74,7 +74,7 @@ require(__DIR__ . '/../../../config/constantes.php');
                         <input type="email" name="email" id="campo_email" placeholder="Digite seu email">
                     </div>
 
-                    <button type="submit">Enviar instruções</button>
+                    <button type="submit" id="btn-enviar">Enviar instruções</button>
                     <div class="text-center">
                         <a href="#" id="link-voltar">
                             <img src="<?php echo $URLBASE ?>/public/assets/icons/voltar-admin.png" alt="" class="icon-voltar">

@@ -1,7 +1,7 @@
 <?php
 $titulo = 'Relatórios';
 $cssPagina = '/public/css/admin/relatorios.css';
-$conteudo = __DIR__ . '/pages/livros-cadastrados-teste.php'; // caminho do conteúdo
+$conteudo = __DIR__ . '/pages/livros-cadastrados-teste.php'; 
 $modalPagina = [
     'id' => 'confirmModal',
     'titulo' => 'Confirmação',

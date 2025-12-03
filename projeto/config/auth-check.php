@@ -93,3 +93,11 @@ function obterUsuarioLogado(): ?array {
 
     return $usuario;
 }
+
+/**
+ * Verifica se há um administrador logado na sessão.
+ * @return bool
+ */
+function isAdminLoggedIn(): bool {
+    return isset($_SESSION['admin']) && !empty($_SESSION['admin']) && isset($_SESSION['admin']['id']);
+}

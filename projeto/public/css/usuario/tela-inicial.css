@@ -92,7 +92,7 @@ body {
     width: 100%;   
     margin-left: 1%;      
     margin-right: 5%;
-    margin-top: 2%;
+    margin-top: 5%;
     object-fit: contain;
     height: auto;
 }
@@ -860,8 +860,146 @@ body {
 }
 
 @media (max-width: 250px) {
-    .gencard {
-        flex: 0 0 100%;
-        max-width: 100%;
+     .gencard {
+         flex: 0 0 100%;
+         max-width: 100%;
+     }
+ }
+
+/* ESTILOS PARA BUSCA AJAX */
+
+.filtros-busca {
+    margin-top: 10px;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #e9ecef;
+}
+
+#categoria-select {
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--branco);
+    color: var(--cinza);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #ddd;
+    padding: 10px 12px;
+    min-width: 200px;
+}
+
+#categoria-select:hover {
+    border-color: var(--laranja-padrao);
+}
+
+#categoria-select:focus {
+    outline: none;
+    border-color: var(--laranja-padrao);
+    box-shadow: 0 0 0 2px rgba(246, 139, 31, 0.2);
+}
+
+.livro-item {
+    transition: background-color 0.2s ease;
+}
+
+.livro-item:hover {
+    background-color: #f5f5f5;
+}
+
+.titulo-livro-busca {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--azul-tela-inicial);
+    margin-bottom: 4px;
+}
+
+.autor-livro-busca {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #555;
+}
+
+.categoria-livro-busca {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: #777;
+    font-style: italic;
+}
+
+.nenhum-resultado {
+    background-color: #f9f9f9;
+    font-style: italic;
+}
+
+.erro-busca {
+    background-color: #ffebee;
+    color: #c62828;
+    font-weight: 500;
+}
+
+/* Melhorar aparência da listagem em dispositivos móveis */
+@media (max-width: 768px) {
+    .filtros-busca {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
     }
+
+    #categoria-select {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .listagem {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .livro-item {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .titulo-livro-busca {
+        font-size: 16px;
+    }
+
+    .autor-livro-busca {
+        font-size: 14px;
+    }
+
+    .categoria-livro-busca {
+        font-size: 12px;
+    }
+}
+
+/* Loading state para busca */
+.listagem.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+.listagem.loading::before {
+    content: 'Buscando...';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--azul-tela-inicial);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    z-index: 6;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
 }

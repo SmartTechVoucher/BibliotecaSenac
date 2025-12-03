@@ -1,24 +1,37 @@
 <?php
 session_start();
 require(__DIR__ . '/../../../config/constantes.php');
-require_once(__DIR__ . '/../../../src/model/usuario/livro-model.php');
+require_once(__DIR__ . '/../../../src/controller/usuario/FiltroLivrosController.php');
 
-$model = new LivroModel();
-$livros = $model->getLivrosMock();
+$controller = new FiltroLivrosController();
+$dados = $controller->prepararDadosView();
 
-// Garante que todos os campos esperados existem
-function obterLivroOuPadrao($livros, $index)
-{
-    return $livros[$index] ?? [
-        'id' => 0,
-        'titulo' => 'O guia do mochileiro das galáxias',
-        'autor' => 'Douglas Adams',
-        'imagem' => 'https://i.pinimg.com/736x/a7/b2/0f/a7b20fc61df85a13f6ddcd365854966d.jpg',
-        'status' => 'disponível',
-        'area' => 'Ficção',
-        'descricao' => 'Livro padrão inserido quando não há mais resultados.',
-    ];
-}
+$livros = $dados['livros'];
+$busca_atual = $dados['busca_atual'];
+$paginacao = $dados['paginacao'];
+$pagina_atual = $paginacao['pagina_atual'];
+$total_paginas = $paginacao['total_paginas'];
+$total_livros = $paginacao['total_livros'];
+
+$filtro_area = $dados['filtro_area'];
+$filtro_categoria = $dados['filtro_categoria'];
+$filtro_unidade = $dados['filtro_unidade'];
+$filtro_idioma = $dados['filtro_idioma'];
+$filtro_ano = $dados['filtro_ano'];
+$filtro_autor = $dados['filtro_autor'];
+$filtro_documento = $dados['filtro_documento'];
+
+$areas = $dados['areas'];
+$categorias = $dados['categorias'];
+$unidades = $dados['unidades'];
+$idiomas = $dados['idiomas'];
+$anos = $dados['anos'];
+$autores = $dados['autores'];
+$documentos = $dados['documentos'];
+$destaques = $dados['destaques'];
+
+// Dividir livros por categoria (4 livros por categoria)
+$livros_por_categoria = array_chunk($livros, 4);
 ?>
 
 <!DOCTYPE html>
@@ -49,105 +62,261 @@ function obterLivroOuPadrao($livros, $index)
         <?php include "../../../public/components/usuario/voltar/voltar.php"; ?>
 
         <div class="content-wrapper">
+            <!-- SIDEBAR COM TODOS OS FILTROS DINÂMICOS -->
             <div class="sidebar">
-                <!-- Filtros -->
-                <div class="filter-group">
-                    <label for="area">Área</label>
-                    <select id="area" class="filter-select">
-                        <option value="">SELECIONE</option>
-                        <option value="Ciência_Sociais_Aplicadas">Ciência Sociais Aplicadas</option>
-                        <option value="Economia">Economia</option>
-                        <option value="Multidiciplinar">Multidisciplinar</option>
-                        <option value="Ciências_Agrârias">Ciências Agrárias</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="categoria">Categoria/Tags</label>
-                    <select id="categoria" class="filter-select">
-                        <option value="">SELECIONE</option>
-                        <option value="Literatura">Literatura</option>
-                        <option value="Folheto">Folheto</option>
-                        <option value="Artigo_Periódico">Artigo Periódico</option>
-                        <option value="Livro">Livro</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="tipo">Unidade</label>
-                    <select id="tipo" class="filter-select">
-                        <option value="">SELECIONE</option>
-                        <option value="PDF">BSCOR</option>
-                        <option value="EPUB">BSDOU</option>
-                        <option value="MOBI">BSHUB</option>
-                        <option value="DOC">BSPOP</option>
-                    </select>
-                </div>
+                <form method="GET" action="" id="form-filtros">
+                    <!-- Filtro de Área -->
+                    <div class="filter-group">
+                        <label for="area">Área</label>
+                        <select id="area" name="area" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($areas as $area): ?>
+                                <option value="<?php echo $area['id']; ?>" <?php echo $filtro_area == $area['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($area['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Categoria -->
+                    <div class="filter-group">
+                        <label for="categoria">Categoria/Tags</label>
+                        <select id="categoria" name="categoria" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($categorias as $categoria): ?>
+                                <option value="<?php echo $categoria['id']; ?>" <?php echo $filtro_categoria == $categoria['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($categoria['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Editora -->
+                    <div class="filter-group">
+                        <label for="unidade">Editora</label>
+                        <select id="unidade" name="unidade" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($unidades as $unidade): ?>
+                                <option value="<?php echo $unidade['id']; ?>" <?php echo $filtro_unidade == $unidade['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($unidade['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Idioma -->
+                    <div class="filter-group">
+                        <label for="idioma">Idioma</label>
+                        <select id="idioma" name="idioma" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($idiomas as $idioma): ?>
+                                <option value="<?php echo $idioma['id']; ?>" <?php echo $filtro_idioma == $idioma['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($idioma['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Ano de Publicação -->
+                    <div class="filter-group">
+                        <label for="ano">Ano de Publicação</label>
+                        <select id="ano" name="ano" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($anos as $ano): ?>
+                                <option value="<?php echo $ano['id']; ?>" <?php echo $filtro_ano == $ano['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($ano['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Autor -->
+                    <div class="filter-group">
+                        <label for="autor">Autor</label>
+                        <select id="autor" name="autor" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($autores as $autor): ?>
+                                <option value="<?php echo $autor['id']; ?>" <?php echo $filtro_autor == $autor['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($autor['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Filtro de Tipo de Documento -->
+                    <div class="filter-group">
+                        <label for="documento">Tipo de Documento</label>
+                        <select id="documento" name="documento" class="filter-select" onchange="document.getElementById('form-filtros').submit()">
+                            <option value="">SELECIONE</option>
+                            <?php foreach ($documentos as $documento): ?>
+                                <option value="<?php echo $documento['id']; ?>" <?php echo $filtro_documento == $documento['id'] ? 'selected' : ''; ?>>
+                                    <?php echo htmlspecialchars($documento['nome']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <!-- Botão para limpar filtros -->
+                    <?php if (!empty($filtro_area) || !empty($filtro_categoria) || !empty($filtro_unidade) || !empty($filtro_idioma) || !empty($filtro_ano) || !empty($filtro_autor) || !empty($filtro_documento)): ?>
+                        <div class="filter-group">
+                            <button type="button" class="btn-limpar-filtros" onclick="window.location.href='?'">
+                                <i class="fas fa-times-circle"></i> Limpar Filtros
+                            </button>
+                        </div>
+                    <?php endif; ?>
+                </form>
             </div>
 
+            <!-- CONTEÚDO PRINCIPAL -->
             <div class="main-content">
-                <!-- Categorias -->
-                <?php
-                $categorias = ['Tecnologia' => [0, 4], 'Saúde' => [4, 8], 'Gestão' => [8, 12]];
-                foreach ($categorias as $titulo => [$inicio, $fim]):
-                ?>
-                    <div class="category-section">
-                        <div class="category-header">
-                            <h2><?php echo $titulo; ?></h2>
-                        </div>
-                        <div class="books-grid">
-                            <?php for ($i = $inicio; $i < $fim; $i++): ?>
-                                <?php $livro = obterLivroOuPadrao($livros, $i); ?>
-                                <div class="livroEstante1">
-                                    <?php include "../../../public/components/usuario/card/card2.php"; ?>
-                                </div>
-                            <?php endfor; ?>
-                        </div>
-                        <?php if ($titulo === 'Gestão'): ?>
-                            <div class="pagination">
-                                <button class="pagination-btn" onclick="mudarPagina('gestao', 1)">1</button>
-                                <button class="pagination-btn" onclick="mudarPagina('gestao', 2)">2</button>
-                                <button class="pagination-btn active" onclick="mudarPagina('gestao', 3)">3</button>
-                                <button class="pagination-btn" onclick="mudarPagina('gestao', 4)">4</button>
-                                <button class="pagination-btn" onclick="mudarPagina('gestao', 5)">5</button>
-                            </div>
-                        <?php endif; ?>
+                <!-- Info de resultados -->
+                <div class="resultados-info">
+                    <p>Encontrados <strong><?php echo $total_livros; ?></strong> livros</p>
+                    <?php if (!empty($busca_atual)): ?>
+                        <p class="busca-ativa">Busca: "<?php echo htmlspecialchars($busca_atual); ?>"</p>
+                    <?php endif; ?>
+                </div>
+
+                <?php if (empty($livros)): ?>
+                    <div class="sem-resultados">
+                        <p>📚 Nenhum livro encontrado.</p>
+                        <p>Tente ajustar os filtros ou <a href="?">ver todos os livros</a>.</p>
                     </div>
-                <?php endforeach; ?>
+                <?php else: ?>
+                    <!-- Categorias com livros -->
+                    <?php
+                    $categorias_nomes = ['Tecnologia', 'Saúde', 'Gestão', 'Literatura', 'Educação'];
+                    $categoria_index = 0;
+                    
+                    foreach ($livros_por_categoria as $grupo_livros):
+                        $nome_categoria = $categorias_nomes[$categoria_index] ?? 'Outros';
+                        $categoria_index++;
+                    ?>
+                        <div class="category-section">
+                            <div class="category-header">
+                                <h2><?php echo $nome_categoria; ?></h2>
+                            </div>
+                            <div class="books-grid">
+                                <?php foreach ($grupo_livros as $livro): ?>
+                                    <div class="livroEstante1">
+                                        <?php include "../../../public/components/usuario/card/card2.php"; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+
+                    <!-- PAGINAÇÃO -->
+                    <?php if ($total_paginas > 1): ?>
+                        <div class="pagination">
+                            <?php
+                            $params = $_GET;
+                            unset($params['pagina']);
+                            $base_url = '?' . http_build_query($params);
+                            $base_url = empty($base_url) || $base_url === '?' ? '?pagina=' : $base_url . '&pagina=';
+                            ?>
+
+                            <?php if ($pagina_atual > 1): ?>
+                                <button class="pagination-btn" onclick="window.location.href='<?php echo $base_url . ($pagina_atual - 1); ?>'">
+                                    ‹ Anterior
+                                </button>
+                            <?php endif; ?>
+
+                            <?php
+                            $inicio = max(1, $pagina_atual - 2);
+                            $fim = min($total_paginas, $pagina_atual + 2);
+                            for ($i = $inicio; $i <= $fim; $i++):
+                            ?>
+                                <button class="pagination-btn <?php echo ($i == $pagina_atual) ? 'active' : ''; ?>" 
+                                        onclick="window.location.href='<?php echo $base_url . $i; ?>'">
+                                    <?php echo $i; ?>
+                                </button>
+                            <?php endfor; ?>
+
+                            <?php if ($pagina_atual < $total_paginas): ?>
+                                <button class="pagination-btn" onclick="window.location.href='<?php echo $base_url . ($pagina_atual + 1); ?>'">
+                                    Próxima ›
+                                </button>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
             </div>
         </div>
 
-        <!-- Destaques -->
+        <!-- SEÇÃO DE DESTAQUES -->
         <div class="highlights-section">
             <div class="section-header">
                 <h2>Destaques</h2>
             </div>
             <div class="carousel-container">
-                <button class="carousel-btn prev-btn" onclick="moverCarrossel(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn prev-btn" onclick="moverCarrossel(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
                 <div class="carousel-wrapper">
-                    <div class="carousel-track">
-                        <?php for ($i = 0; $i < 9; $i++): ?>
-                            <?php $livro = obterLivroOuPadrao($livros, $i); ?>
-                            <div class="carousel-item <?php echo $i === 3 ? 'active' : ''; ?>">
+                    <div class="carousel-track" id="carousel-track">
+                        <?php foreach ($destaques as $index => $livro): ?>
+                            <div class="carousel-item <?php echo $index === 4 ? 'active' : ''; ?>">
                                 <div class="carousel-book">
-                                    <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo $livro['titulo']; ?>">
+                                    <img src="<?php echo $livro['imagem']; ?>" alt="<?php echo htmlspecialchars($livro['titulo']); ?>">
                                     <div class="carousel-info">
-                                        <h4><?php echo $livro['titulo']; ?></h4>
-                                        <p>Autor - <?php echo $livro['autor']; ?></p>
-                                        <p class="disponivel">(Jogue na mesa)</p>
-                                        <p>Disponível</p>
-                                        <button class="carousel-reserve-btn" onclick="window.location.href='<?php echo $URLBASE ?>/src/views/usuario/livro-info.php?id=<?php echo $livro['id']; ?>'">Reservar</button>
+                                        <h4><?php echo htmlspecialchars($livro['titulo']); ?></h4>
+                                        <p>Autor - <?php echo htmlspecialchars($livro['autor']); ?></p>
+                                        <p class="<?php echo $livro['status'] === 'Disponível' ? 'disponivel' : 'indisponivel'; ?>">
+                                            <?php echo $livro['status']; ?>
+                                        </p>
+                                        <button class="carousel-reserve-btn" 
+                                                onclick="window.location.href='<?php echo $URLBASE ?>/src/views/usuario/livro-info.php?id=<?php echo $livro['id_livro']; ?>'">
+                                            Reservar
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        <?php endfor; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-                <button class="carousel-btn next-btn" onclick="moverCarrossel(1)"><i class="fas fa-chevron-right"></i></button>
+                <button class="carousel-btn next-btn" onclick="moverCarrossel(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </div>
 
     <?php include "../../../public/components/usuario/footer/footer.php"; ?>
-    <script src="<?php echo $URLBASE ?>/public/js/usuario/filtro-livros.js"></script>
+    
+    <script>
+        // Carrossel de destaques
+        let currentIndex = 4;
+        const track = document.getElementById('carousel-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+
+        function moverCarrossel(direction) {
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = totalItems - 1;
+            } else if (currentIndex >= totalItems) {
+                currentIndex = 0;
+            }
+            
+            items.forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === currentIndex) {
+                    item.classList.add('active');
+                }
+            });
+            
+            const offset = -currentIndex * (220);
+            track.style.transform = `translateX(${offset}px)`;
+        }
+
+        // Auto-play do carrossel
+        setInterval(() => {
+            moverCarrossel(1);
+        }, 5000);
+    </script>
+
     <script src="<?php echo $URLBASE ?>/public/js/components/header.js"></script>
 </body>
 
