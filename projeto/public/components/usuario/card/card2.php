@@ -1,8 +1,13 @@
+<?php
+$id_livro = $livro['id_livro'] ?? $livro['id'] ?? 0;
+$is_favorito_inicial = $livro['favorito'] ?? false; 
+?>
 <div class="card-livro">
-  <button class="btn-favorito" onclick="this.classList.toggle('clicked'); mostrarToast('Livro adicionado aos favoritos!')">
-    <i class="fa-regular fa-heart icone-heart oco"></i>
-    <i class="fa-solid fa-heart icone-heart cheio"></i>
-  </button>
+  
+  <button class="btn-favorito <?= $is_favorito_inicial ? 'clicked' : '' ?>" data-id-livro="<?= $id_livro ?>" onclick="toggleFavorito(this, <?= $id_livro ?>)">
+    <i class="fa-regular fa-heart icone-heart oco"></i>
+    <i class="fa-solid fa-heart icone-heart cheio"></i>
+  </button>
 
   <div class="capa-wrapper">
     <?php if (!empty($livro['imagem']) || !empty($livro['foto'])): ?>
@@ -40,3 +45,52 @@
     </button>
   </div>
 </div>
+<script>
+  /**
+ * Alterna (adiciona/remove) um livro dos favoritos via Fetch API.
+ * * @param {HTMLElement} buttonElement O elemento <button> clicado.
+ * @param {number} livroId O ID do livro a ser favoritado/desfavoritado.
+ */
+function toggleFavorito(buttonElement, livroId) {
+    // Reverte a classe visual temporariamente para feedback imediato,
+      buttonElement.classList.toggle('clicked');
+    
+    // Obtém a ação baseada no estado visual temporário
+    const isNowFavorited = buttonElement.classList.contains('clicked');
+    
+    fetch('/projeto/src/controller/usuario/FavoritarController.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id_livro: livroId,
+        }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Falha na resposta do servidor.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            // Se o backend confirmou a ação:
+            const message = data.action === 'added' 
+                ? 'Livro adicionado aos favoritos!' 
+                : 'Livro removido dos favoritos.';
+            mostrarToast(message);
+        } else {
+            // Se o backend falhou, revertemos a classe visual e mostramos o erro
+            buttonElement.classList.toggle('clicked');
+            mostrarToast(data.message || 'Erro desconhecido ao favoritar.', 'error');
+        }
+    })
+    .catch(error => {
+        // Se houver erro de rede, revertemos a classe visual
+        buttonElement.classList.toggle('clicked');
+        console.error('Erro de rede ou JSON:', error);
+        mostrarToast('Erro de comunicação com o servidor.', 'error');
+    });
+}
+</script>
