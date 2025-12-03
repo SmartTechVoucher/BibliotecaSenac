@@ -130,7 +130,7 @@ $documentos = $livro_model->getOpcoesSelect('documentos');
 
     <!-- Botões -->
     <div class="botao-container">
-        <?php
+        <?php   
         botao("Cancelar", "reset", "cancel-button");
         botao("Registrar", "submit", "btn-primary");
         ?>

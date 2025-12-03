@@ -40,7 +40,7 @@
 </div>
 <!-- Cabeçalho -->
 <div style="margin-bottom: 30px;">
-    <h2 style="font-family: var(--fontes); font-size: 2rem; font-weight: 700; margin: 0;">Dashboard</h2>
+    
     <p style="color: #6c757d; font-family: var(--fontes); margin-top: 5px;">Visão geral do sistema de biblioteca</p>
 </div>
 
@@ -60,7 +60,7 @@
     <?php endforeach; ?>
 </div>
 <!-- Atividades Recentes -->
-<div style="background: var(--branco); border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<!-- <div style="background: var(--branco); border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
     <h3 style="font-family: var(--fontes); font-weight: 600; font-size: 1.2rem; margin-bottom: 15px;">Atividades Recentes</h3>
     <?php foreach ($activities as $activity): ?>
         <div style="display: flex; justify-content: space-between; border-bottom: 1px solid #ced4da; padding: 10px 0;">
@@ -71,7 +71,7 @@
             <div style="color: #6c757d; font-size: 0.8rem;"><?= $activity['time'] ?? '' ?></div>
         </div>
     <?php endforeach; ?>
-</div>
+</div> -->
 
 <!-- Livros Mais Emprestados -->
 <div style="background: var(--branco); border-radius: 8px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);margin-top: 5%;">
