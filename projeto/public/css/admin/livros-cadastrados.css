@@ -51,7 +51,7 @@
 
 .botao {
     border: none;
-    background: var(--azul);
+    background: #2563eb;
     padding: 8px 15px;
     border-radius: 20px;
     cursor: pointer;
